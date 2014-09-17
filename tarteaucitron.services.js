@@ -90,7 +90,7 @@ tarteaucitron.services.analytics = {
         window.ga.l = new Date();
         
         tarteaucitron.addScript('//www.google-analytics.com/analytics.js', '', function () {
-            ga('create', tarteaucitron.user.analyticsUA, 'auto');
+            ga('create', tarteaucitron.user.analyticsUa, 'auto');
             ga('send', 'pageview');
             if (typeof tarteaucitron.user.analyticsMore === 'function') {
                 tarteaucitron.user.analyticsMore();
