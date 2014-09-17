@@ -1,0 +1,284 @@
+/***
+ * Responsive layout for the control panel
+ */
+@media screen and (max-width:650px) {
+    #tarteaucitron .tarteaucitronLine .tarteaucitronName {
+        width: 90% !important;
+    }
+    
+    #tarteaucitron .tarteaucitronLine .tarteaucitronAsk {
+        float: left !important;
+        margin: 10px 15px 5px;
+    }
+}
+
+@media screen and (max-width:1020px) {
+    #tarteaucitron {
+        top: 0;
+    }
+    
+    #tarteaucitron #tarteaucitronDisclaimer {
+        font-size: 14px;
+    }
+}
+
+/***
+ * Common value
+ */
+#tarteaucitron * {
+    zoom: 1;
+}
+
+#tarteaucitron .clear {
+    clear: both;
+}
+
+#tarteaucitron a {
+    color: #000;
+    text-decoration: underline;
+}
+
+#tarteaucitronAlertBig a, #tarteaucitronAlertSmall a {
+    color: #fff;
+}
+
+#tarteaucitron b {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#tarteaucitron em {
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+    font-style: italic;
+}
+
+#tarteaucitron .tarteaucitronMore em {
+    cursor: text;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/***
+ * Root div added just before </body>
+ */
+#tarteaucitronRoot {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+}
+
+#tarteaucitronRoot * {
+    color: #333;
+    font-family: verdana;
+    font-size: 14px;
+}
+
+/***
+ * Control panel
+ */
+#tarteaucitronBack {
+    background: rgba(255, 255, 255, 0.7);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2147483646;
+}
+
+#tarteaucitron {
+    background: #333;
+    border: 0;
+    border-bottom: 50px solid;
+    display: none;
+    left: 0;
+    margin: 0 auto;
+    max-width: 1020px;
+    position: relative;
+    right: 0;
+    top: 0;
+    z-index: 2147483647;
+}
+
+#tarteaucitron #tarteaucitronClosePanel {
+    color: #FFF;
+    cursor: pointer;
+    display: block;
+    text-decoration: underline;
+    font-family: verdana;
+    margin: 0px 15px 15px 0;
+    padding-top: 10px;
+    text-align: right;
+}
+
+#tarteaucitron #tarteaucitronDisclaimer {
+    color: #fff;
+    font-size: 16px;
+    margin: 0 auto 30px;
+    max-width: 800px;
+    padding: 0 15px;
+    text-align: center;
+}
+
+#tarteaucitron .tarteaucitronTitle {
+    background: rgb(81, 81, 81);
+    color: #FFF;
+    font-size: 16px;
+    padding: 5px 0px 5px 22px;
+    margin-top: 15px;
+}
+
+#tarteaucitron .tarteaucitronLine {
+    background: #f5f5f5;
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    height: auto;
+    min-height: 100%;
+    overflow: hidden;
+    padding: 5px;
+}
+
+#tarteaucitron .tarteaucitronLine .tarteaucitronName {
+    display: inline-block;
+    float: left;
+    margin-left: 15px;
+    width: 50%;
+}
+
+#tarteaucitron .tarteaucitronLine .tarteaucitronAsk {
+    display: inline-block;
+    float: right;
+    margin: 7px 15px 0;
+    text-align: right;
+}
+
+#tarteaucitron .tarteaucitronLine .tarteaucitronAsk .tarteaucitronAllow,
+#tarteaucitron .tarteaucitronLine .tarteaucitronAsk .tarteaucitronDeny {
+    background: gray;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+}
+
+#tarteaucitron .tarteaucitronLine .tarteaucitronMore {
+    display: none;
+}
+
+
+/***
+ * Big alert
+ */
+#tarteaucitronAlertBig {
+    background: #333;
+    color: #fff !important;
+    display: none;
+    font-size: 15px !important;
+    left: 0;
+    padding: 5px 5%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 90%;
+    box-sizing: content-box;
+    z-index: 2147483645;
+}
+
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert {
+    font: 15px verdana;
+    color: #fff;
+}
+
+#tarteaucitronAlertBig #tarteaucitronPersonalize {
+    background: #008300;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-left: 7px;
+}
+
+#tarteaucitronAlertBig #tarteaucitronCloseAlert {
+    font-size: 11px;
+    margin-left: 7px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/***
+ * Small alert
+ */
+#tarteaucitronAlertSmall {
+    background: #333;
+    bottom: 0;
+    color: #fff !important;
+    cursor: pointer;
+    display: none;
+    font-size: 11px !important;
+    padding: 3px;
+    padding-right: 5px;
+    position: fixed;
+    right: 0;
+    z-index: 2147483645;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronDot {
+    background-color: #E63737;
+    border-radius: 10px;
+    display: inline-block;
+    height: 10px;
+    margin: 0px 5px 2px 5px;
+    vertical-align: middle;
+    width: 10px;
+}
+
+/***
+ * Fallback links for social networks
+ */
+.tac_share {
+    display: inline-block;
+    margin: 0;
+    padding: 3px 10px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #fff !important;
+    text-align: center;
+}
+
+.tac_share_twitter {
+    background-color: #4099ff;
+}
+
+.tac_share_facebook {
+    background-color: #3b5998;
+}
+
+.tac_share_googlep {
+    background-color: #D34836;
+}
+
+.tac_share_linkedin {
+    background-color: #3399cc;
+}
+
+.tac_share_pinterest {
+    background-color: #cb2027;
+}
+
+.tac_share_digg {
+    background-color: #0093CC;
+}
+
+.tac_share_reddit {
+    background-color: #2E81D5;
+}
