@@ -1,5 +1,28 @@
 /*global tarteaucitron, ga*/
 
+// addthis
+tarteaucitron.services.addthis = {
+    "key": "addthis",
+    "type": "social",
+    "name": "AddThis",
+    "uri": "http://www.addthis.com/privacy/privacy-policy#publisher-visitors",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.addthisPubId === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + tarteaucitron.user.addthisPubId);
+    },
+    "lang": {
+        "en": "AddThis collects non-personal information such as your IP address, your browser, your operating system... Personal information may be collected when you submit yourself (email address).<br/><br/><em>AddThis provide a policy about the use of tracking technologies and cookies.</em>",
+        "fr": "AddThis collecte des informations non personnelles tel que votre IP, votre navigateur, votre syst&egrave;me d'exploitation... Des informations personnelles peuvent &ecirc;tre collect&eacute;es lorsque vous les soumettez vous m&ecirc;me (adresse email par exemple).<br/><br/><em>AddThis met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "de": "",
+        "es": "",
+        "it": ""
+    }
+};
+
 // ferank
 tarteaucitron.services.ferank = {
     "key": "ferank",
@@ -123,7 +146,7 @@ tarteaucitron.services.gplus = {
     },
     "lang": {
         "en": "Google collects information used to improve services to the public. It may be basic information, such as the language you use, or more complex, such as ads that you find most useful or the people who interest you most on the web.<br/><br/><em> Google provide a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "Google collecte des informations servent &agrave; am&eacute;liorer ses services accessibles au public. Il peut s'agir d'informations de base, telles que la langue que vous utilisez, ou plus complexes, par exemple les annonces que vous trouvez les plus utiles ou les personnes qui vous int&eacute;ressent le plus sur le web.<br/><br/><em>Google met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "Google collecte des informations servant &agrave; am&eacute;liorer ses services accessibles au public. Il peut s'agir d'informations de base, telles que la langue que vous utilisez, ou plus complexes, par exemple les annonces que vous trouvez les plus utiles ou les personnes qui vous int&eacute;ressent le plus sur le web.<br/><br/><em>Google met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""
