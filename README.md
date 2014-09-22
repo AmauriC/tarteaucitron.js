@@ -17,6 +17,7 @@ Bonus:
 - Incorporate a fallback system (display a link instead of social button and a static banner instead of advertising).
 
 ## Supported services
+- AddThis
 - Facebook
 - FERank
 - Google Adsense
