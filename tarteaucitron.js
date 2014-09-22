@@ -402,7 +402,7 @@ var tarteaucitron = {
      */
     "promoteMe": function (el) {
         "use strict";
-        if (tarteaucitron.promoteThisScript === false) { return; }
+        if (tarteaucitron.promoteThisScript === false) { return ''; }
         
         var l = tarteaucitron.getLanguage(),
             w = el.offsetWidth,
