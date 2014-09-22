@@ -16,7 +16,7 @@ tarteaucitron.services.addthis = {
     },
     "lang": {
         "en": "AddThis collects non-personal information such as your IP address, your browser, your operating system... Personal information may be collected when you submit yourself (email address).<br/><br/><em>AddThis provide a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "AddThis collecte des informations non personnelles tel que votre IP, votre navigateur, votre syst&egrave;me d'exploitation... Des informations personnelles peuvent &ecirc;tre collect&eacute;es lorsque vous les soumettez vous m&ecirc;me (adresse email par exemple).<br/><br/><em>AddThis met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "AddThis collecte des informations non personnelles tel que votre IP, votre navigateur, votre système d'exploitation... Des informations personnelles peuvent être collectées lorsque vous les soumettez vous même (adresse email par exemple).<br/><br/><em>AddThis met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -40,7 +40,7 @@ tarteaucitron.services.ferank = {
     },
     "lang": {
         "en": "FERank uses a beacon to generate traffic statistics. During your visits, information about your browsing and your equipment are transmitted to FERank. The collected data is immediately anonymized, personal information that identifies you is never stored, not even your IP address, and the statistics are not cross-checked with other sites or files.<br/><br/><em>FERank meets the criteria to be exempted from prior consent.</em>",
-        "fr": "FERank utilise un pixel invisible pour g&eacute;n&eacute;rer des statistiques de fr&eacute;quentation. Lors de vos visites, des informations sur votre navigation et votre mat&eacute;riel sont transmises &agrave; FERank.<br/><br/>Les donn&eacute;es collect&eacute;es sont imm&eacute;diatement anonymis&eacute;es, aucune information personnelle ou permettant de vous identifier n'est stock&eacute;e, pas m&ecirc;me votre adresse IP, et les statistiques ne sont pas recoup&eacute;es avec d'autres sites ou fichiers.<br/><br/><em>FERank r&eacute;pond aux crit&egrave;res pour &ecirc;tre dispens&eacute; de consentement pr&eacute;alable.</em>",
+        "fr": "FERank utilise un pixel invisible pour générer des statistiques de fréquentation. Lors de vos visites, des informations sur votre navigation et votre matériel sont transmises à FERank.<br/><br/>Les données collectées sont immédiatement anonymisées, aucune information personnelle ou permettant de vous identifier n'est stockée, pas même votre adresse IP, et les statistiques ne sont pas recoupées avec d'autres sites ou fichiers.<br/><br/><em>FERank répond aux critères pour être dispensé de consentement préalable.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -65,7 +65,7 @@ tarteaucitron.services.facebook = {
     },
     "lang": {
         "en": "Facebook, its subsidiaries and partners uses technology such as cookies, tracking pixels and local storage. These technologies are used for security purposes and to provide products, services and advertisements.<br/><br/><em> Facebook provide a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "Facebook, ses filiales et autres partenaires utilisent des technologies telles que les cookies, les pixels de suivi et le stockage local. Ces technologies sont utilis&eacute;es &agrave; des fins de s&eacute;curit&eacute; et pour fournir des produits, des services et des publicit&eacute;s.<br/><br/><em>Facebook met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "Facebook, ses filiales et autres partenaires utilisent des technologies telles que les cookies, les pixels de suivi et le stockage local. Ces technologies sont utilisées à des fins de sécurité et pour fournir des produits, des services et des publicités.<br/><br/><em>Facebook met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -89,7 +89,7 @@ tarteaucitron.services.adsense = {
     },
     "lang": {
         "en": "Google uses cookies to serve ads based on your previous visits. Google and its partners adjust ads based on your visit to this site and / or other web sites using the DoubleClick cookie.<br/><br/><em>You can disable the DoubleClick cookie used for ad serving via Google Advertising Solutions settings.</em>",
-        "fr": "Google utilise des cookies pour diffuser des annonces en fonction de vos visites ant&eacute;rieures. Google et ses partenaires adaptent les annonces diffus&eacute;es en fonction de votre navigation sur ce site et/ou d'autres sites web en utilisant le cookie DoubleClick.<br/><br/><em>Vous pouvez d&eacute;sactiver le cookie DoubleClick utilis&eacute; pour la diffusion d'annonces par centres d'int&eacute;r&ecirc;t via les param&egrave;tres Google Solutions publicitaires.</em>",
+        "fr": "Google utilise des cookies pour diffuser des annonces en fonction de vos visites antérieures. Google et ses partenaires adaptent les annonces diffusées en fonction de votre navigation sur ce site et/ou d'autres sites web en utilisant le cookie DoubleClick.<br/><br/><em>Vous pouvez désactiver le cookie DoubleClick utilisé pour la diffusion d'annonces par centres d'intérêt via les paramètres Google Solutions publicitaires.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -122,7 +122,7 @@ tarteaucitron.services.analytics = {
     },
     "lang": {
         "en": "Google Analytics uses cookies to generate internal reports about your interactions on this website. These cookies are used to store information that does not identify you personally. First-party cookies are stored on your browser and are not valid from one domain to another.<br/><br/><em> Google provide a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "Google Analytics utilise des cookies internes permettant de g&eacute;n&eacute;rer des rapports sur vos interactions sur ce site web. Ces cookies sont utilis&eacute;s pour stocker des informations ne permettant pas de vous identifier personnellement. Les cookies internes stock&eacute;s sur votre navigateur ne sont pas valables d'un domaine &agrave; l'autre.<br/><br/><em>Google met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "Google Analytics utilise des cookies internes permettant de générer des rapports sur vos interactions sur ce site web. Ces cookies sont utilisés pour stocker des informations ne permettant pas de vous identifier personnellement. Les cookies internes stockés sur votre navigateur ne sont pas valables d'un domaine à l'autre.<br/><br/><em>Google met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -146,7 +146,7 @@ tarteaucitron.services.gplus = {
     },
     "lang": {
         "en": "Google collects information used to improve services to the public. It may be basic information, such as the language you use, or more complex, such as ads that you find most useful or the people who interest you most on the web.<br/><br/><em> Google provide a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "Google collecte des informations servant &agrave; am&eacute;liorer ses services accessibles au public. Il peut s'agir d'informations de base, telles que la langue que vous utilisez, ou plus complexes, par exemple les annonces que vous trouvez les plus utiles ou les personnes qui vous int&eacute;ressent le plus sur le web.<br/><br/><em>Google met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "Google collecte des informations servant à améliorer ses services accessibles au public. Il peut s'agir d'informations de base, telles que la langue que vous utilisez, ou plus complexes, par exemple les annonces que vous trouvez les plus utiles ou les personnes qui vous intéressent le plus sur le web.<br/><br/><em>Google met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -171,7 +171,7 @@ tarteaucitron.services.linkedin = {
     },
     "lang": {
         "en": "Linkedin and its partners may set cookies to improve and secure their services, offer you relevant ads or customize your user experience.<br/><br/><em>Linkedin provided a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "Linkedin et ses partenaires peuvent installer des cookies afin d'am&eacute;liorer et s&eacute;curiser leurs services, vous proposer des publicit&eacute;s pertinentes ou encore personnaliser votre exp&eacute;rience utilisateur.<br/><br/><em>Linkedin met &grave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "Linkedin et ses partenaires peuvent installer des cookies afin d'améliorer et sécuriser leurs services, vous proposer des publicités pertinentes ou encore personnaliser votre expérience utilisateur.<br/><br/><em>Linkedin met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -191,7 +191,7 @@ tarteaucitron.services.pinterest = {
     },
     "lang": {
         "en": "Pinterest collect technical information and the type of equipment you use through his widget on this site. These informations can be stored in log files or cookies, and are used to improve Pinterest services and develop new ones.<br/><br/><em> Pinterest provide a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "Pinterest collecte des informations techniques et le type de mat&eacute;riel que vous utilisez via le widget pr&eacute;sent sur ce site. Ces informations peuvent &ecirc;tre stock&eacute;es dans des fichiers logs ou des cookies et sont utilis&eacute;es pour am&eacute;liorer les services de Pinterest et en d&eacute;velopper de nouveaux.<br/><br/><em>Pinterest met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "Pinterest collecte des informations techniques et le type de matériel que vous utilisez via le widget présent sur ce site. Ces informations peuvent être stockées dans des fichiers logs ou des cookies et sont utilisées pour améliorer les services de Pinterest et en développer de nouveaux.<br/><br/><em>Pinterest met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""
@@ -216,7 +216,7 @@ tarteaucitron.services.twitter = {
     },
     "lang": {
         "en": "Twitter collects and uses information to deliver services and to measure and improve service over time. Twitter can tailor content for you based on your visits to other websites via cookies.<br/><br/><em>Twitter provide a policy about the use of tracking technologies and cookies.</em>",
-        "fr": "Twitter collecte et utilise des informations pour fournir ses services, ainsi que pour mesurer et am&eacute;liorer ses services au fil du temps. Twitter peux adapter le contenu qui vous est destin&eacute; en fonction de vos visites sur des sites tiers via des cookies.<br/><br/><em>Twitter met &agrave; disposition une politique sur l'utilisation de ses syst&egrave;mes de suivi et l'utilisation des cookies.</em>",
+        "fr": "Twitter collecte et utilise des informations pour fournir ses services, ainsi que pour mesurer et améliorer ses services au fil du temps. Twitter peux adapter le contenu qui vous est destiné en fonction de vos visites sur des sites tiers via des cookies.<br/><br/><em>Twitter met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
         "de": "",
         "es": "",
         "it": ""

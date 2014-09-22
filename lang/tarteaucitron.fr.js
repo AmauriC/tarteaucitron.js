@@ -5,13 +5,13 @@ tarteaucitron.lang = {
     "personalize": "Personnaliser",
     "close": "Fermer",
 
-    "disclaimer": "En autorisant ces services tiers, vous acceptez le d&eacute;p&ocirc;t et la lecture de cookies et l'utilisation de technologies de suivi n&eacute;cessaires &agrave; leur bon fonctionnement.",
+    "disclaimer": "En autorisant ces services tiers, vous acceptez le dépôt et la lecture de cookies et l'utilisation de technologies de suivi nécessaires à leur bon fonctionnement.",
     "allow": "Autoriser",
     "deny": "Interdire",
     "more": "En savoir plus",
     "source": "Voir le site officiel",
 
-    "ads": "R&eacute;gies publicitaires",
+    "ads": "Régies publicitaires",
     "analytics": "Mesure d'audience",
-    "social": "R&eacute;seaux sociaux"
+    "social": "Réseaux sociaux"
 };
