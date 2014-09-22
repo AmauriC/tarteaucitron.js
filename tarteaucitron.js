@@ -7,6 +7,7 @@ var scripts = document.getElementsByTagName('script'),
 
 var tarteaucitron = {
     "autoOpen": false, // auto open the panel with #tarteaucitron hash ?
+    "promoteThisScript": false, // promote this script if ads are denied ?
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -401,6 +402,8 @@ var tarteaucitron = {
      */
     "promoteMe": function (el) {
         "use strict";
+        if (tarteaucitron.promoteThisScript === false) { return; }
+        
         var l = tarteaucitron.getLanguage(),
             w = el.offsetWidth,
             h = el.offsetHeight,
