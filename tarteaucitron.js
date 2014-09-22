@@ -1,6 +1,12 @@
 /*jslint browser: true */
+
+// define correct path for files inclusion
+var scripts = document.getElementsByTagName('script'),
+    path = scripts[scripts.length - 1].src.split('?')[0],
+    cdn = path.split('/').slice(0, -1).join('/') + '/';
+
 var tarteaucitron = {
-    "cdn": "",
+    "cdn": cdn,
     "user": {},
     "lang": {},
     "services": {},
