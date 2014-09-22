@@ -113,7 +113,7 @@ tarteaucitron.services.analytics = {
         window.ga.l = new Date();
         
         tarteaucitron.addScript('//www.google-analytics.com/analytics.js', '', function () {
-            ga('create', tarteaucitron.user.analyticsUa, 'auto');
+            ga('create', tarteaucitron.user.analyticsUa, {'cookieExpires': 34128000});
             ga('send', 'pageview');
             if (typeof tarteaucitron.user.analyticsMore === 'function') {
                 tarteaucitron.user.analyticsMore();
