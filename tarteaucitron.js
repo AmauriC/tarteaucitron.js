@@ -6,6 +6,7 @@ var scripts = document.getElementsByTagName('script'),
     cdn = path.split('/').slice(0, -1).join('/') + '/';
 
 var tarteaucitron = {
+    "autoOpen": false, // auto open the panel with #tarteaucitron hash ?
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -200,7 +201,7 @@ var tarteaucitron = {
                 } else {
                     tarteaucitron.userInterface.closeAlert();
                 }
-                if (document.location.hash === '#tarteaucitron') {
+                if (document.location.hash === '#tarteaucitron' && tarteaucitron.autoOpen === true) {
                     tarteaucitron.userInterface.openPanel();
                 }
             });
