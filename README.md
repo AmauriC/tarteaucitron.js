@@ -25,6 +25,7 @@ Bonus:
 - Google+
 - Linkedin
 - Pinterest
+- Shareaholic
 - Twitter
 
 ## Visitors outside the EU

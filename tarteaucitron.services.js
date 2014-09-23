@@ -1,4 +1,31 @@
-/*global tarteaucitron, ga*/
+/*global tarteaucitron, ga, Shareaholic*/
+
+// shareaholic
+tarteaucitron.services.shareaholic = {
+    "key": "shareaholic",
+    "type": "social",
+    "name": "Shareaholic",
+    "uri": "https://shareaholic.com/privacy/choices",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.shareaholicSiteId === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js', '', function () {
+            try {
+                Shareaholic.init(tarteaucitron.user.shareaholicSiteId);
+            } catch (e) {}
+        });
+    },
+    "lang": {
+        "en": "Shareaholic use cookie and tracking technologies to provide its services.<br/><br/><em>Shareaholic provide a policy about the use of tracking technologies and cookies.</em>",
+        "fr": "Shareaholic utilise des cookies et des technologies de suivi afin de fournir ses services.<br/><br/><em>Shareaholic met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
+        "de": "",
+        "es": "",
+        "it": ""
+    }
+};
 
 // addthis
 tarteaucitron.services.addthis = {
