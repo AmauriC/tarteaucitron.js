@@ -1,4 +1,54 @@
-/*global tarteaucitron, ga, Shareaholic*/
+/*global tarteaucitron, ga, Shareaholic, stLight*/
+
+// disqus
+tarteaucitron.services.disqus = {
+    "key": "disqus",
+    "type": "social",
+    "name": "Disqus",
+    "uri": "https://help.disqus.com/customer/portal/articles/466259-privacy-policy",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.disqusShortname === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/embed.js');
+        tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/count.js');
+    },
+    "lang": {
+        "en": "Disqus use cookie and tracking technologies to provide its services.<br/><br/><em>Disqus provide a policy about the use of tracking technologies and cookies.</em>",
+        "fr": "Disqus utilise des cookies et des technologies de suivi afin de fournir ses services.<br/><br/><em>Disqus met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
+        "de": "",
+        "es": "",
+        "it": ""
+    }
+};
+
+// shareathis
+tarteaucitron.services.sharethis = {
+    "key": "sharethis",
+    "type": "social",
+    "name": "ShareThis",
+    "uri": "http://www.sharethis.com/legal/privacy/",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.sharethisPublisher === undefined) {
+            return;
+        }
+        var switchTo5x = true;
+        tarteaucitron.addScript('http://w.sharethis.com/button/buttons.js', '', function () {
+            stLight.options({publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false});
+        });
+    },
+    "lang": {
+        "en": "ShareThis use cookie and tracking technologies to provide its services.<br/><br/><em>ShareThis provide a policy about the use of tracking technologies and cookies.</em>",
+        "fr": "ShareThis utilise des cookies et des technologies de suivi afin de fournir ses services.<br/><br/><em>ShareThis met à disposition une politique sur l'utilisation de ses systèmes de suivi et l'utilisation des cookies.</em>",
+        "de": "",
+        "es": "",
+        "it": ""
+    }
+};
 
 // shareaholic
 tarteaucitron.services.shareaholic = {
