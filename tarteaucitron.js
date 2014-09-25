@@ -313,6 +313,16 @@ var tarteaucitron = {
                 }
             }
             return '';
+        },
+        "purge": function (arr) {
+            "use strict";
+            var i;
+            
+            for (i = 0; i < arr.length; i += 1) {
+                document.cookie = arr[i] + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/;';
+                document.cookie = arr[i] + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/; domain=.' + location.hostname + ';';
+                document.cookie = arr[i] + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/; domain=.' + location.hostname.split('.').slice(-2).join('.') + ';';
+            }
         }
     },
     "getLanguage": function () {

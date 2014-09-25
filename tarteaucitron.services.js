@@ -34,6 +34,11 @@ tarteaucitron.services.sharethis = {
         tarteaucitron.addScript(uri, '', function () {
             stLight.options({publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false});
         });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['__unam'];
+        tarteaucitron.cookie.purge(cookies);
     }
 };
 
@@ -54,6 +59,11 @@ tarteaucitron.services.shareaholic = {
                 Shareaholic.init(tarteaucitron.user.shareaholicSiteId);
             } catch (e) {}
         });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['__utma', '__utmb', '__utmc', '__utmz'];
+        tarteaucitron.cookie.purge(cookies);
     }
 };
 
@@ -70,6 +80,11 @@ tarteaucitron.services.addthis = {
             return;
         }
         tarteaucitron.addScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + tarteaucitron.user.addthisPubId);
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['__atuvc'];
+        tarteaucitron.cookie.purge(cookies);
     }
 };
 
@@ -144,6 +159,11 @@ tarteaucitron.services.analytics = {
                 tarteaucitron.user.analyticsMore();
             }
         });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmz'];
+        tarteaucitron.cookie.purge(cookies);
     }
 };
 
