@@ -117,10 +117,6 @@ tarteaucitron.services.adsense = {
     "js": function () {
         "use strict";
         tarteaucitron.addScript('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
-    },
-    "fallback": function () {
-        "use strict";
-        tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.promoteMe);
     }
 };
 

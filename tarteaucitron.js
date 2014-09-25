@@ -7,7 +7,6 @@ var scripts = document.getElementsByTagName('script'),
 
 var tarteaucitron = {
     "autoOpen": false, // auto open the panel with #tarteaucitron hash ?
-    "promoteThisScript": false, // promote this script if ads are denied ?
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -372,67 +371,5 @@ var tarteaucitron = {
                 }
             }
         }
-    },
-    
-    /***
-     * Fallback function for advertising services
-     * 
-     * Currently, a banner to promote tarteaucitron.js is displayed,
-     * fell free to change this by your own ads.
-     *
-     * Because eval() id devil, you can't pass <script>,
-     * only html like <a><img /></a>
-     */
-    "promoteMe": function (el) {
-        "use strict";
-        if (tarteaucitron.promoteThisScript === false) { return ''; }
-        
-        var l = tarteaucitron.getLanguage(),
-            w = el.offsetWidth,
-            h = el.offsetHeight,
-            s = '',
-            r = '';
-
-        if (w > 0 && h === 0) {
-            h = 60;
-        }
-        if (w >= 728 && h <= 60) {
-            h = 90;
-        }
-        if (w >= 970 && h >= 250) {
-            s = '970250';
-        } else if (w >= 970 && h >= 90) {
-            s = '97090';
-        } else if (w >= 728 && h >= 90) {
-            s = '72890';
-        } else if (w >= 468 && h >= 60) {
-            s = '46860';
-        } else if (w >= 336 && h >= 280) {
-            s = '336280';
-        } else if (w >= 300 && h >= 600) {
-            s = '300600';
-        } else if (w >= 300 && h >= 250) {
-            s = '300250';
-        } else if (w >= 250 && h >= 250) {
-            s = '250250';
-        } else if (w >= 200 && h >= 200) {
-            s = '200200';
-        } else if (w >= 160 && h >= 600) {
-            s = '160600';
-        } else if (w >= 120 && h >= 600) {
-            s = '120600';
-        } else if (w >= 120 && h >= 300) {
-            s = '120300';
-        } else if (w >= 120 && h >= 240) {
-            s = '120240';
-        } else {
-            s = '8080';
-        }
-
-        r += '<a href="//opt-out.ferank.eu/" target="_blank" rel="nofollow">';
-        r += '  <img src="//opt-out.ferank.eu/b/' + l + '/' + s + '.gif" border="0" />';
-        r += '</a>';
-
-        return r;
     }
 };
