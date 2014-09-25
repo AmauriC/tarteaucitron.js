@@ -18,6 +18,7 @@ Bonus:
 
 ## Supported services
 - AddThis
+- Disqus
 - Facebook
 - FERank
 - Google Adsense
@@ -26,6 +27,7 @@ Bonus:
 - Linkedin
 - Pinterest
 - Shareaholic
+- ShareThis
 - Twitter
 
 ## Visitors outside the EU
