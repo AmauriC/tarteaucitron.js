@@ -29,8 +29,9 @@ tarteaucitron.services.sharethis = {
         if (tarteaucitron.user.sharethisPublisher === undefined) {
             return;
         }
-        var switchTo5x = true;
-        tarteaucitron.addScript('http://w.sharethis.com/button/buttons.js', '', function () {
+        var switchTo5x = true,
+            uri = ('https:' === document.location.protocol ? 'https://ws' : 'http://w') + '.sharethis.com/button/buttons.js';
+        tarteaucitron.addScript(uri, '', function () {
             stLight.options({publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false});
         });
     }
