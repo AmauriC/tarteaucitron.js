@@ -14,6 +14,15 @@ tarteaucitron.services.disqus = {
         }
         tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/embed.js');
         tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/count.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'disqus';
+        
+        document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id);
+        document.getElementById('tacEngage' + id).onclick = function () {
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
+        };
     }
 };
 
@@ -31,14 +40,23 @@ tarteaucitron.services.sharethis = {
         }
         var switchTo5x = true,
             uri = ('https:' === document.location.protocol ? 'https://ws' : 'http://w') + '.sharethis.com/button/buttons.js';
+        
+        tarteaucitron.fallback(['tacSharethis'], '');
         tarteaucitron.addScript(uri, '', function () {
             stLight.options({publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false});
         });
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['__unam'];
+        var cookies = ['__unam'],
+            id = 'sharethis';
+        
         tarteaucitron.cookie.purge(cookies);
+        
+        tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id));
+        document.getElementById('tacEngage' + id).onclick = function () {
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
+        };
     }
 };
 
@@ -54,6 +72,8 @@ tarteaucitron.services.shareaholic = {
         if (tarteaucitron.user.shareaholicSiteId === undefined) {
             return;
         }
+        
+        tarteaucitron.fallback(['shareaholic-canvas'], '');
         tarteaucitron.addScript('//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js', '', function () {
             try {
                 Shareaholic.init(tarteaucitron.user.shareaholicSiteId);
@@ -62,8 +82,15 @@ tarteaucitron.services.shareaholic = {
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['__utma', '__utmb', '__utmc', '__utmz'];
+        var cookies = ['__utma', '__utmb', '__utmc', '__utmz'],
+            id = 'shareaholic';
+        
         tarteaucitron.cookie.purge(cookies);
+        
+        tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id));
+        document.getElementById('tacEngage' + id).onclick = function () {
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
+        };
     }
 };
 
@@ -79,12 +106,20 @@ tarteaucitron.services.addthis = {
         if (tarteaucitron.user.addthisPubId === undefined) {
             return;
         }
+        tarteaucitron.fallback(['addthis_sharing_toolbox'], '');
         tarteaucitron.addScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + tarteaucitron.user.addthisPubId);
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['__atuvc'];
+        var cookies = ['__atuvc'],
+            id = 'addthis';
+        
         tarteaucitron.cookie.purge(cookies);
+        
+        tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id));
+        document.getElementById('tacEngage' + id).onclick = function () {
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
+        };
     }
 };
 
@@ -133,6 +168,15 @@ tarteaucitron.services.adsense = {
     "js": function () {
         "use strict";
         tarteaucitron.addScript('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'adsense';
+        
+        tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id));
+        document.getElementById('tacEngage' + id).onclick = function () {
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
+        };
     }
 };
 

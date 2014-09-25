@@ -10,6 +10,8 @@ tarteaucitron.lang = {
     "deny": "Deny",
     "more": "Read more",
     "source": "View the official website",
+    
+    "fallback": "is disabled.",
 
     "ads": {
         "title": "Advertising network",

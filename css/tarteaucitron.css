@@ -156,7 +156,8 @@
 }
 
 #tarteaucitron .tarteaucitronLine .tarteaucitronAsk .tarteaucitronAllow,
-#tarteaucitron .tarteaucitronLine .tarteaucitronAsk .tarteaucitronDeny {
+#tarteaucitron .tarteaucitronLine .tarteaucitronAsk .tarteaucitronDeny,
+.tac_activate .tarteaucitronAllow {
     background: gray;
     color: #fff;
     cursor: pointer;
@@ -166,7 +167,6 @@
     text-decoration: none;
     width: auto;
 }
-
 
 /***
  * Big alert
@@ -234,6 +234,46 @@
     margin: 0px 5px 2px 5px;
     vertical-align: middle;
     width: 10px;
+}
+
+/***
+ * Fallback activate link
+ */
+
+.tac_activate {
+    background: #333;
+    display: block;
+    height: 100%;
+    min-height: 100px;
+    position: relative;
+    width: 100%;
+}
+
+.tac_activate .tac_float {
+    background: #333;
+    bottom: 0;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: verdana;
+    font-size: 14px;
+    height: 80px;
+    left: 0;
+    line-height: initial;
+    margin: auto;
+    padding: 10px 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+}
+
+.tac_activate .tac_float b {
+    color: #fff !important;
+}
+
+.tac_activate .tac_float .tarteaucitronAllow {
+    background-color: #1B870B;
+    margin-top: 10px;
 }
 
 /***

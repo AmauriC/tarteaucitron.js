@@ -10,6 +10,8 @@ tarteaucitron.lang = {
     "deny": "Interdire",
     "more": "En savoir plus",
     "source": "Voir le site officiel",
+    
+    "fallback": "est désactivé.",
 
     "ads": {
         "title": "Régies publicitaires",
