@@ -61,9 +61,12 @@
 }
 
 #tarteaucitronRoot * {
+    box-sizing: initial;
     color: #333;
     font-family: verdana;
     font-size: 14px;
+    line-height: 1.5;
+    vertical-align: initial;
 }
 
 /***
