@@ -46,9 +46,6 @@ var tarteaucitron = {
                     service,
                     html = '',
                     lastTitle,
-                    phrases,
-                    textIntro,
-                    textMore,
                     alert = false,
                     index;
 
@@ -100,14 +97,13 @@ var tarteaucitron = {
 
                 for (index = 0; index < tarteaucitron.job.length; index += 1) {
                     service = s[tarteaucitron.job[index]];
-                    textIntro = service.lang[language].split(".").splice(0, 1).join(".");
-                    phrases = service.lang[language].split(".");
-                    phrases.splice(0, 1);
-                    textMore = phrases.join(".");
 
                     if (lastTitle !== service.type) {
                         html += '<div class="tarteaucitronTitle">';
-                        html += '   ' + tarteaucitron.lang[service.type];
+                        html += '   ' + tarteaucitron.lang[service.type].title;
+                        html += '   <div class="tarteaucitronDetails">';
+                        html += '       ' + tarteaucitron.lang[service.type].details;
+                        html += '   </div>';
                         html += '</div>';
 
                         lastTitle = service.type;
@@ -116,16 +112,9 @@ var tarteaucitron = {
                     html += '<div id="' + service.key + 'Line" class="tarteaucitronLine">';
                     html += '   <div class="tarteaucitronName">';
                     html += '       <b>' + service.name + '</b><br/>';
-                    html += '       ' + textIntro + '. ';
-                    html += '       <em id="' + service.key + 'More" onclick="tarteaucitron.userInterface.showMore(this);">';
-                    html += '           ' + tarteaucitron.lang.more;
-                    html += '       </em>';
-                    html += '       <div id="' + service.key + 'MoreText" class="tarteaucitronMore">';
-                    html += '           ' +  textMore;
-                    html += '           <a href="' + service.uri + '" target="_blank">';
-                    html += '               ' + tarteaucitron.lang.source;
-                    html += '           </a>';
-                    html += '       </div>';
+                    html += '       <a href="' + service.uri + '" target="_blank">';
+                    html += '           ' + tarteaucitron.lang.more + ' : ' + service.uri.split('/')[2];
+                    html += '       </a>';
                     html += '   </div>';
                     html += '   <div class="tarteaucitronAsk">';
                     html += '       <div id="' + service.key + 'Allowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">';
@@ -212,12 +201,6 @@ var tarteaucitron = {
         "css": function (id, property, value) {
             "use strict";
             document.getElementById(id).style[property] = value;
-        },
-        "showMore": function (el) {
-            "use strict";
-            var key = el.id.replace(/More/, '');
-            tarteaucitron.userInterface.css(key + 'MoreText', 'display', 'inline');
-            el.style.display = 'none';
         },
         "respond": function (el, status) {
             "use strict";

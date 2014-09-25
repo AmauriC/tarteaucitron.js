@@ -11,7 +11,16 @@ tarteaucitron.lang = {
     "more": "En savoir plus",
     "source": "Voir le site officiel",
 
-    "ads": "Régies publicitaires",
-    "analytics": "Mesure d'audience",
-    "social": "Réseaux sociaux"
+    "ads": {
+        "title": "Régies publicitaires",
+        "details": "Les régies publicitaires permettent de générer des revenus en commercialisant les espaces publicitaires du site."
+    },
+    "analytics": {
+        "title": "Mesure d'audience",
+        "details": "Les services de mesure d'audience permettent de générer des statistiques de fréquentation utiles à l'amélioration du site."
+    },
+    "social": {
+        "title": "Réseaux sociaux",
+        "details": "Les réseaux sociaux permettent d'améliorer la convivialité du site et aident à sa promotion via les partages."
+    }
 };

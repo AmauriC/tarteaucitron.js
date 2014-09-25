@@ -11,7 +11,16 @@ tarteaucitron.lang = {
     "more": "Read more",
     "source": "View the official website",
 
-    "ads": "Advertising network",
-    "analytics": "Audience measurement",
-    "social": "Social networks"
+    "ads": {
+        "title": "Advertising network",
+        "details": "Ad networks can generate revenue by selling advertising space on the site."
+    },
+    "analytics": {
+        "title": "Audience measurement",
+        "details": "The audience measurement services used to generate useful statistics attendance to improve the site."
+    },
+    "social": {
+        "title": "Social networks",
+        "details": "Social networks can improve the usability of the site and help to promote it via the shares."
+    }
 };
