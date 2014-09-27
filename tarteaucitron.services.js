@@ -20,7 +20,7 @@ tarteaucitron.services.disqus = {
         var id = 'disqus',
             r = Math.floor(Math.random() * 100000);
         
-        document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id);
+        document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id, r);
         document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
@@ -55,7 +55,7 @@ tarteaucitron.services.sharethis = {
         
         tarteaucitron.cookie.purge(cookies);
         
-        tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id, r));
         document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
@@ -90,7 +90,7 @@ tarteaucitron.services.shareaholic = {
         
         tarteaucitron.cookie.purge(cookies);
         
-        tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id, r));
         document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
@@ -120,7 +120,7 @@ tarteaucitron.services.addthis = {
         
         tarteaucitron.cookie.purge(cookies);
         
-        tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id, r));
         document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
@@ -178,7 +178,7 @@ tarteaucitron.services.adsense = {
         var id = 'adsense',
             r = Math.floor(Math.random() * 100000);
         
-        tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id, r));
         document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
