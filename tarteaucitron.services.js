@@ -17,10 +17,11 @@ tarteaucitron.services.disqus = {
     },
     "fallback": function () {
         "use strict";
-        var id = 'disqus';
+        var id = 'disqus',
+            r = Math.floor(Math.random() * 100000);
         
         document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id);
-        document.getElementById('tacEngage' + id).onclick = function () {
+        document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
     }
@@ -49,12 +50,13 @@ tarteaucitron.services.sharethis = {
     "fallback": function () {
         "use strict";
         var cookies = ['__unam'],
-            id = 'sharethis';
+            id = 'sharethis',
+            r = Math.floor(Math.random() * 100000);
         
         tarteaucitron.cookie.purge(cookies);
         
         tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id));
-        document.getElementById('tacEngage' + id).onclick = function () {
+        document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
     }
@@ -83,12 +85,13 @@ tarteaucitron.services.shareaholic = {
     "fallback": function () {
         "use strict";
         var cookies = ['__utma', '__utmb', '__utmc', '__utmz'],
-            id = 'shareaholic';
+            id = 'shareaholic',
+            r = Math.floor(Math.random() * 100000);
         
         tarteaucitron.cookie.purge(cookies);
         
         tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id));
-        document.getElementById('tacEngage' + id).onclick = function () {
+        document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
     }
@@ -112,12 +115,13 @@ tarteaucitron.services.addthis = {
     "fallback": function () {
         "use strict";
         var cookies = ['__atuvc'],
-            id = 'addthis';
+            id = 'addthis',
+            r = Math.floor(Math.random() * 100000);
         
         tarteaucitron.cookie.purge(cookies);
         
         tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id));
-        document.getElementById('tacEngage' + id).onclick = function () {
+        document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
     }
@@ -171,10 +175,11 @@ tarteaucitron.services.adsense = {
     },
     "fallback": function () {
         "use strict";
-        var id = 'adsense';
+        var id = 'adsense',
+            r = Math.floor(Math.random() * 100000);
         
         tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id));
-        document.getElementById('tacEngage' + id).onclick = function () {
+        document.getElementById('tacEngage' + id + r).onclick = function () {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         };
     }

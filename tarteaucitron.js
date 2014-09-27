@@ -382,14 +382,14 @@ var tarteaucitron = {
             }
         }
     },
-    "engage": function (id) {
+    "engage": function (id, r) {
         "use strict";
         var html = '';
         
         html += '<div class="tac_activate">';
         html += '   <div class="tac_float">';
         html += '      <b>' + id + '</b> ' + tarteaucitron.lang.fallback + '<br/>';
-        html += '      <div class="tarteaucitronAllow" id="tacEngage' + id + '">';
+        html += '      <div class="tarteaucitronAllow" id="tacEngage' + id + r + '">';
         html += '          ' + tarteaucitron.lang.allow;
         html += '       </div>';
         html += '   </div>';
