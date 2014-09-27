@@ -54,13 +54,9 @@ tarteaucitron.services.disqus = {
     },
     "fallback": function () {
         "use strict";
-        var id = 'disqus',
-            r = Math.floor(Math.random() * 100000);
+        var id = 'disqus';
         
-        document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id, r);
-        document.getElementById('tacEngage' + id + r).onclick = function () {
-            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
-        };
+        document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id);
     }
 };
 
@@ -87,15 +83,10 @@ tarteaucitron.services.sharethis = {
     "fallback": function () {
         "use strict";
         var cookies = ['__unam'],
-            id = 'sharethis',
-            r = Math.floor(Math.random() * 100000);
+            id = 'sharethis';
         
         tarteaucitron.cookie.purge(cookies);
-        
-        tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id, r));
-        document.getElementById('tacEngage' + id + r).onclick = function () {
-            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
-        };
+        tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id));
     }
 };
 
@@ -122,15 +113,10 @@ tarteaucitron.services.shareaholic = {
     "fallback": function () {
         "use strict";
         var cookies = ['__utma', '__utmb', '__utmc', '__utmz'],
-            id = 'shareaholic',
-            r = Math.floor(Math.random() * 100000);
+            id = 'shareaholic';
         
         tarteaucitron.cookie.purge(cookies);
-        
-        tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id, r));
-        document.getElementById('tacEngage' + id + r).onclick = function () {
-            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
-        };
+        tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id));
     }
 };
 
@@ -152,15 +138,10 @@ tarteaucitron.services.addthis = {
     "fallback": function () {
         "use strict";
         var cookies = ['__atuvc'],
-            id = 'addthis',
-            r = Math.floor(Math.random() * 100000);
+            id = 'addthis';
         
         tarteaucitron.cookie.purge(cookies);
-        
-        tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id, r));
-        document.getElementById('tacEngage' + id + r).onclick = function () {
-            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
-        };
+        tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id));
     }
 };
 
@@ -212,13 +193,9 @@ tarteaucitron.services.adsense = {
     },
     "fallback": function () {
         "use strict";
-        var id = 'adsense',
-            r = Math.floor(Math.random() * 100000);
+        var id = 'adsense';
         
-        tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id, r));
-        document.getElementById('tacEngage' + id + r).onclick = function () {
-            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
-        };
+        tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id));
     }
 };
 

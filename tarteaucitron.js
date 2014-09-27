@@ -203,7 +203,7 @@ var tarteaucitron = {
         },
         "respond": function (el, status) {
             "use strict";
-            var key = el.id.replace(new RegExp("(Allow|Deni)ed", "g"), '');
+            var key = el.id.replace(new RegExp("(Eng[0-9]+|Allow|Deni)ed", "g"), '');
         
             // return if same state
             if (tarteaucitron.state[key] === status) {
@@ -382,14 +382,15 @@ var tarteaucitron = {
             }
         }
     },
-    "engage": function (id, r) {
+    "engage": function (id) {
         "use strict";
-        var html = '';
-        
+        var html = '',
+            r = Math.floor(Math.random() * 100000);
+                
         html += '<div class="tac_activate">';
         html += '   <div class="tac_float">';
         html += '      <b>' + id + '</b> ' + tarteaucitron.lang.fallback + '<br/>';
-        html += '      <div class="tarteaucitronAllow" id="tacEngage' + id + r + '">';
+        html += '      <div class="tarteaucitronAllow" id="Eng' + r + 'ed' + id + '" onclick="tarteaucitron.userInterface.respond(this, true);">';
         html += '          ' + tarteaucitron.lang.allow;
         html += '       </div>';
         html += '   </div>';
