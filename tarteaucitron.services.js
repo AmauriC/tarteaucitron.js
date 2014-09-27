@@ -1,5 +1,42 @@
 /*global tarteaucitron, ga, Shareaholic, stLight*/
 
+// piwik
+tarteaucitron.services.piwik = {
+    "key": "piwik",
+    "type": "analytics",
+    "name": "Piwik",
+    "uri": "http://piwik.org/privacy/",
+    "needConsent": false,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.piwikServer === undefined ||
+                tarteaucitron.user.piwikSiteId === undefined) { return; }
+
+        var _paq = _paq || [];
+        _paq.push([function () {
+            var self = this;
+            function getOriginalVisitorCookieTimeout() {
+                var now = new Date(),
+                    nowTs = Math.round(now.getTime() / 1000),
+                    visitorInfo = self.getVisitorInfo(),
+                    createTs = parseInt(visitorInfo[2]),
+                    cookieTimeout = 33696000,
+                    originalTimeout = createTs + cookieTimeout - nowTs;
+                return originalTimeout;
+            }
+            this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
+        }]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        _paq.push(['setTrackerUrl', tarteaucitron.user.piwikServer + 'piwik.php']);
+        _paq.push(['setSiteId', tarteaucitron.user.piwikSiteId]);
+        if (typeof tarteaucitron.user.analyticsMore() === 'function') {
+            tarteaucitron.user.piwikMore();
+        }
+        tarteaucitron.addScript('//' + tarteaucitron.user.piwikServer + '/piwik.js');
+    }
+};
+
 // disqus
 tarteaucitron.services.disqus = {
     "key": "disqus",
