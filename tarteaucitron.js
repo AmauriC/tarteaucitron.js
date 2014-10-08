@@ -6,6 +6,7 @@ var scripts = document.getElementsByTagName('script'),
     cdn = path.split('/').slice(0, -1).join('/') + '/';
 
 var tarteaucitron = {
+    "showAlertSmall": true, // show the small banner on bottom right ?
     "autoOpen": false, // auto open the panel with #tarteaucitron hash ?
     "cdn": cdn,
     "user": {},
@@ -143,10 +144,13 @@ var tarteaucitron = {
                 html += '       ' + tarteaucitron.lang.close;
                 html += '   </span>';
                 html += '</div>';
-                html += '<div id="tarteaucitronAlertSmall" onclick="tarteaucitron.userInterface.openPanel();">';
-                html += '   <span id="tarteaucitronDot"></span>';
-                html += '   ' + tarteaucitron.lang.alertSmall;
-                html += '</div>';
+                
+                if (tarteaucitron.showAlertSmall === true) {
+                    html += '<div id="tarteaucitronAlertSmall" onclick="tarteaucitron.userInterface.openPanel();">';
+                    html += '   <span id="tarteaucitronDot"></span>';
+                    html += '   ' + tarteaucitron.lang.alertSmall;
+                    html += '</div>';
+                }
 
                 div.id = 'tarteaucitronRoot';
                 body.appendChild(div, body);
