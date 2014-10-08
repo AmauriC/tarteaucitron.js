@@ -5,11 +5,13 @@ tarteaucitron.lang = {
     "personalize": "Personalize",
     "close": "Close",
 
+    "info": "Transparency about cookies",
     "disclaimer": "By allowing these third party services, you accept theirs cookies and the use of tracking technologies necessary for their proper functioning.",
     "allow": "Allow",
     "deny": "Deny",
     "more": "Read more",
     "source": "View the official website",
+    "credit": "Cookies manager by tarteaucitron.js",
     
     "fallback": "is disabled.",
 

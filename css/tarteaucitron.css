@@ -1,7 +1,24 @@
 /***
  * Responsive layout for the control panel
  */
-@media screen and (max-width:650px) {
+@media screen and (max-width:350px) {
+    #tarteaucitronRoot #tarteaucitron #tarteaucitronInfo {
+        background-image: none;
+        padding-right: 0;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:400px) {
+    #tarteaucitronRoot #tarteaucitron #tarteaucitronInfo {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width:470px) {
+    #tarteaucitron #tarteaucitronInfo {
+        font-size: 16px !important;
+    }
     #tarteaucitron .tarteaucitronLine .tarteaucitronName {
         width: 90% !important;
     }
@@ -12,13 +29,19 @@
     }
 }
 
-@media screen and (max-width:1020px) {
+@media screen and (max-width:840px) {
     #tarteaucitron {
-        top: 0;
+        border: 0 !important;
+        bottom: 0 !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        max-width: 100% !important;
+        top: 0 !important;
+        width: 100% !important;
     }
     
-    #tarteaucitron #tarteaucitronDisclaimer {
-        font-size: 14px;
+    #tarteaucitron #tarteaucitronClosePanel {
+        display: block !important;
     }
 }
 
@@ -63,9 +86,8 @@
 #tarteaucitronRoot * {
     box-sizing: initial;
     color: #333;
-    font-family: verdana;
+    font-family: sans-serif;
     font-size: 14px;
-    line-height: 1.5;
     vertical-align: initial;
 }
 
@@ -84,63 +106,80 @@
 }
 
 #tarteaucitron {
-    background: #333;
-    border: 0;
-    border-bottom: 50px solid;
+    background: #fff;
+    border: 4px solid #fff;
+    box-shadow: 0 0 15px #4a4a4a;
     display: none;
     left: 0;
     margin: 0 auto;
-    max-width: 1020px;
-    position: relative;
+    max-height: 80%;
+    max-width: 800px;
+    overflow: auto;
+    padding: 0;
+    position: fixed;
     right: 0;
-    top: 0;
+    top: 10%;
     z-index: 2147483647;
 }
 
 #tarteaucitron #tarteaucitronClosePanel {
-    color: #FFF;
+    background: #C63535;
+    border: 4px solid #fff;
+	border-right: 0;
+    color: #fff;
     cursor: pointer;
-    display: block;
-    text-decoration: underline;
-    font-family: verdana;
-    margin: 0px 15px 15px 0;
-    padding-top: 10px;
+    display: none;
+	float: right;
+    font-size: 12px;
+	font-weight: 700;
+    text-decoration: none;
+    padding: 4px 0;
+    text-align: center;
+    width: 70px;
+}
+
+#tarteaucitron #tarteaucitronInfo {
+    background: url('//opt-out.ferank.eu/css/img/m.gif') no-repeat scroll left center / contain #CB3333;
+    border-bottom: 4px solid #fff;
+	clear: both;
+    color: #fff;
+    font-size: 18px;
+    padding: 20px 20px 18px 0;
     text-align: right;
 }
 
-#tarteaucitron #tarteaucitronDisclaimer {
-    color: #fff;
-    font-size: 16px;
-    margin: 0 auto 10px;
-    max-width: 800px;
-    padding: 0 15px;
-    text-align: center;
+#tarteaucitron #tarteaucitronServices {
+    background: #fff;
+    border-bottom: 4px solid #fff;
+    min-height: 250px;
 }
 
-#tarteaucitron .tarteaucitronTitle {
-    background: #4a4a4a;
-    border-top: 25px solid #333;
-    color: #FFF;
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
+    background: #d7d7d7;
+    color: #2d2d2d;
     font-size: 20px;
     padding: 18px 22px;
 }
 
-#tarteaucitron .tarteaucitronTitle .tarteaucitronDetails {
-    color: #fff;
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle .tarteaucitronDetails {
     font-size: 13px;
 }
 
-#tarteaucitron .tarteaucitronLine {
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine:hover {
     background: #f5f5f5;
-    border-bottom: 1px solid #fff;
-    border-top: 1px solid #fff;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine {
+    background: #fafafa;
+    border-left: 5px solid #f5f5f5;
     height: auto;
+    margin: 1px 0;
     min-height: 100%;
     overflow: hidden;
     padding: 5px;
 }
 
-#tarteaucitron .tarteaucitronLine .tarteaucitronName {
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName {
     display: inline-block;
     float: left;
     margin-left: 15px;
@@ -148,15 +187,15 @@
     width: 50%;
 }
 
-#tarteaucitron .tarteaucitronLine .tarteaucitronAsk {
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
     display: inline-block;
     float: right;
     margin: 7px 15px 0;
     text-align: right;
 }
 
-#tarteaucitron .tarteaucitronLine .tarteaucitronAsk .tarteaucitronAllow,
-#tarteaucitron .tarteaucitronLine .tarteaucitronAsk .tarteaucitronDeny,
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk .tarteaucitronAllow,
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk .tarteaucitronDeny,
 .tac_activate .tarteaucitronAllow {
     background: gray;
     color: #fff;
@@ -166,6 +205,24 @@
     text-align: center;
     text-decoration: none;
     width: auto;
+}
+
+#tarteaucitron #tarteaucitronDisclaimer {
+    background: #fff;
+    border-top: 1px solid #eee;
+    color: #333;
+    font-size: 10px;
+    line-height: 1.5;
+    margin-top: 10px;
+    padding: 14px 10px 12px 10px;
+    text-align: center;
+}
+
+#tarteaucitron #tarteaucitronDisclaimer a {
+    color: #333;
+    font-size: 10px;
+    font-style: normal;
+    text-decoration: underline;
 }
 
 /***
@@ -254,7 +311,6 @@
     bottom: 0;
     box-sizing: border-box;
     color: #fff;
-    font-family: verdana;
     font-size: 14px;
     height: 80px;
     left: 0;

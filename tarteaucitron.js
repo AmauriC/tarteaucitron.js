@@ -84,13 +84,13 @@ var tarteaucitron = {
                 }
 
                 // Step 3: prepare the html
-                html += '<div id="tarteaucitronBack"></div>';
+                html += '<div id="tarteaucitronBack" onclick="tarteaucitron.userInterface.closePanel();"></div>';
                 html += '<div id="tarteaucitron">';
                 html += '   <div id="tarteaucitronClosePanel" onclick="tarteaucitron.userInterface.closePanel();">';
                 html += '       ' + tarteaucitron.lang.close;
                 html += '   </div>';
-                html += '   <div id="tarteaucitronDisclaimer">';
-                html += '       ' + tarteaucitron.lang.disclaimer;
+                html += '   <div id="tarteaucitronInfo">';
+                html += '       ' + tarteaucitron.lang.info;
                 html += '   </div>';
                 html += '   <div id="tarteaucitronServices">';
 
@@ -127,6 +127,9 @@ var tarteaucitron = {
                     html += '<div class="clear"></div>';
                 }
 
+                html += '   </div>';
+                html += '   <div id="tarteaucitronDisclaimer">';
+                html += '       ' + tarteaucitron.lang.disclaimer + '<br/><a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">' + tarteaucitron.lang.credit + '</a>';
                 html += '   </div>';
                 html += '</div>';
                 html += '<div id="tarteaucitronAlertBig">';
@@ -233,11 +236,11 @@ var tarteaucitron = {
                 index;
 
             if (status === true) {
-                tarteaucitron.userInterface.css(key + 'Line', 'backgroundColor', greenLight);
+                tarteaucitron.userInterface.css(key + 'Line', 'borderLeft', '5px solid ' + greenDark);
                 tarteaucitron.userInterface.css(key + 'Allowed', 'backgroundColor', greenDark);
                 tarteaucitron.userInterface.css(key + 'Denied', 'backgroundColor', gray);
             } else if (status === false) {
-                tarteaucitron.userInterface.css(key + 'Line', 'backgroundColor', redLight);
+                tarteaucitron.userInterface.css(key + 'Line', 'borderLeft', '5px solid ' + redDark);
                 tarteaucitron.userInterface.css(key + 'Allowed', 'backgroundColor', gray);
                 tarteaucitron.userInterface.css(key + 'Denied', 'backgroundColor', redDark);
             }
