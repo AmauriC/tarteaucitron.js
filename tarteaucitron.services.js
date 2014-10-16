@@ -243,6 +243,41 @@ tarteaucitron.services.pinterest = {
     }
 };
 
+// piwik
+tarteaucitron.services.piwikpro = {
+  "key": "piwikpro",
+  "type": "analytics",
+  "name": "Piwik",
+  "uri": "http://piwik.org/privacy/",
+  "needConsent": false,
+  "js": function () {
+      "use strict";
+      window._paq = window._paq || [];
+      window._paq.push(['trackPageView']);
+      window._paq.push(['enableLinkTracking']);
+      var u = tarteaucitron.user.piwikUrl;
+      window._paq.push(['setTrackerUrl', u + 'piwik.php']);
+      window._paq.push(['setSiteId', tarteaucitron.user.piwikSiteId]);
+
+      tarteaucitron.addScript(u + 'piwik.js', '', function () {
+          if (typeof tarteaucitron.user.analyticsMore === 'function') {
+            tarteaucitron.user.piwikMore();
+          }
+      });
+  },
+  "fallback": function () {
+      "use strict";
+      var i = tarteaucitron.user.piwikSiteId; 
+      var cookies = ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses']; 
+      for (i = 0; i < cookies.length; i += 1) {
+        var match;
+        match = new RegExp("(" + cookies[i] + "[^=]*?)\\=").exec(document.cookie)
+        if(match) { cookies[i] = match.last(); }
+      };
+      tarteaucitron.cookie.purge(cookies);
+  }
+};
+
 // twitter
 tarteaucitron.services.twitter = {
     "key": "twitter",
