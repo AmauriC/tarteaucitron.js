@@ -147,7 +147,7 @@ tarteaucitron.services.analytics = {
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmz'];
+        var cookies = ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
         tarteaucitron.cookie.purge(cookies);
     }
 };
@@ -182,7 +182,6 @@ tarteaucitron.services.pinterest = {
         tarteaucitron.addScript('//assets.pinterest.com/js/pinit.js');
     }
 };
-
 
 // shareaholic
 tarteaucitron.services.shareaholic = {
