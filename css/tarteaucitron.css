@@ -125,13 +125,13 @@
 #tarteaucitron #tarteaucitronClosePanel {
     background: #C63535;
     border: 4px solid #fff;
-	border-right: 0;
+    border-right: 0;
     color: #fff;
     cursor: pointer;
     display: none;
-	float: right;
+    float: right;
     font-size: 12px;
-	font-weight: 700;
+    font-weight: 700;
     text-decoration: none;
     padding: 4px 0;
     text-align: center;
@@ -141,7 +141,7 @@
 #tarteaucitron #tarteaucitronInfo {
     background: url('//opt-out.ferank.eu/css/img/m.gif') no-repeat scroll left center / contain #CB3333;
     border-bottom: 4px solid #fff;
-	clear: both;
+    clear: both;
     color: #fff;
     font-size: 18px;
     padding: 20px 20px 18px 0;
