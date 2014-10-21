@@ -1,90 +1,5 @@
 /*global tarteaucitron, ga, Shareaholic, stLight*/
 
-// disqus
-tarteaucitron.services.disqus = {
-    "key": "disqus",
-    "type": "social",
-    "name": "Disqus",
-    "uri": "https://help.disqus.com/customer/portal/articles/466259-privacy-policy",
-    "needConsent": true,
-    "js": function () {
-        "use strict";
-        if (tarteaucitron.user.disqusShortname === undefined) {
-            return;
-        }
-        tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/embed.js');
-        tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/count.js');
-    },
-    "fallback": function () {
-        "use strict";
-        var id = 'disqus';
-        
-        if (document.getElementById('disqus_thread')) {
-            document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id);
-        }
-    }
-};
-
-// shareathis
-tarteaucitron.services.sharethis = {
-    "key": "sharethis",
-    "type": "social",
-    "name": "ShareThis",
-    "uri": "http://www.sharethis.com/legal/privacy/",
-    "needConsent": true,
-    "js": function () {
-        "use strict";
-        if (tarteaucitron.user.sharethisPublisher === undefined) {
-            return;
-        }
-        var switchTo5x = true,
-            uri = ('https:' === document.location.protocol ? 'https://ws' : 'http://w') + '.sharethis.com/button/buttons.js';
-        
-        tarteaucitron.fallback(['tacSharethis'], '');
-        tarteaucitron.addScript(uri, '', function () {
-            stLight.options({publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false});
-        });
-    },
-    "fallback": function () {
-        "use strict";
-        var cookies = ['__unam'],
-            id = 'sharethis';
-        
-        tarteaucitron.cookie.purge(cookies);
-        tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id));
-    }
-};
-
-// shareaholic
-tarteaucitron.services.shareaholic = {
-    "key": "shareaholic",
-    "type": "social",
-    "name": "Shareaholic",
-    "uri": "https://shareaholic.com/privacy/choices",
-    "needConsent": true,
-    "js": function () {
-        "use strict";
-        if (tarteaucitron.user.shareaholicSiteId === undefined) {
-            return;
-        }
-        
-        tarteaucitron.fallback(['shareaholic-canvas'], '');
-        tarteaucitron.addScript('//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js', '', function () {
-            try {
-                Shareaholic.init(tarteaucitron.user.shareaholicSiteId);
-            } catch (e) {}
-        });
-    },
-    "fallback": function () {
-        "use strict";
-        var cookies = ['__utma', '__utmb', '__utmc', '__utmz'],
-            id = 'shareaholic';
-        
-        tarteaucitron.cookie.purge(cookies);
-        tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id));
-    }
-};
-
 // addthis
 tarteaucitron.services.addthis = {
     "key": "addthis",
@@ -110,20 +25,28 @@ tarteaucitron.services.addthis = {
     }
 };
 
-// ferank
-tarteaucitron.services.ferank = {
-    "key": "ferank",
-    "type": "analytics",
-    "name": "FERank",
-    "uri": "https://www.ferank.fr/respect-vie-privee/#mesureaudience",
-    "needConsent": false,
+// disqus
+tarteaucitron.services.disqus = {
+    "key": "disqus",
+    "type": "social",
+    "name": "Disqus",
+    "uri": "https://help.disqus.com/customer/portal/articles/466259-privacy-policy",
+    "needConsent": true,
     "js": function () {
         "use strict";
-        tarteaucitron.addScript('//static.ferank.fr/pixel.js', '', function () {
-            if (typeof tarteaucitron.user.ferankMore === 'function') {
-                tarteaucitron.user.ferankMore();
-            }
-        });
+        if (tarteaucitron.user.disqusShortname === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/embed.js');
+        tarteaucitron.addScript('//' + tarteaucitron.user.disqusShortname + '.disqus.com/count.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'disqus';
+        
+        if (document.getElementById('disqus_thread')) {
+            document.getElementById('disqus_thread').innerHTML = tarteaucitron.engage(id);
+        }
     }
 };
 
@@ -142,6 +65,40 @@ tarteaucitron.services.facebook = {
     "fallback": function () {
         "use strict";
         tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-comments', 'fb-activity', 'fb-like-box', 'fb-send', 'fb-share-button', 'fb-like'], '<a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_facebook">Facebook</a>');
+    }
+};
+
+// ferank
+tarteaucitron.services.ferank = {
+    "key": "ferank",
+    "type": "analytics",
+    "name": "FERank",
+    "uri": "https://www.ferank.fr/respect-vie-privee/#mesureaudience",
+    "needConsent": false,
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//static.ferank.fr/pixel.js', '', function () {
+            if (typeof tarteaucitron.user.ferankMore === 'function') {
+                tarteaucitron.user.ferankMore();
+            }
+        });
+    }
+};
+
+// google+
+tarteaucitron.services.gplus = {
+    "key": "gplus",
+    "type": "social",
+    "name": "Google+",
+    "uri": "http://www.google.fr/intl/policies/privacy/",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('https://apis.google.com/js/platform.js');
+    },
+    "fallback": function () {
+        "use strict";
+        tarteaucitron.fallback(['g-page', 'g-plus', 'g-plusone'], '<a href="https://plus.google.com/share?url=' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_googlep">Google+</a>');
     }
 };
 
@@ -195,23 +152,6 @@ tarteaucitron.services.analytics = {
     }
 };
 
-// google+
-tarteaucitron.services.gplus = {
-    "key": "gplus",
-    "type": "social",
-    "name": "Google+",
-    "uri": "http://www.google.fr/intl/policies/privacy/",
-    "needConsent": true,
-    "js": function () {
-        "use strict";
-        tarteaucitron.addScript('https://apis.google.com/js/platform.js');
-    },
-    "fallback": function () {
-        "use strict";
-        tarteaucitron.fallback(['g-page', 'g-plus', 'g-plusone'], '<a href="https://plus.google.com/share?url=' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_googlep">Google+</a>');
-    }
-};
-
 // linkedin
 tarteaucitron.services.linkedin = {
     "key": "linkedin",
@@ -240,6 +180,67 @@ tarteaucitron.services.pinterest = {
     "js": function () {
         "use strict";
         tarteaucitron.addScript('//assets.pinterest.com/js/pinit.js');
+    }
+};
+
+
+// shareaholic
+tarteaucitron.services.shareaholic = {
+    "key": "shareaholic",
+    "type": "social",
+    "name": "Shareaholic",
+    "uri": "https://shareaholic.com/privacy/choices",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.shareaholicSiteId === undefined) {
+            return;
+        }
+        
+        tarteaucitron.fallback(['shareaholic-canvas'], '');
+        tarteaucitron.addScript('//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js', '', function () {
+            try {
+                Shareaholic.init(tarteaucitron.user.shareaholicSiteId);
+            } catch (e) {}
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['__utma', '__utmb', '__utmc', '__utmz'],
+            id = 'shareaholic';
+        
+        tarteaucitron.cookie.purge(cookies);
+        tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id));
+    }
+};
+
+// sharethis
+tarteaucitron.services.sharethis = {
+    "key": "sharethis",
+    "type": "social",
+    "name": "ShareThis",
+    "uri": "http://www.sharethis.com/legal/privacy/",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.sharethisPublisher === undefined) {
+            return;
+        }
+        var switchTo5x = true,
+            uri = ('https:' === document.location.protocol ? 'https://ws' : 'http://w') + '.sharethis.com/button/buttons.js';
+        
+        tarteaucitron.fallback(['tacSharethis'], '');
+        tarteaucitron.addScript(uri, '', function () {
+            stLight.options({publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false});
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['__unam'],
+            id = 'sharethis';
+        
+        tarteaucitron.cookie.purge(cookies);
+        tarteaucitron.fallback(['tacSharethis'], tarteaucitron.engage(id));
     }
 };
 
