@@ -92,6 +92,9 @@ var tarteaucitron = {
                 html += '   </div>';
                 html += '   <div id="tarteaucitronInfo">';
                 html += '       ' + tarteaucitron.lang.info;
+                html += '       <div id="tarteaucitronDisclaimer">';
+                html += '           ' + tarteaucitron.lang.disclaimer;
+                html += '      </div>';
                 html += '   </div>';
                 html += '   <div id="tarteaucitronServices">';
 
@@ -129,19 +132,19 @@ var tarteaucitron = {
                 }
 
                 html += '   </div>';
-                html += '   <div id="tarteaucitronDisclaimer">';
-                html += '       ' + tarteaucitron.lang.disclaimer + '<br/><a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">' + tarteaucitron.lang.credit + '</a>';
+                html += '   <div id="tarteaucitronFooter">';
+                html += '      <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">' + tarteaucitron.lang.credit + '</a>';
                 html += '   </div>';
                 html += '</div>';
                 html += '<div id="tarteaucitronAlertBig">';
                 html += '   <span id="tarteaucitronDisclaimerAlert">';
                 html += '       ' + tarteaucitron.lang.alertBig;
                 html += '   </span>';
-                html += '   <span id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.openPanel();">';
-                html += '       ' + tarteaucitron.lang.personalize;
+                html += '   <span id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.acceptAll();">';
+                html += '       ' + tarteaucitron.lang.acceptAll;
                 html += '   </span>';
-                html += '   <span id="tarteaucitronCloseAlert" onclick="tarteaucitron.userInterface.closeAlert();">';
-                html += '       ' + tarteaucitron.lang.close;
+                html += '   <span id="tarteaucitronCloseAlert" onclick="tarteaucitron.userInterface.openPanel();">';
+                html += '       ' + tarteaucitron.lang.personalize;
                 html += '   </span>';
                 html += '</div>';
                 
@@ -207,6 +210,27 @@ var tarteaucitron = {
         "css": function (id, property, value) {
             "use strict";
             document.getElementById(id).style[property] = value;
+        },
+        "acceptAll": function () {
+            "use strict";
+            var s = tarteaucitron.services,
+                service,
+                key,
+                index = 0;
+            
+            for (index = 0; index < tarteaucitron.job.length; index += 1) {
+                service = s[tarteaucitron.job[index]];
+                key = service.key;
+                if (tarteaucitron.launch[key] !== true) {
+                    tarteaucitron.launch[key] = true;
+                    tarteaucitron.services[key].js();
+                }
+                tarteaucitron.state[key] = true;
+                tarteaucitron.cookie.create(key, true);
+                tarteaucitron.userInterface.color(key, true);
+                
+                tarteaucitron.userInterface.closeAlert();
+            }
         },
         "respond": function (el, status) {
             "use strict";

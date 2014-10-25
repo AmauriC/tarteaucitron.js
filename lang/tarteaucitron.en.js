@@ -3,6 +3,7 @@ tarteaucitron.lang = {
     "alertBig": "If you continue to browse this website, you are allowing all third-party services",
     "alertSmall": "Manage Cookies",
     "personalize": "Personalize",
+    "acceptAll": "OK, accept all",
     "close": "Close",
 
     "info": "Transparency about cookies",
