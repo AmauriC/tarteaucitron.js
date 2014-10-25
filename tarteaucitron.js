@@ -6,8 +6,9 @@ var scripts = document.getElementsByTagName('script'),
     cdn = path.split('/').slice(0, -1).join('/') + '/';
 
 var tarteaucitron = {
-    "showAlertSmall": true, // show the small banner on bottom right ?
-    "autoOpen": false, // auto open the panel with #tarteaucitron hash ?
+    "showAlertSmall": true, // show the small banner on bottom right?
+    "autoOpen": false, // auto open the panel with #tarteaucitron hash?
+    "grayArea": false, // activate the features of the gray area?
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -184,7 +185,9 @@ var tarteaucitron = {
                         tarteaucitron.state[service.key] = false;
                         tarteaucitron.userInterface.color(service.key, false);
                     } else if (!isResponded) {
-                        if (typeof service.fallback === 'function') {
+                        if (typeof service.grayJs === 'function' && tarteaucitron.grayArea === true) {
+                            service.grayJs();
+                        } else if (typeof service.fallback === 'function') {
                             service.fallback();
                         }
                     }

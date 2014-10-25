@@ -145,6 +145,25 @@ tarteaucitron.services.analytics = {
             }
         });
     },
+    "grayJs": function () {
+        "use strict";
+        window.GoogleAnalyticsObject = 'ga';
+        window.ga = window.ga || function () {
+            window.ga.q = window.ga.q || [];
+            window.ga.q.push(arguments);
+        };
+        window.ga.l = new Date();
+        
+        tarteaucitron.addScript('//www.google-analytics.com/analytics.js', '', function () {
+            ga('create', tarteaucitron.user.analyticsUa, {'cookieExpires': 86400});
+            ga('set', 'anonymizeIp', true);
+            ga('set', 'forceSSL', true);
+            ga('send', 'pageview');
+            if (typeof tarteaucitron.user.analyticsMore === 'function') {
+                tarteaucitron.user.analyticsMore();
+            }
+        });
+    },
     "fallback": function () {
         "use strict";
         var cookies = ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
