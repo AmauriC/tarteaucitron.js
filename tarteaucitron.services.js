@@ -39,7 +39,11 @@ tarteaucitron.services.clicky = {
         }
         var clicky_site_ids = clicky_site_ids || [];
         clicky_site_ids.push(tarteaucitron.user.clickyId);
-        tarteaucitron.addScript('//static.getclicky.com/js');
+        tarteaucitron.addScript('//static.getclicky.com/js', function () {
+            if (typeof tarteaucitron.user.clickyMore === 'function') {
+                tarteaucitron.user.clickyMore();
+            }
+        });
     },
     "fallback": function () {
         "use strict";
@@ -300,5 +304,48 @@ tarteaucitron.services.twitter = {
     "fallback": function () {
         "use strict";
         tarteaucitron.fallback(['tacTwitter'], '<a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '%20' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_twitter">Twitter</a>');
+    }
+};
+
+// xiti
+tarteaucitron.services.xiti = {
+    "key": "xiti",
+    "type": "analytics",
+    "name": "Xiti",
+    "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.xitiId === undefined OR document.getElementById('xitiTac') === undefined) {
+            return;
+        }
+        var Xt_param = 's=' + tarteaucitron.user.xitiId + '&p=',
+            Xt_r,
+            Xt_h,
+            Xt_i,
+            Xt_s;
+        try {
+            Xt_r = top.document.referrer;
+        } catch (e) {
+            Xt_r = document.referrer;
+        }
+        Xt_h = new Date();
+        Xt_i = '<img width="39" height="25" border="0" alt="" ';
+        Xt_i += 'src="http://logv3.xiti.com/hit.xiti?' + Xt_param;
+        Xt_i += '&hl=' + Xt_h.getHours() + 'x' + Xt_h.getMinutes() + 'x' + Xt_h.getSeconds();
+        if (parseFloat(navigator.appVersion) >= 4) {
+            Xt_s = screen;
+            Xt_i += '&r=' + Xt_s.width + 'x' + Xt_s.height + 'x' + Xt_s.pixelDepth + 'x' + Xt_s.colorDepth;
+        }
+        document.getElementById('xitiTac').innerHTML = Xt_i + '&ref=' + Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$') + '" title="Internet Audience">';
+        
+        if (typeof tarteaucitron.user.xitiMore === 'function') {
+            tarteaucitron.user.xitiMore();
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = [''];
+        tarteaucitron.cookie.purge(cookies);
     }
 };
