@@ -316,7 +316,7 @@ tarteaucitron.services.xiti = {
     "needConsent": true,
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.xitiId === undefined OR document.getElementById('xitiTac') === undefined) {
+        if (tarteaucitron.user.xitiId === undefined || document.getElementById('xitiTac') === undefined) {
             return;
         }
         var Xt_param = 's=' + tarteaucitron.user.xitiId + '&p=',
