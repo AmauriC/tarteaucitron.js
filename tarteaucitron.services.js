@@ -25,6 +25,29 @@ tarteaucitron.services.addthis = {
     }
 };
 
+// clicky
+tarteaucitron.services.clicky = {
+    "key": "clicky",
+    "type": "analytics",
+    "name": "Clicky",
+    "uri": "https://clicky.com/terms",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.clickyId === undefined) {
+            return;
+        }
+        var clicky_site_ids = clicky_site_ids || [];
+        clicky_site_ids.push(tarteaucitron.user.clickyId);
+        tarteaucitron.addScript('//static.getclicky.com/js');
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['_jsuid', '_eventqueue', '_referrer_og', '_utm_og', '_first_pageview', 'clicky_olark'];
+        tarteaucitron.cookie.purge(cookies);
+    }
+};
+
 // disqus
 tarteaucitron.services.disqus = {
     "key": "disqus",
