@@ -39,7 +39,7 @@ tarteaucitron.services.clicky = {
         }
         var clicky_site_ids = clicky_site_ids || [];
         clicky_site_ids.push(tarteaucitron.user.clickyId);
-        tarteaucitron.addScript('//static.getclicky.com/js', function () {
+        tarteaucitron.addScript('//static.getclicky.com/js', '', function () {
             if (typeof tarteaucitron.user.clickyMore === 'function') {
                 tarteaucitron.user.clickyMore();
             }
