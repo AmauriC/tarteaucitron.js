@@ -37,9 +37,10 @@ tarteaucitron.services.clicky = {
         if (tarteaucitron.user.clickyId === undefined) {
             return;
         }
-        var clicky_site_ids = clicky_site_ids || [];
-        clicky_site_ids.push(tarteaucitron.user.clickyId);
         tarteaucitron.addScript('//static.getclicky.com/js', '', function () {
+            if (typeof clicky.init === 'function') {
+                clicky.init(tarteaucitron.user.clickyId);
+            }
             if (typeof tarteaucitron.user.clickyMore === 'function') {
                 tarteaucitron.user.clickyMore();
             }
