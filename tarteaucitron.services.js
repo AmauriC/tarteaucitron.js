@@ -17,7 +17,7 @@ tarteaucitron.services.addthis = {
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['__atuvc'],
+        var cookies = ['__atuvc', '__atuvs'],
             id = 'addthis';
         
         tarteaucitron.cookie.purge(cookies);
@@ -48,7 +48,7 @@ tarteaucitron.services.clicky = {
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['_jsuid', '_eventqueue', '_referrer_og', '_utm_og', '_first_pageview', 'clicky_olark'];
+        var cookies = ['_jsuid', '_eventqueue', '_referrer_og', '_utm_og', '_first_pageview', 'clicky_olark', 'no_trackyy_' + tarteaucitron.user.clickyId, 'unpoco_' + tarteaucitron.user.clickyId, 'heatmaps_g2g_' + tarteaucitron.user.clickyId];
         tarteaucitron.cookie.purge(cookies);
     }
 };
@@ -252,7 +252,7 @@ tarteaucitron.services.shareaholic = {
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['__utma', '__utmb', '__utmc', '__utmz'],
+        var cookies = ['__utma', '__utmb', '__utmc', '__utmz', '__utmt_Shareaholic%20Pageviews'],
             id = 'shareaholic';
         
         tarteaucitron.cookie.purge(cookies);
