@@ -374,6 +374,30 @@ var tarteaucitron = {
         }
         return userLanguage;
     },
+    "getLocale": function () {
+        "use strict";
+        if (!navigator) { return 'en_US'; }
+        
+        var lang = navigator.language || navigator.browserLanguage ||
+                navigator.systemLanguage || navigator.userLang || null,
+            userLanguage = lang.substr(0, 2);
+        
+        if (userLanguage === 'fr') {
+            return 'fr_FR';
+        } else if (userLanguage === 'en') {
+            return 'en_US';
+        } else if (userLanguage === 'de') {
+            return 'de_DE';
+        } else if (userLanguage === 'es') {
+            return 'es_ES';
+        } else if (userLanguage === 'it') {
+            return 'it_IT';
+        } else if (userLanguage === 'pt') {
+            return 'pt_PT';
+        } else {
+            return 'en_US';
+        }
+    },
     "addScript": function (url, id, callback) {
         "use strict";
         var script = document.createElement('script'),

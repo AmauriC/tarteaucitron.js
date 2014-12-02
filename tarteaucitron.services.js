@@ -88,7 +88,7 @@ tarteaucitron.services.facebook = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['fb-like'], '');
-        tarteaucitron.addScript('//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
+        tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
     },
     "fallback": function () {
         "use strict";
