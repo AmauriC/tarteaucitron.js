@@ -164,7 +164,7 @@ var tarteaucitron = {
                 html += '</div>';
                 
                 // get the banner orientation
-                if (default.orientation === 'bottom') {
+                if (defaults.orientation === 'bottom') {
                     orientation = 'Bottom';
                 }
                 
