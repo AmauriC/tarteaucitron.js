@@ -6,7 +6,7 @@ var scripts = document.getElementsByTagName('script'),
     cdn = path.split('/').slice(0, -1).join('/') + '/';
 
 var tarteaucitron = {
-    "highPrivacy": false,
+    "highPrivacy": false, // disable the auto consent on navigation
     "showAlertSmall": true, // show the small banner on bottom right?
     "autoOpen": false, // auto open the panel with #tarteaucitron hash?
     "grayArea": false, // activate the features of the gray area?
@@ -105,10 +105,10 @@ var tarteaucitron = {
                 html += '       <b>' + tarteaucitron.lang.all + '</b>';
                 html += '   </div>';
                 html += '   <div class="tarteaucitronAsk">';
-                html += '       <div id="tarteaucitronAllAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.acceptAll();">';
+                html += '       <div id="tarteaucitronAllAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respondAll(true);">';
                 html += '           ' + tarteaucitron.lang.allow;
                 html += '       </div> ';
-                html += '       <div id="tarteaucitronAllDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.rejectAll();">';
+                html += '       <div id="tarteaucitronAllDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respondAll(false);">';
                 html += '           ' + tarteaucitron.lang.deny;
                 html += '       </div>';
                 html += '   </div>';
@@ -168,7 +168,7 @@ var tarteaucitron = {
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBig;
                     html += '   </span>';
-                    html += '   <span id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.acceptAll();">';
+                    html += '   <span id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.respondAll(true);">';
                     html += '       ' + tarteaucitron.lang.acceptAll;
                     html += '   </span>';
                     html += '   <span id="tarteaucitronCloseAlert" onclick="tarteaucitron.userInterface.openPanel();">';
@@ -246,7 +246,7 @@ var tarteaucitron = {
             "use strict";
             document.getElementById(id).style[property] = value;
         },
-        "acceptAll": function () {
+        "respondAll": function (status) {
             "use strict";
             var s = tarteaucitron.services,
                 service,
@@ -256,31 +256,15 @@ var tarteaucitron = {
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
-                if (tarteaucitron.launch[key] !== true) {
+                if (tarteaucitron.launch[key] !== true && status === true) {
                     tarteaucitron.launch[key] = true;
                     tarteaucitron.services[key].js();
                 }
-                tarteaucitron.state[key] = true;
-                tarteaucitron.cookie.create(key, true);
-                tarteaucitron.userInterface.color(key, true);
+                tarteaucitron.state[key] = status;
+                tarteaucitron.cookie.create(key, status);
+                tarteaucitron.userInterface.color(key, status);
                 
                 tarteaucitron.userInterface.closeAlert();
-            }
-        },
-        "rejectAll": function () {
-            "use strict";
-            var s = tarteaucitron.services,
-                service,
-                key,
-                index = 0;
-            
-            for (index = 0; index < tarteaucitron.job.length; index += 1) {
-                service = s[tarteaucitron.job[index]];
-                key = service.key;
-
-                tarteaucitron.state[key] = false;
-                tarteaucitron.cookie.create(key, false);
-                tarteaucitron.userInterface.color(key, false);
             }
         },
         "respond": function (el, status) {
