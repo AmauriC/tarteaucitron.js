@@ -112,7 +112,7 @@
     left: 0;
     margin: 0 auto;
     max-height: 80%;
-    max-width: 800px;
+    max-width: 860px;
     overflow: auto;
     padding: 0;
     position: fixed;
@@ -161,7 +161,7 @@
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
-    background: #f2f2f2;
+    background: #e4e4e4;
     color: #333;
     font-size: 20px;
     padding: 18px 22px;
@@ -169,7 +169,7 @@
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronTitle .tarteaucitronDetails {
     color: #777;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine:hover {
@@ -184,6 +184,24 @@
     min-height: 100%;
     overflow: hidden;
     padding: 15px 5px;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine {
+    background: #444 !important;
+    border: 0;
+    margin-bottom: 5px;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName {
+    margin-top: 2px;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName b {
+    color: #fff;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronAsk {
+    margin-top: 0px !important;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName {
@@ -280,27 +298,47 @@
     cursor: pointer;
     display: none;
     font-size: 11px !important;
-    padding: 3px;
-    padding-right: 5px;
+    padding: 5px;
     position: fixed;
     right: 0;
+    text-align: center;
     z-index: 2147483645;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronDot {
-    background-color: #E63737;
-    border-radius: 10px;
+    background-color: gray;
+    border-radius: 5px;
     display: inline-block;
-    height: 10px;
-    margin: 0px 5px 2px 5px;
-    vertical-align: middle;
-    width: 10px;
+    height: 8px;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronDot #tarteaucitronDotGreen,
+#tarteaucitronAlertSmall #tarteaucitronDot #tarteaucitronDotYellow,
+#tarteaucitronAlertSmall #tarteaucitronDot #tarteaucitronDotRed {
+    display: block;
+    float: left;
+    height: 100%;
+    width: 0%;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronDot #tarteaucitronDotGreen {
+    background-color: #1B870B;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronDot #tarteaucitronDotYellow {
+    background-color: #FBDA26;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronDot #tarteaucitronDotRed {
+    background-color: #9C1A1A;
 }
 
 /***
  * Fallback activate link
  */
-
 .tac_activate {
     background: #333;
     display: block;

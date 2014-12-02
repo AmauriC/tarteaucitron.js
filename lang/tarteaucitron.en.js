@@ -1,10 +1,13 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
     "alertBig": "If you continue to browse this website, you are allowing all third-party services",
+    "alertBigPrivacy": "This site uses cookies and gives you control over what you want to activate",
     "alertSmall": "Manage Cookies",
     "personalize": "Personalize",
     "acceptAll": "OK, accept all",
     "close": "Close",
+    
+    "all": "Preference for all services",
 
     "info": "Transparency about cookies",
     "disclaimer": "By allowing these third party services, you accept theirs cookies and the use of tracking technologies necessary for their proper functioning.",
