@@ -6,23 +6,30 @@ var scripts = document.getElementsByTagName('script'),
     cdn = path.split('/').slice(0, -1).join('/') + '/';
 
 var tarteaucitron = {
-    "highPrivacy": false, // disable the auto consent on navigation
-    "showAlertSmall": true, // show the small banner on bottom right?
-    "autoOpen": false, // auto open the panel with #tarteaucitron hash?
-    "grayArea": false, // activate the features of the gray area?
     "cdn": cdn,
     "user": {},
     "lang": {},
     "services": {},
     "state": [],
     "launch": [],
-    "init": function () {
+    "init": function (params) {
         "use strict";
         var cdn = tarteaucitron.cdn,
             language = tarteaucitron.getLanguage(),
             pathToLang = cdn + 'lang/tarteaucitron.' + language + '.js',
             pathToServices = cdn + 'tarteaucitron.services.js',
-            linkElement = document.createElement('link');
+            linkElement = document.createElement('link'),
+            defaults = {
+                "autoOpen": false,
+                "grayArea": false,
+                "highPrivacy": false,
+                "showAlertSmall": true
+            };
+        
+        // Step 0: get params
+        if (params !== undefined) {
+            tarteaucitron.extend(defaults, params);
+        }
         
         // Step 1: load css
         linkElement.rel = 'stylesheet';
@@ -154,7 +161,7 @@ var tarteaucitron = {
                 html += '   </div>';
                 html += '</div>';
                 
-                if (tarteaucitron.highPrivacy) {
+                if (defaults.highPrivacy) {
                     html += '<div id="tarteaucitronAlertBig">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
@@ -177,7 +184,7 @@ var tarteaucitron = {
                     html += '</div>';
                 }
                 
-                if (tarteaucitron.showAlertSmall === true) {
+                if (defaults.showAlertSmall === true) {
                     html += '<div id="tarteaucitronAlertSmall" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '   ' + tarteaucitron.lang.alertSmall;
                     html += '   <div id="tarteaucitronDot">';
@@ -200,7 +207,7 @@ var tarteaucitron = {
                     isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false;
                     isResponded = (cookie.indexOf(service.key) >= 0) ? true : false;
 
-                    if ((!isResponded && (isAutostart || isNavigating) && !tarteaucitron.highPrivacy) || isAllowed) {
+                    if ((!isResponded && (isAutostart || isNavigating) && !defaults.highPrivacy) || isAllowed) {
                         if (!isAllowed) {
                             tarteaucitron.cookie.create(service.key, true);
                         }
@@ -217,7 +224,7 @@ var tarteaucitron = {
                         tarteaucitron.state[service.key] = false;
                         tarteaucitron.userInterface.color(service.key, false);
                     } else if (!isResponded) {
-                        if (typeof service.grayJs === 'function' && tarteaucitron.grayArea === true) {
+                        if (typeof service.grayJs === 'function' && defaults.grayArea === true) {
                             service.grayJs();
                         } else if (typeof service.fallback === 'function') {
                             service.fallback();
@@ -235,7 +242,7 @@ var tarteaucitron = {
                 } else {
                     tarteaucitron.userInterface.closeAlert();
                 }
-                if (document.location.hash === '#tarteaucitron' && tarteaucitron.autoOpen === true) {
+                if (document.location.hash === '#tarteaucitron' && defaults.autoOpen === true) {
                     tarteaucitron.userInterface.openPanel();
                 }
             });
@@ -244,7 +251,9 @@ var tarteaucitron = {
     "userInterface": {
         "css": function (id, property, value) {
             "use strict";
-            document.getElementById(id).style[property] = value;
+            if (document.getElementById(id) !== null) {
+                document.getElementById(id).style[property] = value;
+            }
         },
         "respondAll": function (status) {
             "use strict";
@@ -503,5 +512,14 @@ var tarteaucitron = {
         html += '</div>';
         
         return html;
+    },
+    "extend": function (a, b) {
+        "use strict";
+        var prop;
+        for (prop in b) {
+            if (b.hasOwnProperty(prop)) {
+                a[prop] = b[prop];
+            }
+        }
     }
 };
