@@ -24,6 +24,7 @@ var tarteaucitron = {
                 "grayArea": false,
                 "highPrivacy": false,
                 "orientation": "top",
+                "removeCredit": false,
                 "showAlertSmall": true
             };
         
@@ -158,9 +159,13 @@ var tarteaucitron = {
                 }
 
                 html += '   </div>';
-                html += '   <div id="tarteaucitronFooter">';
-                html += '      <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">' + tarteaucitron.lang.credit + '</a>';
-                html += '   </div>';
+                
+                if (defaults.removeCredit === false) {
+                    html += '   <div id="tarteaucitronFooter">';
+                    html += '      <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">' + tarteaucitron.lang.credit + '</a>';
+                    html += '   </div>';
+                }
+                
                 html += '</div>';
                 
                 // get the banner orientation
