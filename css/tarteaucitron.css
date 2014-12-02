@@ -250,6 +250,14 @@
 /***
  * Big alert
  */
+.tarteaucitronAlertBigTop {
+    top: 0;
+}
+
+.tarteaucitronAlertBigBottom {
+    bottom: 0;
+}
+
 #tarteaucitronAlertBig {
     background: #333;
     color: #fff !important;
@@ -259,7 +267,6 @@
     padding: 5px 5%;
     position: fixed;
     text-align: center;
-    top: 0;
     width: 90%;
     box-sizing: content-box;
     z-index: 2147483645;

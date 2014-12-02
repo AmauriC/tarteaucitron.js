@@ -23,6 +23,7 @@ var tarteaucitron = {
                 "autoOpen": false,
                 "grayArea": false,
                 "highPrivacy": false,
+                "orientation": "top",
                 "showAlertSmall": true
             };
         
@@ -56,7 +57,8 @@ var tarteaucitron = {
                     html = '',
                     lastTitle,
                     alert = false,
-                    index;
+                    index,
+                    orientation = 'Top';
 
                 // dedup, clean and sort job[]
                 function cleanArray(arr) {
@@ -161,8 +163,13 @@ var tarteaucitron = {
                 html += '   </div>';
                 html += '</div>';
                 
+                // get the banner orientation
+                if (default.orientation === 'bottom') {
+                    orientation = 'Bottom';
+                }
+                
                 if (defaults.highPrivacy) {
-                    html += '<div id="tarteaucitronAlertBig">';
+                    html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
                     html += '   </span>';
@@ -171,7 +178,7 @@ var tarteaucitron = {
                     html += '   </span>';
                     html += '</div>';
                 } else {
-                    html += '<div id="tarteaucitronAlertBig">';
+                    html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBig;
                     html += '   </span>';
@@ -272,8 +279,6 @@ var tarteaucitron = {
                 tarteaucitron.state[key] = status;
                 tarteaucitron.cookie.create(key, status);
                 tarteaucitron.userInterface.color(key, status);
-                
-                tarteaucitron.userInterface.closeAlert();
             }
         },
         "respond": function (el, status) {
@@ -346,12 +351,16 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', gray);
                 tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', gray);
             }
+            
+            // close the alert if all service have been reviewed
+            if (nbPending === 0) {
+                tarteaucitron.userInterface.closeAlert();
+            }
         },
         "openPanel": function () {
             "use strict";
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
-            tarteaucitron.userInterface.closeAlert();
 
             // setting hash tag
             document.location.hash = 'tarteaucitron';
