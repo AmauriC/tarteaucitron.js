@@ -29,7 +29,7 @@
     }
 }
 
-@media screen and (max-width:840px) {
+@media screen and (max-width:890px) {
     #tarteaucitron {
         border: 0 !important;
         bottom: 0 !important;
@@ -112,12 +112,12 @@
     left: 0;
     margin: 0 auto;
     max-height: 80%;
-    max-width: 860px;
     overflow: auto;
     padding: 0;
     position: fixed;
     right: 0;
     top: 10%;
+    width: 860px;
     z-index: 2147483647;
 }
 
