@@ -14,6 +14,14 @@ var tarteaucitron = {
     "launch": [],
     "init": function (params) {
         "use strict";
+        if (window.addEventListener) {
+            window.addEventListener("load", tarteaucitron.load(params), false);
+        } else {
+            window.attachEvent('onload', tarteaucitron.load(params));
+        }
+    },
+    "load": function (params) {
+        "use strict";
         var cdn = tarteaucitron.cdn,
             language = tarteaucitron.getLanguage(),
             pathToLang = cdn + 'lang/tarteaucitron.' + language + '.js',
