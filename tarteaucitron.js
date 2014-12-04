@@ -25,7 +25,8 @@ var tarteaucitron = {
         var cdn = tarteaucitron.cdn,
             language = tarteaucitron.getLanguage(),
             pathToLang = cdn + 'lang/tarteaucitron.' + language + '.js',
-            pathToServices = cdn + 'tarteaucitron.services.js',
+            timestamp = new Date().getTime(),
+            pathToServices = cdn + 'tarteaucitron.services.js?c=' + encodeURIComponent(tarteaucitron.cookie.read()) + '&_' + timestamp,
             linkElement = document.createElement('link'),
             defaults = {
                 "autoOpen": false,
