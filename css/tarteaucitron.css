@@ -1,35 +1,25 @@
 /***
  * Responsive layout for the control panel
  */
-@media screen and (max-width:350px) {
-    #tarteaucitronRoot #tarteaucitron #tarteaucitronInfo {
+@media screen and (max-width:479px) {
+    #tarteaucitron #tarteaucitronInfo {
         background-image: none;
+        font-size: 16px !important;
         padding-right: 0;
         text-align: center;
     }
-}
 
-@media screen and (max-width:400px) {
-    #tarteaucitronRoot #tarteaucitron #tarteaucitronInfo {
-        font-size: 14px !important;
-    }
-}
-
-@media screen and (max-width:470px) {
-    #tarteaucitron #tarteaucitronInfo {
-        font-size: 16px !important;
-    }
     #tarteaucitron .tarteaucitronLine .tarteaucitronName {
         width: 90% !important;
     }
-    
+
     #tarteaucitron .tarteaucitronLine .tarteaucitronAsk {
         float: left !important;
         margin: 10px 15px 5px;
     }
 }
 
-@media screen and (max-width:890px) {
+@media screen and (max-width:767px) {
     #tarteaucitron {
         border: 0 !important;
         bottom: 0 !important;
@@ -39,9 +29,18 @@
         top: 0 !important;
         width: 100% !important;
     }
-    
+
     #tarteaucitron #tarteaucitronClosePanel {
         display: block !important;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    #tarteaucitron {
+        border: 0 !important;
+        margin: 0 5%;
+        max-height: 80% !important;
+        width: 90% !important;
     }
 }
 
