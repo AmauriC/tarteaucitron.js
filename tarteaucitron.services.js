@@ -149,11 +149,37 @@ tarteaucitron.services.adsense = {
     }
 };
 
+// google analytics (old)
+tarteaucitron.services.gajs = {
+    "key": "gajs",
+    "type": "analytics",
+    "name": "Google Analytics (ga.js)",
+    "uri": "https://support.google.com/analytics/answer/6004245",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        window._gaq = window._gaq || [];
+        window._gaq.push(['_setAccount', tarteaucitron.user.gajsUa]);
+        window._gaq.push(['_trackPageview']);
+        
+        tarteaucitron.addScript('//www.google-analytics.com/ga.js', '', function () {
+            if (typeof tarteaucitron.user.gajsMore === 'function') {
+                tarteaucitron.user.gajsMore();
+            }
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
+        tarteaucitron.cookie.purge(cookies);
+    }
+};
+
 // google analytics
 tarteaucitron.services.analytics = {
     "key": "analytics",
     "type": "analytics",
-    "name": "Analytics (Google)",
+    "name": "Google Analytics (universal)",
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
     "js": function () {
