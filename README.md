@@ -18,17 +18,20 @@ Bonus:
 
 ## Supported services
 - AddThis
+- Clicky
 - Disqus
 - Facebook
 - FERank
 - Google Adsense
-- Google Analytics
+- Google Analytics (ga.js)
+- Google Analytics (universal)
 - Google+
 - Linkedin
 - Pinterest
 - Shareaholic
 - ShareThis
 - Twitter
+- Xiti
 
 ## Visitors outside the EU
 In PHP for example, you can bypass all the script by setting this var `tarteaucitron.user.bypass = true;` if the visitor is not in the EU.
