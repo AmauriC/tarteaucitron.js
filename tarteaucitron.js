@@ -374,9 +374,6 @@ var tarteaucitron = {
             "use strict";
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
-
-            // setting hash tag
-            document.location.hash = 'tarteaucitron';
         },
         "closePanel": function () {
             "use strict";
