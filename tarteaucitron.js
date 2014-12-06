@@ -29,8 +29,8 @@ var tarteaucitron = {
             pathToServices = cdn + 'tarteaucitron.services.js?c=' + encodeURIComponent(tarteaucitron.cookie.read()) + '&_' + timestamp,
             linkElement = document.createElement('link'),
             defaults = {
-                "autoOpen": false,
                 "grayArea": false,
+                "hashtag": '#tarteaucitron',
                 "highPrivacy": false,
                 "orientation": "top",
                 "removeCredit": false,
@@ -42,6 +42,9 @@ var tarteaucitron = {
             tarteaucitron.extend(defaults, params);
         }
         
+        // the hashtag need to be global
+        tarteaucitron.hashtag = defaults.hashtag;
+                
         // Step 1: load css
         linkElement.rel = 'stylesheet';
         linkElement.type = 'text/css';
@@ -263,7 +266,7 @@ var tarteaucitron = {
                 } else {
                     tarteaucitron.userInterface.closeAlert();
                 }
-                if (document.location.hash === '#tarteaucitron' && defaults.autoOpen === true) {
+                if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
                     tarteaucitron.userInterface.openPanel();
                 }
             });
@@ -375,6 +378,11 @@ var tarteaucitron = {
             "use strict";
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
+
+            // setting hash tag
+            if (tarteaucitron.hashtag !== '') {
+                document.location.hash = tarteaucitron.hashtag;
+            }
         },
         "closePanel": function () {
             "use strict";
