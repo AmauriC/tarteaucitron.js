@@ -26,7 +26,8 @@ var tarteaucitron = {
             language = tarteaucitron.getLanguage(),
             pathToLang = cdn + 'lang/tarteaucitron.' + language + '.js',
             timestamp = new Date().getTime(),
-            pathToServices = cdn + 'tarteaucitron.services.js?c=' + encodeURIComponent(tarteaucitron.cookie.read()) + '&_' + timestamp,
+            pathToServices = cdn + 'tarteaucitron.services.js',
+            parametersCom = '?uuid=' + tarteaucitron.uuid + '&c=' + encodeURIComponent(tarteaucitron.cookie.read()) + '&_' + timestamp,
             linkElement = document.createElement('link'),
             defaults = {
                 "grayArea": false,
@@ -36,6 +37,11 @@ var tarteaucitron = {
                 "removeCredit": false,
                 "showAlertSmall": true
             };
+        
+        // is the commercial version ?
+        if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined) {
+            pathToServices = pathToServices + parametersCom;
+        }
         
         // Step 0: get params
         if (params !== undefined) {
