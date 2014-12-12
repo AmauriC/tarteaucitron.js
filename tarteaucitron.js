@@ -3,7 +3,8 @@
 // define correct path for files inclusion
 var scripts = document.getElementsByTagName('script'),
     path = scripts[scripts.length - 1].src.split('?')[0],
-    cdn = path.split('/').slice(0, -1).join('/') + '/';
+    cdn = path.split('/').slice(0, -1).join('/') + '/',
+    alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch;
 
 var tarteaucitron = {
     "cdn": cdn,
@@ -14,10 +15,13 @@ var tarteaucitron = {
     "launch": [],
     "init": function (params) {
         "use strict";
-        if (window.addEventListener) {
-            window.addEventListener("load", tarteaucitron.load(params), false);
-        } else {
-            window.attachEvent('onload', tarteaucitron.load(params));
+        if (alreadyLaunch === 0) {
+            alreadyLaunch = 1;
+            if (window.addEventListener) {
+                window.addEventListener("load", tarteaucitron.load(params), false);
+            } else {
+                window.attachEvent('onload', tarteaucitron.load(params));
+            }
         }
     },
     "load": function (params) {
