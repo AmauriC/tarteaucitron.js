@@ -29,9 +29,7 @@ var tarteaucitron = {
         var cdn = tarteaucitron.cdn,
             language = tarteaucitron.getLanguage(),
             pathToLang = cdn + 'lang/tarteaucitron.' + language + '.js',
-            timestamp = new Date().getTime(),
             pathToServices = cdn + 'tarteaucitron.services.js',
-            parametersCom = '?uuid=' + tarteaucitron.uuid + '&c=' + encodeURIComponent(tarteaucitron.cookie.read()) + '&_' + timestamp,
             linkElement = document.createElement('link'),
             defaults = {
                 "grayArea": false,
@@ -41,11 +39,6 @@ var tarteaucitron = {
                 "removeCredit": false,
                 "showAlertSmall": true
             };
-        
-        // is the commercial version ?
-        if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined) {
-            pathToServices = pathToServices + parametersCom;
-        }
         
         // Step 0: get params
         if (params !== undefined) {
@@ -107,18 +100,8 @@ var tarteaucitron = {
                     return 0;
                 });
 
-                // if bypass: load all services and exit
-                // for example, set tarteaucitron.user.bypass = true;
-                // if the user is not in europa
-                if (tarteaucitron.user.bypass === true) {
-                    for (index = 0; index < tarteaucitron.job.length; index += 1) {
-                        service = s[tarteaucitron.job[index]];
-                        service.js();
-                    }
-                    return;
-                }
-
                 // Step 3: prepare the html
+                html += '<div id="tarteaucitronPremium"></div>';
                 html += '<div id="tarteaucitronBack" onclick="tarteaucitron.userInterface.closePanel();"></div>';
                 html += '<div id="tarteaucitron">';
                 html += '   <div id="tarteaucitronClosePanel" onclick="tarteaucitron.userInterface.closePanel();">';
@@ -241,6 +224,12 @@ var tarteaucitron = {
                     isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false;
                     isResponded = (cookie.indexOf(service.key) >= 0) ? true : false;
 
+                    // allow by default for non EU
+                    if (isResponded === false && tarteaucitron.user.bypass === true) {
+                        isAllowed = true;
+                        tarteaucitron.cookie.create(service.key, true);
+                    }
+                    
                     if ((!isResponded && (isAutostart || isNavigating) && !defaults.highPrivacy) || isAllowed) {
                         if (!isAllowed) {
                             tarteaucitron.cookie.create(service.key, true);
@@ -352,7 +341,7 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.css(key + 'Allowed', 'backgroundColor', gray);
                 tarteaucitron.userInterface.css(key + 'Denied', 'backgroundColor', redDark);
             }
-        
+
             // check if all services are allowed
             for (index = 0; index < sum; index += 1) {
                 if (tarteaucitron.state[tarteaucitron.job[index]] === false) {
@@ -421,6 +410,10 @@ var tarteaucitron = {
                 regex = new RegExp("!" + key + "=(true|false)", "g"),
                 cookie = tarteaucitron.cookie.read().replace(regex, ""),
                 value = 'tarteaucitron=' + cookie + '!' + key + '=' + status;
+            
+            if (tarteaucitron.cookie.read().indexOf(key + '=' + status) === -1) {
+                tarteaucitron.pro('!' + key + '=' + status);
+            }
 
             d.setTime(expireTime);
             document.cookie = value + '; expires=' + d.toGMTString() + '; path=/;';
@@ -558,6 +551,34 @@ var tarteaucitron = {
             if (b.hasOwnProperty(prop)) {
                 a[prop] = b[prop];
             }
+        }
+    },
+    "proTemp": '',
+    "proTimer": function () {
+        "use strict";
+        setTimeout(tarteaucitron.proPing, 1000);
+    },
+    "pro": function (list) {
+        "use strict";
+        tarteaucitron.proTemp += list;
+        clearTimeout(tarteaucitron.proTimer);
+        tarteaucitron.proTimer = setTimeout(tarteaucitron.proPing, 2500);
+    },
+    "proPing": function () {
+        "use strict";
+        if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined && tarteaucitron.proTemp !== '') {
+            var div = document.getElementById('tarteaucitronPremium'),
+                timestamp = new Date().getTime(),
+                url = '//opt-out.ferank.eu/premium.php?';
+            
+            url += 'domain=' + tarteaucitron.domain + '&';
+            url += 'uuid=' + tarteaucitron.uuid + '&';
+            url += 'c=' + encodeURIComponent(tarteaucitron.proTemp) + '&';
+            url += '_' + timestamp;
+            
+            div.innerHTML = '<img src="' + url + '" style="display:none" />';
+            
+            tarteaucitron.proTemp = '';
         }
     }
 };
