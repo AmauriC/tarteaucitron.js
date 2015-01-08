@@ -18,6 +18,7 @@ Bonus:
 
 ## Supported services
 - AddThis
+- Alexa
 - Clicky
 - Disqus
 - Facebook
@@ -31,7 +32,9 @@ Bonus:
 - Shareaholic
 - ShareThis
 - Twitter
+- Youtube
 - Xiti
+- Zopim
 
 ## Visitors outside the EU
 In PHP for example, you can bypass all the script by setting this var `tarteaucitron.user.bypass = true;` if the visitor is not in the EU.
