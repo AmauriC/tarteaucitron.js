@@ -25,46 +25,6 @@ tarteaucitron.services.addthis = {
     }
 };
 
-// youtube
-tarteaucitron.services.youtube = {
-    "key": "youtube",
-    "type": "social",
-    "name": "YouTube",
-    "uri": "https://www.google.fr/intl/fr/policies/privacy/",
-    "needConsent": true,
-    "js": function () {
-        "use strict";                 
-        tarteaucitron.fallback(['youtube_player'], function (x) {
-            var video_id = x.getAttribute("videoID");
-            if ( video_id === undefined ) {
-                return "";
-            }
-            var video_width = x.getAttribute("width");
-            var frame_width = 'width=';
-            if ( video_width !== undefined ) {
-                frame_width+= '"'+video_width+'" ';
-            } else {
-                frame_width+= '"" ';
-            }
-            var video_height = x.getAttribute("height");
-           var frame_height = 'height=';
-            if ( video_height !== undefined ) {
-                frame_height+= '"'+video_height+'" ';
-            } else {
-                frame_height+= '"" ';
-            }
-            var video_frame = '<iframe id="ytplayer" type="text/html" '+ frame_width + frame_height +'" src="http://www.youtube.com/embed/'+ video_id +' "  frameborder="0"/>';
-            return video_frame;
-        })
-    },
-    "fallback": function () {
-        "use strict";
-		 var cookies = ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],id = 'youtube';
-		 tarteaucitron.cookie.purge(cookies);
-		 tarteaucitron.fallback(['youtube_player'], tarteaucitron.engage(id));
-    }
-};
-
 // clicky
 tarteaucitron.services.clicky = {
     "key": "clicky",
@@ -371,6 +331,49 @@ tarteaucitron.services.twitter = {
     "fallback": function () {
         "use strict";
         tarteaucitron.fallback(['tacTwitter'], '<a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '%20' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_twitter">Twitter</a>');
+    }
+};
+
+// youtube
+tarteaucitron.services.youtube = {
+    "key": "youtube",
+    "type": "social",
+    "name": "YouTube",
+    "uri": "https://www.google.fr/intl/fr/policies/privacy/",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['youtube_player'], function (x) {
+            var video_id = x.getAttribute("videoID"),
+                video_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                video_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                video_frame;
+            
+            if (video_id === undefined) {
+                return "";
+            }
+            if (video_width !== undefined) {
+                frame_width += '"' + video_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (video_height !== undefined) {
+                frame_height +=  '"' + video_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            video_frame = '<iframe id="ytplayer" type="text/html" ' + frame_width + frame_height + '" src="//www.youtube.com/embed/' + video_id + ' " frameborder="0" />';
+            return video_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
+            id = 'youtube';
+        tarteaucitron.cookie.purge(cookies);
+        tarteaucitron.fallback(['youtube_player'], tarteaucitron.engage(id));
     }
 };
 
