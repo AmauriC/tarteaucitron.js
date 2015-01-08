@@ -422,3 +422,24 @@ tarteaucitron.services.xiti = {
         tarteaucitron.cookie.purge(cookies);
     }
 };
+
+// zopim
+tarteaucitron.services.zopim = {
+    "key": "zopim",
+    "type": "social",
+    "name": "Zopim",
+    "uri": "https://www.zopim.com/privacy",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.zopimID === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//v2.zopim.com/?' + tarteaucitron.user.zopimID);
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['__zlcid', '__zprivacy'];
+        tarteaucitron.cookie.purge(cookies);
+    }
+};
