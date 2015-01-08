@@ -1,4 +1,5 @@
-/*global tarteaucitron, ga, Shareaholic, stLight*/
+/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top*/
+/*jslint regexp: true, nomen: true*/
 
 // addthis
 tarteaucitron.services.addthis = {
@@ -22,6 +23,32 @@ tarteaucitron.services.addthis = {
         
         tarteaucitron.cookie.purge(cookies);
         tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id));
+    }
+};
+
+// alexa
+tarteaucitron.services.alexa = {
+    "key": "alexa",
+    "type": "analytics",
+    "name": "Alexa",
+    "uri": "http://www.alexa.com/help/privacy",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.alexaAccountID === undefined) {
+            return;
+        }
+        window._atrk_opts = {
+            atrk_acct: tarteaucitron.user.alexaAccountID,
+            domain: window.location.hostname.match(/[^\.]*\.[^.]*$/)[0],
+            dynamic: true
+        };
+        tarteaucitron.addScript('https://d31qbv1cthcecs.cloudfront.net/atrk.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['__asc', '__auc'];
+        tarteaucitron.cookie.purge(cookies);
     }
 };
 
