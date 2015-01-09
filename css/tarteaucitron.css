@@ -233,6 +233,21 @@
     width: auto;
 }
 
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
+    color: #333;
+    font-size: 11px;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies b {
+    color: darkgreen;
+    font-size: 11px;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies s {
+    color: gray;
+    font-size: 11px;
+}
+
 #tarteaucitron #tarteaucitronFooter {
     background: #f2f2f2;
     border-top: 1px solid #eee;

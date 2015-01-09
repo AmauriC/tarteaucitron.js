@@ -32,7 +32,6 @@ var tarteaucitron = {
             pathToServices = cdn + 'tarteaucitron.services.js',
             linkElement = document.createElement('link'),
             defaults = {
-                "grayArea": false,
                 "hashtag": '#tarteaucitron',
                 "highPrivacy": false,
                 "orientation": "top",
@@ -147,6 +146,7 @@ var tarteaucitron = {
                     html += '<div id="' + service.key + 'Line" class="tarteaucitronLine">';
                     html += '   <div class="tarteaucitronName">';
                     html += '       <b>' + service.name + '</b><br/>';
+                    html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
                     html += '       <a href="' + service.uri + '" target="_blank">';
                     html += '           ' + tarteaucitron.lang.more + ' : ' + service.uri.split('/')[2];
                     html += '       </a>';
@@ -247,9 +247,7 @@ var tarteaucitron = {
                         tarteaucitron.state[service.key] = false;
                         tarteaucitron.userInterface.color(service.key, false);
                     } else if (!isResponded) {
-                        if (typeof service.grayJs === 'function' && defaults.grayArea === true) {
-                            service.grayJs();
-                        } else if (typeof service.fallback === 'function') {
+                        if (typeof service.fallback === 'function') {
                             service.fallback();
                         }
                     }
@@ -372,6 +370,19 @@ var tarteaucitron = {
             if (nbPending === 0) {
                 tarteaucitron.userInterface.closeAlert();
             }
+            
+            if (tarteaucitron.services[key].cookies.length > 0 && status === false) {
+                tarteaucitron.cookie.purge(tarteaucitron.services[key].cookies);
+            }
+            
+            if (status === true) {
+                document.getElementById('tacCL' + key).innerHTML = '...';
+                setTimeout(function () {
+                    tarteaucitron.cookie.checkCount(key);
+                }, 2500);
+            } else {
+                tarteaucitron.cookie.checkCount(key);
+            }
         },
         "openPanel": function () {
             "use strict";
@@ -445,6 +456,33 @@ var tarteaucitron = {
                 document.cookie = arr[i] + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/; domain=.' + location.hostname + ';';
                 document.cookie = arr[i] + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/; domain=.' + location.hostname.split('.').slice(-2).join('.') + ';';
             }
+        },
+        "checkCount": function (key) {
+            "use strict";
+            var arr = tarteaucitron.services[key].cookies,
+                nb = arr.length,
+                html = nb + ' cookie',
+                i;
+            
+            if (nb > 1) {
+                html += 's';
+            }
+            
+            if (nb > 0) {
+                html += ' [';
+                
+                for (i = 0; i < nb; i += 1) {
+                    if (document.cookie.indexOf(arr[i] + '=') !== -1) {
+                        html += '<b>' + arr[i] + '</b> ';
+                    } else {
+                        html += '<s>' + arr[i] + '</s> ';
+                    }
+                }
+                
+                html += ']';
+            }
+                        
+            document.getElementById('tacCL' + key).innerHTML = html;
         }
     },
     "getLanguage": function () {
