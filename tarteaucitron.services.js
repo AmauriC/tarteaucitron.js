@@ -408,7 +408,7 @@ tarteaucitron.services.twitter = {
 tarteaucitron.services.vimeo = {
     "key": "vimeo",
     "type": "social",
-    "name": "Viméo",
+    "name": "Vimeo",
     "uri": "http://vimeo.com/privacy",
     "needConsent": true,
     "js": function () {

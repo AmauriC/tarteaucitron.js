@@ -33,7 +33,7 @@ Bonus:
 - Shareaholic
 - ShareThis
 - Twitter
-- Viméo
+- Vimeo
 - Xiti
 - Youtube
 - Zopim
