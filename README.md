@@ -20,6 +20,7 @@ Bonus:
 - AddThis
 - Alexa
 - Clicky
+- Dailymotion
 - Disqus
 - Facebook
 - FERank
@@ -32,8 +33,9 @@ Bonus:
 - Shareaholic
 - ShareThis
 - Twitter
-- Youtube
+- Viméo
 - Xiti
+- Youtube
 - Zopim
 
 ## Visitors outside the EU
