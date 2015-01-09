@@ -80,6 +80,49 @@ tarteaucitron.services.clicky = {
     }
 };
 
+// dailymotion
+tarteaucitron.services.dailymotion = {
+    "key": "dailymotion",
+    "type": "social",
+    "name": "Dailymotion",
+    "uri": "http://www.dailymotion.com/legal/privacy",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['dailymotion_player'], function (x) {
+            var video_id = x.getAttribute("videoID"),
+                video_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                video_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                video_frame;
+            
+            if (video_id === undefined) {
+                return "";
+            }
+            if (video_width !== undefined) {
+                frame_width += '"' + video_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (video_height !== undefined) {
+                frame_height +=  '"' + video_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            video_frame = '<iframe src="//www.dailymotion.com/embed/video/' + video_id + '" ' + frame_width + frame_height + ' frameborder="0" allowfullscreen></iframe>';
+            return video_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['ts', 'dmvk', 'hist', 'v1st', 's_vi'],
+            id = 'dailymotion';
+        tarteaucitron.cookie.purge(cookies);
+        tarteaucitron.fallback(['dailymotion_player'], tarteaucitron.engage(id));
+    }
+};
+
 // disqus
 tarteaucitron.services.disqus = {
     "key": "disqus",
@@ -361,16 +404,16 @@ tarteaucitron.services.twitter = {
     }
 };
 
-// youtube
-tarteaucitron.services.youtube = {
-    "key": "youtube",
+// vimeo
+tarteaucitron.services.vimeo = {
+    "key": "vimeo",
     "type": "social",
-    "name": "YouTube",
-    "uri": "https://www.google.fr/intl/fr/policies/privacy/",
+    "name": "Viméo",
+    "uri": "http://vimeo.com/privacy",
     "needConsent": true,
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['youtube_player'], function (x) {
+        tarteaucitron.fallback(['vimeo_player'], function (x) {
             var video_id = x.getAttribute("videoID"),
                 video_width = x.getAttribute("width"),
                 frame_width = 'width=',
@@ -391,16 +434,16 @@ tarteaucitron.services.youtube = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe id="ytplayer" type="text/html" ' + frame_width + frame_height + '" src="//www.youtube.com/embed/' + video_id + ' " frameborder="0" />';
+            video_frame = '<iframe src="//player.vimeo.com/video/' + video_id + '" ' + frame_width + frame_height + ' frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
             return video_frame;
         });
     },
     "fallback": function () {
         "use strict";
-        var cookies = ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
-            id = 'youtube';
+        var cookies = ['__utmt_player', '__utma', '__utmb', '__utmc', '__utmv', 'vuid', '__utmz', 'player'],
+            id = 'vimeo';
         tarteaucitron.cookie.purge(cookies);
-        tarteaucitron.fallback(['youtube_player'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['vimeo_player'], tarteaucitron.engage(id));
     }
 };
 
@@ -447,6 +490,49 @@ tarteaucitron.services.xiti = {
         "use strict";
         var cookies = [''];
         tarteaucitron.cookie.purge(cookies);
+    }
+};
+
+// youtube
+tarteaucitron.services.youtube = {
+    "key": "youtube",
+    "type": "social",
+    "name": "YouTube",
+    "uri": "https://www.google.fr/intl/fr/policies/privacy/",
+    "needConsent": true,
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['youtube_player'], function (x) {
+            var video_id = x.getAttribute("videoID"),
+                video_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                video_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                video_frame;
+            
+            if (video_id === undefined) {
+                return "";
+            }
+            if (video_width !== undefined) {
+                frame_width += '"' + video_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (video_height !== undefined) {
+                frame_height +=  '"' + video_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            video_frame = '<iframe type="text/html" ' + frame_width + frame_height + ' src="//www.youtube.com/embed/' + video_id + ' " frameborder="0"></iframe>';
+            return video_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var cookies = ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
+            id = 'youtube';
+        tarteaucitron.cookie.purge(cookies);
+        tarteaucitron.fallback(['youtube_player'], tarteaucitron.engage(id));
     }
 };
 
