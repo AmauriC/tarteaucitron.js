@@ -461,27 +461,31 @@ var tarteaucitron = {
             "use strict";
             var arr = tarteaucitron.services[key].cookies,
                 nb = arr.length,
-                html = nb + ' cookie',
+                nbCurrent = 0,
+                html = '',
+                htmlPlus = '',
                 i;
             
-            if (nb > 1) {
-                html += 's';
-            }
-            
             if (nb > 0) {
-                html += ' [';
+                html += tarteaucitron.lang.useCookie + ' ' + nb + ' cookie';
+                if (nb > 1) {
+                    html += 's';
+                }
                 
                 for (i = 0; i < nb; i += 1) {
                     if (document.cookie.indexOf(arr[i] + '=') !== -1) {
-                        html += '<b>' + arr[i] + '</b> ';
+                        htmlPlus += '<b>' + arr[i] + '</b> ';
+                        nbCurrent += 1;
                     } else {
-                        html += '<s>' + arr[i] + '</s> ';
+                        htmlPlus += '<s>' + arr[i] + '</s> ';
                     }
                 }
                 
-                html += ']';
+                html += ' (' + nbCurrent + ' ' + tarteaucitron.lang.useCookieCurrent + ')<br/>' + htmlPlus;
+            } else {
+                html += tarteaucitron.lang.noCookie;
             }
-                        
+            
             document.getElementById('tacCL' + key).innerHTML = html;
         }
     },

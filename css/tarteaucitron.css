@@ -57,7 +57,7 @@
 
 #tarteaucitron a {
     color: rgb(66, 66, 66);
-    font-size: 12px;
+    font-size: 11px;
     font-style: italic;
     text-decoration: none;
 }
@@ -235,17 +235,17 @@
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
     color: #333;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies b {
     color: darkgreen;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies s {
     color: gray;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #tarteaucitron #tarteaucitronFooter {
