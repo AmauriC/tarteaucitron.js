@@ -238,16 +238,6 @@
     font-size: 12px;
 }
 
-#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies b {
-    color: darkgreen;
-    font-size: 12px;
-}
-
-#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies s {
-    color: gray;
-    font-size: 12px;
-}
-
 #tarteaucitron #tarteaucitronFooter {
     background: #f2f2f2;
     border-top: 1px solid #eee;

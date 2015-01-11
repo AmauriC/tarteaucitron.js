@@ -9,13 +9,14 @@ tarteaucitron.lang = {
     
     "all": "Preference for all services",
 
-    "info": "Transparency about cookies",
+    "info": "Protecting your privacy",
     "disclaimer": "By allowing these third party services, you accept theirs cookies and the use of tracking technologies necessary for their proper functioning.",
     "allow": "Allow",
     "deny": "Deny",
-    "noCookie": "This service does not use cookie to work.",
+    "noCookie": "This service does not use cookie.",
     "useCookie": "This service can install",
-    "useCookieCurrent": "on this browser",
+    "useCookieCurrent": "This service has installed",
+    "useNoCookie": "This service has not installed any cookie.",
     "more": "Read more",
     "source": "View the official website",
     "credit": "Cookies manager by tarteaucitron.js",

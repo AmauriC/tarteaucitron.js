@@ -463,27 +463,35 @@ var tarteaucitron = {
                 nb = arr.length,
                 nbCurrent = 0,
                 html = '',
-                htmlPlus = '',
-                i;
+                i,
+                status = document.cookie.indexOf(key + '=true');
             
-            if (nb > 0) {
+            if (status >= 0 && nb === 0) {
+                html += tarteaucitron.lang.useNoCookie;
+            } else if (status >= 0) {
+                for (i = 0; i < nb; i += 1) {
+                    if (document.cookie.indexOf(arr[i] + '=') !== -1) {
+                        nbCurrent += 1;
+                    }
+                }
+                
+                if (nbCurrent > 0) {
+                    html += tarteaucitron.lang.useCookieCurrent + ' ' + nbCurrent + ' cookie';
+                    if (nbCurrent > 1) {
+                        html += 's';
+                    }
+                    html += '.';
+                } else {
+                    html += tarteaucitron.lang.useNoCookie;
+                }
+            } else if (nb === 0) {
+                html = tarteaucitron.lang.noCookie;
+            } else {
                 html += tarteaucitron.lang.useCookie + ' ' + nb + ' cookie';
                 if (nb > 1) {
                     html += 's';
                 }
-                
-                for (i = 0; i < nb; i += 1) {
-                    if (document.cookie.indexOf(arr[i] + '=') !== -1) {
-                        htmlPlus += '<b>' + arr[i] + '</b> ';
-                        nbCurrent += 1;
-                    } else {
-                        htmlPlus += '<s>' + arr[i] + '</s> ';
-                    }
-                }
-                
-                html += ' (' + nbCurrent + ' ' + tarteaucitron.lang.useCookieCurrent + ')<br/>' + htmlPlus;
-            } else {
-                html += tarteaucitron.lang.noCookie;
+                html += '.';
             }
             
             document.getElementById('tacCL' + key).innerHTML = html;
