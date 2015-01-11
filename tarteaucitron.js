@@ -147,8 +147,8 @@ var tarteaucitron = {
                     html += '   <div class="tarteaucitronName">';
                     html += '       <b>' + service.name + '</b><br/>';
                     html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
-                    html += '       <a href="' + service.uri + '" target="_blank">';
-                    html += '           ' + tarteaucitron.lang.more + ' : ' + service.uri.split('/')[2];
+                    html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '" target="_blank">';
+                    html += '           ' + tarteaucitron.lang.more;
                     html += '       </a>';
                     html += '   </div>';
                     html += '   <div class="tarteaucitronAsk">';
