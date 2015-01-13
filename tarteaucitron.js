@@ -255,6 +255,8 @@ var tarteaucitron = {
                     if (tarteaucitron.state[service.key] === undefined && !alert) {
                         alert = true;
                     }
+                    
+                    tarteaucitron.cookie.checkCount(service.key);
                 }
 
                 // Step 5: display the alert
