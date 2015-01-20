@@ -148,12 +148,13 @@ tarteaucitron.services.facebook = {
     "cookies": [],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['fb-like'], '');
+        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-comments', 'fb-activity', 'fb-like-box', 'fb-send', 'fb-share-button', 'fb-like'], '');
         tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
     },
     "fallback": function () {
         "use strict";
-        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-comments', 'fb-activity', 'fb-like-box', 'fb-send', 'fb-share-button', 'fb-like'], '<a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_facebook">Facebook</a>');
+        var id = 'facebook';
+        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-comments', 'fb-activity', 'fb-like-box', 'fb-send', 'fb-share-button', 'fb-like'], tarteaucitron.engage(id));
     }
 };
 
@@ -189,7 +190,8 @@ tarteaucitron.services.gplus = {
     },
     "fallback": function () {
         "use strict";
-        tarteaucitron.fallback(['g-page', 'g-plus', 'g-plusone'], '<a href="https://plus.google.com/share?url=' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_googlep">Google+</a>');
+        var id = 'gplus';
+        tarteaucitron.fallback(['g-page', 'g-plus', 'g-plusone'], tarteaucitron.engage(id));
     }
 };
 
@@ -276,7 +278,8 @@ tarteaucitron.services.linkedin = {
     },
     "fallback": function () {
         "use strict";
-        tarteaucitron.fallback(['tacLinkedin'], '<a href="http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_linkedin">Linkedin</a>');
+        var id = 'linkedin';
+        tarteaucitron.fallback(['tacLinkedin'], tarteaucitron.engage(id));
     }
 };
 
@@ -365,7 +368,8 @@ tarteaucitron.services.twitter = {
     },
     "fallback": function () {
         "use strict";
-        tarteaucitron.fallback(['tacTwitter'], '<a href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '%20' + encodeURIComponent(document.location) + '" target="_blank" class="tac_share tac_share_twitter">Twitter</a>');
+        var id = 'twitter';
+        tarteaucitron.fallback(['tacTwitter'], tarteaucitron.engage(id));
     }
 };
 

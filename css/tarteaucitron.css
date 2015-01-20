@@ -356,6 +356,7 @@
     display: block;
     height: 100%;
     min-height: 100px;
+    min-width: 180px;
     position: relative;
     width: 100%;
 }
