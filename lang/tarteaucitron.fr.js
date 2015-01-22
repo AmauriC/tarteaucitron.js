@@ -36,15 +36,15 @@ tarteaucitron.lang = {
         "details": "Les réseaux sociaux permettent d'améliorer la convivialité du site et aident à sa promotion via les partages."
     },
     "video": {
-        "title": "Vidéos en ligne",
+        "title": "Vidéos",
         "details": "Les services de partage de vidéo permettent d'enrichir le site de contenu multimédia et augmentent sa visibilité."
     },
     "comment": {
-        "title": "Systèmes de commentaires",
+        "title": "Commentaires",
         "details": "Les gestionnaires de commentaires facilitent le dépôt de vos commentaires et luttent contre le spam."
     },
     "support": {
-        "title": "Systèmes de support",
+        "title": "Support",
         "details": "Les services de support vous permettent d'entrer en contact avec l'équipe du site et d'aider à son amélioration."
     }
 };
