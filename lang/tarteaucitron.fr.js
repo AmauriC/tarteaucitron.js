@@ -42,5 +42,9 @@ tarteaucitron.lang = {
     "comment": {
         "title": "Systèmes de commentaires",
         "details": "Les gestionnaires de commentaires facilitent le dépôt de vos commentaires et luttent contre le spam."
+    },
+    "support": {
+        "title": "Systèmes de support",
+        "details": "Les services de support vous permettent d'entrer en contact avec l'équipe du site et d'aider à son amélioration."
     }
 };
