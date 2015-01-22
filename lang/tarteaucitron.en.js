@@ -34,5 +34,17 @@ tarteaucitron.lang = {
     "social": {
         "title": "Social networks",
         "details": "Social networks can improve the usability of the site and help to promote it via the shares."
+    },
+    "video": {
+        "title": "Videos",
+        "details": "Video sharing services help to add rich media on the site and increase its visibility."
+    },
+    "comment": {
+        "title": "Comments",
+        "details": "Comments managers facilitate the filing of comments and fight against spam."
+    },
+    "support": {
+        "title": "Support",
+        "details": "Support services allow you to get in touch with the site team and help to improve it."
     }
 };
