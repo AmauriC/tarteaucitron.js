@@ -27,7 +27,7 @@ tarteaucitron.services.addthis = {
 // alexa
 tarteaucitron.services.alexa = {
     "key": "alexa",
-    "type": "analytics",
+    "type": "analytic",
     "name": "Alexa",
     "uri": "http://www.alexa.com/help/privacy",
     "needConsent": true,
@@ -49,7 +49,7 @@ tarteaucitron.services.alexa = {
 // clicky
 tarteaucitron.services.clicky = {
     "key": "clicky",
-    "type": "analytics",
+    "type": "analytic",
     "name": "Clicky",
     "uri": "https://clicky.com/terms",
     "needConsent": true,
@@ -73,7 +73,7 @@ tarteaucitron.services.clicky = {
 // dailymotion
 tarteaucitron.services.dailymotion = {
     "key": "dailymotion",
-    "type": "social",
+    "type": "video",
     "name": "Dailymotion",
     "uri": "http://www.dailymotion.com/legal/privacy",
     "needConsent": true,
@@ -115,7 +115,7 @@ tarteaucitron.services.dailymotion = {
 // disqus
 tarteaucitron.services.disqus = {
     "key": "disqus",
-    "type": "social",
+    "type": "comment",
     "name": "Disqus",
     "uri": "https://help.disqus.com/customer/portal/articles/466259-privacy-policy",
     "needConsent": true,
@@ -161,7 +161,7 @@ tarteaucitron.services.facebook = {
 // ferank
 tarteaucitron.services.ferank = {
     "key": "ferank",
-    "type": "analytics",
+    "type": "analytic",
     "name": "FERank",
     "uri": "https://www.ferank.fr/respect-vie-privee/#mesureaudience",
     "needConsent": false,
@@ -217,7 +217,7 @@ tarteaucitron.services.adsense = {
 // google analytics (old)
 tarteaucitron.services.gajs = {
     "key": "gajs",
-    "type": "analytics",
+    "type": "analytic",
     "name": "Google Analytics (ga.js)",
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
@@ -239,7 +239,7 @@ tarteaucitron.services.gajs = {
 // google analytics
 tarteaucitron.services.analytics = {
     "key": "analytics",
-    "type": "analytics",
+    "type": "analytic",
     "name": "Google Analytics (universal)",
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
@@ -376,7 +376,7 @@ tarteaucitron.services.twitter = {
 // vimeo
 tarteaucitron.services.vimeo = {
     "key": "vimeo",
-    "type": "social",
+    "type": "video",
     "name": "Vimeo",
     "uri": "http://vimeo.com/privacy",
     "needConsent": true,
@@ -418,7 +418,7 @@ tarteaucitron.services.vimeo = {
 // xiti
 tarteaucitron.services.xiti = {
     "key": "xiti",
-    "type": "analytics",
+    "type": "analytic",
     "name": "Xiti",
     "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
     "needConsent": true,
@@ -460,7 +460,7 @@ tarteaucitron.services.xiti = {
 // youtube
 tarteaucitron.services.youtube = {
     "key": "youtube",
-    "type": "social",
+    "type": "video",
     "name": "YouTube",
     "uri": "https://www.google.fr/intl/fr/policies/privacy/",
     "needConsent": true,
@@ -502,7 +502,7 @@ tarteaucitron.services.youtube = {
 // zopim
 tarteaucitron.services.zopim = {
     "key": "zopim",
-    "type": "social",
+    "type": "support",
     "name": "Zopim",
     "uri": "https://www.zopim.com/privacy",
     "needConsent": true,
