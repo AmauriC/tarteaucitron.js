@@ -27,7 +27,7 @@ tarteaucitron.lang = {
         "title": "Advertising network",
         "details": "Ad networks can generate revenue by selling advertising space on the site."
     },
-    "analytics": {
+    "analytic": {
         "title": "Audience measurement",
         "details": "The audience measurement services used to generate useful statistics attendance to improve the site."
     },
