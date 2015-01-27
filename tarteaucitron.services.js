@@ -386,19 +386,7 @@ tarteaucitron.services.uservoice = {
         if (tarteaucitron.user.userVoiceApi === undefined) {
             return;
         }
-        window.UserVoice = window.UserVoice || [];
-        tarteaucitron.addScript('//widget.uservoice.com/' + tarteaucitron.user.userVoiceApi + '.js', '', function () {
-            UserVoice.push(['addTrigger', {
-                mode: tarteaucitron.user.userVoiceMode,
-                trigger_position: tarteaucitron.user.userVoicePosition,
-                trigger_color: tarteaucitron.user.userVoiceColor,
-                trigger_background_color: tarteaucitron.user.userVoiceBackground,
-                accent_color: tarteaucitron.user.userVoiceAccent
-            }]);
-            if (typeof tarteaucitron.user.userVoiceMore === 'function') {
-                tarteaucitron.user.userVoiceMore();
-            }
-        });
+        tarteaucitron.addScript('//widget.uservoice.com/' + tarteaucitron.user.userVoiceApi + '.js');
     }
 };
 
