@@ -150,6 +150,10 @@ var tarteaucitron = {
                     html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '" target="_blank">';
                     html += '           ' + tarteaucitron.lang.more;
                     html += '       </a>';
+                    html += '        - ';
+                    html += '       <a href="' + service.uri + '" target="_blank">';
+                    html += '           ' + tarteaucitron.lang.source;
+                    html += '       </a>';
                     html += '   </div>';
                     html += '   <div class="tarteaucitronAsk">';
                     html += '       <div id="' + service.key + 'Allowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">';

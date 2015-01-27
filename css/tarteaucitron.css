@@ -212,6 +212,10 @@
     width: 50%;
 }
 
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName a:hover {
+    text-decoration: underline;
+}
+
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
     display: inline-block;
     float: right;
