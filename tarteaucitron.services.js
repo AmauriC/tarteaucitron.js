@@ -176,6 +176,20 @@ tarteaucitron.services.ferank = {
     }
 };
 
+// ferank pub
+tarteaucitron.services.ferankpub = {
+    "key": "ferankpub",
+    "type": "ads",
+    "name": "FERank Publicité",
+    "uri": "https://www.ferank.fr/respect-vie-privee/#regiepublicitaire",
+    "needConsent": false,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//static.ferank.fr/publicite.async.js');
+    }
+};
+
 // google+
 tarteaucitron.services.gplus = {
     "key": "gplus",
