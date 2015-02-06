@@ -180,13 +180,18 @@ tarteaucitron.services.ferank = {
 tarteaucitron.services.ferankpub = {
     "key": "ferankpub",
     "type": "ads",
-    "name": "FERank Publicité",
+    "name": "FERank",
     "uri": "https://www.ferank.fr/respect-vie-privee/#regiepublicitaire",
     "needConsent": false,
     "cookies": [],
     "js": function () {
         "use strict";
         tarteaucitron.addScript('//static.ferank.fr/publicite.async.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'ferankpub';
+        tarteaucitron.fallback(['ferank-publicite'], tarteaucitron.engage(id));
     }
 };
 
