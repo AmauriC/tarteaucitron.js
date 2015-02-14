@@ -137,7 +137,7 @@
 }
 
 #tarteaucitron #tarteaucitronInfo {
-    background: #eee;
+    background: rgba(51, 51, 51, 0.1);
     border-bottom: 4px solid #fff;
     clear: both;
     color: #333;
@@ -160,7 +160,7 @@
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
-    background: #e4e4e4;
+    background: rgba(51, 51, 51, 0.2);
     color: #333;
     font-size: 20px;
     padding: 18px 22px;
@@ -168,8 +168,8 @@
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronTitle .tarteaucitronDetails {
-    color: #777;
-    font-size: 15px;
+    color: #555;
+    font-size: 12px;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine:hover {
@@ -243,7 +243,7 @@
 }
 
 #tarteaucitron #tarteaucitronFooter {
-    background: #f2f2f2;
+    background: rgba(51, 51, 51, 0.1);
     border-top: 1px solid #eee;
     margin: 20px auto 0px;
     padding: 15px 0 15px;
@@ -299,7 +299,9 @@
 
 #tarteaucitronAlertBig #tarteaucitronCloseAlert {
     background: #808080;
+    font-size: 13px;
     margin-left: 7px;
+    padding: 4px 10px;
 }
 
 /***
