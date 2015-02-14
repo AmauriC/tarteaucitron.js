@@ -286,7 +286,7 @@
     color: #fff;
 }
 
-#tarteaucitronAlertBig #tarteaucitronPersonalize {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize {
     background: #008300;
     color: #fff;
     cursor: pointer;
@@ -298,10 +298,8 @@
 }
 
 #tarteaucitronAlertBig #tarteaucitronCloseAlert {
-    font-size: 11px;
+    background: #808080;
     margin-left: 7px;
-    cursor: pointer;
-    color: #fff;
 }
 
 /***
