@@ -298,7 +298,8 @@
 }
 
 #tarteaucitronAlertBig #tarteaucitronCloseAlert {
-    background: #808080;
+    background: #fff;
+    color: #333;
     font-size: 13px;
     margin-left: 7px;
     padding: 4px 10px;
