@@ -46,5 +46,9 @@ tarteaucitron.lang = {
     "support": {
         "title": "Support",
         "details": "Support services allow you to get in touch with the site team and help to improve it."
+    },
+    "api": {
+        "title": "APIs",
+        "details": "APIs are used to load scripts: geolocation, search engines, translations, ..."
     }
 };

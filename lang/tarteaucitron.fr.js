@@ -46,5 +46,9 @@ tarteaucitron.lang = {
     "support": {
         "title": "Support",
         "details": "Les services de support vous permettent d'entrer en contact avec l'équipe du site et d'aider à son amélioration."
+    },
+    "api": {
+        "title": "APIs",
+        "details": "Les APIs permettent de charger des scripts : géolocalisation, moteurs de recherche, traductions, ..."
     }
 };
