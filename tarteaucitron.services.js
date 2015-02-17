@@ -24,6 +24,44 @@ tarteaucitron.services.addthis = {
     }
 };
 
+// addtoanyfeed
+tarteaucitron.services.addtoanyfeed = {
+    "key": "addtoanyfeed",
+    "type": "social",
+    "name": "AddToAny (feed)",
+    "uri": "https://www.addtoany.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//static.addtoany.com/menu/feed.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'addtoanyfeed';
+        tarteaucitron.fallback(['a2a_dd'], tarteaucitron.engage(id));
+    }
+};
+
+// addtoanyshare
+tarteaucitron.services.addtoanyshare = {
+    "key": "addtoanyshare",
+    "type": "social",
+    "name": "AddToAny (share)",
+    "uri": "https://www.addtoany.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//static.addtoany.com/menu/page.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'addtoanyshare';
+        tarteaucitron.fallback(['a2a_dd'], tarteaucitron.engage(id));
+    }
+};
+
 // alexa
 tarteaucitron.services.alexa = {
     "key": "alexa",

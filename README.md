@@ -18,6 +18,8 @@ Bonus:
 
 ## Supported services
 - AddThis
+- AddToAny (feed)
+- AddToAny (share)
 - Alexa
 - Clicky
 - Dailymotion
