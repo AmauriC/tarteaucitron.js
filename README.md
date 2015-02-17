@@ -28,6 +28,7 @@ Bonus:
 - Google Analytics (ga.js)
 - Google Analytics (universal)
 - Google+
+- JSApi
 - Linkedin
 - Pinterest
 - Shareaholic

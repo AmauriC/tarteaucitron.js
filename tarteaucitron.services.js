@@ -282,6 +282,20 @@ tarteaucitron.services.analytics = {
     }
 };
 
+// jsapi
+tarteaucitron.services.jsapi = {
+    "key": "jsapi",
+    "type": "api",
+    "name": "Google jsapi",
+    "uri": "http://www.google.com/policies/privacy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//www.google.com/jsapi');
+    }
+};
+
 // linkedin
 tarteaucitron.services.linkedin = {
     "key": "linkedin",
