@@ -34,12 +34,17 @@ tarteaucitron.services.addtoanyfeed = {
     "cookies": [],
     "js": function () {
         "use strict";
+        if (tarteaucitron.user.addtoanyfeedUri === undefined) {
+            return;
+        }
+        tarteaucitron.user.addtoanyfeedSubscribeLink = 'https://www.addtoany.com/subscribe?linkurl=' + tarteaucitron.user.addtoanyfeedUri;
+        window.a2a_config = window.a2a_config || {};
+        window.a2a_config.linkurl = tarteaucitron.user.addtoanyfeedUri;
         tarteaucitron.addScript('//static.addtoany.com/menu/feed.js');
     },
     "fallback": function () {
         "use strict";
-        var id = 'addtoanyfeed';
-        tarteaucitron.fallback(['a2a_dd'], tarteaucitron.engage(id));
+        tarteaucitron.user.addtoanyfeedSubscribeLink = 'https://www.addtoany.com/subscribe?linkurl=' + tarteaucitron.user.addtoanyfeedUri;
     }
 };
 
@@ -53,12 +58,13 @@ tarteaucitron.services.addtoanyshare = {
     "cookies": [],
     "js": function () {
         "use strict";
+        tarteaucitron.fallback(['tac_addtoanyshare'], '');
         tarteaucitron.addScript('//static.addtoany.com/menu/page.js');
     },
     "fallback": function () {
         "use strict";
         var id = 'addtoanyshare';
-        tarteaucitron.fallback(['a2a_dd'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['tac_addtoanyshare'], tarteaucitron.engage(id));
     }
 };
 
