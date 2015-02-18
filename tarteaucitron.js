@@ -46,7 +46,7 @@ var tarteaucitron = {
         
         // the hashtag need to be global
         tarteaucitron.hashtag = defaults.hashtag;
-                
+
         // Step 1: load css
         linkElement.rel = 'stylesheet';
         linkElement.type = 'text/css';
@@ -387,7 +387,9 @@ var tarteaucitron = {
             }
             
             if (status === true) {
-                document.getElementById('tacCL' + key).innerHTML = '...';
+                if (document.getElementById('tacCL' + key) !== null) {
+                    document.getElementById('tacCL' + key).innerHTML = '...';
+                }
                 setTimeout(function () {
                     tarteaucitron.cookie.checkCount(key);
                 }, 2500);
@@ -505,7 +507,9 @@ var tarteaucitron = {
                 html += '.';
             }
             
-            document.getElementById('tacCL' + key).innerHTML = html;
+            if (document.getElementById('tacCL' + key) !== null) {
+                document.getElementById('tacCL' + key).innerHTML = html;
+            }
         }
     },
     "getLanguage": function () {
