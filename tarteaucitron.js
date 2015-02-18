@@ -92,6 +92,11 @@ var tarteaucitron = {
                     }
                     return out;
                 }
+                
+                if (tarteaucitron.job === undefined) {
+                    return;
+                }
+                
                 tarteaucitron.job = cleanArray(tarteaucitron.job);
                 tarteaucitron.job = tarteaucitron.job.sort(function (a, b) {
                     if (s[a].type + s[a].key > s[b].type + s[b].key) { return 1; }
