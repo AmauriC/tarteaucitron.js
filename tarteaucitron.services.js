@@ -1,4 +1,4 @@
-/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top*/
+/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google*/
 /*jslint regexp: true, nomen: true*/
 
 // addthis
@@ -323,6 +323,31 @@ tarteaucitron.services.analytics = {
                 tarteaucitron.user.analyticsMore();
             }
         });
+    }
+};
+
+// google maps
+tarteaucitron.services.googlemaps = {
+    "key": "googlemaps",
+    "type": "api",
+    "name": "Google Maps",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.googlemapsApiKey === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=tarteaucitron_googlemaps&key=' + tarteaucitron.user.googlemapsApiKey);
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'googlemaps';
+        
+        if (document.getElementById('tac_map-canvas')) {
+            document.getElementById('tac_map-canvas').innerHTML = tarteaucitron.engage(id);
+        }
     }
 };
 
