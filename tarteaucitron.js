@@ -516,7 +516,7 @@ var tarteaucitron = {
         "use strict";
         if (!navigator) { return 'en'; }
         
-        var availableLanguages = 'en,fr,es',
+        var availableLanguages = 'en,fr,es,de',
             defaultLanguage = 'en',
             lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
