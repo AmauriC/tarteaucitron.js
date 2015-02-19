@@ -521,6 +521,12 @@ var tarteaucitron = {
             lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
             userLanguage = lang.substr(0, 2);
+
+        if (tarteaucitronForceLanguage !== undefined) {
+            if (availableLanguages.indexOf(tarteaucitronForceLanguage) !== -1) {
+                return tarteaucitronForceLanguage;
+            }
+        }
         
         if (availableLanguages.indexOf(userLanguage) === -1) {
             return defaultLanguage;
