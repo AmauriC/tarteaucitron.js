@@ -4,7 +4,8 @@
 var scripts = document.getElementsByTagName('script'),
     path = scripts[scripts.length - 1].src.split('?')[0],
     cdn = path.split('/').slice(0, -1).join('/') + '/',
-    alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch;
+    alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch,
+    tarteaucitronForceLanguage = (tarteaucitronForceLanguage === undefined) ? '' : tarteaucitronForceLanguage;
 
 var tarteaucitron = {
     "cdn": cdn,
@@ -522,7 +523,7 @@ var tarteaucitron = {
                 navigator.systemLanguage || navigator.userLang || null,
             userLanguage = lang.substr(0, 2);
 
-        if (tarteaucitronForceLanguage !== undefined) {
+        if (tarteaucitronForceLanguage !== '') {
             if (availableLanguages.indexOf(tarteaucitronForceLanguage) !== -1) {
                 return tarteaucitronForceLanguage;
             }
