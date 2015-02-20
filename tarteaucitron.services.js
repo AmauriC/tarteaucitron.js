@@ -244,7 +244,7 @@ tarteaucitron.services.ferank = {
 tarteaucitron.services.ferankpub = {
     "key": "ferankpub",
     "type": "ads",
-    "name": "FERank",
+    "name": "FERank (pub)",
     "uri": "https://www.ferank.fr/respect-vie-privee/#regiepublicitaire",
     "needConsent": false,
     "cookies": [],
@@ -274,7 +274,26 @@ tarteaucitron.services.gplus = {
     "fallback": function () {
         "use strict";
         var id = 'gplus';
-        tarteaucitron.fallback(['g-page', 'g-plus', 'g-plusone'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['g-plus', 'g-plusone'], tarteaucitron.engage(id));
+    }
+};
+
+// google+ badge
+tarteaucitron.services.gplusbadge = {
+    "key": "gplusbadge",
+    "type": "social",
+    "name": "Google+ (badge)",
+    "uri": "http://www.google.fr/intl/policies/privacy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('https://apis.google.com/js/platform.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'gplusbadge';
+        tarteaucitron.fallback(['g-page', 'g-person'], tarteaucitron.engage(id));
     }
 };
 
