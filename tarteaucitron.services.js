@@ -192,13 +192,33 @@ tarteaucitron.services.facebook = {
     "cookies": [],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-like-box', 'fb-send', 'fb-share-button', 'fb-like'], '');
+        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-send', 'fb-share-button', 'fb-like'], '');
         tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
     },
     "fallback": function () {
         "use strict";
         var id = 'facebook';
-        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-like-box', 'fb-send', 'fb-share-button', 'fb-like'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-send', 'fb-share-button', 'fb-like'], tarteaucitron.engage(id));
+    }
+};
+
+// facebooklikebox
+tarteaucitron.services.facebooklikebox = {
+    "key": "facebooklikebox",
+    "type": "social",
+    "name": "Facebook (like box)",
+    "uri": "https://www.facebook.com/help/cookies/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['fb-like-box'], '');
+        tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'facebooklikebox';
+        tarteaucitron.fallback(['fb-like-box'], tarteaucitron.engage(id));
     }
 };
 
