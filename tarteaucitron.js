@@ -64,6 +64,7 @@ var tarteaucitron = {
                     hostRef = document.referrer.split('/')[2],
                     isNavigating = (hostRef === hostname) ? true : false,
                     isAutostart,
+                    isWaiting,
                     isDenied,
                     isAllowed,
                     isResponded,
@@ -230,9 +231,10 @@ var tarteaucitron = {
                 for (index = 0; index < tarteaucitron.job.length; index += 1) {
                     service = s[tarteaucitron.job[index]];
                     isAutostart = (!service.needConsent) ? true : false;
+                    isWaiting = (cookie.indexOf(service.key + '=wait') >= 0) ? true : false;
                     isDenied = (cookie.indexOf(service.key + '=false') >= 0) ? true : false;
                     isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false;
-                    isResponded = (cookie.indexOf(service.key) >= 0) ? true : false;
+                    isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0) ? true : false;
 
                     // allow by default for non EU
                     if (isResponded === false && tarteaucitron.user.bypass === true) {
@@ -240,7 +242,7 @@ var tarteaucitron = {
                         tarteaucitron.cookie.create(service.key, true);
                     }
                     
-                    if ((!isResponded && (isAutostart || isNavigating) && !defaults.highPrivacy) || isAllowed) {
+                    if ((!isResponded && (isAutostart || (isNavigating && isWaiting)) && !defaults.highPrivacy) || isAllowed) {
                         if (!isAllowed) {
                             tarteaucitron.cookie.create(service.key, true);
                         }
@@ -257,6 +259,7 @@ var tarteaucitron = {
                         tarteaucitron.state[service.key] = false;
                         tarteaucitron.userInterface.color(service.key, false);
                     } else if (!isResponded) {
+                        tarteaucitron.cookie.create(service.key, 'wait');
                         if (typeof service.fallback === 'function') {
                             service.fallback();
                         }
@@ -432,7 +435,7 @@ var tarteaucitron = {
             var d = new Date(),
                 time = d.getTime(),
                 expireTime = time + 31536000000, // 365 days
-                regex = new RegExp("!" + key + "=(true|false)", "g"),
+                regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
                 cookie = tarteaucitron.cookie.read().replace(regex, ""),
                 value = 'tarteaucitron=' + cookie + '!' + key + '=' + status;
             
