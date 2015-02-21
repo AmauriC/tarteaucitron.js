@@ -130,7 +130,8 @@ tarteaucitron.services.dailymotion = {
                 frame_width = 'width=',
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
-                video_frame;
+                video_frame,
+                params = 'info=' + x.getAttribute("showinfo") + '&autoPlay=' + x.getAttribute("autoplay");
             
             if (video_id === undefined) {
                 return "";
@@ -145,7 +146,7 @@ tarteaucitron.services.dailymotion = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe src="//www.dailymotion.com/embed/video/' + video_id + '" ' + frame_width + frame_height + ' frameborder="0" allowfullscreen></iframe>';
+            video_frame = '<iframe src="//www.dailymotion.com/embed/video/' + video_id + '?' + params + '" ' + frame_width + frame_height + ' frameborder="0" allowfullscreen></iframe>';
             return video_frame;
         });
     },
@@ -766,7 +767,8 @@ tarteaucitron.services.youtube = {
                 frame_width = 'width=',
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
-                video_frame;
+                video_frame,
+                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay");
             
             if (video_id === undefined) {
                 return "";
@@ -781,7 +783,7 @@ tarteaucitron.services.youtube = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe type="text/html" ' + frame_width + frame_height + ' src="//www.youtube.com/embed/' + video_id + ' " frameborder="0"></iframe>';
+            video_frame = '<iframe type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '" frameborder="0"></iframe>';
             return video_frame;
         });
     },
