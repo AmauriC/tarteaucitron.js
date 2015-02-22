@@ -366,7 +366,7 @@ tarteaucitron.services.gplusbadge = {
 tarteaucitron.services.adsense = {
     "key": "adsense",
     "type": "ads",
-    "name": "Adsense (Google)",
+    "name": "Google Adsense",
     "uri": "http://www.google.com/ads/preferences/",
     "needConsent": true,
     "cookies": [],
@@ -378,6 +378,45 @@ tarteaucitron.services.adsense = {
         "use strict";
         var id = 'adsense';
         tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id));
+    }
+};
+
+// google adsense search (form)
+tarteaucitron.services.adsensesearchform = {
+    "key": "adsensesearchform",
+    "type": "ads",
+    "name": "Google Adsense Search (form)",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//www.google.com/coop/cse/brand?form=cse-search-box&lang=' + tarteaucitron.getLanguage());
+    }
+};
+
+// google adsense search (result)
+tarteaucitron.services.adsensesearchresult = {
+    "key": "adsensesearchresult",
+    "type": "ads",
+    "name": "Google Adsense Search (result)",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.adsensesearchresultCx === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//www.google.com/cse/cse.js?cx=' + tarteaucitron.user.adsensesearchresultCx);
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'adsensesearchresult';
+        
+        if (document.getElementById('gcse_searchresults')) {
+            document.getElementById('gcse_searchresults').innerHTML = tarteaucitron.engage(id);
+        }
     }
 };
 
