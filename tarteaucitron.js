@@ -1,4 +1,4 @@
-/*jslint browser: true */
+/*jslint browser: true, evil: true */
 
 // define correct path for files inclusion
 var scripts = document.getElementsByTagName('script'),
@@ -415,6 +415,7 @@ var tarteaucitron = {
             "use strict";
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
+            document.location.hash = '';
         },
         "openAlert": function () {
             "use strict";
@@ -585,6 +586,7 @@ var tarteaucitron = {
     "makeAsync": {
         "buffer": '',
         "init": function (url, id) {
+            "use strict";
             var savedWrite = document.write,
                 savedWriteln = document.writeln;
 
@@ -595,7 +597,7 @@ var tarteaucitron = {
                 tarteaucitron.makeAsync.buffer += content.concat("\n");
             };
         
-            setTimeout(function() {
+            setTimeout(function () {
                 document.write = savedWrite;
                 document.writeln = savedWriteln;
             }, 60000);
@@ -603,6 +605,7 @@ var tarteaucitron = {
             tarteaucitron.makeAsync.getAndParse(url, id);
         },
         "getAndParse": function (url, id) {
+            "use strict";
             tarteaucitron.addScript(url, '', function () {
                 document.getElementById(id).innerHTML += tarteaucitron.makeAsync.buffer;
                 tarteaucitron.makeAsync.buffer = '';
@@ -610,6 +613,7 @@ var tarteaucitron = {
             });
         },
         "execJS": function forceJsExec(id) {
+            /* not strict because third party scripts may have errors */
             var i,
                 scripts,
                 childId,

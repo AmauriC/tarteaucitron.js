@@ -123,6 +123,7 @@ tarteaucitron.services.criteo = {
     "needConsent": true,
     "cookies": [],
     "js": function () {
+        "use strict";
         document.MAX_ct0 = '';
         var criteoUri = '//cas.criteo.com/delivery/ajs.php?',
             divId = 'criteo_' + tarteaucitron.user.criteoZoneId;
@@ -571,6 +572,38 @@ tarteaucitron.services.pinterest = {
     "js": function () {
         "use strict";
         tarteaucitron.addScript('//assets.pinterest.com/js/pinit.js');
+    }
+};
+
+// pubdirecte
+tarteaucitron.services.pubdirecte = {
+    "key": "pubdirecte",
+    "type": "ads",
+    "name": "Pubdirecte",
+    "uri": "http://pubdirecte.com/contact.php",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        var pubdirecteUri = '//www.pubdirecte.com/script/banniere.php?',
+            divId = 'pubdirecte_' + tarteaucitron.user.pubdirecteId;
+        
+        if (tarteaucitron.user.pubdirecteId === undefined || document.getElementById(divId) === null) {
+            return;
+        }
+
+        pubdirecteUri += 'id=' + tarteaucitron.user.pubdirecteId + '&ref=' + document.getElementById(divId).getAttribute('ref');
+        document.getElementById(divId).innerHTML = '';
+        tarteaucitron.makeAsync.init(pubdirecteUri, divId);
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'pubdirecte',
+            divId = id + '_' + tarteaucitron.user.pubdirecteId;
+        
+        if (document.getElementById(divId)) {
+            document.getElementById(divId).innerHTML = tarteaucitron.engage(id);
+        }
     }
 };
 
