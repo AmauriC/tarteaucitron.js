@@ -114,6 +114,41 @@ tarteaucitron.services.clicky = {
     }
 };
 
+// clicmanager
+tarteaucitron.services.clicmanager = {
+    "key": "clicmanager",
+    "type": "ads",
+    "name": "Clicmanager",
+    "uri": "http://www.clicmanager.fr/infos_legales.php",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        var clicmanagerUri = '//ads.clicmanager.fr/exe.php?',
+            divId = 'clicmanager_' + tarteaucitron.user.clicmanagerUniqId;
+        
+        if (tarteaucitron.user.clicmanagerUniqId === undefined || document.getElementById(divId) === null) {
+            return;
+        }
+
+        clicmanagerUri += 'c=' + document.getElementById(divId).getAttribute('c') + '&';
+        clicmanagerUri += 's=' + document.getElementById(divId).getAttribute('s') + '&';
+        clicmanagerUri += 't=' + document.getElementById(divId).getAttribute('t');
+        
+        document.getElementById(divId).innerHTML = '';
+        tarteaucitron.makeAsync.init(clicmanagerUri, divId);
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'clicmanager',
+            divId = id + '_' + tarteaucitron.user.clicmanagerUniqId;
+        
+        if (document.getElementById(divId)) {
+            document.getElementById(divId).innerHTML = tarteaucitron.engage(id);
+        }
+    }
+};
+
 // criteo
 tarteaucitron.services.criteo = {
     "key": "criteo",
@@ -126,15 +161,15 @@ tarteaucitron.services.criteo = {
         "use strict";
         document.MAX_ct0 = '';
         var criteoUri = '//cas.criteo.com/delivery/ajs.php?',
-            divId = 'criteo_' + tarteaucitron.user.criteoZoneId;
+            divId = 'criteo_' + tarteaucitron.user.criteoUniqId;
         
-        if (tarteaucitron.user.criteoZoneId === undefined || document.getElementById(divId) === null) {
+        if (tarteaucitron.user.criteoUniqId === undefined || document.getElementById(divId) === null) {
             return;
         }
 
         document.getElementById(divId).innerHTML = '';
         
-        criteoUri += 'zoneid=' + tarteaucitron.user.criteoZoneId;
+        criteoUri += 'zoneid=' + document.getElementById(divId).getAttribute('zoneid');
         criteoUri += '&nodis=1&cb=' + Math.floor(Math.random() * 99999999999);
         criteoUri += '&loc=' + encodeURI(window.location);
         criteoUri += (document.MAX_used !== ',') ? '&exclude=' + document.MAX_used : '';
@@ -150,7 +185,7 @@ tarteaucitron.services.criteo = {
     "fallback": function () {
         "use strict";
         var id = 'criteo',
-            divId = id + '_' + tarteaucitron.user.criteoZoneId;
+            divId = id + '_' + tarteaucitron.user.criteoUniqId;
         
         if (document.getElementById(divId)) {
             document.getElementById(divId).innerHTML = tarteaucitron.engage(id);
@@ -625,20 +660,21 @@ tarteaucitron.services.pubdirecte = {
     "js": function () {
         "use strict";
         var pubdirecteUri = '//www.pubdirecte.com/script/banniere.php?',
-            divId = 'pubdirecte_' + tarteaucitron.user.pubdirecteId;
+            divId = 'pubdirecte_' + tarteaucitron.user.pubdirecteUniqId;
         
-        if (tarteaucitron.user.pubdirecteId === undefined || document.getElementById(divId) === null) {
+        if (tarteaucitron.user.pubdirecteUniqId === undefined || document.getElementById(divId) === null) {
             return;
         }
 
-        pubdirecteUri += 'id=' + tarteaucitron.user.pubdirecteId + '&ref=' + document.getElementById(divId).getAttribute('ref');
+        pubdirecteUri += 'id=' + document.getElementById(divId).getAttribute('pid') + '&';
+        pubdirecteUri += 'ref=' + document.getElementById(divId).getAttribute('ref');
         document.getElementById(divId).innerHTML = '';
         tarteaucitron.makeAsync.init(pubdirecteUri, divId);
     },
     "fallback": function () {
         "use strict";
         var id = 'pubdirecte',
-            divId = id + '_' + tarteaucitron.user.pubdirecteId;
+            divId = id + '_' + tarteaucitron.user.pubdirecteUniqId;
         
         if (document.getElementById(divId)) {
             document.getElementById(divId).innerHTML = tarteaucitron.engage(id);
