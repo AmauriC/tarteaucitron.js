@@ -584,6 +584,7 @@ var tarteaucitron = {
         document.getElementsByTagName('head')[0].appendChild(script);
     },
     "makeAsync": {
+        "antiGhost": 0,
         "buffer": '',
         "init": function (url, id) {
             "use strict";
@@ -606,6 +607,10 @@ var tarteaucitron = {
         },
         "getAndParse": function (url, id) {
             "use strict";
+            if (tarteaucitron.makeAsync.antiGhost > 10) {
+                return;
+            }
+            tarteaucitron.makeAsync.antiGhost += 1;
             tarteaucitron.addScript(url, '', function () {
                 document.getElementById(id).innerHTML += tarteaucitron.makeAsync.buffer;
                 tarteaucitron.makeAsync.buffer = '';
