@@ -114,6 +114,49 @@ tarteaucitron.services.clicky = {
     }
 };
 
+// criteo
+tarteaucitron.services.criteo = {
+    "key": "criteo",
+    "type": "ads",
+    "name": "Criteo",
+    "uri": "http://www.criteo.com/privacy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        document.MAX_ct0 = '';
+        var criteoUri = '//cas.criteo.com/delivery/ajs.php?',
+            divId = 'criteo_' + tarteaucitron.user.criteoZoneId;
+        
+        if (tarteaucitron.user.criteoZoneId === undefined || document.getElementById(divId) === null) {
+            return;
+        }
+
+        document.getElementById(divId).innerHTML = '';
+        
+        criteoUri += 'zoneid=' + tarteaucitron.user.criteoZoneId;
+        criteoUri += '&nodis=1&cb=' + Math.floor(Math.random() * 99999999999);
+        criteoUri += '&loc=' + encodeURI(window.location);
+        criteoUri += (document.MAX_used !== ',') ? '&exclude=' + document.MAX_used : '';
+        criteoUri += (document.charset !== undefined ? '&charset=' + document.charset : '');
+        criteoUri += (document.characterSet !== undefined ? '&charset=' + document.characterSet : '');
+        criteoUri += (document.referrer !== undefined) ? '&referer=' + encodeURI(document.referrer) : '';
+        criteoUri += (document.context !== undefined) ? '&context=' + encodeURI(document.context) : '';
+        criteoUri += ((document.MAX_ct0 !== undefined) && (document.MAX_ct0.substring(0, 4) === 'http')) ? '&ct0=' + encodeURI(document.MAX_ct0) : '';
+        criteoUri += (document.mmm_fo !== undefined) ? '&mmm_fo=1' : '';
+
+        tarteaucitron.makeAsync.init(criteoUri, divId);
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'criteo',
+            divId = id + '_' + tarteaucitron.user.criteoZoneId;
+        
+        if (document.getElementById(divId)) {
+            document.getElementById(divId).innerHTML = tarteaucitron.engage(id);
+        }
+    }
+};
+
 // dailymotion
 tarteaucitron.services.dailymotion = {
     "key": "dailymotion",
