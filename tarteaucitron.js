@@ -582,6 +582,55 @@ var tarteaucitron = {
         }
         document.getElementsByTagName('head')[0].appendChild(script);
     },
+    "makeAsync": {
+        "buffer": '',
+        "init": function (url, id) {
+            var savedWrite = document.write,
+                savedWriteln = document.writeln;
+
+            document.write = function (content) {
+                tarteaucitron.makeAsync.buffer += content;
+            };
+            document.writeln = function (content) {
+                tarteaucitron.makeAsync.buffer += content.concat("\n");
+            };
+        
+            setTimeout(function() {
+                document.write = savedWrite;
+                document.writeln = savedWriteln;
+            }, 60000);
+            
+            tarteaucitron.makeAsync.getAndParse(url, id);
+        },
+        "getAndParse": function (url, id) {
+            tarteaucitron.addScript(url, '', function () {
+                document.getElementById(id).innerHTML += tarteaucitron.makeAsync.buffer;
+                tarteaucitron.makeAsync.buffer = '';
+                tarteaucitron.makeAsync.execJS(id);
+            });
+        },
+        "execJS": function forceJsExec(id) {
+            var i,
+                scripts,
+                childId,
+                type;
+
+            scripts = document.getElementById(id).getElementsByTagName('script');
+            for (i = 0; i < scripts.length; i += 1) {
+                type = (scripts[i].getAttribute('type') !== null) ? scripts[i].getAttribute('type') : '';
+                if (type === '') {
+                    type = (scripts[i].getAttribute('language') !== null) ? scripts[i].getAttribute('language') : '';
+                }
+                if (scripts[i].getAttribute('src') !== null) {
+                    childId = id + Math.floor(Math.random() * 99999999999);
+                    document.getElementById(id).innerHTML += '<div id="' + childId + '"></div>';
+                    tarteaucitron.makeAsync.getAndParse(scripts[i].getAttribute('src'), childId);
+                } else if (type.indexOf('javascript') !== -1) {
+                    eval(scripts[i].innerHTML);
+                }
+            }
+        }
+    },
     "fallback": function (matchClass, content) {
         "use strict";
         var elems = document.getElementsByTagName('*'),
