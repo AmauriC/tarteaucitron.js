@@ -17,26 +17,7 @@ Bonus:
 - Incorporate a fallback system (display a link instead of social button and a static banner instead of advertising).
 
 ## Supported services
-* APIs
-  * Google jsapi
-  * Google Maps
-  * Google Tag Manager
-  * Typekit (adobe)
-
-* Commentaire
-  * Disqus
-  * Facebook (commentaire)
-
-* Mesure d'audience
-  * Alexa
-  * Clicky
-  * FERank
-  * Google Analytics (ga.js)
-  * Google Analytics (universal)
-  * VisualRevenue
-  * Xiti
-
-* Régie publicitaire
+* Advertising network
   * Clicmanager
   * Criteo
   * FERank (pub)
@@ -48,7 +29,26 @@ Bonus:
   * Pubdirecte
   * vShop
 
-* Réseaux sociaux
+* APIs
+  * Google jsapi
+  * Google Maps
+  * Google Tag Manager
+  * Typekit (adobe)
+
+* Audience measurement
+  * Alexa
+  * Clicky
+  * FERank
+  * Google Analytics (ga.js)
+  * Google Analytics (universal)
+  * VisualRevenue
+  * Xiti
+
+* Comment
+  * Disqus
+  * Facebook (commentaire)
+
+* Social network
   * AddThis
   * AddToAny (feed)
   * AddToAny (share)
@@ -66,10 +66,11 @@ Bonus:
   * UserVoice
   * Zopim
 
-* Vidéo
+* Video
   * Dailymotion
   * Vimeo
   * Youtube
+
 
 ## Visitors outside the EU
 In PHP for example, you can bypass all the script by setting this var `tarteaucitron.user.bypass = true;` if the visitor is not in the EU.
