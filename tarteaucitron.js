@@ -669,7 +669,7 @@ var tarteaucitron = {
                 
         html += '<div class="tac_activate">';
         html += '   <div class="tac_float">';
-        html += '      <b>' + tarteaucitron.services[id].name + '</b> ' + tarteaucitron.lang.fallback + '<br/>';
+        html += '      <b>' + tarteaucitron.services[id].name + '</b> ' + tarteaucitron.lang.fallback;
         html += '      <div class="tarteaucitronAllow" id="Eng' + r + 'ed' + id + '" onclick="tarteaucitron.userInterface.respond(this, true);">';
         html += '          ' + tarteaucitron.lang.allow;
         html += '       </div>';

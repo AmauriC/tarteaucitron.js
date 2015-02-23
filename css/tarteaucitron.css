@@ -358,29 +358,20 @@
  */
 .tac_activate {
     background: #333;
-    display: block;
+    color: #fff;
+    display: table;
+    font-size: 12px;
     height: 100%;
-    min-height: 100px;
-    min-width: 180px;
-    position: relative;
+    line-height: initial;
+    margin: auto;
+    text-align: center;
     width: 100%;
 }
 
-.tac_activate .tac_float {
-    background: #333;
-    bottom: 0;
-    box-sizing: border-box;
-    color: #fff;
-    font-size: 14px;
-    height: 80px;
-    left: 0;
-    line-height: initial;
-    margin: auto;
-    padding: 10px 0;
-    position: absolute;
-    right: 0;
+.tac_float {
+    display: table-cell;
     text-align: center;
-    top: 0;
+    vertical-align: middle;
 }
 
 .tac_activate .tac_float b {
@@ -389,5 +380,17 @@
 
 .tac_activate .tac_float .tarteaucitronAllow {
     background-color: #1B870B;
-    margin-top: 10px;
+    display: inline-block;
+}
+
+/***
+ * CSS for services
+ */
+ins.ferank-publicite, ins.adsbygoogle {
+    text-decoration: none;
+}
+
+div.amazon_product {
+    height:240px;
+    width:120px;
 }
