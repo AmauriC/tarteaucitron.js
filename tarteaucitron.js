@@ -608,6 +608,7 @@ var tarteaucitron = {
         "getAndParse": function (url, id) {
             "use strict";
             if (tarteaucitron.makeAsync.antiGhost > 10) {
+                tarteaucitron.makeAsync.antiGhost = 0;
                 return;
             }
             tarteaucitron.makeAsync.antiGhost += 1;

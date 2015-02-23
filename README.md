@@ -17,29 +17,59 @@ Bonus:
 - Incorporate a fallback system (display a link instead of social button and a static banner instead of advertising).
 
 ## Supported services
-- AddThis
-- AddToAny (feed)
-- AddToAny (share)
-- Alexa
-- Clicky
-- Dailymotion
-- Disqus
-- Facebook
-- FERank
-- Google Adsense
-- Google Analytics (ga.js)
-- Google Analytics (universal)
-- Google+
-- JSApi
-- Linkedin
-- Pinterest
-- Shareaholic
-- ShareThis
-- Twitter
-- Vimeo
-- Xiti
-- Youtube
-- Zopim
+* APIs
+  * Google jsapi
+  * Google Maps
+  * Google Tag Manager
+  * Typekit (adobe)
+
+* Commentaire
+  * Disqus
+  * Facebook (commentaire)
+
+* Mesure d'audience
+  * Alexa
+  * Clicky
+  * FERank
+  * Google Analytics (ga.js)
+  * Google Analytics (universal)
+  * VisualRevenue
+  * Xiti
+
+* Régie publicitaire
+  * Clicmanager
+  * Criteo
+  * FERank (pub)
+  * Google Adsense
+  * Google Adsense Search (form)
+  * Google Adsense Search (result)
+  * Google Adwords (conversion)
+  * Google Adwords (remarketing)
+  * Pubdirecte
+  * vShop
+
+* Réseaux sociaux
+  * AddThis
+  * AddToAny (feed)
+  * AddToAny (share)
+  * Facebook
+  * Facebook (like box)
+  * Google+
+  * Google+ (badge)
+  * Linkedin
+  * Pinterest
+  * Shareaholic
+  * ShareThis
+  * Twitter
+
+* Support
+  * UserVoice
+  * Zopim
+
+* Vidéo
+  * Dailymotion
+  * Vimeo
+  * Youtube
 
 ## Visitors outside the EU
 In PHP for example, you can bypass all the script by setting this var `tarteaucitron.user.bypass = true;` if the visitor is not in the EU.
