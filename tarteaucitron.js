@@ -5,24 +5,59 @@ var scripts = document.getElementsByTagName('script'),
     path = scripts[scripts.length - 1].src.split('?')[0],
     cdn = path.split('/').slice(0, -1).join('/') + '/',
     alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch,
-    tarteaucitronForceLanguage = (tarteaucitronForceLanguage === undefined) ? '' : tarteaucitronForceLanguage;
+    tarteaucitronForceLanguage = (tarteaucitronForceLanguage === undefined) ? '' : tarteaucitronForceLanguage,
+    tarteaucitronProLoadServices;
 
 var tarteaucitron = {
     "cdn": cdn,
     "user": {},
     "lang": {},
     "services": {},
+    "added": [],
+    "idprocessed": [],
     "state": [],
     "launch": [],
+    "isAjax": false,
     "init": function (params) {
         "use strict";
+        var origOpen = XMLHttpRequest.prototype.open;
+        
         if (alreadyLaunch === 0) {
             alreadyLaunch = 1;
             if (window.addEventListener) {
                 window.addEventListener("load", tarteaucitron.load(params), false);
+                window.addEventListener("keydown", function (evt) {
+                    if (evt.keyCode === 27) {
+                        tarteaucitron.userInterface.closePanel();
+                    }
+                }, false);
+                window.addEventListener("hashchange", function () {
+                    if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
+                        tarteaucitron.userInterface.openPanel();
+                    }
+                }, false);
             } else {
-                window.attachEvent('onload', tarteaucitron.load(params));
+                window.attachEvent("onload", tarteaucitron.load(params));
+                window.attachEvent("onkeydown", function (evt) {
+                    if (evt.keyCode === 27) {
+                        tarteaucitron.userInterface.closePanel();
+                    }
+                });
+                window.attachEvent("onhashchange", function () {
+                    if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
+                        tarteaucitron.userInterface.openPanel();
+                    }
+                });
             }
+            
+            XMLHttpRequest.prototype.open = function () {
+                this.addEventListener('load', function () {
+                    if (typeof tarteaucitronProLoadServices === 'function') {
+                        tarteaucitronProLoadServices();
+                    }
+                });
+                origOpen.apply(this, arguments);
+            };
         }
     },
     "load": function (params) {
@@ -45,8 +80,9 @@ var tarteaucitron = {
             tarteaucitron.extend(defaults, params);
         }
         
-        // the hashtag need to be global
+        // global
         tarteaucitron.hashtag = defaults.hashtag;
+        tarteaucitron.highPrivacy = defaults.highPrivacy;
 
         // Step 1: load css
         linkElement.rel = 'stylesheet';
@@ -60,51 +96,11 @@ var tarteaucitron = {
 
                 var body = document.body,
                     div = document.createElement('div'),
-                    hostname = document.location.hostname,
-                    hostRef = document.referrer.split('/')[2],
-                    isNavigating = (hostRef === hostname) ? true : false,
-                    isAutostart,
-                    isWaiting,
-                    isDenied,
-                    isAllowed,
-                    isResponded,
-                    cookie = tarteaucitron.cookie.read(),
                     s = tarteaucitron.services,
-                    service,
                     html = '',
-                    lastTitle,
                     alert = false,
                     index,
                     orientation = 'Top';
-
-                // dedup, clean and sort job[]
-                function cleanArray(arr) {
-                    var i,
-                        len = arr.length,
-                        out = [],
-                        obj = {};
- 
-                    for (i = 0; i < len; i += 1) {
-                        if (!obj[arr[i]]) {
-                            obj[arr[i]] = {};
-                            if (tarteaucitron.services[arr[i]] !== undefined) {
-                                out.push(arr[i]);
-                            }
-                        }
-                    }
-                    return out;
-                }
-                
-                if (tarteaucitron.job === undefined) {
-                    return;
-                }
-                
-                tarteaucitron.job = cleanArray(tarteaucitron.job);
-                tarteaucitron.job = tarteaucitron.job.sort(function (a, b) {
-                    if (s[a].type + s[a].key > s[b].type + s[b].key) { return 1; }
-                    if (s[a].type + s[a].key < s[b].type + s[b].key) { return -1; }
-                    return 0;
-                });
 
                 // Step 3: prepare the html
                 html += '<div id="tarteaucitronPremium"></div>';
@@ -120,71 +116,91 @@ var tarteaucitron = {
                 html += '      </div>';
                 html += '   </div>';
                 html += '   <div id="tarteaucitronServices">';
-                
-                html += '<div class="tarteaucitronLine tarteaucitronMainLine">';
-                html += '   <div class="tarteaucitronName">';
-                html += '       <b>' + tarteaucitron.lang.all + '</b>';
+                html += '      <div class="tarteaucitronLine tarteaucitronMainLine">';
+                html += '         <div class="tarteaucitronName">';
+                html += '            <b>' + tarteaucitron.lang.all + '</b>';
+                html += '         </div>';
+                html += '         <div class="tarteaucitronAsk">';
+                html += '            <div id="tarteaucitronAllAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respondAll(true);">';
+                html += '               ' + tarteaucitron.lang.allow;
+                html += '            </div> ';
+                html += '            <div id="tarteaucitronAllDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respondAll(false);">';
+                html += '               ' + tarteaucitron.lang.deny;
+                html += '            </div>';
+                html += '         </div>';
+                html += '      </div>';
+                html += '      <div class="clear"></div>';
+                html += '      <div id="tarteaucitronServicesTitle_ads" class="tarteaucitronHidden">';
+                html += '          <div class="tarteaucitronTitle">';
+                html += '             ' + tarteaucitron.lang.ads.title;
+                html += '             <div class="tarteaucitronDetails">';
+                html += '                 ' + tarteaucitron.lang.ads.details;
+                html += '             </div>';
+                html += '          </div>';
+                html += '      </div>';
+                html += '      <div id="tarteaucitronServices_ads"></div>';
+                html += '      <div id="tarteaucitronServicesTitle_analytic" class="tarteaucitronHidden">';
+                html += '          <div class="tarteaucitronTitle">';
+                html += '             ' + tarteaucitron.lang.analytic.title;
+                html += '             <div class="tarteaucitronDetails">';
+                html += '                 ' + tarteaucitron.lang.analytic.details;
+                html += '             </div>';
+                html += '          </div>';
+                html += '      </div>';
+                html += '      <div id="tarteaucitronServices_analytic"></div>';
+                html += '      <div id="tarteaucitronServicesTitle_api" class="tarteaucitronHidden">';
+                html += '          <div class="tarteaucitronTitle">';
+                html += '             ' + tarteaucitron.lang.api.title;
+                html += '             <div class="tarteaucitronDetails">';
+                html += '                 ' + tarteaucitron.lang.api.details;
+                html += '             </div>';
+                html += '          </div>';
+                html += '      </div>';
+                html += '      <div id="tarteaucitronServices_api"></div>';
+                html += '      <div id="tarteaucitronServicesTitle_comment" class="tarteaucitronHidden">';
+                html += '          <div class="tarteaucitronTitle">';
+                html += '             ' + tarteaucitron.lang.comment.title;
+                html += '             <div class="tarteaucitronDetails">';
+                html += '                 ' + tarteaucitron.lang.comment.details;
+                html += '             </div>';
+                html += '          </div>';
+                html += '      </div>';
+                html += '      <div id="tarteaucitronServices_comment"></div>';
+                html += '      <div id="tarteaucitronServicesTitle_social" class="tarteaucitronHidden">';
+                html += '          <div class="tarteaucitronTitle">';
+                html += '             ' + tarteaucitron.lang.social.title;
+                html += '             <div class="tarteaucitronDetails">';
+                html += '                 ' + tarteaucitron.lang.social.details;
+                html += '             </div>';
+                html += '          </div>';
+                html += '      </div>';
+                html += '      <div id="tarteaucitronServices_social"></div>';
+                html += '      <div id="tarteaucitronServicesTitle_support" class="tarteaucitronHidden">';
+                html += '          <div class="tarteaucitronTitle">';
+                html += '             ' + tarteaucitron.lang.support.title;
+                html += '             <div class="tarteaucitronDetails">';
+                html += '                 ' + tarteaucitron.lang.support.details;
+                html += '             </div>';
+                html += '          </div>';
+                html += '      </div>';
+                html += '      <div id="tarteaucitronServices_support"></div>';
+                html += '      <div id="tarteaucitronServicesTitle_video" class="tarteaucitronHidden">';
+                html += '          <div class="tarteaucitronTitle">';
+                html += '             ' + tarteaucitron.lang.video.title;
+                html += '             <div class="tarteaucitronDetails">';
+                html += '                 ' + tarteaucitron.lang.video.details;
+                html += '             </div>';
+                html += '          </div>';
+                html += '      </div>';
+                html += '      <div id="tarteaucitronServices_video"></div>';
                 html += '   </div>';
-                html += '   <div class="tarteaucitronAsk">';
-                html += '       <div id="tarteaucitronAllAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respondAll(true);">';
-                html += '           ' + tarteaucitron.lang.allow;
-                html += '       </div> ';
-                html += '       <div id="tarteaucitronAllDenied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respondAll(false);">';
-                html += '           ' + tarteaucitron.lang.deny;
-                html += '       </div>';
-                html += '   </div>';
-                html += '</div>';
-                html += '<div class="clear"></div>';
-
-                for (index = 0; index < tarteaucitron.job.length; index += 1) {
-                    service = s[tarteaucitron.job[index]];
-
-                    if (lastTitle !== service.type) {
-                        html += '<div class="tarteaucitronTitle">';
-                        html += '   ' + tarteaucitron.lang[service.type].title;
-                        html += '   <div class="tarteaucitronDetails">';
-                        html += '       ' + tarteaucitron.lang[service.type].details;
-                        html += '   </div>';
-                        html += '</div>';
-
-                        lastTitle = service.type;
-                    }
-
-                    html += '<div id="' + service.key + 'Line" class="tarteaucitronLine">';
-                    html += '   <div class="tarteaucitronName">';
-                    html += '       <b>' + service.name + '</b><br/>';
-                    html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
-                    html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '/" target="_blank">';
-                    html += '           ' + tarteaucitron.lang.more;
-                    html += '       </a>';
-                    html += '        - ';
-                    html += '       <a href="' + service.uri + '" target="_blank">';
-                    html += '           ' + tarteaucitron.lang.source;
-                    html += '       </a>';
-                    html += '   </div>';
-                    html += '   <div class="tarteaucitronAsk">';
-                    html += '       <div id="' + service.key + 'Allowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">';
-                    html += '           ' + tarteaucitron.lang.allow;
-                    html += '       </div> ';
-                    html += '       <div id="' + service.key + 'Denied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respond(this, false);">';
-                    html += '           ' + tarteaucitron.lang.deny;
-                    html += '       </div>';
-                    html += '   </div>';
-                    html += '</div>';
-                    html += '<div class="clear"></div>';
-                }
-
-                html += '   </div>';
-                
                 if (defaults.removeCredit === false) {
                     html += '   <div id="tarteaucitronFooter">';
                     html += '      <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">' + tarteaucitron.lang.credit + '</a>';
                     html += '   </div>';
                 }
-                
                 html += '</div>';
                 
-                // get the banner orientation
                 if (defaults.orientation === 'bottom') {
                     orientation = 'Bottom';
                 }
@@ -226,63 +242,132 @@ var tarteaucitron = {
                 div.id = 'tarteaucitronRoot';
                 body.appendChild(div, body);
                 div.innerHTML = html;
-
-                // Step 4: load services
-                for (index = 0; index < tarteaucitron.job.length; index += 1) {
-                    service = s[tarteaucitron.job[index]];
-                    isAutostart = (!service.needConsent) ? true : false;
-                    isWaiting = (cookie.indexOf(service.key + '=wait') >= 0) ? true : false;
-                    isDenied = (cookie.indexOf(service.key + '=false') >= 0) ? true : false;
-                    isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false;
-                    isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0) ? true : false;
-
-                    // allow by default for non EU
-                    if (isResponded === false && tarteaucitron.user.bypass === true) {
-                        isAllowed = true;
-                        tarteaucitron.cookie.create(service.key, true);
+                
+                if (tarteaucitron.job !== undefined) {
+                    tarteaucitron.job = tarteaucitron.cleanArray(tarteaucitron.job);
+                    for (index = 0; index < tarteaucitron.job.length; index += 1) {
+                        tarteaucitron.addService(tarteaucitron.job[index]);
                     }
-                    
-                    if ((!isResponded && (isAutostart || (isNavigating && isWaiting)) && !defaults.highPrivacy) || isAllowed) {
-                        if (!isAllowed) {
-                            tarteaucitron.cookie.create(service.key, true);
-                        }
-                        if (tarteaucitron.launch[service.key] !== true) {
-                            tarteaucitron.launch[service.key] = true;
-                            service.js();
-                        }
-                        tarteaucitron.state[service.key] = true;
-                        tarteaucitron.userInterface.color(service.key, true);
-                    } else if (isDenied) {
-                        if (typeof service.fallback === 'function') {
-                            service.fallback();
-                        }
-                        tarteaucitron.state[service.key] = false;
-                        tarteaucitron.userInterface.color(service.key, false);
-                    } else if (!isResponded) {
-                        tarteaucitron.cookie.create(service.key, 'wait');
-                        if (typeof service.fallback === 'function') {
-                            service.fallback();
-                        }
-                    }
-
-                    if (tarteaucitron.state[service.key] === undefined && !alert) {
-                        alert = true;
-                    }
-                    
-                    tarteaucitron.cookie.checkCount(service.key);
                 }
-
-                // Step 5: display the alert
-                if (alert) {
-                    tarteaucitron.userInterface.openAlert();
-                } else {
-                    tarteaucitron.userInterface.closeAlert();
-                }
+                
+                tarteaucitron.isAjax = true;
+                tarteaucitron.job.push = function (id) {
+                    if (tarteaucitron.job.indexOf(id) === -1) {
+                        Array.prototype.push.call(this, id);
+                    }
+                    tarteaucitron.launch[id] = false;
+                    tarteaucitron.addService(id);
+                };
+                
                 if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
                     tarteaucitron.userInterface.openPanel();
                 }
             });
         });
+    },
+    "addService": function (serviceId) {
+        "use strict";
+        var html = '',
+            s = tarteaucitron.services,
+            service = s[serviceId],
+            cookie = tarteaucitron.cookie.read(),
+            hostname = document.location.hostname,
+            hostRef = document.referrer.split('/')[2],
+            isNavigating = (hostRef === hostname) ? true : false,
+            isAutostart = (!service.needConsent) ? true : false,
+            isWaiting = (cookie.indexOf(service.key + '=wait') >= 0) ? true : false,
+            isDenied = (cookie.indexOf(service.key + '=false') >= 0) ? true : false,
+            isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false,
+            isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0) ? true : false;
+
+        if (tarteaucitron.added[service.key] !== true) {
+            tarteaucitron.added[service.key] = true;
+            
+            html += '<div id="' + service.key + 'Line" class="tarteaucitronLine">';
+            html += '   <div class="tarteaucitronName">';
+            html += '       <b>' + service.name + '</b><br/>';
+            html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
+            html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '/" target="_blank">';
+            html += '           ' + tarteaucitron.lang.more;
+            html += '       </a>';
+            html += '        - ';
+            html += '       <a href="' + service.uri + '" target="_blank">';
+            html += '           ' + tarteaucitron.lang.source;
+            html += '       </a>';
+            html += '   </div>';
+            html += '   <div class="tarteaucitronAsk">';
+            html += '       <div id="' + service.key + 'Allowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">';
+            html += '           ' + tarteaucitron.lang.allow;
+            html += '       </div> ';
+            html += '       <div id="' + service.key + 'Denied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respond(this, false);">';
+            html += '           ' + tarteaucitron.lang.deny;
+            html += '       </div>';
+            html += '   </div>';
+            html += '</div>';
+           
+            document.getElementById('tarteaucitronServicesTitle_' + service.type).style.display = 'block';
+            document.getElementById('tarteaucitronServices_' + service.type).innerHTML += html;
+            
+            tarteaucitron.userInterface.order(service.type);
+        }
+
+        // allow by default for non EU
+        if (isResponded === false && tarteaucitron.user.bypass === true) {
+            isAllowed = true;
+            tarteaucitron.cookie.create(service.key, true);
+        }
+       
+        if ((!isResponded && (isAutostart || (isNavigating && isWaiting)) && !tarteaucitron.highPrivacy) || isAllowed) {
+            if (!isAllowed) {
+                tarteaucitron.cookie.create(service.key, true);
+            }
+            if (tarteaucitron.launch[service.key] !== true) {
+                tarteaucitron.launch[service.key] = true;
+                service.js();
+            }
+            tarteaucitron.state[service.key] = true;
+            tarteaucitron.userInterface.color(service.key, true);
+        } else if (isDenied) {
+            if (typeof service.fallback === 'function') {
+                service.fallback();
+            }
+            tarteaucitron.state[service.key] = false;
+            tarteaucitron.userInterface.color(service.key, false);
+        } else if (!isResponded) {
+            tarteaucitron.cookie.create(service.key, 'wait');
+            if (typeof service.fallback === 'function') {
+                service.fallback();
+            }
+            tarteaucitron.userInterface.color(service.key, 'wait');
+            tarteaucitron.userInterface.openAlert();
+        }
+
+        tarteaucitron.cookie.checkCount(service.key);
+    },
+    "cleanArray": function cleanArray(arr) {
+        "use strict";
+        var i,
+            len = arr.length,
+            out = [],
+            obj = {},
+            s = tarteaucitron.services;
+ 
+        for (i = 0; i < len; i += 1) {
+            if (!obj[arr[i]]) {
+                obj[arr[i]] = {};
+                if (tarteaucitron.services[arr[i]] !== undefined) {
+                    out.push(arr[i]);
+                }
+            }
+        }
+                
+        out = out.sort(function (a, b) {
+            if (s[a].type + s[a].key > s[b].type + s[b].key) { return 1; }
+            if (s[a].type + s[a].key < s[b].type + s[b].key) { return -1; }
+            return 0;
+        });
+                    
+        return out;
     },
     "userInterface": {
         "css": function (id, property, value) {
@@ -301,13 +386,15 @@ var tarteaucitron = {
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
-                if (tarteaucitron.launch[key] !== true && status === true) {
-                    tarteaucitron.launch[key] = true;
-                    tarteaucitron.services[key].js();
+                if (tarteaucitron.state[key] !== status) {
+                    if (tarteaucitron.launch[key] !== true && status === true) {
+                        tarteaucitron.launch[key] = true;
+                        tarteaucitron.services[key].js();
+                    }
+                    tarteaucitron.state[key] = status;
+                    tarteaucitron.cookie.create(key, status);
+                    tarteaucitron.userInterface.color(key, status);
                 }
-                tarteaucitron.state[key] = status;
-                tarteaucitron.cookie.create(key, status);
-                tarteaucitron.userInterface.color(key, status);
             }
         },
         "respond": function (el, status) {
@@ -428,6 +515,21 @@ var tarteaucitron = {
             var c = 'tarteaucitron';
             tarteaucitron.userInterface.css(c + 'AlertSmall', 'display', 'block');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'none');
+        },
+        "order": function (id) {
+            "use strict";
+            var main = document.getElementById('tarteaucitronServices_' + id),
+                allDivs = main.childNodes,
+                store = [],
+                i;
+
+            Array.prototype.map.call(main.children, Object).sort(function (a, b) {
+                if (a.id > b.id) { return 1; }
+                if (a.id < b.id) { return -1; }
+                return 0;
+            }).forEach(function (element) {
+                main.appendChild(element);
+            });
         }
     },
     "cookie": {
