@@ -96,11 +96,17 @@ var tarteaucitron = {
 
                 var body = document.body,
                     div = document.createElement('div'),
-                    s = tarteaucitron.services,
                     html = '',
-                    alert = false,
                     index,
-                    orientation = 'Top';
+                    orientation = 'Top',
+                    cat = ['ads', 'analytic', 'api', 'comment', 'social', 'support', 'video'],
+                    i;
+                
+                cat = cat.sort(function (a, b) {
+                    if (tarteaucitron.lang[a].title > tarteaucitron.lang[b].title) { return 1; }
+                    if (tarteaucitron.lang[a].title < tarteaucitron.lang[b].title) { return -1; }
+                    return 0;
+                });
 
                 // Step 3: prepare the html
                 html += '<div id="tarteaucitronPremium"></div>';
@@ -130,69 +136,17 @@ var tarteaucitron = {
                 html += '         </div>';
                 html += '      </div>';
                 html += '      <div class="clear"></div>';
-                html += '      <div id="tarteaucitronServicesTitle_ads" class="tarteaucitronHidden">';
-                html += '          <div class="tarteaucitronTitle">';
-                html += '             ' + tarteaucitron.lang.ads.title;
-                html += '             <div class="tarteaucitronDetails">';
-                html += '                 ' + tarteaucitron.lang.ads.details;
-                html += '             </div>';
-                html += '          </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronServices_ads"></div>';
-                html += '      <div id="tarteaucitronServicesTitle_analytic" class="tarteaucitronHidden">';
-                html += '          <div class="tarteaucitronTitle">';
-                html += '             ' + tarteaucitron.lang.analytic.title;
-                html += '             <div class="tarteaucitronDetails">';
-                html += '                 ' + tarteaucitron.lang.analytic.details;
-                html += '             </div>';
-                html += '          </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronServices_analytic"></div>';
-                html += '      <div id="tarteaucitronServicesTitle_api" class="tarteaucitronHidden">';
-                html += '          <div class="tarteaucitronTitle">';
-                html += '             ' + tarteaucitron.lang.api.title;
-                html += '             <div class="tarteaucitronDetails">';
-                html += '                 ' + tarteaucitron.lang.api.details;
-                html += '             </div>';
-                html += '          </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronServices_api"></div>';
-                html += '      <div id="tarteaucitronServicesTitle_comment" class="tarteaucitronHidden">';
-                html += '          <div class="tarteaucitronTitle">';
-                html += '             ' + tarteaucitron.lang.comment.title;
-                html += '             <div class="tarteaucitronDetails">';
-                html += '                 ' + tarteaucitron.lang.comment.details;
-                html += '             </div>';
-                html += '          </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronServices_comment"></div>';
-                html += '      <div id="tarteaucitronServicesTitle_social" class="tarteaucitronHidden">';
-                html += '          <div class="tarteaucitronTitle">';
-                html += '             ' + tarteaucitron.lang.social.title;
-                html += '             <div class="tarteaucitronDetails">';
-                html += '                 ' + tarteaucitron.lang.social.details;
-                html += '             </div>';
-                html += '          </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronServices_social"></div>';
-                html += '      <div id="tarteaucitronServicesTitle_support" class="tarteaucitronHidden">';
-                html += '          <div class="tarteaucitronTitle">';
-                html += '             ' + tarteaucitron.lang.support.title;
-                html += '             <div class="tarteaucitronDetails">';
-                html += '                 ' + tarteaucitron.lang.support.details;
-                html += '             </div>';
-                html += '          </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronServices_support"></div>';
-                html += '      <div id="tarteaucitronServicesTitle_video" class="tarteaucitronHidden">';
-                html += '          <div class="tarteaucitronTitle">';
-                html += '             ' + tarteaucitron.lang.video.title;
-                html += '             <div class="tarteaucitronDetails">';
-                html += '                 ' + tarteaucitron.lang.video.details;
-                html += '             </div>';
-                html += '          </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronServices_video"></div>';
+                for (i = 0; i < cat.length; i += 1) {
+                    html += '      <div id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
+                    html += '          <div class="tarteaucitronTitle">';
+                    html += '             ' + tarteaucitron.lang[cat[i]].title;
+                    html += '             <div class="tarteaucitronDetails">';
+                    html += '                 ' + tarteaucitron.lang[cat[i]].details;
+                    html += '             </div>';
+                    html += '          </div>';
+                    html += '      </div>';
+                    html += '      <div id="tarteaucitronServices_' + cat[i] + '"></div>';
+                }
                 html += '   </div>';
                 if (defaults.removeCredit === false) {
                     html += '   <div id="tarteaucitronFooter">';
@@ -524,8 +478,8 @@ var tarteaucitron = {
                 i;
 
             Array.prototype.map.call(main.children, Object).sort(function (a, b) {
-                if (a.id > b.id) { return 1; }
-                if (a.id < b.id) { return -1; }
+                if (tarteaucitron.services[a.id.replace(/Line/g, '')].name > tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return 1; }
+                if (tarteaucitron.services[a.id.replace(/Line/g, '')].name < tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return -1; }
                 return 0;
             }).forEach(function (element) {
                 main.appendChild(element);
