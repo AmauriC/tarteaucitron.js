@@ -18,6 +18,7 @@ Bonus:
 
 ## Supported services
 * Advertising network
+  * Amazon
   * Clicmanager
   * Criteo
   * FERank (pub)
