@@ -17,15 +17,19 @@ var tarteaucitron = {
     "idprocessed": [],
     "state": [],
     "launch": [],
+    "parameters": {},
     "isAjax": false,
     "init": function (params) {
         "use strict";
-        var origOpen = XMLHttpRequest.prototype.open;
+        var origOpen;
         
+        tarteaucitron.parameters = params;
         if (alreadyLaunch === 0) {
             alreadyLaunch = 1;
             if (window.addEventListener) {
-                window.addEventListener("load", tarteaucitron.load(params), false);
+                window.addEventListener("load", function () {
+                    tarteaucitron.load();
+                }, false);
                 window.addEventListener("keydown", function (evt) {
                     if (evt.keyCode === 27) {
                         tarteaucitron.userInterface.closePanel();
@@ -37,7 +41,9 @@ var tarteaucitron = {
                     }
                 }, false);
             } else {
-                window.attachEvent("onload", tarteaucitron.load(params));
+                window.attachEvent("onload", function () {
+                    tarteaucitron.load();
+                });
                 window.attachEvent("onkeydown", function (evt) {
                     if (evt.keyCode === 27) {
                         tarteaucitron.userInterface.closePanel();
@@ -51,6 +57,7 @@ var tarteaucitron = {
             }
             
             if (typeof XMLHttpRequest !== 'undefined') {
+                origOpen = XMLHttpRequest.prototype.open;
                 XMLHttpRequest.prototype.open = function () {
                     
                     if (window.addEventListener) {
@@ -71,7 +78,7 @@ var tarteaucitron = {
             }
         }
     },
-    "load": function (params) {
+    "load": function () {
         "use strict";
         var cdn = tarteaucitron.cdn,
             language = tarteaucitron.getLanguage(),
@@ -84,7 +91,8 @@ var tarteaucitron = {
                 "orientation": "top",
                 "removeCredit": false,
                 "showAlertSmall": true
-            };
+            },
+            params = tarteaucitron.parameters;
         
         // Step 0: get params
         if (params !== undefined) {
@@ -488,13 +496,15 @@ var tarteaucitron = {
                 store = [],
                 i;
 
-            Array.prototype.map.call(main.children, Object).sort(function (a, b) {
-                if (tarteaucitron.services[a.id.replace(/Line/g, '')].name > tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return 1; }
-                if (tarteaucitron.services[a.id.replace(/Line/g, '')].name < tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return -1; }
-                return 0;
-            }).forEach(function (element) {
-                main.appendChild(element);
-            });
+            if (typeof Array.prototype.map === 'function') {
+                Array.prototype.map.call(main.children, Object).sort(function (a, b) {
+                    if (tarteaucitron.services[a.id.replace(/Line/g, '')].name > tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return 1; }
+                    if (tarteaucitron.services[a.id.replace(/Line/g, '')].name < tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return -1; }
+                    return 0;
+                }).forEach(function (element) {
+                    main.appendChild(element);
+                });
+            }
         }
     },
     "cookie": {
