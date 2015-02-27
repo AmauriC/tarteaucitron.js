@@ -691,7 +691,7 @@ var tarteaucitron = {
                     childId = id + Math.floor(Math.random() * 99999999999);
                     document.getElementById(id).innerHTML += '<div id="' + childId + '"></div>';
                     tarteaucitron.makeAsync.getAndParse(scripts[i].getAttribute('src'), childId);
-                } else if (type.indexOf('javascript') !== -1) {
+                } else if (type.indexOf('javascript') !== -1 || type === '') {
                     eval(scripts[i].innerHTML);
                 }
             }
