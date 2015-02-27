@@ -668,13 +668,13 @@ var tarteaucitron = {
             setTimeout(function () {
                 document.write = savedWrite;
                 document.writeln = savedWriteln;
-            }, 60000);
+            }, 20000);
             
             tarteaucitron.makeAsync.getAndParse(url, id);
         },
         "getAndParse": function (url, id) {
             "use strict";
-            if (tarteaucitron.makeAsync.antiGhost > 10) {
+            if (tarteaucitron.makeAsync.antiGhost > 9) {
                 tarteaucitron.makeAsync.antiGhost = 0;
                 return;
             }
@@ -685,7 +685,7 @@ var tarteaucitron = {
                 tarteaucitron.makeAsync.execJS(id);
             });
         },
-        "execJS": function forceJsExec(id) {
+        "execJS": function (id) {
             /* not strict because third party scripts may have errors */
             var i,
                 scripts,
