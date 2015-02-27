@@ -24,6 +24,8 @@
         border: 0 !important;
         bottom: 0 !important;
         height: 100% !important;
+        left: 0 !important;
+        margin: 0 !important;
         max-height: 100% !important;
         max-width: 100% !important;
         top: 0 !important;
@@ -38,7 +40,8 @@
 @media screen and (min-width:768px) and (max-width:991px) {
     #tarteaucitron {
         border: 0 !important;
-        margin: 0 5%;
+        left: 0 !important;
+        margin: 0 5% !important;
         max-height: 80% !important;
         width: 90% !important;
     }
@@ -94,10 +97,11 @@
  * Control panel
  */
 #tarteaucitronBack {
-    background: rgba(255, 255, 255, 0.7);
+    background: #fff;
     display: none;
     height: 100%;
     left: 0;
+    opacity: 0.7;
     position: fixed;
     top: 0;
     width: 100%;
@@ -108,13 +112,12 @@
     background: #fff;
     box-shadow: 0 0 15px #4a4a4a;
     display: none;
-    left: 0;
-    margin: 0 auto;
+    left: 50%;
+    margin: 0 auto 0 -430px;
     max-height: 80%;
     overflow: auto;
     padding: 0;
     position: fixed;
-    right: 0;
     top: 10%;
     width: 860px;
     z-index: 2147483647;
@@ -187,7 +190,7 @@
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine {
-    background: #444 !important;
+    background: #444;
     border: 0;
     margin-bottom: 5px;
 }
@@ -269,7 +272,7 @@
 
 #tarteaucitronAlertBig {
     background: #333;
-    color: #fff !important;
+    color: #fff;
     display: none;
     font-size: 15px !important;
     left: 0;
@@ -311,7 +314,7 @@
 #tarteaucitronAlertSmall {
     background: #333;
     bottom: 0;
-    color: #fff !important;
+    color: #fff;
     cursor: pointer;
     display: none;
     font-size: 11px !important;
@@ -319,6 +322,7 @@
     position: fixed;
     right: 0;
     text-align: center;
+    width: 120px;
     z-index: 2147483645;
 }
 
@@ -375,7 +379,7 @@
 }
 
 .tac_activate .tac_float b {
-    color: #fff !important;
+    color: #fff;
 }
 
 .tac_activate .tac_float .tarteaucitronAllow {
