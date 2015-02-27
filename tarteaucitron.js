@@ -50,14 +50,25 @@ var tarteaucitron = {
                 });
             }
             
-            XMLHttpRequest.prototype.open = function () {
-                this.addEventListener('load', function () {
-                    if (typeof tarteaucitronProLoadServices === 'function') {
-                        tarteaucitronProLoadServices();
+            if (typeof XMLHttpRequest !== 'undefined') {
+                XMLHttpRequest.prototype.open = function () {
+                    
+                    if (window.addEventListener) {
+                        this.addEventListener("load", function () {
+                            if (typeof tarteaucitronProLoadServices === 'function') {
+                                tarteaucitronProLoadServices();
+                            }
+                        }, false);
+                    } else {
+                        this.attachEvent("onload", function () {
+                            if (typeof tarteaucitronProLoadServices === 'function') {
+                                tarteaucitronProLoadServices();
+                            }
+                        });
                     }
-                });
-                origOpen.apply(this, arguments);
-            };
+                    origOpen.apply(this, arguments);
+                };
+            }
         }
     },
     "load": function (params) {
