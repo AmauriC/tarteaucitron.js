@@ -195,6 +195,10 @@
     margin-bottom: 5px;
 }
 
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine:hover {
+    background: #444;
+}
+
 #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName {
     margin-top: 2px;
 }
