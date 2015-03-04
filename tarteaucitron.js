@@ -66,13 +66,17 @@ var tarteaucitron = {
                                 tarteaucitronProLoadServices();
                             }
                         }, false);
-                    } else {
+                    } else if (typeof this.attachEvent !== 'undefined') {
                         this.attachEvent("onload", function () {
                             if (typeof tarteaucitronProLoadServices === 'function') {
                                 tarteaucitronProLoadServices();
                             }
                         });
-                    }
+                    } else {
+                        if (typeof tarteaucitronProLoadServices === 'function') {
+                            setTimeout(tarteaucitronProLoadServices, 1000);
+						}
+					}
                     origOpen.apply(this, arguments);
                 };
             }
@@ -225,6 +229,19 @@ var tarteaucitron = {
                 
                 tarteaucitron.isAjax = true;
                 tarteaucitron.job.push = function (id) {
+                    
+                    // ie <9 hack
+                    if (typeof tarteaucitron.job.indexOf === 'undefined') {
+                        tarteaucitron.job.indexOf = function (obj, start) {
+                            var i,
+                                j = this.length;
+                            for (i = (start || 0); i < j; i += 1) {
+                                if (this[i] === obj) { return i; }
+                            }
+                            return -1;
+                        };
+                    }
+                    
                     if (tarteaucitron.job.indexOf(id) === -1) {
                         Array.prototype.push.call(this, id);
                     }
