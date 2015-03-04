@@ -75,8 +75,8 @@ var tarteaucitron = {
                     } else {
                         if (typeof tarteaucitronProLoadServices === 'function') {
                             setTimeout(tarteaucitronProLoadServices, 1000);
-						}
-					}
+                        }
+                    }
                     origOpen.apply(this, arguments);
                 };
             }
