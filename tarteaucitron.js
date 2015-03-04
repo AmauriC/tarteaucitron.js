@@ -707,7 +707,7 @@ var tarteaucitron = {
             }
             tarteaucitron.makeAsync.antiGhost += 1;
             tarteaucitron.addScript(url, '', function () {
-                document.getElementById(id).innerHTML += tarteaucitron.makeAsync.buffer;
+                document.getElementById(id).innerHTML += "<span style='display:none'>&nbsp;</span>" + tarteaucitron.makeAsync.buffer;
                 tarteaucitron.makeAsync.buffer = '';
                 tarteaucitron.makeAsync.execJS(id);
             });
@@ -725,7 +725,7 @@ var tarteaucitron = {
                 if (type === '') {
                     type = (scripts[i].getAttribute('language') !== null) ? scripts[i].getAttribute('language') : '';
                 }
-                if (scripts[i].getAttribute('src') !== null) {
+                if (scripts[i].getAttribute('src') !== null && scripts[i].getAttribute('src') !== '') {
                     childId = id + Math.floor(Math.random() * 99999999999);
                     document.getElementById(id).innerHTML += '<div id="' + childId + '"></div>';
                     tarteaucitron.makeAsync.getAndParse(scripts[i].getAttribute('src'), childId);
