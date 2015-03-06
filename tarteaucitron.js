@@ -79,7 +79,10 @@ var tarteaucitron = {
                             setTimeout(tarteaucitronProLoadServices, 1000);
                         }
                     }
-                    origOpen.apply(this, arguments);
+                    
+                    try {
+                        origOpen.apply(this, arguments);
+                    } catch (err) {}
                 };
             }
         }
