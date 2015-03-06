@@ -1,5 +1,8 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
+    "adblock": "Ciao! Questo sito Gioca trasparenza e vi dà la scelta del servizio di terze parti per attivare.",
+    "adblock_call": "Prega di disattivare il adblocker per iniziare a personalizzare.",
+    "reload": "Aggiorna la pagina",
     "alertBig": "Continuando a navigare nel sito, autorizzi l’utilizzo dei cookies inviati da domini di terze parti",
     "alertBigPrivacy": "Questo sito fa uso di cookies e ti consente di decidere se accettarli o rifiutarli",
     "alertSmall": "Gestione dei servizi",

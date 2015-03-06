@@ -1,5 +1,8 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
+    "adblock": "Witaj! Ta witryna grać przejrzystość i daje możliwość wyboru usług stron trzecich do aktywacji.",
+    "adblock_call": "Proszę wyłączyć AdBlocker na rozpoczęcie dostosowywania.",
+    "reload": "Odśwież",
     "alertBig": "Pozostajac na tej stronie zgadzasz sie na korzystanie ze wszystkich zewnetrzynych uslug",
     "alertBigPrivacy": "Ta witryna używa plików cookie i pozwala kontrolować ich aktywacje",
     "alertSmall": "Zarządzanie usługami",

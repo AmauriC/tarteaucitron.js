@@ -6,7 +6,8 @@ var scripts = document.getElementsByTagName('script'),
     cdn = path.split('/').slice(0, -1).join('/') + '/',
     alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch,
     tarteaucitronForceLanguage = (tarteaucitronForceLanguage === undefined) ? '' : tarteaucitronForceLanguage,
-    tarteaucitronProLoadServices;
+    tarteaucitronProLoadServices,
+    tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
     "cdn": cdn,
@@ -90,6 +91,7 @@ var tarteaucitron = {
             pathToServices = cdn + 'tarteaucitron.services.js',
             linkElement = document.createElement('link'),
             defaults = {
+                "adblocker": true,
                 "hashtag": '#tarteaucitron',
                 "highPrivacy": false,
                 "orientation": "top",
@@ -215,42 +217,68 @@ var tarteaucitron = {
                     html += '   </div>';
                     html += '</div>';
                 }
-
-                div.id = 'tarteaucitronRoot';
-                body.appendChild(div, body);
-                div.innerHTML = html;
                 
-                if (tarteaucitron.job !== undefined) {
-                    tarteaucitron.job = tarteaucitron.cleanArray(tarteaucitron.job);
-                    for (index = 0; index < tarteaucitron.job.length; index += 1) {
-                        tarteaucitron.addService(tarteaucitron.job[index]);
-                    }
-                }
+                tarteaucitron.addScript(tarteaucitron.cdn + 'advertising.js', '', function () {
+                    if (tarteaucitronNoAdBlocker === true || defaults.adblocker === false) {
+                        div.id = 'tarteaucitronRoot';
+                        body.appendChild(div, body);
+                        div.innerHTML = html;
                 
-                tarteaucitron.isAjax = true;
-                tarteaucitron.job.push = function (id) {
-                    
-                    // ie <9 hack
-                    if (typeof tarteaucitron.job.indexOf === 'undefined') {
-                        tarteaucitron.job.indexOf = function (obj, start) {
-                            var i,
-                                j = this.length;
-                            for (i = (start || 0); i < j; i += 1) {
-                                if (this[i] === obj) { return i; }
+                        if (tarteaucitron.job !== undefined) {
+                            tarteaucitron.job = tarteaucitron.cleanArray(tarteaucitron.job);
+                            for (index = 0; index < tarteaucitron.job.length; index += 1) {
+                                tarteaucitron.addService(tarteaucitron.job[index]);
                             }
-                            return -1;
-                        };
-                    }
-                    
-                    if (tarteaucitron.job.indexOf(id) === -1) {
-                        Array.prototype.push.call(this, id);
-                    }
-                    tarteaucitron.launch[id] = false;
-                    tarteaucitron.addService(id);
-                };
+                        }
                 
-                if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
-                    tarteaucitron.userInterface.openPanel();
+                        tarteaucitron.isAjax = true;
+                        tarteaucitron.job.push = function (id) {
+                    
+                            // ie <9 hack
+                            if (typeof tarteaucitron.job.indexOf === 'undefined') {
+                                tarteaucitron.job.indexOf = function (obj, start) {
+                                    var i,
+                                        j = this.length;
+                                    for (i = (start || 0); i < j; i += 1) {
+                                        if (this[i] === obj) { return i; }
+                                    }
+                                    return -1;
+                                };
+                            }
+                    
+                            if (tarteaucitron.job.indexOf(id) === -1) {
+                                Array.prototype.push.call(this, id);
+                            }
+                            tarteaucitron.launch[id] = false;
+                            tarteaucitron.addService(id);
+                        };
+                
+                        if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
+                            tarteaucitron.userInterface.openPanel();
+                        }
+                
+                        tarteaucitron.cookie.number();
+                        setInterval(tarteaucitron.cookie.number, 60000);
+                    }
+                });
+                
+                if (defaults.adblocker === true) {
+                    setTimeout(function () {
+                        if (tarteaucitronNoAdBlocker === false) {
+                            html = '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '" style="display:block">';
+                            html += '   <span id="tarteaucitronDisclaimerAlert">';
+                            html += '       ' + tarteaucitron.lang.adblock + '<br/>';
+                            html += '       <b>' + tarteaucitron.lang.adblock_call + '</b>';
+                            html += '   </span>';
+                            html += '   <span id="tarteaucitronPersonalize" onclick="location.reload();">';
+                            html += '       ' + tarteaucitron.lang.reload;
+                            html += '   </span>';
+                            html += '</div>';
+                            div.id = 'tarteaucitronRoot';
+                            body.appendChild(div, body);
+                            div.innerHTML = html;
+                        }
+                    }, 1500);
                 }
             });
         });

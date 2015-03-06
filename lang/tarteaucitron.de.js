@@ -1,5 +1,8 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
+    "adblock": "Hallo! Diese Seite zu spielen Transparenz und gibt Ihnen die Wahl von Dritten als Service zu aktivieren.",
+    "adblock_call": "Bitte deaktivieren Sie Ihren adblocker zu starten Customizing.",
+    "reload": "Seite aktualisieren",
     "alertBig": "Wenn Sie diese Webseite benutzen, stimmen Sie der Benutzung von externen Diensten zu",
     "alertBigPrivacy": "Diese Webseite verwendet 'Cookies' und ermöglicht dadurch Kontrolle, welche Dienste benutzt werden dürfen",
     "alertSmall": "Service-Kontrolle",
