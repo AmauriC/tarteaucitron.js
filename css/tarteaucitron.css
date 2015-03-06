@@ -405,6 +405,10 @@
     text-align: left;
 }
 
+#tarteaucitronAlertSmall #tarteaucitronCookiesList b {
+    color: #fff;
+}
+
 #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronCookiesListMain {
     padding: 4px;
     word-wrap: break-word;
