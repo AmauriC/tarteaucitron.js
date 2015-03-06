@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 152,
+    "version": 155,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -561,7 +561,7 @@ var tarteaucitron = {
                 return;
             }
             
-            tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'bottom', (parseInt(document.getElementById('tarteaucitronAlertSmall').offsetHeight, 10) + 3) + 'px');
+            tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'bottom', (parseInt(document.getElementById('tarteaucitronAlertSmall').offsetHeight, 10) + 10) + 'px');
             if (div.style.display !== 'block') {
                 div.style.display = 'block';
             } else {
@@ -591,6 +591,7 @@ var tarteaucitron = {
         }
     },
     "cookie": {
+        "owner": {},
         "create": function (key, status) {
             "use strict";
             var d = new Date(),
@@ -650,6 +651,12 @@ var tarteaucitron = {
                 for (i = 0; i < nb; i += 1) {
                     if (document.cookie.indexOf(arr[i] + '=') !== -1) {
                         nbCurrent += 1;
+                        if (tarteaucitron.cookie.owner[arr[i]] === undefined) {
+                            tarteaucitron.cookie.owner[arr[i]] = [];
+                        }
+                        if (tarteaucitron.cookie.crossIndexOf(tarteaucitron.cookie.owner[arr[i]], tarteaucitron.services[key].name) === false) {
+                            tarteaucitron.cookie.owner[arr[i]].push(tarteaucitron.services[key].name);
+                        }
                     }
                 }
                 
@@ -678,21 +685,43 @@ var tarteaucitron = {
             
             tarteaucitron.cookie.number();
         },
+        "crossIndexOf": function (arr, match) {
+            "use strict";
+            var i;
+            for (i = 0; i < arr.length; i += 1) {
+                if (arr[i] === match) {
+                    return true;
+                }
+            }
+            return false;
+        },
         "number": function () {
             "use strict";
             var cookies = document.cookie.split(';'),
                 nb = (document.cookie !== '') ? cookies.length : 0,
                 html = '',
                 i,
-                s = (nb > 1) ? 's' : '';
+                s = (nb > 1) ? 's' : '',
+                name;
+            
+            cookies = cookies.sort(function (a, b) {
+                if (a > b) { return 1; }
+                if (a < b) { return -1; }
+                return 0;
+            });
 
-            html += '<div class="tarteaucitronCookiesListMain" style="background: none !important;cursor: text;margin-bottom:8px">';
-            html += '    <b style="font-size:15px;">' + nb + ' cookie' + s + '</b>';
+            html += '<div class="tarteaucitronCookiesListMain" id="tarteaucitronCookiesTitle">';
+            html += '    <b>' + nb + ' cookie' + s + '</b>';
             html += '</div>';
             if (document.cookie !== '') {
                 for (i = 0; i < nb; i += 1) {
+                    name = cookies[i].split('=', 1).toString().replace(/ /g, '');
                     html += '<div class="tarteaucitronCookiesListMain">';
-                    html += '    <div class="tarteaucitronCookiesListLeft"><a href="#" style="text-decoration:none" onclick="tarteaucitron.cookie.purge([\'' + cookies[i].split('=', 1) + '\']);tarteaucitron.cookie.number();return false">[x]</a> <b>' + cookies[i].split('=', 1) + '</b></div>';
+                    html += '    <div class="tarteaucitronCookiesListLeft"><a href="#" onclick="tarteaucitron.cookie.purge([\'' + cookies[i].split('=', 1) + '\']);tarteaucitron.cookie.number();return false">[x]</a> <b>' + name + '</b>';
+                    if (tarteaucitron.cookie.owner[name] !== undefined) {
+                        html += '        <br/>' + tarteaucitron.cookie.owner[name].join('<br/>');
+                    }
+                    html += '    </div>';
                     html += '    <div class="tarteaucitronCookiesListRight">' + cookies[i].split('=').slice(1).join('=') + '</div>';
                     html += '</div>';
                 }
