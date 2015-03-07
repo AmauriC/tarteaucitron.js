@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 155,
+    "version": 156,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -529,17 +529,16 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
-            
-            // setting hash tag
-            if (tarteaucitron.hashtag !== '') {
-                document.location.hash = tarteaucitron.hashtag;
-            }
         },
         "closePanel": function () {
             "use strict";
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
-            document.location.hash = '';
+            tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
+            
+            if (document.location.hash === tarteaucitron.hashtag) {
+                document.location.hash = '';
+            }
         },
         "openAlert": function () {
             "use strict";
@@ -563,9 +562,14 @@ var tarteaucitron = {
             
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'bottom', (parseInt(document.getElementById('tarteaucitronAlertSmall').offsetHeight, 10) + 10) + 'px');
             if (div.style.display !== 'block') {
+                tarteaucitron.cookie.number();
                 div.style.display = 'block';
+                tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
+                tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
             } else {
                 div.style.display = 'none';
+                tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
+                tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
             }
         },
         "order": function (id) {
