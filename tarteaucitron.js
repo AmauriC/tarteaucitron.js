@@ -289,9 +289,13 @@ var tarteaucitron = {
                             html += '       ' + tarteaucitron.lang.reload;
                             html += '   </span>';
                             html += '</div>';
+                            html += '<div id="tarteaucitronPremium"></div>';
                             div.id = 'tarteaucitronRoot';
                             body.appendChild(div, body);
                             div.innerHTML = html;
+                            tarteaucitron.pro('!adblocker=true');
+                        } else {
+                            tarteaucitron.pro('!adblocker=false');
                         }
                     }, 1500);
                 }
