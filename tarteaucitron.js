@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 156,
+    "version": 156.2,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -226,7 +226,12 @@ var tarteaucitron = {
                         html += '   --><div id="tarteaucitronCookiesNumber" onclick="tarteaucitron.userInterface.toggleCookiesList();">';
                         html += '       0';
                         html += '   </div>';
-                        html += '   <div id="tarteaucitronCookiesListContainer"><div id="tarteaucitronCookiesList"></div></div>';
+                        html += '   <div id="tarteaucitronCookiesListContainer">';
+                        html += '       <div id="tarteaucitronClosePanelCookie" onclick="tarteaucitron.userInterface.closePanel();">';
+                        html += '           ' + tarteaucitron.lang.close;
+                        html += '       </div>';
+                        html += '       <div id="tarteaucitronCookiesList"></div>';
+                        html += '    </div>';
                     } else {
                         html += '   </div>';
                     }
@@ -796,29 +801,30 @@ var tarteaucitron = {
     },
     "addScript": function (url, id, callback, execute) {
         "use strict";
-        var script = document.createElement('script'),
+        var script,
             done = false;
-        
-        script.type = 'text/javascript';
-        script.id = (id !== undefined) ? id : '';
-        script.async = true;
-        script.src = url;
-
-        if (typeof callback === 'function') {
-            script.onreadystatechange = script.onload = function () {
-                var state = script.readyState;
-                if (!done && (!state || /loaded|complete/.test(state))) {
-                    done = true;
-                    callback();
-                }
-            };
-        }
         
         if (execute === false) {
             if (typeof callback === 'function') {
                 callback();
             }
         } else {
+            script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.id = (id !== undefined) ? id : '';
+            script.async = true;
+            script.src = url;
+
+            if (typeof callback === 'function') {
+                script.onreadystatechange = script.onload = function () {
+                    var state = script.readyState;
+                    if (!done && (!state || /loaded|complete/.test(state))) {
+                        done = true;
+                        callback();
+                    }
+                };
+            }
+    
             document.getElementsByTagName('head')[0].appendChild(script);
         }
     },
