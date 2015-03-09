@@ -2,13 +2,6 @@
  * Responsive layout for the control panel
  */
 @media screen and (max-width:479px) {
-    #tarteaucitron #tarteaucitronInfo {
-        background-image: none;
-        font-size: 16px !important;
-        padding-right: 0;
-        text-align: center;
-    }
-
     #tarteaucitron .tarteaucitronLine .tarteaucitronName {
         width: 90% !important;
     }
@@ -31,6 +24,14 @@
         max-width: 100% !important;
         top: 0 !important;
         width: 100% !important;
+    }
+    
+    #tarteaucitron .tarteaucitronBorder {
+        border: 0 !important;
+    }
+    
+    #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList {
+        border: 0 !important;
     }
     
     #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
@@ -111,18 +112,23 @@
 }
 
 #tarteaucitron {
-    background: #fff;
-    box-shadow: 0 0 15px #4a4a4a;
     display: none;
+    max-height: 80%;
     left: 50%;
     margin: 0 auto 0 -430px;
-    max-height: 80%;
-    overflow: auto;
     padding: 0;
     position: fixed;
-    top: 10%;
+    top: 6%;
     width: 860px;
     z-index: 2147483647;
+}
+
+#tarteaucitron .tarteaucitronBorder {
+    background: #fff;
+    border: 4px solid #333;
+    border-top: 0;
+    height: auto;
+    overflow: auto;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronClosePanelCookie,
@@ -140,16 +146,6 @@
     width: 70px;
 }
 
-#tarteaucitron #tarteaucitronInfo {
-    background: rgba(51, 51, 51, 0.1);
-    border-bottom: 4px solid #fff;
-    clear: both;
-    color: #333;
-    font-size: 24px;
-    padding: 20px 20px 18px 20px;
-    text-align: center;
-}
-
 #tarteaucitron #tarteaucitronDisclaimer {
     color: #555;
     font-size: 12px;
@@ -157,52 +153,100 @@
     width: 80%;
 }
 
-#tarteaucitron #tarteaucitronServices {
-    background: #fff;
-    border-bottom: 4px solid #fff;
-    min-height: 250px;
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
+#tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
+    background: rgba(51, 51, 51, 0.07);
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
     display: none;
+    position: relative;
 }
 
-#tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
-    background: rgba(51, 51, 51, 0.2);
-    color: #333;
-    font-size: 20px;
-    padding: 18px 22px;
-    text-align: center;
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle,
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle,
+#tarteaucitron #tarteaucitronInfo,
+#tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
+    background: #333;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 20px 0px 0px;
+    padding: 5px 20px;
+    text-align: left;
+    width: auto;
 }
 
-#tarteaucitron #tarteaucitronServices .tarteaucitronTitle .tarteaucitronDetails {
-    color: #555;
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName a,
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle a {
+    color: #fff;
+    font-weight: 500;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName a:hover,
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle a:hover {
+    text-decoration: none !important;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName a {
+    font-size: 22px;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle a {
+    font-size: 14px;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle {
+    padding: 5px 10px;
+}
+
+#tarteaucitron #tarteaucitronInfo,
+#tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
+    color: #fff;
+    display: none;
     font-size: 12px;
+    font-weight: 500;
+    margin-top: 0;
+    max-width: 270px;
+    padding: 20px;
+    position: absolute;
+    z-index: 2147483647;
+}
+
+#tarteaucitron #tarteaucitronInfo a {
+    color: #fff;
+    text-decoration: underline;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine:hover {
-    background: #f5f5f5;
+    background: rgba(51, 51, 51, 0.2);
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine {
-    background: #fafafa;
-    border-left: 5px solid #f5f5f5;
-    margin: 1px 0;
+    background: rgba(51, 51, 51, 0.1);
+    border-left: 5px solid transparent;
+    margin: 0;
     overflow: hidden;
     padding: 15px 5px;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine {
-    background: #444;
-    border: 0;
-    margin-bottom: 5px;
+    background: #333;
+    border: 3px solid #333;
+    border-left: 9px solid #333;
+    border-top: 5px solid #333;
+    margin-bottom: 0;
+    margin-top: 21px;
+    position: relative;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine:hover {
-    background: #444;
+    background: #333;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName {
+    margin-left: 15px;
     margin-top: 2px;
 }
 
@@ -217,7 +261,7 @@
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName {
     display: inline-block;
     float: left;
-    margin-left: 15px;
+    margin-left: 10px;
     text-align: left;
     width: 50%;
 }
@@ -250,20 +294,6 @@
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
     color: #333;
     font-size: 12px;
-}
-
-#tarteaucitron #tarteaucitronFooter {
-    background: rgba(51, 51, 51, 0.1);
-    border-top: 1px solid #eee;
-    margin: 20px auto 0px;
-    padding: 15px 0 15px;
-    text-align: center;
-}
-
-#tarteaucitron #tarteaucitronFooter a {
-    color: #666;
-    font-style: normal;
-    text-decoration: underline;
 }
 
 /***
@@ -394,9 +424,8 @@
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer {
     display: none;
-    max-height: 80%;
+    max-height: 70%;
     max-width: 500px;
-    overflow: auto;
     position: fixed;
     right: 0;
     width: 100%;
@@ -404,8 +433,11 @@
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList {
     background: #fff;
+    border: 4px solid #333;
     color: #333;
     font-size: 11px;
+    height: auto;
+    overflow: auto;
     text-align: left;
 }
 
@@ -413,20 +445,20 @@
     color: #333;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList #tarteaucitronCookiesTitle {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle {
     background: #333;
-    margin-top: 20px;
-    padding: 8px;
+    margin-top: 21px;
+    padding: 13px 0 7px 13px;
+    text-align: left;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList #tarteaucitronCookiesTitle b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle b {
     color: #fff;
     font-size: 16px;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain {
     background: rgba(51, 51, 51, 0.1);
-    border-bottom: 4px solid #fff;
     padding: 7px 5px 10px;
     word-wrap: break-word;
 }
@@ -443,6 +475,10 @@
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft {
     display: inline-block;
     width: 50%;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a b {
+    color: darkred;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListRight {
