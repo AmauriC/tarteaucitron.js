@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 201.3,
+    "version": 201.6,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -32,6 +32,11 @@ var tarteaucitron = {
             if (window.addEventListener) {
                 window.addEventListener("load", function () {
                     tarteaucitron.load();
+                    tarteaucitron.fallback(['tarteaucitronOpenPanel'], function (elem) {
+                        elem.addEventListener("click", function () {
+                            tarteaucitron.userInterface.openPanel();
+                        }, false);
+                    }, true);
                 }, false);
                 window.addEventListener("keydown", function (evt) {
                     if (evt.keyCode === 27) {
@@ -53,6 +58,11 @@ var tarteaucitron = {
             } else {
                 window.attachEvent("onload", function () {
                     tarteaucitron.load();
+                    tarteaucitron.fallback(['tarteaucitronOpenPanel'], function (elem) {
+                        elem.attachEvent("onclick", function () {
+                            tarteaucitron.userInterface.openPanel();
+                        });
+                    }, true);
                 });
                 window.attachEvent("onkeydown", function (evt) {
                     if (evt.keyCode === 27) {
