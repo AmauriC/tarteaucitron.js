@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 201,
+    "version": 201.1,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -162,7 +162,7 @@ var tarteaucitron = {
                 html += '   <div id="tarteaucitronServices">';
                 html += '      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset">';
                 html += '         <div class="tarteaucitronName">';
-                html += '            <b><a href="#" onclick="tarteaucitron.userInterface.toggle(\'tarteaucitronInfo\');return false">&#10798;</a> ' + tarteaucitron.lang.all + '</b>';
+                html += '            <b><a href="#" onclick="tarteaucitron.userInterface.toggle(\'tarteaucitronInfo\', \'tarteaucitronInfoBox\');return false">&#10798;</a> ' + tarteaucitron.lang.all + '</b>';
                 html += '         </div>';
                 html += '         <div class="tarteaucitronAsk" id="tarteaucitronScrollbarAdjust">';
                 html += '            <div id="tarteaucitronAllAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respondAll(true);">';
@@ -173,7 +173,7 @@ var tarteaucitron = {
                 html += '            </div>';
                 html += '         </div>';
                 html += '      </div>';
-                html += '      <div id="tarteaucitronInfo">';
+                html += '      <div id="tarteaucitronInfo" class="tarteaucitronInfoBox">';
                 html += '         ' + tarteaucitron.lang.disclaimer;
                 if (defaults.removeCredit === false) {
                     html += '        <br/><br/>';
@@ -185,9 +185,9 @@ var tarteaucitron = {
                 for (i = 0; i < cat.length; i += 1) {
                     html += '         <div id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
                     html += '            <div class="tarteaucitronTitle">';
-                    html += '               <a href="#" onclick="tarteaucitron.userInterface.toggle(\'tarteaucitronDetails' + cat[i] + '\');return false">&#10798;</a> ' + tarteaucitron.lang[cat[i]].title;
+                    html += '               <a href="#" onclick="tarteaucitron.userInterface.toggle(\'tarteaucitronDetails' + cat[i] + '\', \'tarteaucitronInfoBox\');return false">&#10798;</a> ' + tarteaucitron.lang[cat[i]].title;
                     html += '            </div>';
-                    html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails">';
+                    html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails tarteaucitronInfoBox">';
                     html += '               ' + tarteaucitron.lang[cat[i]].details;
                     html += '            </div>';
                     html += '         </div>';
@@ -598,12 +598,18 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
             }
         },
-        "toggle": function (id) {
+        "toggle": function (id, closeClass) {
             "use strict";
             var div = document.getElementById(id);
             
             if (div === null) {
                 return;
+            }
+            
+            if (closeClass !== undefined) {
+                tarteaucitron.fallback([closeClass], function (elem) {
+                    elem.style.display = 'none';
+                }, true);
             }
             
             if (div.style.display !== 'block') {
@@ -985,7 +991,7 @@ var tarteaucitron = {
             }
         }
     },
-    "fallback": function (matchClass, content) {
+    "fallback": function (matchClass, content, noInner) {
         "use strict";
         var elems = document.getElementsByTagName('*'),
             i,
@@ -997,7 +1003,11 @@ var tarteaucitron = {
                     if ((' ' + elems[i].className + ' ')
                             .indexOf(' ' + matchClass[index] + ' ') > -1) {
                         if (typeof content === 'function') {
-                            elems[i].innerHTML = content(elems[i]);
+                            if (noInner === true) {
+                                content(elems[i]);
+                            } else {
+                                elems[i].innerHTML = content(elems[i]);
+                            }
                         } else {
                             elems[i].innerHTML = content;
                         }
