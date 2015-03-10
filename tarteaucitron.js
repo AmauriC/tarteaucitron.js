@@ -21,6 +21,7 @@ var tarteaucitron = {
     "launch": [],
     "parameters": {},
     "isAjax": false,
+    "reloadThePage": false,
     "init": function (params) {
         "use strict";
         var origOpen;
@@ -448,6 +449,9 @@ var tarteaucitron = {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
                 if (tarteaucitron.state[key] !== status) {
+                    if (status === false) {
+                        tarteaucitron.reloadThePage = true;
+                    }
                     if (tarteaucitron.launch[key] !== true && status === true) {
                         tarteaucitron.launch[key] = true;
                         tarteaucitron.services[key].js();
@@ -465,6 +469,10 @@ var tarteaucitron = {
             // return if same state
             if (tarteaucitron.state[key] === status) {
                 return;
+            }
+            
+            if (status === false) {
+                tarteaucitron.reloadThePage = true;
             }
         
             // if not already launched... launch the service
@@ -558,12 +566,17 @@ var tarteaucitron = {
         },
         "closePanel": function () {
             "use strict";
-            tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
-            tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
-            tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
             
             if (document.location.hash === tarteaucitron.hashtag) {
                 document.location.hash = '';
+            }
+            tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
+            tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
+            
+            if (tarteaucitron.reloadThePage === true) {
+                window.location.reload();
+            } else {
+                tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
             }
         },
         "openAlert": function () {
