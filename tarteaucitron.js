@@ -449,7 +449,7 @@ var tarteaucitron = {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
                 if (tarteaucitron.state[key] !== status) {
-                    if (status === false) {
+                    if (status === false && tarteaucitron.launch[key] === true) {
                         tarteaucitron.reloadThePage = true;
                     }
                     if (tarteaucitron.launch[key] !== true && status === true) {
@@ -471,7 +471,7 @@ var tarteaucitron = {
                 return;
             }
             
-            if (status === false) {
+            if (status === false && tarteaucitron.launch[key] === true) {
                 tarteaucitron.reloadThePage = true;
             }
         
