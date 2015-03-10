@@ -898,7 +898,8 @@ var tarteaucitron = {
                 d,
                 s = (nb > 1) ? 's' : '',
                 savedname,
-                host = (tarteaucitron.domain !== undefined) ? tarteaucitron.domain : tarteaucitron.cdn;
+                regex = /^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i,
+                host = (tarteaucitron.domain !== undefined) ? tarteaucitron.domain : tarteaucitron.cdn.match(regex)[1];
             
             cookies = cookies.sort(function (a, b) {
                 namea = a.split('=', 1).toString().replace(/ /g, '');

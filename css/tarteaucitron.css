@@ -372,7 +372,6 @@
     display: inline-block;
     font-size: 11px !important;
     padding: 8px 10px 5px;
-    vertical-align: bottom;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronManager:hover {
@@ -416,7 +415,7 @@
     cursor: pointer;
     display: inline-block;
     font-size: 34px;
-    padding: 2px 10px 0;
+    padding: 3px 10px 0;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesNumber:hover {
