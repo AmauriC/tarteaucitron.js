@@ -721,10 +721,10 @@ var tarteaucitron = {
                 if (document.getElementById('tarteaucitronScrollbarParent') !== null && document.getElementById('tarteaucitronScrollbarChild') !== null) {
                     
                     // media query
-                    if (e[a + 'Width'] <= 767) {
-                        scrollbarMarginRight = 12;
-                    } else if (e[a + 'Width'] <= 479) {
+                    if (e[a + 'Width'] <= 479) {
                         tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginLeft', '11px');
+                    } else if (e[a + 'Width'] <= 767) {
+                        scrollbarMarginRight = 12;
                     }
                     
                     scrollbarWidthParent = document.getElementById('tarteaucitronScrollbarParent').offsetWidth;
@@ -746,6 +746,14 @@ var tarteaucitron = {
                     if (mainTop < 0) {
                         mainTop = 0;
                     }
+                    
+                    if (document.getElementById('tarteaucitronMainLineOffset') !== null) {
+                        if (document.getElementById('tarteaucitron').offsetHeight < (windowInnerHeight / 3)) {
+                            mainTop -= document.getElementById('tarteaucitronMainLineOffset').offsetHeight;
+                        }
+                    }
+                    
+                    // apply
                     tarteaucitron.userInterface.css('tarteaucitron', 'top', mainTop + 'px');
                 }
 
