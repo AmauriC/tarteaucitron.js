@@ -125,6 +125,32 @@ tarteaucitron.services.amazon = {
     }
 };
 
+// calameo
+tarteaucitron.services.calameo = {
+    "key": "calameo",
+    "type": "video",
+    "name": "Calameo",
+    "uri": "http://fr.calameo.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['calameo-canvas'], function (x) {
+            var id = x.getAttribute("data-id"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = '//v.calameo.com/?bkcode=' + id;
+            
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'calameo';
+        tarteaucitron.fallback(['calameo-canvas'], tarteaucitron.engage(id));
+    }
+};
+
 // clicky
 tarteaucitron.services.clicky = {
     "key": "clicky",
@@ -735,6 +761,32 @@ tarteaucitron.services.pinterest = {
     }
 };
 
+// prezi
+tarteaucitron.services.prezi = {
+    "key": "prezi",
+    "type": "video",
+    "name": "Prezi",
+    "uri": "https://prezi.com/privacy-policy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['prezi-canvas'], function (x) {
+            var id = x.getAttribute("data-id"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = 'https://prezi.com/embed/' + id + '/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0';
+            
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'prezi';
+        tarteaucitron.fallback(['prezi-canvas'], tarteaucitron.engage(id));
+    }
+};
+
 // pubdirecte
 tarteaucitron.services.pubdirecte = {
     "key": "pubdirecte",
@@ -832,6 +884,32 @@ tarteaucitron.services.sharethis = {
     }
 };
 
+// slideshare
+tarteaucitron.services.slideshare = {
+    "key": "slideshare",
+    "type": "video",
+    "name": "SlideShare",
+    "uri": "https://www.linkedin.com/legal/privacy-policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['slideshare-canvas'], function (x) {
+            var id = x.getAttribute("data-id"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = '//www.slideshare.net/slideshow/embed_code/' + id;
+            
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'slideshare';
+        tarteaucitron.fallback(['slideshare-canvas'], tarteaucitron.engage(id));
+    }
+};
+
 // statcounter
 tarteaucitron.services.statcounter = {
     "key": "statcounter",
@@ -909,7 +987,7 @@ tarteaucitron.services.twitter = {
 tarteaucitron.services.twitterembed = {
     "key": "twitterembed",
     "type": "social",
-    "name": "Twitter Cards",
+    "name": "Twitter (cards)",
     "uri": "https://support.twitter.com/articles/20170514",
     "needConsent": true,
     "cookies": [],
@@ -964,7 +1042,7 @@ tarteaucitron.services.twitterembed = {
 tarteaucitron.services.twittertimeline = {
     "key": "twittertimeline",
     "type": "social",
-    "name": "Twitter Timelines",
+    "name": "Twitter (timelines)",
     "uri": "https://support.twitter.com/articles/20170514",
     "needConsent": true,
     "cookies": [],

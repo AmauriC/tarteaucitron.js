@@ -63,14 +63,18 @@ Bonus:
   * Shareaholic
   * ShareThis
   * Twitter
-  * Twitter Cards
+  * Twitter (cards)
+  * Twitter (timelines)
 
 * Support
   * UserVoice
   * Zopim
 
 * Video
+  * Calameo
   * Dailymotion
+  * Prezi
+  * SlideShare
   * Vimeo
   * Youtube
 
