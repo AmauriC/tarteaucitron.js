@@ -593,6 +593,10 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
             
+            tarteaucitron.fallback(['tarteaucitronInfoBox'], function (elem) {
+                elem.style.display = 'none';
+            }, true);
+            
             if (tarteaucitron.reloadThePage === true) {
                 window.location.reload();
             } else {
