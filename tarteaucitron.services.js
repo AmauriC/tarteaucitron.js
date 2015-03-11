@@ -147,7 +147,11 @@ tarteaucitron.services.calameo = {
     "fallback": function () {
         "use strict";
         var id = 'calameo';
-        tarteaucitron.fallback(['calameo-canvas'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['calameo-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -294,7 +298,11 @@ tarteaucitron.services.dailymotion = {
     "fallback": function () {
         "use strict";
         var id = 'dailymotion';
-        tarteaucitron.fallback(['dailymotion_player'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['dailymotion_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -783,7 +791,11 @@ tarteaucitron.services.prezi = {
     "fallback": function () {
         "use strict";
         var id = 'prezi';
-        tarteaucitron.fallback(['prezi-canvas'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['prezi-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -906,7 +918,11 @@ tarteaucitron.services.slideshare = {
     "fallback": function () {
         "use strict";
         var id = 'slideshare';
-        tarteaucitron.fallback(['slideshare-canvas'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['slideshare-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -1034,7 +1050,10 @@ tarteaucitron.services.twitterembed = {
     "fallback": function () {
         "use strict";
         var id = 'twitterembed';
-        tarteaucitron.fallback(['twitterembed-canvas'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['twitterembed-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('data-width') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -1113,7 +1132,11 @@ tarteaucitron.services.vimeo = {
     "fallback": function () {
         "use strict";
         var id = 'vimeo';
-        tarteaucitron.fallback(['vimeo_player'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['vimeo_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -1239,7 +1262,11 @@ tarteaucitron.services.youtube = {
     "fallback": function () {
         "use strict";
         var id = 'youtube';
-        tarteaucitron.fallback(['youtube_player'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['youtube_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
