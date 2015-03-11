@@ -1,6 +1,6 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
-    "adblock": "Hola! Este sitio jugar transparencia y le da la opción de servicio de terceros para activar.",
+    "adblock": "Hola! Este sitio web es transparente y le da la opción de activar los servicios de terceros.",
     "adblock_call": "Por favor deshabilite su AdBlocker para comenzar a personalizar.",
     "reload": "Actualizar esta página",
     "alertBig": "Si continuas navegando por este sitio web, estar permitiendo servicios terceros",
