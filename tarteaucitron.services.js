@@ -960,6 +960,26 @@ tarteaucitron.services.twitterembed = {
     }
 };
 
+// twitter timeline
+tarteaucitron.services.twittertimeline = {
+    "key": "twittertimeline",
+    "type": "social",
+    "name": "Twitter Timelines",
+    "uri": "https://support.twitter.com/articles/20170514",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tacTwitterTimelines'], '');
+        tarteaucitron.addScript('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'twittertimeline';
+        tarteaucitron.fallback(['tacTwitterTimelines'], tarteaucitron.engage(id));
+    }
+};
+
 // user voice
 tarteaucitron.services.uservoice = {
     "key": "uservoice",
