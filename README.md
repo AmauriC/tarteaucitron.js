@@ -63,6 +63,7 @@ Bonus:
   * Shareaholic
   * ShareThis
   * Twitter
+  * Twitter Cards
 
 * Support
   * UserVoice

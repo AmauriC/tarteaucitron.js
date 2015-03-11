@@ -1,4 +1,4 @@
-/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google, Typekit, FB, ferankReady, IN, stButtons*/
+/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google, Typekit, FB, ferankReady, IN, stButtons, twttr*/
 /*jslint regexp: true, nomen: true*/
 
 // addthis
@@ -902,6 +902,61 @@ tarteaucitron.services.twitter = {
         "use strict";
         var id = 'twitter';
         tarteaucitron.fallback(['tacTwitter'], tarteaucitron.engage(id));
+    }
+};
+
+// twitter embed
+tarteaucitron.services.twitterembed = {
+    "key": "twitterembed",
+    "type": "social",
+    "name": "Twitter Cards",
+    "uri": "https://support.twitter.com/articles/20170514",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        var uniqIds = [],
+            i,
+            e,
+            html;
+
+        tarteaucitron.fallback(['twitterembed-canvas'], function (x) {
+            var uniqId = '_' + Math.random().toString(36).substr(2, 9);
+            uniqIds.push(uniqId);
+            html = '<div id="' + uniqId + '" ';
+            html += 'tweetid="' + x.getAttribute('tweetid') + '" ';
+            html += 'theme="' + x.getAttribute('theme') + '" ';
+            html += 'cards="' + x.getAttribute('cards') + '" ';
+            html += 'conversation="' + x.getAttribute('conversation') + '" ';
+            html += 'data-width="' + x.getAttribute('data-width') + '" ';
+            html += 'data-align="' + x.getAttribute('data-align') + '" ';
+            html += '></div>';
+            return html;
+        });
+        
+        tarteaucitron.addScript('//platform.twitter.com/widgets.js', 'twitter-wjs', function () {
+            for (i = 0; i < uniqIds.length; i += 1) {
+                e = document.getElementById(uniqIds[i]);
+                twttr.widgets.createTweet(
+                    e.getAttribute('tweetid'),
+                    e,
+                    {
+                        theme: e.getAttribute('theme'),
+                        cards: e.getAttribute('cards'),
+                        conversation: e.getAttribute('conversation'),
+                        lang: tarteaucitron.getLanguage(),
+                        dnt: true,
+                        width: e.getAttribute('data-width'),
+                        align: e.getAttribute('data-align')
+                    }
+                );
+            }
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'twitterembed';
+        tarteaucitron.fallback(['twitterembed-canvas'], tarteaucitron.engage(id));
     }
 };
 
