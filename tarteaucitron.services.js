@@ -832,6 +832,37 @@ tarteaucitron.services.sharethis = {
     }
 };
 
+// statcounter
+tarteaucitron.services.statcounter = {
+    "key": "statcounter",
+    "type": "analytic",
+    "name": "StatCounter",
+    "uri": "https://fr.statcounter.com/about/legal/#privacy",
+    "needConsent": true,
+    "cookies": ['sc_is_visitor_unique'],
+    "js": function () {
+        "use strict";
+        var uniqIds = [],
+            i,
+            uri = '//statcounter.com/counter/counter.js';
+
+        tarteaucitron.fallback(['statcounter-canvas'], function (x) {
+            var uniqId = '_' + Math.random().toString(36).substr(2, 9);
+            uniqIds.push(uniqId);
+            return '<div id="' + uniqId + '"></div>';
+        });
+        
+        for (i = 0; i < uniqIds.length; i += 1) {
+            tarteaucitron.makeAsync.init(uri, uniqIds[i]);
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'statcounter';
+        tarteaucitron.fallback(['statcounter-canvas'], tarteaucitron.engage(id));
+    }
+};
+
 // typekit
 tarteaucitron.services.typekit = {
     "key": "typekit",

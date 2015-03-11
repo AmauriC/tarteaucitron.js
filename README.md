@@ -42,6 +42,7 @@ Bonus:
   * FERank
   * Google Analytics (ga.js)
   * Google Analytics (universal)
+  * StatCounter
   * VisualRevenue
   * Xiti
 
