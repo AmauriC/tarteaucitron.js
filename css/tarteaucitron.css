@@ -371,7 +371,7 @@
     cursor: pointer;
     display: inline-block;
     font-size: 11px !important;
-    padding: 8px 10px 5px;
+    padding: 8px 10px 8px;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronManager:hover {
@@ -381,8 +381,9 @@
 #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot {
     background-color: gray;
     border-radius: 5px;
-    display: inline-block;
+    display: block;
     height: 8px;
+    margin-bottom: 1px;
     margin-top: 5px;
     overflow: hidden;
     width: 100%;
@@ -414,8 +415,9 @@
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-size: 34px;
-    padding: 3px 10px 0;
+    font-size: 30px;
+    padding: 4px 10px;
+    vertical-align: bottom;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesNumber:hover {

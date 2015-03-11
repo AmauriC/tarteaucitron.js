@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 202,
+    "version": 202.01,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -748,7 +748,7 @@ var tarteaucitron = {
                     }
                     
                     if (document.getElementById('tarteaucitronMainLineOffset') !== null) {
-                        if (document.getElementById('tarteaucitron').offsetHeight < (windowInnerHeight / 3)) {
+                        if (document.getElementById('tarteaucitron').offsetHeight < (windowInnerHeight / 2)) {
                             mainTop -= document.getElementById('tarteaucitronMainLineOffset').offsetHeight;
                         }
                     }
@@ -899,7 +899,8 @@ var tarteaucitron = {
                 s = (nb > 1) ? 's' : '',
                 savedname,
                 regex = /^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i,
-                host = (tarteaucitron.domain !== undefined) ? tarteaucitron.domain : tarteaucitron.cdn.match(regex)[1];
+                regexedDomain = (tarteaucitron.cdn.match(regex) !== null) ? tarteaucitron.cdn.match(regex)[1] : tarteaucitron.cdn,
+                host = (tarteaucitron.domain !== undefined) ? tarteaucitron.domain : regexedDomain;
             
             cookies = cookies.sort(function (a, b) {
                 namea = a.split('=', 1).toString().replace(/ /g, '');
