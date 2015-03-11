@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 202.01,
+    "version": 202.8,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -259,9 +259,7 @@ var tarteaucitron = {
                     html += '       </div>';
                     if (defaults.cookieslist === true) {
                         html += '   </div><!-- @whitespace';
-                        html += '   --><div id="tarteaucitronCookiesNumber" onclick="tarteaucitron.userInterface.toggleCookiesList();">';
-                        html += '       0';
-                        html += '   </div>';
+                        html += '   --><div id="tarteaucitronCookiesNumber" onclick="tarteaucitron.userInterface.toggleCookiesList();">0</div>';
                         html += '   <div id="tarteaucitronCookiesListContainer">';
                         html += '       <div id="tarteaucitronClosePanelCookie" onclick="tarteaucitron.userInterface.closePanel();">';
                         html += '           ' + tarteaucitron.lang.close;
@@ -612,6 +610,7 @@ var tarteaucitron = {
             var c = 'tarteaucitron';
             tarteaucitron.userInterface.css(c + 'AlertSmall', 'display', 'block');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'none');
+            tarteaucitron.userInterface.jsSizing('box');
         },
         "toggleCookiesList": function () {
             "use strict";
@@ -691,9 +690,19 @@ var tarteaucitron = {
                 headerHeight,
                 cookiesListHeight,
                 cookiesCloseHeight,
-                cookiesTitleHeight;
+                cookiesTitleHeight,
+                paddingBox,
+                alertSmallHeight,
+                cookiesNumberHeight;
             
-            if (type === 'main') {
+            if (type === 'box') {
+                if (document.getElementById('tarteaucitronAlertSmall') !== null && document.getElementById('tarteaucitronCookiesNumber') !== null) {
+                    alertSmallHeight = document.getElementById('tarteaucitronAlertSmall').offsetHeight;
+                    cookiesNumberHeight = document.getElementById('tarteaucitronCookiesNumber').offsetHeight;
+                    paddingBox = (alertSmallHeight - cookiesNumberHeight) / 2;
+                    tarteaucitron.userInterface.css('tarteaucitronCookiesNumber', 'padding', paddingBox + 'px 10px');
+                }
+            } else if (type === 'main') {
 
                 // get the real window width for media query
                 if (window.innerWidth === undefined) {
@@ -762,7 +771,7 @@ var tarteaucitron = {
                 
                 // put cookies list at bottom
                 if (document.getElementById('tarteaucitronAlertSmall') !== null) {
-                    tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'bottom', (document.getElementById('tarteaucitronAlertSmall').offsetHeight + 10) + 'px');
+                    tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'bottom', (document.getElementById('tarteaucitronAlertSmall').offsetHeight) + 'px');
                 }
                 
                 // height of cookies list

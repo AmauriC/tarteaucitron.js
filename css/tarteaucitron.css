@@ -416,8 +416,8 @@
     cursor: pointer;
     display: inline-block;
     font-size: 30px;
-    padding: 4px 10px;
-    vertical-align: bottom;
+    padding: 0px 10px;
+    vertical-align: top;
 }
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesNumber:hover {
@@ -450,7 +450,7 @@
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle {
     background: #333;
     margin-top: 21px;
-    padding: 13px 0 7px 13px;
+    padding: 13px 0 9px 13px;
     text-align: left;
 }
 
