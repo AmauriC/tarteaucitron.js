@@ -630,6 +630,9 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.jsSizing('cookie');
                 tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
                 tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
+                tarteaucitron.fallback(['tarteaucitronInfoBox'], function (elem) {
+                    elem.style.display = 'none';
+                }, true);
             } else {
                 div.style.display = 'none';
                 tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
@@ -661,13 +664,15 @@ var tarteaucitron = {
         "order": function (id) {
             "use strict";
             var main = document.getElementById('tarteaucitronServices_' + id),
-                allDivs = main.childNodes,
+                allDivs,
                 store = [],
                 i;
 
             if (main === null) {
                 return;
             }
+            
+            allDivs = main.childNodes;
             
             if (typeof Array.prototype.map === 'function') {
                 Array.prototype.map.call(main.children, Object).sort(function (a, b) {
