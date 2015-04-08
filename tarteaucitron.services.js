@@ -449,6 +449,26 @@ tarteaucitron.services.ferankpub = {
     }
 };
 
+// get+
+tarteaucitron.services.getplus = {
+    "key": "getplus",
+    "type": "analytic",
+    "name": "Get+",
+    "uri": "http://www.getplus.fr/Conditions-generales-de-vente_a226.html",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.getplusId === undefined) {
+            return;
+        }
+        
+        window.webleads_site_ids = window.webleads_site_ids || [];
+        window.webleads_site_ids.push(tarteaucitron.user.getplusId);
+        tarteaucitron.addScript('//stats.webleads-tracker.com/js');
+    }
+};
+
 // google+
 tarteaucitron.services.gplus = {
     "key": "gplus",
