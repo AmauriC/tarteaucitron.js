@@ -456,7 +456,7 @@ tarteaucitron.services.getplus = {
     "name": "Get+",
     "uri": "http://www.getplus.fr/Conditions-generales-de-vente_a226.html",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['_first_pageview', '_jsuid', 'no_trackyy_' + tarteaucitron.user.getplusId, '_eventqueue'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.getplusId === undefined) {
