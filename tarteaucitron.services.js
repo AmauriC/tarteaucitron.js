@@ -977,6 +977,43 @@ tarteaucitron.services.statcounter = {
     }
 };
 
+// timelinejs
+tarteaucitron.services.timelinejs = {
+    "key": "timelinejs",
+    "type": "api",
+    "name": "Timeline JS",
+    "uri": "http://timeline.knightlab.com/#help",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['timelinejs-canvas'], function (x) {
+            var spreadsheet_id = x.getAttribute("spreadsheet_id"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                lang = x.getAttribute("lang_2_letter"),
+                font = x.getAttribute("font"),
+                map = x.getAttribute("map"),
+                start_at_end = x.getAttribute("start_at_end"),
+                hash_bookmark = x.getAttribute("hash_bookmark"),
+                start_at_slide = x.getAttribute("start_at_slide"),
+                start_zoom = x.getAttribute("start_zoom"),
+                url = '//cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=' + spreadsheet_id + '&font=' + font + '&maptype=' + map + '&lang=' + lang + '&start_at_end=' + start_at_end + '&hash_bookmark=' + hash_bookmark + '&start_at_slide=' + start_at_slide + '&start_zoom_adjust=' + start_zoom + '&height=' + height;
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'timelinejs';
+        tarteaucitron.fallback(['timelinejs-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // typekit
 tarteaucitron.services.typekit = {
     "key": "typekit",
