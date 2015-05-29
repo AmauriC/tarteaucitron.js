@@ -981,6 +981,10 @@ var tarteaucitron = {
             if (document.getElementById('tarteaucitronCookiesNumberBis') !== null) {
                 document.getElementById('tarteaucitronCookiesNumberBis').innerHTML = nb + ' cookie' + s;
             }
+            
+            for (i = 0; i < tarteaucitron.job.length; i += 1) {
+                tarteaucitron.cookie.checkCount(tarteaucitron.job[i]);
+            }
         }
     },
     "getLanguage": function () {
