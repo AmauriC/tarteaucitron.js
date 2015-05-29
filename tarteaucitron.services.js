@@ -679,11 +679,7 @@ tarteaucitron.services.googlemaps = {
             uniqIds = [],
             i;
         
-        if (tarteaucitron.user.googlemapsApiKey === undefined) {
-            return;
-        }
-        
-        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=tac_googlemaps_callback&key=' + tarteaucitron.user.googlemapsApiKey);
+        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&callback=tac_googlemaps_callback');
         
         window.tac_googlemaps_callback = function () {
             tarteaucitron.fallback(['googlemaps-canvas'], function (x) {
