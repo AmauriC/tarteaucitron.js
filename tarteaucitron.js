@@ -41,7 +41,7 @@ var tarteaucitron = {
                 window.addEventListener("scroll", function () {
                     var scrollPos = window.pageYOffset || document.documentElement.scrollTop,
                         heightPosition;
-                    if (document.getElementById('tarteaucitronAlertBig') !== null && !tarteaucitron.highPrivacy) {
+                    if (document.getElementById('tarteaucitronAlertBig') !== null && tarteaucitron.showsmall && !tarteaucitron.highPrivacy) {
                         if (document.getElementById('tarteaucitronAlertBig').style.display === 'block') {
                             heightPosition = document.getElementById('tarteaucitronAlertBig').offsetHeight + 'px';
                             
@@ -95,7 +95,7 @@ var tarteaucitron = {
                 window.attachEvent("onscroll", function () {
                     var scrollPos = window.pageYOffset || document.documentElement.scrollTop,
                         heightPosition;
-                    if (document.getElementById('tarteaucitronAlertBig') !== null && !tarteaucitron.highPrivacy) {
+                    if (document.getElementById('tarteaucitronAlertBig') !== null && tarteaucitron.showsmall && !tarteaucitron.highPrivacy) {
                         if (document.getElementById('tarteaucitronAlertBig').style.display === 'block') {
                             heightPosition = document.getElementById('tarteaucitronAlertBig').offsetHeight + 'px';
                             
@@ -191,6 +191,7 @@ var tarteaucitron = {
         }
         
         // global
+        tarteaucitron.showsmall = defaults.showAlertSmall;
         tarteaucitron.orientation = defaults.orientation;
         tarteaucitron.hashtag = defaults.hashtag;
         tarteaucitron.highPrivacy = defaults.highPrivacy;
