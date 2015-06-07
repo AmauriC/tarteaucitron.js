@@ -364,9 +364,9 @@ tarteaucitron.services.ekomi = {
         if (tarteaucitron.user.ekomiCertId === undefined) {
             return;
         }
-        window.eKomiIntegrationConfig = new Array(
-        	{certId: tarteaucitron.user.ekomiCertId}
-        );
+        window.eKomiIntegrationConfig = [
+            {certId: tarteaucitron.user.ekomiCertId}
+        ];
         tarteaucitron.addScript('//connect.ekomi.de/integration_1410173009/' + tarteaucitron.user.ekomiCertId + '.js');
     }
 };

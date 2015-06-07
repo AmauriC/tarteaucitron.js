@@ -3,7 +3,11 @@ tarteaucitron.lang = {
     "adblock": "Olá! Em uma açao de transparencia, este site lhe dá a opção de quais serviços terceiros deseje ativar.",
     "adblock_call": "Por favor, desative seu bloqueador de publicidades para poder customizar.",
     "reload": "Atualizar esta página",
-    "alertBig": "Se você continuar a navegaçao neste site, você estará aceitando todos os serviços terceiros",
+    
+    "alertBigScroll": "Ao continuar a rolar,",
+    "alertBigClick": "Se você continuar a navegaçao neste site,",
+    "alertBig": "você estará aceitando todos os serviços terceiros",
+    
     "alertBigPrivacy": "Esse site utiliza cookies and lhe dá controle sobre o que você quer ativar",
     "alertSmall": "Gerenciar serviços",
     "personalize": "Personalizar",

@@ -3,7 +3,11 @@ tarteaucitron.lang = {
     "adblock": "Benvenuto! Questo sito ti permette di attivare i servizi di terzi di tua scelta.",
     "adblock_call": "Disabilita il tuo adblocker per iniziare la navigazione.",
     "reload": "Aggiorna la pagina",
-    "alertBig": "Continuando a navigare nel sito, autorizzi l’utilizzo dei cookies inviati da domini di terze parti",
+    
+    "alertBigScroll": "Continuando a scorrere,",
+    "alertBigClick": "Continuando a navigare nel sito,",
+    "alertBig": "autorizzi l’utilizzo dei cookies inviati da domini di terze parti",
+    
     "alertBigPrivacy": "Questo sito fa uso di cookies e ti consente di decidere se accettarli o rifiutarli",
     "alertSmall": "Gestione dei servizi",
     "acceptAll": "Ok, accetta tutto",
