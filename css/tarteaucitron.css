@@ -358,6 +358,7 @@
     left: 0;
     position: fixed;
     width: 0;
+    z-index: 2147483644;
 }
 
 /***
