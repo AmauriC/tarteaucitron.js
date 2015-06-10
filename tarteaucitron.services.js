@@ -1,4 +1,4 @@
-/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google, Typekit, FB, ferankReady, IN, stButtons, twttr*/
+/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google, Typekit, FB, ferankReady, IN, stButtons, twttr, GS_googleAddAdSenseService, GS_googleEnableAllServices, GA_googleAddSlot, GA_googleFetchAds*/
 /*jslint regexp: true, nomen: true*/
 
 // addthis
@@ -562,6 +562,52 @@ tarteaucitron.services.adsense = {
         "use strict";
         var id = 'adsense';
         tarteaucitron.fallback(['adsbygoogle'], tarteaucitron.engage(id));
+    }
+};
+
+// google adsense premium
+tarteaucitron.services.adsensepremium = {
+    "key": "adsensepremium",
+    "type": "ads",
+    "name": "Google Adsense (premium)",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.adsensepremium === undefined) {
+            return;
+        }
+        
+        var div = document.createElement('div'),
+            increment = 0,
+            timer;
+        
+        div.setAttribute("id", "tarteaucitronAdsensePremium");
+        document.getElementsByTagName('body')[0].appendChild(div);
+        
+        tarteaucitron.makeAsync.init('//partner.googleadservices.com/gampad/google_service.js', 'tarteaucitronAdsensePremium');
+        timer = setInterval(function () {
+            increment += 1;
+            if (typeof GS_googleAddAdSenseService !== "undefined" &&
+                    typeof GS_googleEnableAllServices !== "undefined" &&
+                    typeof GA_googleAddSlot !== "undefined" &&
+                    typeof GA_googleFetchAds !== "undefined") {
+                
+                var i,
+                    arr = tarteaucitron.user.adsensepremiumArr.split(',');
+        
+                GS_googleAddAdSenseService(tarteaucitron.user.adsensepremium);
+                GS_googleEnableAllServices();
+                for (i = 0; i < arr.length; i += 1) {
+                    GA_googleAddSlot(tarteaucitron.user.adsensepremium, arr[i]);
+                }
+                GA_googleFetchAds();
+                clearInterval(timer);
+            } else if (increment >= 100) {
+                clearInterval(timer);
+            }
+        }, 10);
     }
 };
 

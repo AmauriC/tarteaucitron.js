@@ -28,18 +28,22 @@ Bonus:
   * Google Adwords (conversion)
   * Google Adwords (remarketing)
   * Pubdirecte
+  * Twenga
   * vShop
 
 * APIs
   * Google jsapi
   * Google Maps
   * Google Tag Manager
+  * Timeline JS
   * Typekit (adobe)
 
 * Audience measurement
   * Alexa
   * Clicky
+  * Crazyegg
   * FERank
+  * Get+
   * Google Analytics (ga.js)
   * Google Analytics (universal)
   * StatCounter
@@ -54,6 +58,7 @@ Bonus:
   * AddThis
   * AddToAny (feed)
   * AddToAny (share)
+  * eKomi
   * Facebook
   * Facebook (like box)
   * Google+

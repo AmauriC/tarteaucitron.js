@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 300,
+    "version": 301,
     "cdn": cdn,
     "user": {},
     "lang": {},
