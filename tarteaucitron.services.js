@@ -824,6 +824,43 @@ tarteaucitron.services.pinterest = {
     }
 };
 
+// prelinker
+tarteaucitron.services.prelinker = {
+    "key": "prelinker",
+    "type": "ads",
+    "name": "Prelinker",
+    "uri": "http://www.prelinker.com/index/index/cgu/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        var uniqIds = [],
+            i,
+            uri;
+
+        tarteaucitron.fallback(['prelinker-canvas'], function (x) {
+            var uniqId = '_' + Math.random().toString(36).substr(2, 9);
+            uniqIds.push(uniqId);
+            return '<div id="' + uniqId + '" siteId="' + x.getAttribute('siteId') + '" bannerId="' + x.getAttribute('bannerId') + '" defaultLanguage="' + x.getAttribute('defaultLanguage') + '" tracker=' + x.getAttribute('tracker') + '"></div>';
+        });
+        
+        for (i = 0; i < uniqIds.length; i += 1) {
+            uri = 'http://promo.easy-dating.org/banner/index?';
+            uri += 'site_id=' + document.getElementById(uniqIds[i]).getAttribute('siteId') + '&';
+            uri += 'banner_id=' + document.getElementById(uniqIds[i]).getAttribute('bannerId') + '&';
+            uri += 'default_language=' + document.getElementById(uniqIds[i]).getAttribute('defaultLanguage') + '&';
+            uri += 'tr4ck=' + document.getElementById(uniqIds[i]).getAttribute('trackrt');
+            
+            tarteaucitron.makeAsync.init(uri, uniqIds[i]);
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'prelinker';
+        tarteaucitron.fallback(['prelinker-canvas'], tarteaucitron.engage(id));
+    }
+};
+
 // prezi
 tarteaucitron.services.prezi = {
     "key": "prezi",
@@ -1327,7 +1364,7 @@ tarteaucitron.services.wysistat = {
             return;
         }
         tarteaucitron.addScript('//www.wysistat.com/statistique.js', '', function () {
-            window.stat(tarteaucitron.user.wysistat.cli,tarteaucitron.user.wysistat.frm,tarteaucitron.user.wysistat.prm,tarteaucitron.user.wysistat.ce,tarteaucitron.user.wysistat.page,tarteaucitron.user.wysistat.roi,tarteaucitron.user.wysistat.prof,tarteaucitron.user.wysistat.cpt);
+            window.stat(tarteaucitron.user.wysistat.cli, tarteaucitron.user.wysistat.frm, tarteaucitron.user.wysistat.prm, tarteaucitron.user.wysistat.ce, tarteaucitron.user.wysistat.page, tarteaucitron.user.wysistat.roi, tarteaucitron.user.wysistat.prof, tarteaucitron.user.wysistat.cpt);
         });
     }
 };
