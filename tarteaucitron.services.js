@@ -957,7 +957,7 @@ tarteaucitron.services.prelinker = {
         tarteaucitron.fallback(['prelinker-canvas'], function (x) {
             var uniqId = '_' + Math.random().toString(36).substr(2, 9);
             uniqIds.push(uniqId);
-            return '<div id="' + uniqId + '" siteId="' + x.getAttribute('siteId') + '" bannerId="' + x.getAttribute('bannerId') + '" defaultLanguage="' + x.getAttribute('defaultLanguage') + '" tracker=' + x.getAttribute('tracker') + '"></div>';
+            return '<div id="' + uniqId + '" siteId="' + x.getAttribute('siteId') + '" bannerId="' + x.getAttribute('bannerId') + '" defaultLanguage="' + x.getAttribute('defaultLanguage') + '" tracker="' + x.getAttribute('tracker') + '"></div>';
         });
         
         for (i = 0; i < uniqIds.length; i += 1) {
@@ -1089,6 +1089,46 @@ tarteaucitron.services.shareaholic = {
         "use strict";
         var id = 'shareaholic';
         tarteaucitron.fallback(['shareaholic-canvas'], tarteaucitron.engage(id));
+    }
+};
+
+// shareasale
+tarteaucitron.services.shareasale = {
+    "key": "shareasale",
+    "type": "ads",
+    "name": "ShareASale",
+    "uri": "https://www.shareasale.com/PrivacyPolicy.pdf",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        var uniqIds = [],
+            i,
+            uri;
+
+        tarteaucitron.fallback(['shareasale-canvas'], function (x) {
+            var uniqId = '_' + Math.random().toString(36).substr(2, 9);
+            uniqIds.push(uniqId);
+            return '<div id="' + uniqId + '" amount="' + x.getAttribute('amount') + '" tracking="' + x.getAttribute('tracking') + '" transtype="' + x.getAttribute('transtype') + '" persale="' + x.getAttribute('persale') + '" perlead="' + x.getAttribute('perlead') + '" perhit="' + x.getAttribute('perhit') + '" merchantID="' + x.getAttribute('merchantID') + '"></div>';
+        });
+        
+        for (i = 0; i < uniqIds.length; i += 1) {
+            uri = 'https://shareasale.com/sale.cfm?';
+            uri += 'amount=' + document.getElementById(uniqIds[i]).getAttribute('amount') + '&';
+            uri += 'tracking=' + document.getElementById(uniqIds[i]).getAttribute('tracking') + '&';
+            uri += 'transtype=' + document.getElementById(uniqIds[i]).getAttribute('transtype') + '&';
+            uri += 'persale=' + document.getElementById(uniqIds[i]).getAttribute('persale') + '&';
+            uri += 'perlead=' + document.getElementById(uniqIds[i]).getAttribute('perlead') + '&';
+            uri += 'perhit=' + document.getElementById(uniqIds[i]).getAttribute('perhit') + '&';
+            uri += 'merchantID=' + document.getElementById(uniqIds[i]).getAttribute('merchantID');
+            
+            document.getElementById(uniqIds[i]).innerHTML = '<img src=\'' + uri + '\' width=\'1\' height=\'1\' />';
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'shareasale';
+        tarteaucitron.fallback(['shareasale-canvas'], tarteaucitron.engage(id));
     }
 };
 
