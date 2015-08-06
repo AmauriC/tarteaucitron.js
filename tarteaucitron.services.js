@@ -383,7 +383,7 @@ tarteaucitron.services.datingaffiliationpopup = {
         });
         
         for (i = 0; i < uniqIds.length; i += 1) {
-            uri = document.getElementById(uniqIds[i]).getAttribute('uri');
+            uri = 'http://www.promotools.biz/da/popunder/script.php?';
             uri += 'comfrom=' + document.getElementById(uniqIds[i]).getAttribute('comfrom') + '&';
             uri += 'promo=' + document.getElementById(uniqIds[i]).getAttribute('promo') + '&';
             uri += 'product_id=' + document.getElementById(uniqIds[i]).getAttribute('productid') + '&';
