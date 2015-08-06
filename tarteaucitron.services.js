@@ -369,7 +369,7 @@ tarteaucitron.services.datingaffiliationpopup = {
     "name": "Dating Affiliation (Pop Up)",
     "uri": "http://www.dating-affiliation.com/conditions-generales.php",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['__utma', '__utmb', '__utmc', '__utmt_Tools', '__utmv', '__utmz', '_ga', '_gat', '_gat_UA-65072040-17', '__da-pu-xflirt-ID-pc-o169'],
     "js": function () {
         "use strict";
         var uniqIds = [],
@@ -921,7 +921,7 @@ tarteaucitron.services.prelinker = {
     "name": "Prelinker",
     "uri": "http://www.prelinker.com/index/index/cgu/",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['_sp_id.32f5', '_sp_ses.32f5'],
     "js": function () {
         "use strict";
         var uniqIds = [],
