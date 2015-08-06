@@ -716,6 +716,7 @@ tarteaucitron.services.googleadwordsconversion = {
                 google_conversion_format: tarteaucitron.user.adwordsconversionFormat,
                 google_conversion_color: tarteaucitron.user.adwordsconversionColor,
                 google_conversion_value: tarteaucitron.user.adwordsconversionValue,
+                google_conversion_currency: tarteaucitron.user.adwordsconversionCurrency,
                 google_custom_params: {
                     parameter1: tarteaucitron.user.adwordsconversionCustom1,
                     parameter2: tarteaucitron.user.adwordsconversionCustom2
