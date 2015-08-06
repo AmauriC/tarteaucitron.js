@@ -362,6 +362,59 @@ tarteaucitron.services.datingaffiliation = {
     }
 };
 
+// dating affiliation popup
+tarteaucitron.services.datingaffiliationpopup = {
+    "key": "datingaffiliationpopup",
+    "type": "ads",
+    "name": "Dating Affiliation (Pop Up)",
+    "uri": "http://www.dating-affiliation.com/conditions-generales.php",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        var uniqIds = [],
+            i,
+            uri;
+
+        tarteaucitron.fallback(['datingaffiliationpopup-canvas'], function (x) {
+            var uniqId = '_' + Math.random().toString(36).substr(2, 9);
+            uniqIds.push(uniqId);
+            return '<div id="' + uniqId + '" uri="' + x.getAttribute('uri') + '" comfrom="' + x.getAttribute('comfrom') + '" promo="' + x.getAttribute('promo') + '" productid="' + x.getAttribute('productid') + '" submitconfig="' + x.getAttribute('submitconfig') + '" ur="' + x.getAttribute('ur') + '" brand="' + x.getAttribute('brand') + '" lang="' + x.getAttribute('lang') + '" cf0="' + x.getAttribute('cf0') + '" cf2="' + x.getAttribute('cf2') + '" subid1="' + x.getAttribute('subid1') + '" cfsa2="' + x.getAttribute('cfsa2') + '" subid2="' + x.getAttribute('subid2') + '" nicheid="' + x.getAttribute('nicheid') + '" degreid="' + x.getAttribute('degreid') + '" bt="' + x.getAttribute('bt') + '" vis="' + x.getAttribute('vis') + '" hid="' + x.getAttribute('hid') + '" snd="' + x.getAttribute('snd') + '" aabd="' + x.getAttribute('aabd') + '" aabs="' + x.getAttribute('aabs') + '"></div>';
+        });
+        
+        for (i = 0; i < uniqIds.length; i += 1) {
+            uri = document.getElementById(uniqIds[i]).getAttribute('uri');
+            uri += 'comfrom=' + document.getElementById(uniqIds[i]).getAttribute('comfrom') + '&';
+            uri += 'promo=' + document.getElementById(uniqIds[i]).getAttribute('promo') + '&';
+            uri += 'product_id=' + document.getElementById(uniqIds[i]).getAttribute('productid') + '&';
+            uri += 'submitconfig=' + document.getElementById(uniqIds[i]).getAttribute('submitconfig') + '&';
+            uri += 'ur=' + document.getElementById(uniqIds[i]).getAttribute('ur') + '&';
+            uri += 'brand=' + document.getElementById(uniqIds[i]).getAttribute('brand') + '&';
+            uri += 'lang=' + document.getElementById(uniqIds[i]).getAttribute('lang') + '&';
+            uri += 'cf0=' + document.getElementById(uniqIds[i]).getAttribute('cf0') + '&';
+            uri += 'cf2=' + document.getElementById(uniqIds[i]).getAttribute('cf2') + '&';
+            uri += 'subid1=' + document.getElementById(uniqIds[i]).getAttribute('subid1') + '&';
+            uri += 'cfsa2=' + document.getElementById(uniqIds[i]).getAttribute('cfsa2') + '&';
+            uri += 'subid2=' + document.getElementById(uniqIds[i]).getAttribute('subid2') + '&';
+            uri += 'nicheId=' + document.getElementById(uniqIds[i]).getAttribute('nicheid') + '&';
+            uri += 'degreId=' + document.getElementById(uniqIds[i]).getAttribute('degreid') + '&';
+            uri += 'bt=' + document.getElementById(uniqIds[i]).getAttribute('bt') + '&';
+            uri += 'vis=' + document.getElementById(uniqIds[i]).getAttribute('vis') + '&';
+            uri += 'hid=' + document.getElementById(uniqIds[i]).getAttribute('hid') + '&';
+            uri += 'snd=' + document.getElementById(uniqIds[i]).getAttribute('snd') + '&';
+            uri += 'aabd=' + document.getElementById(uniqIds[i]).getAttribute('aabd') + '&';
+            uri += 'aabs=' + document.getElementById(uniqIds[i]).getAttribute('aabs');
+            
+            tarteaucitron.makeAsync.init(uri, uniqIds[i]);
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'datingaffiliationpopup';
+        tarteaucitron.fallback(['datingaffiliationpopup-canvas'], tarteaucitron.engage(id));
+    }
+};
+
 // disqus
 tarteaucitron.services.disqus = {
     "key": "disqus",
