@@ -325,6 +325,43 @@ tarteaucitron.services.dailymotion = {
     }
 };
 
+// dating affiliation
+tarteaucitron.services.datingaffiliation = {
+    "key": "datingaffiliation",
+    "type": "ads",
+    "name": "Dating Affiliation",
+    "uri": "http://www.dating-affiliation.com/conditions-generales.php",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['datingaffiliation-canvas'], function (x) {
+            var comfrom = x.getAttribute("data-comfrom"),
+                r = x.getAttribute("data-r"),
+                p = x.getAttribute("data-p"),
+                cf0 = x.getAttribute("data-cf0"),
+                langue = x.getAttribute("data-langue"),
+                forward_affiliate = x.getAttribute("data-forwardAffiliate"),
+                cf2 = x.getAttribute("data-cf2"),
+                cfsa2 = x.getAttribute("data-cfsa2"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = 'http://www.tools-affil2.com/rotaban/ban.php?' + comfrom;
+            
+            return '<iframe src="' + url + '&r=' + r + '&p=' + p + '&cf0=' + cf0 + '&langue=' + langue + '&forward_affiliate=' + forward_affiliate + '&cf2=' + cf2 + '&cfsa2=' + cfsa2 + '" width="' + width + '" height="' + height + '" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'datingaffiliation';
+        tarteaucitron.fallback(['datingaffiliation-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // disqus
 tarteaucitron.services.disqus = {
     "key": "disqus",
