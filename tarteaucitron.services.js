@@ -712,6 +712,10 @@ tarteaucitron.services.googleadwordsconversion = {
             window.google_trackConversion({
                 google_conversion_id: tarteaucitron.user.adwordsconversionId,
                 google_conversion_label: tarteaucitron.user.adwordsconversionLabel,
+                google_conversion_language: tarteaucitron.user.adwordsconversionLanguage,
+                google_conversion_format: tarteaucitron.user.adwordsconversionFormat,
+                google_conversion_color: tarteaucitron.user.adwordsconversionColor,
+                google_conversion_value: tarteaucitron.user.adwordsconversionValue,
                 google_custom_params: {
                     parameter1: tarteaucitron.user.adwordsconversionCustom1,
                     parameter2: tarteaucitron.user.adwordsconversionCustom2
