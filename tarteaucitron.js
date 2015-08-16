@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronNoAdBlocker = false;
 
 var tarteaucitron = {
-    "version": 317,
+    "version": 323,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -1080,7 +1080,7 @@ var tarteaucitron = {
             return 'en_US';
         }
     },
-    "addScript": function (url, id, callback, execute) {
+    "addScript": function (url, id, callback, execute, attrName, attrVal) {
         "use strict";
         var script,
             done = false;
@@ -1095,6 +1095,10 @@ var tarteaucitron = {
             script.id = (id !== undefined) ? id : '';
             script.async = true;
             script.src = url;
+            
+            if (attrName !== undefined && attrVal !== undefined) {
+                script.setAttribute(attrName, attrVal);
+            }
 
             if (typeof callback === 'function') {
                 script.onreadystatechange = script.onload = function () {
