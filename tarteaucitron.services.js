@@ -856,6 +856,28 @@ tarteaucitron.services.googlemaps = {
     }
 };
 
+// Google Publisher Tag (Google DFP)
+tarteaucitron.services.googlepublishertag = {
+    "key": "googlepublishertag",
+    "type": "ads",
+    "name": "Google Publisher Tag",
+    "uri": "https://support.google.com/dfp_premium/answer/2839090",
+    "needConsent": true,
+    "cookies": ['__gads'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//www.googletagservices.com/tag/js/gpt.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'googlepublishertag';
+        
+        googletag.pubads().refresh = googletag.pubads().setCookieOptions(1);
+        
+        tarteaucitron.fallback(['setCookieOptions'], tarteaucitron.engage(id));
+    }
+};
+
 // google tag manager
 tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
