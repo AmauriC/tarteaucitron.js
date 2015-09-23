@@ -529,6 +529,31 @@ tarteaucitron.services.facebooklikebox = {
     }
 };
 
+// facebooklikebox
+tarteaucitron.services.facebooklikeboxforpage = {
+    "key": "facebooklikeboxforpage",
+    "type": "social",
+    "name": "Facebook (like box for page)",
+    "uri": "https://www.facebook.com/help/cookies/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['fb-page'], '');
+        tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.3', 'facebook-jssdk');
+        if (tarteaucitron.isAjax === true) {
+            if (typeof FB !== "undefined") {
+                FB.XFBML.parse();
+            }
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'facebooklikeboxforpage';
+        tarteaucitron.fallback(['fb-page'], tarteaucitron.engage(id));
+    }
+};
+
 // facebookcomment
 tarteaucitron.services.facebookcomment = {
     "key": "facebookcomment",
