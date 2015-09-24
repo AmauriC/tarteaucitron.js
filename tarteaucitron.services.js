@@ -514,8 +514,8 @@ tarteaucitron.services.facebooklikebox = {
     "cookies": [],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['fb-like-box'], '');
-        tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
+        tarteaucitron.fallback(['fb-like-box', 'fb-page'], '');
+        tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.3', 'facebook-jssdk');
         if (tarteaucitron.isAjax === true) {
             if (typeof FB !== "undefined") {
                 FB.XFBML.parse();
@@ -525,7 +525,7 @@ tarteaucitron.services.facebooklikebox = {
     "fallback": function () {
         "use strict";
         var id = 'facebooklikebox';
-        tarteaucitron.fallback(['fb-like-box'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['fb-like-box', 'fb-page'], tarteaucitron.engage(id));
     }
 };
 
