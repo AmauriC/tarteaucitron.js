@@ -1,0 +1,17 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "esversion": 3,
+    "freeze": true,
+    "funcscope": false,
+    "futurehostile": true,
+    "globals": [],
+    "strict": true,
+    "undef": true,
+    "unused": true,
+
+    "evil": true,
+
+    "browser": true,
+    "devel": true
+}
