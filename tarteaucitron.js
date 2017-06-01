@@ -513,6 +513,13 @@ var tarteaucitron = {
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
+                
+                var forceReloadOnConsentState = false;
+          
+          		if (tarteaucitron.services[key].forceReloadOnConsent) {
+             		forceReloadOnConsentState = true;
+            	}
+                
                 if (tarteaucitron.state[key] !== status) {
                     if (status === false && tarteaucitron.launch[key] === true) {
                         tarteaucitron.reloadThePage = true;
@@ -520,6 +527,9 @@ var tarteaucitron = {
                     if (tarteaucitron.launch[key] !== true && status === true) {
                         tarteaucitron.launch[key] = true;
                         tarteaucitron.services[key].js();
+                        if (forceReloadOnConsentState === true) {
+                    		tarteaucitron.reloadThePage = true;
+                  		}
                     }
                     tarteaucitron.state[key] = status;
                     tarteaucitron.cookie.create(key, status);
@@ -530,9 +540,15 @@ var tarteaucitron = {
         "respond": function (el, status) {
             "use strict";
             var key = el.id.replace(new RegExp("(Eng[0-9]+|Allow|Deni)ed", "g"), '');
+            
+            var forceReloadOnConsentState = false;
+          
+          	if (tarteaucitron.services[key].forceReloadOnConsent) {
+             forceReloadOnConsentState = true;
+            }
         
             // return if same state
-            if (tarteaucitron.state[key] === status) {
+            if (tarteaucitron.state[key] === status && forceReloadOnConsentState === false) {
                 return;
             }
             
@@ -545,6 +561,9 @@ var tarteaucitron = {
                 if (tarteaucitron.launch[key] !== true) {
                     tarteaucitron.launch[key] = true;
                     tarteaucitron.services[key].js();
+                    if (forceReloadOnConsentState === true) {
+                    tarteaucitron.reloadThePage = true;
+                  }
                 }
             }
             tarteaucitron.state[key] = status;
