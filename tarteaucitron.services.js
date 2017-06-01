@@ -654,6 +654,36 @@ tarteaucitron.services.gplusbadge = {
     }
 };
 
+/*
+/Google Doubleclick for Publisher (DFP)
+/Scripts and tags are permanent in page
+/Cookie is used or not (Fallback on non behaviorial advertising if not
+/ add 'forceReloadOnConsent'
+/*
+tarteaucitron.services.googlepublishertag = {
+  'key': 'googlepublishertag',
+  'type': 'ads',
+  'name': 'Google Publisher Tag',
+  'uri': 'https://www.google.com/ads/preferences/',
+  'needConsent': true,
+  'forceReloadOnConsent' : true,
+  'cookies': [
+    '__gads'
+  ],
+  'js': function () {
+    'use strict';
+    var id = 'googlepublishertag';
+    //empty, scripts and tags are included permanently in page head, and body
+    // reload on click when set to enable  is handle in tarteaucitron.js (read, readAll)
+  },
+  'fallback': function () {
+    'use strict';
+    var id = 'googlepublishertag';
+    //empty, scripts and tags are included permanently in page head, and body
+    // reload on click when set to disable  is handle in tarteaucitron.js (read, readAll)
+  }
+};
+
 // google adsense
 tarteaucitron.services.adsense = {
     "key": "adsense",
