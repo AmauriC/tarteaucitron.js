@@ -796,7 +796,7 @@ tarteaucitron.services.analytics = {
     "name": "Google Analytics (universal)",
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
-    "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'],
+    "cookies": ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'],
     "js": function () {
         "use strict";
         window.GoogleAnalyticsObject = 'ga';
