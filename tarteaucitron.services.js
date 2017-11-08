@@ -1632,6 +1632,53 @@ tarteaucitron.services.youtube = {
     }
 };
 
+// youtube playlist
+tarteaucitron.services.youtubeplaylist = {
+    "key": "youtubeplaylist",
+    "type": "video",
+    "name": "YouTube (playlist)",
+    "uri": "https://www.google.fr/intl/fr/policies/privacy/",
+    "needConsent": true,
+    "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['youtube_playlist_player'], function (x) {
+            var playlist_id = x.getAttribute("playlistID"),
+                video_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                video_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                video_frame,
+                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay");
+            
+            if (playlist_id === undefined) {
+                return "";
+            }
+            if (video_width !== undefined) {
+                frame_width += '"' + video_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (video_height !== undefined) {
+                frame_height +=  '"' + video_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            video_frame = '<iframe type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/videoseries?list=' + playlist_id + '&' + params + '" frameborder="0"></iframe>';
+            return video_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'youtubeplaylist';
+        tarteaucitron.fallback(['youtube_playlist_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // zopim
 tarteaucitron.services.zopim = {
     "key": "zopim",
