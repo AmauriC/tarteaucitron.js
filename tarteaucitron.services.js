@@ -1695,3 +1695,26 @@ tarteaucitron.services.zopim = {
         tarteaucitron.addScript('//v2.zopim.com/?' + tarteaucitron.user.zopimID);
     }
 };
+
+// xiti smartTag
+tarteaucitron.services.xiti_smarttag = {
+    "key": "xiti_smarttag",
+    "type": "analytic",
+    "name": "Xiti (SmartTag)",
+    "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
+    "needConsent": true,
+    "cookies": ["atidvisitor", "atreman", "atredir", "atsession", "atuserid", "attvtreman", "attvtsession"],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.xiti_smarttagLocalPath !== undefined) {
+            tarteaucitron.addScript(tarteaucitron.user.xiti_smarttagLocalPath, 'smarttag', null, null, "onload", "addTracker();");
+        } else {
+            var xitiSmarttagId = tarteaucitron.user.xiti_smarttagSiteId;
+            if (xitiSmarttagId === undefined) {
+                return;
+            }
+
+            tarteaucitron.addScript('//tag.aticdn.net/' + xitiSmarttagId + '/smarttag.js', 'smarttag', null, null, "onload", "addTracker();");
+        }
+    }
+};
