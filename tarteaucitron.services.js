@@ -816,6 +816,30 @@ tarteaucitron.services.analytics = {
     }
 };
 
+// google analytics
+tarteaucitron.services.gtag = {
+    "key": "gtag",
+    "type": "analytic",
+    "name": "Google Analytics (gtag.js)",
+    "uri": "https://support.google.com/analytics/answer/6004245",
+    "needConsent": true,
+    "cookies": ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', '_gat_gtag_' + tarteaucitron.user.gtagUa.replace(/-/g, '_')],
+    "js": function () {
+        "use strict";
+        window.dataLayer = window.dataLayer || [];
+        
+        tarteaucitron.addScript('//www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', tarteaucitron.user.gtagUa);
+          
+            if (typeof tarteaucitron.user.gtagMore === 'function') {
+                tarteaucitron.user.gtagMore();
+            }
+        });
+    }
+};
+
 // google maps
 tarteaucitron.services.googlemaps = {
     "key": "googlemaps",
