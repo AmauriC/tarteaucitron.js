@@ -1,3 +1,6 @@
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/SASAICAGENCY)
+
+
 tarteaucitron.js
 ================
 Comply to the european cookie law is simple with the french *tarte au citron*.
