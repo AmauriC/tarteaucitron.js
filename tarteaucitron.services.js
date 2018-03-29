@@ -673,6 +673,25 @@ tarteaucitron.services.adsense = {
     }
 };
 
+// google partners badge
+tarteaucitron.services.googlepartners = {
+    "key": "googlepartners",
+    "type": "ads",
+    "name": "Google Partners Badge",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('https://apis.google.com/js/platform.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'googlepartners';
+        tarteaucitron.fallback(['g-partnersbadge'], tarteaucitron.engage(id));
+    }
+};
+
 // google adsense search (form)
 tarteaucitron.services.adsensesearchform = {
     "key": "adsensesearchform",
