@@ -17,7 +17,7 @@ tarteaucitron.lang = {
     "all": "Preference for all services",
 
     "info": "Protecting your privacy",
-    "disclaimer": "By allowing these third party services, you accept theirs cookies and the use of tracking technologies necessary for their proper functioning.",
+    "disclaimer": "By allowing these third party services, you accept their cookies and the use of tracking technologies necessary for their proper functioning.",
     "allow": "Allow",
     "deny": "Deny",
     "noCookie": "This service does not use cookie.",
