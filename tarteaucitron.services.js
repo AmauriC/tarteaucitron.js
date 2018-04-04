@@ -873,9 +873,13 @@ tarteaucitron.services.googlemaps = {
             map,
             uniqIds = [],
             i;
-        
-        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback=tac_googlemaps_callback');
-        
+
+        if (tarteaucitron.user.mapscallback === undefined) {
+            tarteaucitron.user.mapscallback = 'tac_googlemaps_callback';
+        }
+
+        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback='+tarteaucitron.user.mapscallback);
+
         window.tac_googlemaps_callback = function () {
             tarteaucitron.fallback(['googlemaps-canvas'], function (x) {
                 var uniqId = '_' + Math.random().toString(36).substr(2, 9);
