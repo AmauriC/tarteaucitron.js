@@ -99,11 +99,11 @@ tarteaucitron.services.alexa = {
     }
 };
 
-// amazon
+// amazon - Liens article
 tarteaucitron.services.amazon = {
     "key": "amazon",
     "type": "ads",
-    "name": "Amazon",
+    "name": "Amazon (Liens articles)",
     "uri": "http://www.amazon.fr/gp/help/customer/display.html?ie=UTF8&*Version*=1&*entries*=0&nodeId=201149360",
     "needConsent": true,
     "cookies": [],
@@ -122,6 +122,35 @@ tarteaucitron.services.amazon = {
         "use strict";
         var id = 'amazon';
         tarteaucitron.fallback(['amazon_product'], tarteaucitron.engage(id));
+    }
+};
+
+// amazon - Banniere
+tarteaucitron.services.amazonbanner = {
+    "key": "amazonbanner",
+    "type": "ads",
+    "name": "Amazon (Bannieres)",
+	"uri": "https://www.amazon.fr/gp/help/customer/display.html?nodeId=3329781&ie=UTF8",
+    "needConsent": true,
+    "cookies": [],
+	"js": function () {
+		"use strict";
+		 tarteaucitron.fallback(['amazon_banner'], function (x) {
+            var	p = x.getAttribute("p"),
+				linkid = x.getAttribute("linkid"),
+				amazonid = x.getAttribute("amazonid"),
+				width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+				url = 'https://rcm-eu.amazon-adsystem.com/e/cm?o=8&p=' + p + '&l=ez&f=ifr&linkID=' + linkid + '&t=' + amazonid + '&tracking_id=' + amazonid,
+				iframe = '<iframe src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>';
+			
+            return iframe;
+        });
+	},
+	"fallback": function () {
+        "use strict";
+        var id = 'amazonbanner';
+        tarteaucitron.fallback(['amazon_banner'], tarteaucitron.engage(id));
     }
 };
 
