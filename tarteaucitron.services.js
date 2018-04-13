@@ -130,7 +130,7 @@ tarteaucitron.services.calameo = {
     "key": "calameo",
     "type": "video",
     "name": "Calameo",
-    "uri": "http://fr.calameo.com/privacy",
+    "uri": "https://fr.calameohttps://.com/privacy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1744,7 +1744,7 @@ tarteaucitron.services.xiti_smarttag = {
     "key": "xiti_smarttag",
     "type": "analytic",
     "name": "Xiti (SmartTag)",
-    "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
+    "uri": "https://www.atinternet.com/societe/protection-des-donnees/",
     "needConsent": true,
     "cookies": ["atidvisitor", "atreman", "atredir", "atsession", "atuserid", "attvtreman", "attvtsession"],
     "js": function () {
