@@ -33,8 +33,9 @@ var tarteaucitron = {
                 window.addEventListener("load", function () {
                     tarteaucitron.load();
                     tarteaucitron.fallback(['tarteaucitronOpenPanel'], function (elem) {
-                        elem.addEventListener("click", function () {
+                        elem.addEventListener("click", function (event) {
                             tarteaucitron.userInterface.openPanel();
+                            event.preventDefault();
                         }, false);
                     }, true);
                 }, false);
@@ -87,8 +88,9 @@ var tarteaucitron = {
                 window.attachEvent("onload", function () {
                     tarteaucitron.load();
                     tarteaucitron.fallback(['tarteaucitronOpenPanel'], function (elem) {
-                        elem.attachEvent("onclick", function () {
+                        elem.attachEvent("onclick", function (event) {
                             tarteaucitron.userInterface.openPanel();
+                            event.preventDefault();
                         });
                     }, true);
                 });
