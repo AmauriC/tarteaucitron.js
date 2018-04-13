@@ -84,7 +84,7 @@ Bonus:
   * Prezi
   * SlideShare
   * Vimeo
-  * Youtube
+  * YouTube
 
 
 ## Visitors outside the EU
