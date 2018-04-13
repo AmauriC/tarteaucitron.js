@@ -246,7 +246,7 @@ var tarteaucitron = {
                 html += '         ' + tarteaucitron.lang.disclaimer;
                 if (defaults.removeCredit === false) {
                     html += '        <br/><br/>';
-                    html += '        <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank">' + tarteaucitron.lang.credit + '</a>';
+                    html += '        <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank" rel="noopener">' + tarteaucitron.lang.credit + '</a>';
                 }
                 html += '      </div>';
                 html += '      <div class="tarteaucitronBorder" id="tarteaucitronScrollbarParent">';
@@ -413,11 +413,11 @@ var tarteaucitron = {
             html += '   <div class="tarteaucitronName">';
             html += '       <b>' + service.name + '</b><br/>';
             html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
-            html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '/" target="_blank">';
+            html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '/" target="_blank" rel="noopener">';
             html += '           ' + tarteaucitron.lang.more;
             html += '       </a>';
             html += '        - ';
-            html += '       <a href="' + service.uri + '" target="_blank">';
+            html += '       <a href="' + service.uri + '" target="_blank" rel="noopener">';
             html += '           ' + tarteaucitron.lang.source;
             html += '       </a>';
             html += '   </div>';
