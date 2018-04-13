@@ -130,7 +130,7 @@ tarteaucitron.services.calameo = {
     "key": "calameo",
     "type": "video",
     "name": "Calameo",
-    "uri": "https://fr.calameohttps://.com/privacy",
+    "uri": "https://fr.calameo.com/privacy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
