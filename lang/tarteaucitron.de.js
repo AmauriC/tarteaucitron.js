@@ -57,5 +57,9 @@ tarteaucitron.lang = {
     "api": {
         "title": "APIs",
         "details": "APIs werden benutzt um Skripte zu laden, wie: Geolokalisation, Suchmaschinen, Übersetzungen, ..."
+    },
+    "other": {
+        "title": "Andere",
+        "details": "Dienste zum Anzeigen von Web-Inhalten."
     }
 };
