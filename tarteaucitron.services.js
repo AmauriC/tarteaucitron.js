@@ -964,6 +964,27 @@ tarteaucitron.services.linkedin = {
     }
 };
 
+// mautic
+tarteaucitron.services.mautic = {
+    "key": "mautic",
+    "type": "analytic",
+    "name": "Mautic",
+    "uri": "https://www.mautic.org/privacy-policy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        window['MauticTrackingObject'] = 'mt';
+        window['mt'] = window['mt'] || function() {
+            (window['mt'].q = window['mt'].q || []).push(arguments);
+        };
+        
+        tarteaucitron.addScript('https://mautic.optimumcit.com/mtc.js', '', function() {
+            mt('send', 'pageview');
+        });
+    }
+};
+
 // microsoftcampaignanalytics
 tarteaucitron.services.microsoftcampaignanalytics = {
     "key": "microsoftcampaignanalytics",
