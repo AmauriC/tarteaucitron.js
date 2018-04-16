@@ -1000,7 +1000,7 @@ tarteaucitron.services.mautic = {
     "name": "Mautic",
     "uri": "https://www.mautic.org/privacy-policy/",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['mtc_id', 'mtc_sid'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.mauticurl === undefined) {
