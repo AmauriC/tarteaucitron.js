@@ -57,5 +57,9 @@ tarteaucitron.lang = {
     "api": {
         "title": "API",
         "details": "API slouží k načtění skriptů: geolokace, vyhledávačů, překladů, ..."
+    },
+    "other": {
+        "title": "Jiný",
+        "details": "Služby pro zobrazení webového obsahu."
     }
 };
