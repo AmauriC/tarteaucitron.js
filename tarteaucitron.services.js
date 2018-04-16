@@ -974,12 +974,16 @@ tarteaucitron.services.mautic = {
     "cookies": [],
     "js": function () {
         "use strict";
+        if (tarteaucitron.user.mauticurl === undefined) {
+            return;
+        }
+        
         window['MauticTrackingObject'] = 'mt';
         window['mt'] = window['mt'] || function() {
             (window['mt'].q = window['mt'].q || []).push(arguments);
         };
         
-        tarteaucitron.addScript('https://mautic.optimumcit.com/mtc.js', '', function() {
+        tarteaucitron.addScript(tarteaucitron.user.mauticurl, '', function() {
             mt('send', 'pageview');
         });
     }
