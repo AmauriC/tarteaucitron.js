@@ -875,6 +875,11 @@ tarteaucitron.services.gtag = {
     "js": function () {
         "use strict";
         window.dataLayer = window.dataLayer || [];
+
+        // Add _gat_gtag_UA_XXXXXXX_XX cookie to cookies array
+        var gatGtagUaCookie = '_gat_gtag_' + tarteaucitron.user.gtagUa;
+        gatGtagUaCookie = gatGtagUaCookie.replace(/-/g, '_');
+        this.cookies.push(gatGtagUaCookie);
         
         tarteaucitron.addScript('//www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
             function gtag(){dataLayer.push(arguments);}
