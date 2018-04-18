@@ -14,7 +14,7 @@ tarteaucitron.services.iframe = {
         tarteaucitron.fallback(['tac_iframe'], function (x) {
             var width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
-                url = x.getAttribute("url");
+                url = x.getAttribute("data-url");
             
             return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
         });
