@@ -99,7 +99,7 @@ tarteaucitron.services.alexa = {
     }
 };
 
-// amazon - Liens article
+// amazon - Liens articles
 tarteaucitron.services.amazon = {
     "key": "amazon",
     "type": "ads",
