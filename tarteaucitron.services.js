@@ -35,7 +35,7 @@ tarteaucitron.services.addthis = {
     "key": "addthis",
     "type": "social",
     "name": "AddThis",
-    "uri": "http://www.addthis.com/privacy/privacy-policy#publisher-visitors",
+    "uri": "https://www.addthis.com/privacy/privacy-policy#publisher-visitors",
     "needConsent": true,
     "cookies": ['__atuvc', '__atuvs'],
     "js": function () {
@@ -111,7 +111,7 @@ tarteaucitron.services.alexa = {
     "key": "alexa",
     "type": "analytic",
     "name": "Alexa",
-    "uri": "http://www.alexa.com/help/privacy",
+    "uri": "https://www.alexa.com/help/privacy",
     "needConsent": true,
     "cookies": ['__asc', '__auc'],
     "js": function () {
@@ -133,7 +133,7 @@ tarteaucitron.services.amazon = {
     "key": "amazon",
     "type": "ads",
     "name": "Amazon",
-    "uri": "http://www.amazon.fr/gp/help/customer/display.html?ie=UTF8&*Version*=1&*entries*=0&nodeId=201149360",
+    "uri": "https://www.amazon.fr/gp/help/customer/display.html?ie=UTF8&*Version*=1&*entries*=0&nodeId=201149360",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -159,7 +159,7 @@ tarteaucitron.services.calameo = {
     "key": "calameo",
     "type": "video",
     "name": "Calameo",
-    "uri": "http://fr.calameo.com/privacy",
+    "uri": "https://fr.calameo.com/privacy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -312,7 +312,7 @@ tarteaucitron.services.dailymotion = {
     "key": "dailymotion",
     "type": "video",
     "name": "Dailymotion",
-    "uri": "http://www.dailymotion.com/legal/privacy",
+    "uri": "https://www.dailymotion.com/legal/privacy",
     "needConsent": true,
     "cookies": ['ts', 'dmvk', 'hist', 'v1st', 's_vi'],
     "js": function () {
@@ -513,7 +513,7 @@ tarteaucitron.services.facebook = {
     "key": "facebook",
     "type": "social",
     "name": "Facebook",
-    "uri": "https://www.facebook.com/help/cookies/",
+    "uri": "https://www.facebook.com/policies/cookies/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -538,7 +538,7 @@ tarteaucitron.services.facebooklikebox = {
     "key": "facebooklikebox",
     "type": "social",
     "name": "Facebook (like box)",
-    "uri": "https://www.facebook.com/help/cookies/",
+    "uri": "https://www.facebook.com/policies/cookies/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -563,7 +563,7 @@ tarteaucitron.services.facebookcomment = {
     "key": "facebookcomment",
     "type": "comment",
     "name": "Facebook (commentaire)",
-    "uri": "https://www.facebook.com/help/cookies/",
+    "uri": "https://www.facebook.com/policies/cookies/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -650,7 +650,7 @@ tarteaucitron.services.gplus = {
     "key": "gplus",
     "type": "social",
     "name": "Google+",
-    "uri": "http://www.google.fr/intl/policies/privacy/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -669,7 +669,7 @@ tarteaucitron.services.gplusbadge = {
     "key": "gplusbadge",
     "type": "social",
     "name": "Google+ (badge)",
-    "uri": "http://www.google.fr/intl/policies/privacy/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1023,7 +1023,7 @@ tarteaucitron.services.microsoftcampaignanalytics = {
     "key": "microsoftcampaignanalytics",
     "type": "analytic",
     "name": "Microsoft Campaign Analytics",
-    "uri": "https://www.microsoft.com/fr-fr/privacystatement/Default.aspx",
+    "uri": "https://privacy.microsoft.com/privacystatement/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1802,7 +1802,7 @@ tarteaucitron.services.xiti_smarttag = {
     "key": "xiti_smarttag",
     "type": "analytic",
     "name": "Xiti (SmartTag)",
-    "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
+    "uri": "https://www.atinternet.com/societe/protection-des-donnees/",
     "needConsent": true,
     "cookies": ["atidvisitor", "atreman", "atredir", "atsession", "atuserid", "attvtreman", "attvtsession"],
     "js": function () {
