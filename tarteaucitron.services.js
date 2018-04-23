@@ -875,8 +875,7 @@ tarteaucitron.services.gtag = {
         // Add _gat_gtag_UA_XXXXXXX_XX cookie to cookies array
         var gatGtagUaCookie = '_gat_gtag_' + tarteaucitron.user.gtagUa;
         gatGtagUaCookie = gatGtagUaCookie.replace(/-/g, '_');
-        cookies = ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', gatGtagUaCookie];
-        return cookies;
+        return ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', gatGtagUaCookie];
     })(),
     "js": function () {
         "use strict";
