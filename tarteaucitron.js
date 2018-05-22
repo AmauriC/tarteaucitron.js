@@ -1040,7 +1040,7 @@ var tarteaucitron = {
         "use strict";
         if (!navigator) { return 'en'; }
         
-        var availableLanguages = 'cs,en,fr,es,it,de,pt,pl,ru',
+        var availableLanguages = 'cs,en,fr,es,it,de,nl,pt,pl,ru',
             defaultLanguage = 'en',
             lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
@@ -1077,6 +1077,8 @@ var tarteaucitron = {
             return 'it_IT';
         } else if (userLanguage === 'pt') {
             return 'pt_PT';
+        } else if (userLanguage === 'nl') {
+            return 'nl_NL';
         } else {
             return 'en_US';
         }
