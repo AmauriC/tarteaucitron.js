@@ -1848,3 +1848,28 @@ tarteaucitron.services.facebookpixel = {
     }
 };
 
+// matomo
+tarteaucitron.services.matomo = {
+  "key": "matomo",
+  "type": "analytic",
+  "name": "Matomo (formerly known as Piwik)",
+  "uri": "https://matomo.org/faq/general/faq_146/",
+  "needConsent": true,
+  "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
+  "js": function () {
+    "use strict";
+    if (tarteaucitron.user.matomoId === undefined) {
+      return;
+    }
+
+    window._paq = window._paq || [];
+    window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
+    window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "piwik.js"]);
+    window._paq.push(["setDoNotTrack", 1]);
+    window._paq.push(["trackPageView"]);
+    window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
+    window._paq.push(["enableLinkTracking"]);
+
+    tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
+  }
+};
