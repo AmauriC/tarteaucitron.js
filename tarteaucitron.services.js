@@ -973,6 +973,20 @@ tarteaucitron.services.jsapi = {
     }
 };
 
+// recaptcha
+tarteaucitron.services.recaptcha = {
+    "key": "recaptcha",
+    "type": "api",
+    "name": "reCAPTCHA",
+    "uri": "http://www.google.com/policies/privacy/",
+    "needConsent": true,
+    "cookies": ['nid'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('https://www.google.com/recaptcha/api.js');
+    }
+};
+
 // linkedin
 tarteaucitron.services.linkedin = {
     "key": "linkedin",
