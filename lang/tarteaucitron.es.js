@@ -1,7 +1,7 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
     "adblock": "Hola! Este sitio web es transparente y le da la opción de activar los servicios de terceros.",
-    "adblock_call": "Por favor deshabilite su AdBlocker para comenzar a personalizar.",
+    "adblock_call": "Por favor deshabilite su AdBlocker para empezar a personalizar los servicios.",
     "reload": "Actualizar esta página",
     
     "alertBigScroll": "Al continuar para desplazarse,",
@@ -14,7 +14,7 @@ tarteaucitron.lang = {
     "acceptAll": "OK, aceptar todas",
     "close": "Cerrar",
     
-    "all": "Preference for all services",
+    "all": "Ajustes para todos los servicios",
 
     "info": "Protegiendo tu privacidad",
     "disclaimer": "Aceptando estos servicios terceros, estas aceptando sus cookies y el uso de tecnologías de rastreo necesarias para su correcto funcionamiento.",
@@ -28,7 +28,7 @@ tarteaucitron.lang = {
     "source": "Ver sitio web oficial",
     "credit": "Gestor de cookies realizada por tarteaucitron.js",
     
-    "fallback": "esta deshabilitado.",
+    "fallback": "está deshabilitado.",
 
     "ads": {
         "title": "Red de publicidad",
