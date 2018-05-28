@@ -115,7 +115,8 @@ tarteaucitron.init({
     "showAlertSmall": true, /* afficher le petit bandeau en bas à droite ? */
     "cookieslist": true, /* Afficher la liste des cookies installés ? */
     "removeCredit": false, /* supprimer le lien vers la source ? */
-    "cookieDomain": ".my-multisite-domaine.fr" /* Nom de domaine sur lequel sera posé le cookie - pour les multisites / sous-domaines - Facultatif */
+    "cookieDomain": ".my-multisite-domaine.fr", /* Nom de domaine sur lequel sera posé le cookie - pour les multisites / sous-domaines - Facultatif */
+    "readmoreLink": "/cookiespolicy" /* Pour changer les liens Read more, si vous avez une page listant tous les cookies par exemple - Facultatif */
 });
 </script>
 ```
