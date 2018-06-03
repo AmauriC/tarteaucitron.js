@@ -25,6 +25,9 @@ tarteaucitron.lang = {
     "more": "Ler mais",
     "source": "Ver o site oficial",
     "credit": "Gerenciador de cookies por tarteaucitron.js",
+        
+    "policyName": "política de Privacidade",
+    
     "fallback": "está desativado.",
     "ads": {
         "title": "Rede de anúncios",

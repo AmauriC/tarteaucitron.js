@@ -13,6 +13,8 @@ tarteaucitron.lang = {
     "personalize": "Přizpůsobit",
     "acceptAll": "OK, přijmout vše",
     "close": "Zavřít",
+        
+    "policyName": "Ochrana osobních údajů",
     
     "all": "Nastavení všech služeb",
 

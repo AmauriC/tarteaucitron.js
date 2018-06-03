@@ -27,6 +27,8 @@ tarteaucitron.lang = {
     "more": "Подробнее",
     "source": "Посетите официальный сайт",
     "credit": "Кукис манаджер tarteaucitron.js",
+        
+    "policyName": "политика конфиденциальности",
     
     "fallback": "Деактивирован.",
 
