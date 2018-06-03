@@ -27,6 +27,8 @@ tarteaucitron.lang = {
     "more": "Saperne di più",
     "source": "Vai al sito ufficiale",
     "credit": "Gestione dei cookies da tarteaucitron.js",
+        
+    "policyName": "politica sulla riservatezza",
     
     "fallback": "è disattivato",
     
