@@ -6,6 +6,8 @@ var scripts = document.getElementsByTagName('script'),
     cdn = path.split('/').slice(0, -1).join('/') + '/',
     alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch,
     tarteaucitronForceLanguage = (tarteaucitronForceLanguage === undefined) ? '' : tarteaucitronForceLanguage,
+    tarteaucitronForceExpire = (tarteaucitronForceExpire === undefined) ? '' : tarteaucitronForceExpire,
+    timeExipre = 31536000000,
     tarteaucitronProLoadServices,
     tarteaucitronNoAdBlocker = false;
 
@@ -860,9 +862,15 @@ var tarteaucitron = {
         "owner": {},
         "create": function (key, status) {
             "use strict";
+
+            if (tarteaucitronForceExpire !== '') {
+                // The number of day cann't be higher than 1 year
+                timeExipre = (tarteaucitronForceExpire > 365) ? 31536000000 : tarteaucitronForceExpire * 86400000; // Multiplication to tranform the number of days to milliseconds
+            }
+
             var d = new Date(),
                 time = d.getTime(),
-                expireTime = time + 31536000000, // 365 days
+                expireTime = time + timeExipre, // 365 days
                 regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
                 cookie = tarteaucitron.cookie.read().replace(regex, ""),
                 value = 'tarteaucitron=' + cookie + '!' + key + '=' + status,
