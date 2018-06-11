@@ -364,9 +364,17 @@
 /***
  * Small alert
  */
+
+.tarteaucitronAlertSmallTop {
+    top: 0;
+}
+
+.tarteaucitronAlertSmallBottom {
+    bottom: 0;
+}
+
 #tarteaucitronAlertSmall {
     background: #333;
-    bottom: 0;
     display: none;
     padding: 0;
     position: fixed;
