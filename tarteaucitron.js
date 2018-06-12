@@ -183,7 +183,8 @@ var tarteaucitron = {
                 "orientation": "top",
                 "removeCredit": false,
                 "showAlertSmall": true,
-                "cookieslist": true
+                "cookieslist": true,
+                "handleBrowserDNTRequest": false
             },
             params = tarteaucitron.parameters;
         
@@ -196,6 +197,7 @@ var tarteaucitron = {
         tarteaucitron.orientation = defaults.orientation;
         tarteaucitron.hashtag = defaults.hashtag;
         tarteaucitron.highPrivacy = defaults.highPrivacy;
+        tarteaucitron.handleBrowserDNTRequest = defaults.handleBrowserDNTRequest;
 
         // Step 1: load css
         linkElement.rel = 'stylesheet';
@@ -463,7 +465,7 @@ var tarteaucitron = {
             }
             tarteaucitron.state[service.key] = false;
             tarteaucitron.userInterface.color(service.key, false);
-        } else if (!isResponded && isDNTRequested) {
+        } else if (!isResponded && isDNTRequested && tarteaucitron.handleBrowserDNTRequest) {
             tarteaucitron.cookie.create(service.key, 'false');
             if (typeof service.fallback === 'function') {
                 service.fallback();
