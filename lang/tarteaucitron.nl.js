@@ -6,7 +6,7 @@ tarteaucitron.lang = {
     
     "alertBigScroll": "Door te blijven scrollen,",
     "alertBigClick": "Als je doorgaat met het surfen op deze website,",
-    "alertBig": "staat je alle diensten van derden toe",
+    "alertBig": "sta je alle diensten van derden toe",
     
     "alertBigPrivacy": "Deze site maakt gebruik van cookies en geeft u controle over wat u wilt activeren",
     "alertSmall": "Beheer instellingen",
@@ -26,7 +26,7 @@ tarteaucitron.lang = {
     "useNoCookie": "Deze service heeft geen cookies geïnstalleerd.",
     "more": "Lees meer",
     "source": "Bekijk de officiële website",
-    "credit": "Cookie manager mogelijk gemakt door tarteaucitron.js",
+    "credit": "Cookie manager mogelijk gemaakt door tarteaucitron.js",
     
     "fallback": "is uitgeschakeld.",
 
