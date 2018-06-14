@@ -60,6 +60,7 @@ Bonus:
 * Marketing Automation & CRM
   * Mautic
   * Webmecanik Automation
+  * Hubspot
   
 * Social network
   * AddThis
