@@ -1890,3 +1890,22 @@ tarteaucitron.services.webmecanik = {
         });
     }
 };
+
+// Hubspot
+tarteaucitron.services.hubspot = {
+    "key": "hubspot",
+    "type": "analytic",
+    "name": "Hubspot",
+    "uri": "https://knowledge.hubspot.com/fr/articles/kcs_article/reports/what-cookies-does-hubspot-set-in-a-visitor-s-browser",
+    "needConsent": true,
+    "cookies": ['__hstc', 'hubspotutk', '__hssc', '__hssrc', '__hs_opt_out', '__hs_do_not_track', '__hs_testcookie', 'hsPagesViewedThisSession', 'hsfirstvisit'],
+    "js": function () {
+        "use strict";
+        
+        if (tarteaucitron.user.hubspotId === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//js.hs-scripts.com/' + tarteaucitron.user.hubspotId + '.js');
+    }
+};
+
