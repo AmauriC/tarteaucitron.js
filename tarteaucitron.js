@@ -327,17 +327,20 @@ var tarteaucitron = {
                         div.id = 'tarteaucitronRoot';
                         body.appendChild(div, body);
                         div.innerHTML = html;
-                
+
                         if (tarteaucitron.job !== undefined) {
                             tarteaucitron.job = tarteaucitron.cleanArray(tarteaucitron.job);
                             for (index = 0; index < tarteaucitron.job.length; index += 1) {
                                 tarteaucitron.addService(tarteaucitron.job[index]);
                             }
+                        } else {
+                            tarteaucitron.job = []
                         }
                 
                         tarteaucitron.isAjax = true;
+
                         tarteaucitron.job.push = function (id) {
-                    
+
                             // ie <9 hack
                             if (typeof tarteaucitron.job.indexOf === 'undefined') {
                                 tarteaucitron.job.indexOf = function (obj, start) {
@@ -349,7 +352,7 @@ var tarteaucitron = {
                                     return -1;
                                 };
                             }
-                    
+
                             if (tarteaucitron.job.indexOf(id) === -1) {
                                 Array.prototype.push.call(this, id);
                             }
