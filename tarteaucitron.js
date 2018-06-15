@@ -296,7 +296,7 @@ var tarteaucitron = {
                 }
                 
                 if (defaults.showAlertSmall === true) {
-                    html += '<div id="tarteaucitronAlertSmall">';
+                    html += '<div id="tarteaucitronAlertSmall" class="tarteaucitronAlertSmall' + orientation + '">';
                     html += '   <div id="tarteaucitronManager" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '       ' + tarteaucitron.lang.alertSmall;
                     html += '       <div id="tarteaucitronDot">';
