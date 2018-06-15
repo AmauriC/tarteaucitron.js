@@ -865,14 +865,15 @@ var tarteaucitron = {
                 expireTime = time + 31536000000, // 365 days
                 regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
                 cookie = tarteaucitron.cookie.read().replace(regex, ""),
-                value = 'tarteaucitron=' + cookie + '!' + key + '=' + status;
-            
-            if (tarteaucitron.cookie.read().indexOf(key + '=' + status) === -1) {
+                value = 'tarteaucitron=' + cookie + '!' + key + '=' + status,
+                domain = (tarteaucitron.parameters.cookieDomain !== undefined && tarteaucitron.parameters.cookieDomain !== '') ? 'domain=' + tarteaucitron.parameters.cookieDomain + ';' : '';
+
+          if (tarteaucitron.cookie.read().indexOf(key + '=' + status) === -1) {
                 tarteaucitron.pro('!' + key + '=' + status);
             }
 
             d.setTime(expireTime);
-            document.cookie = value + '; expires=' + d.toGMTString() + '; path=/;';
+            document.cookie = value + '; expires=' + d.toGMTString() + '; path=/;' + domain;
         },
         "read": function () {
             "use strict";
@@ -1040,7 +1041,7 @@ var tarteaucitron = {
         "use strict";
         if (!navigator) { return 'en'; }
         
-        var availableLanguages = 'cs,en,fr,es,it,de,pt,pl,ru',
+        var availableLanguages = 'cs,en,fr,es,it,de,nl,pt,pl,ru',
             defaultLanguage = 'en',
             lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
@@ -1077,6 +1078,8 @@ var tarteaucitron = {
             return 'it_IT';
         } else if (userLanguage === 'pt') {
             return 'pt_PT';
+        } else if (userLanguage === 'nl') {
+            return 'nl_NL';
         } else {
             return 'en_US';
         }
