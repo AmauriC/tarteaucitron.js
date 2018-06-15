@@ -183,7 +183,8 @@ var tarteaucitron = {
                 "orientation": "top",
                 "removeCredit": false,
                 "showAlertSmall": true,
-                "cookieslist": true
+                "cookieslist": true,
+                "handleBrowserDNTRequest": false
             },
             params = tarteaucitron.parameters;
         
@@ -196,6 +197,7 @@ var tarteaucitron = {
         tarteaucitron.orientation = defaults.orientation;
         tarteaucitron.hashtag = defaults.hashtag;
         tarteaucitron.highPrivacy = defaults.highPrivacy;
+        tarteaucitron.handleBrowserDNTRequest = defaults.handleBrowserDNTRequest;
 
         // Step 1: load css
         linkElement.rel = 'stylesheet';
@@ -408,6 +410,7 @@ var tarteaucitron = {
             isDenied = (cookie.indexOf(service.key + '=false') >= 0) ? true : false,
             isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false,
             isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0) ? true : false;
+            isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1") ? true : false;
 
         if (tarteaucitron.added[service.key] !== true) {
             tarteaucitron.added[service.key] = true;
@@ -460,6 +463,13 @@ var tarteaucitron = {
             tarteaucitron.state[service.key] = true;
             tarteaucitron.userInterface.color(service.key, true);
         } else if (isDenied) {
+            if (typeof service.fallback === 'function') {
+                service.fallback();
+            }
+            tarteaucitron.state[service.key] = false;
+            tarteaucitron.userInterface.color(service.key, false);
+        } else if (!isResponded && isDNTRequested && tarteaucitron.handleBrowserDNTRequest) {
+            tarteaucitron.cookie.create(service.key, 'false');
             if (typeof service.fallback === 'function') {
                 service.fallback();
             }
