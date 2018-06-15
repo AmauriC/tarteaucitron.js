@@ -409,7 +409,7 @@ var tarteaucitron = {
             isWaiting = (cookie.indexOf(service.key + '=wait') >= 0) ? true : false,
             isDenied = (cookie.indexOf(service.key + '=false') >= 0) ? true : false,
             isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false,
-            isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0) ? true : false;
+            isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0) ? true : false,
             isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1") ? true : false;
 
         if (tarteaucitron.added[service.key] !== true) {
