@@ -21,6 +21,9 @@ Bonus:
 
 ## Supported services
 * Advertising network
+  * Ad Up Technology (ads)
+  * Ad Up Technology (conversion)
+  * Ad Up Technology (retargeting)
   * Amazon
   * Clicmanager
   * Criteo
