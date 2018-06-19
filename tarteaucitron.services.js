@@ -106,6 +106,199 @@ tarteaucitron.services.addtoanyshare = {
     }
 };
 
+// aduptech ads
+tarteaucitron.services.aduptech_ads = {
+    "key": "aduptech_ads",
+    "type": "ads",
+    "name": "Ad Up Technology (ads)",
+    "uri": "https://www.adup-tech.com/datenschutz",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        var IDENTIFIER = "aduptech_ads",
+            API_URL = "https://s.d.adup-tech.com/jsapi";
+
+        var elements = document.getElementsByClassName(IDENTIFIER);
+        if (!elements || elements.length === 0) {
+            return;
+        }
+
+        tarteaucitron.fallback([IDENTIFIER], "");
+
+        tarteaucitron.addScript(API_URL, "", function() {
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+
+                if (!element.getAttribute("id")) {
+                    element.setAttribute("id", IDENTIFIER + Math.random().toString(36).substr(2, 9));
+                }
+
+                window.uAd.embed(element.getAttribute("id"), {
+                    placementKey: element.getAttribute("placementKey"),
+                    responsive: Boolean(element.getAttribute("responsive")),
+                    lazy: Boolean(element.getAttribute("lazy")),
+                    adtest: Boolean(element.getAttribute("test")),
+                    query: element.getAttribute("query") || "",
+                    minCpc: element.getAttribute("minCpc") || "",
+                    pageUrl: element.getAttribute("pageUrl") || "",
+                    skip: element.getAttribute("skip") || ""
+                });
+            }
+        });
+
+    },
+    "fallback": function () {
+        "use strict";
+        tarteaucitron.fallback(["aduptech_ads"], tarteaucitron.engage("aduptech_ads"));
+    }
+};
+
+// aduptech conversion
+tarteaucitron.services.aduptech_conversion = {
+    "key": "aduptech_conversion",
+    "type": "ads",
+    "name": "Ad Up Technology (conversion)",
+    "uri": "https://www.adup-tech.com/datenschutz",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        var IDENTIFIER = "aduptech_conversion",
+            CONVERSION_PIXEL_BASE_URL = "https://d.adup-tech.com/campaign/conversion";
+
+        var elements = document.getElementsByClassName(IDENTIFIER);
+        if (!elements || elements.length === 0) {
+            return;
+        }
+
+        tarteaucitron.fallback([IDENTIFIER], "");
+
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];  
+                
+            if (!element.getAttribute("advertiserId") || !element.getAttribute("conversionCode")) {
+                continue;
+            }
+            
+            var url = CONVERSION_PIXEL_BASE_URL + 
+                "/" + encodeURIComponent(element.getAttribute("advertiserId")) + 
+                "?t=" + encodeURIComponent(element.getAttribute("conversionCode"));   
+            
+            if (element.getAttribute("price")) {
+                url += "&price=" + encodeURIComponent(element.getAttribute("price"));
+            }
+            
+            if (element.getAttribute("quantity")) {
+                url += "&quantity=" + encodeURIComponent(element.getAttribute("quantity"));
+            }
+            
+            if (element.getAttribute("total")) {
+                url += "&total=" + encodeURIComponent(element.getAttribute("total"));
+            }
+            
+            if (element.getAttribute("orderId")) {
+                url += "&order_id=" + encodeURIComponent(element.getAttribute("orderId"));
+            }
+            
+            if (element.getAttribute("itemNumber")) {
+                url += "&item_number=" + encodeURIComponent(element.getAttribute("itemNumber"));
+            }
+            
+            if (element.getAttribute("description")) {
+                url += "&description=" + encodeURIComponent(element.getAttribute("description"));
+            }
+
+            (new Image()).src = url;            
+        }
+    }
+};
+
+// aduptech retargeting
+tarteaucitron.services.aduptech_retargeting = {
+    "key": "aduptech_retargeting",
+    "type": "ads",
+    "name": "Ad Up Technology (retargeting)",
+    "uri": "https://www.adup-tech.com/datenschutz",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        var IDENTIFIER = "aduptech_retargeting",
+            API_URL = "https://s.d.adup-tech.com/services/retargeting.js";
+
+        var elements = document.getElementsByClassName(IDENTIFIER);
+        if (!elements || elements.length === 0) {
+            return;
+        }
+
+        tarteaucitron.fallback([IDENTIFIER], "");
+
+        window.AdUpRetargeting = function(api) {
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+
+                api.init();
+
+                api.setAccount(element.getAttribute("account"));
+
+                if (element.getAttribute("email")) {
+                    api.setEmail(element.getAttribute("email"));
+                } else if (element.getAttribute("hashedEmail")) {
+                    api.setHashedEmail(element.getAttribute("hashedEmail"));
+                }
+
+                if (element.getAttribute("product")) {
+                    try {
+                        api.setProduct(JSON.parse(element.getAttribute("product")));
+                    } catch (e) {
+                        api.setProduct(element.getAttribute("product"));
+                    }
+                }
+
+                if (element.getAttribute("transaction")) {
+                    try {
+                        api.setTransaction(JSON.parse(element.getAttribute("transaction")));
+                    } catch (e) {
+                        api.setTransaction(element.getAttribute("transaction"));
+                    }
+                }
+
+                if (element.getAttribute("demarkUser")) {
+                    api.setDemarkUser();
+                } else if (element.getAttribute("demarkProducts")) {
+                    api.setDemarkProducts();
+                }
+
+                if (element.getAttribute("conversionCode")) {
+                    api.setConversionCode(element.getAttribute("conversionCode"));
+                }
+
+                if (element.getAttribute("device")) {
+                    var setter = "set" + element.getAttribute("device").charAt(0).toUpperCase() + element.getAttribute("device").slice(1);
+                    if (typeof api[setter] === 'function') {
+                        api[setter]();
+                    }
+                }
+
+                if (element.getAttribute("track")) {
+                    var tracker = "track" + element.getAttribute("track").charAt(0).toUpperCase() + element.getAttribute("track").slice(1);
+                    if (typeof api[tracker] === "function") {
+                        api[tracker]();
+                    } else {
+                        api.trackHomepage();
+                    }
+                }
+            };
+        };
+
+        tarteaucitron.addScript(API_URL);
+    }
+};
+
 // alexa
 tarteaucitron.services.alexa = {
     "key": "alexa",
