@@ -1128,6 +1128,38 @@ tarteaucitron.services.googlemaps = {
     }
 };
 
+// googlemaps search
+tarteaucitron.services.googlemapssearch = {
+    "key": "googlemapssearch",
+    "type": "api",
+    "name": "Google Maps Seard API",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": ['nid'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['googlemapssearch'], function (x) {
+            var width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                // url = x.getAttribute("data-url");
+                query = escape(x.getAttribute("data-search")),
+                key = x.getAttribute("data-api-key");
+            
+            // return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe width="' + width +'" height="' + height + '" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q='+query+'&key='+key+'" allowfullscreen></iframe> '
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'googlemapssearch';
+        tarteaucitron.fallback(['googlemapssearch'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // google tag manager
 tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
