@@ -1206,7 +1206,13 @@ tarteaucitron.services.recaptcha = {
     "cookies": ['nid'],
     "js": function () {
         "use strict";
+        tarteaucitron.fallback(['g-recaptcha'], '');
         tarteaucitron.addScript('https://www.google.com/recaptcha/api.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'recaptcha';
+        tarteaucitron.fallback(['g-recaptcha'], tarteaucitron.engage(id));
     }
 };
 
@@ -2159,4 +2165,3 @@ tarteaucitron.services.webmecanik = {
         });
     }
 };
-
