@@ -1030,6 +1030,38 @@ tarteaucitron.services.gajs = {
     }
 };
 
+// google on steroids
+var _gas = _gas || [];
+tarteaucitron.services.gas = {
+    "key": "gas",
+    "type": "analytic",
+    "name": "Google Analytics on Steroids",
+    "uri": "https://github.com/CardinalPath/gas",
+    "needConsent": true,
+    "cookies": ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'],
+    "js": function () {
+        "use strict";
+        _gas.push(['_setAccount', tarteaucitron.user.gasUa]); // REPLACE WITH YOUR GA NUMBER
+        _gas.push(['_setDomainName', tarteaucitron.parameters.cookieDomain]); // REPLACE WITH YOUR DOMAIN
+        _gas.push(['_trackPageview']);
+        _gas.push(['_gasTrackForms']);
+        _gas.push(['_gasTrackOutboundLinks']);
+        _gas.push(['_gasTrackMaxScroll']);
+        _gas.push(['_gasTrackDownloads']);
+        _gas.push(['_gasTrackVideo']);
+        _gas.push(['_gasTrackAudio']);
+        _gas.push(['_gasTrackYoutube', {force: true}]);
+        _gas.push(['_gasTrackVimeo', {force: true}]);
+        _gas.push(['_gasTrackMailto']);
+
+        tarteaucitron.addScript('//cdnjs.cloudflare.com/ajax/libs/gas/1.11.0/gas.min.js', 'gas-script', function () {
+            if (typeof tarteaucitron.user.gasMore === 'function') {
+                tarteaucitron.user.gasMore();
+            }
+        },'','data-use-dcjs','false');
+    }
+};
+
 // google analytics
 tarteaucitron.services.analytics = {
     "key": "analytics",
@@ -2165,3 +2197,4 @@ tarteaucitron.services.webmecanik = {
         });
     }
 };
+
