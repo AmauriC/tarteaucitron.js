@@ -186,7 +186,8 @@ var tarteaucitron = {
                 "removeCredit": false,
                 "showAlertSmall": true,
                 "cookieslist": true,
-                "handleBrowserDNTRequest": false
+                "handleBrowserDNTRequest": false,
+                "AcceptAllCta" : false
             },
             params = tarteaucitron.parameters;
         
@@ -275,7 +276,7 @@ var tarteaucitron = {
                     orientation = 'Bottom';
                 }
                 
-                if (defaults.highPrivacy) {
+                if (defaults.highPrivacy && !defaults.AcceptAllCta) {
                     html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
