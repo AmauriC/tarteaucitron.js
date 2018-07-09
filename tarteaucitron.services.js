@@ -2198,3 +2198,36 @@ tarteaucitron.services.webmecanik = {
     }
 };
 
+// google analytics multiple
+tarteaucitron.services.multiplegtag = {
+    "key": "multiplegtag",
+    "type": "analytic",
+    "name": "Google Analytics (gtag.js)",
+    "uri": "https://support.google.com/analytics/answer/6004245",
+    "needConsent": true,
+    "cookies": (function () {
+        
+        var cookies = ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
+
+        if (tarteaucitron.user.multiplegtagUa !== undefined) {
+            tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
+                cookies.push('_gat_gtag_' + ua.replace(/-/g, '_'));
+            });
+        }
+
+        return cookies;
+    })(),
+    "js": function () {
+        "use strict";
+        window.dataLayer = window.dataLayer || [];
+
+        tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
+
+            tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', ua);
+            });
+        });
+    }
+};
