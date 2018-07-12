@@ -2192,7 +2192,7 @@ tarteaucitron.services.multiplegtag = {
         tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
 
             tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
-                function gtag(){dataLayer.push(arguments);}
+                window.gtag = function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', ua);
             });
