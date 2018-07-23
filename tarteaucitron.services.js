@@ -1105,7 +1105,7 @@ tarteaucitron.services.gtag = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
-            function gtag(){dataLayer.push(arguments);}
+            window.gtag = function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', tarteaucitron.user.gtagUa);
 
@@ -2224,10 +2224,50 @@ tarteaucitron.services.multiplegtag = {
         tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
 
             tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
-                function gtag(){dataLayer.push(arguments);}
+                window.gtag = function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', ua);
             });
         });
+    }
+};
+
+// matomo
+
+/*
+    1. Set the following variable before the initialization :
+
+    tarteaucitron.user.matomoId = YOUR_SITE_ID_FROM_MATOMO;
+    tarteaucitron.user.matomoHost = "YOUR_MATOMO_URL"; //eg: https://stat.mydomain.com/
+
+    2. Push the service :
+
+    (tarteaucitron.job = tarteaucitron.job || []).push('matomo');
+
+    3. HTML
+    You don't need to add any html code, if the service is autorized, the javascript is added. otherwise no.
+ */
+tarteaucitron.services.matomo = {
+    "key": "matomo",
+    "type": "analytic",
+    "name": "Matomo (formerly known as Piwik)",
+    "uri": "https://matomo.org/faq/general/faq_146/",
+    "needConsent": true,
+    "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.matomoId === undefined) {
+            return;
+        }
+
+        window._paq = window._paq || [];
+        window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
+        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "piwik.php"]);
+        window._paq.push(["setDoNotTrack", 1]);
+        window._paq.push(["trackPageView"]);
+        window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
+        window._paq.push(["enableLinkTracking"]);
+
+        tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
     }
 };
