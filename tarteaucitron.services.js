@@ -711,7 +711,7 @@ tarteaucitron.services.facebook = {
     "cookies": [],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-send', 'fb-share-button', 'fb-like'], '');
+        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-send', 'fb-share-button', 'fb-like', 'fb-video'], '');
         tarteaucitron.addScript('//connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk.js#xfbml=1&version=v2.0', 'facebook-jssdk');
         if (tarteaucitron.isAjax === true) {
             if (typeof FB !== "undefined") {
@@ -722,7 +722,7 @@ tarteaucitron.services.facebook = {
     "fallback": function () {
         "use strict";
         var id = 'facebook';
-        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-send', 'fb-share-button', 'fb-like'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-send', 'fb-share-button', 'fb-like', 'fb-video'], tarteaucitron.engage(id));
     }
 };
 
@@ -2264,4 +2264,3 @@ tarteaucitron.services.matomo = {
         tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
     }
 };
-
