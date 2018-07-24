@@ -1103,7 +1103,13 @@ tarteaucitron.services.googlemaps = {
             tarteaucitron.user.mapscallback = 'tac_googlemaps_callback';
         }
 
-        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback='+tarteaucitron.user.mapscallback);
+        // Add Google Maps libraries if any (https://developers.google.com/maps/documentation/javascript/libraries)
+        var googleMapsLibraries;
+        if (tarteaucitron.user.googlemapsLibraries) {
+            googleMapsLibraries = '&libraries=' + tarteaucitron.user.googlemapsLibraries;
+        }
+
+        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback='+tarteaucitron.user.mapscallback + googleMapsLibraries);
 
         window.tac_googlemaps_callback = function () {
             tarteaucitron.fallback(['googlemaps-canvas'], function (x) {
