@@ -2231,6 +2231,9 @@ tarteaucitron.services.koban = {
         kb('reg', tarteaucitron.user.kobanapi);
         tarteaucitron.addScript(tarteaucitron.user.kobanurl, '', function() {
         });
+    }
+};
+
 // matomo
 
 /*
