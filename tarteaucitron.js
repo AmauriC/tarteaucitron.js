@@ -7,6 +7,7 @@ var scripts = document.getElementsByTagName('script'),
     alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch,
     tarteaucitronForceLanguage = (tarteaucitronForceLanguage === undefined) ? '' : tarteaucitronForceLanguage,
     tarteaucitronForceExpire = (tarteaucitronForceExpire === undefined) ? '' : tarteaucitronForceExpire,
+    tarteaucitronCustomText = (tarteaucitronCustomText === undefined) ? '' : tarteaucitronCustomText,
     timeExipre = 31536000000,
     tarteaucitronProLoadServices,
     tarteaucitronNoAdBlocker = false;
@@ -224,7 +225,7 @@ var tarteaucitron = {
         // Step 2: load language and services
         tarteaucitron.addScript(pathToLang, '', function () {
 
-          if(tarteaucitronCustomText !== undefined){
+          if(tarteaucitronCustomText !== ''){
             tarteaucitron.lang = AddOrUpdate(tarteaucitron.lang, tarteaucitronCustomText);
           }
             tarteaucitron.addScript(pathToServices, '', function () {
