@@ -223,6 +223,10 @@ var tarteaucitron = {
 
         // Step 2: load language and services
         tarteaucitron.addScript(pathToLang, '', function () {
+
+          if(tarteaucitronCustomText !== undefined){
+            tarteaucitron.lang = AddOrUpdate(tarteaucitron.lang, tarteaucitronCustomText);
+          }
             tarteaucitron.addScript(pathToServices, '', function () {
 
                 var body = document.body,
