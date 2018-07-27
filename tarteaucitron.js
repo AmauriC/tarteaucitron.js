@@ -11,6 +11,20 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronProLoadServices,
     tarteaucitronNoAdBlocker = false;
 
+/**
+  Utility function to Add or update the fields of obj1 with the ones in obj2
+*/
+function AddOrUpdate(obj1, obj2){
+  for(key in obj2){
+    if(obj2[key] instanceof Object){
+      obj1[key] = AddOrUpdate(obj1[key], obj2[key]);
+    }else{
+      obj1[key] = obj2[key];
+    }
+  }
+  return obj1;
+}
+
 var tarteaucitron = {
     "version": 323,
     "cdn": cdn,
