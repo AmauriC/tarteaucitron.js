@@ -186,7 +186,8 @@ var tarteaucitron = {
                 "removeCredit": false,
                 "showAlertSmall": true,
                 "cookieslist": true,
-                "handleBrowserDNTRequest": false
+                "handleBrowserDNTRequest": false,
+                "executeScripts": true
             },
             params = tarteaucitron.parameters;
         
@@ -460,7 +461,9 @@ var tarteaucitron = {
             }
             if (tarteaucitron.launch[service.key] !== true) {
                 tarteaucitron.launch[service.key] = true;
-                service.js();
+                if (tarteaucitron.parameters.executeScripts) {
+                    service.js();
+                }
             }
             tarteaucitron.state[service.key] = true;
             tarteaucitron.userInterface.color(service.key, true);
@@ -536,7 +539,9 @@ var tarteaucitron = {
                     }
                     if (tarteaucitron.launch[key] !== true && status === true) {
                         tarteaucitron.launch[key] = true;
-                        tarteaucitron.services[key].js();
+                        if (tarteaucitron.parameters.executeScripts) {
+                            tarteaucitron.services[key].js();
+                        }
                     }
                     tarteaucitron.state[key] = status;
                     tarteaucitron.cookie.create(key, status);
@@ -561,7 +566,9 @@ var tarteaucitron = {
             if (status === true) {
                 if (tarteaucitron.launch[key] !== true) {
                     tarteaucitron.launch[key] = true;
-                    tarteaucitron.services[key].js();
+                    if (tarteaucitron.parameters.executeScripts) {
+                        tarteaucitron.services[key].js();
+                    }
                 }
             }
             tarteaucitron.state[key] = status;
