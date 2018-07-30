@@ -12,19 +12,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronProLoadServices,
     tarteaucitronNoAdBlocker = false;
 
-/**
-  Utility function to Add or update the fields of obj1 with the ones in obj2
-*/
-function AddOrUpdate(obj1, obj2){
-  for(key in obj2){
-    if(obj2[key] instanceof Object){
-      obj1[key] = AddOrUpdate(obj1[key], obj2[key]);
-    }else{
-      obj1[key] = obj2[key];
-    }
-  }
-  return obj1;
-}
+
 
 var tarteaucitron = {
     "version": 323,
@@ -226,7 +214,7 @@ var tarteaucitron = {
         tarteaucitron.addScript(pathToLang, '', function () {
 
           if(tarteaucitronCustomText !== ''){
-            tarteaucitron.lang = AddOrUpdate(tarteaucitron.lang, tarteaucitronCustomText);
+            tarteaucitron.lang = tarteaucitron.AddOrUpdate(tarteaucitron.lang, tarteaucitronCustomText);
           }
             tarteaucitron.addScript(pathToServices, '', function () {
 
@@ -1304,5 +1292,18 @@ var tarteaucitron = {
         }
         
         tarteaucitron.cookie.number();
+    },
+    "AddOrUpdate" : function AddOrUpdate(source, custom){
+        /**
+         Utility function to Add or update the fields of obj1 with the ones in obj2
+         */
+        for(key in custom){
+            if(custom[key] instanceof Object){
+                source[key] = AddOrUpdate(source[key], custom[key]);
+            }else{
+                source[key] = custom[key];
+            }
+        }
+        return source;
     }
 };
