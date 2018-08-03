@@ -1104,7 +1104,7 @@ tarteaucitron.services.googlemaps = {
         }
 
         // Add Google Maps libraries if any (https://developers.google.com/maps/documentation/javascript/libraries)
-        var googleMapsLibraries;
+        var googleMapsLibraries = '';
         if (tarteaucitron.user.googlemapsLibraries) {
             googleMapsLibraries = '&libraries=' + tarteaucitron.user.googlemapsLibraries;
         }
