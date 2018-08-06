@@ -184,6 +184,7 @@ var tarteaucitron = {
             defaults = {
                 "adblocker": false,
                 "hashtag": '#tarteaucitron',
+                "cookieName": 'tarteaucitron',
                 "highPrivacy": false,
                 "orientation": "top",
                 "removeCredit": false,
@@ -893,7 +894,7 @@ var tarteaucitron = {
                 expireTime = time + timeExipre, // 365 days
                 regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
                 cookie = tarteaucitron.cookie.read().replace(regex, ""),
-                value = 'tarteaucitron=' + cookie + '!' + key + '=' + status,
+                value = tarteaucitron.parameters.cookieName + '=' + cookie + '!' + key + '=' + status,
                 domain = (tarteaucitron.parameters.cookieDomain !== undefined && tarteaucitron.parameters.cookieDomain !== '') ? 'domain=' + tarteaucitron.parameters.cookieDomain + ';' : '';
 
           if (tarteaucitron.cookie.read().indexOf(key + '=' + status) === -1) {
@@ -905,7 +906,7 @@ var tarteaucitron = {
         },
         "read": function () {
             "use strict";
-            var nameEQ = "tarteaucitron=",
+            var nameEQ = tarteaucitron.parameters.cookieName + "=",
                 ca = document.cookie.split(';'),
                 i,
                 c;
