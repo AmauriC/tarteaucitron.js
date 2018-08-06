@@ -1047,8 +1047,20 @@ tarteaucitron.services.analytics = {
         };
         window.ga.l = new Date();
         tarteaucitron.addScript('https://www.google-analytics.com/analytics.js', '', function () {
-            ga('create', tarteaucitron.user.analyticsUa, {'cookieExpires': 34128000});
-            ga('send', 'pageview');
+            var uaCreate = {'cookieExpires': 34128000};
+            tarteaucitron.extend(uaCreate, tarteaucitron.user.analyticsUaCreate || {});
+            ga('create', tarteaucitron.user.analyticsUa, createConfig);
+
+            if (tarteaucitron.user.analyticsAnonymizeIp) {
+                ga('set', 'anonymizeIp', true);
+            }
+
+            if (tarteaucitron.user.analyticsPageView) {
+                ga('send', 'pageview', tarteaucitron.user.analyticsPageView);
+            } else {
+                ga('send', 'pageview');
+            }
+
             if (typeof tarteaucitron.user.analyticsMore === 'function') {
                 tarteaucitron.user.analyticsMore();
             }
