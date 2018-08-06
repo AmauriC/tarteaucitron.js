@@ -63,6 +63,7 @@ Bonus:
 * Marketing Automation & CRM
   * Mautic
   * Webmecanik Automation
+  * Koban
   
 * Social network
   * AddThis
@@ -117,6 +118,7 @@ In PHP for example, you can bypass all the script by setting this var `tarteauci
 <script type="text/javascript">
 tarteaucitron.init({
     "hashtag": "#tarteaucitron", /* Ouverture automatique du panel avec le hashtag */
+    "cookieName": "tartaucitron", /* Nom du cookie */
     "highPrivacy": false, /* désactiver le consentement implicite (en naviguant) ? */
     "AcceptAllCta" : false, /* Afficher le CTA "Tout accepter" si "hightPrivacy : true" */
     "orientation": "top", /* le bandeau doit être en haut (top) ou en bas (bottom) ? */
