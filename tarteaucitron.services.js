@@ -1049,7 +1049,7 @@ tarteaucitron.services.analytics = {
         tarteaucitron.addScript('https://www.google-analytics.com/analytics.js', '', function () {
             var uaCreate = {'cookieExpires': 34128000};
             tarteaucitron.extend(uaCreate, tarteaucitron.user.analyticsUaCreate || {});
-            ga('create', tarteaucitron.user.analyticsUa, createConfig);
+            ga('create', tarteaucitron.user.analyticsUa, uaCreate);
 
             if (tarteaucitron.user.analyticsAnonymizeIp) {
                 ga('set', 'anonymizeIp', true);
