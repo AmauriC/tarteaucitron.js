@@ -2285,3 +2285,31 @@ tarteaucitron.services.matomo = {
         tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
     }
 };
+
+// bing ads universal event tracking
+tarteaucitron.services.bingads = {
+    'key': 'bingads',
+    'type': 'ads',
+    'name': 'Bing Ads Universal Event Tracking',
+    'uri': 'https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads',
+    'needConsent': true,
+    'cookies': ['_uetmsclkid'],
+    'js': function () {
+        'use strict';
+        var u = tarteaucitron.user.bingadsTag || 'uetq';
+        window[u] = window[u] || [];
+
+        tarteaucitron.addScript('https://bat.bing.com/bat.js', '', function () {
+            var bingadsCreate = {ti: tarteaucitron.user.bingadsID};
+
+            if ('bingadsStoreCookies' in tarteaucitron.user) {
+                bingadsCreate['storeConvTrackCookies'] = tarteaucitron.user.bingadsStoreCookies;
+            }
+
+            bingadsCreate.q = window[u];
+            window[u] = new UET(bingadsCreate);
+            window[u].push('pageload');
+        });
+    }
+};
+
