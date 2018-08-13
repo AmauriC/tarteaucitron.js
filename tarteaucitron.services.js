@@ -1020,7 +1020,16 @@ tarteaucitron.services.gajs = {
         "use strict";
         window._gaq = window._gaq || [];
         window._gaq.push(['_setAccount', tarteaucitron.user.gajsUa]);
-        window._gaq.push(['_trackPageview']);
+
+        if (tarteaucitron.user.gajsAnonymizeIp) {
+            window._gaq.push (['_gat._anonymizeIp']);
+        }
+
+        if (tarteaucitron.user.gajsPageView) {
+            window._gaq.push(['_trackPageview, ' + tarteaucitron.user.gajsPageView]);
+        } else {
+            window._gaq.push(['_trackPageview']);
+        }
 
         tarteaucitron.addScript('//www.google-analytics.com/ga.js', '', function () {
             if (typeof tarteaucitron.user.gajsMore === 'function') {
