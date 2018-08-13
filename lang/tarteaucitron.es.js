@@ -1,12 +1,12 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
     "adblock": "Hola! Este sitio web es transparente y le da la opción de activar los servicios de terceros.",
-    "adblock_call": "Por favor deshabilite su AdBlocker para empezar a personalizar los servicios.",
+    "adblock_call": "Por favor deshabilite su AdBlocker para personalizar los servicios.",
     "reload": "Actualizar esta página",
     
     "alertBigScroll": "Al continuar para desplazarse,",
     "alertBigClick": "Si continuas navegando por este sitio web,",
-    "alertBig": "estar permitiendo servicios terceros",
+    "alertBig": "estas permitiendo servicios de terceros",
     
     "alertBigPrivacy": "Este sitio web usa cookies y te permite controlar lo que deseas activar",
     "alertSmall": "Gestionar servicios",
@@ -35,12 +35,12 @@ tarteaucitron.lang = {
         "details": "Las redes publicitarias pueden generar ingresos mediante la venta de espacios publicitarios en el sitio."
     },
     "analytic": {
-        "title": "Mediciión de audiencia",
+        "title": "Medición de audiencia",
         "details": "Los servicios de medición de audiencia se usan para generar asistencia estadísticas útiles para mejorar el sitio."
     },
     "social": {
         "title": "Redes sociales",
-        "details": "Las redes sociales pueden aumentar la usabilidad del sitio web y ayudar a promoverlo a través de la contribución."
+        "details": "Las redes sociales pueden aumentar la usabilidad del sitio web y ayudar a promoverlo cuando se comparte."
     },
     "video": {
         "title": "Videos",
@@ -56,7 +56,7 @@ tarteaucitron.lang = {
     },
     "api": {
         "title": "APIs",
-        "details": "APIs se utilizan para cargar scripts: geolocalización, motor de búsqueda, traducciones, ..."
+        "details": "Los APIs se utilizan para cargar scripts: geolocalización, motor de búsqueda, traducciones, ..."
     },
     "other": {
         "title": "Otro",
