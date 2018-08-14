@@ -324,7 +324,7 @@ var tarteaucitron = {
                         html += '           ' + tarteaucitron.lang.close;
                         html += '       </button>';
                         html += '       <div class="tarteaucitronCookiesListMain" id="tarteaucitronCookiesTitle">';
-                        html += '            <strong id="tarteaucitronCookiesNumberBis">0 cookie</strong>';
+                        html += '            <h2 id="tarteaucitronCookiesNumberBis">0 cookie</h2>';
                         html += '       </div>';
                         html += '       <div id="tarteaucitronCookiesList"></div>';
                         html += '    </div>';
@@ -336,9 +336,26 @@ var tarteaucitron = {
 
                 tarteaucitron.addScript(tarteaucitron.cdn + 'advertising.js?v=' + tarteaucitron.version, '', function () {
                     if (tarteaucitronNoAdBlocker === true || defaults.adblocker === false) {
+
+                        // create wrapper container
+                        var wrapper = document.createElement('div');
+                        wrapper.id = "contentWrapper";
+                        
+                        while (document.body.firstChild)
+                        {
+                            wrapper.appendChild(document.body.firstChild);
+                        }
+
+                        // Append the wrapper to the body
+                        document.body.appendChild(wrapper);
+
                         div.id = 'tarteaucitronRoot';
                         body.appendChild(div, body);
                         div.innerHTML = html;
+
+                        
+                        // move el into wrapper
+                        //wrapper.appendChild(el);
 
                         if (tarteaucitron.job !== undefined) {
                             tarteaucitron.job = tarteaucitron.cleanArray(tarteaucitron.job);
@@ -384,16 +401,28 @@ var tarteaucitron = {
                 if (defaults.adblocker === true) {
                     setTimeout(function () {
                         if (tarteaucitronNoAdBlocker === false) {
-                            html = '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '" style="display:block">';
-                            html += '   <span id="tarteaucitronDisclaimerAlert">';
+                            html = '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '" style="display:block" role="alert" aria-live="polite">';
+                            html += '   <p id="tarteaucitronDisclaimerAlert">';
                             html += '       ' + tarteaucitron.lang.adblock + '<br/>';
                             html += '       <strong>' + tarteaucitron.lang.adblock_call + '</strong>';
-                            html += '   </span>';
+                            html += '   </p>';
                             html += '   <button id="tarteaucitronPersonalize" onclick="location.reload();">';
                             html += '       ' + tarteaucitron.lang.reload;
                             html += '   </button>';
                             html += '</div>';
                             html += '<div id="tarteaucitronPremium"></div>';
+
+                            // create wrapper container
+                            var wrapper = document.createElement('div');
+                            wrapper.id = "contentWrapper";
+                            
+                            while (document.body.firstChild)
+                            {
+                                wrapper.appendChild(document.body.firstChild);
+                            }
+
+                        // Append the wrapper to the body
+                        document.body.appendChild(wrapper);
                             div.id = 'tarteaucitronRoot';
                             body.appendChild(div, body);
                             div.innerHTML = html;
@@ -653,6 +682,7 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
             document.getElementById('tarteaucitronClosePanel').focus();
+            document.getElementById('contentWrapper').setAttribute("aria-hidden", "true");
             document.getElementsByTagName('body')[0].classList.add('modal-open');
             tarteaucitron.userInterface.jsSizing('main');
         },
@@ -675,6 +705,7 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
             }
             document.getElementById('tarteaucitronCloseAlert').focus();
+            document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
             document.getElementsByTagName('body')[0].classList.remove('modal-open');
             
         },
@@ -1027,24 +1058,25 @@ var tarteaucitron = {
                     if (tarteaucitron.cookie.owner[name] !== undefined && tarteaucitron.cookie.owner[name].join(' // ') !== savedname) {
                         savedname = tarteaucitron.cookie.owner[name].join(' // ');
                         html += '<div class="tarteaucitronHidden">';
-                        html += '     <div class="tarteaucitronTitle">';
+                        html += '     <h3 class="tarteaucitronTitle">';
                         html += '        ' + tarteaucitron.cookie.owner[name].join(' // ');
-                        html += '    </div>';
-                        html += '</div>';
+                        html += '    </h3>';
+                        html += '</div><ul class="cookie-list">';
                     } else if (tarteaucitron.cookie.owner[name] === undefined && host !== savedname) {
                         savedname = host;
                         html += '<div class="tarteaucitronHidden">';
-                        html += '     <div class="tarteaucitronTitle">';
+                        html += '     <h3 class="tarteaucitronTitle">';
                         html += '        ' + host;
-                        html += '    </div>';
-                        html += '</div>';
+                        html += '    </h3>';
+                        html += '</div><ul class="cookie-list">';
                     }
-                    html += '<div class="tarteaucitronCookiesListMain">';
+                    html += '<li class="tarteaucitronCookiesListMain">';
                     html += '    <div class="tarteaucitronCookiesListLeft"><button onclick="tarteaucitron.cookie.purge([\'' + cookies[i].split('=', 1) + '\']);tarteaucitron.cookie.number();tarteaucitron.userInterface.jsSizing(\'cookie\');return false"><strong>&times;</strong></button> <strong>' + name + '</strong>';
                     html += '    </div>';
                     html += '    <div class="tarteaucitronCookiesListRight">' + cookies[i].split('=').slice(1).join('=') + '</div>';
-                    html += '</div>';
+                    html += '</li>';
                 }
+                html += '</ul>';
             } else {
                 html += '<div class="tarteaucitronCookiesListMain">';
                 html += '    <div class="tarteaucitronCookiesListLeft"><strong>-</strong></div>';

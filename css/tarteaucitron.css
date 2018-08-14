@@ -3,7 +3,6 @@
     height: 100%;
 }
 
-
 a:focus, button:focus {
     outline: 2px solid #cb3333;
 }
@@ -47,6 +46,18 @@ a:focus, button:focus {
     #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
         text-align: left !important;
     }
+
+    .tarteaucitronName h2 {
+        max-width: 80%;
+    }
+
+    #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
+        text-align: center !important;
+    }
+
+        #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk button {
+            margin-bottom: 5px;
+        }
 }
 
 @media screen and (min-width:768px) and (max-width:991px) {
@@ -77,6 +88,12 @@ a:focus, button:focus {
     text-decoration: none;
 }
 
+#tarteaucitronRoot button {
+    background: transparent;
+    border: 0;
+}
+
+#tarteaucitronAlertBig strong, #tarteaucitronAlertSmall strong,
 #tarteaucitronAlertBig a, #tarteaucitronAlertSmall a {
     color: #fff;
 }
@@ -88,6 +105,12 @@ a:focus, button:focus {
 
 #tarteaucitron ul {
     padding: 0;
+}
+
+.cookie-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 /***
  * Root div added just before </body>
@@ -188,8 +211,8 @@ a:focus, button:focus {
     position: relative;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle,
-#tarteaucitron #tarteaucitronServices .tarteaucitronTitle,
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle button,
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle button,
 #tarteaucitron #tarteaucitronInfo,
 #tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
     background: #333;
@@ -224,6 +247,7 @@ a:focus, button:focus {
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle {
     padding: 5px 10px;
+    margin: 0;
 }
 
 #tarteaucitron #tarteaucitronInfo,
@@ -275,7 +299,7 @@ a:focus, button:focus {
     margin-top: 2px;
 }
 
-#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName b {
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName button {
     color: #fff;
 }
 
@@ -348,12 +372,12 @@ a:focus, button:focus {
 }
 
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
-#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert b {
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font: 15px verdana;
     color: #fff;
 }
 
-#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert b {
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font-weight: 700;
 }
 
@@ -487,7 +511,7 @@ a:focus, button:focus {
     text-align: left;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList strong {
     color: #333;
 }
 
@@ -498,7 +522,7 @@ a:focus, button:focus {
     text-align: left;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle strong {
     color: #fff;
     font-size: 16px;
 }
@@ -523,7 +547,7 @@ a:focus, button:focus {
     width: 50%;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a strong {
     color: darkred;
 }
 
@@ -557,7 +581,7 @@ a:focus, button:focus {
     vertical-align: middle;
 }
 
-.tac_activate .tac_float b {
+.tac_activate .tac_float strong {
     color: #fff;
 }
 
