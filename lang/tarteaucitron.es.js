@@ -1,12 +1,12 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
     "adblock": "Hola! Este sitio web es transparente y le da la opción de activar los servicios de terceros.",
-    "adblock_call": "Por favor deshabilite su AdBlocker para personalizar los servicios.",
+    "adblock_call": "Por favor deshabilite su AdBlocker para empezar a personalizar los servicios.",
     "reload": "Actualizar esta página",
     
     "alertBigScroll": "Al continuar para desplazarse,",
     "alertBigClick": "Si continuas navegando por este sitio web,",
-    "alertBig": "estas permitiendo servicios de terceros",
+    "alertBig": "estar permitiendo servicios terceros",
     
     "alertBigPrivacy": "Este sitio web usa cookies y te permite controlar lo que deseas activar",
     "alertSmall": "Gestionar servicios",
@@ -27,6 +27,14 @@ tarteaucitron.lang = {
     "more": "Leer más",
     "source": "Ver sitio web oficial",
     "credit": "Gestor de cookies realizada por tarteaucitron.js",
+
+    "toggleInfoBox": "Show/hide informations about cookie storage",
+    "title": "Cookies management panel",
+    "cookieDetail": "Cookie detail for",
+    "ourSite": "on our site",
+    "newWindow": "(new window)",
+    "allowAll": "Allow all cookies",
+    "denyAll": "Deny all cookies",
     
     "fallback": "está deshabilitado.",
 
@@ -35,12 +43,12 @@ tarteaucitron.lang = {
         "details": "Las redes publicitarias pueden generar ingresos mediante la venta de espacios publicitarios en el sitio."
     },
     "analytic": {
-        "title": "Medición de audiencia",
+        "title": "Mediciión de audiencia",
         "details": "Los servicios de medición de audiencia se usan para generar asistencia estadísticas útiles para mejorar el sitio."
     },
     "social": {
         "title": "Redes sociales",
-        "details": "Las redes sociales pueden aumentar la usabilidad del sitio web y ayudar a promoverlo cuando se comparte."
+        "details": "Las redes sociales pueden aumentar la usabilidad del sitio web y ayudar a promoverlo a través de la contribución."
     },
     "video": {
         "title": "Videos",
@@ -56,7 +64,7 @@ tarteaucitron.lang = {
     },
     "api": {
         "title": "APIs",
-        "details": "Los APIs se utilizan para cargar scripts: geolocalización, motor de búsqueda, traducciones, ..."
+        "details": "APIs se utilizan para cargar scripts: geolocalización, motor de búsqueda, traducciones, ..."
     },
     "other": {
         "title": "Otro",

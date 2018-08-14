@@ -353,7 +353,7 @@ var tarteaucitron = {
                 tarteaucitron.addScript(tarteaucitron.cdn + 'advertising.js?v=' + tarteaucitron.version, '', function () {
                     if (tarteaucitronNoAdBlocker === true || defaults.adblocker === false) {
 
-                        // create wrapper container
+                        // create a wrapper container at the same level than tarteaucitron so we can add an aria-hidden when tarteaucitron is opened
                         var wrapper = document.createElement('div');
                         wrapper.id = "contentWrapper";
                         
@@ -368,10 +368,6 @@ var tarteaucitron = {
                         div.id = 'tarteaucitronRoot';
                         body.appendChild(div, body);
                         div.innerHTML = html;
-
-                        
-                        // move el into wrapper
-                        //wrapper.appendChild(el);
 
                         if (tarteaucitron.job !== undefined) {
                             tarteaucitron.job = tarteaucitron.cleanArray(tarteaucitron.job);
