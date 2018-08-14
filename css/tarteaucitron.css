@@ -1,3 +1,13 @@
+.modal-open{
+    overflow: hidden;
+    height: 100%;
+}
+
+
+a:focus, button:focus {
+    outline: 2px solid #cb3333;
+}
+
 /***
  * Responsive layout for the control panel
  */
@@ -71,11 +81,14 @@
     color: #fff;
 }
 
-#tarteaucitron b {
+#tarteaucitron strong {
     font-size: 22px;
     font-weight: 500;
 }
 
+#tarteaucitron ul {
+    padding: 0;
+}
 /***
  * Root div added just before </body>
  */
@@ -94,6 +107,18 @@
     font-size: 14px;
     line-height: normal;
     vertical-align: initial;
+}
+
+#tarteaucitronRoot h1 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #fff;
+}
+
+#tarteaucitronRoot h2 {
+    display: inline-block;
+    margin-left: 5px;
+    color: #fff;
 }
 
 /***
@@ -289,6 +314,7 @@
     text-align: center;
     text-decoration: none;
     width: auto;
+    border: 0;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
