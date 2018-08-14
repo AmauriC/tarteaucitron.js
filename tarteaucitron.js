@@ -67,6 +67,7 @@ var tarteaucitron = {
                         }
                     }
                 }, false);
+
                 window.addEventListener("keydown", function (evt) {
                     if (evt.keyCode === 27) {
                         tarteaucitron.userInterface.closePanel();
@@ -125,6 +126,21 @@ var tarteaucitron = {
                     if (evt.keyCode === 27) {
                         tarteaucitron.userInterface.closePanel();
                     }
+
+                    if ( evt.keyCode === 9 && focusableEls.indexOf(evt.target) >= 0) {
+                        if ( evt.shiftKey ) /* shift + tab */ {
+                            if (document.activeElement === firstFocusableEl) {
+                                lastFocusableEl.focus();
+                                evt.preventDefault();
+                            }
+                        } else /* tab */ {
+                            if (document.activeElement === lastFocusableEl) {
+                                firstFocusableEl.focus();
+                                evt.preventDefault();
+                            }
+                        }
+                    }
+
                 });
                 window.attachEvent("onhashchange", function () {
                     if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
@@ -678,12 +694,15 @@ var tarteaucitron = {
         },
         "openPanel": function () {
             "use strict";
+
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'block');
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
+
             document.getElementById('tarteaucitronClosePanel').focus();
             document.getElementById('contentWrapper').setAttribute("aria-hidden", "true");
             document.getElementsByTagName('body')[0].classList.add('modal-open');
+            tarteaucitron.userInterface.focusTrap();
             tarteaucitron.userInterface.jsSizing('main');
         },
         "closePanel": function () {
@@ -708,6 +727,46 @@ var tarteaucitron = {
             document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
             document.getElementsByTagName('body')[0].classList.remove('modal-open');
             
+        },
+        "focusTrap": function() {
+            "use strict";
+
+            var focusableEls,
+                firstFocusableEl,
+                lastFocusableEl,
+                filtered;
+
+            focusableEls = document.getElementById('tarteaucitron').querySelectorAll('a[href], button');
+            filtered = [];
+
+            // get only visible items
+            for (var i = 0, max = focusableEls.length; i < max; i++) {
+                if (focusableEls[i].offsetHeight > 0) {
+                   filtered.push(focusableEls[i]);
+                }
+            } 
+
+            firstFocusableEl = filtered[0];  
+            lastFocusableEl = filtered[filtered.length - 1];
+
+            //loop focus inside tarteaucitron
+            document.getElementById('tarteaucitron').addEventListener("keydown", function (evt) {
+            
+                if ( evt.key === 'Tab' || evt.keyCode === 9 ) {
+                   
+                    if ( evt.shiftKey ) /* shift + tab */ {
+                        if (document.activeElement === firstFocusableEl) {
+                            lastFocusableEl.focus();
+                            evt.preventDefault();
+                        }
+                    } else /* tab */ {
+                        if (document.activeElement === lastFocusableEl) { 
+                            firstFocusableEl.focus();
+                            evt.preventDefault();
+                        }
+                    }
+                }
+            })
         },
         "openAlert": function () {
             "use strict";
