@@ -27,6 +27,14 @@ tarteaucitron.lang = {
     "more": "En savoir plus",
     "source": "Voir le site officiel",
     "credit": "Gestion des cookies par tarteaucitron.js",
+
+    "toggleInfoBox": "Afficher/masquer les informations sur le stockage des cookies",
+    "title": "Panneau de gestion des cookies",
+    "cookieDetail": "Détail des cookies",
+    "ourSite": "sur notre site",
+    "newWindow": "(nouvelle fenêtre)",
+    "allowAll": "Autoriser tous les cookies",
+    "denyAll": "Interdire tous les cookies",
     
     "fallback": "est désactivé.",
 

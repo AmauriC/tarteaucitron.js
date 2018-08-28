@@ -1,3 +1,12 @@
+.modal-open{
+    overflow: hidden;
+    height: 100%;
+}
+
+a:focus, button:focus {
+    outline: 2px solid #cb3333;
+}
+
 /***
  * Responsive layout for the control panel
  */
@@ -37,6 +46,18 @@
     #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
         text-align: left !important;
     }
+
+    .tarteaucitronName h2 {
+        max-width: 80%;
+    }
+
+    #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
+        text-align: center !important;
+    }
+
+        #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk button {
+            margin-bottom: 5px;
+        }
 }
 
 @media screen and (min-width:768px) and (max-width:991px) {
@@ -67,15 +88,30 @@
     text-decoration: none;
 }
 
+#tarteaucitronRoot button {
+    background: transparent;
+    border: 0;
+}
+
+#tarteaucitronAlertBig strong, #tarteaucitronAlertSmall strong,
 #tarteaucitronAlertBig a, #tarteaucitronAlertSmall a {
     color: #fff;
 }
 
-#tarteaucitron b {
+#tarteaucitron strong {
     font-size: 22px;
     font-weight: 500;
 }
 
+#tarteaucitron ul {
+    padding: 0;
+}
+
+.cookie-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 /***
  * Root div added just before </body>
  */
@@ -94,6 +130,18 @@
     font-size: 14px;
     line-height: normal;
     vertical-align: initial;
+}
+
+#tarteaucitronRoot h1 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #fff;
+}
+
+#tarteaucitronRoot h2 {
+    display: inline-block;
+    margin-left: 5px;
+    color: #fff;
 }
 
 /***
@@ -163,8 +211,8 @@
     position: relative;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle,
-#tarteaucitron #tarteaucitronServices .tarteaucitronTitle,
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle button,
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle button,
 #tarteaucitron #tarteaucitronInfo,
 #tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
     background: #333;
@@ -199,6 +247,7 @@
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle {
     padding: 5px 10px;
+    margin: 0;
 }
 
 #tarteaucitron #tarteaucitronInfo,
@@ -250,7 +299,7 @@
     margin-top: 2px;
 }
 
-#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName b {
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName button {
     color: #fff;
 }
 
@@ -289,6 +338,7 @@
     text-align: center;
     text-decoration: none;
     width: auto;
+    border: 0;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
@@ -322,12 +372,12 @@
 }
 
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
-#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert b {
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font: 15px verdana;
     color: #fff;
 }
 
-#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert b {
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font-weight: 700;
 }
 
@@ -461,7 +511,7 @@
     text-align: left;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList strong {
     color: #333;
 }
 
@@ -472,7 +522,7 @@
     text-align: left;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle strong {
     color: #fff;
     font-size: 16px;
 }
@@ -497,7 +547,7 @@
     width: 50%;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a strong {
     color: darkred;
 }
 
@@ -531,7 +581,7 @@
     vertical-align: middle;
 }
 
-.tac_activate .tac_float b {
+.tac_activate .tac_float strong {
     color: #fff;
 }
 
