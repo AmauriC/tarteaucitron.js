@@ -1020,7 +1020,16 @@ tarteaucitron.services.gajs = {
         "use strict";
         window._gaq = window._gaq || [];
         window._gaq.push(['_setAccount', tarteaucitron.user.gajsUa]);
-        window._gaq.push(['_trackPageview']);
+
+        if (tarteaucitron.user.gajsAnonymizeIp) {
+            window._gaq.push (['_gat._anonymizeIp']);
+        }
+
+        if (tarteaucitron.user.gajsPageView) {
+            window._gaq.push(['_trackPageview, ' + tarteaucitron.user.gajsPageView]);
+        } else {
+            window._gaq.push(['_trackPageview']);
+        }
 
         tarteaucitron.addScript('//www.google-analytics.com/ga.js', '', function () {
             if (typeof tarteaucitron.user.gajsMore === 'function') {
@@ -1047,8 +1056,24 @@ tarteaucitron.services.analytics = {
         };
         window.ga.l = new Date();
         tarteaucitron.addScript('https://www.google-analytics.com/analytics.js', '', function () {
-            ga('create', tarteaucitron.user.analyticsUa, {'cookieExpires': 34128000});
-            ga('send', 'pageview');
+            var uaCreate = {'cookieExpires': 34128000};
+            tarteaucitron.extend(uaCreate, tarteaucitron.user.analyticsUaCreate || {});
+            ga('create', tarteaucitron.user.analyticsUa, uaCreate);
+
+            if (tarteaucitron.user.analyticsAnonymizeIp) {
+                ga('set', 'anonymizeIp', true);
+            }
+
+            if (typeof tarteaucitron.user.analyticsPrepare === 'function') {
+                tarteaucitron.user.analyticsPrepare();
+            }
+
+            if (tarteaucitron.user.analyticsPageView) {
+                ga('send', 'pageview', tarteaucitron.user.analyticsPageView);
+            } else {
+                ga('send', 'pageview');
+            }
+
             if (typeof tarteaucitron.user.analyticsMore === 'function') {
                 tarteaucitron.user.analyticsMore();
             }
@@ -2273,3 +2298,31 @@ tarteaucitron.services.matomo = {
         tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
     }
 };
+
+// bing ads universal event tracking
+tarteaucitron.services.bingads = {
+    'key': 'bingads',
+    'type': 'ads',
+    'name': 'Bing Ads Universal Event Tracking',
+    'uri': 'https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads',
+    'needConsent': true,
+    'cookies': ['_uetmsclkid'],
+    'js': function () {
+        'use strict';
+        var u = tarteaucitron.user.bingadsTag || 'uetq';
+        window[u] = window[u] || [];
+
+        tarteaucitron.addScript('https://bat.bing.com/bat.js', '', function () {
+            var bingadsCreate = {ti: tarteaucitron.user.bingadsID};
+
+            if ('bingadsStoreCookies' in tarteaucitron.user) {
+                bingadsCreate['storeConvTrackCookies'] = tarteaucitron.user.bingadsStoreCookies;
+            }
+
+            bingadsCreate.q = window[u];
+            window[u] = new UET(bingadsCreate);
+            window[u].push('pageload');
+        });
+    }
+};
+
