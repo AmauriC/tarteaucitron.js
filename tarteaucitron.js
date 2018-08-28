@@ -16,7 +16,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 323,
+    "version": 20180828,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -213,14 +213,19 @@ var tarteaucitron = {
 
         // Step 0: get params
         if (params !== undefined) {
-            tarteaucitron.extend(defaults, params);
+
+            for (var k in defaults) {
+                if(!tarteaucitron.parameters.hasOwnProperty(k)) {
+                    tarteaucitron.parameters[k] = defaults[k];
+                }
+            }
         }
 
         // global
-        tarteaucitron.orientation = defaults.orientation;
-        tarteaucitron.hashtag = defaults.hashtag;
-        tarteaucitron.highPrivacy = defaults.highPrivacy;
-        tarteaucitron.handleBrowserDNTRequest = defaults.handleBrowserDNTRequest;
+        tarteaucitron.orientation = tarteaucitron.parameters.orientation;
+        tarteaucitron.hashtag = tarteaucitron.parameters.hashtag;
+        tarteaucitron.highPrivacy = tarteaucitron.parameters.highPrivacy;
+        tarteaucitron.handleBrowserDNTRequest = tarteaucitron.parameters.handleBrowserDNTRequest;
 
         // Step 1: load css
         linkElement.rel = 'stylesheet';
@@ -273,7 +278,7 @@ var tarteaucitron = {
                 html += '      </div>';
                 html += '      <div id="tarteaucitronInfo" class="tarteaucitronInfoBox">';
                 html += '         ' + tarteaucitron.lang.disclaimer;
-                if (defaults.removeCredit === false) {
+                if (tarteaucitron.parameters.removeCredit === false) {
                     html += '        <br/><br/>';
                     html += '        <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank" rel="noopener" title="tarteaucitron ' + tarteaucitron.lang.newWindow + '">' + tarteaucitron.lang.credit + '</a>';
                 }
@@ -295,11 +300,11 @@ var tarteaucitron = {
                 html += '   </div>';
                 html += '</div>';
 
-                if (defaults.orientation === 'bottom') {
+                if (tarteaucitron.parameters.orientation === 'bottom') {
                     orientation = 'Bottom';
                 }
 
-                if (defaults.highPrivacy) {
+                if (tarteaucitron.parameters.highPrivacy) {
                     html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
@@ -323,7 +328,7 @@ var tarteaucitron = {
                     html += '<div id="tarteaucitronPercentage"></div>';
                 }
 
-                if (defaults.showAlertSmall === true) {
+                if (tarteaucitron.parameters.showAlertSmall === true) {
                     html += '<div id="tarteaucitronAlertSmall" class="tarteaucitronAlertSmall' + orientation + '">';
                     html += '   <button id="tarteaucitronManager" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '       ' + tarteaucitron.lang.alertSmall;
@@ -332,7 +337,7 @@ var tarteaucitron = {
                     html += '           <span id="tarteaucitronDotYellow"></span>';
                     html += '           <span id="tarteaucitronDotRed"></span>';
                     html += '       </span>';
-                    if (defaults.cookieslist === true) {
+                    if (tarteaucitron.parameters.cookieslist === true) {
                         html += '   </button><!-- @whitespace';
                         html += '   --><button id="tarteaucitronCookiesNumber" onclick="tarteaucitron.userInterface.toggleCookiesList();">0</button>';
                         html += '   <div id="tarteaucitronCookiesListContainer">';
@@ -351,7 +356,7 @@ var tarteaucitron = {
                 }
 
                 tarteaucitron.addScript(tarteaucitron.cdn + 'advertising.js?v=' + tarteaucitron.version, '', function () {
-                    if (tarteaucitronNoAdBlocker === true || defaults.adblocker === false) {
+                    if (tarteaucitronNoAdBlocker === true || tarteaucitron.parameters.adblocker === false) {
 
                         // create a wrapper container at the same level than tarteaucitron so we can add an aria-hidden when tarteaucitron is opened
                         var wrapper = document.createElement('div');
@@ -408,9 +413,9 @@ var tarteaucitron = {
                         tarteaucitron.cookie.number();
                         setInterval(tarteaucitron.cookie.number, 60000);
                     }
-                }, defaults.adblocker);
+                }, tarteaucitron.parameters.adblocker);
 
-                if (defaults.adblocker === true) {
+                if (tarteaucitron.parameters.adblocker === true) {
                     setTimeout(function () {
                         if (tarteaucitronNoAdBlocker === false) {
                             html = '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '" style="display:block" role="alert" aria-live="polite">';
@@ -719,7 +724,9 @@ var tarteaucitron = {
             } else {
                 tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
             }
-            document.getElementById('tarteaucitronCloseAlert').focus();
+            if (document.getElementById('tarteaucitronCloseAlert') !== null) {
+                document.getElementById('tarteaucitronCloseAlert').focus();
+            }
             document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
             document.getElementsByTagName('body')[0].classList.remove('modal-open');
             
