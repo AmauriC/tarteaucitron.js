@@ -3,6 +3,8 @@
     height: 100%;
 }
 
+#contentWrapper {display:unset;}
+
 /***
 * Reset CSS
 */
@@ -268,7 +270,6 @@ h2#tarteaucitronCookiesNumberBis {
 #tarteaucitron #tarteaucitronServices .tarteaucitronTitle button,
 #tarteaucitron #tarteaucitronInfo,
 #tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
-    background: #333;
     color: #fff;
     display: inline-block;
     font-size: 14px;
