@@ -3,8 +3,41 @@
     height: 100%;
 }
 
-a:focus, button:focus {
-    outline: 2px solid #cb3333;
+/***
+* Reset CSS
+*/
+#tarteaucitronRoot div, #tarteaucitronRoot span, #tarteaucitronRoot applet, #tarteaucitronRoot object, #tarteaucitronRoot iframe, #tarteaucitronRoot h1, #tarteaucitronRoot h2, #tarteaucitronRoot h3, #tarteaucitronRoot h4, #tarteaucitronRoot h5, #tarteaucitronRoot h6, #tarteaucitronRoot p, #tarteaucitronRoot blockquote, #tarteaucitronRoot pre, #tarteaucitronRoot a, #tarteaucitronRoot abbr, #tarteaucitronRoot acronym, #tarteaucitronRoot address, #tarteaucitronRoot big, #tarteaucitronRoot cite, #tarteaucitronRoot code, #tarteaucitronRoot del, #tarteaucitronRoot dfn, #tarteaucitronRoot em, #tarteaucitronRoot img, #tarteaucitronRoot ins, #tarteaucitronRoot kbd, #tarteaucitronRoot q, #tarteaucitronRoot s, #tarteaucitronRoot samp, #tarteaucitronRoot small, #tarteaucitronRoot strike, #tarteaucitronRoot strong, #tarteaucitronRoot sub, #tarteaucitronRoot sup, #tarteaucitronRoot tt, #tarteaucitronRoot var, #tarteaucitronRoot b, #tarteaucitronRoot u, #tarteaucitronRoot i, #tarteaucitronRoot center, #tarteaucitronRoot dl, #tarteaucitronRoot dt, #tarteaucitronRoot dd, #tarteaucitronRoot ol, #tarteaucitronRoot ul, #tarteaucitronRoot li, #tarteaucitronRoot fieldset, #tarteaucitronRoot form, #tarteaucitronRoot label, #tarteaucitronRoot legend, #tarteaucitronRoot table, #tarteaucitronRoot caption, #tarteaucitronRoot tbody, #tarteaucitronRoot tfoot, #tarteaucitronRoot thead, #tarteaucitronRoot tr, #tarteaucitronRoot th, #tarteaucitronRoot td,article, #tarteaucitronRoot aside, #tarteaucitronRoot canvas, #tarteaucitronRoot details, #tarteaucitronRoot embed, #tarteaucitronRoot figure, #tarteaucitronRoot figcaption, #tarteaucitronRoot footer, #tarteaucitronRoot header, #tarteaucitronRoot hgroup, #tarteaucitronRoot menu, #tarteaucitronRoot nav, #tarteaucitronRoot output, #tarteaucitronRoot ruby, #tarteaucitronRoot section, #tarteaucitronRoot summary, #tarteaucitronRoot time, #tarteaucitronRoot mark, #tarteaucitronRoot audio, #tarteaucitronRoot video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    background: initial;
+    text-align: initial;
+    text-shadow: initial;
+}
+/* HTML5 display-role reset for older browsers */
+#tarteaucitronRoot article, #tarteaucitronRoot aside, #tarteaucitronRoot details, #tarteaucitronRoot figcaption, #tarteaucitronRoot figure, #tarteaucitronRoot footer, #tarteaucitronRoot header, #tarteaucitronRoot hgroup, #tarteaucitronRoot menu, #tarteaucitronRoot nav, #tarteaucitronRoot section {
+    display: block;
+}
+#tarteaucitronRoot ol, #tarteaucitronRoot ul {
+    list-style: none;
+}
+#tarteaucitronRoot blockquote, #tarteaucitronRoot q {
+    quotes: none;
+}
+#tarteaucitronRoot blockquote:before, #tarteaucitronRoot blockquote:after, #tarteaucitronRoot q:before, #tarteaucitronRoot q:after {
+    content: '';
+    content: none;
+}
+#tarteaucitronRoot table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#tarteaucitronRoot a:focus, #tarteaucitronRoot button:focus {
+    /*outline: 2px solid #cb3333;*/
 }
 
 /***
@@ -77,6 +110,16 @@ a:focus, button:focus {
     zoom: 1;
 }
 
+#tarteaucitronRoot div#tarteaucitron {
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#tarteaucitronRoot button#tarteaucitronBack {
+    background: #eee;
+}
+
 #tarteaucitron .clear {
     clear: both;
 }
@@ -136,12 +179,17 @@ a:focus, button:focus {
     font-size: 1.5em;
     text-align: center;
     color: #fff;
+    margin: 15px 0 28px;
 }
 
 #tarteaucitronRoot h2 {
     display: inline-block;
     margin-left: 5px;
     color: #fff;
+}
+
+h2#tarteaucitronCookiesNumberBis {
+    margin-left: 0;
 }
 
 /***
@@ -346,6 +394,16 @@ a:focus, button:focus {
     font-size: 12px;
 }
 
+#tarteaucitron h3 {
+    font-size: 18px;
+}
+
+#tarteaucitron #tarteaucitronMainLineOffset .tarteaucitronName {
+    width: auto!important;
+    margin-left: 0!important;
+    font-size: 14px;
+}
+
 /***
  * Big alert
  */
@@ -357,7 +415,7 @@ a:focus, button:focus {
     bottom: 0;
 }
 
-#tarteaucitronAlertBig {
+#tarteaucitronRoot #tarteaucitronAlertBig {
     background: #333;
     color: #fff;
     display: none;
@@ -366,9 +424,12 @@ a:focus, button:focus {
     padding: 5px 5%;
     position: fixed;
     text-align: center;
-    width: 90%;
     box-sizing: content-box;
     z-index: 2147483645;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
 }
 
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
