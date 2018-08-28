@@ -21,6 +21,9 @@ Bonus:
 
 ## Supported services
 * Advertising network
+  * Ad Up Technology (ads)
+  * Ad Up Technology (conversion)
+  * Ad Up Technology (retargeting)
   * Amazon
   * Clicmanager
   * Criteo
@@ -58,9 +61,10 @@ Bonus:
   * Facebook (commentaire)
   
 * Marketing Automation & CRM
+  * Hubspot
+  * Koban
   * Mautic
   * Webmecanik Automation
-  * Hubspot
   
 * Social network
   * AddThis
@@ -90,6 +94,7 @@ Bonus:
   * SlideShare
   * Vimeo
   * YouTube
+  * Issuu
 
 
 ## Visitors outside the EU
@@ -114,12 +119,14 @@ In PHP for example, you can bypass all the script by setting this var `tarteauci
 <script type="text/javascript">
 tarteaucitron.init({
     "hashtag": "#tarteaucitron", /* Ouverture automatique du panel avec le hashtag */
+    "cookieName": "tartaucitron", /* Nom du cookie */
     "highPrivacy": false, /* désactiver le consentement implicite (en naviguant) ? */
     "orientation": "top", /* le bandeau doit être en haut (top) ou en bas (bottom) ? */
     "adblocker": false, /* Afficher un message si un adblocker est détecté */
     "showAlertSmall": true, /* afficher le petit bandeau en bas à droite ? */
     "cookieslist": true, /* Afficher la liste des cookies installés ? */
     "removeCredit": false, /* supprimer le lien vers la source ? */
+    "handleBrowserDNTRequest": false, /* Répondre au DoNotTrack du navigateur ?*/
     "cookieDomain": ".my-multisite-domaine.fr" /* Nom de domaine sur lequel sera posé le cookie - pour les multisites / sous-domaines - Facultatif */
 });
 </script>
