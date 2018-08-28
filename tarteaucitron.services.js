@@ -1064,6 +1064,10 @@ tarteaucitron.services.analytics = {
                 ga('set', 'anonymizeIp', true);
             }
 
+            if (typeof tarteaucitron.user.analyticsPrepare === 'function') {
+                tarteaucitron.user.analyticsPrepare();
+            }
+
             if (tarteaucitron.user.analyticsPageView) {
                 ga('send', 'pageview', tarteaucitron.user.analyticsPageView);
             } else {
