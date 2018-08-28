@@ -259,6 +259,11 @@ h2#tarteaucitronCookiesNumberBis {
     position: relative;
 }
 
+#tarteaucitronCookiesList h3.tarteaucitronTitle {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle button,
 #tarteaucitron #tarteaucitronServices .tarteaucitronTitle button,
 #tarteaucitron #tarteaucitronInfo,
