@@ -207,7 +207,8 @@ var tarteaucitron = {
                 "removeCredit": false,
                 "showAlertSmall": true,
                 "cookieslist": true,
-                "handleBrowserDNTRequest": false
+                "handleBrowserDNTRequest": false,
+                "moreInfoLink": true
             },
             params = tarteaucitron.parameters;
 
@@ -475,13 +476,15 @@ var tarteaucitron = {
             html += '   <div class="tarteaucitronName">';
             html += '       <h3>' + service.name + '</h3><br/>';
             html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
-            html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '/" target="_blank" rel="noopener" title="'+ tarteaucitron.lang.cookieDetail + ' ' + service.name + ' ' + tarteaucitron.lang.ourSite + ' ' + tarteaucitron.lang.newWindow +'">';
-            html += '           ' + tarteaucitron.lang.more;
-            html += '       </a>';
-            html += '        - ';
-            html += '       <a href="' + service.uri + '" target="_blank" rel="noopener" title="' + service.name + ' ' + tarteaucitron.lang.newWindow + '">';
-            html += '           ' + tarteaucitron.lang.source;
-            html += '       </a>';
+            if (tarteaucitron.parameters.moreInfoLink == true) {
+                html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '/" target="_blank" rel="noopener" title="'+ tarteaucitron.lang.cookieDetail + ' ' + service.name + ' ' + tarteaucitron.lang.ourSite + ' ' + tarteaucitron.lang.newWindow +'">';
+                html += '           ' + tarteaucitron.lang.more;
+                html += '       </a>';
+                html += '        - ';
+                html += '       <a href="' + service.uri + '" target="_blank" rel="noopener" title="' + service.name + ' ' + tarteaucitron.lang.newWindow + '">';
+                html += '           ' + tarteaucitron.lang.source;
+                html += '       </a>';
+            }
             html += '   </div>';
             html += '   <div class="tarteaucitronAsk">';
             html += '       <button id="' + service.key + 'Allowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">';
