@@ -475,7 +475,7 @@ var tarteaucitron = {
 
             html += '<li id="' + service.key + 'Line" class="tarteaucitronLine">';
             html += '   <div class="tarteaucitronName">';
-            html += '       <h3>' + service.name + '</h3><br/>';
+            html += '       <h3>' + service.name + '</h3>';
             html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
             if (tarteaucitron.parameters.moreInfoLink == true) {
                 html += '       <a href="https://opt-out.ferank.eu/service/' + service.key + '/" target="_blank" rel="noopener" title="'+ tarteaucitron.lang.cookieDetail + ' ' + service.name + ' ' + tarteaucitron.lang.ourSite + ' ' + tarteaucitron.lang.newWindow +'">';
