@@ -448,7 +448,7 @@ h2#tarteaucitronCookiesNumberBis {
     font-weight: 700;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize, #tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
     background: #008300;
     color: #fff;
     cursor: pointer;
@@ -459,7 +459,7 @@ h2#tarteaucitronCookiesNumberBis {
     margin-left: 7px;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
     background: #fff;
     color: #333;
     font-size: 13px;

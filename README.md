@@ -20,92 +20,6 @@ Bonus:
 - Load service when user click on Allow (without reload of the page),
 - Incorporate a fallback system (display a link instead of social button and a static banner instead of advertising).
 
-## Supported services
-* Advertising network
-  * Ad Up Technology (ads)
-  * Ad Up Technology (conversion)
-  * Ad Up Technology (retargeting)
-  * Amazon
-  * Clicmanager
-  * Criteo
-  * FERank (pub)
-  * Google Adsense
-  * Google Adsense Search (form)
-  * Google Adsense Search (result)
-  * Google Adwords (conversion)
-  * Google Adwords (remarketing)
-  * Pubdirecte
-  * Twenga
-  * vShop
-
-* APIs
-  * Google jsapi
-  * Google Maps
-  * Google Tag Manager
-  * Timeline JS
-  * Typekit (adobe)
-
-* Audience measurement
-  * Alexa
-  * Clicky
-  * Crazyegg
-  * FERank
-  * Get+
-  * Google Analytics (ga.js)
-  * Google Analytics (universal)
-  * StatCounter
-  * VisualRevenue
-  * Xiti
-
-* Comment
-  * Disqus
-  * Facebook (commentaire)
-  
-* Marketing Automation & CRM
-  * Mautic
-  * Webmecanik Automation
-  * Koban
-  
-* Social network
-  * AddThis
-  * AddToAny (feed)
-  * AddToAny (share)
-  * eKomi
-  * Facebook
-  * Facebook (like box)
-  * Google+
-  * Google+ (badge)
-  * Linkedin
-  * Pinterest
-  * Shareaholic
-  * ShareThis
-  * Twitter
-  * Twitter (cards)
-  * Twitter (timelines)
-
-* Support
-  * UserVoice
-  * Zopim
-
-* Video
-  * Calameo
-  * Dailymotion
-  * Prezi
-  * SlideShare
-  * Vimeo
-  * YouTube
-  * Issuu
-
-
-## Visitors outside the EU
-In PHP for example, you can bypass all the script by setting this var `tarteaucitron.user.bypass = true;` if the visitor is not in the EU.
-
-## Tested on
-- IE 6+
-- FF 3+
-- Safari 4+
-- Chrome 14+
-- Opera 10+
 
 # Installation guide
 [Visit opt-out.ferank.eu](https://opt-out.ferank.eu/)
@@ -129,6 +43,7 @@ tarteaucitron.init({
     "removeCredit": false, /* supprimer le lien vers la source ? */
     "handleBrowserDNTRequest": false, /* Répondre au DoNotTrack du navigateur ?*/
     "moreInfoLink": true,
+    "privacyUrl": "",
     //"cookieDomain": ".my-multisite-domaine.fr" /* Nom de domaine sur lequel sera posé le cookie - pour les multisites / sous-domaines - Facultatif */
 });
 </script>

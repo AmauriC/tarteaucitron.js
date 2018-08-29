@@ -16,7 +16,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20180828003,
+    "version": 20180829,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -209,7 +209,8 @@ var tarteaucitron = {
                 "cookieslist": true,
                 "handleBrowserDNTRequest": false,
                 "AcceptAllCta" : false,
-                "moreInfoLink": true
+                "moreInfoLink": true,
+                "privacyUrl": ""
             },
             params = tarteaucitron.parameters;
 
@@ -314,6 +315,13 @@ var tarteaucitron = {
                     html += '   <button id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '       ' + tarteaucitron.lang.personalize;
                     html += '   </button>';
+
+                    if (tarteaucitron.parameters.privacyUrl !== "") {
+                        html += '   <button id="tarteaucitronPrivacyUrl" onclick="document.location = tarteaucitron.parameters.privacyUrl">';
+                        html += '       ' + tarteaucitron.lang.privacyUrl;
+                        html += '   </button>';
+                    }
+
                     html += '</div>';
                 } else {
                     html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
@@ -326,6 +334,13 @@ var tarteaucitron = {
                     html += '   <button id="tarteaucitronCloseAlert" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '       ' + tarteaucitron.lang.personalize;
                     html += '   </button>';
+
+                    if (tarteaucitron.parameters.privacyUrl !== "") {
+                        html += '   <button id="tarteaucitronPrivacyUrl" onclick="document.location = tarteaucitron.parameters.privacyUrl">';
+                        html += '       ' + tarteaucitron.lang.privacyUrl;
+                        html += '   </button>';
+                    }
+
                     html += '</div>';
                     html += '<div id="tarteaucitronPercentage"></div>';
                 }
@@ -462,7 +477,7 @@ var tarteaucitron = {
             cookie = tarteaucitron.cookie.read(),
             hostname = document.location.hostname,
             hostRef = document.referrer.split('/')[2],
-            isNavigating = (hostRef === hostname) ? true : false,
+            isNavigating = (hostRef === hostname && window.location.href !== tarteaucitron.parameters.privacyUrl) ? true : false,
             isAutostart = (!service.needConsent) ? true : false,
             isWaiting = (cookie.indexOf(service.key + '=wait') >= 0) ? true : false,
             isDenied = (cookie.indexOf(service.key + '=false') >= 0) ? true : false,
