@@ -660,10 +660,16 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.css(key + 'Line', 'borderLeft', '5px solid ' + greenDark);
                 tarteaucitron.userInterface.css(key + 'Allowed', 'backgroundColor', greenDark);
                 tarteaucitron.userInterface.css(key + 'Denied', 'backgroundColor', gray);
+
+                document.getElementById(key + 'Line').classList.add('tarteaucitronIsAllowed');
+                document.getElementById(key + 'Line').classList.remove('tarteaucitronIsDenied');
             } else if (status === false) {
                 tarteaucitron.userInterface.css(key + 'Line', 'borderLeft', '5px solid ' + redDark);
                 tarteaucitron.userInterface.css(key + 'Allowed', 'backgroundColor', gray);
                 tarteaucitron.userInterface.css(key + 'Denied', 'backgroundColor', redDark);
+
+                document.getElementById(key + 'Line').classList.remove('tarteaucitronIsAllowed');
+                document.getElementById(key + 'Line').classList.add('tarteaucitronIsDenied');
             }
 
             // check if all services are allowed
