@@ -32,19 +32,24 @@ Bonus:
 
 <script type="text/javascript">
 tarteaucitron.init({
-    "hashtag": "#tarteaucitron", /* Ouverture automatique du panel avec le hashtag */
-    "cookieName": "tartaucitron", /* Nom du cookie */
-    "highPrivacy": false, /* désactiver le consentement implicite (en naviguant) ? */
-    "AcceptAllCta" : false, /* Afficher le CTA "Tout accepter" si "hightPrivacy : true" */
-    "orientation": "top", /* le bandeau doit être en haut (top) ou en bas (bottom) ? */
-    "adblocker": false, /* Afficher un message si un adblocker est détecté */
-    "showAlertSmall": true, /* afficher le petit bandeau en bas à droite ? */
-    "cookieslist": true, /* Afficher la liste des cookies installés ? */
-    "removeCredit": false, /* supprimer le lien vers la source ? */
-    "handleBrowserDNTRequest": false, /* Répondre au DoNotTrack du navigateur ?*/
-    "moreInfoLink": true,
-    "privacyUrl": "",
-    //"cookieDomain": ".my-multisite-domaine.fr" /* Nom de domaine sur lequel sera posé le cookie - pour les multisites / sous-domaines - Facultatif */
+    "privacyUrl": "", /* Privacy policy url */
+
+    "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+    "cookieName": "tartaucitron", /* Cookie name */
+    
+    "orientation": "top", /* Banner position (top - bottom) */
+    "showAlertSmall": true, /* Show the small banner on bottom right */
+    "cookieslist": true, /* Show the cookie list */
+
+    "adblocker": false, /* Show a Warning if an adblocker is detected */
+    "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+    "highPrivacy": false, /* Disable auto consent */
+    "handleBrowserDNTRequest": false, /* If Do Not Track == 1, accept all */
+
+    "removeCredit": false, /* Remove credit link */
+    "moreInfoLink": true, /* Show more info link */
+
+    //"cookieDomain": ".my-multisite-domaine.fr" /* Shared cookie for subdomain website */
 });
 </script>
 ```
