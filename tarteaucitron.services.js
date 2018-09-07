@@ -1271,6 +1271,34 @@ tarteaucitron.services.linkedin = {
         tarteaucitron.fallback(['tacLinkedin'], tarteaucitron.engage(id));
     }
 };
+// linkedin insight tag
+tarteaucitron.services.linkedin_insight_tag = {
+    "key": "linkedin_insight_tag",
+    "type": "analytic",
+    "name": "LinkedIn Insight Tag",
+    "uri": "https://www.linkedin.com/legal/cookie-policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.linkedinPartnerId === undefined) {
+      return;
+    }
+        window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+        window._linkedin_data_partner_ids.push(tarteaucitron.user.linkedinPartnerId);
+        tarteaucitron.fallback(['linkedin_insight_tag'], function (x) {
+            return '<noscript><img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid='+tarteaucitron.user.linkedinPartnerId+'&fmt=gif" /></noscript>';
+        });
+        tarteaucitron.addScript('https://snap.licdn.com/li.lms-analytics/insight.min.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'linkedin_insight_tag';
+        tarteaucitron.fallback(['linkedin_insight_tag'], function (elem) {
+            return tarteaucitron.engage(id);
+        });
+    }
+};
 
 // mautic
 tarteaucitron.services.mautic = {
