@@ -251,10 +251,13 @@ h2#tarteaucitronCookiesNumberBis {
     margin: 15px auto 0;
     width: 80%;
 }
-
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
+.tarteaucitronSelfLink, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
     background: rgba(51, 51, 51, 0.07);
+}a.tarteaucitronSelfLink {
+    text-align: center!important;
+    display: block;
+    padding: 7px!important;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
