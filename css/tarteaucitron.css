@@ -668,3 +668,9 @@ div.amazon_product {
     height:240px;
     width:120px;
 }
+
+.tarteaucitronIsAllowed .tarteaucitronDeny {
+    opacity: 0.5;
+}.tarteaucitronIsDenied .tarteaucitronAllow {
+    opacity: 0.5;
+}
