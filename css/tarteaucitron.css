@@ -84,7 +84,6 @@
 
     .tarteaucitronName h2 {
         max-width: 80%;
-        font-size: 1.4em!important;
     }
 
     #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
@@ -251,6 +250,7 @@ h2#tarteaucitronCookiesNumberBis {
     margin: 15px auto 0;
     width: 80%;
 }
+
 .tarteaucitronSelfLink, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
     background: rgba(51, 51, 51, 0.07);
@@ -452,7 +452,7 @@ h2#tarteaucitronCookiesNumberBis {
     font-weight: 700;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize, #tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize, #tarteaucitron #tarteaucitronPrivacyUrl {
     background: #008300;
     color: #fff;
     cursor: pointer;
@@ -463,7 +463,7 @@ h2#tarteaucitronCookiesNumberBis {
     margin-left: 7px;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitron #tarteaucitronPrivacyUrl {
     background: #fff;
     color: #333;
     font-size: 13px;
@@ -672,13 +672,11 @@ div.amazon_product {
     height:240px;
     width:120px;
 }
-
 .tarteaucitronIsAllowed .tarteaucitronDeny {
     opacity: 0.5;
 }.tarteaucitronIsDenied .tarteaucitronAllow {
     opacity: 0.5;
 }
-
 
 div#tarteaucitronInfo {
     display: block!important;
