@@ -16,7 +16,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20180829,
+    "version": 20180910,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -266,9 +266,19 @@ var tarteaucitron = {
                 html += '       ' + tarteaucitron.lang.close;
                 html += '   </button>';
                 html += '   <div id="tarteaucitronServices">';
-                html += '      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset"><h1 id="dialogTitle">'+ tarteaucitron.lang.title + '</h1>';
+                html += '      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset">';
+                html += '         <h1 id="dialogTitle">'+ tarteaucitron.lang.title + '</h1>';
+                html += '         <div id="tarteaucitronInfo" class="tarteaucitronInfoBox">';
+                html += '         ' + tarteaucitron.lang.disclaimer;
+                if (tarteaucitron.parameters.privacyUrl !== "") {
+                    html += '   <br/><br/>';
+                    html += '   <button id="tarteaucitronPrivacyUrl" onclick="document.location = tarteaucitron.parameters.privacyUrl">';
+                    html += '       ' + tarteaucitron.lang.privacyUrl;
+                    html += '   </button>';
+                }
+                html += '         </div>';
                 html += '         <div class="tarteaucitronName">';
-                html += '            <button onclick="tarteaucitron.userInterface.toggle(\'tarteaucitronInfo\', \'tarteaucitronInfoBox\');return false" aria-label="' + tarteaucitron.lang.toggleInfoBox + '">&#10011;</button> <h2>' + tarteaucitron.lang.all + '</h2>';
+                html += '            <h2>' + tarteaucitron.lang.all + '</h2>';
                 html += '         </div>';
                 html += '         <div class="tarteaucitronAsk" id="tarteaucitronScrollbarAdjust">';
                 html += '            <button id="tarteaucitronAllAllowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respondAll(true);">';
@@ -278,13 +288,6 @@ var tarteaucitron = {
                 html += '               &#10007; ' + tarteaucitron.lang.denyAll;
                 html += '            </button>';
                 html += '         </div>';
-                html += '      </div>';
-                html += '      <div id="tarteaucitronInfo" class="tarteaucitronInfoBox">';
-                html += '         ' + tarteaucitron.lang.disclaimer;
-                if (tarteaucitron.parameters.removeCredit === false) {
-                    html += '        <br/><br/>';
-                    html += '        <a href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank" rel="noopener" title="tarteaucitron ' + tarteaucitron.lang.newWindow + '">' + tarteaucitron.lang.credit + '</a>';
-                }
                 html += '      </div>';
                 html += '      <div class="tarteaucitronBorder" id="tarteaucitronScrollbarParent">';
                 html += '         <div class="clear"></div><ul>';
@@ -298,7 +301,11 @@ var tarteaucitron = {
                     html += '            </div>';
                     html += '         <ul id="tarteaucitronServices_' + cat[i] + '"></ul></li>';
                 }
-                html += '         </ul><div class="tarteaucitronHidden" id="tarteaucitronScrollbarChild" style="height:20px;display:block"></div>';
+                html += '         </ul>';
+                html += '         <div class="tarteaucitronHidden" id="tarteaucitronScrollbarChild" style="height:20px;display:block"></div>';
+                if (tarteaucitron.parameters.removeCredit === false) {
+                    html += '     <a class="tarteaucitronSelfLink" href="https://opt-out.ferank.eu/" rel="nofollow" target="_blank" rel="noopener" title="tarteaucitron ' + tarteaucitron.lang.newWindow + '">🍋 ' + tarteaucitron.lang.credit + '</a>';
+                }
                 html += '       </div>';
                 html += '   </div>';
                 html += '</div>';
