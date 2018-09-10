@@ -690,3 +690,16 @@ div#tarteaucitronInfo {
     border-top: 1px solid;
     border-color: #555;
 }
+
+a.tarteaucitronSelfLink {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding-top: 13px!important;
+    display: block;
+    text-shadow: 0 0 14px white;
+    text-transform: uppercase;
+}.tarteaucitronMainLine h2 {
+    font-size: 1.2em!important;
+    margin-top: 4px!important;
+}
