@@ -696,13 +696,15 @@ var tarteaucitron = {
 
             if (nbDenied === 0 && nbPending === 0) {
                 tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', greenDark);
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', gray);
+                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '0.4');
+                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '1');
             } else if (nbAllowed === 0 && nbPending === 0) {
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', gray);
+                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '0.4');
+                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '1');
                 tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', redDark);
             } else {
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', gray);
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', gray);
+                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '1');
+                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '1');
             }
 
             // close the alert if all service have been reviewed
@@ -877,7 +879,9 @@ var tarteaucitron = {
             allDivs = main.childNodes;
 
             if (typeof Array.prototype.map === 'function') {
-                Array.prototype.map.call(main.children, Object).sort(function (a, b) {
+                //Array.prototype.map.call(main.children, Object).sort(function (a, b) {
+                var mainChildren = Array.from(main.children);
+	            mainChildren.sort(function (a, b) {
                     if (tarteaucitron.services[a.id.replace(/Line/g, '')].name > tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return 1; }
                     if (tarteaucitron.services[a.id.replace(/Line/g, '')].name < tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return -1; }
                     return 0;
