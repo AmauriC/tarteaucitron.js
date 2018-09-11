@@ -16,7 +16,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20180910,
+    "version": 20180911002,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -289,7 +289,7 @@ var tarteaucitron = {
                 html += '            </button>';
                 html += '         </div>';
                 html += '      </div>';
-                html += '      <div class="tarteaucitronBorder" id="tarteaucitronScrollbarParent">';
+                html += '      <div class="tarteaucitronBorder">';
                 html += '         <div class="clear"></div><ul>';
                 for (i = 0; i < cat.length; i += 1) {
                     html += '         <li id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
@@ -696,13 +696,15 @@ var tarteaucitron = {
 
             if (nbDenied === 0 && nbPending === 0) {
                 tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', greenDark);
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', gray);
+                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '0.4');
+                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '1');
             } else if (nbAllowed === 0 && nbPending === 0) {
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', gray);
+                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '0.4');
+                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '1');
                 tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', redDark);
             } else {
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', gray);
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', gray);
+                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '1');
+                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '1');
             }
 
             // close the alert if all service have been reviewed
@@ -877,8 +879,10 @@ var tarteaucitron = {
             allDivs = main.childNodes;
 
             if (typeof Array.prototype.map === 'function') {
+
               var mainChildren = Array.from(main.children);
               mainChildren.sort(function (a, b) {
+
                     if (tarteaucitron.services[a.id.replace(/Line/g, '')].name > tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return 1; }
                     if (tarteaucitron.services[a.id.replace(/Line/g, '')].name < tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return -1; }
                     return 0;
@@ -933,20 +937,20 @@ var tarteaucitron = {
                 if (document.getElementById('tarteaucitron') !== null && document.getElementById('tarteaucitronClosePanel') !== null && document.getElementById('tarteaucitronMainLineOffset') !== null) {
 
                     // reset
-                    tarteaucitron.userInterface.css('tarteaucitronScrollbarParent', 'height', 'auto');
+                    tarteaucitron.userInterface.css('tarteaucitronServices', 'height', 'auto');
 
                     // calculate
                     mainHeight = document.getElementById('tarteaucitron').offsetHeight;
                     closeButtonHeight = document.getElementById('tarteaucitronClosePanel').offsetHeight;
-                    headerHeight = document.getElementById('tarteaucitronMainLineOffset').offsetHeight;
 
                     // apply
-                    servicesHeight = (mainHeight - closeButtonHeight - headerHeight + 1);
-                    tarteaucitron.userInterface.css('tarteaucitronScrollbarParent', 'height', servicesHeight + 'px');
+                    servicesHeight = (mainHeight - closeButtonHeight + 2);
+                    tarteaucitron.userInterface.css('tarteaucitronServices', 'height', servicesHeight + 'px');
+                    tarteaucitron.userInterface.css('tarteaucitronServices', 'overflow-x', 'auto');
                 }
 
                 // align the main allow/deny button depending on scrollbar width
-                if (document.getElementById('tarteaucitronScrollbarParent') !== null && document.getElementById('tarteaucitronScrollbarChild') !== null) {
+                if (document.getElementById('tarteaucitronServices') !== null && document.getElementById('tarteaucitronScrollbarChild') !== null) {
 
                     // media query
                     if (e[a + 'Width'] <= 479) {
@@ -955,7 +959,7 @@ var tarteaucitron = {
                         scrollbarMarginRight = 12;
                     }
 
-                    scrollbarWidthParent = document.getElementById('tarteaucitronScrollbarParent').offsetWidth;
+                    scrollbarWidthParent = document.getElementById('tarteaucitronServices').offsetWidth;
                     scrollbarWidthChild = document.getElementById('tarteaucitronScrollbarChild').offsetWidth;
                     tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginRight', ((scrollbarWidthParent - scrollbarWidthChild) + scrollbarMarginRight) + 'px');
                 }
