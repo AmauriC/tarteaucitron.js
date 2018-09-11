@@ -66,6 +66,10 @@ div#tarteaucitronServices {
   outline: 0px solid slategrey;
 }
 
+div#tarteaucitronServices {
+    box-shadow: 0 0 35px #575757;
+}
+
 /***
  * Responsive layout for the control panel
  */
