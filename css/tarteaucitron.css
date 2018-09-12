@@ -480,6 +480,10 @@ h2#tarteaucitronCookiesNumberBis {
     font-weight: 700;
 }
 
+#tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
+    cursor: pointer;
+}
+
 #tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize, #tarteaucitron #tarteaucitronPrivacyUrl {
     background: #008300;
     color: #fff;
