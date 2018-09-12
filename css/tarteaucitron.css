@@ -475,6 +475,9 @@ h2#tarteaucitronCookiesNumberBis {
     width: 100%;
 }
 
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert {
+    display: inline;
+}
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font: 15px verdana;
