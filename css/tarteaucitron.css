@@ -293,6 +293,10 @@ h2#tarteaucitronCookiesNumberBis {
     position: relative;
 }
 
+#tarteaucitron div.tarteaucitronTitle {
+    background: #333;
+}
+
 #tarteaucitronCookiesList h3.tarteaucitronTitle {
     width: 100%;
     box-sizing: border-box;
@@ -338,6 +342,7 @@ h2#tarteaucitronCookiesNumberBis {
 
 #tarteaucitron #tarteaucitronInfo,
 #tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
+    background: #333;
     color: #fff;
     display: none;
     font-size: 12px;
@@ -491,7 +496,7 @@ h2#tarteaucitronCookiesNumberBis {
     margin-left: 7px;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitron #tarteaucitronPrivacyUrl {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitron #tarteaucitronInfo #tarteaucitronPrivacyUrl {
     background: #fff;
     color: #333;
     font-size: 13px;
@@ -706,7 +711,7 @@ div.amazon_product {
     opacity: 0.5;
 }
 
-div#tarteaucitronInfo {
+p#tarteaucitronInfo {
     display: block!important;
     position: initial!important;
     text-align: center!important;
