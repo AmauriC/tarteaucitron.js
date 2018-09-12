@@ -2326,3 +2326,63 @@ tarteaucitron.services.bingads = {
     }
 };
 
+//Matterport
+/*
+SERVICE INIT
+    (tarteaucitron.job = tarteaucitron.job || []).push('matterport');
+
+HTML TAG
+    <div class="matterport" matterportid="N2Q67sZUNUd" width="100%" height="550" parameters="&play=1"></div>
+
+DELETE IFRAME
+    <iframe type="text/html" width="100%" height="550" src="https://my.matterport.com/show/?m=N2Q67sZUNUd&utm_source=hit-content&play=1" frameborder="0" allowfullscreen="allowfullscreen"></iframe>'
+ */
+tarteaucitron.services.matterport = {
+  "key": "matterport",
+  "type": "other",
+  "name": "Matterport",
+  "uri": "https://matterport.com/es/legal/privacy-policy/",
+  "needConsent": true,
+  "cookies": ['__cfduid', 'ajs_anonymous_id', 'ajs_group_id', 'ajs_user_id'],
+  "js": function () {
+    "use strict";
+    tarteaucitron.fallback(['matterport'], function (x) {
+      var matterport_id = x.getAttribute("matterportID"),
+        matterport_width = x.getAttribute("width"),
+        frame_width = 'width=',
+        matterport_height = x.getAttribute("height"),
+        frame_height = 'height=',
+        matterport_parameters = x.getAttribute("parameters"),
+        matterport_frame;
+
+      if (matterport_id === undefined) {
+        return "";
+      }
+      if (matterport_width !== undefined) {
+        frame_width += '"' + matterport_width + '" ';
+      } else {
+        frame_width += '"" ';
+      }
+      if (matterport_height !== undefined) {
+        frame_height += '"' + matterport_height + '" ';
+      } else {
+        frame_height += '"" ';
+      }
+      if (matterport_parameters === undefined) {
+        return "";
+      }
+
+      matterport_frame = '<iframe type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '" frameborder="0" allowfullscreen="allowfullscreen"></iframe>';
+      return matterport_frame;
+    });
+  },
+  "fallback": function () {
+    "use strict";
+    var id = 'matterport';
+    tarteaucitron.fallback(['matterport'], function (elem) {
+      elem.style.width = elem.getAttribute('width') + 'px';
+      elem.style.height = elem.getAttribute('height') + 'px';
+      return tarteaucitron.engage(id);
+    });
+  }
+};
