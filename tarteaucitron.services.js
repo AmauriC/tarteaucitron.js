@@ -1213,6 +1213,20 @@ tarteaucitron.services.googletagmanager = {
     }
 };
 
+// hubspot
+tarteaucitron.services.hubspot = {
+    "key": "hubspot",
+    "type": "analytic",
+    "name": "Hubspot",
+    "uri": "https://legal.hubspot.com/privacy-policy",
+    "needConsent": true,
+    "cookies": ['hubspotutk', 'fr', '__hstc', '__hssrc', '__hssc', '__cfduid'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//js.hs-scripts.com/' + tarteaucitron.user.hubspotId + '.js', 'hs-script-loader');
+    }
+};
+
 // jsapi
 tarteaucitron.services.jsapi = {
     "key": "jsapi",
