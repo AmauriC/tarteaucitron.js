@@ -28,6 +28,10 @@ var tarteaucitron = {
     "parameters": {},
     "isAjax": false,
     "reloadThePage": false,
+    "events": {
+        "init": function () {},
+        "load": function () {},
+    },
     "init": function (params) {
         "use strict";
         var origOpen;
@@ -189,6 +193,10 @@ var tarteaucitron = {
                     } catch (err) {}
                 };
             }
+        }
+
+        if(tarteaucitron.events.init) {
+            tarteaucitron.events.init();
         }
     },
     "load": function () {
@@ -481,6 +489,10 @@ var tarteaucitron = {
                 }
             });
         });
+
+        if(tarteaucitron.events.load) {
+            tarteaucitron.events.load();
+        }
     },
     "addService": function (serviceId) {
         "use strict";
