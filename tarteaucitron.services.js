@@ -12,8 +12,8 @@ tarteaucitron.services.iframe = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_iframe'], function (x) {
-            var width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
+            var width = tarteaucitron.getElemWidtht(x),
+                height = tarteaucitron.getElemHeight(x),
                 url = x.getAttribute("data-url");
 
             return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
@@ -23,8 +23,8 @@ tarteaucitron.services.iframe = {
         "use strict";
         var id = 'iframe';
         tarteaucitron.fallback(['tac_iframe'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -177,41 +177,41 @@ tarteaucitron.services.aduptech_conversion = {
         tarteaucitron.fallback([IDENTIFIER], "");
 
         for (var i = 0; i < elements.length; i++) {
-            var element = elements[i];  
-                
+            var element = elements[i];
+
             if (!element.getAttribute("advertiserId") || !element.getAttribute("conversionCode")) {
                 continue;
             }
-            
-            var url = CONVERSION_PIXEL_BASE_URL + 
-                "/" + encodeURIComponent(element.getAttribute("advertiserId")) + 
-                "?t=" + encodeURIComponent(element.getAttribute("conversionCode"));   
-            
+
+            var url = CONVERSION_PIXEL_BASE_URL +
+                "/" + encodeURIComponent(element.getAttribute("advertiserId")) +
+                "?t=" + encodeURIComponent(element.getAttribute("conversionCode"));
+
             if (element.getAttribute("price")) {
                 url += "&price=" + encodeURIComponent(element.getAttribute("price"));
             }
-            
+
             if (element.getAttribute("quantity")) {
                 url += "&quantity=" + encodeURIComponent(element.getAttribute("quantity"));
             }
-            
+
             if (element.getAttribute("total")) {
                 url += "&total=" + encodeURIComponent(element.getAttribute("total"));
             }
-            
+
             if (element.getAttribute("orderId")) {
                 url += "&order_id=" + encodeURIComponent(element.getAttribute("orderId"));
             }
-            
+
             if (element.getAttribute("itemNumber")) {
                 url += "&item_number=" + encodeURIComponent(element.getAttribute("itemNumber"));
             }
-            
+
             if (element.getAttribute("description")) {
                 url += "&description=" + encodeURIComponent(element.getAttribute("description"));
             }
 
-            (new Image()).src = url;            
+            (new Image()).src = url;
         }
     }
 };
@@ -359,8 +359,8 @@ tarteaucitron.services.calameo = {
         "use strict";
         tarteaucitron.fallback(['calameo-canvas'], function (x) {
             var id = x.getAttribute("data-id"),
-                width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
+                width = tarteaucitron.getElemWidtht(x),
+                height = tarteaucitron.getElemHeight(x),
                 url = '//v.calameo.com/?bkcode=' + id;
 
             return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
@@ -370,8 +370,8 @@ tarteaucitron.services.calameo = {
         "use strict";
         var id = 'calameo';
         tarteaucitron.fallback(['calameo-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -512,9 +512,9 @@ tarteaucitron.services.dailymotion = {
         "use strict";
         tarteaucitron.fallback(['dailymotion_player'], function (x) {
             var video_id = x.getAttribute("videoID"),
-                video_width = x.getAttribute("width"),
+                video_width = tarteaucitron.getElemWidtht(x),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = tarteaucitron.getElemHeight(x),
                 frame_height = 'height=',
                 video_frame,
                 params = 'info=' + x.getAttribute("showinfo") + '&autoPlay=' + x.getAttribute("autoplay");
@@ -540,8 +540,8 @@ tarteaucitron.services.dailymotion = {
         "use strict";
         var id = 'dailymotion';
         tarteaucitron.fallback(['dailymotion_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -566,8 +566,8 @@ tarteaucitron.services.datingaffiliation = {
                 forward_affiliate = x.getAttribute("data-forwardAffiliate"),
                 cf2 = x.getAttribute("data-cf2"),
                 cfsa2 = x.getAttribute("data-cfsa2"),
-                width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
+                width = tarteaucitron.getElemWidtht(x),
+                height = tarteaucitron.getElemHeight(x),
                 url = 'http://www.tools-affil2.com/rotaban/ban.php?' + comfrom;
 
             return '<iframe src="' + url + '&r=' + r + '&p=' + p + '&cf0=' + cf0 + '&langue=' + langue + '&forward_affiliate=' + forward_affiliate + '&cf2=' + cf2 + '&cfsa2=' + cfsa2 + '" width="' + width + '" height="' + height + '" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>';
@@ -577,8 +577,8 @@ tarteaucitron.services.datingaffiliation = {
         "use strict";
         var id = 'datingaffiliation';
         tarteaucitron.fallback(['datingaffiliation-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1170,12 +1170,12 @@ tarteaucitron.services.googlemapssearch = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['googlemapssearch'], function (x) {
-            var width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
+            var width = tarteaucitron.getElemWidtht(x),
+                height = tarteaucitron.getElemHeight(x),
                 // url = x.getAttribute("data-url");
                 query = escape(x.getAttribute("data-search")),
                 key = x.getAttribute("data-api-key");
-            
+
             // return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
             return '<iframe width="' + width +'" height="' + height + '" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q='+query+'&key='+key+'" allowfullscreen></iframe> '
         });
@@ -1184,8 +1184,8 @@ tarteaucitron.services.googlemapssearch = {
         "use strict";
         var id = 'googlemapssearch';
         tarteaucitron.fallback(['googlemapssearch'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1416,8 +1416,8 @@ tarteaucitron.services.prezi = {
         "use strict";
         tarteaucitron.fallback(['prezi-canvas'], function (x) {
             var id = x.getAttribute("data-id"),
-                width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
+                width = tarteaucitron.getElemWidtht(x),
+                height = tarteaucitron.getElemHeight(x),
                 url = 'https://prezi.com/embed/' + id + '/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0';
 
             return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
@@ -1427,8 +1427,8 @@ tarteaucitron.services.prezi = {
         "use strict";
         var id = 'prezi';
         tarteaucitron.fallback(['prezi-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1605,8 +1605,8 @@ tarteaucitron.services.slideshare = {
         "use strict";
         tarteaucitron.fallback(['slideshare-canvas'], function (x) {
             var id = x.getAttribute("data-id"),
-                width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
+                width = tarteaucitron.getElemWidtht(x),
+                height = tarteaucitron.getElemHeight(x),
                 url = '//www.slideshare.net/slideshow/embed_code/' + id;
 
             return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
@@ -1616,8 +1616,8 @@ tarteaucitron.services.slideshare = {
         "use strict";
         var id = 'slideshare';
         tarteaucitron.fallback(['slideshare-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1666,8 +1666,8 @@ tarteaucitron.services.timelinejs = {
         "use strict";
         tarteaucitron.fallback(['timelinejs-canvas'], function (x) {
             var spreadsheet_id = x.getAttribute("spreadsheet_id"),
-                width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
+                width = tarteaucitron.getElemWidtht(x),
+                height = tarteaucitron.getElemHeight(x),
                 lang = x.getAttribute("lang_2_letter"),
                 font = x.getAttribute("font"),
                 map = x.getAttribute("map"),
@@ -1684,8 +1684,8 @@ tarteaucitron.services.timelinejs = {
         "use strict";
         var id = 'timelinejs';
         tarteaucitron.fallback(['timelinejs-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1858,9 +1858,9 @@ tarteaucitron.services.vimeo = {
         "use strict";
         tarteaucitron.fallback(['vimeo_player'], function (x) {
             var video_id = x.getAttribute("videoID"),
-                video_width = x.getAttribute("width"),
+                video_width = tarteaucitron.getElemWidtht(x),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = tarteaucitron.getElemHeight(x),
                 frame_height = 'height=',
                 video_frame;
 
@@ -1885,8 +1885,8 @@ tarteaucitron.services.vimeo = {
         "use strict";
         var id = 'vimeo';
         tarteaucitron.fallback(['vimeo_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2006,9 +2006,9 @@ tarteaucitron.services.youtube = {
         "use strict";
         tarteaucitron.fallback(['youtube_player'], function (x) {
             var video_id = x.getAttribute("videoID"),
-                video_width = x.getAttribute("width"),
+                video_width = tarteaucitron.getElemWidtht(x),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = tarteaucitron.getElemHeight(x),
                 frame_height = 'height=',
                 video_frame,
                 params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay");
@@ -2034,8 +2034,8 @@ tarteaucitron.services.youtube = {
         "use strict";
         var id = 'youtube';
         tarteaucitron.fallback(['youtube_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2053,9 +2053,9 @@ tarteaucitron.services.youtubeplaylist = {
         "use strict";
         tarteaucitron.fallback(['youtube_playlist_player'], function (x) {
             var playlist_id = x.getAttribute("playlistID"),
-                video_width = x.getAttribute("width"),
+                video_width = tarteaucitron.getElemWidtht(x),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = tarteaucitron.getElemHeight(x),
                 frame_height = 'height=',
                 video_frame,
                 params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay");
@@ -2081,8 +2081,8 @@ tarteaucitron.services.youtubeplaylist = {
         "use strict";
         var id = 'youtubeplaylist';
         tarteaucitron.fallback(['youtube_playlist_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2168,9 +2168,9 @@ tarteaucitron.services.issuu = {
         "use strict";
         tarteaucitron.fallback(['issuu_player'], function (x) {
             var issuu_id = x.getAttribute("issuuID"),
-                issuu_width = x.getAttribute("width"),
+                issuu_width = tarteaucitron.getElemWidtht(x),
                 frame_width = 'width=',
-                issuu_height = x.getAttribute("height"),
+                issuu_height = tarteaucitron.getElemHeight(x),
                 frame_height = 'height=',
                 issuu_frame;
 
@@ -2195,8 +2195,8 @@ tarteaucitron.services.issuu = {
         "use strict";
         var id = 'issuu';
         tarteaucitron.fallback(['issuu_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2234,7 +2234,7 @@ tarteaucitron.services.multiplegtag = {
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
     "cookies": (function () {
-        
+
         var cookies = ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
 
         if (tarteaucitron.user.multiplegtagUa !== undefined) {
@@ -2279,7 +2279,7 @@ tarteaucitron.services.koban = {
         window.KobanObject = 'kb';
         window.kb = window.kb || function() {
             window.kb.q = window.kb.q || [];
-			window.kb.q.push(arguments);
+            window.kb.q.push(arguments);
         };
         window.kb.l = new Date();
         kb('reg', tarteaucitron.user.kobanapi);
@@ -2355,3 +2355,37 @@ tarteaucitron.services.bingads = {
     }
 };
 
+// Hotjar
+/*
+   1. Set the following variable before the initialization :
+    tarteaucitron.user.hotjarId = YOUR_WEBSITE_ID;
+   tarteaucitron.user.HotjarSv = XXXX; // Can be found in your website tracking code as "hjvs=XXXX"
+    2. Push the service :
+    (tarteaucitron.job = tarteaucitron.job || []).push('hotjar');
+    3. HTML
+   You don't need to add any html code, if the service is autorized, the javascript is added. otherwise no.
+ */
+tarteaucitron.services.hotjar = {
+    "key": "hotjar",
+    "type": "analytic",
+    "name": "Hotjar",
+    "uri": "https://help.hotjar.com/hc/en-us/categories/115001323967-About-Hotjar",
+    "needConsent": true,
+    "cookies": ["hjClosedSurveyInvites", "_hjDonePolls", "_hjMinimizedPolls", "_hjDoneTestersWidgets", "_hjMinimizedTestersWidgets", "_hjDoneSurveys", "_hjIncludedInSample", "_hjShownFeedbackMessage"],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.hotjarId === undefined || tarteaucitron.user.HotjarSv === undefined) {
+            return;
+        }
+        window.hj = window.hj || function() {
+            (window.hj.q = window.hj.q || []).push(arguments)
+        };
+        window._hjSettings = {
+            hjid: tarteaucitron.user.hotjarId,
+            hjsv: tarteaucitron.user.HotjarSv
+        };
+        var uri = 'https://static.hotjar.com/c/hotjar-';
+        var extension = '.js?sv=';
+        tarteaucitron.addScript(uri + window._hjSettings.hjid + extension + window._hjSettings.hjsv);
+    }
+};
