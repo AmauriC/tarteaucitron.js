@@ -480,6 +480,10 @@ h2#tarteaucitronCookiesNumberBis {
     font-weight: 700;
 }
 
+#tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
+    cursor: pointer;
+}
+
 #tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize, #tarteaucitron #tarteaucitronPrivacyUrl {
     background: #008300;
     color: #fff;
@@ -701,9 +705,16 @@ div.amazon_product {
     width:120px;
 }
 .tarteaucitronIsAllowed .tarteaucitronDeny {
-    opacity: 0.5;
+    opacity: 0.4!important;
 }.tarteaucitronIsDenied .tarteaucitronAllow {
-    opacity: 0.5;
+    opacity: 0.4!important;
+}.tarteaucitronIsAllowed .tarteaucitronAllow {
+    opacity: 1!important;
+}.tarteaucitronIsDenied .tarteaucitronDeny {
+    opacity: 1!important;
+}
+.tarteaucitronLine .tarteaucitronAllow, .tarteaucitronLine .tarteaucitronAllow {
+    opacity: 0.4;
 }
 
 div#tarteaucitronInfo {
