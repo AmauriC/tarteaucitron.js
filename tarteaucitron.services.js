@@ -2338,3 +2338,47 @@ tarteaucitron.services.bingads = {
         });
     }
 };
+
+// Adform
+tarteaucitron.services.adform = {
+    "key": "adform",
+    "type": "ads",
+    "name": "Adform",
+    "uri": "https://site.adform.com/privacy-center/overview/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.adformpm === undefined) {
+            return;
+        }
+
+        window._adftrack = {
+            pm: tarteaucitron.user.adformpm,
+            divider: encodeURIComponent('|'),
+            pagename: encodeURIComponent('WebsiteName|SectionName|SubSection|PageName')
+        };
+
+        tarteaucitron.addScript("https://track.adform.net/serving/scripts/trackpoint/async/");
+    }
+};
+
+// Active Campaign
+tarteaucitron.services.activecampaign = {
+    "key": "activecampaign",
+    "type": "ads",
+    "name": "Active Campaign",
+    "uri": "https://www.activecampaign.com/privacy-policy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.actid === undefined) {
+            return;
+        }
+
+        window.trackcmp_email = '';
+
+        tarteaucitron.addScript('https://trackcmp.net/visit?actid='+tarteaucitron.user.actid+'&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href));
+    }
+};
