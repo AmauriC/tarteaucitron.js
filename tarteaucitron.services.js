@@ -1191,6 +1191,35 @@ tarteaucitron.services.googlemapssearch = {
     }
 };
 
+// googlemaps embed iframe
+tarteaucitron.services.googlemapsembed = {
+    "key": "googlemapsembed",
+    "type": "api",
+    "name": "Google Maps Embed",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": ['apisid', 'hsid', 'nid', 'sapisid', 'sid', 'sidcc', 'ssid', '1p_jar'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['googlemapsembed'], function (x) {
+            var width = tarteaucitron.getElemWidth(x),
+                height = tarteaucitron.getElemHeight(x),
+                url = x.getAttribute("data-url");
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'googlemapsembed';
+        tarteaucitron.fallback(['googlemapsembed'], function (elem) {
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // google tag manager
 tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
@@ -2279,7 +2308,7 @@ tarteaucitron.services.matomo = {
     "type": "analytic",
     "name": "Matomo (formerly known as Piwik)",
     "uri": "https://matomo.org/faq/general/faq_146/",
-    "needConsent": true,
+    "needConsent": false,
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
     "js": function () {
         "use strict";
@@ -2294,6 +2323,19 @@ tarteaucitron.services.matomo = {
         window._paq.push(["trackPageView"]);
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
+        window._paq.push([function() {
+			var self = this;
+			function getOriginalVisitorCookieTimeout() {
+				var now = new Date(),
+				nowTs = Math.round(now.getTime() / 1000),
+				visitorInfo = self.getVisitorInfo();
+ 				var createTs = parseInt(visitorInfo[2]);
+ 				var cookieTimeout = 33696000; // 13 mois en secondes
+ 				var originalTimeout = createTs + cookieTimeout - nowTs;
+ 				return originalTimeout;
+			}
+			this.setVisitorCookieTimeout( getOriginalVisitorCookieTimeout() );
+		}]);
 
         tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
     }
@@ -2326,3 +2368,46 @@ tarteaucitron.services.bingads = {
     }
 };
 
+// Adform
+tarteaucitron.services.adform = {
+    "key": "adform",
+    "type": "ads",
+    "name": "Adform",
+    "uri": "https://site.adform.com/privacy-center/overview/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.adformpm === undefined || tarteaucitron.user.adformWebsiteName === undefined || tarteaucitron.user.adformSectionName === undefined || tarteaucitron.user.adformSubSection === undefined || tarteaucitron.user.adformPageName === undefined) {
+            return;
+        }
+
+        window._adftrack = {
+            pm: tarteaucitron.user.adformpm,
+            divider: encodeURIComponent('|'),
+            pagename: encodeURIComponent(tarteaucitron.user.adformWebsiteName+'|'+tarteaucitron.user.adformSectionName+'|'+tarteaucitron.user.adformSubSection+'|'+tarteaucitron.user.adformPageName)
+        };
+
+        tarteaucitron.addScript("https://track.adform.net/serving/scripts/trackpoint/async/");
+    }
+};
+
+// Active Campaign
+tarteaucitron.services.activecampaign = {
+    "key": "activecampaign",
+    "type": "ads",
+    "name": "Active Campaign",
+    "uri": "https://www.activecampaign.com/privacy-policy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.actid === undefined) {
+            return;
+        }
+
+        window.trackcmp_email = '';
+
+        tarteaucitron.addScript('https://trackcmp.net/visit?actid='+tarteaucitron.user.actid+'&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href));
+    }
+};
