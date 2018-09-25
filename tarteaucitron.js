@@ -1459,5 +1459,11 @@ var tarteaucitron = {
             }
         }
         return source;
+    },
+    "getElemWidth": function(elem) {
+        return elem.getAttribute('width') || elem.clientWidth;
+    },
+    "getElemHeight": function(elem) {
+        return elem.getAttribute('height') || elem.clientHeight;
     }
 };

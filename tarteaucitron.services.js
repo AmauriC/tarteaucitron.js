@@ -1191,6 +1191,35 @@ tarteaucitron.services.googlemapssearch = {
     }
 };
 
+// googlemaps embed iframe
+tarteaucitron.services.googlemapsembed = {
+    "key": "googlemapsembed",
+    "type": "api",
+    "name": "Google Maps Embed",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": ['apisid', 'hsid', 'nid', 'sapisid', 'sid', 'sidcc', 'ssid', '1p_jar'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['googlemapsembed'], function (x) {
+            var width = tarteaucitron.getElemWidth(x),
+                height = tarteaucitron.getElemHeight(x),
+                url = x.getAttribute("data-url");
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'googlemapsembed';
+        tarteaucitron.fallback(['googlemapsembed'], function (elem) {
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // google tag manager
 tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
