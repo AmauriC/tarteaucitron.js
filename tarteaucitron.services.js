@@ -2349,14 +2349,14 @@ tarteaucitron.services.adform = {
     "cookies": [],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.adformpm === undefined) {
+        if (tarteaucitron.user.adformpm === undefined || tarteaucitron.user.adformpagename === undefined) {
             return;
         }
 
         window._adftrack = {
             pm: tarteaucitron.user.adformpm,
             divider: encodeURIComponent('|'),
-            pagename: encodeURIComponent('WebsiteName|SectionName|SubSection|PageName')
+            pagename: encodeURIComponent(tarteaucitron.user.adformpagename)
         };
 
         tarteaucitron.addScript("https://track.adform.net/serving/scripts/trackpoint/async/");
