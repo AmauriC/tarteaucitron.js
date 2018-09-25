@@ -2378,14 +2378,15 @@ tarteaucitron.services.adform = {
     "cookies": [],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.adformpm === undefined || tarteaucitron.user.adformWebsiteName === undefined || tarteaucitron.user.adformSectionName === undefined || tarteaucitron.user.adformSubSection === undefined || tarteaucitron.user.adformPageName === undefined) {
+
+        if (tarteaucitron.user.adformpm === undefined || tarteaucitron.user.adformpagename === undefined) {
             return;
         }
 
         window._adftrack = {
             pm: tarteaucitron.user.adformpm,
             divider: encodeURIComponent('|'),
-            pagename: encodeURIComponent(tarteaucitron.user.adformWebsiteName+'|'+tarteaucitron.user.adformSectionName+'|'+tarteaucitron.user.adformSubSection+'|'+tarteaucitron.user.adformPageName)
+            pagename: encodeURIComponent(tarteaucitron.user.adformpagename)
         };
 
         tarteaucitron.addScript("https://track.adform.net/serving/scripts/trackpoint/async/");
