@@ -2412,3 +2412,24 @@ tarteaucitron.services.activecampaign = {
         tarteaucitron.addScript('https://trackcmp.net/visit?actid='+tarteaucitron.user.actid+'&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href));
     }
 };
+
+// tawk.to
+tarteaucitron.services.tawkto = {
+	"key": "tawkto",
+	"type": "support",
+	"name": "Tawk.to chat",
+	"uri": "https://www.tawk.to/data-protection/",
+	"needConsent": true,
+	"cookies": [],
+	"js": function () {
+		"use strict";
+		if (tarteaucitron.user.tawktoId === undefined) {
+			return;
+		}
+
+		window.Tawk_API=window.Tawk_API||{};
+		window.Tawk_LoadStart=new Date();
+
+		tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
+	} 
+};
