@@ -1025,10 +1025,12 @@ tarteaucitron.services.gajs = {
             window._gaq.push (['_gat._anonymizeIp']);
         }
 
-        if (tarteaucitron.user.gajsPageView) {
-            window._gaq.push(['_trackPageview, ' + tarteaucitron.user.gajsPageView]);
-        } else {
-            window._gaq.push(['_trackPageview']);
+        if (tarteaucitron.user.gajsPreventPageView !== true) {
+          if (tarteaucitron.user.gajsPageView) {
+              window._gaq.push(['_trackPageview, ' + tarteaucitron.user.gajsPageView]);
+          } else {
+              window._gaq.push(['_trackPageview']);
+          }
         }
 
         tarteaucitron.addScript('//www.google-analytics.com/ga.js', '', function () {
@@ -1068,10 +1070,12 @@ tarteaucitron.services.analytics = {
                 tarteaucitron.user.analyticsPrepare();
             }
 
-            if (tarteaucitron.user.analyticsPageView) {
-                ga('send', 'pageview', tarteaucitron.user.analyticsPageView);
-            } else {
-                ga('send', 'pageview');
+            if (tarteaucitron.user.analyticsPreventPageView !== true) {
+              if (tarteaucitron.user.analyticsPageView) {
+                  ga('send', 'pageview', tarteaucitron.user.analyticsPageView);
+              } else {
+                  ga('send', 'pageview');
+              }
             }
 
             if (typeof tarteaucitron.user.analyticsMore === 'function') {
@@ -1100,7 +1104,11 @@ tarteaucitron.services.gtag = {
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
             window.gtag = function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', tarteaucitron.user.gtagUa);
+            if (tarteaucitron.user.gtagPreventPageView === true) {
+              gtag('config', tarteaucitron.user.gtagUa, { 'send_page_view': false });
+            } else {
+              gtag('config', tarteaucitron.user.gtagUa);
+            }
 
             if (typeof tarteaucitron.user.gtagMore === 'function') {
                 tarteaucitron.user.gtagMore();
@@ -2378,6 +2386,11 @@ tarteaucitron.services.multiplegtag = {
             tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
                 window.gtag = function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
+                if (tarteaucitron.user.multiplegtagUaPreventPageView === true) {
+                  gtag('config', ua, { 'send_page_view': false });
+                } else {
+                  gtag('config', ua);
+                }
                 gtag('config', ua);
             });
         });
