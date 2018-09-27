@@ -56,11 +56,11 @@ div#tarteaucitronServices {
 #tarteaucitronServices::-webkit-scrollbar {
     width: 5px;
 }
- 
+
 #tarteaucitronServices::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0);
 }
- 
+
 #tarteaucitronServices::-webkit-scrollbar-thumb {
   background-color: #ddd;
   outline: 0px solid slategrey;
@@ -97,20 +97,20 @@ div#tarteaucitronServices {
         top: 0 !important;
         width: 100% !important;
     }
-    
+
     #tarteaucitron .tarteaucitronBorder {
         border: 0 !important;
     }
-    
+
     #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList {
         border: 0 !important;
     }
-    
+
     #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
         text-align: left !important;
     }
 
-    .tarteaucitronName h2 {
+    .tarteaucitronName .tarteaucitronH2 {
         max-width: 80%;
     }
 
@@ -180,6 +180,10 @@ div#tarteaucitronServices {
     padding: 0;
 }
 
+#tarteaucitron .tarteaucitronH1, #tarteaucitron .tarteaucitronH2, #tarteaucitron .tarteaucitronH3, #tarteaucitron .tarteaucitronH4, #tarteaucitron .tarteaucitronH5, #tarteaucitron .tarteaucitronH6 {
+  display: block;
+}
+
 .cookie-list {
     list-style: none;
     padding: 0;
@@ -205,20 +209,20 @@ div#tarteaucitronServices {
     vertical-align: initial;
 }
 
-#tarteaucitronRoot h1 {
+#tarteaucitronRoot .tarteaucitronH1 {
     font-size: 1.5em;
     text-align: center;
     color: #fff;
     margin: 15px 0 28px;
 }
 
-#tarteaucitronRoot h2 {
+#tarteaucitronRoot .tarteaucitronH2 {
     display: inline-block;
     margin: 12px 0 0 10px;
     color: #fff;
 }
 
-h2#tarteaucitronCookiesNumberBis {
+#tarteaucitronCookiesNumberBis.tarteaucitronH2 {
     margin-left: 0;
 }
 
@@ -293,7 +297,7 @@ h2#tarteaucitronCookiesNumberBis {
     position: relative;
 }
 
-#tarteaucitronCookiesList h3.tarteaucitronTitle {
+#tarteaucitronCookiesList .tarteaucitronH3.tarteaucitronTitle {
     width: 100%;
     box-sizing: border-box;
 }
@@ -432,7 +436,7 @@ h2#tarteaucitronCookiesNumberBis {
     font-size: 12px;
 }
 
-#tarteaucitron h3 {
+#tarteaucitron .tarteaucitronH3 {
     font-size: 18px;
 }
 
@@ -738,7 +742,7 @@ a.tarteaucitronSelfLink {
     display: block;
     text-shadow: 0 0 14px white;
     text-transform: uppercase;
-}.tarteaucitronMainLine h2 {
+}.tarteaucitronMainLine .tarteaucitronH2 {
     font-size: 1.2em!important;
     margin-top: 4px!important;
 }
