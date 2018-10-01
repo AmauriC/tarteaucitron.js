@@ -1191,6 +1191,35 @@ tarteaucitron.services.googlemapssearch = {
     }
 };
 
+// googlemaps embed iframe
+tarteaucitron.services.googlemapsembed = {
+    "key": "googlemapsembed",
+    "type": "api",
+    "name": "Google Maps Embed",
+    "uri": "http://www.google.com/ads/preferences/",
+    "needConsent": true,
+    "cookies": ['apisid', 'hsid', 'nid', 'sapisid', 'sid', 'sidcc', 'ssid', '1p_jar'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['googlemapsembed'], function (x) {
+            var width = tarteaucitron.getElemWidth(x),
+                height = tarteaucitron.getElemHeight(x),
+                url = x.getAttribute("data-url");
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'googlemapsembed';
+        tarteaucitron.fallback(['googlemapsembed'], function (elem) {
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // google tag manager
 tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
@@ -2398,4 +2427,70 @@ tarteaucitron.services.matterport = {
       return tarteaucitron.engage(id);
     });
   }
+
+// Adform
+tarteaucitron.services.adform = {
+    "key": "adform",
+    "type": "ads",
+    "name": "Adform",
+    "uri": "https://site.adform.com/privacy-center/overview/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.adformpm === undefined || tarteaucitron.user.adformpagename === undefined) {
+            return;
+        }
+
+        window._adftrack = {
+            pm: tarteaucitron.user.adformpm,
+            divider: encodeURIComponent('|'),
+            pagename: encodeURIComponent(tarteaucitron.user.adformpagename)
+        };
+
+        tarteaucitron.addScript("https://track.adform.net/serving/scripts/trackpoint/async/");
+    }
+};
+
+// Active Campaign
+tarteaucitron.services.activecampaign = {
+    "key": "activecampaign",
+    "type": "ads",
+    "name": "Active Campaign",
+    "uri": "https://www.activecampaign.com/privacy-policy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.actid === undefined) {
+            return;
+        }
+
+        window.trackcmp_email = '';
+
+        tarteaucitron.addScript('https://trackcmp.net/visit?actid='+tarteaucitron.user.actid+'&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href));
+    }
+};
+
+// tawk.to
+tarteaucitron.services.tawkto = {
+	"key": "tawkto",
+	"type": "support",
+	"name": "Tawk.to chat",
+	"uri": "https://www.tawk.to/data-protection/",
+	"needConsent": true,
+	"cookies": [],
+	"js": function () {
+		"use strict";
+		if (tarteaucitron.user.tawktoId === undefined) {
+			return;
+		}
+
+		window.Tawk_API=window.Tawk_API||{};
+		window.Tawk_LoadStart=new Date();
+
+		tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
+	} 
+  
 };
