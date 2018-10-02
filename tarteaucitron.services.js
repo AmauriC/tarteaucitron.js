@@ -2427,6 +2427,7 @@ tarteaucitron.services.matterport = {
       return tarteaucitron.engage(id);
     });
   }
+};
 
 // Adform
 tarteaucitron.services.adform = {
