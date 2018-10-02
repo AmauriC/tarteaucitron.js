@@ -2279,7 +2279,7 @@ tarteaucitron.services.koban = {
         window.KobanObject = 'kb';
         window.kb = window.kb || function() {
             window.kb.q = window.kb.q || [];
-			window.kb.q.push(arguments);
+            window.kb.q.push(arguments);
         };
         window.kb.l = new Date();
         kb('reg', tarteaucitron.user.kobanapi);
@@ -2324,18 +2324,18 @@ tarteaucitron.services.matomo = {
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
         window._paq.push([function() {
-			var self = this;
-			function getOriginalVisitorCookieTimeout() {
-				var now = new Date(),
-				nowTs = Math.round(now.getTime() / 1000),
-				visitorInfo = self.getVisitorInfo();
- 				var createTs = parseInt(visitorInfo[2]);
- 				var cookieTimeout = 33696000; // 13 mois en secondes
- 				var originalTimeout = createTs + cookieTimeout - nowTs;
- 				return originalTimeout;
-			}
-			this.setVisitorCookieTimeout( getOriginalVisitorCookieTimeout() );
-		}]);
+            var self = this;
+            function getOriginalVisitorCookieTimeout() {
+                var now = new Date(),
+                nowTs = Math.round(now.getTime() / 1000),
+                visitorInfo = self.getVisitorInfo();
+                var createTs = parseInt(visitorInfo[2]);
+                var cookieTimeout = 33696000; // 13 mois en secondes
+                var originalTimeout = createTs + cookieTimeout - nowTs;
+                return originalTimeout;
+            }
+            this.setVisitorCookieTimeout( getOriginalVisitorCookieTimeout() );
+        }]);
 
         tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
     }
@@ -2476,22 +2476,44 @@ tarteaucitron.services.activecampaign = {
 
 // tawk.to
 tarteaucitron.services.tawkto = {
-	"key": "tawkto",
-	"type": "support",
-	"name": "Tawk.to chat",
-	"uri": "https://www.tawk.to/data-protection/",
-	"needConsent": true,
-	"cookies": [],
-	"js": function () {
-		"use strict";
-		if (tarteaucitron.user.tawktoId === undefined) {
-			return;
-		}
+    "key": "tawkto",
+    "type": "support",
+    "name": "Tawk.to chat",
+    "uri": "https://www.tawk.to/data-protection/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.tawktoId === undefined) {
+            return;
+        }
 
-		window.Tawk_API=window.Tawk_API||{};
-		window.Tawk_LoadStart=new Date();
+        window.Tawk_API=window.Tawk_API||{};
+        window.Tawk_LoadStart=new Date();
 
-		tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
-	} 
+        tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
+    } 
   
+};
+
+// getquanty
+tarteaucitron.services.getquanty = {
+    "key": "getquanty",
+    "type": "analytic",
+    "name": "GetQuanty",
+    "uri": "https://www.getquanty.com/mentions-legales/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.getguanty === undefined) {
+            return;
+        }
+
+        window.webleads_site_ids = window.webleads_site_ids || [];
+        window.webleads_site_ids.push(tarteaucitron.user.getguanty);
+
+        tarteaucitron.addScript('https://stats.webleads-tracker.com/js');
+        tarteaucitron.addScript('https://get.smart-data-systems.com/track?site_id=' + tarteaucitron.user.getguanty);
+    }
 };
