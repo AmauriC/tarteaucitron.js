@@ -16,7 +16,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20180914,
+    "version": 20181003,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -397,7 +397,7 @@ var tarteaucitron = {
                     if (tarteaucitronNoAdBlocker === true || tarteaucitron.parameters.adblocker === false) {
 
                         // create a wrapper container at the same level than tarteaucitron so we can add an aria-hidden when tarteaucitron is opened
-                        var wrapper = document.createElement('div');
+                        /*var wrapper = document.createElement('div');
                         wrapper.id = "contentWrapper";
                         
                         while (document.body.firstChild)
@@ -406,7 +406,7 @@ var tarteaucitron = {
                         }
 
                         // Append the wrapper to the body
-                        document.body.appendChild(wrapper);
+                        document.body.appendChild(wrapper);*/
 
                         div.id = 'tarteaucitronRoot';
                         body.appendChild(div, body);
@@ -468,7 +468,7 @@ var tarteaucitron = {
                             html += '<div id="tarteaucitronPremium"></div>';
 
                             // create wrapper container
-                            var wrapper = document.createElement('div');
+                            /*var wrapper = document.createElement('div');
                             wrapper.id = "contentWrapper";
                             
                             while (document.body.firstChild)
@@ -476,8 +476,9 @@ var tarteaucitron = {
                                 wrapper.appendChild(document.body.firstChild);
                             }
 
-                        // Append the wrapper to the body
-                        document.body.appendChild(wrapper);
+                            // Append the wrapper to the body
+                            document.body.appendChild(wrapper);*/
+
                             div.id = 'tarteaucitronRoot';
                             body.appendChild(div, body);
                             div.innerHTML = html;
@@ -753,7 +754,7 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
 
             document.getElementById('tarteaucitronClosePanel').focus();
-            document.getElementById('contentWrapper').setAttribute("aria-hidden", "true");
+            //document.getElementById('contentWrapper').setAttribute("aria-hidden", "true");
             document.getElementsByTagName('body')[0].classList.add('modal-open');
             tarteaucitron.userInterface.focusTrap();
             tarteaucitron.userInterface.jsSizing('main');
@@ -779,7 +780,7 @@ var tarteaucitron = {
             if (document.getElementById('tarteaucitronCloseAlert') !== null) {
                 document.getElementById('tarteaucitronCloseAlert').focus();
             }
-            document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
+            //document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
             document.getElementsByTagName('body')[0].classList.remove('modal-open');
             
         },
@@ -899,7 +900,7 @@ var tarteaucitron = {
             if (typeof Array.prototype.map === 'function') {
                 Array.prototype.map.call(main.children, Object).sort(function (a, b) {
                 //var mainChildren = Array.from(main.children);
-	            //mainChildren.sort(function (a, b) {
+                //mainChildren.sort(function (a, b) {
                     if (tarteaucitron.services[a.id.replace(/Line/g, '')].name > tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return 1; }
                     if (tarteaucitron.services[a.id.replace(/Line/g, '')].name < tarteaucitron.services[b.id.replace(/Line/g, '')].name) { return -1; }
                     return 0;
