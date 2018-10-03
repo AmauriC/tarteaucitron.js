@@ -1392,11 +1392,16 @@ var tarteaucitron = {
     "engage": function (id) {
         "use strict";
         var html = '',
-            r = Math.floor(Math.random() * 100000);
+            r = Math.floor(Math.random() * 100000),
+            engage = tarteaucitron.services[id].name + ' ' + tarteaucitron.lang.fallback;
+
+        if (tarteaucitron.lang['engage-' + id] !== undefined) {
+            engage = tarteaucitron.lang['engage-' + id];
+        }
 
         html += '<div class="tac_activate">';
         html += '   <div class="tac_float">';
-        html += '      <strong>' + tarteaucitron.services[id].name + '</strong> ' + tarteaucitron.lang.fallback;
+        html += '      ' + engage;
         html += '      <button class="tarteaucitronAllow" id="Eng' + r + 'ed' + id + '" onclick="tarteaucitron.userInterface.respond(this, true);">';
         html += '          &#10003; ' + tarteaucitron.lang.allow;
         html += '       </button>';
