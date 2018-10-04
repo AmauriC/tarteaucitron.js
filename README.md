@@ -44,7 +44,7 @@ tarteaucitron.init({
     "adblocker": false, /* Show a Warning if an adblocker is detected */
     "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
     "highPrivacy": false, /* Disable auto consent */
-    "handleBrowserDNTRequest": false, /* If Do Not Track == 1, accept all */
+    "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
 
     "removeCredit": false, /* Remove credit link */
     "moreInfoLink": true, /* Show more info link */
