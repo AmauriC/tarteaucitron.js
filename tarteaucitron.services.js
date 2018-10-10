@@ -1994,6 +1994,28 @@ tarteaucitron.services.xiti = {
     }
 };
 
+// AT Internet
+tarteaucitron.services.atinternet = {
+    "key": "atinternet",
+    "type": "analytic",
+    "name": "AT Internet",
+    "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
+    "needConsent": true,
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.atLibUrl === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
+            if (typeof tarteaucitron.user.atMore === 'function') {
+                tarteaucitron.user.atMore();
+            }
+        })
+    }
+};
+
 // youtube
 tarteaucitron.services.youtube = {
     "key": "youtube",
