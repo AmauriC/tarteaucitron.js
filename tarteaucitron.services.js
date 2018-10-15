@@ -1280,7 +1280,13 @@ tarteaucitron.services.twitterwidgetsapi = {
     "cookies": [],
     "js": function () {
         "use strict";
+        tarteaucitron.fallback(['tacTwitterAPI'], '');
         tarteaucitron.addScript('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'twitterwidgetsapi';
+        tarteaucitron.fallback(['tacTwitterAPI'], tarteaucitron.engage(id));
     }
 };
 
