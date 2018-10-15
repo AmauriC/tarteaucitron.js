@@ -1270,6 +1270,20 @@ tarteaucitron.services.jsapi = {
     }
 };
 
+// twitterwidgetsapi
+tarteaucitron.services.twitterwidgetsapi = {
+    "key": "twitterwidgetsapi",
+    "type": "api",
+    "name": "Twitter Widgets API",
+    "uri": "https://support.twitter.com/articles/20170514",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    }
+};
+
 // recaptcha
 tarteaucitron.services.recaptcha = {
     "key": "recaptcha",
