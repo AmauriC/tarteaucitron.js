@@ -1045,7 +1045,7 @@ tarteaucitron.services.analytics = {
     "type": "analytic",
     "name": "Google Analytics (universal)",
     "uri": "https://support.google.com/analytics/answer/6004245",
-    "needConsent": true,
+    "needConsent": false,
     "cookies": ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'],
     "js": function () {
         "use strict";
@@ -1059,10 +1059,7 @@ tarteaucitron.services.analytics = {
             var uaCreate = {'cookieExpires': 34128000};
             tarteaucitron.extend(uaCreate, tarteaucitron.user.analyticsUaCreate || {});
             ga('create', tarteaucitron.user.analyticsUa, uaCreate);
-
-            if (tarteaucitron.user.analyticsAnonymizeIp) {
-                ga('set', 'anonymizeIp', true);
-            }
+            ga('set', 'anonymizeIp', true);
 
             if (typeof tarteaucitron.user.analyticsPrepare === 'function') {
                 tarteaucitron.user.analyticsPrepare();
