@@ -218,7 +218,8 @@ var tarteaucitron = {
                 "handleBrowserDNTRequest": false,
                 "AcceptAllCta" : false,
                 "moreInfoLink": true,
-                "privacyUrl": ""
+                "privacyUrl": "",
+                "useExternalCss": false
             },
             params = tarteaucitron.parameters;
 
@@ -238,12 +239,14 @@ var tarteaucitron = {
         tarteaucitron.highPrivacy = tarteaucitron.parameters.highPrivacy;
         tarteaucitron.handleBrowserDNTRequest = tarteaucitron.parameters.handleBrowserDNTRequest;
 
-        // Step 1: load css
-        linkElement.rel = 'stylesheet';
-        linkElement.type = 'text/css';
-        linkElement.href = cdn + 'css/tarteaucitron.css?v=' + tarteaucitron.version;
-        document.getElementsByTagName('head')[0].appendChild(linkElement);
 
+        // Step 1: load css
+        if ( !tarteaucitron.parameters.useExternalCss ) {
+            linkElement.rel = 'stylesheet';
+            linkElement.type = 'text/css';
+            linkElement.href = cdn + 'css/tarteaucitron.css?v=' + tarteaucitron.version;
+            document.getElementsByTagName('head')[0].appendChild(linkElement);
+        }
         // Step 2: load language and services
         tarteaucitron.addScript(pathToLang, '', function () {
 
