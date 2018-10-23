@@ -1,9 +1,5 @@
 [![](https://data.jsdelivr.com/v1/package/gh/AmauriC/tarteaucitron.js/badge)](https://www.jsdelivr.com/package/gh/AmauriC/tarteaucitron.js) 
-[![npm](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs) ![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)
-
-[![Buy me a coffee](https://img.shields.io/badge/buy%20me-a%20coffee-ff69b4.svg)](https://www.paypal.me/SASAICAGENCY)
-
-
+[![npm](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs) [![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors)
 
 tarteaucitron.js
 ================
