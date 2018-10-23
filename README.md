@@ -47,6 +47,7 @@ tarteaucitron.init({
 
     "removeCredit": false, /* Remove credit link */
     "moreInfoLink": true, /* Show more info link */
+    "useExternalCss": false /* If false, the tarteaucitron.css file will be loaded */
 
     //"cookieDomain": ".my-multisite-domaine.fr" /* Shared cookie for subdomain website */
 });
