@@ -1,3 +1,75 @@
+.modal-open{
+    overflow: hidden;
+    height: 100%;
+}
+
+#contentWrapper {display:unset;}
+
+/***
+* Reset CSS
+*/
+#tarteaucitronRoot div, #tarteaucitronRoot span, #tarteaucitronRoot applet, #tarteaucitronRoot object, #tarteaucitronRoot iframe, #tarteaucitronRoot h1, #tarteaucitronRoot h2, #tarteaucitronRoot h3, #tarteaucitronRoot h4, #tarteaucitronRoot h5, #tarteaucitronRoot h6, #tarteaucitronRoot p, #tarteaucitronRoot blockquote, #tarteaucitronRoot pre, #tarteaucitronRoot a, #tarteaucitronRoot abbr, #tarteaucitronRoot acronym, #tarteaucitronRoot address, #tarteaucitronRoot big, #tarteaucitronRoot cite, #tarteaucitronRoot code, #tarteaucitronRoot del, #tarteaucitronRoot dfn, #tarteaucitronRoot em, #tarteaucitronRoot img, #tarteaucitronRoot ins, #tarteaucitronRoot kbd, #tarteaucitronRoot q, #tarteaucitronRoot s, #tarteaucitronRoot samp, #tarteaucitronRoot small, #tarteaucitronRoot strike, #tarteaucitronRoot strong, #tarteaucitronRoot sub, #tarteaucitronRoot sup, #tarteaucitronRoot tt, #tarteaucitronRoot var, #tarteaucitronRoot b, #tarteaucitronRoot u, #tarteaucitronRoot i, #tarteaucitronRoot center, #tarteaucitronRoot dl, #tarteaucitronRoot dt, #tarteaucitronRoot dd, #tarteaucitronRoot ol, #tarteaucitronRoot ul, #tarteaucitronRoot li, #tarteaucitronRoot fieldset, #tarteaucitronRoot form, #tarteaucitronRoot label, #tarteaucitronRoot legend, #tarteaucitronRoot table, #tarteaucitronRoot caption, #tarteaucitronRoot tbody, #tarteaucitronRoot tfoot, #tarteaucitronRoot thead, #tarteaucitronRoot tr, #tarteaucitronRoot th, #tarteaucitronRoot td, #tarteaucitronRoot article, #tarteaucitronRoot aside, #tarteaucitronRoot canvas, #tarteaucitronRoot details, #tarteaucitronRoot embed, #tarteaucitronRoot figure, #tarteaucitronRoot figcaption, #tarteaucitronRoot footer, #tarteaucitronRoot header, #tarteaucitronRoot hgroup, #tarteaucitronRoot menu, #tarteaucitronRoot nav, #tarteaucitronRoot output, #tarteaucitronRoot ruby, #tarteaucitronRoot section, #tarteaucitronRoot summary, #tarteaucitronRoot time, #tarteaucitronRoot mark, #tarteaucitronRoot audio, #tarteaucitronRoot video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    background: initial;
+    text-align: initial;
+    text-shadow: initial;
+}
+/* HTML5 display-role reset for older browsers */
+#tarteaucitronRoot article, #tarteaucitronRoot aside, #tarteaucitronRoot details, #tarteaucitronRoot figcaption, #tarteaucitronRoot figure, #tarteaucitronRoot footer, #tarteaucitronRoot header, #tarteaucitronRoot hgroup, #tarteaucitronRoot menu, #tarteaucitronRoot nav, #tarteaucitronRoot section {
+    display: block;
+}
+#tarteaucitronRoot ol, #tarteaucitronRoot ul {
+    list-style: none;
+}
+#tarteaucitronRoot blockquote, #tarteaucitronRoot q {
+    quotes: none;
+}
+#tarteaucitronRoot blockquote:before, #tarteaucitronRoot blockquote:after, #tarteaucitronRoot q:before, #tarteaucitronRoot q:after {
+    content: '';
+    content: none;
+}
+#tarteaucitronRoot table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#tarteaucitronRoot a:focus, #tarteaucitronRoot button:focus {
+    /*outline: 2px solid #cb3333;*/
+}
+
+/***
+ * Better scroll management
+ */
+div#tarteaucitronMainLineOffset {
+    margin-top: 0!important;
+}
+
+div#tarteaucitronServices {
+    margin-top: 21px!important;
+}
+
+#tarteaucitronServices::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+#tarteaucitronServices::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0);
+}
+ 
+#tarteaucitronServices::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  outline: 0px solid slategrey;
+}
+
+div#tarteaucitronServices {
+    box-shadow: 0 0 35px #575757;
+}
+
 /***
  * Responsive layout for the control panel
  */
@@ -37,6 +109,18 @@
     #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
         text-align: left !important;
     }
+
+    .tarteaucitronName h2 {
+        max-width: 80%;
+    }
+
+    #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
+        text-align: center !important;
+    }
+
+        #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk button {
+            margin-bottom: 5px;
+        }
 }
 
 @media screen and (min-width:768px) and (max-width:991px) {
@@ -56,6 +140,16 @@
     zoom: 1;
 }
 
+#tarteaucitronRoot div#tarteaucitron {
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#tarteaucitronRoot button#tarteaucitronBack {
+    background: #eee;
+}
+
 #tarteaucitron .clear {
     clear: both;
 }
@@ -67,15 +161,30 @@
     text-decoration: none;
 }
 
+#tarteaucitronRoot button {
+    background: transparent;
+    border: 0;
+}
+
+#tarteaucitronAlertBig strong, #tarteaucitronAlertSmall strong,
 #tarteaucitronAlertBig a, #tarteaucitronAlertSmall a {
     color: #fff;
 }
 
-#tarteaucitron b {
+#tarteaucitron strong {
     font-size: 22px;
     font-weight: 500;
 }
 
+#tarteaucitron ul {
+    padding: 0;
+}
+
+.cookie-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 /***
  * Root div added just before </body>
  */
@@ -94,6 +203,23 @@
     font-size: 14px;
     line-height: normal;
     vertical-align: initial;
+}
+
+#tarteaucitronRoot h1 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #fff;
+    margin: 15px 0 28px;
+}
+
+#tarteaucitronRoot h2 {
+    display: inline-block;
+    margin: 12px 0 0 10px;
+    color: #fff;
+}
+
+h2#tarteaucitronCookiesNumberBis {
+    margin-left: 0;
 }
 
 /***
@@ -153,9 +279,13 @@
     width: 80%;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
+.tarteaucitronSelfLink, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
     background: rgba(51, 51, 51, 0.07);
+}a.tarteaucitronSelfLink {
+    text-align: center!important;
+    display: block;
+    padding: 7px!important;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
@@ -163,11 +293,15 @@
     position: relative;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle,
-#tarteaucitron #tarteaucitronServices .tarteaucitronTitle,
+#tarteaucitronCookiesList h3.tarteaucitronTitle {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle button,
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle button,
 #tarteaucitron #tarteaucitronInfo,
 #tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
-    background: #333;
     color: #fff;
     display: inline-block;
     font-size: 14px;
@@ -199,6 +333,7 @@
 
 #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle {
     padding: 5px 10px;
+    margin: 0;
 }
 
 #tarteaucitron #tarteaucitronInfo,
@@ -250,7 +385,7 @@
     margin-top: 2px;
 }
 
-#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName b {
+#tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName button {
     color: #fff;
 }
 
@@ -289,11 +424,22 @@
     text-align: center;
     text-decoration: none;
     width: auto;
+    border: 0;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
     color: #333;
     font-size: 12px;
+}
+
+#tarteaucitron h3 {
+    font-size: 18px;
+}
+
+#tarteaucitron #tarteaucitronMainLineOffset .tarteaucitronName {
+    width: auto!important;
+    margin-left: 0!important;
+    font-size: 14px;
 }
 
 /***
@@ -307,7 +453,7 @@
     bottom: 0;
 }
 
-#tarteaucitronAlertBig {
+#tarteaucitronRoot #tarteaucitronAlertBig {
     background: #333;
     color: #fff;
     display: none;
@@ -316,22 +462,29 @@
     padding: 5px 5%;
     position: fixed;
     text-align: center;
-    width: 90%;
     box-sizing: content-box;
     z-index: 2147483645;
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    width: 100%;
 }
 
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
-#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert b {
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font: 15px verdana;
     color: #fff;
 }
 
-#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert b {
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font-weight: 700;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize {
+#tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
+    cursor: pointer;
+}
+
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize, #tarteaucitron #tarteaucitronPrivacyUrl {
     background: #008300;
     color: #fff;
     cursor: pointer;
@@ -342,7 +495,7 @@
     margin-left: 7px;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitron #tarteaucitronPrivacyUrl {
     background: #fff;
     color: #333;
     font-size: 13px;
@@ -352,7 +505,7 @@
 }
 
 #tarteaucitronPercentage {
-    background: #0A0;
+    background: #0A0!important;
     box-shadow: 0 0 2px #fff, 0 1px 2px #555;
     height: 5px;
     left: 0;
@@ -461,7 +614,7 @@
     text-align: left;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList strong {
     color: #333;
 }
 
@@ -472,7 +625,7 @@
     text-align: left;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesTitle strong {
     color: #fff;
     font-size: 16px;
 }
@@ -497,7 +650,7 @@
     width: 50%;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a b {
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft a strong {
     color: darkred;
 }
 
@@ -531,7 +684,7 @@
     vertical-align: middle;
 }
 
-.tac_activate .tac_float b {
+.tac_activate .tac_float strong {
     color: #fff;
 }
 
@@ -550,4 +703,42 @@ ins.ferank-publicite, ins.adsbygoogle {
 div.amazon_product {
     height:240px;
     width:120px;
+}
+.tarteaucitronIsAllowed .tarteaucitronDeny {
+    opacity: 0.4!important;
+}.tarteaucitronIsDenied .tarteaucitronAllow {
+    opacity: 0.4!important;
+}.tarteaucitronIsAllowed .tarteaucitronAllow {
+    opacity: 1!important;
+}.tarteaucitronIsDenied .tarteaucitronDeny {
+    opacity: 1!important;
+}
+.tarteaucitronLine .tarteaucitronAllow, .tarteaucitronLine .tarteaucitronAllow {
+    opacity: 0.4;
+}
+
+div#tarteaucitronInfo {
+    display: block!important;
+    position: initial!important;
+    text-align: center!important;
+    max-width: 80%!important;
+    padding: 15px 0!important;
+    margin: -10px auto 40px!important;
+    font-size: 1em!important;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    border-color: #555;
+}
+
+a.tarteaucitronSelfLink {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding-top: 13px!important;
+    display: block;
+    text-shadow: 0 0 14px white;
+    text-transform: uppercase;
+}.tarteaucitronMainLine h2 {
+    font-size: 1.2em!important;
+    margin-top: 4px!important;
 }
