@@ -16,7 +16,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20181003,
+    "version": 20181023,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -1227,7 +1227,7 @@ var tarteaucitron = {
         "use strict";
         if (!navigator) { return 'en'; }
 
-        var availableLanguages = 'cs,en,fr,es,it,de,nl,pt,pl,ru',
+        var availableLanguages = 'cs,en,fr,es,it,de,nl,pt,pl,ru,el',
             defaultLanguage = 'en',
             lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
@@ -1266,6 +1266,8 @@ var tarteaucitron = {
             return 'pt_PT';
         } else if (userLanguage === 'nl') {
             return 'nl_NL';
+        } else if (userLanguage === 'el') {
+            return 'el_EL';
         } else {
             return 'en_US';
         }
