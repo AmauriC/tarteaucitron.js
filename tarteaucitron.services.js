@@ -1300,8 +1300,9 @@ tarteaucitron.services.recaptcha = {
     "cookies": ['nid'],
     "js": function () {
         "use strict";
+        window.tacRecaptchaOnLoad = tarteaucitron.user.recaptchaOnLoad || function() {};
         tarteaucitron.fallback(['g-recaptcha'], '');
-        tarteaucitron.addScript('https://www.google.com/recaptcha/api.js');
+        tarteaucitron.addScript('https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad');
     },
     "fallback": function () {
         "use strict";
