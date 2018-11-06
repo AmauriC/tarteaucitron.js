@@ -2,9 +2,7 @@
   "name": "tarteaucitronjs",
   "version": "1.0.0",
   "description": "Comply to the European cookie law",
-  "dependencies": {
-    "npm": "^6.4.1"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
