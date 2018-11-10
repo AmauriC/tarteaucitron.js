@@ -15,7 +15,7 @@
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    background: initial;
+    /*background: initial;*/
     text-align: initial;
     text-shadow: initial;
 }
@@ -302,9 +302,9 @@ div#tarteaucitronServices {
     box-sizing: border-box;
 }
 
-#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle button,
-#tarteaucitron #tarteaucitronServices .tarteaucitronTitle button,
-#tarteaucitron #tarteaucitronInfo,
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronTitle, 
+#tarteaucitron #tarteaucitronServices .tarteaucitronTitle button, 
+#tarteaucitron #tarteaucitronInfo, 
 #tarteaucitron #tarteaucitronServices .tarteaucitronDetails {
     color: #fff;
     display: inline-block;
@@ -314,6 +314,7 @@ div#tarteaucitronServices {
     padding: 5px 20px;
     text-align: left;
     width: auto;
+    background: #333;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine .tarteaucitronName a,
@@ -522,11 +523,7 @@ div#tarteaucitronServices {
  * Small alert
  */
 
-.tarteaucitronAlertSmallTop {
-    top: 0;
-}
-
-.tarteaucitronAlertSmallBottom {
+.tarteaucitronAlertSmallTop,.tarteaucitronAlertSmallBottom {
     bottom: 0;
 }
 
@@ -745,4 +742,8 @@ a.tarteaucitronSelfLink {
 }.tarteaucitronMainLine .tarteaucitronH2 {
     font-size: 1.2em!important;
     margin-top: 4px!important;
+}
+
+span.tarteaucitronTitle.tarteaucitronH3 {
+    margin-top: 12px!important;
 }
