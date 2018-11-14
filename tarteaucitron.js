@@ -260,12 +260,12 @@ var tarteaucitron = {
                     html = '',
                     index,
                     orientation = 'Top',
-                    cat = ['ads', 'analytic', 'api', 'comment', 'social', 'support', 'video', 'other'],
+                    cat = ['required', 'ads', 'analytic', 'api', 'comment', 'social', 'support', 'video', 'other'],
                     i;
 
                 cat = cat.sort(function (a, b) {
-                    if (tarteaucitron.lang[a].title > tarteaucitron.lang[b].title) { return 1; }
-                    if (tarteaucitron.lang[a].title < tarteaucitron.lang[b].title) { return -1; }
+                    if (tarteaucitron.lang[a].title > tarteaucitron.lang[b].title && a !== 'required') { return 1; }
+                    if (tarteaucitron.lang[a].title < tarteaucitron.lang[b].title || a === 'required') { return -1; }
                     return 0;
                 });
 
@@ -531,15 +531,17 @@ var tarteaucitron = {
                 html += '       </a>';
             }
             html += '   </div>';
-            html += '   <div class="tarteaucitronAsk">';
-            html += '       <button id="' + service.key + 'Allowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">';
-            html += '           &#10003; ' + tarteaucitron.lang.allow;
-            html += '       </button> ';
-            html += '       <button id="' + service.key  + 'Denied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respond(this, false);">';
-            html += '           &#10007; ' + tarteaucitron.lang.deny;
-            html += '       </button>';
-            html += '   </div>';
-            html += '</li>';
+            if (!service.required) {
+                html += '   <div class="tarteaucitronAsk">';
+                html += '       <button id="' + service.key + 'Allowed" class="tarteaucitronAllow" onclick="tarteaucitron.userInterface.respond(this, true);">';
+                html += '           &#10003; ' + tarteaucitron.lang.allow;
+                html += '       </button> ';
+                html += '       <button id="' + service.key  + 'Denied" class="tarteaucitronDeny" onclick="tarteaucitron.userInterface.respond(this, false);">';
+                html += '           &#10007; ' + tarteaucitron.lang.deny;
+                html += '       </button>';
+                html += '   </div>';
+                html += '</li>';
+            }
 
             tarteaucitron.userInterface.css('tarteaucitronServicesTitle_' + service.type, 'display', 'block');
 
@@ -632,7 +634,7 @@ var tarteaucitron = {
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
-                if (tarteaucitron.state[key] !== status) {
+                if (tarteaucitron.state[key] !== status && !service.required) {
                     if (status === false && tarteaucitron.launch[key] === true) {
                         tarteaucitron.reloadThePage = true;
                     }

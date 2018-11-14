@@ -71,5 +71,9 @@ tarteaucitron.lang = {
     "other": {
         "title": "Andere",
         "details": "Dienste zum Anzeigen von Web-Inhalten."
+    },
+    "required": {
+        "title": "Obligatorisch",
+        "details": "Pflichtdienste, die erforderlich sind, um die optimale Funktion der Website sicherzustellen und dauerhaft aktiviert zu werden."
     }
 };

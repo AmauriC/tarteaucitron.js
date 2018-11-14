@@ -69,5 +69,9 @@ tarteaucitron.lang = {
     "other": {
         "title": "De outros",
         "details": "Serviços para exibir conteúdo da web."
+    },
+    "required": {
+        "title": "Obrigatório",
+        "details": "Serviços obrigatórios necessários para garantir o funcionamento ideal do site e para ser permanentemente ativado."
     }
 };
