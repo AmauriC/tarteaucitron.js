@@ -540,8 +540,8 @@ var tarteaucitron = {
                 html += '           &#10007; ' + tarteaucitron.lang.deny;
                 html += '       </button>';
                 html += '   </div>';
-                html += '</li>';
             }
+            html += '</li>';
 
             tarteaucitron.userInterface.css('tarteaucitronServicesTitle_' + service.type, 'display', 'block');
 
@@ -634,7 +634,8 @@ var tarteaucitron = {
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
-                if (tarteaucitron.state[key] !== status && !service.required) {
+                status = service.required ? true : status;
+                if (tarteaucitron.state[key] !== status) {
                     if (status === false && tarteaucitron.launch[key] === true) {
                         tarteaucitron.reloadThePage = true;
                     }
@@ -684,7 +685,7 @@ var tarteaucitron = {
                 nbDenied = 0,
                 nbPending = 0,
                 nbAllowed = 0,
-                sum = tarteaucitron.job.length,
+                sum = 0,
                 index;
 
             if (status === true) {
@@ -704,7 +705,11 @@ var tarteaucitron = {
             }
 
             // check if all services are allowed
-            for (index = 0; index < sum; index += 1) {
+            for (index = 0; index < tarteaucitron.job.length; index += 1) {
+                if(tarteaucitron.services[tarteaucitron.job[index]].required) {
+                    continue;
+                }
+                sum += 1;
                 if (tarteaucitron.state[tarteaucitron.job[index]] === false) {
                     nbDenied += 1;
                 } else if (tarteaucitron.state[tarteaucitron.job[index]] === undefined) {
