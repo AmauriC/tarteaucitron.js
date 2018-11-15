@@ -74,6 +74,6 @@ tarteaucitron.lang = {
     },
     "required": {
         "title": "Obligatorio",
-        "details": "Servicios obligatorios requeridos para asegurar el funcionamiento óptimo del sitio web y para ser activado permanentemente."
+        "details": "Servicios obligatorios para brindar un funcionamiento optimal del sitio y siempre activos."
     }
 };
