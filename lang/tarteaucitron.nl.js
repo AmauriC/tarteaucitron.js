@@ -32,13 +32,13 @@ tarteaucitron.lang = {
     
     "fallback": "is uitgeschakeld.",
 
-    "toggleInfoBox": "Show/hide informations about cookie storage",
-    "title": "Cookies management panel",
-    "cookieDetail": "Cookie detail for",
-    "ourSite": "on our site",
-    "newWindow": "(new window)",
-    "allowAll": "Allow all cookies",
-    "denyAll": "Deny all cookies",
+    "toggleInfoBox": "Toon/verberg informatie over cookie opslag",
+    "title": "Cookies beheer paneel",
+    "cookieDetail": "Cookie detail voor",
+    "ourSite": "op onze site",
+    "newWindow": "(nieuw venster)",
+    "allowAll": "Sta alle cookies toe",
+    "denyAll": "Weiger alle cookies",
 
     "ads": {
         "title": "Advertentienetwerk",
