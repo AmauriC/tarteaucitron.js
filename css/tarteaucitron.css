@@ -371,6 +371,14 @@ div#tarteaucitronServices {
     padding: 15px 5px;
 }
 
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsAllowed {
+    border-color: #1B870B;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsDenied {
+    border-color: #9C1A1A;
+}
+
 #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine {
     background: #333;
     border: 3px solid #333;
@@ -430,6 +438,22 @@ div#tarteaucitronServices {
     text-decoration: none;
     width: auto;
     border: 0;
+}
+
+#tarteaucitron #tarteaucitronServices #tarteaucitronAllAllowed.tarteaucitronIsSelected {
+    background-color: #1B870B;
+    opacity: 1;
+}
+#tarteaucitron #tarteaucitronServices #tarteaucitronAllDenied.tarteaucitronIsSelected {
+    background-color: #9C1A1A;
+    opacity: 1;
+}
+
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsAllowed .tarteaucitronAllow {
+    background-color: #1B870B;
+}
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsDenied .tarteaucitronDeny {
+    background-color: #9C1A1A;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
@@ -714,7 +738,7 @@ div.amazon_product {
 }.tarteaucitronIsDenied .tarteaucitronDeny {
     opacity: 1!important;
 }
-.tarteaucitronLine .tarteaucitronAllow, .tarteaucitronLine .tarteaucitronAllow {
+.tarteaucitronLine .tarteaucitronAllow, .tarteaucitronLine .tarteaucitronDeny {
     opacity: 0.4;
 }
 
