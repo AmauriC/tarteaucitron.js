@@ -744,7 +744,7 @@ div.amazon_product {
 
 div#tarteaucitronInfo {
     display: block!important;
-    position: initial!important;
+    position: relative;
     text-align: center!important;
     max-width: 80%!important;
     padding: 15px 0!important;
