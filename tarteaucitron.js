@@ -900,7 +900,7 @@ var tarteaucitron = {
 
             allDivs = main.childNodes;
 
-            if (typeof Array.prototype.map === 'function') {
+            if (typeof Array.prototype.map === 'function' && typeof Enumerable.each !== 'function') {
                 Array.prototype.map.call(main.children, Object).sort(function (a, b) {
                 //var mainChildren = Array.from(main.children);
                 //mainChildren.sort(function (a, b) {
