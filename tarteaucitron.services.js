@@ -1913,7 +1913,14 @@ tarteaucitron.services.vimeo = {
                 frame_width = 'width=',
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
+                video_title = x.getAttribute("title") || '',
+                video_byline = x.getAttribute("byline") || '',
+                video_portrait = x.getAttribute("portrait") || '',
+                video_loop = x.getAttribute("loop") || '',
+                video_autoplay = x.getAttribute("autoplay") || '',
                 video_frame;
+
+            var video_qs = '';
 
             if (video_id === undefined) {
                 return "";
@@ -1924,11 +1931,52 @@ tarteaucitron.services.vimeo = {
                 frame_width += '"" ';
             }
             if (video_height !== undefined) {
-                frame_height +=  '"' + video_height + '" ';
+                frame_height += '"' + video_height + '" ';
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe src="//player.vimeo.com/video/' + video_id + '" ' + frame_width + frame_height + ' frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+
+            if (video_title.length > 0 || video_byline.length > 0 || video_portrait.length > 0) {
+
+                video_qs = "?";
+
+                if (video_title.length > 0) {
+                    video_qs += "title=" + video_title;
+                }
+
+                if (video_byline.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "byline=" + video_byline;
+                }
+
+                if (video_portrait.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "portrait=" + video_portrait;
+                }
+
+                if (video_loop.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "loop=" + video_loop;
+                }
+
+                if (video_autoplay.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "autoplay=" + video_autoplay;
+                }
+
+
+            }
+
+            video_frame = '<iframe src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + ' frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+
             return video_frame;
         });
     },
