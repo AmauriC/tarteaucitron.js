@@ -326,7 +326,7 @@ tarteaucitron.services.amazon = {
     "key": "amazon",
     "type": "ads",
     "name": "Amazon",
-    "uri": "https://www.amazon.fr/gp/help/customer/display.html?ie=UTF8&*Version*=1&*entries*=0&nodeId=201149360",
+    "uri": "https://www.amazon.com/gp/help/customer/display.html/ref=help_search_1-1?ie=UTF8&nodeId=201909010&qid=1544617177&sr=1-1",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -881,7 +881,7 @@ tarteaucitron.services.adsense = {
     "key": "adsense",
     "type": "ads",
     "name": "Google Adsense",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -900,7 +900,7 @@ tarteaucitron.services.googlepartners = {
     "key": "googlepartners",
     "type": "ads",
     "name": "Google Partners Badge",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -919,7 +919,7 @@ tarteaucitron.services.adsensesearchform = {
     "key": "adsensesearchform",
     "type": "ads",
     "name": "Google Adsense Search (form)",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -933,7 +933,7 @@ tarteaucitron.services.adsensesearchresult = {
     "key": "adsensesearchresult",
     "type": "ads",
     "name": "Google Adsense Search (result)",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1114,7 +1114,7 @@ tarteaucitron.services.googlemaps = {
     "key": "googlemaps",
     "type": "api",
     "name": "Google Maps",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1164,7 +1164,7 @@ tarteaucitron.services.googlemapssearch = {
     "key": "googlemapssearch",
     "type": "api",
     "name": "Google Maps Seard API",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": ['nid'],
     "js": function () {
@@ -1196,7 +1196,7 @@ tarteaucitron.services.googlemapsembed = {
     "key": "googlemapsembed",
     "type": "api",
     "name": "Google Maps Embed",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": ['apisid', 'hsid', 'nid', 'sapisid', 'sid', 'sidcc', 'ssid', '1p_jar'],
     "js": function () {
@@ -1225,7 +1225,7 @@ tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
     "type": "api",
     "name": "Google Tag Manager",
-    "uri": "http://www.google.com/ads/preferences/",
+    "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', '__gads', '_drt_', 'FLC', 'exchange_uid', 'id', 'fc', 'rrs', 'rds', 'rv', 'uid', 'UIDR', 'UID', 'clid', 'ipinfo', 'acs'],
     "js": function () {
@@ -1261,7 +1261,7 @@ tarteaucitron.services.jsapi = {
     "key": "jsapi",
     "type": "api",
     "name": "Google jsapi",
-    "uri": "http://www.google.com/policies/privacy/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1295,7 +1295,7 @@ tarteaucitron.services.recaptcha = {
     "key": "recaptcha",
     "type": "api",
     "name": "reCAPTCHA",
-    "uri": "http://www.google.com/policies/privacy/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": ['nid'],
     "js": function () {
@@ -1747,7 +1747,7 @@ tarteaucitron.services.typekit = {
     "key": "typekit",
     "type": "api",
     "name": "Typekit (adobe)",
-    "uri": "http://www.adobe.com/fr/privacy.html",
+    "uri": "https://www.adobe.com/privacy.html",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1902,7 +1902,7 @@ tarteaucitron.services.vimeo = {
     "key": "vimeo",
     "type": "video",
     "name": "Vimeo",
-    "uri": "http://vimeo.com/privacy",
+    "uri": "https://vimeo.com/privacy",
     "needConsent": true,
     "cookies": ['__utmt_player', '__utma', '__utmb', '__utmc', '__utmv', 'vuid', '__utmz', 'player'],
     "js": function () {
@@ -2056,7 +2056,7 @@ tarteaucitron.services.xiti = {
     "key": "xiti",
     "type": "analytic",
     "name": "Xiti",
-    "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
+    "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -2098,7 +2098,7 @@ tarteaucitron.services.atinternet = {
     "key": "atinternet",
     "type": "analytic",
     "name": "AT Internet",
-    "uri": "http://www.atinternet.com/politique-du-respect-de-la-vie-privee/",
+    "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
     "needConsent": true,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
@@ -2108,6 +2108,9 @@ tarteaucitron.services.atinternet = {
         }
 
         tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
+
+            var tag = new ATInternet.Tracker.Tag();
+
             if (typeof tarteaucitron.user.atMore === 'function') {
                 tarteaucitron.user.atMore();
             }
@@ -2120,7 +2123,7 @@ tarteaucitron.services.youtube = {
     "key": "youtube",
     "type": "video",
     "name": "YouTube",
-    "uri": "https://www.google.fr/intl/fr/policies/privacy/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
     "js": function () {
@@ -2167,7 +2170,7 @@ tarteaucitron.services.youtubeplaylist = {
     "key": "youtubeplaylist",
     "type": "video",
     "name": "YouTube (playlist)",
-    "uri": "https://www.google.fr/intl/fr/policies/privacy/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
     "js": function () {
