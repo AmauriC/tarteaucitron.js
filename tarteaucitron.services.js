@@ -2682,7 +2682,7 @@ tarteaucitron.services.crips = {
     "key": "crips",
     "type": "support",
     "name": "Crips",
-    "uri": "https://help.crisp.chat/en/article/whats-crisp-eu-gdpr-compliance-status-nhv54c/",
+    "uri": "https://crisp.chat/fr/privacy/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
