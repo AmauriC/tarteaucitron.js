@@ -2687,6 +2687,9 @@ tarteaucitron.services.crips = {
     "cookies": [],
     "js": function () {
         "use strict";
+        if (tarteaucitron.user.cripsWebsiteId === undefined) {
+            return;
+        }
         window.$crisp = [];
 
         window.CRISP_WEBSITE_ID = tarteaucitron.user.cripsWebsiteId;
