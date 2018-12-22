@@ -2676,3 +2676,44 @@ tarteaucitron.services.getquanty = {
         tarteaucitron.addScript('https://get.smart-data-systems.com/track?site_id=' + tarteaucitron.user.getguanty);
     }
 };
+
+// crips
+tarteaucitron.services.crips = {
+    "key": "crips",
+    "type": "support",
+    "name": "Crips",
+    "uri": "https://help.crisp.chat/en/article/whats-crisp-eu-gdpr-compliance-status-nhv54c/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        window.$crisp = [];
+
+        window.CRISP_WEBSITE_ID = tarteaucitron.user.cripsWebsiteId;
+
+        tarteaucitron.addScript('https://client.crisp.chat/l.js');
+
+        // waiting for crips to be ready to check first party cookies
+        var interval = setInterval(function () {
+            if (typeof $crisp === 'undefined') return
+
+            clearInterval(interval);
+
+            // looping throught cookies
+            var theCookies = document.cookie.split(';');
+            for (var i = 1 ; i <= theCookies.length; i++) {
+                var cookie = theCookies[i - 1].split('=');
+                var cookieName = cookie[0].trim();
+
+                // if cookie starts like a piwik one, register it
+                if (cookieName.indexOf('crisp-client') === 0) {
+                    tarteaucitron.services.crips.cookies.push(cookieName);
+                }
+            }
+        }, 100)
+
+        if (typeof tarteaucitron.user.cripsMore === 'function') {
+            tarteaucitron.user.cripsMore();
+        }
+    }
+};
