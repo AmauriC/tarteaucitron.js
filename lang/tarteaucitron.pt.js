@@ -13,6 +13,9 @@ tarteaucitron.lang = {
     "personalize": "Personalizar",
     "acceptAll": "OK, aceitar tudo",
     "close": "Fechar",
+
+    "privacyUrl": "Política de Privacidade",
+
     "all": "Definições dos serviços",
     "info": "Proteger sua privacidade",
     "disclaimer": "Ao aceitar os serviços terceiros, você aceita o uso de cookies em conjunto de tecnologias de rastreamento que lhe são necessárias para funcionar",
@@ -25,6 +28,15 @@ tarteaucitron.lang = {
     "more": "Ler mais",
     "source": "Ver o site oficial",
     "credit": "Gerenciador de cookies por tarteaucitron.js",
+
+    "toggleInfoBox": "Show/hide informations about cookie storage",
+    "title": "Cookies management panel",
+    "cookieDetail": "Cookie detail for",
+    "ourSite": "on our site",
+    "newWindow": "(new window)",
+    "allowAll": "Allow all cookies",
+    "denyAll": "Deny all cookies",
+
     "fallback": "está desativado.",
     "ads": {
         "title": "Rede de anúncios",
