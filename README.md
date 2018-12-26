@@ -50,6 +50,28 @@ tarteaucitron.init({
     "useExternalCss": false /* If false, the tarteaucitron.css file will be loaded */
 
     //"cookieDomain": ".my-multisite-domaine.fr" /* Shared cookie for subdomain website */
+                          
+    "readmoreLink": "/cookiespolicy" /* Change the default readmore link pointing to opt-out.ferank.eu */
 });
 </script>
+```
+
+# Create custom service
+```js
+tarteaucitron.services.mycustomservice = {
+  "key": "mycustomservice",
+  "type": "social|analytic|ads|video|support",
+  "name": "MyCustomService",
+  "needConsent": true,
+  "cookies": ['cookie', 'cookie2'],
+  "readmoreLink": "/custom_read_more", // If you want to change readmore link
+  "js": function () {
+    "use strict";
+    // When user allow cookie
+  },
+  "fallback": function () {
+    "use strict";
+    // when use deny cookie
+  }
+};
 ```
