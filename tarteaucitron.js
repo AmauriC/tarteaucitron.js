@@ -485,9 +485,6 @@ var tarteaucitron = {
                             div.id = 'tarteaucitronRoot';
                             body.appendChild(div, body);
                             div.innerHTML = html;
-                            tarteaucitron.pro('!adblocker=true');
-                        } else {
-                            tarteaucitron.pro('!adblocker=false');
                         }
                     }, 1500);
                 }
@@ -559,6 +556,8 @@ var tarteaucitron = {
 
             tarteaucitron.userInterface.order(service.type);
         }
+
+        tarteaucitron.pro('!' + service.key + '=' + isAllowed);
 
         // allow by default for non EU
         if (isResponded === false && tarteaucitron.user.bypass === true) {
@@ -672,6 +671,9 @@ var tarteaucitron = {
             // if not already launched... launch the service
             if (status === true) {
                 if (tarteaucitron.launch[key] !== true) {
+
+                    tarteaucitron.pro('!' + key + '=engage');
+
                     tarteaucitron.launch[key] = true;
                     tarteaucitron.services[key].js();
                 }
@@ -1063,10 +1065,6 @@ var tarteaucitron = {
                 value = tarteaucitron.parameters.cookieName + '=' + cookie + '!' + key + '=' + status,
                 domain = (tarteaucitron.parameters.cookieDomain !== undefined && tarteaucitron.parameters.cookieDomain !== '') ? 'domain=' + tarteaucitron.parameters.cookieDomain + ';' : '';
 
-          if (tarteaucitron.cookie.read().indexOf(key + '=' + status) === -1) {
-                tarteaucitron.pro('!' + key + '=' + status);
-            }
-
             d.setTime(expireTime);
             document.cookie = value + '; expires=' + d.toGMTString() + '; path=/;' + domain;
         },
@@ -1437,20 +1435,20 @@ var tarteaucitron = {
     "proTemp": '',
     "proTimer": function () {
         "use strict";
-        setTimeout(tarteaucitron.proPing, 1000);
+        setTimeout(tarteaucitron.proPing, 500);
     },
     "pro": function (list) {
         "use strict";
         tarteaucitron.proTemp += list;
         clearTimeout(tarteaucitron.proTimer);
-        tarteaucitron.proTimer = setTimeout(tarteaucitron.proPing, 2500);
+        tarteaucitron.proTimer = setTimeout(tarteaucitron.proPing, 500);
     },
     "proPing": function () {
         "use strict";
         if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined && tarteaucitron.proTemp !== '') {
             var div = document.getElementById('tarteaucitronPremium'),
                 timestamp = new Date().getTime(),
-                url = '//opt-out.ferank.eu/premium.php?';
+                url = 'https://opt-out.ferank.eu/premium.php?';
 
             if (div === null) {
                 return;
