@@ -464,9 +464,7 @@ div#tarteaucitronServices {
     display: none;
     font-size: 15px !important;
     left: 0;
-    padding: 5px 5%;
     position: fixed;
-    text-align: center;
     box-sizing: content-box;
     z-index: 2147483645;
     text-align: center;
