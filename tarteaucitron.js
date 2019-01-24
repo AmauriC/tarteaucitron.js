@@ -646,6 +646,9 @@ var tarteaucitron = {
                         tarteaucitron.reloadThePage = true;
                     }
                     if (tarteaucitron.launch[key] !== true && status === true) {
+
+                        tarteaucitron.pro('!' + key + '=engage');
+                        
                         tarteaucitron.launch[key] = true;
                         tarteaucitron.services[key].js();
                     }
