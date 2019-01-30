@@ -2676,3 +2676,36 @@ tarteaucitron.services.getquanty = {
         tarteaucitron.addScript('https://get.smart-data-systems.com/track?site_id=' + tarteaucitron.user.getguanty);
     }
 };
+
+// Affiz CPM
+tarteaucitron.services.affiz = {
+    "key": "affiz",
+    "type": "ads",
+    "name": "Affiz AdServer",
+    "uri": "https://adserver.affiz.com/infos/mentions",
+    "needConsent": true,
+    "cookies": [],
+     "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['affiz-canvas'], function (x) {
+            var ssl = x.getAttribute("data-ssl"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+				id = x.getAttribute("data-id"),
+				protocol = ssl?'https':'http',
+                url = protocol + '://server1.affiz.net/tracking/iframe_display.php?n=' + id + (ssl?'&ssl=1':'');
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no"></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'affiz';
+        tarteaucitron.fallback(['affiz-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+	
+};
