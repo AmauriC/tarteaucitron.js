@@ -34,7 +34,7 @@ tarteaucitron.init({
     "privacyUrl": "", /* Privacy policy url */
 
     "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
-    "cookieName": "tartaucitron", /* Cookie name */
+    "cookieName": "tarteaucitron", /* Cookie name */
     
     "orientation": "top", /* Banner position (top - bottom) */
     "showAlertSmall": true, /* Show the small banner on bottom right */
