@@ -2522,7 +2522,7 @@ tarteaucitron.services.bingads = {
 
             bingadsCreate.q = window[u];
             window[u] = new UET(bingadsCreate);
-            window[u].push('pageload');
+            window[u].push('pageLoad');
         });
     }
 };
