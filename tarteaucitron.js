@@ -1242,7 +1242,7 @@ var tarteaucitron = {
             defaultLanguage = 'en',
             lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
-            userLanguage = lang.substr(0, 2);
+            userLanguage = lang ? lang.substr(0, 2) : null;
 
         if (tarteaucitronForceLanguage !== '') {
             if (availableLanguages.indexOf(tarteaucitronForceLanguage) !== -1) {
@@ -1261,7 +1261,7 @@ var tarteaucitron = {
 
         var lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
-            userLanguage = lang.substr(0, 2);
+            userLanguage = lang ? lang.substr(0, 2) : null;
 
         if (userLanguage === 'fr') {
             return 'fr_FR';
