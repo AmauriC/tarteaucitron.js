@@ -2715,6 +2715,20 @@ tarteaucitron.services.emolytics = {
         var scriptEmolytics = document.createElement('script');
         scriptEmolytics.text = 'var getsmily_id="'+tarteaucitron.user.emolyticsID+'";';
         document.getElementsByTagName('body')[0].appendChild(scriptEmolytics);
-        tarteaucitron.addScript('https://cdn.emolytics.com/script/emolytics-widget.js');
+        tarteaucitron.addScript('https://cdn.emolytics.com/script/emolytics-widget.js')
+    }
+};
+
+// youtubeapi
+tarteaucitron.services.youtubeapi = {
+    "key": "youtubeapi",
+    "type": "video",
+    "name": "Youtube (Js API)",
+    "uri": "https://policies.google.com/privacy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('https://www.youtube.com/player_api');
     }
 };
