@@ -1163,7 +1163,7 @@ tarteaucitron.services.googlemaps = {
 tarteaucitron.services.googlemapssearch = {
     "key": "googlemapssearch",
     "type": "api",
-    "name": "Google Maps Seard API",
+    "name": "Google Maps Search API",
     "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "cookies": ['nid'],
