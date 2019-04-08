@@ -10,7 +10,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronForceExpire = (tarteaucitronForceExpire === undefined) ? '' : tarteaucitronForceExpire,
     tarteaucitronCustomText = (tarteaucitronCustomText === undefined) ? '' : tarteaucitronCustomText,
     // tarteaucitronExpireInDay: true for day(s) value - false for hour(s) value
-    tarteaucitronExpireInDay = (tarteaucitronExpireInDay === undefined || !Boolean(tarteaucitronExpireInDay)) ? true : tarteaucitronExpireInDay,
+    tarteaucitronExpireInDay = (tarteaucitronExpireInDay === undefined || typeof tarteaucitronExpireInDay !== "boolean") ? true : tarteaucitronExpireInDay,
     timeExpire = 31536000000,
     tarteaucitronProLoadServices,
     tarteaucitronNoAdBlocker = false;
@@ -1058,7 +1058,7 @@ var tarteaucitron = {
             "use strict";
 
             if (tarteaucitronForceExpire !== '') {
-                // The number of day can't be higher than 1 year
+                // The number of day(s)/hour(s) can't be higher than 1 year
                 if ((tarteaucitronExpireInDay && tarteaucitronForceExpire < 365) || (!tarteaucitronExpireInDay && tarteaucitronForceExpire < 8760)) {
                     if (tarteaucitronExpireInDay) {
                         // Multiplication to tranform the number of days to milliseconds
