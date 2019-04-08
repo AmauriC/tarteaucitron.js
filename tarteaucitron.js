@@ -9,7 +9,9 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronForceLanguage = (tarteaucitronForceLanguage === undefined) ? '' : tarteaucitronForceLanguage,
     tarteaucitronForceExpire = (tarteaucitronForceExpire === undefined) ? '' : tarteaucitronForceExpire,
     tarteaucitronCustomText = (tarteaucitronCustomText === undefined) ? '' : tarteaucitronCustomText,
-    timeExipre = 31536000000,
+    // tarteaucitronExpireInDay: true for day(s) value - false for hour(s) value
+    tarteaucitronExpireInDay = (tarteaucitronExpireInDay === undefined || !Boolean(tarteaucitronExpireInDay)) ? true : tarteaucitronExpireInDay,
+    timeExpire = 31536000000,
     tarteaucitronProLoadServices,
     tarteaucitronNoAdBlocker = false;
 
@@ -1056,13 +1058,21 @@ var tarteaucitron = {
             "use strict";
 
             if (tarteaucitronForceExpire !== '') {
-                // The number of day cann't be higher than 1 year
-                timeExipre = (tarteaucitronForceExpire > 365) ? 31536000000 : tarteaucitronForceExpire * 86400000; // Multiplication to tranform the number of days to milliseconds
+                // The number of day can't be higher than 1 year
+                if ((tarteaucitronExpireInDay && tarteaucitronForceExpire < 365) || (!tarteaucitronExpireInDay && tarteaucitronForceExpire < 8760)) {
+                    if (tarteaucitronExpireInDay) {
+                        // Multiplication to tranform the number of days to milliseconds
+                        timeExpire = tarteaucitronForceExpire * 86400000;
+                    } else {
+                        // Multiplication to tranform the number of hours to milliseconds
+                        timeExpire = tarteaucitronForceExpire * 3600000;
+                    }
+                }
             }
 
             var d = new Date(),
                 time = d.getTime(),
-                expireTime = time + timeExipre, // 365 days
+                expireTime = time + timeExpire, // 365 days
                 regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
                 cookie = tarteaucitron.cookie.read().replace(regex, ""),
                 value = tarteaucitron.parameters.cookieName + '=' + cookie + '!' + key + '=' + status,
