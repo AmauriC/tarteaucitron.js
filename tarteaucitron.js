@@ -18,7 +18,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20181023,
+    "version": 20181120,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -689,13 +689,7 @@ var tarteaucitron = {
         },
         "color": function (key, status) {
             "use strict";
-            var gray = '#808080',
-                greenDark = '#1B870B',
-                greenLight = '#E6FFE2',
-                redDark = '#9C1A1A',
-                redLight = '#FFE2E2',
-                yellowDark = '#FBDA26',
-                c = 'tarteaucitron',
+            var c = 'tarteaucitron',
                 nbDenied = 0,
                 nbPending = 0,
                 nbAllowed = 0,
@@ -703,17 +697,9 @@ var tarteaucitron = {
                 index;
 
             if (status === true) {
-                tarteaucitron.userInterface.css(key + 'Line', 'borderLeft', '5px solid ' + greenDark);
-                tarteaucitron.userInterface.css(key + 'Allowed', 'backgroundColor', greenDark);
-                tarteaucitron.userInterface.css(key + 'Denied', 'backgroundColor', gray);
-
                 document.getElementById(key + 'Line').classList.add('tarteaucitronIsAllowed');
                 document.getElementById(key + 'Line').classList.remove('tarteaucitronIsDenied');
             } else if (status === false) {
-                tarteaucitron.userInterface.css(key + 'Line', 'borderLeft', '5px solid ' + redDark);
-                tarteaucitron.userInterface.css(key + 'Allowed', 'backgroundColor', gray);
-                tarteaucitron.userInterface.css(key + 'Denied', 'backgroundColor', redDark);
-
                 document.getElementById(key + 'Line').classList.remove('tarteaucitronIsAllowed');
                 document.getElementById(key + 'Line').classList.add('tarteaucitronIsDenied');
             }
@@ -734,16 +720,14 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css(c + 'DotRed', 'width', ((100 / sum) * nbDenied) + '%');
 
             if (nbDenied === 0 && nbPending === 0) {
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'backgroundColor', greenDark);
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '0.4');
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '1');
+                document.getElementById(c + 'AllDenied').classList.remove('tarteaucitronIsSelected');
+                document.getElementById(c + 'AllAllowed').classList.add('tarteaucitronIsSelected');
             } else if (nbAllowed === 0 && nbPending === 0) {
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '0.4');
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '1');
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'backgroundColor', redDark);
+                document.getElementById(c + 'AllAllowed').classList.remove('tarteaucitronIsSelected');
+                document.getElementById(c + 'AllDenied').classList.add('tarteaucitronIsSelected');
             } else {
-                tarteaucitron.userInterface.css(c + 'AllAllowed', 'opacity', '0.4');
-                tarteaucitron.userInterface.css(c + 'AllDenied', 'opacity', '0.4');
+                document.getElementById(c + 'AllDenied').classList.remove('tarteaucitronIsSelected');
+                document.getElementById(c + 'AllAllowed').classList.remove('tarteaucitronIsSelected');
             }
 
             // close the alert if all service have been reviewed
