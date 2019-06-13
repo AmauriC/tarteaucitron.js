@@ -1236,19 +1236,21 @@ var tarteaucitron = {
     },
     "getLanguage": function () {
         "use strict";
-        if (!navigator) { return 'en'; }
 
         var availableLanguages = 'cs,en,fr,es,it,de,nl,pt,pl,ru,el',
-            defaultLanguage = 'en',
-            lang = navigator.language || navigator.browserLanguage ||
-                navigator.systemLanguage || navigator.userLang || null,
-            userLanguage = lang ? lang.substr(0, 2) : null;
-
+            defaultLanguage = 'en';
+        
         if (tarteaucitronForceLanguage !== '') {
             if (availableLanguages.indexOf(tarteaucitronForceLanguage) !== -1) {
                 return tarteaucitronForceLanguage;
             }
         }
+        
+        if (!navigator) { return 'en'; }
+        
+        var lang = navigator.language || navigator.browserLanguage ||
+                navigator.systemLanguage || navigator.userLang || null,
+            userLanguage = lang ? lang.substr(0, 2) : null;
 
         if (availableLanguages.indexOf(userLanguage) === -1) {
             return defaultLanguage;
