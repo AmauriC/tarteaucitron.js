@@ -329,9 +329,11 @@ var tarteaucitron = {
 
                 if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
                     html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
                     html += '   </span>';
+                    html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
                     html += '   <button type="button" id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '       ' + tarteaucitron.lang.personalize;
                     html += '   </button>';
@@ -341,10 +343,13 @@ var tarteaucitron = {
                         html += '       ' + tarteaucitron.lang.privacyUrl;
                         html += '   </button>';
                     }
-
+                    
+                    html += '   </span>';
+                    html += '</div>';
                     html += '</div>';
                 } else {
                     html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
 
                     if (tarteaucitron.parameters.highPrivacy) {
@@ -354,6 +359,7 @@ var tarteaucitron = {
                     }
 
                     html += '   </span>';
+                    html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
                     html += '   <button type="button" id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.respondAll(true);">';
                     html += '       &#10003; ' + tarteaucitron.lang.acceptAll;
                     html += '   </button>';
@@ -367,6 +373,8 @@ var tarteaucitron = {
                         html += '   </button>';
                     }
 
+                    html += '   </span>';
+                    html += '</div>';
                     html += '</div>';
                     html += '<div id="tarteaucitronPercentage"></div>';
                 }
