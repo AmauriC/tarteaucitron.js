@@ -417,6 +417,9 @@ var tarteaucitron = {
                         body.appendChild(div, body);
                         div.innerHTML = html;
 
+                        var tacRootAvailableEvent = new Event("tac.root_available");
+                        window.dispatchEvent(tacRootAvailableEvent);
+
                         if (tarteaucitron.job !== undefined) {
                             tarteaucitron.job = tarteaucitron.cleanArray(tarteaucitron.job);
                             for (index = 0; index < tarteaucitron.job.length; index += 1) {
@@ -762,6 +765,9 @@ var tarteaucitron = {
             document.getElementsByTagName('body')[0].classList.add('modal-open');
             tarteaucitron.userInterface.focusTrap();
             tarteaucitron.userInterface.jsSizing('main');
+
+            var tacOpenPanelEvent = new Event("tac.open_panel");
+            window.dispatchEvent(tacOpenPanelEvent);
         },
         "closePanel": function () {
             "use strict";
@@ -787,6 +793,8 @@ var tarteaucitron = {
             //document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
             document.getElementsByTagName('body')[0].classList.remove('modal-open');
 
+            var tacClosePanelEvent = new Event("tac.close_panel");
+            window.dispatchEvent(tacClosePanelEvent);
         },
         "focusTrap": function() {
             "use strict";
@@ -834,6 +842,9 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css(c + 'Percentage', 'display', 'block');
             tarteaucitron.userInterface.css(c + 'AlertSmall', 'display', 'none');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'block');
+            
+            var tacOpenAlertEvent = new Event("tac.open_alert");
+            window.dispatchEvent(tacOpenAlertEvent);
         },
         "closeAlert": function () {
             "use strict";
@@ -842,6 +853,9 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css(c + 'AlertSmall', 'display', 'block');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'none');
             tarteaucitron.userInterface.jsSizing('box');
+            
+            var tacCloseAlertEvent = new Event("tac.close_alert");
+            window.dispatchEvent(tacCloseAlertEvent);
         },
         "toggleCookiesList": function () {
             "use strict";
