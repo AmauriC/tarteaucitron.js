@@ -497,6 +497,7 @@ div#tarteaucitronServices {
     width: 100%;
 }
 
+#tarteaucitronAlertBig #tarteaucitronPrivacyUrl,
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
     font: 15px verdana;
