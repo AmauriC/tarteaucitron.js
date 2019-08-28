@@ -802,7 +802,11 @@ var tarteaucitron = {
             "use strict";
 
             if (document.location.hash === tarteaucitron.hashtag) {
-                document.location.hash = '';
+                if (window.history) {
+                    window.history.replaceState('', document.title, window.location.pathname + window.location.search);
+                } else {
+                    document.location.hash = '';
+                }
             }
             tarteaucitron.userInterface.css('tarteaucitron', 'display', 'none');
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
