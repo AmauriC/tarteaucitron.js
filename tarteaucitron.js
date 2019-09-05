@@ -1043,15 +1043,15 @@ var tarteaucitron = {
                         mainTop = ((windowInnerHeight - document.getElementById('tarteaucitron').offsetHeight) / 2) - 21;
                     }
 
-                    // correct
-                    if (mainTop < 0) {
-                        mainTop = 0;
-                    }
-
                     if (document.getElementById('tarteaucitronMainLineOffset') !== null) {
                         if (document.getElementById('tarteaucitron').offsetHeight < (windowInnerHeight / 2)) {
                             mainTop -= document.getElementById('tarteaucitronMainLineOffset').offsetHeight;
                         }
+                    }
+
+                    // correct
+                    if (mainTop < 0) {
+                        mainTop = 0;
                     }
 
                     // apply
