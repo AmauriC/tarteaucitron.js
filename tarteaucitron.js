@@ -424,8 +424,17 @@ var tarteaucitron = {
                         div.id = 'tarteaucitronRoot';
                         body.appendChild(div, body);
                         div.innerHTML = html;
-
-                        var tacRootAvailableEvent = new Event("tac.root_available");
+                        
+                        //ie compatibility
+                        var tacRootAvailableEvent;
+                        if(typeof(Event) === 'function') {
+                        	tacRootAvailableEvent = new Event("tac.root_available");
+                        }else{
+                        	tacRootAvailableEvent = document.createEvent('Event');
+                        	tacRootAvailableEvent.initEvent("tac.root_available", true, true);
+                        }
+                        //end ie compatibility
+                        
                         window.dispatchEvent(tacRootAvailableEvent);
 
                         if (tarteaucitron.job !== undefined) {
@@ -794,8 +803,17 @@ var tarteaucitron = {
             document.getElementsByTagName('body')[0].classList.add('modal-open');
             tarteaucitron.userInterface.focusTrap();
             tarteaucitron.userInterface.jsSizing('main');
-
-            var tacOpenPanelEvent = new Event("tac.open_panel");
+            
+            //ie compatibility
+            var tacOpenPanelEvent;
+            if(typeof(Event) === 'function') {
+                tacOpenPanelEvent = new Event("tac.open_panel");
+            }else{
+                tacOpenPanelEvent = document.createEvent('Event');
+                tacOpenPanelEvent.initEvent("tac.open_panel", true, true);
+            }
+            //end ie compatibility
+            
             window.dispatchEvent(tacOpenPanelEvent);
         },
         "closePanel": function () {
@@ -825,8 +843,17 @@ var tarteaucitron = {
             }
             //document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
             document.getElementsByTagName('body')[0].classList.remove('modal-open');
-
-            var tacClosePanelEvent = new Event("tac.close_panel");
+            
+            //ie compatibility
+            var tacClosePanelEvent;
+            if(typeof(Event) === 'function') {
+                tacClosePanelEvent = new Event("tac.close_panel");
+            }else{
+                tacClosePanelEvent = document.createEvent('Event');
+                tacClosePanelEvent.initEvent("tac.close_panel", true, true);
+            }
+            //end ie compatibility
+            
             window.dispatchEvent(tacClosePanelEvent);
         },
         "focusTrap": function() {
@@ -876,7 +903,16 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css(c + 'AlertSmall', 'display', 'none');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'block');
             
-            var tacOpenAlertEvent = new Event("tac.open_alert");
+            //ie compatibility
+            var tacOpenAlertEvent;
+            if(typeof(Event) === 'function') {
+                tacOpenAlertEvent = new Event("tac.open_alert");
+            }else{
+                tacOpenAlertEvent = document.createEvent('Event');
+                tacOpenAlertEvent.initEvent("tac.open_alert", true, true);
+            }
+            //end ie compatibility
+            
             window.dispatchEvent(tacOpenAlertEvent);
         },
         "closeAlert": function () {
@@ -887,7 +923,16 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'none');
             tarteaucitron.userInterface.jsSizing('box');
             
-            var tacCloseAlertEvent = new Event("tac.close_alert");
+            //ie compatibility
+            var tacCloseAlertEvent;
+            if(typeof(Event) === 'function') {
+                tacCloseAlertEvent = new Event("tac.close_alert");
+            }else{
+                tacCloseAlertEvent = document.createEvent('Event');
+                tacCloseAlertEvent.initEvent("tac.close_alert", true, true);
+            }
+            //end ie compatibility
+            
             window.dispatchEvent(tacCloseAlertEvent);
         },
         "toggleCookiesList": function () {
