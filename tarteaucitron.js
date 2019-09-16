@@ -1045,7 +1045,9 @@ var tarteaucitron = {
 
                     if (document.getElementById('tarteaucitronMainLineOffset') !== null) {
                         if (document.getElementById('tarteaucitron').offsetHeight < (windowInnerHeight / 2)) {
-                            mainTop -= document.getElementById('tarteaucitronMainLineOffset').offsetHeight;
+                            if(!(mainTop - document.getElementById('tarteaucitronMainLineOffset').offsetHeight) < 0) {
+                              mainTop -= document.getElementById('tarteaucitronMainLineOffset').offsetHeight;
+                            }
                         }
                     }
 
