@@ -177,41 +177,41 @@ tarteaucitron.services.aduptech_conversion = {
         tarteaucitron.fallback([IDENTIFIER], "");
 
         for (var i = 0; i < elements.length; i++) {
-            var element = elements[i];  
-                
+            var element = elements[i];
+
             if (!element.getAttribute("advertiserId") || !element.getAttribute("conversionCode")) {
                 continue;
             }
-            
-            var url = CONVERSION_PIXEL_BASE_URL + 
-                "/" + encodeURIComponent(element.getAttribute("advertiserId")) + 
-                "?t=" + encodeURIComponent(element.getAttribute("conversionCode"));   
-            
+
+            var url = CONVERSION_PIXEL_BASE_URL +
+                "/" + encodeURIComponent(element.getAttribute("advertiserId")) +
+                "?t=" + encodeURIComponent(element.getAttribute("conversionCode"));
+
             if (element.getAttribute("price")) {
                 url += "&price=" + encodeURIComponent(element.getAttribute("price"));
             }
-            
+
             if (element.getAttribute("quantity")) {
                 url += "&quantity=" + encodeURIComponent(element.getAttribute("quantity"));
             }
-            
+
             if (element.getAttribute("total")) {
                 url += "&total=" + encodeURIComponent(element.getAttribute("total"));
             }
-            
+
             if (element.getAttribute("orderId")) {
                 url += "&order_id=" + encodeURIComponent(element.getAttribute("orderId"));
             }
-            
+
             if (element.getAttribute("itemNumber")) {
                 url += "&item_number=" + encodeURIComponent(element.getAttribute("itemNumber"));
             }
-            
+
             if (element.getAttribute("description")) {
                 url += "&description=" + encodeURIComponent(element.getAttribute("description"));
             }
 
-            (new Image()).src = url;            
+            (new Image()).src = url;
         }
     }
 };
@@ -1202,7 +1202,7 @@ tarteaucitron.services.googlemapssearch = {
                 // url = x.getAttribute("data-url");
                 query = escape(x.getAttribute("data-search")),
                 key = x.getAttribute("data-api-key");
-            
+
             // return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
             return '<iframe width="' + width +'" height="' + height + '" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q='+query+'&key='+key+'" allowfullscreen></iframe> '
         });
@@ -1936,16 +1936,28 @@ tarteaucitron.services.vimeo = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['vimeo_player'], function (x) {
-            var video_id = x.getAttribute("videoID"),
-                video_width = x.getAttribute("width"),
+            var video_width = x.getAttribute("data-width") || x.getAttribute("width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = x.getAttribute("data-height") || x.getAttribute("height"),
                 frame_height = 'height=',
-                video_title = x.getAttribute("title") || '',
-                video_byline = x.getAttribute("byline") || '',
-                video_portrait = x.getAttribute("portrait") || '',
-                video_loop = x.getAttribute("loop") || '',
-                video_autoplay = x.getAttribute("autoplay") || '',
+
+                video_id = x.getAttribute("data-videoID") || x.getAttribute("videoID"),
+                video_autopause = x.getAttribute("data-autopause") || '',
+                video_autoplay = x.getAttribute("data-autoplay") || x.getAttribute("autoplay") || '',
+                video_background = x.getAttribute("data-background") || '',
+                video_byline = x.getAttribute("data-byline") || x.getAttribute("byline") || '',
+                video_color = x.getAttribute("data-color") || '',
+                video_controls = x.getAttribute("data-controls") || '',
+                video_loop = x.getAttribute("data-loop") || x.getAttribute("loop") || '',
+                video_maxheight = x.getAttribute("data-maxheight") || '',
+                video_maxwidth = x.getAttribute("data-maxwidth") || '',
+                video_muted = x.getAttribute("data-muted") || '',
+                video_playsinline = x.getAttribute("data-playsinline") || '',
+                video_portrait = x.getAttribute("data-portrait") || x.getAttribute("portrait") || '',
+                video_speed = x.getAttribute("data-speed") || '',
+                video_title = x.getAttribute("data-title") || x.getAttribute("title") || '',
+                video_transparent = x.getAttribute("data-transparent") || '',
+
                 video_frame;
 
             var video_qs = '';
@@ -1998,6 +2010,76 @@ tarteaucitron.services.vimeo = {
                         video_qs += "&";
                     }
                     video_qs += "autoplay=" + video_autoplay;
+                }
+
+                if (video_autopause.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "autopause=" + video_autopause;
+                }
+
+                if (video_background.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "background=" + video_background;
+                }
+
+                if (video_color.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "color=" + video_color;
+                }
+
+                if (video_controls.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "controls=" + video_controls;
+                }
+
+                if (video_maxheight.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "maxheight=" + video_maxheight;
+                }
+
+                if (video_maxwidth.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "maxwidth=" + video_maxwidth;
+                }
+
+                if (video_muted.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "muted=" + video_muted;
+                }
+
+                if (video_playsinline.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "playsinline=" + video_playsinline;
+                }
+
+                if (video_speed.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "speed=" + video_speed;
+                }
+
+                if (video_transparent.length > 0) {
+                    if (video_qs.length > 1) {
+                        video_qs += "&";
+                    }
+                    video_qs += "transparent=" + video_transparent;
                 }
 
 
@@ -2386,7 +2468,7 @@ tarteaucitron.services.multiplegtag = {
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
     "cookies": (function () {
-        
+
         var cookies = ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
 
         if (tarteaucitron.user.multiplegtagUa !== undefined) {
@@ -2701,8 +2783,8 @@ tarteaucitron.services.tawkto = {
         window.Tawk_LoadStart=new Date();
 
         tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
-    } 
-  
+    }
+
 };
 
 // getquanty
