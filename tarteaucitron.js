@@ -1404,6 +1404,12 @@ var tarteaucitron = {
             document.getElementsByTagName('head')[0].appendChild(script);
         }
     },
+    "sendEvent" : function(event_key) {
+        if(event_key !== undefined) {
+            var event = new Event(event_key);
+            document.dispatchEvent(event);
+        }
+    },
     "makeAsync": {
         "antiGhost": 0,
         "buffer": '',
