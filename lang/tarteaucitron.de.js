@@ -12,7 +12,7 @@ tarteaucitron.lang = {
     "alertSmall": "Datenschutz-Einstellungen",
     "personalize": "Personalisieren",
     "acceptAll": "Alle akzeptieren",
-    "close": "Beenden",
+    "close": "Schließen",
 
     "privacyUrl": "Datenschutzbestimmungen",
     
@@ -28,15 +28,15 @@ tarteaucitron.lang = {
     "useNoCookie": "Dieser Dienst hat keine 'Cookies' installiert.",
     "more": "Weiter lesen",
     "source": "Zur offiziellen Webseite",
-    "credit": "Cookies manager von tarteaucitron.js",
+    "credit": "Cookie Manager von tarteaucitron.js",
 
-    "toggleInfoBox": "Zeige/verberge Cookie-Einstellungen",
+    "toggleInfoBox": "Zeige/Verberge Cookie-Einstellungen",
     "title": "Cookie-Einstellungen",
     "cookieDetail": "Cookie Details für",
     "ourSite": "auf unserer Seite",
     "newWindow": "(neues Fenster)",
-    "allowAll": "Erlaube alle cookies",
-    "denyAll": "Verbiete alle cookies",
+    "allowAll": "Erlaube alle Cookies",
+    "denyAll": "Verbiete alle Cookies",
     
     "fallback": "ist deaktiviert.",
 
@@ -54,7 +54,7 @@ tarteaucitron.lang = {
     },
     "video": {
         "title": "Videos",
-        "details": "Videoplatformen erlauben Videoinhalte einzublenden und die Sichtbarkeit der Seite zu erhöhen."
+        "details": "Videoplattformen erlauben Videoinhalte einzublenden und die Sichtbarkeit der Seite zu erhöhen."
     },
     "comment": {
         "title": "Kommentare",
@@ -66,7 +66,7 @@ tarteaucitron.lang = {
     },
     "api": {
         "title": "APIs",
-        "details": "APIs werden benutzt um Skripte zu laden, wie: Geolokalisation, Suchmaschinen, Übersetzungen, ..."
+        "details": "APIs werden benutzt um Skripte zu laden, wie: Geolokalisierung, Suchmaschinen, Übersetzungen, ..."
     },
     "other": {
         "title": "Andere",
