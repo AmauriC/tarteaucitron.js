@@ -314,6 +314,7 @@ var tarteaucitron = {
                     html += '            </div>';
                     html += '         <ul id="tarteaucitronServices_' + cat[i] + '"></ul></li>';
                 }
+                html += '             <li id="tarteaucitronNoServicesTitle" class="tarteaucitronLine">' + tarteaucitron.lang.noServices + '</li>';
                 html += '         </ul>';
                 html += '         <div class="tarteaucitronHidden" id="tarteaucitronScrollbarChild" style="height:20px;display:block"></div>';
                 if (tarteaucitron.parameters.removeCredit === false) {
@@ -575,6 +576,8 @@ var tarteaucitron = {
             if (document.getElementById('tarteaucitronServices_' + service.type) !== null) {
                 document.getElementById('tarteaucitronServices_' + service.type).innerHTML += html;
             }
+
+            tarteaucitron.userInterface.css('tarteaucitronNoServicesTitle', 'display', 'none');
 
             tarteaucitron.userInterface.order(service.type);
         }
