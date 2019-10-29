@@ -18,7 +18,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20181120,
+    "version": 20191029,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -225,6 +225,11 @@ var tarteaucitron = {
             },
             params = tarteaucitron.parameters;
 
+        // Step -1		
+        if (typeof tarteaucitronCustomPremium !== 'undefined') {		
+            tarteaucitronCustomPremium();		
+        }
+        
         // Step 0: get params
         if (params !== undefined) {
 
@@ -1539,16 +1544,16 @@ var tarteaucitron = {
         if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined && tarteaucitron.proTemp !== '') {
             var div = document.getElementById('tarteaucitronPremium'),
                 timestamp = new Date().getTime(),
-                url = 'https://opt-out.ferank.eu/premium.php?';
+                url = 'https://opt-out.ferank.eu/log/?';
 
             if (div === null) {
                 return;
             }
 
+            url += 'account=' + tarteaucitron.uuid + '&';
             url += 'domain=' + tarteaucitron.domain + '&';
-            url += 'uuid=' + tarteaucitron.uuid + '&';
-            url += 'c=' + encodeURIComponent(tarteaucitron.proTemp) + '&';
-            url += '_' + timestamp;
+            url += 'status=' + encodeURIComponent(tarteaucitron.proTemp) + '&';
+            url += '_time=' + timestamp;
 
             div.innerHTML = '<img src="' + url + '" style="display:none" />';
 
