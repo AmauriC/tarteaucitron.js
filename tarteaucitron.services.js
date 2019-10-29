@@ -1269,6 +1269,29 @@ tarteaucitron.services.googletagmanager = {
     }
 };
 
+// google webfonts
+tarteaucitron.services.googlefonts = {
+  "key": "googlefonts",
+  "type": "api",
+  "name": "Google Webfonts",
+  "uri": "https://www.google.com/intl/de/policies/privacy/",
+  "needConsent": true,
+  "cookies": [],
+  "js": function () {
+    "use strict";
+    if (tarteaucitron.user.googleFonts === undefined) {
+      return;
+    }
+    tarteaucitron.addScript('//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', function () {
+      WebFont.load({
+        google: {
+          families: tarteaucitron.user.googleFonts
+        }
+      });
+    });
+  }
+};
+
 // hubspot
 tarteaucitron.services.hubspot = {
     "key": "hubspot",
