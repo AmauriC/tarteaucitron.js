@@ -8,7 +8,7 @@ tarteaucitron.lang = {
     "alertBigClick": "Wenn Sie diese Webseite benutzen,",
     "alertBig": "stimmen Sie der Benutzung von externen Diensten zu",
     
-    "alertBigPrivacy": "Diese Webseite verwendet 'Cookies' und ermöglicht dadurch Kontrolle, welche Dienste benutzt werden dürfen",
+    "alertBigPrivacy": "Diese Webseite verwendet 'Cookies' um Inhalte und Anzeigen zu personalisieren und zu analysieren. Bestimmen Sie, welche Dienste benutzt werden dürfen",
     "alertSmall": "Datenschutz-Einstellungen",
     "personalize": "Personalisieren",
     "acceptAll": "Alle akzeptieren",
