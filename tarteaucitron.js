@@ -594,7 +594,7 @@ var tarteaucitron = {
             if (tarteaucitron.launch[service.key] !== true) {
                 tarteaucitron.launch[service.key] = true;
                 service.js();
-                this.sendEvent(service.key + '_loaded');
+                tarteaucitron.sendEvent(service.key + '_loaded');
             }
             tarteaucitron.state[service.key] = true;
             tarteaucitron.userInterface.color(service.key, true);
