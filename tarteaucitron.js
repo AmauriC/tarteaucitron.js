@@ -335,11 +335,11 @@ var tarteaucitron = {
 
                 if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
                     html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
-                    html += '<div class="tarteaucitronAlertBigWrapper">';
+                    //html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
                     html += '   </span>';
-                    html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
+                    //html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
                     html += '   <button type="button" id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '       ' + tarteaucitron.lang.personalize;
                     html += '   </button>';
@@ -350,12 +350,12 @@ var tarteaucitron = {
                         html += '   </button>';
                     }
                     
-                    html += '   </span>';
-                    html += '</div>';
+                    //html += '   </span>';
+                    //html += '</div>';
                     html += '</div>';
                 } else {
                     html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
-                    html += '<div class="tarteaucitronAlertBigWrapper">';
+                    //html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
 
                     if (tarteaucitron.parameters.highPrivacy) {
@@ -365,7 +365,7 @@ var tarteaucitron = {
                     }
 
                     html += '   </span>';
-                    html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
+                    //html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
                     html += '   <button type="button" id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.respondAll(true);">';
                     html += '       &#10003; ' + tarteaucitron.lang.acceptAll;
                     html += '   </button>';
@@ -379,8 +379,8 @@ var tarteaucitron = {
                         html += '   </button>';
                     }
 
-                    html += '   </span>';
-                    html += '</div>';
+                    //html += '   </span>';
+                    //html += '</div>';
                     html += '</div>';
                     html += '<div id="tarteaucitronPercentage"></div>';
                 }
@@ -497,18 +497,6 @@ var tarteaucitron = {
                             html += '   </button>';
                             html += '</div>';
                             html += '<div id="tarteaucitronPremium"></div>';
-
-                            // create wrapper container
-                            /*var wrapper = document.createElement('div');
-                            wrapper.id = "contentWrapper";
-
-                            while (document.body.firstChild)
-                            {
-                                wrapper.appendChild(document.body.firstChild);
-                            }
-
-                            // Append the wrapper to the body
-                            document.body.appendChild(wrapper);*/
 
                             div.id = 'tarteaucitronRoot';
                             body.appendChild(div, body);
@@ -823,7 +811,6 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
 
             document.getElementById('tarteaucitronClosePanel').focus();
-            //document.getElementById('contentWrapper').setAttribute("aria-hidden", "true");
             document.getElementsByTagName('body')[0].classList.add('modal-open');
             tarteaucitron.userInterface.focusTrap();
             tarteaucitron.userInterface.jsSizing('main');
@@ -865,7 +852,6 @@ var tarteaucitron = {
             if (document.getElementById('tarteaucitronCloseAlert') !== null) {
                 document.getElementById('tarteaucitronCloseAlert').focus();
             }
-            //document.getElementById('contentWrapper').setAttribute("aria-hidden", "false");
             document.getElementsByTagName('body')[0].classList.remove('modal-open');
             
             //ie compatibility
