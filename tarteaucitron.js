@@ -18,7 +18,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20191029,
+    "version": 20191031,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -212,13 +212,13 @@ var tarteaucitron = {
                 "adblocker": false,
                 "hashtag": '#tarteaucitron',
                 "cookieName": 'tarteaucitron',
-                "highPrivacy": false,
-                "orientation": "top",
+                "highPrivacy": true,
+                "orientation": "middle",
                 "removeCredit": false,
                 "showAlertSmall": true,
                 "cookieslist": true,
                 "handleBrowserDNTRequest": false,
-                "AcceptAllCta" : false,
+                "AcceptAllCta" : true,
                 "moreInfoLink": true,
                 "privacyUrl": "",
                 "useExternalCss": false
@@ -260,6 +260,21 @@ var tarteaucitron = {
             tarteaucitron.lang = tarteaucitron.AddOrUpdate(tarteaucitron.lang, tarteaucitronCustomText);
           }
             tarteaucitron.addScript(pathToServices, '', function () {
+
+
+                // css for new middle bar
+                if (tarteaucitron.orientation === 'middle') {
+                    var customThemeMiddle = document.createElement('style'),
+                        cssRuleMiddle = 'div#tarteaucitronAlertBig:before {content: \'' + tarteaucitron.lang.middleBarHead + '\';font-size: 50px;}body #tarteaucitronRoot div#tarteaucitronAlertBig {width: 60%;min-width: 285px;height: auto;margin: auto;left: 50%;top: 50%;transform: translate(-50%, -50%);box-shadow: 0 0 9000px #000;border-radius: 20px;padding: 50px 0;}span#tarteaucitronDisclaimerAlert {padding: 0 30px;}#tarteaucitronRoot span#tarteaucitronDisclaimerAlert {margin: 50px 0;display: block;text-align: center;font-size: 21px;}';
+
+                    customThemeMiddle.type = 'text/css';
+                    if (customThemeMiddle.styleSheet) {
+                        customThemeMiddle.styleSheet.cssText = cssRuleMiddle;
+                    } else {
+                        customThemeMiddle.appendChild(document.createTextNode(cssRuleMiddle));
+                    }
+                    document.getElementsByTagName('head')[0].appendChild(customThemeMiddle);
+                }
 
                 var body = document.body,
                     div = document.createElement('div'),

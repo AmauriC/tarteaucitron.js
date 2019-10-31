@@ -1,5 +1,6 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
+    "middleBarHead": "☝ 🍪",
     "adblock": "Hallo! Diese Seite ist transparent und lässt Ihnen die Wahl der externen Services, die aktiviert werden dürfen.",
     "adblock_call": "Bitte deaktivieren Sie Ihren 'Werbeblocker' um Cookie-Einstellungen vornehmen zu können.",
     "reload": "Seite neu laden",

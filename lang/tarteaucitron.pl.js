@@ -1,5 +1,6 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
+    "middleBarHead": "☝ 🍪",
     "adblock": "Witaj! Ta witryna oferuje daje mozliwość wyboru aktywacji usług zewnętrznych.",
     "adblock_call": "Prosze wylaczyc adblocker aby rozpoczac dostosowanie do potrzeb uzytkownika.",
     "reload": "Odswież stronę",
