@@ -225,9 +225,9 @@ var tarteaucitron = {
             },
             params = tarteaucitron.parameters;
 
-        // Step -1		
-        if (typeof tarteaucitronCustomPremium !== 'undefined') {		
-            tarteaucitronCustomPremium();		
+        // Step -1      
+        if (typeof tarteaucitronCustomPremium !== 'undefined') {        
+            tarteaucitronCustomPremium();       
         }
         
         // Step 0: get params
@@ -245,7 +245,6 @@ var tarteaucitron = {
         tarteaucitron.hashtag = tarteaucitron.parameters.hashtag;
         tarteaucitron.highPrivacy = tarteaucitron.parameters.highPrivacy;
         tarteaucitron.handleBrowserDNTRequest = tarteaucitron.parameters.handleBrowserDNTRequest;
-
 
         // Step 1: load css
         if ( !tarteaucitron.parameters.useExternalCss ) {
@@ -290,7 +289,7 @@ var tarteaucitron = {
                 html += '         ' + tarteaucitron.lang.disclaimer;
                 if (tarteaucitron.parameters.privacyUrl !== "") {
                     html += '   <br/><br/>';
-                    html += '   <button type="button" id="tarteaucitronPrivacyUrl" onclick="document.location = tarteaucitron.parameters.privacyUrl">';
+                    html += '   <button type="button" id="tarteaucitronPrivacyUrlDialog" onclick="document.location = tarteaucitron.parameters.privacyUrl">';
                     html += '       ' + tarteaucitron.lang.privacyUrl;
                     html += '   </button>';
                 }
@@ -434,10 +433,10 @@ var tarteaucitron = {
                         //ie compatibility
                         var tacRootAvailableEvent;
                         if(typeof(Event) === 'function') {
-                        	tacRootAvailableEvent = new Event("tac.root_available");
+                            tacRootAvailableEvent = new Event("tac.root_available");
                         }else{
-                        	tacRootAvailableEvent = document.createEvent('Event');
-                        	tacRootAvailableEvent.initEvent("tac.root_available", true, true);
+                            tacRootAvailableEvent = document.createEvent('Event');
+                            tacRootAvailableEvent.initEvent("tac.root_available", true, true);
                         }
                         //end ie compatibility
                         
