@@ -221,7 +221,8 @@ var tarteaucitron = {
                 "AcceptAllCta" : true,
                 "moreInfoLink": true,
                 "privacyUrl": "",
-                "useExternalCss": false
+                "useExternalCss": false,
+                "useExternalJs": false
             },
             params = tarteaucitron.parameters;
 
@@ -1416,16 +1417,22 @@ var tarteaucitron = {
             }
 
             if (typeof callback === 'function') {
-                script.onreadystatechange = script.onload = function () {
-                    var state = script.readyState;
-                    if (!done && (!state || /loaded|complete/.test(state))) {
-                        done = true;
-                        callback();
-                    }
-                };
+                if ( !tarteaucitron.parameters.useExternalJs ) {
+                    script.onreadystatechange = script.onload = function () {
+                        var state = script.readyState;
+                        if (!done && (!state || /loaded|complete/.test(state))) {
+                            done = true;
+                            callback();
+                        }
+                    };
+                } else {
+                    callback();
+                }
             }
 
-            document.getElementsByTagName('head')[0].appendChild(script);
+            if ( !tarteaucitron.parameters.useExternalJs ) {
+                document.getElementsByTagName('head')[0].appendChild(script);
+            }
         }
     },
     "makeAsync": {
