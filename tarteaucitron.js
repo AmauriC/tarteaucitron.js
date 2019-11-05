@@ -533,13 +533,13 @@ var tarteaucitron = {
             cookie = tarteaucitron.cookie.read(),
             hostname = document.location.hostname,
             hostRef = document.referrer.split('/')[2],
-            isNavigating = (hostRef === hostname && window.location.href !== tarteaucitron.parameters.privacyUrl) ? true : false,
-            isAutostart = (!service.needConsent) ? true : false,
-            isWaiting = (cookie.indexOf(service.key + '=wait') >= 0) ? true : false,
-            isDenied = (cookie.indexOf(service.key + '=false') >= 0) ? true : false,
-            isAllowed = (cookie.indexOf(service.key + '=true') >= 0) ? true : false,
-            isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0) ? true : false,
-            isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1") ? true : false;
+            isNavigating = (hostRef === hostname && window.location.href !== tarteaucitron.parameters.privacyUrl),
+            isAutostart = (!service.needConsent),
+            isWaiting = (cookie.indexOf(service.key + '=wait') >= 0),
+            isDenied = (cookie.indexOf(service.key + '=false') >= 0),
+            isAllowed = (cookie.indexOf(service.key + '=true') >= 0),
+            isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0),
+            isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1");
 
         if (tarteaucitron.added[service.key] !== true) {
             tarteaucitron.added[service.key] = true;
