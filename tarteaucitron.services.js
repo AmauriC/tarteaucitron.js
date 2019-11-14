@@ -1434,9 +1434,10 @@ tarteaucitron.services.mautic = {
             return;
         }
 
-        window['MauticTrackingObject'] = 'mt';
-        window['mt'] = window['mt'] || function() {
-            (window['mt'].q = window['mt'].q || []).push(arguments);
+        window.MauticTrackingObject = 'mt';
+        window.mt = window.mt || function () {
+            window.mt.q = window.mt.q || [];
+            window.mt.q.push(arguments);
         };
 
         tarteaucitron.addScript(tarteaucitron.user.mauticurl, '', function() {
@@ -2506,9 +2507,11 @@ tarteaucitron.services.webmecanik = {
         if (tarteaucitron.user.webmecanikurl === undefined) {
             return;
         }
-        window['WebmecanikTrackingObject'] = 'mt';
-        window['mt'] = window['mt'] || function() {
-            (window['mt'].q = window['mt'].q || []).push(arguments);
+
+        window.WebmecanikTrackingObject = 'mt';
+        window.mt = window.mt || function () {
+            window.mt.q = window.mt.q || [];
+            window.mt.q.push(arguments);
         };
 
         tarteaucitron.addScript(tarteaucitron.user.webmecanikurl, '', function() {
