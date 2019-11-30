@@ -47,6 +47,37 @@ tarteaucitron.services.abtasty = {
     }
 };
 
+
+// yandex metrica
+tarteaucitron.services.metrica = {
+    "key": "metrica",
+    "type": "analytic",
+    "name": "Yandex Metrica",
+    "uri": "https://yandex.com/legal/confidential/",
+    "needConsent": true,
+    "cookies": ['_ym_metrika_enabled','_ym_isad', '_ym_uid', '_ym_d','yabs-sid','_ym_debug','_ym_mp2_substs','_ym_hostIndex','_ym_mp2_track','yandexuid','usst'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.yandexmetrica === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('https://mc.yandex.ru/metrika/tag.js', '', function() {
+
+            window.ym = window.ym || function () {
+                (window["ym"].a = window["ym"].a || []).push(arguments)
+            };
+            window["ym"].l = 1 * new Date();
+
+            window.ym(tarteaucitron.user.yandexmetrica, "init", {
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                webvisor: true
+            });
+        });
+    }
+};
+
 // addthis
 tarteaucitron.services.addthis = {
     "key": "addthis",
