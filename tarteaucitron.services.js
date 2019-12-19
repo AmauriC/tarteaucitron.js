@@ -30,6 +30,44 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// amplitude
+tarteaucitron.services.amplitude = {
+    "key": "amplitude",
+    "type": "analytic",
+    "name": "Amplitude",
+    "uri": "https://amplitude.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.amplitude === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('https://cdn.amplitude.com/libs/amplitude-5.8.0-min.gz.js', '', function() {
+
+          window.amplitude = {
+             _q: [],
+             _iq: {}
+          };
+          function s(e,t){e.prototype[t]=function(){this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
+          var o=function(){this._q=[];return this};
+          var a=["add","append","clearAll","prepend","set","setOnce","unset"];
+          for(var u=0;u<a.length;u++){s(o,a[u])}
+          amplitude.Identify=o;
+          var c=function(){this._q=[];return this};
+          var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];
+          for(var p=0;p<l.length;p++){s(c,l[p])}
+          amplitude.Revenue=c;
+          var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","enableTracking","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"];
+          function v(e){function t(t){e[t]=function(){e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var n=0;n<d.length;n++){t(d[n])}}
+          v(amplitude);
+          amplitude.getInstance=function(e){e=(!e||e.length===0?"$default_instance":e).toLowerCase();if(!amplitude._iq.hasOwnProperty(e)){amplitude._iq[e]={_q:[]};v(amplitude._iq[e])}return amplitude._iq[e]};
+          
+          amplitude.getInstance().init(tarteaucitron.user.amplitude);
+        });
+    }
+};
+
 // abtasty
 tarteaucitron.services.abtasty = {
     "key": "abtasty",
