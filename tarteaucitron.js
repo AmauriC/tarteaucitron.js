@@ -214,6 +214,7 @@ var tarteaucitron = {
                 "cookieName": 'tarteaucitron',
                 "highPrivacy": true,
                 "orientation": "middle",
+                "bodyPosition": "top",
                 "removeCredit": false,
                 "showAlertSmall": true,
                 "cookieslist": true,
@@ -443,7 +444,15 @@ var tarteaucitron = {
                         document.body.appendChild(wrapper);*/
 
                         div.id = 'tarteaucitronRoot';
-                        body.appendChild(div, body);
+                        if (tarteaucitron.parameters.bodyPosition === 'top') { 
+                            // Prepend tarteaucitron: #tarteaucitronRoot first-child of the body for better accessibility
+                            var bodyFirstChild = body.firstChild;
+                            body.insertBefore(div, bodyFirstChild);
+                        }
+                        else {
+                            // Append tarteaucitron: #tarteaucitronRoot last-child of the body
+                            body.appendChild(div, body);
+                        }
                         div.innerHTML = html;
                         
                         //ie compatibility
@@ -514,7 +523,15 @@ var tarteaucitron = {
                             html += '<div id="tarteaucitronPremium"></div>';
 
                             div.id = 'tarteaucitronRoot';
-                            body.appendChild(div, body);
+                            if (tarteaucitron.parameters.bodyPosition === 'top') { 
+                                // Prepend tarteaucitron: #tarteaucitronRoot first-child of the body for better accessibility
+                                var bodyFirstChild = body.firstChild;
+                                body.insertBefore(div, bodyFirstChild);
+                            }
+                            else {
+                                // Append tarteaucitron: #tarteaucitronRoot last-child of the body
+                                body.appendChild(div, body);
+                            }
                             div.innerHTML = html;
                         }
                     }, 1500);
