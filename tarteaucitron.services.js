@@ -2601,7 +2601,7 @@ tarteaucitron.services.multiplegtag = {
         var cookies = ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
 
         if (tarteaucitron.user.multiplegtagUa !== undefined) {
-            tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
+            tarteaucitron.user.multiplegtagUa.split(',').forEach(function(ua) {
                 cookies.push('_gat_gtag_' + ua.replace(/-/g, '_'));
             });
         }
