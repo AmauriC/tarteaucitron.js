@@ -18,7 +18,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20191031,
+    "version": 20200114,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -384,6 +384,15 @@ var tarteaucitron = {
                     html += '   <button type="button" id="tarteaucitronPersonalize" onclick="tarteaucitron.userInterface.respondAll(true);">';
                     html += '       &#10003; ' + tarteaucitron.lang.acceptAll;
                     html += '   </button>';
+                                    
+                                    
+                    if (tarteaucitron.parameters.orientation === 'middle') {
+                                    html += '   <button type="button" class="tarteaucitronCTAButton tarteaucitronDeny"  onclick="tarteaucitron.userInterface.respondAll(false);">';
+                                    html += '       &#10007; ' + tarteaucitron.lang.denyAll;
+                                    html += '   </button>';
+                                    html += '   <br/><br/>';
+                    }
+                                    
                     html += '   <button type="button" id="tarteaucitronCloseAlert" onclick="tarteaucitron.userInterface.openPanel();">';
                     html += '       ' + tarteaucitron.lang.personalize;
                     html += '   </button>';
@@ -507,7 +516,7 @@ var tarteaucitron = {
                             html += '       ' + tarteaucitron.lang.adblock + '<br/>';
                             html += '       <strong>' + tarteaucitron.lang.adblock_call + '</strong>';
                             html += '   </p>';
-                            html += '   <button type="button" id="tarteaucitronPersonalize" onclick="location.reload();">';
+                            html += '   <button type="button" class="tarteaucitronCTAButton" onclick="location.reload();">';
                             html += '       ' + tarteaucitron.lang.reload;
                             html += '   </button>';
                             html += '</div>';
