@@ -62,7 +62,7 @@ tarteaucitron.services.amplitude = {
           function v(e){function t(t){e[t]=function(){e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var n=0;n<d.length;n++){t(d[n])}}
           v(amplitude);
           amplitude.getInstance=function(e){e=(!e||e.length===0?"$default_instance":e).toLowerCase();if(!amplitude._iq.hasOwnProperty(e)){amplitude._iq[e]={_q:[]};v(amplitude._iq[e])}return amplitude._iq[e]};
-          
+
           amplitude.getInstance().init(tarteaucitron.user.amplitude);
         });
     }
@@ -2087,7 +2087,6 @@ tarteaucitron.services.vimeo = {
 
                 video_frame;
 
-            var video_qs = '';
 
             if (video_id === undefined) {
                 return "";
@@ -2103,113 +2102,112 @@ tarteaucitron.services.vimeo = {
                 frame_height += '"" ';
             }
 
-            if (video_title.length > 0 || video_byline.length > 0 || video_portrait.length > 0) {
+            var video_qs = "?";
 
-                video_qs = "?";
+            if (video_title.length > 0) {
+                video_qs += "title=" + video_title;
+            }
 
-                if (video_title.length > 0) {
-                    video_qs += "title=" + video_title;
+            if (video_byline.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "byline=" + video_byline;
+            }
 
-                if (video_byline.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "byline=" + video_byline;
+            if (video_portrait.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "portrait=" + video_portrait;
+            }
 
-                if (video_portrait.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "portrait=" + video_portrait;
+            if (video_loop.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "loop=" + video_loop;
+            }
 
-                if (video_loop.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "loop=" + video_loop;
+            if (video_autoplay.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "autoplay=" + video_autoplay;
+            }
 
-                if (video_autoplay.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "autoplay=" + video_autoplay;
+            if (video_autopause.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "autopause=" + video_autopause;
+            }
 
-                if (video_autopause.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "autopause=" + video_autopause;
+            if (video_background.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "background=" + video_background;
+            }
 
-                if (video_background.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "background=" + video_background;
+            if (video_color.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "color=" + video_color;
+            }
 
-                if (video_color.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "color=" + video_color;
+            if (video_controls.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "controls=" + video_controls;
+            }
 
-                if (video_controls.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "controls=" + video_controls;
+            if (video_maxheight.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "maxheight=" + video_maxheight;
+            }
 
-                if (video_maxheight.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "maxheight=" + video_maxheight;
+            if (video_maxwidth.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "maxwidth=" + video_maxwidth;
+            }
 
-                if (video_maxwidth.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "maxwidth=" + video_maxwidth;
+            if (video_muted.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "muted=" + video_muted;
+            }
 
-                if (video_muted.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "muted=" + video_muted;
+            if (video_playsinline.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "playsinline=" + video_playsinline;
+            }
 
-                if (video_playsinline.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "playsinline=" + video_playsinline;
+            if (video_speed.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "speed=" + video_speed;
+            }
 
-                if (video_speed.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "speed=" + video_speed;
+            if (video_transparent.length > 0) {
+                if (video_qs.length > 0) {
+                    video_qs += "&";
                 }
+                video_qs += "transparent=" + video_transparent;
+            }
 
-                if (video_transparent.length > 0) {
-                    if (video_qs.length > 1) {
-                        video_qs += "&";
-                    }
-                    video_qs += "transparent=" + video_transparent;
-                }
-
-
+            if (video_qs === "?") {
+                video_qs = "";
             }
 
             video_frame = '<iframe src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + ' frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
