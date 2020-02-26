@@ -1680,6 +1680,41 @@ tarteaucitron.services.purechat = {
     }
 };
 
+// rumbletalk
+tarteaucitron.services.rumbletalk = {
+    "key": "rumbletalk",
+    "type": "social",
+    "name": "RumbleTalk",
+    "needConsent": true,
+    "cookies": ['AWSALB'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.rumbletalkid === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://rumbletalk.com/client/?' + tarteaucitron.user.rumbletalkid);
+
+        tarteaucitron.fallback(['rumbletalk'], function (x) {
+            var width = tarteaucitron.getElemWidth(x),
+                height = tarteaucitron.getElemHeight(x),
+                id = x.getAttribute("data-id");
+          
+                return '<div style="height: ' + height + 'px; width: ' + width + 'px;"><div id="' + id + '"></div></div>';
+      });
+    },
+    "fallback": function () {
+      "use strict";
+        var id = 'rumbletalk';
+            tarteaucitron.fallback(['rumbletalk'], function (elem) {
+                elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+                elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
+                
+                return tarteaucitron.engage(id);
+            });
+    }
+  };
+
 // shareaholic
 tarteaucitron.services.shareaholic = {
     "key": "shareaholic",
