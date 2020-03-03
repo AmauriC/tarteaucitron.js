@@ -3,7 +3,7 @@
 var scripts = document.getElementsByTagName('script'),
     thisScript = null;
 for (var i = 0, il = scripts.length; i < il; ++i) {
-    if ( scripts[i].getAttribute('src').indexOf('tarteaucitron.js') >= 0) {
+    if ( scripts[i].getAttribute('src').indexOf('tarteaucitron') >= 0) {
         // should always find this script
         thisScript = scripts[i];
         break;
