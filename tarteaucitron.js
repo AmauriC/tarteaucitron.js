@@ -214,7 +214,7 @@ var tarteaucitron = {
                 "cookieName": 'tarteaucitron',
                 "highPrivacy": true,
                 "orientation": "middle",
-                "bodyPosition": "top",
+                "bodyPosition": "bottom",
                 "removeCredit": false,
                 "showAlertSmall": true,
                 "cookieslist": true,
