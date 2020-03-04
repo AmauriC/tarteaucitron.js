@@ -236,6 +236,11 @@ var tarteaucitron = {
                 "useExternalJs": false
             },
             params = tarteaucitron.parameters;
+                                                                                              
+        // Don't show the middle bar if we are on the privacy policy page
+        if (window.location.href == tarteaucitron.parameters.privacyUrl && tarteaucitron.parameters.orientation == "middle") {
+            tarteaucitron.parameters.orientation = "bottom";
+        }
 
         // Step -1
         if (typeof tarteaucitronCustomPremium !== 'undefined') {
