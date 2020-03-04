@@ -1,8 +1,19 @@
 /*jslint browser: true, evil: true */
 
-// define correct path for files inclusion
 var scripts = document.getElementsByTagName('script'),
-    path = scripts[scripts.length - 1].src.split('?')[0],
+    thisScript = null;
+for (var i = 0, il = scripts.length; i < il; ++i) {
+    if ( scripts[i].getAttribute('src').indexOf('tarteaucitron') >= 0) {
+        // should always find this script
+        thisScript = scripts[i];
+        break;
+    }
+    // should never happen
+    throw new Error("Error: tarteaucitron.js script not found");
+}
+
+// define correct path for files inclusion
+var path = thisScript.src.split('?')[0],
     tarteaucitronForceCDN = (tarteaucitronForceCDN === undefined) ? '' : tarteaucitronForceCDN,
     cdn = (tarteaucitronForceCDN === '') ? path.split('/').slice(0, -1).join('/') + '/' : tarteaucitronForceCDN,
     alreadyLaunch = (alreadyLaunch === undefined) ? 0 : alreadyLaunch,
