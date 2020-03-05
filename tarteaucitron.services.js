@@ -2369,7 +2369,7 @@ tarteaucitron.services.atinternet = {
     "type": "analytic",
     "name": "AT Internet",
     "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
-    "needConsent": true,
+    "needConsent": false,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
         "use strict";
