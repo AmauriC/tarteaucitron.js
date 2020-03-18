@@ -2612,7 +2612,7 @@ tarteaucitron.services.multiplegtag = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
 
-        tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
+        tarteaucitron.user.multiplegtagUa.split(',').forEach(function(ua) {
 
             tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
                 window.gtag = function gtag(){dataLayer.push(arguments);}
