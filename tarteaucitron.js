@@ -1,14 +1,8 @@
 /*jslint browser: true, evil: true */
 
-var scripts = document.getElementsByTagName('script'),
-    thisScript = null;
-for (var i = 0, il = scripts.length; i < il; ++i) {
-    if ( scripts[i].getAttribute('src').indexOf('tarteaucitron') >= 0) {
-        // should always find this script
-        thisScript = scripts[i];
-        break;
-    }
-    // should never happen
+var thisScript = document.querySelector('script[src*=tarteaucitron]');
+if (!thisScript) {
+    // Shouldn't happen
     throw new Error("Error: tarteaucitron.js script not found");
 }
 
@@ -237,7 +231,7 @@ var tarteaucitron = {
                 "useExternalJs": false
             },
             params = tarteaucitron.parameters;
-                                                                                              
+
         // Don't show the middle bar if we are on the privacy policy page
         if (window.location.href == tarteaucitron.parameters.privacyUrl && tarteaucitron.parameters.orientation == "middle") {
             tarteaucitron.parameters.orientation = "bottom";
@@ -469,7 +463,7 @@ var tarteaucitron = {
                         document.body.appendChild(wrapper);*/
 
                         div.id = 'tarteaucitronRoot';
-                        if (tarteaucitron.parameters.bodyPosition === 'top') { 
+                        if (tarteaucitron.parameters.bodyPosition === 'top') {
                             // Prepend tarteaucitron: #tarteaucitronRoot first-child of the body for better accessibility
                             var bodyFirstChild = body.firstChild;
                             body.insertBefore(div, bodyFirstChild);
@@ -548,7 +542,7 @@ var tarteaucitron = {
                             html += '<div id="tarteaucitronPremium"></div>';
 
                             div.id = 'tarteaucitronRoot';
-                            if (tarteaucitron.parameters.bodyPosition === 'top') { 
+                            if (tarteaucitron.parameters.bodyPosition === 'top') {
                                 // Prepend tarteaucitron: #tarteaucitronRoot first-child of the body for better accessibility
                                 var bodyFirstChild = body.firstChild;
                                 body.insertBefore(div, bodyFirstChild);
