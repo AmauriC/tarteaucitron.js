@@ -514,7 +514,12 @@ div#tarteaucitronServices {
     cursor: pointer;
 }
 
-#tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitronAlertBig #tarteaucitronPersonalize, .tarteaucitronCTAButton, #tarteaucitron #tarteaucitronPrivacyUrl, #tarteaucitron #tarteaucitronPrivacyUrlDialog {
+#tarteaucitronAlertBig #tarteaucitronCloseAlert,
+#tarteaucitronAlertBig #tarteaucitronPersonalize,
+.tarteaucitronCTAButton,
+#tarteaucitron #tarteaucitronPrivacyUrl,
+#tarteaucitron #tarteaucitronPrivacyUrlDialog,
+#tarteaucitronRoot .tarteaucitronDeny {
     background: #008300;
     color: #fff;
     cursor: pointer;
@@ -523,6 +528,10 @@ div#tarteaucitronServices {
     padding: 5px 10px;
     text-decoration: none;
     margin-left: 7px;
+}
+
+#tarteaucitronRoot .tarteaucitronDeny {
+    background: #9C1A1A;
 }
 
 #tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitron #tarteaucitronPrivacyUrl, #tarteaucitron #tarteaucitronPrivacyUrlDialog {
