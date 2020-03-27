@@ -1368,7 +1368,7 @@ tarteaucitron.services.googletagmanager = {
             'gtm.start': new Date().getTime(),
             event: 'gtm.js'
         });
-        tarteaucitron.addScript('//www.googletagmanager.com/gtm.js?id=' + tarteaucitron.user.googletagmanagerId);
+        tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + tarteaucitron.user.googletagmanagerId);
     }
 };
 
