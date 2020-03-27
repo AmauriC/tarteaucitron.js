@@ -8,6 +8,9 @@ for (var i = 0, il = scripts.length; i < il; ++i) {
         thisScript = scripts[i];
         break;
     }
+}
+
+if (thisScript === null) {
     // should never happen
     throw new Error("Error: tarteaucitron.js script not found");
 }
