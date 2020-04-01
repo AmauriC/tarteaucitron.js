@@ -3004,3 +3004,20 @@ tarteaucitron.services.youtubeapi = {
         tarteaucitron.addScript('https://www.youtube.com/player_api');
     }
 };
+
+// userlike
+tarteaucitron.services.userlike = {
+    "key": "userlike",
+    "type": "support",
+    "name": "Userlike",
+    "uri": "https://www.userlike.com/en/terms#privacy-policy",
+    "needConsent": true,
+    "cookies": ['uslk_s', 'uslk_e'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.userlikekey === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('https://userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/' + tarteaucitron.user.userlikekey);
+    }
+};
