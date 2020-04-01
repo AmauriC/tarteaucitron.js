@@ -3015,9 +3015,9 @@ tarteaucitron.services.userlike = {
     "cookies": ['uslk_s', 'uslk_e'],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.userlikekey === undefined) {
+        if (tarteaucitron.user.userlikeKey === undefined) {
             return;
         }
-        tarteaucitron.addScript('https://userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/' + tarteaucitron.user.userlikekey);
+        tarteaucitron.addScript('https://userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/' + tarteaucitron.user.userlikeKey);
     }
 };
