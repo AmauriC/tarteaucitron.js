@@ -3018,6 +3018,6 @@ tarteaucitron.services.userlike = {
         if (tarteaucitron.user.userlikeKey === undefined) {
             return;
         }
-        tarteaucitron.addScript('https://userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/' + tarteaucitron.user.userlikeKey);
+        tarteaucitron.addScript('//userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/' + tarteaucitron.user.userlikeKey);
     }
 };
