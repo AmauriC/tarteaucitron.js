@@ -1,15 +1,15 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
-    "adblock": "Olá! Em uma açao de transparencia, este site lhe dá a opção de quais serviços terceiros deseje ativar.",
-    "adblock_call": "Por favor, desative seu bloqueador de publicidades para poder customizar.",
+    "adblock": "Olá! Em uma ação de transparência, este site lhe dá a opção de quais serviços de terceiros deseje ativar.",
+    "adblock_call": "Por favor, desative seu bloqueador de publicidades para poder personalizar.",
     "reload": "Atualizar esta página",
     
     "alertBigScroll": "Ao continuar a rolar,",
-    "alertBigClick": "Se você continuar a navegaçao neste site,",
-    "alertBig": "você estará aceitando todos os serviços terceiros",
+    "alertBigClick": "Se você continuar a navegação neste site,",
+    "alertBig": "você estará aceitando todos os serviços de terceiros",
     
-    "alertBigPrivacy": "Esse site utiliza cookies and lhe dá controle sobre o que você quer ativar",
+    "alertBigPrivacy": "Esse site utiliza cookies e lhe dá controle sobre o que você quer ativar",
     "alertSmall": "Gerenciar serviços",
     "personalize": "Personalizar",
     "acceptAll": "OK, aceitar tudo",
@@ -19,7 +19,7 @@ tarteaucitron.lang = {
 
     "all": "Definições dos serviços",
     "info": "Proteger sua privacidade",
-    "disclaimer": "Ao aceitar os serviços terceiros, você aceita o uso de cookies em conjunto de tecnologias de rastreamento que lhe são necessárias para funcionar",
+    "disclaimer": "Ao aceitar os serviços terceiros, você aceita o uso de cookies em conjunto a tecnologias de rastreamento que lhe são necessárias para funcionar",
     "allow": "Autorizar",
     "deny": "Recusar",
     "noCookie": "Este serviço não usa cookies.",
@@ -30,13 +30,13 @@ tarteaucitron.lang = {
     "source": "Ver o site oficial",
     "credit": "Gerenciador de cookies por tarteaucitron.js",
 
-    "toggleInfoBox": "Show/hide informations about cookie storage",
-    "title": "Cookies management panel",
-    "cookieDetail": "Cookie detail for",
-    "ourSite": "on our site",
-    "newWindow": "(new window)",
-    "allowAll": "Allow all cookies",
-    "denyAll": "Deny all cookies",
+    "toggleInfoBox": "Mostrar/ocultar informações sobre armazenamento de cookies",
+    "title": "Painel de Gerenciamento de Cookies",
+    "cookieDetail": "Detalhe do Cookie",
+    "ourSite": "em nosso site",
+    "newWindow": "(nova janela)",
+    "allowAll": "Permite todos os cookies",
+    "denyAll": "Proibe todos cookies",
 
     "fallback": "está desativado.",
     "ads": {
@@ -53,7 +53,7 @@ tarteaucitron.lang = {
     },
     "video": {
         "title": "Vídeos",
-        "details": "Video sharing services help to add rich media on the site and increase its visibility."
+        "details": "Serviços de compartilhamento de vídeo adicionam medias no site a aumentam sua visibilidade."
     },
     "comment": {
         "title": "Comentários",
