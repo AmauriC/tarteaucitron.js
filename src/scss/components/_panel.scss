@@ -1,0 +1,240 @@
+#tarteaucitronRoot {
+
+  #tarteaucitron {
+    position: fixed;
+    display: none;
+    padding: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 6%;
+    width: 860px;
+    max-height: 80%;
+    z-index: 9999;
+
+    .clear {
+      clear: both;
+    }
+
+    a {
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--tac-gray-100);
+      transition: color .2s linear;
+
+      &:hover {
+        color: var(--tac-gray-200);
+      }
+    }
+  }
+
+  #tarteaucitronServices {
+    box-shadow: 0 0 35px var(--tac-panel-shadow);
+
+    .tarteaucitronHidden {
+      position: relative;
+      display: none;
+      background: rgba(51, 51, 51, .07);
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      outline: 0 solid #708090;
+      background-color: var(--tac-scrollbar-bg);
+    }
+
+    #tarteaucitronInfo {
+      position: relative;
+      display: block;
+      padding: 15px 0;
+      margin: 0 auto 40px;
+      max-width: 80%;
+      font-size: 1em;
+      text-align: center;
+      color: var(--tac-white);
+      border-bottom: 1px solid;
+      border-top: 1px solid;
+      border-color: #555;
+    }
+
+    #tarteaucitronPrivacyUrlDialog {
+      display: inline-block;
+      padding: 4px 10px;
+      margin-bottom: 3px;
+      margin-left: 7px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--tac-gray-200);
+      background: var(--tac-white);
+    }
+
+    .tarteaucitronName {
+      margin-left: 15px;
+      font-size: 14px;
+      float: left;
+      line-height: 1.5;
+      text-align: left;
+      width: 50%;
+    }
+
+    .tarteaucitronAsk {
+      display: inline-block;
+      margin: 0;
+      float: right;
+      text-align: right;
+    }
+
+    .tarteaucitronAllow,
+    .tarteaucitronDeny {
+      display: inline-block;
+      padding: 6px 10px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--tac-white);
+      opacity: .4;
+    }
+
+    .tarteaucitronAllow {
+      background: var(--tac-btn-allow-bg);
+    }
+
+    .tarteaucitronDeny {
+      background: var(--tac-btn-deny-bg);
+    }
+
+    .tarteaucitronBorder {
+      border-top: 0;
+      height: auto;
+      overflow: auto;
+      background: var(--tac-white);
+      border: 2px solid var(--tac-bg-panel);
+    }
+
+    .tarteaucitronTitle button,
+    .tarteaucitronDetails {
+      display: inline-block;
+      padding: 5px 20px;
+      margin: 20px 0 0;
+      width: auto;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: left;
+      color: var(--tac-white);
+      border-radius: 0;
+      background: var(--tac-bg-panel);
+    }
+
+    .tarteaucitronDetails {
+      position: absolute;
+      display: none;
+      padding: 20px;
+      margin-top: 0;
+      max-width: 270px;
+      font-size: 12px;
+      font-weight: 400;
+      z-index: 9999;
+    }
+
+    .tarteaucitronLine {
+      padding: 15px 5px;
+      margin: 0;
+      overflow: hidden;
+      border-left: 5px solid transparent;
+      background: rgba(51, 51, 51, .1);
+      transition: background .2s linear;
+
+      &.tarteaucitronMainLine {
+        position: relative;
+        padding: 15px 5px;
+        overflow: hidden;
+        border: 3px solid var(--tac-bg-panel);
+        border-left: 9px solid var(--tac-bg-panel);
+        border-top: 5px solid var(--tac-bg-panel);
+        background: var(--tac-bg-panel);
+
+        &:hover {
+          background: var(--tac-bg-panel);
+        }
+      }
+
+      &:hover {
+        background: rgba(51, 51, 51, .2);
+      }
+
+      &.tarteaucitronIsAllowed {
+        border-color: var(--tac-green);
+        transition: border-color .2s linear;
+
+        .tarteaucitronAllow {
+          opacity: 1 !important;
+          background-color: var(--tac-green) !important;
+          transition: background-color .2s linear, opacity .2s linear;
+        }
+      }
+
+      &.tarteaucitronIsDenied {
+        border-color: var(--tac-red);
+        transition: border-color .2s linear;
+
+        .tarteaucitronDeny {
+          opacity: 1 !important;
+          background-color: var(--tac-red) !important;
+          transition: background-color .2s linear, opacity .2s linear;
+        }
+      }
+
+      .tarteaucitronName {
+        display: inline-block;
+        margin-left: 10px;
+        float: left;
+        width: 50%;
+        text-align: left;
+
+        a {
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .tarteaucitronListCookies {
+          font-size: 12px;
+          color: var(--tac-gray-200);
+        }
+      }
+
+      .tarteaucitronAsk {
+        display: inline-block;
+        margin: 7px 15px 0;
+        float: right;
+        text-align: right;
+
+        .tarteaucitronDeny,
+        .tarteaucitronAllow {
+          display: inline-block;
+          padding: 6px 10px;
+          text-align: center;
+          color: var(--tac-white);
+          border-radius: 4px;
+        }
+
+        .tarteaucitronAllow {
+          background: var(--tac-btn-allow-bg);
+        }
+
+        .tarteaucitronDeny {
+          background: var(--tac-btn-deny-bg);
+        }
+      }
+    }
+  }
+}

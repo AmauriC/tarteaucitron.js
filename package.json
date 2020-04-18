@@ -1,16 +1,15 @@
 {
-  "name": "tarteaucitronjs",
-  "version": "1.0.0",
+  "name": "tarteaucitron.js",
+  "version": "1.1.0",
   "description": "Comply to the European cookie law",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmauriC/tarteaucitron.js.git"
   },
+  "bugs": {
+    "url": "https://github.com/AmauriC/tarteaucitron.js/issues"
+  },
+  "homepage": "https://github.com/AmauriC/tarteaucitron.js#readme",
   "keywords": [
     "cookie",
     "law",
@@ -20,8 +19,32 @@
   ],
   "author": "AIC Agency SAS",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/AmauriC/tarteaucitron.js/issues"
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp build",
+    "build:min": "cross-env NODE_ENV=production gulp buildMinified",
+    "release": "cross-env NODE_ENV=development gulp release",
+    "lint": "npm run lint:scss && yarn run lint:js",
+    "lint:scss": "stylelint 'src/scss/**/*.scss'",
+    "lint:js": "jslint 'src/js/**/*.js'"
   },
-  "homepage": "https://github.com/AmauriC/tarteaucitron.js#readme"
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "browser-sync": "^2.26.7",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-zip": "^5.0.1",
+    "jslint": "^0.12.1",
+    "sass": "^1.26.3",
+    "stylelint": "^13.3.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-declaration-use-variable": "^1.7.2",
+    "stylelint-scss": "^3.17.0"
+  }
 }

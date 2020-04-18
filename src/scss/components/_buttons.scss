@@ -1,0 +1,59 @@
+#tarteaucitronRoot {
+
+  button {
+    color: var(--tac-white);
+    font-weight: 400;
+    font-family: var(--tac-font);
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  #tarteaucitronAcceptAll,
+  #tarteaucitronDenyAll,
+  #tarteaucitronPersonalize {
+    margin-left: 7px;
+  }
+
+  #tarteaucitronAcceptAll {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    background: var(--tac-green);
+  }
+
+  #tarteaucitronDenyAll {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    background: var(--tac-red);
+  }
+
+  #tarteaucitronPersonalize {
+    padding: 5px 10px;
+    font-size: 15px;
+    color: var(--tac-gray-200);
+    background: var(--tac-white);
+  }
+
+  #tarteaucitronPrivacyUrl {
+    font-size: 15px;
+    color: var(--tac-white);
+  }
+
+  #tarteaucitronClosePanel,
+  #tarteaucitronClosePanelCookie {
+    position: absolute;
+    padding: 4px 0;
+    top: -23px;
+    right: 0;
+    width: 70px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 4px 4px 0 0;
+    color: var(--tac-white);
+    background: var(--tac-bg-panel);
+  }
+}

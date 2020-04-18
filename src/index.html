@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Exemple tarteaucitron.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+    <style>
+        /* stylelint-disable */
+        html,body{margin:0;color:#387cc6;font-weight:200;font-family:"Nunito",sans-serif;height:100vh;background-color:#fff}.wrapper{display:flex;align-items:center;justify-content:center;text-align:center;height:100vh}.title{font-size:84px;font-weight:200}
+        /* stylelint-enable */
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="title">Tarte au quoi ?</h1>
+    </div>
+
+    <script src="tarteaucitron.js"></script>
+
+    <script>
+        // Tarteaucitron init
+        window.tarteaucitron.init({
+            adblocker: false,
+            hashtag: '#tarteaucitron',
+            cookieName: 'tarteaucitron',
+            highPrivacy: true,
+            orientation: 'bottom',
+            bodyPosition: 'top',
+            removeCredit: true,
+            showAlertSmall: true,
+            cookieslist: true,
+            handleBrowserDNTRequest: false,
+            AcceptAllCta: true,
+            moreInfoLink: true,
+            privacyUrl: '/',
+            useExternalCss: false,
+            useExternalJs: false,
+        });
+
+        tarteaucitron.user.gtagUa = 'UA-55377588-14';
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+    </script>
+</body>
+
+</html>

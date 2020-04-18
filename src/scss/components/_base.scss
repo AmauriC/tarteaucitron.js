@@ -1,0 +1,73 @@
+.tac-modal-open {
+  overflow: hidden;
+  height: 100%;
+}
+
+#contentWrapper { display: unset; }
+
+// Reset
+#tarteaucitronRoot {
+  font-weight: 400;
+  font-family: var(--tac-font);
+
+  // stylelint-disable-next-line
+  h1, h2, h3, h4, h5, h6, ol, ul, {
+    padding: 0;
+    margin: 0;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  #tarteaucitronBack {
+    position: fixed;
+    display: none;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: .7;
+    width: 100%;
+    z-index: 9999;
+    background: var(--tac-back-panel);
+  }
+
+  #tarteaucitronPercentage {
+    position: fixed;
+    height: 5px;
+    left: 0;
+    width: 0;
+    background: var(--tac-primary);
+    box-shadow: 0 0 2px #fff, 0 1px 2px #555;
+    z-index: 9999;
+  }
+
+  .tarteaucitronH1 {
+    display: block;
+    margin: 15px 0 28px;
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--tac-white);
+  }
+
+  .tarteaucitronH2 {
+    display: inline-block;
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--tac-white);
+  }
+
+  .tarteaucitronH3 {
+    display: block;
+    margin: 0;
+    font-size: 18px;
+    color: var(--tac-gray-200);
+  }
+}
+
+// Scroll managment
+#tarteaucitronMainLineOffset {
+  margin-top: 0 !important;
+}
+

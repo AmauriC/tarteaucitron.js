@@ -1,1 +1,23 @@
-.idea
+# Logs
+logs
+*.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies directories
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# Project related stuff
+/releases
+/src/css
+
+# IDE Stuff
+/.idea
+/.vscode
+
+# OS crappy files
+.DS_Store
+Thumbs.db

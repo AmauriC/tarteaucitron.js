@@ -1,0 +1,513 @@
+/*! TarteAuCitron Global Stylesheet */
+#tarteaucitronRoot {
+  --tac-primary: #387cc6;
+  --tac-secondary: #c23ffd;
+  --tac-white: #fff;
+  --tac-gray-100: #424242;
+  --tac-gray-200: #333;
+  --tac-bg-panel: #333;
+  --tac-green: #4f8a46;
+  --tac-red: #c74848;
+  --tac-yellow: #fbda26;
+  --tac-back-panel: #eee;
+  --tac-panel-shadow: #575757;
+  --tac-scrollbar-bg: #555;
+  --tac-btn-allow-bg: #555;
+  --tac-btn-deny-bg: #555;
+  --tac-font: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+#tarteaucitronRoot div, #tarteaucitronRoot span, #tarteaucitronRoot h1, #tarteaucitronRoot h2, #tarteaucitronRoot h3, #tarteaucitronRoot h4, #tarteaucitronRoot h5, #tarteaucitronRoot h6, #tarteaucitronRoot p, #tarteaucitronRoot a, #tarteaucitronRoot em, #tarteaucitronRoot img, #tarteaucitronRoot small, #tarteaucitronRoot strong, #tarteaucitronRoot ol, #tarteaucitronRoot ul, #tarteaucitronRoot li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  text-align: initial;
+  text-shadow: initial; }
+
+#tarteaucitronRoot ol,
+#tarteaucitronRoot ul {
+  list-style: none; }
+
+/***
+ * Common value
+ */
+#tarteaucitron * {
+  zoom: 1; }
+
+#tarteaucitronRoot div#tarteaucitron {
+  margin: auto;
+  left: 0;
+  right: 0; }
+
+#tarteaucitron .clear {
+  clear: both; }
+
+.tac-modal-open {
+  overflow: hidden;
+  height: 100%; }
+
+#contentWrapper {
+  display: unset; }
+
+#tarteaucitronRoot {
+  font-weight: 400;
+  font-family: var(--tac-font); }
+  #tarteaucitronRoot h1, #tarteaucitronRoot h2, #tarteaucitronRoot h3, #tarteaucitronRoot h4, #tarteaucitronRoot h5, #tarteaucitronRoot h6, #tarteaucitronRoot ol, #tarteaucitronRoot ul {
+    padding: 0;
+    margin: 0; }
+  #tarteaucitronRoot ol,
+  #tarteaucitronRoot ul {
+    list-style: none; }
+  #tarteaucitronRoot #tarteaucitronBack {
+    position: fixed;
+    display: none;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: .7;
+    width: 100%;
+    z-index: 9999;
+    background: var(--tac-back-panel); }
+  #tarteaucitronRoot #tarteaucitronPercentage {
+    position: fixed;
+    height: 5px;
+    left: 0;
+    width: 0;
+    background: var(--tac-primary);
+    box-shadow: 0 0 2px #fff, 0 1px 2px #555;
+    z-index: 9999; }
+  #tarteaucitronRoot .tarteaucitronH1 {
+    display: block;
+    margin: 15px 0 28px;
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--tac-white); }
+  #tarteaucitronRoot .tarteaucitronH2 {
+    display: inline-block;
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--tac-white); }
+  #tarteaucitronRoot .tarteaucitronH3 {
+    display: block;
+    margin: 0;
+    font-size: 18px;
+    color: var(--tac-gray-200); }
+
+#tarteaucitronMainLineOffset {
+  margin-top: 0 !important; }
+
+#tarteaucitronRoot #tarteaucitronAlertSmall {
+  display: none;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  width: auto;
+  background: var(--tac-gray-200);
+  z-index: 9999; }
+  #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager {
+    display: inline-block;
+    padding: 8px 10px 8px;
+    font-size: 11px;
+    border-radius: 0;
+    color: var(--tac-white);
+    transition: background .2s linear; }
+    #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager:hover {
+      background: rgba(255, 255, 255, 0.05); }
+    #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot {
+      display: block;
+      margin-bottom: 1px;
+      margin-top: 5px;
+      height: 8px;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 5px;
+      background-color: var(--tac-gray-100); }
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot #tarteaucitronDotGreen,
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot #tarteaucitronDotYellow,
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot #tarteaucitronDotRed {
+        display: block;
+        float: left;
+        height: 100%;
+        width: 0%; }
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot #tarteaucitronDotGreen {
+        background-color: var(--tac-green); }
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot #tarteaucitronDotYellow {
+        background-color: var(--tac-yellow); }
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronManager #tarteaucitronDot #tarteaucitronDotRed {
+        background-color: var(--tac-red); }
+  #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesNumber {
+    display: inline-block;
+    padding: 0 10px;
+    color: var(--tac-white);
+    font-size: 30px;
+    vertical-align: top;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background .2s linear; }
+    #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesNumber:hover {
+      background: rgba(255, 255, 255, 0.3); }
+  #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer {
+    position: fixed;
+    display: none;
+    right: 0;
+    max-height: 70%;
+    max-width: 500px;
+    width: 100%; }
+  #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesTitle {
+    padding: 13px 0 9px 13px;
+    text-align: left;
+    background: var(--tac-bg-panel); }
+  #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList {
+    font-size: 11px;
+    height: auto;
+    overflow: auto;
+    text-align: left;
+    color: var(--tac-gray-200);
+    border: 2px solid var(--tac-gray-200);
+    background: var(--tac-white); }
+    #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronHidden {
+      background: rgba(51, 51, 51, 0.07); }
+    #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronTitle {
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 0;
+      margin-top: 10px;
+      width: auto;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: left;
+      color: var(--tac-white);
+      background: var(--tac-bg-panel); }
+    #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronCookiesListMain {
+      padding: 7px 5px 10px;
+      word-wrap: break-word;
+      color: var(--tac-gray-200);
+      background: rgba(51, 51, 51, 0.1);
+      transition: background .2s linear; }
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronCookiesListMain:hover {
+        background: rgba(51, 51, 51, 0.2); }
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft {
+        display: inline-block;
+        width: 50%; }
+        #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft strong,
+        #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListLeft button {
+          color: var(--tac-gray-200); }
+      #tarteaucitronRoot #tarteaucitronAlertSmall #tarteaucitronCookiesList .tarteaucitronCookiesListMain .tarteaucitronCookiesListRight {
+        display: inline-block;
+        margin-left: 10%;
+        width: 30%;
+        font-size: 11px;
+        vertical-align: top; }
+
+#tarteaucitronRoot .tarteaucitronAlertSmallTop,
+#tarteaucitronRoot .tarteaucitronAlertSmallBottom {
+  bottom: 0; }
+
+#tarteaucitronRoot button {
+  color: var(--tac-white);
+  font-weight: 400;
+  font-family: var(--tac-font);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent; }
+
+#tarteaucitronRoot #tarteaucitronAcceptAll,
+#tarteaucitronRoot #tarteaucitronDenyAll,
+#tarteaucitronRoot #tarteaucitronPersonalize {
+  margin-left: 7px; }
+
+#tarteaucitronRoot #tarteaucitronAcceptAll {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 16px;
+  background: var(--tac-green); }
+
+#tarteaucitronRoot #tarteaucitronDenyAll {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 16px;
+  background: var(--tac-red); }
+
+#tarteaucitronRoot #tarteaucitronPersonalize {
+  padding: 5px 10px;
+  font-size: 15px;
+  color: var(--tac-gray-200);
+  background: var(--tac-white); }
+
+#tarteaucitronRoot #tarteaucitronPrivacyUrl {
+  font-size: 15px;
+  color: var(--tac-white); }
+
+#tarteaucitronRoot #tarteaucitronClosePanel,
+#tarteaucitronRoot #tarteaucitronClosePanelCookie {
+  position: absolute;
+  padding: 4px 0;
+  top: -23px;
+  right: 0;
+  width: 70px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 4px 4px 0 0;
+  color: var(--tac-white);
+  background: var(--tac-bg-panel); }
+
+#tarteaucitronRoot #tarteaucitronAlertBig {
+  position: fixed;
+  display: none;
+  margin: 0 auto;
+  padding: 10px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  color: var(--tac-white);
+  font-size: 15px;
+  text-align: center;
+  background: var(--tac-gray-200);
+  z-index: 9998; }
+  #tarteaucitronRoot #tarteaucitronAlertBig p,
+  #tarteaucitronRoot #tarteaucitronAlertBig strong {
+    color: var(--tac-white); }
+  #tarteaucitronRoot #tarteaucitronAlertBig strong {
+    font-weight: 700; }
+
+#tarteaucitronRoot .tarteaucitronAlertBigTop {
+  top: 0; }
+
+#tarteaucitronRoot .tarteaucitronAlertBigBottom {
+  bottom: 0; }
+
+#tarteaucitronRoot #tarteaucitron {
+  position: fixed;
+  display: none;
+  padding: 0;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 6%;
+  width: 860px;
+  max-height: 80%;
+  z-index: 9999; }
+  #tarteaucitronRoot #tarteaucitron .clear {
+    clear: both; }
+  #tarteaucitronRoot #tarteaucitron a {
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--tac-gray-100);
+    transition: color .2s linear; }
+    #tarteaucitronRoot #tarteaucitron a:hover {
+      color: var(--tac-gray-200); }
+
+#tarteaucitronRoot #tarteaucitronServices {
+  box-shadow: 0 0 35px var(--tac-panel-shadow); }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronHidden {
+    position: relative;
+    display: none;
+    background: rgba(51, 51, 51, 0.07); }
+  #tarteaucitronRoot #tarteaucitronServices::-webkit-scrollbar {
+    width: 5px; }
+  #tarteaucitronRoot #tarteaucitronServices::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); }
+  #tarteaucitronRoot #tarteaucitronServices::-webkit-scrollbar-thumb {
+    outline: 0 solid #708090;
+    background-color: var(--tac-scrollbar-bg); }
+  #tarteaucitronRoot #tarteaucitronServices #tarteaucitronInfo {
+    position: relative;
+    display: block;
+    padding: 15px 0;
+    margin: 0 auto 40px;
+    max-width: 80%;
+    font-size: 1em;
+    text-align: center;
+    color: var(--tac-white);
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    border-color: #555; }
+  #tarteaucitronRoot #tarteaucitronServices #tarteaucitronPrivacyUrlDialog {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 3px;
+    margin-left: 7px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--tac-gray-200);
+    background: var(--tac-white); }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronName {
+    margin-left: 15px;
+    font-size: 14px;
+    float: left;
+    line-height: 1.5;
+    text-align: left;
+    width: 50%; }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronAsk {
+    display: inline-block;
+    margin: 0;
+    float: right;
+    text-align: right; }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronAllow,
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronDeny {
+    display: inline-block;
+    padding: 6px 10px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--tac-white);
+    opacity: .4; }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronAllow {
+    background: var(--tac-btn-allow-bg); }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronDeny {
+    background: var(--tac-btn-deny-bg); }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronBorder {
+    border-top: 0;
+    height: auto;
+    overflow: auto;
+    background: var(--tac-white);
+    border: 2px solid var(--tac-bg-panel); }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronTitle button,
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronDetails {
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 20px 0 0;
+    width: auto;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--tac-white);
+    border-radius: 0;
+    background: var(--tac-bg-panel); }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronDetails {
+    position: absolute;
+    display: none;
+    padding: 20px;
+    margin-top: 0;
+    max-width: 270px;
+    font-size: 12px;
+    font-weight: 400;
+    z-index: 9999; }
+  #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine {
+    padding: 15px 5px;
+    margin: 0;
+    overflow: hidden;
+    border-left: 5px solid transparent;
+    background: rgba(51, 51, 51, 0.1);
+    transition: background .2s linear; }
+    #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine.tarteaucitronMainLine {
+      position: relative;
+      padding: 15px 5px;
+      overflow: hidden;
+      border: 3px solid var(--tac-bg-panel);
+      border-left: 9px solid var(--tac-bg-panel);
+      border-top: 5px solid var(--tac-bg-panel);
+      background: var(--tac-bg-panel); }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine.tarteaucitronMainLine:hover {
+        background: var(--tac-bg-panel); }
+    #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine:hover {
+      background: rgba(51, 51, 51, 0.2); }
+    #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsAllowed {
+      border-color: var(--tac-green);
+      transition: border-color .2s linear; }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsAllowed .tarteaucitronAllow {
+        opacity: 1 !important;
+        background-color: var(--tac-green) !important;
+        transition: background-color .2s linear, opacity .2s linear; }
+    #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsDenied {
+      border-color: var(--tac-red);
+      transition: border-color .2s linear; }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsDenied .tarteaucitronDeny {
+        opacity: 1 !important;
+        background-color: var(--tac-red) !important;
+        transition: background-color .2s linear, opacity .2s linear; }
+    #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronName {
+      display: inline-block;
+      margin-left: 10px;
+      float: left;
+      width: 50%;
+      text-align: left; }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronName a:hover {
+        text-decoration: underline; }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
+        font-size: 12px;
+        color: var(--tac-gray-200); }
+    #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
+      display: inline-block;
+      margin: 7px 15px 0;
+      float: right;
+      text-align: right; }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk .tarteaucitronDeny,
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk .tarteaucitronAllow {
+        display: inline-block;
+        padding: 6px 10px;
+        text-align: center;
+        color: var(--tac-white);
+        border-radius: 4px; }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk .tarteaucitronAllow {
+        background: var(--tac-btn-allow-bg); }
+      #tarteaucitronRoot #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk .tarteaucitronDeny {
+        background: var(--tac-btn-deny-bg); }
+
+@media screen and (max-width: 479px) {
+  #tarteaucitron .tarteaucitronLine .tarteaucitronName {
+    width: 90% !important; }
+  #tarteaucitron .tarteaucitronLine .tarteaucitronAsk {
+    float: left !important;
+    margin: 10px 15px 5px; } }
+
+@media screen and (max-width: 767px) {
+  #tarteaucitronRoot #tarteaucitronAlertBig {
+    padding: 10px 0; }
+  #tarteaucitronRoot #tarteaucitronPrivacyUrl {
+    margin-top: 7px; }
+  #tarteaucitronRoot #tarteaucitronPersonalize,
+  #tarteaucitronRoot #tarteaucitronAcceptAll {
+    margin-left: 0;
+    padding: 3px 10px;
+    font-size: 14px; }
+  #tarteaucitronRoot #tarteaucitronDisclaimerAlert {
+    display: block;
+    margin-bottom: 5px; }
+  .tarteaucitronCookiesListMain,
+  #tarteaucitron #tarteaucitronServices {
+    margin-top: 21px; }
+  #tarteaucitronClosePanel,
+  #tarteaucitronClosePanelCookie {
+    top: 0 !important;
+    border-radius: 0 !important; }
+  #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer,
+  #tarteaucitron {
+    background: #fff;
+    border: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+    left: 0 !important;
+    margin: 0 !important;
+    max-height: 100% !important;
+    max-width: 100% !important;
+    top: 0 !important;
+    width: 100% !important; }
+  #tarteaucitron .tarteaucitronBorder {
+    border: 0 !important; }
+  #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList {
+    border: 0 !important; }
+  #tarteaucitron #tarteaucitronServices .tarteaucitronTitle {
+    text-align: left !important; }
+  .tarteaucitronName .tarteaucitronH2 {
+    max-width: 80%; }
+  #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk {
+    text-align: center !important; }
+  #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk button {
+    margin-bottom: 5px; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #tarteaucitron {
+    border: 0 !important;
+    left: 0 !important;
+    margin: 0 5% !important;
+    max-height: 80% !important;
+    width: 90% !important; } }
+
+/*# sourceMappingURL=tarteaucitron.css.map */

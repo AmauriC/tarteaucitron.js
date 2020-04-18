@@ -1,0 +1,32 @@
+#tarteaucitronRoot div, #tarteaucitronRoot span, #tarteaucitronRoot h1, #tarteaucitronRoot h2, #tarteaucitronRoot h3, #tarteaucitronRoot h4, #tarteaucitronRoot h5, #tarteaucitronRoot h6, #tarteaucitronRoot p, #tarteaucitronRoot a, #tarteaucitronRoot em, #tarteaucitronRoot img, #tarteaucitronRoot small, #tarteaucitronRoot strong, #tarteaucitronRoot ol, #tarteaucitronRoot ul, #tarteaucitronRoot li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  text-align: initial;
+  text-shadow: initial;
+}
+
+#tarteaucitronRoot ol,
+#tarteaucitronRoot ul {
+  list-style: none;
+}
+
+/***
+ * Common value
+ */
+ #tarteaucitron * {
+  zoom: 1;
+}
+
+#tarteaucitronRoot div#tarteaucitron {
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+#tarteaucitron .clear {
+  clear: both;
+}

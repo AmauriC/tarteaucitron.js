@@ -1,0 +1,145 @@
+#tarteaucitronRoot {
+
+  #tarteaucitronAlertSmall {
+    display: none;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    width: auto;
+    background: var(--tac-gray-200);
+    z-index: 9999;
+
+    #tarteaucitronManager {
+      display: inline-block;
+      padding: 8px 10px 8px;
+      font-size: 11px;
+      border-radius: 0;
+      color: var(--tac-white);
+      transition: background .2s linear;
+
+      &:hover {
+        background: rgba(255, 255, 255, .05);
+      }
+
+      #tarteaucitronDot {
+        display: block;
+        margin-bottom: 1px;
+        margin-top: 5px;
+        height: 8px;
+        overflow: hidden;
+        width: 100%;
+        border-radius: 5px;
+        background-color: var(--tac-gray-100);
+
+        #tarteaucitronDotGreen,
+        #tarteaucitronDotYellow,
+        #tarteaucitronDotRed {
+          display: block;
+          float: left;
+          height: 100%;
+          width: 0%;
+        }
+
+        #tarteaucitronDotGreen { background-color: var(--tac-green); }
+
+        #tarteaucitronDotYellow { background-color: var(--tac-yellow); }
+
+        #tarteaucitronDotRed { background-color: var(--tac-red); }
+      }
+    }
+
+    #tarteaucitronCookiesNumber {
+      display: inline-block;
+      padding: 0 10px;
+      color: var(--tac-white);
+      font-size: 30px;
+      vertical-align: top;
+      border-radius: 0;
+      background: rgba(255, 255, 255, .2);
+      transition: background .2s linear;
+
+      &:hover {
+        background: rgba(255, 255, 255, .3);
+      }
+    }
+
+    #tarteaucitronCookiesListContainer {
+      position: fixed;
+      display: none;
+      right: 0;
+      max-height: 70%;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    #tarteaucitronCookiesTitle {
+      padding: 13px 0 9px 13px;
+      text-align: left;
+      background: var(--tac-bg-panel);
+    }
+
+    #tarteaucitronCookiesList {
+      font-size: 11px;
+      height: auto;
+      overflow: auto;
+      text-align: left;
+      color: var(--tac-gray-200);
+      border: 2px solid var(--tac-gray-200);
+      background: var(--tac-white);
+
+      .tarteaucitronHidden {
+        background: rgba(51, 51, 51, .07);
+      }
+
+      .tarteaucitronTitle {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0;
+        margin-top: 10px;
+        width: auto;
+        font-size: 14px;
+        font-weight: 700;
+        text-align: left;
+        color: var(--tac-white);
+        background: var(--tac-bg-panel);
+      }
+
+      .tarteaucitronCookiesListMain {
+        padding: 7px 5px 10px;
+        word-wrap: break-word;
+        color: var(--tac-gray-200);
+        background: rgba(51, 51, 51, .1);
+        transition: background .2s linear;
+
+        &:hover {
+          background: rgba(51, 51, 51, .2);
+        }
+
+        .tarteaucitronCookiesListLeft {
+          display: inline-block;
+          width: 50%;
+
+          strong,
+          button {
+            color: var(--tac-gray-200);
+          }
+        }
+
+        .tarteaucitronCookiesListRight {
+          display: inline-block;
+          margin-left: 10%;
+          width: 30%;
+          font-size: 11px;
+          vertical-align: top;
+        }
+      }
+    }
+
+  }
+
+  .tarteaucitronAlertSmallTop,
+  .tarteaucitronAlertSmallBottom {
+    bottom: 0;
+  }
+}
