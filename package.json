@@ -24,7 +24,7 @@
     "build": "cross-env NODE_ENV=production gulp build",
     "build:min": "cross-env NODE_ENV=production gulp buildMinified",
     "release": "cross-env NODE_ENV=development gulp release",
-    "lint": "npm run lint:scss && yarn run lint:js",
+    "lint": "npm run lint:scss && npm run lint:js",
     "lint:scss": "stylelint 'src/scss/**/*.scss'",
     "lint:js": "jslint 'src/js/**/*.js'"
   },
