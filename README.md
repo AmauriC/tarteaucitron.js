@@ -21,7 +21,7 @@ Bonus:
 
 
 # Installation guide
-[Visit opt-out.ferank.eu](https://opt-out.ferank.eu/)
+[Visit tarteaucitron.io](https://tarteaucitron.io/)
 
 
 # How to use
@@ -51,7 +51,7 @@ tarteaucitron.init({
 
     //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
 
-    "readmoreLink": "/cookiespolicy" /* Change the default readmore link pointing to opt-out.ferank.eu */
+    "readmoreLink": "/cookiespolicy" /* Change the default readmore link pointing to tarteaucitron.io */
 });
 </script>
 ```

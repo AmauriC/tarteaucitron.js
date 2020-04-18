@@ -1699,7 +1699,7 @@ tarteaucitron.services.rumbletalk = {
             var width = tarteaucitron.getElemWidth(x),
                 height = tarteaucitron.getElemHeight(x),
                 id = x.getAttribute("data-id");
-          
+
                 return '<div style="height: ' + height + 'px; width: ' + width + 'px;"><div id="' + id + '"></div></div>';
       });
     },
@@ -1709,7 +1709,7 @@ tarteaucitron.services.rumbletalk = {
             tarteaucitron.fallback(['rumbletalk'], function (elem) {
                 elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
                 elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
-                
+
                 return tarteaucitron.engage(id);
             });
     }
@@ -3004,3 +3004,44 @@ tarteaucitron.services.youtubeapi = {
         tarteaucitron.addScript('https://www.youtube.com/player_api');
     }
 };
+
+// Facil'ITI
+tarteaucitron.services.faciliti = {
+    "key": "faciliti",
+    "type": "other",
+    "name": "Facil'ITI",
+    "uri": "https://ws.facil-iti.com/mentions-legales.html",
+    "needConsent": true,
+    "cookies": ['FACIL_ITI_LS'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.facilitiID === undefined) {
+            return;
+        }
+
+        (function(w, d, s, f) {
+            w[f] = w[f] || {conf: function () { (w[f].data = w[f].data || []).push(arguments);}};
+            var l = d.createElement(s), e = d.getElementsByTagName(s)[0];
+            l.async = 1; l.src = 'https://ws.facil-iti.com/tag/faciliti-tag.min.js'; e.parentNode.insertBefore(l, e);
+        }(window, document, 'script', 'FACIL_ITI'));
+        FACIL_ITI.conf('userId', tarteaucitron.user.facilitiID);
+    }
+};
+
+// userlike
+tarteaucitron.services.userlike = {
+    "key": "userlike",
+    "type": "support",
+    "name": "Userlike",
+    "uri": "https://www.userlike.com/en/terms#privacy-policy",
+    "needConsent": true,
+    "cookies": ['uslk_s', 'uslk_e'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.userlikeKey === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('//userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/' + tarteaucitron.user.userlikeKey);
+    }
+};
+
