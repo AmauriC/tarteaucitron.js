@@ -343,7 +343,7 @@ var tarteaucitron = {
                 html += '         </ul>';
                 html += '         <div class="tarteaucitronHidden" id="tarteaucitronScrollbarChild" style="height:20px;display:block"></div>';
                 if (tarteaucitron.parameters.removeCredit === false) {
-                    html += '     <a class="tarteaucitronSelfLink" href="https://opt-out.ferank.eu/" rel="nofollow noreferrer noopener" target="_blank" title="tarteaucitron ' + tarteaucitron.lang.newWindow + '">🍋 ' + tarteaucitron.lang.credit + '</a>';
+                    html += '     <a class="tarteaucitronSelfLink" href="https://tarteaucitron.io/" rel="nofollow noreferrer noopener" target="_blank" title="tarteaucitron ' + tarteaucitron.lang.newWindow + '">🍋 ' + tarteaucitron.lang.credit + '</a>';
                 }
                 html += '       </div>';
                 html += '   </div>';
@@ -582,7 +582,7 @@ var tarteaucitron = {
 
             if (tarteaucitron.parameters.moreInfoLink == true) {
 
-                var link = 'https://opt-out.ferank.eu/service/' + service.key + '/';
+                var link = 'https://tarteaucitron.io/service/' + service.key + '/';
                 if (service.readmoreLink !== undefined && service.readmoreLink !== '') {
                     link = service.readmoreLink;
                 }
@@ -1604,7 +1604,7 @@ var tarteaucitron = {
         if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined && tarteaucitron.proTemp !== '') {
             var div = document.getElementById('tarteaucitronPremium'),
                 timestamp = new Date().getTime(),
-                url = 'https://opt-out.ferank.eu/log/?';
+                url = 'https://tarteaucitron.io/log/?';
 
             if (div === null) {
                 return;
