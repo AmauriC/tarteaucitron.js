@@ -252,12 +252,12 @@ var tarteaucitron = {
             document.getElementsByTagName('head')[0].appendChild(linkElement);
         }
         // Step 2: load language and services
-        tarteaucitron.addScript(pathToLang, '', function () {
+        tarteaucitron.addInternalScript(pathToLang, '', function () {
 
           if(tarteaucitronCustomText !== ''){
             tarteaucitron.lang = tarteaucitron.AddOrUpdate(tarteaucitron.lang, tarteaucitronCustomText);
           }
-            tarteaucitron.addScript(pathToServices, '', function () {
+            tarteaucitron.addInternalScript(pathToServices, '', function () {
 
 
                 // css for new middle bar
@@ -433,7 +433,7 @@ var tarteaucitron = {
                     html += '</div>';
                 }
 
-                tarteaucitron.addScript(tarteaucitron.cdn + 'advertising.js?v=' + tarteaucitron.version, '', function () {
+                tarteaucitron.addInternalScript(tarteaucitron.cdn + 'advertising.js?v=' + tarteaucitron.version, '', function () {
                     if (tarteaucitronNoAdBlocker === true || tarteaucitron.parameters.adblocker === false) {
 
                         // create a wrapper container at the same level than tarteaucitron so we can add an aria-hidden when tarteaucitron is opened
@@ -1422,7 +1422,7 @@ var tarteaucitron = {
             return 'en_US';
         }
     },
-    "addScript": function (url, id, callback, execute, attrName, attrVal) {
+    "addScript": function (url, id, callback, execute, attrName, attrVal, internal = false) {
         "use strict";
         var script,
             done = false;
@@ -1456,10 +1456,13 @@ var tarteaucitron = {
                 }
             }
 
-            if ( !tarteaucitron.parameters.useExternalJs ) {
+            if ( !tarteaucitron.parameters.useExternalJs || !internal ) {
                 document.getElementsByTagName('head')[0].appendChild(script);
             }
         }
+    },
+    "addInternalScript": function (url, id, callback, execute, attrName, attrVal) {
+        tarteaucitron.addScript(url, id, callback, execute, attrName, attrVal, true);
     },
     "makeAsync": {
         "antiGhost": 0,
@@ -1490,7 +1493,7 @@ var tarteaucitron = {
                 return;
             }
             tarteaucitron.makeAsync.antiGhost += 1;
-            tarteaucitron.addScript(url, '', function () {
+            tarteaucitron.addInternalScript(url, '', function () {
                 if (document.getElementById(id) !== null) {
                     document.getElementById(id).innerHTML += "<span style='display:none'>&nbsp;</span>" + tarteaucitron.makeAsync.buffer;
                     tarteaucitron.makeAsync.buffer = '';
