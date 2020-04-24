@@ -1422,7 +1422,7 @@ var tarteaucitron = {
             return 'en_US';
         }
     },
-    "addScript": function (url, id, callback, execute, attrName, attrVal, internal = false) {
+    "addScript": function (url, id, callback, execute, attrName, attrVal, internal) {
         "use strict";
         var script,
             done = false;
