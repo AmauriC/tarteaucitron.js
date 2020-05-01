@@ -24,7 +24,7 @@ tarteaucitron.lang = {
     "disclaimer": "En autorizant aquestes servicis tèrces, acceptatz lo depaus e la lectura de cookies e l'utilizacion de tecnologias de seguiment necessaris a lor bon foncionament.",
     "allow": "Autorizar",
     "deny": "Interdire",
-    "noCookie": "Aqueste servici daissi pas cap de cookies.",
+    "noCookie": "Aqueste servici daissa pas cap de cookies.",
     "useCookie": "Aqueste servici pòt daissar",
     "useCookieCurrent": "Aqueste servici a daissat",
     "useNoCookie": "Aqueste servici a pas daissat cap de cookies.",
