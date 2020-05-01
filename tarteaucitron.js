@@ -17,7 +17,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20200114,
+    "version": 20200501,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -560,7 +560,7 @@ var tarteaucitron = {
             isAutostart = (!service.needConsent),
             isWaiting = (cookie.indexOf(service.key + '=wait') >= 0),
             isDenied = (cookie.indexOf(service.key + '=false') >= 0),
-            isAllowed = (cookie.indexOf(service.key + '=true') >= 0),
+            isAllowed = ((cookie.indexOf(service.key + '=true') >= 0) || (!service.needConsent)),
             isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0),
             isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1");
 
