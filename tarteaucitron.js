@@ -1374,7 +1374,7 @@ var tarteaucitron = {
     "getLanguage": function () {
         "use strict";
 
-        var availableLanguages = 'bg,cn,cs,da,de,el,en,es,fi,fr,hu,it,ja,nl,pl,pt,ro,ru,sk,tr',
+        var availableLanguages = 'bg,cn,cs,da,de,el,en,es,fi,fr,hu,it,ja,nl,oc,pl,pt,ro,ru,sk,tr',
             defaultLanguage = 'en';
 
         if (tarteaucitronForceLanguage !== '') {
@@ -1412,6 +1412,8 @@ var tarteaucitron = {
             return 'es_ES';
         } else if (userLanguage === 'it') {
             return 'it_IT';
+        } else if (userLanguage === 'oc') {
+            return 'oc_FR';            
         } else if (userLanguage === 'pt') {
             return 'pt_PT';
         } else if (userLanguage === 'nl') {
