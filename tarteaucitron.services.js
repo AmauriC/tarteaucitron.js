@@ -2610,7 +2610,7 @@ tarteaucitron.services.webmecanik = {
             return;
         }
 
-        window.WebmecanikTrackingObject = 'mt';
+        window.MauticTrackingObject = 'mt';
         window.mt = window.mt || function () {
             window.mt.q = window.mt.q || [];
             window.mt.q.push(arguments);
