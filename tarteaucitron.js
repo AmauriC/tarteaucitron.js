@@ -560,7 +560,7 @@ var tarteaucitron = {
             isAutostart = (!service.needConsent),
             isWaiting = (cookie.indexOf(service.key + '=wait') >= 0),
             isDenied = (cookie.indexOf(service.key + '=false') >= 0),
-            isAllowed = ((cookie.indexOf(service.key + '=true') >= 0) || (!service.needConsent)),
+            isAllowed = ((cookie.indexOf(service.key + '=true') >= 0) || (!service.needConsent && cookie.indexOf(service.key + '=false') < 0)),
             isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0),
             isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1");
 

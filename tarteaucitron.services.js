@@ -2367,9 +2367,34 @@ tarteaucitron.services.xiti = {
 tarteaucitron.services.atinternet = {
     "key": "atinternet",
     "type": "analytic",
-    "name": "AT Internet",
+    "name": "AT Internet (privacy by design)",
     "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
     "needConsent": false,
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.atLibUrl === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
+
+            var tag = new ATInternet.Tracker.Tag();
+
+            if (typeof tarteaucitron.user.atMore === 'function') {
+                tarteaucitron.user.atMore();
+            }
+        })
+    }
+};
+
+// AT Internet
+tarteaucitron.services.atinternethightrack = {
+    "key": "atinternethightrack",
+    "type": "analytic",
+    "name": "AT Internet",
+    "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
+    "needConsent": true,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
         "use strict";
@@ -2702,7 +2727,7 @@ tarteaucitron.services.koban = {
 tarteaucitron.services.matomo = {
     "key": "matomo",
     "type": "analytic",
-    "name": "Matomo (formerly known as Piwik)",
+    "name": "Matomo (privacy by design)",
     "uri": "https://matomo.org/faq/general/faq_146/",
     "needConsent": false,
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
@@ -2751,6 +2776,52 @@ tarteaucitron.services.matomo = {
                 var cookieName = cookie[0].trim();
 
                 // if cookie starts like a piwik one, register it
+                if (cookieName.indexOf('_pk_') === 0) {
+                    tarteaucitron.services.matomo.cookies.push(cookieName);
+                }
+            }
+        }, 100)
+    }
+};
+                          
+                          
+tarteaucitron.services.matomohightrack = {
+    "key": "matomohightrack",
+    "type": "analytic",
+    "name": "Matomo",
+    "uri": "https://matomo.org/faq/general/faq_146/",
+    "needConsent": true,
+    "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.matomoId === undefined) {
+            return;
+        }
+
+        window._paq = window._paq || [];
+        window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
+        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "piwik.php"]);
+        window._paq.push(["trackPageView"]);
+        window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
+        window._paq.push(["enableLinkTracking"]);
+        window._paq.push([function() {
+            var self = this;
+        }]);
+
+        tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
+
+        // waiting for piwik to be ready to check first party cookies
+        var interval = setInterval(function() {
+            if (typeof Piwik === 'undefined') return
+
+            clearInterval(interval)
+            Piwik.getTracker();
+
+            var theCookies = document.cookie.split(';');
+            for (var i = 1 ; i <= theCookies.length; i++) {
+                var cookie = theCookies[i-1].split('=');
+                var cookieName = cookie[0].trim();
+
                 if (cookieName.indexOf('_pk_') === 0) {
                     tarteaucitron.services.matomo.cookies.push(cookieName);
                 }
