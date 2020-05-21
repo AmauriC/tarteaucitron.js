@@ -148,6 +148,9 @@ tarteaucitron.lang = {
 
         "details": "Služby na zobrazovanie webového obsahu."
 
-    }
+    },
+    
+    "mandatoryTitle": "Mandatory cookies",
+    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 
 };

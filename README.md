@@ -51,7 +51,9 @@ tarteaucitron.init({
 
     //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
 
-    "readmoreLink": "/cookiespolicy" /* Change the default readmore link pointing to tarteaucitron.io */
+    "readmoreLink": "/cookiespolicy", /* Change the default readmore link pointing to tarteaucitron.io */
+    
+    "mandatory": false /* Show a message about mandatory cookies */
 });
 </script>
 ```

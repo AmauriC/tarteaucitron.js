@@ -17,7 +17,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20200501,
+    "version": 20200521,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -214,7 +214,8 @@ var tarteaucitron = {
                 "moreInfoLink": true,
                 "privacyUrl": "",
                 "useExternalCss": false,
-                "useExternalJs": false
+                "useExternalJs": false,
+                "mandatory": false
             },
             params = tarteaucitron.parameters;
 
@@ -321,6 +322,28 @@ var tarteaucitron = {
                 html += '      </div>';
                 html += '      <div class="tarteaucitronBorder">';
                 html += '         <div class="clear"></div><ul>';
+                                            
+                                            
+                if (tarteaucitron.parameters.mandatory == true) {
+                   html += '<li id="tarteaucitronServicesTitle_mandatory">';
+                   html += '<div class="tarteaucitronTitle">';
+                   html += '   <button type="button">&nbsp; ' + tarteaucitron.lang.mandatoryTitle + '</button>';
+                   html += '</div>';
+                   html += '<ul id="tarteaucitronServices_mandatory">';
+                   html += '<li class="tarteaucitronLine">';
+                   html += '   <div class="tarteaucitronName">';
+                   html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + tarteaucitron.lang.mandatoryText + '</span>';
+                   html += '       <span class="tarteaucitronListCookies"></span><br/>';
+                   html += '   </div>';
+                   html += '   <div class="tarteaucitronAsk">';
+                   html += '       <button type="button" class="tarteaucitronAllow">';
+                   html += '           &#10003; ' + tarteaucitron.lang.allow;
+                   html += '       </button> ';
+                   html += '   </div>';
+                   html += '</li>';
+                   html += '</ul></li>';
+                }
+
                 for (i = 0; i < cat.length; i += 1) {
                     html += '         <li id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
                     html += '            <div class="tarteaucitronTitle">';
@@ -1412,8 +1435,6 @@ var tarteaucitron = {
             return 'es_ES';
         } else if (userLanguage === 'it') {
             return 'it_IT';
-        } else if (userLanguage === 'oc') {
-            return 'oc_FR';            
         } else if (userLanguage === 'pt') {
             return 'pt_PT';
         } else if (userLanguage === 'nl') {
