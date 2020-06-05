@@ -983,6 +983,7 @@ var tarteaucitron = {
             var c = 'tarteaucitron';
             tarteaucitron.userInterface.css(c + 'Percentage', 'display', 'block');
             tarteaucitron.userInterface.css(c + 'AlertSmall', 'display', 'none');
+            tarteaucitron.userInterface.css(c + 'Icon', 'display', 'none');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'block');
             tarteaucitron.userInterface.addClass(c + 'Root',   'tarteaucitronBeforeVisible');
 
@@ -1003,6 +1004,7 @@ var tarteaucitron = {
             var c = 'tarteaucitron';
             tarteaucitron.userInterface.css(c + 'Percentage', 'display', 'none');
             tarteaucitron.userInterface.css(c + 'AlertSmall', 'display', 'block');
+            tarteaucitron.userInterface.css(c + 'Icon', 'display', 'block');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'none');
             tarteaucitron.userInterface.removeClass(c + 'Root',   'tarteaucitronBeforeVisible');
             tarteaucitron.userInterface.jsSizing('box');

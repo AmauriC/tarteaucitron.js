@@ -494,7 +494,7 @@ div#tarteaucitronServices {
     text-align: center;
     padding: 10px;
     margin: auto;
-    width: 100%;
+    width: calc(100% - 20px);  /* 100 % - padding-right - padding-left */
 }
 
 #tarteaucitronAlertBig #tarteaucitronPrivacyUrl,
