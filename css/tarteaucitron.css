@@ -577,6 +577,7 @@ div#tarteaucitronServices {
 #tarteaucitronIcon {
     background: transparent;
     position: fixed;
+    display: none;
     width: auto;
     z-index: 2147483646;
 }
