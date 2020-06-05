@@ -555,6 +555,45 @@ div#tarteaucitronServices {
 }
 
 /***
+ * Icon
+ */
+.tarteaucitronIconBottomRight {
+    bottom: 0;
+    right: 0;
+}
+.tarteaucitronIconBottomLeft {
+    bottom: 0;
+    left: 0;
+}
+.tarteaucitronIconTopRight {
+    top: 0;
+    right: 0;
+}
+.tarteaucitronIconTopLeft {
+    top: 0;
+    left: 0;
+}
+
+#tarteaucitronIcon {
+    background: transparent;
+    position: fixed;
+    width: auto;
+    z-index: 2147483646;
+}
+#tarteaucitronIcon #tarteaucitronManager {
+    color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px !important;
+    padding: 8px 10px 8px;
+    border: none;
+}
+#tarteaucitronIcon #tarteaucitronManager img {
+    width: 50px;
+    height: 50px;
+}
+
+/***
  * Small alert
  */
 
