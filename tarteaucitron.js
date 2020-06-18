@@ -1272,7 +1272,7 @@ var tarteaucitron = {
                 html += tarteaucitron.lang.useNoCookie;
             } else if (status >= 0) {
                 for (i = 0; i < nb; i += 1) {
-                    if (document.cookie.indexOf(arr[i] + '=') !== -1) {
+                    if (document.cookie.indexOf(arr[i] + '=') !== -1 || localStorage.getItem(arr[i]) !== null) {
                         nbCurrent += 1;
                         if (tarteaucitron.cookie.owner[arr[i]] === undefined) {
                             tarteaucitron.cookie.owner[arr[i]] = [];
