@@ -3027,7 +3027,7 @@ tarteaucitron.services.getquanty = {
     "name": "GetQuanty",
     "uri": "https://www.getquanty.com/mentions-legales/",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['_first_pageview', 'eqy_sessionid', 'eqy_siteid','cluid','eqy_company', 'cluid', 'gq_utm', '_jsuid'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.getguanty === undefined) {
