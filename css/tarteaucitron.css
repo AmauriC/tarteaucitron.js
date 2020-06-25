@@ -492,7 +492,7 @@ div#tarteaucitronServices {
     box-sizing: content-box;
     z-index: 2147483645;
     text-align: center;
-    padding: 10px;
+    padding: 10px 0 10px 0;
     margin: auto;
     width: 100%;
 }
