@@ -773,15 +773,17 @@ var tarteaucitron = {
                 html += '       </a>';
             }
 
-            html += '   </div>';
-            html += '   <div class="tarteaucitronAsk">';
-            html += '       <button type="button" id="' + service.key + 'Allowed" class="tarteaucitronAllow">';
-            html += '           <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
-            html += '       </button> ';
-            html += '       <button type="button" id="' + service.key + 'Denied" class="tarteaucitronDeny">';
-            html += '           <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.deny;
-            html += '       </button>';
-            html += '   </div>';
+            if (service.needConsent !== false) {
+                html += '   </div>';
+                html += '   <div class="tarteaucitronAsk">';
+                html += '       <button type="button" id="' + service.key + 'Allowed" class="tarteaucitronAllow">';
+                html += '           <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
+                html += '       </button> ';
+                html += '       <button type="button" id="' + service.key + 'Denied" class="tarteaucitronDeny">';
+                html += '           <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.deny;
+                html += '       </button>';
+                html += '   </div>';
+            }
             html += '</li>';
 
             tarteaucitron.userInterface.css('tarteaucitronServicesTitle_' + service.type, 'display', 'block');
@@ -807,6 +809,11 @@ var tarteaucitron = {
 
         // allow by default for non EU
         if (isResponded === false && tarteaucitron.user.bypass === true) {
+            isAllowed = true;
+            tarteaucitron.cookie.create(service.key, true);
+        }
+
+        if (isAutostart) {
             isAllowed = true;
             tarteaucitron.cookie.create(service.key, true);
         }
@@ -1006,7 +1013,7 @@ var tarteaucitron = {
 
             if (key !== "") {
 
-            if (status === true) {
+            if (status === true || tarteaucitron.services[key].needConsent === false) {
                 document.getElementById(key + 'Line').classList.add('tarteaucitronIsAllowed');
                 document.getElementById(key + 'Line').classList.remove('tarteaucitronIsDenied');
             } else if (status === false) {
@@ -1062,7 +1069,7 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.closeAlert();
             }
 
-            if (tarteaucitron.services[key].cookies.length > 0 && status === false) {
+            if (tarteaucitron.services[key].cookies.length > 0 && status === false && tarteaucitron.services[key].needConsent === true) {
                 tarteaucitron.cookie.purge(tarteaucitron.services[key].cookies);
             }
 
