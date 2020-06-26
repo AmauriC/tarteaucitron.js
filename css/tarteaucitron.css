@@ -444,7 +444,8 @@ div#tarteaucitronServices {
     background-color: #1B870B;
     opacity: 1;
 }
-#tarteaucitron #tarteaucitronServices #tarteaucitronAllDenied.tarteaucitronIsSelected {
+#tarteaucitron #tarteaucitronServices #tarteaucitronAllDenied.tarteaucitronIsSelected,
+#tarteaucitron #tarteaucitronServices #tarteaucitronAllDenied2.tarteaucitronIsSelected {
     background-color: #9C1A1A;
     opacity: 1;
 }
@@ -516,6 +517,7 @@ div#tarteaucitronServices {
 
 #tarteaucitronAlertBig #tarteaucitronCloseAlert,
 #tarteaucitronAlertBig #tarteaucitronPersonalize,
+#tarteaucitronAlertBig #tarteaucitronPersonalize2,
 .tarteaucitronCTAButton,
 #tarteaucitron #tarteaucitronPrivacyUrl,
 #tarteaucitron #tarteaucitronPrivacyUrlDialog,
