@@ -1372,6 +1372,32 @@ tarteaucitron.services.googletagmanager = {
     }
 };
 
+// google tag manager multiple
+tarteaucitron.services.multiplegoogletagmanager = {
+  "key": "multiplegoogletagmanager",
+  "type": "api",
+  "name": "Google Tag Manager",
+  "uri": "https://adssettings.google.com/",
+  "needConsent": true,
+  "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', '__gads', '_drt_', 'FLC', 'exchange_uid', 'id', 'fc', 'rrs', 'rds', 'rv', 'uid', 'UIDR', 'UID', 'clid', 'ipinfo', 'acs'],
+  "js": function () {
+    "use strict";
+    if (tarteaucitron.user.multiplegoogletagmanagerId === undefined) {
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'gtm.start': new Date().getTime(),
+      event: 'gtm.js'
+    });
+
+    tarteaucitron.user.multiplegoogletagmanagerId.forEach(function (id) {
+      tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + id);
+    });
+
+  }
+};
+
 // google webfonts
 tarteaucitron.services.googlefonts = {
   "key": "googlefonts",
@@ -3027,7 +3053,7 @@ tarteaucitron.services.getquanty = {
     "name": "GetQuanty",
     "uri": "https://www.getquanty.com/mentions-legales/",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['_first_pageview', 'eqy_sessionid', 'eqy_siteid','cluid','eqy_company', 'cluid', 'gq_utm', '_jsuid'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.getguanty === undefined) {
@@ -3133,7 +3159,6 @@ tarteaucitron.services.adobeanalytics = {
     }
 };
 
-
 // woopra customer journey analytics
 tarteaucitron.services.woopra = {
     'key': 'woopra',
@@ -3157,3 +3182,4 @@ tarteaucitron.services.woopra = {
 		woopra.track();
     }
 };
+
