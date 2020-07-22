@@ -2898,11 +2898,11 @@ tarteaucitron.services.bingads = {
     'name': 'Bing Ads Universal Event Tracking',
     'uri': 'https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads',
     'needConsent': true,
-    'cookies': ['_uetmsclkid'],
+    'cookies': ['_uetmsclkid', '_uetvid', '_uetsid'],
     'js': function () {
         'use strict';
-        var u = tarteaucitron.user.bingadsTag || 'uetq';
-        window[u] = window[u] || [];
+        //var u = tarteaucitron.user.bingadsTag || 'uetq';
+        window.uetq = window.uetq || [];
 
         tarteaucitron.addScript('https://bat.bing.com/bat.js', '', function () {
             var bingadsCreate = {ti: tarteaucitron.user.bingadsID};
@@ -2911,9 +2911,9 @@ tarteaucitron.services.bingads = {
                 bingadsCreate['storeConvTrackCookies'] = tarteaucitron.user.bingadsStoreCookies;
             }
 
-            bingadsCreate.q = window[u];
-            window[u] = new UET(bingadsCreate);
-            window[u].push('pageLoad');
+            bingadsCreate.q = window.uetq;
+            window.uetq = new UET(bingadsCreate);
+            window.uetq.push('pageLoad');
         });
     }
 };
