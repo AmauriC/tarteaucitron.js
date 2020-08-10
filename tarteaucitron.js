@@ -210,6 +210,7 @@ var tarteaucitron = {
                 "showAlertSmall": true,
                 "cookieslist": true,
                 "handleBrowserDNTRequest": false,
+                "DenyAllCta": true,
                 "AcceptAllCta" : true,
                 "moreInfoLink": true,
                 "privacyUrl": "",
@@ -406,7 +407,7 @@ var tarteaucitron = {
                     html += '   </button>';
 
 
-                    if (tarteaucitron.parameters.orientation === 'middle') {
+                    if (tarteaucitron.parameters.DenyAllCta) {
                                     html += '   <button type="button" class="tarteaucitronCTAButton tarteaucitronDeny"  onclick="tarteaucitron.userInterface.respondAll(false);">';
                                     html += '       &#10007; ' + tarteaucitron.lang.denyAll;
                                     html += '   </button>';
