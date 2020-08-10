@@ -220,8 +220,8 @@ var tarteaucitron = {
             },
             params = tarteaucitron.parameters;
 
-        // Don't show the middle bar if we are on the privacy policy page
-        if (window.location.href == tarteaucitron.parameters.privacyUrl && tarteaucitron.parameters.orientation == "middle") {
+        // Don't show the middle bar if we are on the privacy policy or more page
+        if (((tarteaucitron.parameters.readmoreLink !== undefined && window.location.href == tarteaucitron.parameters.readmoreLink) || window.location.href == tarteaucitron.parameters.privacyUrl) && tarteaucitron.parameters.orientation == "middle") {
             tarteaucitron.parameters.orientation = "bottom";
         }
 
