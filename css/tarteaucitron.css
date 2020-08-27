@@ -784,3 +784,16 @@ a.tarteaucitronSelfLink {
 span.tarteaucitronTitle.tarteaucitronH3 {
     margin-top: 12px!important;
 }
+
+.spacer-20 {
+    height: 20px;
+    display: block;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
