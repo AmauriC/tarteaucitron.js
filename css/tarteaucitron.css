@@ -754,6 +754,9 @@ div.amazon_product {
 .tarteaucitronLine .tarteaucitronAllow, .tarteaucitronLine .tarteaucitronDeny {
     opacity: 0.4;
 }
+#tarteaucitronServices_mandatory button.tarteaucitronAllow {
+    opacity: 1;
+}
 
 div#tarteaucitronInfo {
     display: block!important;
