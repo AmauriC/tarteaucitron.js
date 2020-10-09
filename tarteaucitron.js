@@ -1206,14 +1206,14 @@ var tarteaucitron = {
 
                     // media query
                     if (e[a + 'Width'] <= 479) {
-                        tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginLeft', '11px');
+                        //tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginLeft', '11px');
                     } else if (e[a + 'Width'] <= 767) {
                         scrollbarMarginRight = 12;
                     }
 
                     scrollbarWidthParent = document.getElementById('tarteaucitronServices').offsetWidth;
                     scrollbarWidthChild = document.getElementById('tarteaucitronScrollbarChild').offsetWidth;
-                    tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginRight', ((scrollbarWidthParent - scrollbarWidthChild) + scrollbarMarginRight) + 'px');
+                    //tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginRight', ((scrollbarWidthParent - scrollbarWidthChild) + scrollbarMarginRight) + 'px');
                 }
 
                 // center the main panel
