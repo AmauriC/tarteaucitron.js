@@ -576,6 +576,22 @@ div#tarteaucitronServices {
     left: 0;
 }
 
+.tarteaucitronIconTopLeft #tarteaucitronManager {
+    border-radius: 2px 7px 7px 2px;
+}
+
+.tarteaucitronIconTopRight #tarteaucitronManager {
+    border-radius: 7px 2px 2px 7px;
+}
+
+.tarteaucitronIconBottomLeft #tarteaucitronManager {
+    border-radius: 7px 7px 2px 2px;
+}
+
+.tarteaucitronIconBottomRight #tarteaucitronManager {
+    border-radius: 7px 7px 2px 2px;
+}
+
 #tarteaucitronIcon {
     background: transparent;
     position: fixed;

@@ -208,7 +208,7 @@ var tarteaucitron = {
                 "bodyPosition": "bottom",
                 "removeCredit": false,
                 "showAlertSmall": true,
-                "showIcon": true,
+                "showIcon": false,
                 "iconPosition": "BottomRight",
                 "cookieslist": true,
                 "handleBrowserDNTRequest": false,
