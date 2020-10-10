@@ -39,6 +39,9 @@ tarteaucitron.init({
     "orientation": "middle", /* Banner position (top - bottom) */
     "showAlertSmall": true, /* Show the small banner on bottom right */
     "cookieslist": true, /* Show the cookie list */
+    
+    "showIcon": true, /* Show cookie icon to manage cookies */
+    "iconPosition": "BottomRight", /* Position of the icon between BottomRight, BottomLeft, TopRight and TopLeft */
 
     "adblocker": false, /* Show a Warning if an adblocker is detected */
     "DenyAllCta" : true, /* Show the deny all button */
