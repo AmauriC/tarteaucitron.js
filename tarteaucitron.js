@@ -342,6 +342,9 @@ var tarteaucitron = {
                    html += '       <button type="button" class="tarteaucitronAllow">';
                    html += '           &#10003; ' + tarteaucitron.lang.allow;
                    html += '       </button> ';
+                   html += '       <button type="button" class="tarteaucitronDeny" style="visibility:hidden">';
+                   html += '           &#10007; ' + tarteaucitron.lang.deny;
+                   html += '       </button> ';
                    html += '   </div>';
                    html += '</li>';
                    html += '</ul></li>';
