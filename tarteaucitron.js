@@ -416,7 +416,7 @@ var tarteaucitron = {
                                     html += '   <button type="button" class="tarteaucitronCTAButton tarteaucitronDeny" id="tarteaucitronAllDenied2">';
                                     html += '       &#10007; ' + tarteaucitron.lang.denyAll;
                                     html += '   </button>';
-                                    html += '   <br/><br/>';
+                                    //html += '   <br/><br/>';
                     }
 
                     html += '   <button type="button" id="tarteaucitronCloseAlert">';
