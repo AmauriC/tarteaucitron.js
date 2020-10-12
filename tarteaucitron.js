@@ -404,7 +404,7 @@ var tarteaucitron = {
 
                     html += '   </span>';
                     //html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
-                    html += '   <button type="button" id="tarteaucitronPersonalize2">';
+                    html += '   <button type="button" class="tarteaucitronCTAButton tarteaucitronAllow" id="tarteaucitronPersonalize2">';
                     html += '       &#10003; ' + tarteaucitron.lang.acceptAll;
                     html += '   </button>';
 
