@@ -207,10 +207,10 @@ var tarteaucitron = {
                 "orientation": "middle",
                 "bodyPosition": "bottom",
                 "removeCredit": false,
-                "showAlertSmall": true,
-                "showIcon": false,
+                "showAlertSmall": false,
+                "showIcon": true,
                 "iconPosition": "BottomRight",
-                "cookieslist": true,
+                "cookieslist": false,
                 "handleBrowserDNTRequest": false,
                 "DenyAllCta": true,
                 "AcceptAllCta" : true,
@@ -218,7 +218,7 @@ var tarteaucitron = {
                 "privacyUrl": "",
                 "useExternalCss": false,
                 "useExternalJs": false,
-                "mandatory": false
+                "mandatory": true
             },
             params = tarteaucitron.parameters;
 
