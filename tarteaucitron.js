@@ -851,7 +851,7 @@ var tarteaucitron = {
             "use strict";
             var key = el.id.replace(new RegExp("(Eng[0-9]+|Allow|Deni)ed", "g"), '');
 
-            if (key.substring(0, 13) == 'tarteaucitron') {return;}
+            if (key.substring(0, 13) == 'tarteaucitron' || key == "") {return;}
 
             // return if same state
             if (tarteaucitron.state[key] === status) {
