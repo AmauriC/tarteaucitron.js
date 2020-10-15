@@ -1687,7 +1687,7 @@ var tarteaucitron = {
             engage = tarteaucitron.lang['engage-' + id];
         }
 
-        html += '<div class="tac_activate">';
+        html += '<div class="tac_activate tac_activate_' + id + '">';
         html += '   <div class="tac_float">';
         html += '      ' + engage;
         html += '      <button type="button" class="tarteaucitronAllow" id="Eng' + r + 'ed' + id + '">';
