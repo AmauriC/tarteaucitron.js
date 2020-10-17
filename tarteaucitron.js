@@ -17,7 +17,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20201013,
+    "version": 20201017,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -726,7 +726,7 @@ var tarteaucitron = {
         }
 
         if ((!isResponded && (isAutostart || (isNavigating && isWaiting)) && !tarteaucitron.highPrivacy) || isAllowed) {
-            if (!isAllowed) {
+            if (!isAllowed || (!service.needConsent && cookie.indexOf(service.key + '=false') < 0)) {
                 tarteaucitron.cookie.create(service.key, true);
             }
             if (tarteaucitron.launch[service.key] !== true) {
