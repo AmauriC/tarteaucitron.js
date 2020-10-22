@@ -2457,7 +2457,7 @@ tarteaucitron.services.youtube = {
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
                 video_frame,
-                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay");
+                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay") + '&mute=' + x.getAttribute("mute");
 
             if (video_id === undefined) {
                 return "";
@@ -2504,7 +2504,7 @@ tarteaucitron.services.youtubeplaylist = {
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
                 video_frame,
-                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay");
+                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay") + '&mute=' + x.getAttribute("mute");
 
             if (playlist_id === undefined) {
                 return "";
