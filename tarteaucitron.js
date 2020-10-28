@@ -805,7 +805,25 @@ var tarteaucitron = {
         "css": function (id, property, value) {
             "use strict";
             if (document.getElementById(id) !== null) {
-                document.getElementById(id).style[property] = value;
+
+                if (property == "display" && value == "none" && (id == "tarteaucitron" || id == "tarteaucitronBack" || id == "tarteaucitronAlertBig")) {
+                    document.getElementById(id).style["opacity"] = "0";
+
+                    setTimeout(function() {document.getElementById(id).style[property] = value;}, 200);
+                } else {
+
+                    document.getElementById(id).style[property] = value;
+                    
+                    if (property == "display" && value == "block" && (id == "tarteaucitron" || id == "tarteaucitronAlertBig")) {
+                        document.getElementById(id).style["opacity"] = "0";
+                        setTimeout(function() {document.getElementById(id).style["opacity"] = "1";}, 1);
+                    }
+                    
+                    if (property == "display" && value == "block" && id == "tarteaucitronBack") {
+                        document.getElementById(id).style["opacity"] = "0";
+                        setTimeout(function() {document.getElementById(id).style["opacity"] = "0.7";}, 1);
+                    }
+                }
             }
         },
         "addClass": function (id, className) {
