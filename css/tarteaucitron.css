@@ -612,6 +612,25 @@ div#tarteaucitronServices {
     height: 50px;
 }
 
+#tarteaucitronRoot .tarteaucitronCross::before {
+    content: '\2717';
+    display: inline-block;
+    color: white;
+}
+
+#tarteaucitronRoot .tarteaucitronCheck::before {
+    content: '\2713';
+    display: inline-block;
+    color: white;
+}
+
+#tarteaucitronRoot .tarteaucitronPlus::before {
+    content: '\271b';
+    display: inline-block;
+    color: white;
+}
+
+
 /***
  * Small alert
  */
