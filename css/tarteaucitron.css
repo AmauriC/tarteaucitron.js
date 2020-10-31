@@ -525,7 +525,8 @@ div#tarteaucitronServices {
 .tarteaucitronCTAButton,
 #tarteaucitron #tarteaucitronPrivacyUrl,
 #tarteaucitron #tarteaucitronPrivacyUrlDialog,
-#tarteaucitronRoot .tarteaucitronDeny {
+#tarteaucitronRoot .tarteaucitronDeny,
+#tarteaucitronRoot .tarteaucitronAllow {
     background: #008300;
     color: #fff;
     cursor: pointer;
