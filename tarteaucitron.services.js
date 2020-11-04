@@ -2582,6 +2582,25 @@ tarteaucitron.services.kameleoon = {
     }
 };
 
+// linkedin insight
+tarteaucitron.services.linkedininsighttag = {
+    "key": "linkedininsighttag",
+    "type": "ads",
+    "name": "Linkedin Insight",
+    "uri": "https://www.linkedin.com/legal/cookie_policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.linkedininsighttag !== undefined) {
+            window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+            window._linkedin_data_partner_ids.push(tarteaucitron.user.linkedininsighttag);
+        }
+        
+        tarteaucitron.addScript('https://snap.licdn.com/li.lms-analytics/insight.min.js');
+    }
+};
+
 // xiti smartTag
 tarteaucitron.services.xiti_smarttag = {
     "key": "xiti_smarttag",
