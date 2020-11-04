@@ -2368,7 +2368,7 @@ tarteaucitron.services.xiti = {
     "key": "xiti",
     "type": "analytic",
     "name": "Xiti",
-    "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -2410,7 +2410,7 @@ tarteaucitron.services.atinternet = {
     "key": "atinternet",
     "type": "analytic",
     "name": "AT Internet (privacy by design)",
-    "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": false,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
@@ -2435,7 +2435,7 @@ tarteaucitron.services.atinternethightrack = {
     "key": "atinternethightrack",
     "type": "analytic",
     "name": "AT Internet",
-    "uri": "https://www.atinternet.com/societe/rgpd-et-vie-privee/",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": true,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
@@ -2571,7 +2571,7 @@ tarteaucitron.services.xiti_smarttag = {
     "key": "xiti_smarttag",
     "type": "analytic",
     "name": "Xiti (SmartTag)",
-    "uri": "https://www.atinternet.com/societe/protection-des-donnees/",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": true,
     "cookies": ["atidvisitor", "atreman", "atredir", "atsession", "atuserid", "attvtreman", "attvtsession"],
     "js": function () {
