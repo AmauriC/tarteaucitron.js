@@ -2333,6 +2333,34 @@ tarteaucitron.services.visualrevenue = {
     }
 };
 
+// verizon dot tag
+tarteaucitron.services.verizondottag = {
+    "key": "verizondottag",
+    "type": "analytic",
+    "name": "Verizon Dot Tag",
+    "uri": "https://developer.verizonmedia.com/native/guide/audience-management/dottags/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        window.dotq = window.dotq || [];
+        window.dotq.push({
+            'projectId': tarteaucitron.user.verizondottagProjectId,
+            'properties': {'pixelId': tarteaucitron.user.verizondottagPixelId}
+        });
+
+        tarteaucitron.addScript('https://s.yimg.com/wi/ytc.js', '', function () {
+            const items = window.dotq;
+            window.dotq = [];
+            window.dotq.push = function (item) {
+                YAHOO.ywa.I13N.fireBeacon([item])
+            };
+            YAHOO.ywa.I13N.fireBeacon(items)
+        });
+    }
+};
+
 // vshop
 tarteaucitron.services.vshop = {
     "key": "vshop",
