@@ -339,10 +339,10 @@ var tarteaucitron = {
                    html += '       <span class="tarteaucitronListCookies"></span><br/>';
                    html += '   </div>';
                    html += '   <div class="tarteaucitronAsk">';
-                   html += '       <button type="button" class="tarteaucitronAllow">';
+                   html += '       <button type="button" class="tarteaucitronAllow" tabindex="-1">';
                    html += '           <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
                    html += '       </button> ';
-                   html += '       <button type="button" class="tarteaucitronDeny" style="visibility:hidden">';
+                   html += '       <button type="button" class="tarteaucitronDeny" style="visibility:hidden" tabindex="-1">';
                    html += '           <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.deny;
                    html += '       </button> ';
                    html += '   </div>';
