@@ -483,13 +483,6 @@ span#tarteaucitronDisclaimerAlert {
 /***
  * Big alert
  */
-@media screen and (max-width: 900px) {
-	div#tarteaucitronAlertBig button {
-	    margin: 0 auto 10px!important;
-	    display: block!important;
-	}
-}
-
 .tarteaucitronAlertBigTop {
     top: 0;
 }
