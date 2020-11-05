@@ -643,7 +643,7 @@ span#tarteaucitronDisclaimerAlert {
 #tarteaucitronRoot .tarteaucitronPlus::before {
     content: '\271b';
     display: inline-block;
-    color: white;
+    color: #333;
 }
 
 
