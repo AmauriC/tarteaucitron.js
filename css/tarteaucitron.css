@@ -42,8 +42,8 @@
     border-spacing: 0;
 }
 
-#tarteaucitronRoot a:focus, #tarteaucitronRoot button:focus {
-    /*outline: 2px solid #cb3333;*/
+#tarteaucitronRoot a:focus-visible, #tarteaucitronRoot button:focus-visible {
+    outline: 3px dashed #3d86d8;
 }
 
 /***
