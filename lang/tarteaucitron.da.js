@@ -67,11 +67,14 @@ tarteaucitron.lang = {
         "details": "Supporttjenester giver dig mulighed for at komme i kontakt med webstedsteamet og hjælpe med at forbedre det."
     },
     "api": {
-        "title": "APIer,
+        "title": "APIer",
         "details": "AAPI'er bruges til at indlæse scripts: geolokalisation, søgemaskiner, oversættelser, ..."
     },
     "other": {
         "title": "Andet",
         "details": "Tjenester til visning af webindhold."
-    }
+    },
+    
+    "mandatoryTitle": "Mandatory cookies",
+    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 };

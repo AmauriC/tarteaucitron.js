@@ -37,12 +37,19 @@ tarteaucitron.init({
     "cookieName": "tarteaucitron", /* Cookie name */
 
     "orientation": "middle", /* Banner position (top - bottom) */
-    "showAlertSmall": true, /* Show the small banner on bottom right */
-    "cookieslist": true, /* Show the cookie list */
+
+    "showAlertSmall": false, /* Show the small banner on bottom right */
+    "cookieslist": false, /* Show the cookie list */
+    
+    "showIcon": true, /* Show cookie icon to manage cookies */
+    "iconPosition": "BottomRight", /* Position of the icon between BottomRight, BottomLeft, TopRight and TopLeft */
 
     "adblocker": false, /* Show a Warning if an adblocker is detected */
+
+    "DenyAllCta" : true, /* Show the deny all button */
     "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
-    "highPrivacy": true, /* Disable auto consent */
+    "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+
     "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
 
     "removeCredit": false, /* Remove credit link */
@@ -51,7 +58,9 @@ tarteaucitron.init({
 
     //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
 
-    "readmoreLink": "/cookiespolicy" /* Change the default readmore link pointing to tarteaucitron.io */
+    "readmoreLink": "", /* Change the default readmore link pointing to tarteaucitron.io */
+    
+    "mandatory": true /* Show a message about mandatory cookies */
 });
 </script>
 ```
