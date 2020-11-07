@@ -559,6 +559,23 @@ tarteaucitron.services.crazyegg = {
     }
 };
 
+// clarity
+tarteaucitron.services.clarity = {
+    "key": "clarity",
+    "type": "analytic",
+    "name": "Clarity",
+    "uri": "https://clarity.microsoft.com/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        window["clarity"]= window["clarity"]||function(){(window["clarity"].q= window["clarity"].q||[]).push(arguments)};
+
+        tarteaucitron.addScript('https://www.clarity.ms/tag/' + tarteaucitron.user.clarity);
+    }
+};
+
 // criteo
 tarteaucitron.services.criteo = {
     "key": "criteo",
