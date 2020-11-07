@@ -715,6 +715,14 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css('tarteaucitronNoServicesTitle', 'display', 'none');
 
             tarteaucitron.userInterface.order(service.type);
+
+            tarteaucitron.addClickEventToId(service.key + 'Allowed', function () {
+                tarteaucitron.userInterface.respond(this, true);
+            });
+
+            tarteaucitron.addClickEventToId(service.key + 'Denied', function () {
+                tarteaucitron.userInterface.respond(this, false);
+            });
         }
 
         tarteaucitron.pro('!' + service.key + '=' + isAllowed);
