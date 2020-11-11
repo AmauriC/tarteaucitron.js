@@ -287,13 +287,9 @@ div#tarteaucitronServices {
     width: 80%;
 }
 
-.tarteaucitronSelfLink, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
     background: rgba(51, 51, 51, 0.07);
-}a.tarteaucitronSelfLink {
-    text-align: center!important;
-    display: block;
-    padding: 7px!important;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
@@ -862,11 +858,13 @@ a.tarteaucitronSelfLink {
     position: absolute;
     left: 0;
     right: 0;
-    padding-top: 13px!important;
+    bottom: -30px;
+    text-align: center!important;
     display: block;
-    text-shadow: 0 0 14px white;
-    text-transform: uppercase;
-}.tarteaucitronMainLine .tarteaucitronH2 {
+    height:30px;
+}
+
+.tarteaucitronMainLine .tarteaucitronH2 {
     font-size: 1.2em!important;
     margin-top: 4px!important;
 }
