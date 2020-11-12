@@ -140,10 +140,6 @@ div#tarteaucitronServices {
 /***
  * Common value
  */
-#tarteaucitron * {
-    zoom: 1;
-}
-
 #tarteaucitronRoot div#tarteaucitron {
     left: 0;
     right: 0;
