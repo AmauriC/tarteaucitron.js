@@ -625,21 +625,23 @@ var tarteaucitron = {
                     tarteaucitron.addClickEventToId("tarteaucitronCTAButton", function () {
                         location.reload();
                     });
-                    var toggleBtns = document.getElementsByClassName("catToggleBtn");
-                    for (let i = 0; i < toggleBtns.length; i++) {
+                    var toggleBtns = document.getElementsByClassName("catToggleBtn"), i;
+                    for (i = 0; i < toggleBtns.length; i++) {
+                        toggleBtns[i].dataset.index = i;
                         tarteaucitron.addClickEventToElement(toggleBtns[i], function () {
-                            tarteaucitron.userInterface.toggle('tarteaucitronDetails' + cat[i], 'tarteaucitronInfoBox');
+                            tarteaucitron.userInterface.toggle('tarteaucitronDetails' + cat[this.dataset.index], 'tarteaucitronInfoBox');
                             return false;
                         });
                     }
+
                     var allowBtns = document.getElementsByClassName("tarteaucitronAllow");
-                    for (let i = 0; i < allowBtns.length; i++) {
+                    for (i = 0; i < allowBtns.length; i++) {
                         tarteaucitron.addClickEventToElement(allowBtns[i], function () {
                             tarteaucitron.userInterface.respond(this, true);
                         });
                     }
                     var denyBtns = document.getElementsByClassName("tarteaucitronDeny");
-                    for (let i = 0; i < denyBtns.length; i++) {
+                    for (i = 0; i < denyBtns.length; i++) {
                         tarteaucitron.addClickEventToElement(denyBtns[i], function () {
                             tarteaucitron.userInterface.respond(this, false);
                         });
@@ -1506,7 +1508,7 @@ var tarteaucitron = {
             }
 
             var purgeBtns = document.getElementsByClassName("purgeBtn");
-            for (let i = 0; i < purgeBtns.length; i++) {
+            for (i = 0; i < purgeBtns.length; i++) {
                 tarteaucitron.addClickEventToElement(purgeBtns[i], function () {
                     tarteaucitron.cookie.purge([this.dataset.cookie]);
                     tarteaucitron.cookie.number();
