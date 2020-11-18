@@ -526,8 +526,8 @@ span#tarteaucitronDisclaimerAlert {
 #tarteaucitron #tarteaucitronPrivacyUrlDialog,
 #tarteaucitronRoot .tarteaucitronDeny,
 #tarteaucitronRoot .tarteaucitronAllow {
-    background: #008300;
-    color: #fff;
+    background: white;
+    color: #333;
     cursor: pointer;
     display: inline-block;
     font-size: 16px!important;
@@ -535,10 +535,6 @@ span#tarteaucitronDisclaimerAlert {
     padding: 5px 10px;
     text-decoration: none;
     margin-left: 7px;
-}
-
-#tarteaucitronRoot .tarteaucitronDeny {
-    background: #9C1A1A;
 }
 
 #tarteaucitronAlertBig #tarteaucitronCloseAlert, #tarteaucitron #tarteaucitronPrivacyUrl, #tarteaucitron #tarteaucitronPrivacyUrlDialog {
@@ -619,13 +615,13 @@ span#tarteaucitronDisclaimerAlert {
 #tarteaucitronRoot .tarteaucitronCross::before {
     content: '\2717';
     display: inline-block;
-    color: white;
+    color: #333;
 }
 
 #tarteaucitronRoot .tarteaucitronCheck::before {
     content: '\2713';
     display: inline-block;
-    color: white;
+    color: #333;
 }
 
 #tarteaucitronRoot .tarteaucitronPlus::before {
