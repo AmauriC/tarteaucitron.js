@@ -1906,6 +1906,58 @@ tarteaucitron.services.slideshare = {
     }
 };
 
+// soundcloud
+tarteaucitron.services.soundcloud = {
+    key: 'soundcloud',
+    type: 'video',
+    name: 'SoundCloud',
+    needConsent: true,
+    cookies: ['sc_anonymous_id'],
+    js: function () {
+        "use strict";
+        tarteaucitron.fallback(['soundcloud_player'], function (x) {
+            var player_height = x.getAttribute('data-height'),
+                frame_height  = 'height="' + player_height + '" ',
+                playable_id   = x.getAttribute('data-playable-id'),
+                playable_type = x.getAttribute('data-playable-type'),
+                color         = x.getAttribute('data-color'),
+                autoplay      = x.getAttribute('data-auto-play'),
+                hideRelated   = x.getAttribute('data-hide-related'),
+                showComments  = x.getAttribute('data-show-comments'),
+                showUser      = x.getAttribute('data-show-user'),
+                showReposts   = x.getAttribute('data-show-reposts'),
+                showTeaser    = x.getAttribute('data-show-teaser'),
+                visual        = x.getAttribute('data-visual');
+
+            var allowAutoplay = autoplay === 'true' ? 'allow="autoplay"' : '';
+
+            if (playable_id === undefined) {
+                return "";
+            }
+
+            var qs = '?url=https%3A//api.soundcloud.com/' + playable_type + '/' + playable_id;
+            if (hideRelated.length > 0)  qs += '&hide_related=' + hideRelated;
+            if (color.length > 0)        qs += '&color=' + color.replace('#', '%23');
+            if (autoplay.length > 0)     qs += '&auto_play=' + autoplay;
+            if (showComments.length > 0) qs += '&show_comments=' + showComments;
+            if (hideRelated.length > 0)  qs += '&hide_related=' + hideRelated;
+            if (showUser.length > 0)     qs += '&show_user=' + showUser;
+            if (showReposts.length > 0)  qs += '&show_reposts=' + showReposts;
+            if (showTeaser.length > 0)   qs += '&show_teaser=' + showTeaser;
+            if (visual.length > 0)       qs += '&visual=' + visual;
+
+            return '<iframe width="100%" ' + frame_height + ' scrolling="no" frameborder="no" ' + allowAutoplay + ' src="https://w.soundcloud.com/player/' + qs + '"></iframe>';
+        });
+    },
+    fallback: function () {
+        "use strict";
+        tarteaucitron.fallback(['soundcloud_player'], function (elem) {
+            elem.style.height = elem.getAttribute('data-height') + 'px';
+            return tarteaucitron.engage('soundcloud');
+        });
+    }
+};
+
 // statcounter
 tarteaucitron.services.statcounter = {
     "key": "statcounter",
