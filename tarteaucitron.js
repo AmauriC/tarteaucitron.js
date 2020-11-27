@@ -1598,7 +1598,7 @@ var tarteaucitron = {
             }
 
             if (typeof callback === 'function') {
-                if ( !tarteaucitron.parameters.useExternalJs ) {
+                if ( !tarteaucitron.parameters.useExternalJs || !internal ) {
                     script.onreadystatechange = script.onload = function () {
                         var state = script.readyState;
                         if (!done && (!state || /loaded|complete/.test(state))) {
