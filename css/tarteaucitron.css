@@ -537,6 +537,20 @@ span#tarteaucitronDisclaimerAlert {
     margin-left: 7px;
 }
 
+@media screen and (max-width:590px){
+#tarteaucitronAlertBig #tarteaucitronCloseAlert,
+#tarteaucitronAlertBig #tarteaucitronPersonalize,
+#tarteaucitronAlertBig #tarteaucitronPersonalize2,
+.tarteaucitronCTAButton,
+#tarteaucitron #tarteaucitronPrivacyUrl,
+#tarteaucitron #tarteaucitronPrivacyUrlDialog,
+#tarteaucitronRoot .tarteaucitronDeny,
+#tarteaucitronRoot .tarteaucitronAllow {
+        margin: 10px 20px;
+    }
+}
+
+
 #tarteaucitronRoot .tarteaucitronDeny {
     background: #9C1A1A;
 }
