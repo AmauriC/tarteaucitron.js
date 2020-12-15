@@ -1177,7 +1177,12 @@ tarteaucitron.services.gajs = {
     "name": "Google Analytics (ga.js)",
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
-    "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'],
+    "cookies": (function () {
+        // Add _gat_gtag_UA_XXXXXXX_XX cookie to cookies array
+        var gatGtagUaCookie = '_gat_gtag_' + tarteaucitron.user.gajsUa;
+        gatGtagUaCookie = gatGtagUaCookie.replace(/-/g, '_');
+        return ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', gatGtagUaCookie, '_ga_' + tarteaucitron.user.gajsUa.replace(/G-/g, '')];
+    })(),
     "js": function () {
         "use strict";
         window._gaq = window._gaq || [];
@@ -1208,7 +1213,12 @@ tarteaucitron.services.analytics = {
     "name": "Google Analytics (universal)",
     "uri": "https://support.google.com/analytics/answer/6004245",
     "needConsent": true,
-    "cookies": ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'],
+    "cookies": (function () {
+        // Add _gat_gtag_UA_XXXXXXX_XX cookie to cookies array
+        var gatGtagUaCookie = '_gat_gtag_' + tarteaucitron.user.analyticsUa;
+        gatGtagUaCookie = gatGtagUaCookie.replace(/-/g, '_');
+        return ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', gatGtagUaCookie, '_ga_' + tarteaucitron.user.analyticsUa.replace(/G-/g, '')];
+    })(),
     "js": function () {
         "use strict";
         window.GoogleAnalyticsObject = 'ga';
@@ -1254,7 +1264,7 @@ tarteaucitron.services.gtag = {
         // Add _gat_gtag_UA_XXXXXXX_XX cookie to cookies array
         var gatGtagUaCookie = '_gat_gtag_' + tarteaucitron.user.gtagUa;
         gatGtagUaCookie = gatGtagUaCookie.replace(/-/g, '_');
-        return ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', gatGtagUaCookie];
+        return ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', gatGtagUaCookie, '_ga_' + tarteaucitron.user.gtagUa.replace(/G-/g, '')];
     })(),
     "js": function () {
         "use strict";
@@ -2807,6 +2817,7 @@ tarteaucitron.services.multiplegtag = {
         if (tarteaucitron.user.multiplegtagUa !== undefined) {
             tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
                 cookies.push('_gat_gtag_' + ua.replace(/-/g, '_'));
+                cookies.push('_ga_' + ua.replace(/G-/g, ''));
             });
         }
 
