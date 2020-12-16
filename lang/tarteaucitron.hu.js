@@ -1,80 +1,80 @@
 /*global tarteaucitron */
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
-    "adblock": "Ahoj! Táto stránka je transparentná a umožňuje vám vybrať služby tretích strán, ktoré chcete povoliť.",
-    "adblock_call": "Prosím, vypnite blokovanie reklám k začatiu prispôsobovania",
-    "reload": "Obnovte stránku",
+    "adblock": "Szia! Ez a webhely átlátható, és lehetővé teszi a kívánt harmadik fél szolgáltatásainak kiválasztását",
+    "adblock_call": "A testreszabás megkezdéséhez állítsd le az adblockert, kérlek.",
+    "reload": "Oldal frissítése",
     
-    "alertBigScroll": "Pokračovaním v posúvaní,",
-    "alertBigClick": "Ak budete pokračovať v prehliadaní tejto webovej stránky,",
-    "alertBig": "povoľujete všetky služby tretích strán",
+    "alertBigScroll": "A görgetés folytatásával,",
+    "alertBigClick": "Ha folytatod a böngészést ezen oldalon,",
+    "alertBig": "engedélyezed a harmadik fél összes szolgáltatását.",
     
-    "alertBigPrivacy": "Táto stránka používa cookies a dáva vám kontrolu nad tým, čo chcete aktivovať",
-    "alertSmall": "Spravovať služby",
-    "personalize": "Prispôsobiť",
-    "acceptAll": "OK, prijať všetko",
-    "close": "Zatvoriť",
+    "alertBigPrivacy": "A webhely tartalmának megjelenítéséhez és a felhasználói élmény javításához cookie-kat használunk",
+    "alertSmall": "Szolgáltatások kezelése",
+    "personalize": "Beállítások",
+    "acceptAll": "OK, elfogadom",
+    "close": "Bezár",
 
-    "privacyUrl": "Zásady ochrany osobných údajov",
+    "privacyUrl": "Adatvédelmi irányelvek",
     
-    "all": "Prednosť pre všetky služby",
+    "all": "Összes szolgáltatás előnyben részesítése",
 
-    "info": "Ochrana vášho súkromia",
-    "disclaimer": "Povolením týchto služieb tretích strán, prijímate ich cookies a používanie sledovacích technológií potrebných pre ich správne fungovanie.",
-    "allow": "Povoliť",
-    "deny": "Odmietnúť",
-    "noCookie": "Táto služba nepoužíva cookies.",
-    "useCookie": "Túto službu je možné nainštalovať",
-    "useCookieCurrent": "Táto služba je nainštalovaná",
-    "useNoCookie": "Táto služba nenainštalovala žiadny súbor cookie.",
-    "more": "Čítaj viac",
-    "source": "Pozrite si oficiálnu webovú stránku",
-    "credit": "Správca súborov cookie od tarteaucitron.js",
-    "noServices": "Táto webová stránka nepoužíva žiadny súbor cookie, ktorý vyžaduje váš súhlas.",
+    "info": "Személyi adataid védelme",
+    "disclaimer": "A harmadik fél szolgáltatásainak engedélyezésével elfogadja a sütiket és a megfelelő működésükhöz szükséges nyomkövetési technológiák használatát.",
+    "allow": "Elfogadom",
+    "deny": "Elutasítom",
+    "noCookie": "Ez a szolgáltatás nem használ sütit.",
+    "useCookie": "Ez a szolgáltatás telepíthető",
+    "useCookieCurrent": "Ez a szolgáltatás telepített",
+    "useNoCookie": "Ez a szolgáltatás nem telepített sütiket",
+    "more": "Olvass többet",
+    "source": "Tekintsd meg a hivatalos weboldalt",
+    "credit": "Cookie-kezelő: tarteaucitron.js",
+    "noServices": "Ez a weboldal nem használ olyan sütiket, amelyekhez a beleegyezésed szükséges.",
 
-    "toggleInfoBox": "Zobraziť/skryť informácie o ukladaní súborov cookie",
-    "title": "Panel riadenia súborov cookie",
-    "cookieDetail": "Podrobnosti súboru cookie pre",
-    "ourSite": "na našich stránkach",
-    "newWindow": "(nové okno)",
-    "allowAll": "Povoľte všetky súbory cookie",
-    "denyAll": "Odmietnuť všetky súbory cookie",
+    "toggleInfoBox": "Információk megjelenítése / elrejtése a süti-tárolással kapcsolatban",
+    "title": "Süti preferenciák",
+    "cookieDetail": "Süti adatok a következőhöz:",
+    "ourSite": "weboldalunkon",
+    "newWindow": "(új ablak)",
+    "allowAll": "Elfogadom az öszeset",
+    "denyAll": "Elutasítom",
     
-    "fallback": "je zakázané.",
+    "fallback": "letiltott.",
 
     "ads": {
-        "title": "Reklamná sieť",
-        "details": "Reklamné siete môžu generovať príjmy predajom reklamného priestoru na webe."
+        "title": "Reklámhálózat",
+        "details": "A hirdetési hálózatok bevételt teremthetnek azáltal, hogy értékesítik a webhelyen található hirdetési felületet"
     },
     "analytic": {
-        "title": "Meranie publika",
-        "details": "Služby merania publika používané na generovanie užitočnej štatistickej účasti na zlepšenie stránky."
+        "title": "Közönségmérés",
+        "details": "A közönségmérési szolgáltatások hasznos statisztikai adatokat generáltak a webhely fejlesztése érdekében."
     },
     "social": {
-        "title": "Sociálne siete",
-        "details": "Sociálne siete môžu zlepšiť použiteľnosť stránky a pomôcť ju propagovať prostredníctvom akcií."
+        "title": "Közösségi hálózatok",
+        "details": "A közösségi hálózatok javíthatják a webhely használhatóságát, és elősegíthetik annak promoválását a megosztások révén."
     },
     "video": {
-        "title": "Videá",
-        "details": "Služby zdieľania videa pomáhajú pridať na web bohatý obsah a zvýšiť jeho viditeľnosť."
+        "title": "Videók",
+        "details": "A videomegosztó szolgáltatások hozzájárulnak hasznos multimédiához a webhelyen és növelik annak láthatóságát."
     },
     "comment": {
-        "title": "Komentáre",
-        "details": "Manažéri komentárov uľahčujú zadávanie komentárov a bojujú proti spamu."
+        "title": "Kommentek",
+        "details": "A megjegyzésfigyelők megkönnyítik a megjegyzések kitöltését és a spam elleni küzdelmet."
     },
     "support": {
-        "title": "Podpora",
-        "details": "Podporné služby vám umožňujú skontaktovať sa s tímom stránok a pomôcť vám ich vylepšiť."
+        "title": "Támogatás",
+        "details": "A támogatási szolgáltatások lehetővé teszik, hogy kapcsolatba lépjen a webhely csapatával, és segítsen annak fejlesztésében."
     },
     "api": {
-        "title": "APIs",
-        "details": "Rozhrania API sa používajú na načítanie skriptov: geolokácia, vyhľadávače, preklady, ..."
+        "title": "APIk",
+        "details": "Az API-kat a szkriptek betöltésére használják: földrajzi helymeghatározás, keresőmotorok, fordítások..."
     },
     "other": {
-        "title": "Ostatné",
-        "details": "Služby na zobrazovanie webového obsahu."
+        "title": "Más",
+        "details": "Szolgáltatások webtartalom megjelenítésére."
     },
     
-    "mandatoryTitle": "Mandatory cookies",
-    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
+    "mandatoryTitle": "Kötelező sütik",
+    "mandatoryText": "A webhely tartalmának megjelenítéséhez és a felhasználói bejelentkezéshez sütiket használunk amiket nem lehet kikapcsolni."
 };
