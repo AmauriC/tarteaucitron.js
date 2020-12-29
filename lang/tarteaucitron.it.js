@@ -73,7 +73,10 @@ tarteaucitron.lang = {
         "title": "Altro",
         "details": "Servizi per visualizzare contenuti web."
     },
-    
+    "required": {
+        "title": "Obbligatorio",
+        "details": "Servizi obbligatori richiesti per garantire il funzionamento ottimale del sito Web e l'attivazione permanente."
+    },
     "mandatoryTitle": "Mandatory cookies",
     "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 };
