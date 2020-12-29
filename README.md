@@ -69,9 +69,9 @@ tarteaucitron.init({
 ```js
 tarteaucitron.services.mycustomservice = {
   "key": "mycustomservice",
-  "type": "ads|analytic|api|comment|other|social|support|video",
+  "type": "ads|analytic|api|comment|other|social|support|video|required",
   "name": "MyCustomService",
-  "needConsent": true,
+  "needConsent": true|false,
   "cookies": ['cookie', 'cookie2'],
   "readmoreLink": "/custom_read_more", // If you want to change readmore link
   "js": function () {
