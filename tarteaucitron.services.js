@@ -1536,7 +1536,13 @@ tarteaucitron.services.recaptcha = {
         "use strict";
         window.tacRecaptchaOnLoad = tarteaucitron.user.recaptchaOnLoad || function() {};
         tarteaucitron.fallback(['g-recaptcha'], '');
-        tarteaucitron.addScript('https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad');
+
+        if (tarteaucitron.user.recaptchaapi === undefined) {
+            tarteaucitron.addScript('https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad');
+        } else {
+            tarteaucitron.addScript('https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad&render=' + tarteaucitron.user.recaptchaapi);
+        }
+        
     },
     "fallback": function () {
         "use strict";
