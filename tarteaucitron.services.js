@@ -2765,7 +2765,8 @@ tarteaucitron.services.issuu = {
                 frame_width = 'width=',
                 issuu_height = x.getAttribute("height"),
                 frame_height = 'height=',
-                issuu_frame;
+                issuu_frame,
+                issuu_embed;
 
             if (issuu_id === undefined) {
                 return "";
@@ -2780,7 +2781,13 @@ tarteaucitron.services.issuu = {
             } else {
                 frame_height += '"" ';
             }
-            issuu_frame = '<iframe type="text/html" ' + frame_width + frame_height + ' src="//e.issuu.com/embed.html#' + issuu_id + '" frameborder="0"></iframe>';
+
+
+            if (issuu_id.match(/\d+\/\d+/)) { issuu_embed = '#' + issuu_id; } else if (issuu_id.match(/d=(.*)&u=(.*)/)) { issuu_embed = '?' + issuu_id; }
+
+
+            issuu_frame = '<iframe type="text/html" ' + frame_width + frame_height + ' src="//e.issuu.com/embed.html' + issuu_embed + '" frameborder="0"></iframe>';
+
             return issuu_frame;
         });
     },
