@@ -868,6 +868,7 @@ var tarteaucitron = {
 
                         tarteaucitron.launch[key] = true;
                         tarteaucitron.services[key].js();
+                        tarteaucitron.sendEvent(key + '_loaded');
                     }
                     tarteaucitron.state[key] = status;
                     tarteaucitron.cookie.create(key, status);
