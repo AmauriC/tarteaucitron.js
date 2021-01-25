@@ -881,3 +881,8 @@ span.tarteaucitronTitle.tarteaucitronH3 {
 .display-none {
     display: none;
 }
+#tarteaucitronDisclaimerAlert:before {
+    position: relative;
+    content: "<span id='closePopup'>X</span>";
+    color: red;
+}
