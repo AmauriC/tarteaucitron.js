@@ -2852,14 +2852,15 @@ tarteaucitron.services.multiplegtag = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
 
-        tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
-
-            tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
-                window.gtag = function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', ua);
+	if (tarteaucitron.user.multiplegtagUa !== undefined) {
+            tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
+                tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
+                    window.gtag = function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', ua);
+                });
             });
-        });
+	}
     }
 };
 
