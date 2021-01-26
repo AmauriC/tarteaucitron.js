@@ -218,7 +218,8 @@ var tarteaucitron = {
                 "privacyUrl": "",
                 "useExternalCss": false,
                 "useExternalJs": false,
-                "mandatory": true
+                "mandatory": true,
+                "closePopup": false
             },
             params = tarteaucitron.parameters;
 
@@ -277,7 +278,6 @@ var tarteaucitron = {
                     }
                     document.getElementsByTagName('head')[0].appendChild(customThemeMiddle);
                 }
-
                 var body = document.body,
                     div = document.createElement('div'),
                     html = '',
@@ -578,6 +578,19 @@ var tarteaucitron = {
                         }
                     }, 1500);
                 }
+                if(tarteaucitron.parameters.closePopup === true){
+                    let element = document.getElementById('tarteaucitronAlertBig');
+                    let span = document.createElement('span')
+                    span.textContent = 'X';
+                    span.style.cssText = 'position:absolute; color: #FFFF; font-size:2rem; cursor: pointer; top: 10px; right: 26px';
+                    span.setAttribute('id', "clossCross")
+                    element.insertBefore(span, element.firstElementChild)
+                    document.getElementById("clossCross").onclick = () =>{
+                        tarteaucitron.userInterface.closeAlert();
+                    }
+                }
+
+
 
                 // add a little timeout to be sure everything is accessible
                 setTimeout(function () {
