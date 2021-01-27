@@ -1530,7 +1530,7 @@ var tarteaucitron = {
     "getLanguage": function () {
         "use strict";
 
-        var availableLanguages = 'bg,cn,cs,da,de,el,en,es,fi,fr,hu,it,ja,nl,oc,pl,pt,ro,ru,se,sk,tr,vi',
+        var availableLanguages = 'bg,cn,cs,da,de,el,en,es,fi,fr,hu,it,ja,lv,nl,oc,pl,pt,ro,ru,se,sk,tr,vi',
             defaultLanguage = 'en';
 
         if (tarteaucitronForceLanguage !== '') {
