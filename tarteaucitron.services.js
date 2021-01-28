@@ -956,6 +956,20 @@ tarteaucitron.services.simpleanalytics = {
     }
 };
 
+// stripe
+tarteaucitron.services.stripe = {
+    "key": "stripe",
+    "type": "api",
+    "name": "Stripe",
+    "uri": "https://stripe.com/cookies-policy/legal",
+    "needConsent": false,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('https://js.stripe.com/v3/');
+    }
+};
+
 // ferank pub
 tarteaucitron.services.ferankpub = {
     "key": "ferankpub",
