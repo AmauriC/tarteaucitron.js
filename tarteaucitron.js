@@ -1139,6 +1139,10 @@ var tarteaucitron = {
             //end ie compatibility
 
             window.dispatchEvent(tacCloseAlertEvent);
+
+            if (tarteaucitron.reloadThePage === true) {
+                window.location.reload();
+            }
         },
         "toggleCookiesList": function () {
             "use strict";
