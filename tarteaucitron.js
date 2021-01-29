@@ -631,6 +631,9 @@ var tarteaucitron = {
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronAllDenied2", function () {
                         tarteaucitron.userInterface.respondAll(false);
+                        if (tarteaucitron.reloadThePage === true) {
+                            window.location.reload();
+                        }
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronCloseAlert", function () {
                         tarteaucitron.userInterface.openPanel();
@@ -1139,10 +1142,6 @@ var tarteaucitron = {
             //end ie compatibility
 
             window.dispatchEvent(tacCloseAlertEvent);
-
-            if (tarteaucitron.reloadThePage === true) {
-                window.location.reload();
-            }
         },
         "toggleCookiesList": function () {
             "use strict";
