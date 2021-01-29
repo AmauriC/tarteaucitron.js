@@ -962,7 +962,7 @@ tarteaucitron.services.stripe = {
     "type": "api",
     "name": "Stripe",
     "uri": "https://stripe.com/cookies-policy/legal",
-    "needConsent": false,
+    "needConsent": true,
     "cookies": [],
     "js": function () {
         "use strict";
