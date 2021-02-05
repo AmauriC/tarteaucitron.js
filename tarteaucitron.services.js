@@ -775,7 +775,7 @@ tarteaucitron.services.leadforensics = {
         window.sf14gv = tarteaucitron.user.leadforensicsSf14gv;
 
         (function() {
-            var sf14g = document.createElement('script'); sf14g.type = 'text/javascript'; sf14g.async = true;
+            var sf14g = document.createElement('script'); sf14g.async = true;
             sf14g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 't.sf14g.com/sf14g.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sf14g, s);
         })();
