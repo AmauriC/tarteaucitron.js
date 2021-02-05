@@ -1586,7 +1586,6 @@ var tarteaucitron = {
             }
         } else {
             script = document.createElement('script');
-            script.type = 'text/javascript';
             script.id = (id !== undefined) ? id : '';
             script.async = true;
             script.src = url;
