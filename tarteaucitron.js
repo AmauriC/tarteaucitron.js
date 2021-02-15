@@ -585,7 +585,7 @@ var tarteaucitron = {
                     span.style.cssText = 'position:absolute; color: #FFFF; font-size:2rem; cursor: pointer; top: 10px; right: 26px';
                     span.setAttribute('id', "clossCross")
                     element.insertBefore(span, element.firstElementChild)
-                    document.getElementById("clossCross").onclick = () =>{
+                    document.getElementById("clossCross").onclick = function () {
                         tarteaucitron.userInterface.closeAlert();
                     }
                 }
