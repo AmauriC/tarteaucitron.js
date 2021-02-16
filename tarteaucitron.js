@@ -864,7 +864,7 @@ var tarteaucitron = {
                 document.getElementById(id).classList.remove(className);
             }
         },
-        "respondAll": function (status) {
+        "respondAll": function (status, type) {
             "use strict";
             var s = tarteaucitron.services,
                 service,
@@ -872,6 +872,11 @@ var tarteaucitron = {
                 index = 0;
 
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
+                
+                if (typeof type !== 'undefined' && s[tarteaucitron.job[index]].type !== type) {
+                    continue;
+                }
+                
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
                 if (tarteaucitron.state[key] !== status) {
