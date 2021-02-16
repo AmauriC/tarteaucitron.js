@@ -3471,3 +3471,16 @@ tarteaucitron.services.woopra = {
     }
 };
 
+// Appvizer
+tarteaucitron.services.appvizer = {
+	"key": "appvizer",
+	"type": "analytic",
+	"name": "Appvizer",
+	"needConsent": true,
+	"cookies": ['AP-VIEW', 'AP-CLICK', 'AV', 'JSESSIONID', 'browserid', 'uniqueid', 'sessionid'],
+	"js": function() {
+		"use strict";
+    (function (w, d, id) { if(w.av) { return; } var ts = new Date().getTime(); w.avURL = w.avURL || 'https://appvizer.one'; w.avPool = w.avPool || []; w.avPool.push({start: ts, id: id}); w.av = function () { w.avPool.push(arguments) }; var e = document.createElement("script"); e.async = true; e.src = w.avURL + '/ariadne/v1/ariadne.js?ts=' + ts; d.getElementsByTagName("head")[0].appendChild(e); })(window, document); av("visit", {id: "'" + tarteaucitron.user.appvizerId + "'"});
+  }
+};
+
