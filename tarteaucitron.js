@@ -582,12 +582,8 @@ var tarteaucitron = {
                     let element = document.getElementById('tarteaucitronAlertBig');
                     let span = document.createElement('span')
                     span.textContent = 'X';
-                    span.style.cssText = 'position:absolute; color: #FFFF; font-size:2rem; cursor: pointer; top: 10px; right: 26px';
-                    span.setAttribute('id', "clossCross")
+                    span.setAttribute('id', "tarteaucitronCloseCross")
                     element.insertBefore(span, element.firstElementChild)
-                    document.getElementById("clossCross").onclick = () =>{
-                        tarteaucitron.userInterface.closeAlert();
-                    }
                 }
 
 
@@ -596,6 +592,9 @@ var tarteaucitron = {
                 setTimeout(function () {
                     
                     // Setup events
+                    tarteaucitron.addClickEventToId("tarteaucitronCloseCross", function () {
+                        tarteaucitron.userInterface.closeAlert();
+                    });
                     tarteaucitron.addClickEventToId("tarteaucitronPersonalize", function () {
                         tarteaucitron.userInterface.openPanel();
                     });
@@ -872,11 +871,11 @@ var tarteaucitron = {
                 index = 0;
 
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
-                
+
                 if (typeof type !== 'undefined' && s[tarteaucitron.job[index]].type !== type) {
                     continue;
                 }
-                
+
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
                 if (tarteaucitron.state[key] !== status) {
