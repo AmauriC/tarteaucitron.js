@@ -997,7 +997,7 @@ tarteaucitron.services.stonly = {
 };
 
 // stripe
-tarteaucitron.services.stripe = {
+/*tarteaucitron.services.stripe = {
     "key": "stripe",
     "type": "api",
     "name": "Stripe",
@@ -1008,7 +1008,7 @@ tarteaucitron.services.stripe = {
         "use strict";
         tarteaucitron.addScript('https://js.stripe.com/v3/');
     }
-};
+};*/
 
 // ferank pub
 tarteaucitron.services.ferankpub = {
