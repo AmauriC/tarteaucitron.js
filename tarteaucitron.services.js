@@ -637,6 +637,41 @@ tarteaucitron.services.criteo = {
     }
 };
 
+// artetv
+tarteaucitron.services.artetv = {
+    "key": "artetv",
+    "type": "video",
+    "name": "Arte.tv",
+    "uri": "https://www.arte.tv/sites/fr/corporate/donnees-personnelles/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['artetv_player'], function (x) {
+            var video_json = x.getAttribute("json"),
+                video_width = x.getAttribute("width"),
+                video_height = x.getAttribute("height"),
+                video_frame;
+
+            if (video_json === undefined) {
+                return "";
+            }
+
+            video_frame = '<iframe style="transition-duration: 0; transition-property: no; margin: 0 auto; position: relative; display: block; background-color: #000000;" src="https://www.arte.tv/player/v5/index.php?json_url=' + video_json + '" width="' + video_width + '" height="' + video_height + '" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>';
+            return video_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'artetv';
+        tarteaucitron.fallback(['artetv_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // dailymotion
 tarteaucitron.services.dailymotion = {
     "key": "dailymotion",
