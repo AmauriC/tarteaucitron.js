@@ -2729,13 +2729,13 @@ tarteaucitron.services.youtube = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_player'], function (x) {
-            var video_id = x.getAttribute("videoID"),
-                video_width = x.getAttribute("width"),
+            var video_id = x.getAttribute("data-videoID"),
+                video_width = x.getAttribute("data-width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = x.getAttribute("data-height"),
                 frame_height = 'height=',
                 video_frame,
-                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay") + '&mute=' + x.getAttribute("mute");
+                params = 'theme=' + x.getAttribute("data-theme") + '&rel=' + x.getAttribute("data-rel") + '&controls=' + x.getAttribute("data-controls") + '&showinfo=' + x.getAttribute("data-showinfo") + '&autoplay=' + x.getAttribute("data-autoplay") + '&mute=' + x.getAttribute("data-mute");
 
             if (video_id === undefined) {
                 return "";
@@ -2758,8 +2758,8 @@ tarteaucitron.services.youtube = {
         "use strict";
         var id = 'youtube';
         tarteaucitron.fallback(['youtube_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = elem.getAttribute('data-width') + 'px';
+            elem.style.height = elem.getAttribute('data-height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2776,13 +2776,13 @@ tarteaucitron.services.youtubeplaylist = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_playlist_player'], function (x) {
-            var playlist_id = x.getAttribute("playlistID"),
-                video_width = x.getAttribute("width"),
+            var playlist_id = x.getAttribute("data-playlistID"),
+                video_width = x.getAttribute("data-width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = x.getAttribute("data-height"),
                 frame_height = 'height=',
                 video_frame,
-                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay") + '&mute=' + x.getAttribute("mute");
+                params = 'theme=' + x.getAttribute("data-theme") + '&rel=' + x.getAttribute("data-rel") + '&controls=' + x.getAttribute("data-controls") + '&showinfo=' + x.getAttribute("data-showinfo") + '&autoplay=' + x.getAttribute("data-autoplay") + '&mute=' + x.getAttribute("data-mute");
 
             if (playlist_id === undefined) {
                 return "";
@@ -2805,8 +2805,8 @@ tarteaucitron.services.youtubeplaylist = {
         "use strict";
         var id = 'youtubeplaylist';
         tarteaucitron.fallback(['youtube_playlist_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = elem.getAttribute('data-width') + 'px';
+            elem.style.height = elem.getAttribute('data-height') + 'px';
             return tarteaucitron.engage(id);
         });
     }

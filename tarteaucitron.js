@@ -330,7 +330,7 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.mandatory == true) {
                    html += '<li id="tarteaucitronServicesTitle_mandatory">';
                    html += '<div class="tarteaucitronTitle">';
-                   html += '   <button type="button" tabindex="-1">&nbsp; ' + tarteaucitron.lang.mandatoryTitle + '</button>';
+                   html += '   <button type="button" tabindex="-1" disabled="disabled">&nbsp; ' + tarteaucitron.lang.mandatoryTitle + '</button>';
                    html += '</div>';
                    html += '<ul id="tarteaucitronServices_mandatory">';
                    html += '<li class="tarteaucitronLine">';
