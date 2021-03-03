@@ -92,7 +92,7 @@ tarteaucitron.services.podcloud = {
 tarteaucitron.services.facebookpost = {
     "key": "facebookpost",
     "type": "social",
-    "name": "Facebook Post",
+    "name": "Facebook (post)",
     "uri": "https://www.facebook.com/help/325807937506242",
     "needConsent": true,
     "cookies": [],
