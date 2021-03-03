@@ -1,9 +1,9 @@
-.modal-open{
+.tarteaucitron-modal-open{
     overflow: hidden;
     height: 100%;
 }
 
-#contentWrapper {display:unset;}
+#tarteaucitronContentWrapper {display:unset;}
 
 /***
 * Reset CSS
@@ -869,15 +869,15 @@ span.tarteaucitronTitle.tarteaucitronH3 {
     margin-top: 12px!important;
 }
 
-.spacer-20 {
+.tarteaucitron-spacer-20 {
     height: 20px;
     display: block;
 }
 
-.display-block {
+.tarteaucitron-display-block {
     display: block;
 }
 
-.display-none {
+.tarteaucitron-display-none {
     display: none;
 }
