@@ -30,6 +30,94 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// helloasso
+tarteaucitron.services.helloasso = {
+    "key": "helloasso",
+    "type": "api",
+    "name": "HelloAsso",
+    "uri": "https://www.helloasso.com/confidentialite",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_helloasso'], function (x) {
+            var width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = x.getAttribute("data-url");
+
+            return '<iframe id="haWidget" src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'helloasso';
+        tarteaucitron.fallback(['tac_helloasso'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// podcloud
+tarteaucitron.services.podcloud = {
+    "key": "podcloud",
+    "type": "video",
+    "name": "podCloud",
+    "uri": "https://podcloud.fr/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_podcloud'], function (x) {
+            var width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = x.getAttribute("data-url");
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'podcloud';
+        tarteaucitron.fallback(['tac_podcloud'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// facebookpost
+tarteaucitron.services.facebookpost = {
+    "key": "facebookpost",
+    "type": "social",
+    "name": "Facebook (post)",
+    "uri": "https://www.facebook.com/help/325807937506242",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_facebookpost'], function (x) {
+            var width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = x.getAttribute("data-url"),
+                appId = x.getAttribute("data-appid");
+
+            return '<iframe src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'facebookpost';
+        tarteaucitron.fallback(['tac_facebookpost'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // amplitude
 tarteaucitron.services.amplitude = {
     "key": "amplitude",
@@ -523,6 +611,23 @@ tarteaucitron.services.clicmanager = {
     }
 };
 
+// compteur
+tarteaucitron.services.compteur = {
+    "key": "compteur",
+    "type": "analytic",
+    "name": "Compteur.fr",
+    "uri": "https://www.compteur.fr/help_privacy_policy.htm",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.compteurID === undefined) {
+            return;
+        }
+        tarteaucitron.addScript('https://server2.compteur.fr/log7.js', '', function() {wtslog7(tarteaucitron.user.compteurID,1);});
+    }
+};
+
 // contentsquare
 tarteaucitron.services.contentsquare = {
     "key": "contentsquare",
@@ -617,6 +722,41 @@ tarteaucitron.services.criteo = {
         "use strict";
         var id = 'criteo';
         tarteaucitron.fallback(['criteo-canvas'], tarteaucitron.engage(id));
+    }
+};
+
+// artetv
+tarteaucitron.services.artetv = {
+    "key": "artetv",
+    "type": "video",
+    "name": "Arte.tv",
+    "uri": "https://www.arte.tv/sites/fr/corporate/donnees-personnelles/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['artetv_player'], function (x) {
+            var video_json = x.getAttribute("json"),
+                video_width = x.getAttribute("width"),
+                video_height = x.getAttribute("height"),
+                video_frame;
+
+            if (video_json === undefined) {
+                return "";
+            }
+
+            video_frame = '<iframe style="transition-duration: 0; transition-property: no; margin: 0 auto; position: relative; display: block; background-color: #000000;" src="https://www.arte.tv/player/v5/index.php?json_url=' + video_json + '" width="' + video_width + '" height="' + video_height + '" frameborder="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>';
+            return video_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'artetv';
+        tarteaucitron.fallback(['artetv_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -775,7 +915,7 @@ tarteaucitron.services.leadforensics = {
         window.sf14gv = tarteaucitron.user.leadforensicsSf14gv;
 
         (function() {
-            var sf14g = document.createElement('script'); sf14g.type = 'text/javascript'; sf14g.async = true;
+            var sf14g = document.createElement('script'); sf14g.async = true;
             sf14g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 't.sf14g.com/sf14g.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sf14g, s);
         })();
@@ -941,6 +1081,27 @@ tarteaucitron.services.ferank = {
     }
 };
 
+// pingdom
+tarteaucitron.services.pingdom = {
+    "key": "pingdom",
+    "type": "api",
+    "name": "Pingdom",
+    "uri": "https://www.solarwinds.com/general-data-protection-regulation-cloud",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.pingdomId === undefined) {
+            return;
+        }
+
+        window._prum = [['id', tarteaucitron.user.pingdomId], ['mark', 'firstbyte', (new Date()).getTime()]];
+
+        tarteaucitron.addScript('https://rum-static.pingdom.net/prum.min.js');
+    }
+};
+
 
 // simpleanalytics
 tarteaucitron.services.simpleanalytics = {
@@ -956,8 +1117,31 @@ tarteaucitron.services.simpleanalytics = {
     }
 };
 
+// stonly
+tarteaucitron.services.stonly = {
+    "key": "stonly",
+    "type": "api",
+    "name": "Stonly",
+    "uri": "https://stonly.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.stonlyId === undefined) {
+            return;
+        }
+
+        window.STONLY_WID = tarteaucitron.user.stonlyId;
+        window.StonlyWidget || ((window.w = window.StonlyWidget = function() {
+           window.w._api ? window.w._api.apply(window.w, arguments) : window.w.queue.push(arguments)
+        }).queue = []);
+        
+        tarteaucitron.addScript('https://stonly.com/js/widget/v2/stonly-widget.js?v=' + Date.now());
+    }
+};
+
 // stripe
-tarteaucitron.services.stripe = {
+/*tarteaucitron.services.stripe = {
     "key": "stripe",
     "type": "api",
     "name": "Stripe",
@@ -968,7 +1152,7 @@ tarteaucitron.services.stripe = {
         "use strict";
         tarteaucitron.addScript('https://js.stripe.com/v3/');
     }
-};
+};*/
 
 // ferank pub
 tarteaucitron.services.ferankpub = {
@@ -1634,6 +1818,31 @@ tarteaucitron.services.microsoftcampaignanalytics = {
             window.mstag = {loadTag : function () {}, time : (new Date()).getTime()};
             window.mstag.loadTag("analytics", {dedup: "1", domainId: tarteaucitron.user.microsoftcampaignanalyticsdomainId, type: "1", actionid: tarteaucitron.user.microsoftcampaignanalyticsactionId});
         });
+    }
+};
+
+// onesignal
+tarteaucitron.services.onesignal = {
+    "key": "onesignal",
+    "type": "api",
+    "name": "OneSignal",
+    "uri": "https://onesignal.com/privacy_policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.onesignalAppId === undefined) {
+            return;
+        }
+        window.OneSignal = window.OneSignal || [];
+
+        window.OneSignal.push(function() {
+           window.OneSignal.init({
+              appId: tarteaucitron.user.onesignalAppId,
+           });
+        });
+
+        tarteaucitron.addScript('https://cdn.onesignal.com/sdks/OneSignalSDK.js');
     }
 };
 
@@ -2575,6 +2784,7 @@ tarteaucitron.services.atinternet = {
     "name": "AT Internet (privacy by design)",
     "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": false,
+    "safeanalytic": true,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
         "use strict";
@@ -2584,12 +2794,106 @@ tarteaucitron.services.atinternet = {
 
         tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
 
-            var tag = new ATInternet.Tracker.Tag();
+            window.tag = new ATInternet.Tracker.Tag();
 
             if (typeof tarteaucitron.user.atMore === 'function') {
                 tarteaucitron.user.atMore();
             }
-        })
+
+            if (typeof window.tag.privacy !== 'undefined') {
+
+                document.getElementById('atinternetLine').style.display = 'none';
+
+                if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
+                     window.tag.privacy.setVisitorMode('cnil', 'exempt');
+                }
+
+                tarteaucitron.addClickEventToElement(document.getElementById('atinternetDenied'), function () {
+                    tarteaucitron.launch['atinternetoptout'] = false;
+                    tarteaucitron.launch['atinternetoptin'] = false;
+                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
+                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
+                });
+
+                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptoutDenied'), function () {
+                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
+                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
+                     }
+                });
+
+                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptinDenied'), function () {
+                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
+                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
+                     }
+                });
+            }
+
+            setTimeout(function() {
+                tag.page.send();
+            }, 70);
+        });
+    }
+};
+
+// AT Internet (optin)
+tarteaucitron.services.atinternetoptin = {
+    "key": "atinternetoptin",
+    "type": "analytic",
+    "name": "AT Internet",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
+    "needConsent": true,
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.launch['atinternetoptout'] = false;
+        
+        setTimeout(function() {
+            tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
+            tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
+        }, 50);
+
+        setTimeout(function() {
+            if (typeof window.tag.privacy !== 'undefined') {
+               window.tag.privacy.setVisitorOptin();
+            }
+        }, 60);
+
+        window.tarteaucitronHackNoSwitch = true;
+        setTimeout(function() {window.tarteaucitronHackNoSwitch = false;}, 200);
+    }
+};
+
+// AT Internet (optout)
+tarteaucitron.services.atinternetoptout = {
+    "key": "atinternetoptout",
+    "type": "analytic",
+    "name": "AT Internet [minimal]",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
+    "needConsent": true,
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "js": function () {
+        "use strict";
+
+        // hack accept all
+        if (window.tarteaucitronHackNoSwitch) {
+            setTimeout(function() {
+                tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
+            }, 60);
+            return;
+        }
+
+        tarteaucitron.launch['atinternetoptin'] = false;
+
+        setTimeout(function() {
+             tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
+             tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
+        }, 50);
+
+        setTimeout(function() {
+            if (typeof window.tag.privacy !== 'undefined') {
+               window.tag.privacy.setVisitorOptout();
+            }
+        }, 60);
     }
 };
 
@@ -3405,4 +3709,3 @@ tarteaucitron.services.woopra = {
 		woopra.track();
     }
 };
-

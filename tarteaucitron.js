@@ -582,12 +582,8 @@ var tarteaucitron = {
                     let element = document.getElementById('tarteaucitronAlertBig');
                     let span = document.createElement('span')
                     span.textContent = 'X';
-                    span.style.cssText = 'position:absolute; color: #FFFF; font-size:2rem; cursor: pointer; top: 10px; right: 26px';
-                    span.setAttribute('id', "clossCross")
+                    span.setAttribute('id', "tarteaucitronCloseCross")
                     element.insertBefore(span, element.firstElementChild)
-                    document.getElementById("clossCross").onclick = () =>{
-                        tarteaucitron.userInterface.closeAlert();
-                    }
                 }
 
 
@@ -596,6 +592,9 @@ var tarteaucitron = {
                 setTimeout(function () {
                     
                     // Setup events
+                    tarteaucitron.addClickEventToId("tarteaucitronCloseCross", function () {
+                        tarteaucitron.userInterface.closeAlert();
+                    });
                     tarteaucitron.addClickEventToId("tarteaucitronPersonalize", function () {
                         tarteaucitron.userInterface.openPanel();
                     });
@@ -627,10 +626,10 @@ var tarteaucitron = {
                         tarteaucitron.userInterface.respondAll(true);
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronAllDenied", function () {
-                        tarteaucitron.userInterface.respondAll(false);
+                        tarteaucitron.userInterface.respondAll(false, '', true);
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronAllDenied2", function () {
-                        tarteaucitron.userInterface.respondAll(false);
+                        tarteaucitron.userInterface.respondAll(false, '', true);
                         if (tarteaucitron.reloadThePage === true) {
                             window.location.reload();
                         }
@@ -864,7 +863,7 @@ var tarteaucitron = {
                 document.getElementById(id).classList.remove(className);
             }
         },
-        "respondAll": function (status) {
+        "respondAll": function (status, type, allowSafeAnalytics) {
             "use strict";
             var s = tarteaucitron.services,
                 service,
@@ -872,6 +871,15 @@ var tarteaucitron = {
                 index = 0;
 
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
+
+                if (typeof type !== 'undefined' && type !== '' && s[tarteaucitron.job[index]].type !== type) {
+                    continue;
+                }
+
+                if (allowSafeAnalytics && typeof s[tarteaucitron.job[index]].safeanalytic !== "undefined" && s[tarteaucitron.job[index]].safeanalytic === true) {
+                    continue;
+                }
+
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
                 if (tarteaucitron.state[key] !== status) {
@@ -932,7 +940,8 @@ var tarteaucitron = {
                 nbPending = 0,
                 nbAllowed = 0,
                 sum = tarteaucitron.job.length,
-                index;
+                index,
+                s = tarteaucitron.services;
 
             if (status === true) {
                 document.getElementById(key + 'Line').classList.add('tarteaucitronIsAllowed');
@@ -944,6 +953,12 @@ var tarteaucitron = {
 
             // check if all services are allowed
             for (index = 0; index < sum; index += 1) {
+
+                if (typeof s[tarteaucitron.job[index]].safeanalytic !== "undefined" && s[tarteaucitron.job[index]].safeanalytic === true) {
+                    sum -= 1;
+                    continue;
+                }
+
                 if (tarteaucitron.state[tarteaucitron.job[index]] === false) {
                     nbDenied += 1;
                 } else if (tarteaucitron.state[tarteaucitron.job[index]] === undefined) {
@@ -1605,7 +1620,6 @@ var tarteaucitron = {
             }
         } else {
             script = document.createElement('script');
-            script.type = 'text/javascript';
             script.id = (id !== undefined) ? id : '';
             script.async = true;
             script.src = url;

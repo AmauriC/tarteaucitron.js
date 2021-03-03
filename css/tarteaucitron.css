@@ -869,6 +869,15 @@ span.tarteaucitronTitle.tarteaucitronH3 {
     margin-top: 12px!important;
 }
 
+#tarteaucitronCloseCross {
+    position:absolute;
+    color: #FFFF;
+    font-size:1.8rem;
+    cursor: pointer;
+    top: 10px;
+    right: 26px
+}
+
 .tarteaucitron-spacer-20 {
     height: 20px;
     display: block;
