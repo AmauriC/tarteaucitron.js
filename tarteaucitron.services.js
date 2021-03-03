@@ -2675,6 +2675,7 @@ tarteaucitron.services.atinternet = {
     "name": "AT Internet (privacy by design)",
     "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": false,
+    "safeanalytic": true,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
         "use strict";
@@ -2684,12 +2685,106 @@ tarteaucitron.services.atinternet = {
 
         tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
 
-            var tag = new ATInternet.Tracker.Tag();
+            window.tag = new ATInternet.Tracker.Tag();
 
             if (typeof tarteaucitron.user.atMore === 'function') {
                 tarteaucitron.user.atMore();
             }
-        })
+
+            if (typeof window.tag.privacy !== 'undefined') {
+
+                document.getElementById('atinternetLine').style.display = 'none';
+
+                if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
+                     window.tag.privacy.setVisitorMode('cnil', 'exempt');
+                }
+
+                tarteaucitron.addClickEventToElement(document.getElementById('atinternetDenied'), function () {
+                    tarteaucitron.launch['atinternetoptout'] = false;
+                    tarteaucitron.launch['atinternetoptin'] = false;
+                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
+                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
+                });
+
+                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptoutDenied'), function () {
+                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
+                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
+                     }
+                });
+
+                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptinDenied'), function () {
+                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
+                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
+                     }
+                });
+            }
+
+            setTimeout(function() {
+                tag.page.send();
+            }, 70);
+        });
+    }
+};
+
+// AT Internet (optin)
+tarteaucitron.services.atinternetoptin = {
+    "key": "atinternetoptin",
+    "type": "analytic",
+    "name": "AT Internet",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
+    "needConsent": true,
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.launch['atinternetoptout'] = false;
+        
+        setTimeout(function() {
+            tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
+            tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
+        }, 50);
+
+        setTimeout(function() {
+            if (typeof window.tag.privacy !== 'undefined') {
+               window.tag.privacy.setVisitorOptin();
+            }
+        }, 60);
+
+        window.tarteaucitronHackNoSwitch = true;
+        setTimeout(function() {window.tarteaucitronHackNoSwitch = false;}, 200);
+    }
+};
+
+// AT Internet (optout)
+tarteaucitron.services.atinternetoptout = {
+    "key": "atinternetoptout",
+    "type": "analytic",
+    "name": "AT Internet [minimal]",
+    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
+    "needConsent": true,
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "js": function () {
+        "use strict";
+
+        // hack accept all
+        if (window.tarteaucitronHackNoSwitch) {
+            setTimeout(function() {
+                tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
+            }, 60);
+            return;
+        }
+
+        tarteaucitron.launch['atinternetoptin'] = false;
+
+        setTimeout(function() {
+             tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
+             tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
+        }, 50);
+
+        setTimeout(function() {
+            if (typeof window.tag.privacy !== 'undefined') {
+               window.tag.privacy.setVisitorOptout();
+            }
+        }, 60);
     }
 };
 
@@ -3505,4 +3600,3 @@ tarteaucitron.services.woopra = {
 		woopra.track();
     }
 };
-

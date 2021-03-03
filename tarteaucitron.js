@@ -626,10 +626,10 @@ var tarteaucitron = {
                         tarteaucitron.userInterface.respondAll(true);
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronAllDenied", function () {
-                        tarteaucitron.userInterface.respondAll(false);
+                        tarteaucitron.userInterface.respondAll(false, '', true);
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronAllDenied2", function () {
-                        tarteaucitron.userInterface.respondAll(false);
+                        tarteaucitron.userInterface.respondAll(false, '', true);
                         if (tarteaucitron.reloadThePage === true) {
                             window.location.reload();
                         }
@@ -863,7 +863,7 @@ var tarteaucitron = {
                 document.getElementById(id).classList.remove(className);
             }
         },
-        "respondAll": function (status, type) {
+        "respondAll": function (status, type, allowSafeAnalytics) {
             "use strict";
             var s = tarteaucitron.services,
                 service,
@@ -872,7 +872,11 @@ var tarteaucitron = {
 
             for (index = 0; index < tarteaucitron.job.length; index += 1) {
 
-                if (typeof type !== 'undefined' && s[tarteaucitron.job[index]].type !== type) {
+                if (typeof type !== 'undefined' && type !== '' && s[tarteaucitron.job[index]].type !== type) {
+                    continue;
+                }
+
+                if (allowSafeAnalytics && typeof s[tarteaucitron.job[index]].safeanalytic !== "undefined" && s[tarteaucitron.job[index]].safeanalytic === true) {
                     continue;
                 }
 
@@ -936,7 +940,8 @@ var tarteaucitron = {
                 nbPending = 0,
                 nbAllowed = 0,
                 sum = tarteaucitron.job.length,
-                index;
+                index,
+                s = tarteaucitron.services;
 
             if (status === true) {
                 document.getElementById(key + 'Line').classList.add('tarteaucitronIsAllowed');
@@ -948,6 +953,12 @@ var tarteaucitron = {
 
             // check if all services are allowed
             for (index = 0; index < sum; index += 1) {
+
+                if (typeof s[tarteaucitron.job[index]].safeanalytic !== "undefined" && s[tarteaucitron.job[index]].safeanalytic === true) {
+                    sum -= 1;
+                    continue;
+                }
+
                 if (tarteaucitron.state[tarteaucitron.job[index]] === false) {
                     nbDenied += 1;
                 } else if (tarteaucitron.state[tarteaucitron.job[index]] === undefined) {
