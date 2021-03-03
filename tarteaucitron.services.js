@@ -88,6 +88,36 @@ tarteaucitron.services.podcloud = {
     }
 };
 
+// facebookpost
+tarteaucitron.services.facebookpost = {
+    "key": "facebookpost",
+    "type": "social",
+    "name": "Facebook Post",
+    "uri": "https://www.facebook.com/help/325807937506242",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_facebookpost'], function (x) {
+            var width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = x.getAttribute("data-url"),
+                appId = x.getAttribute("data-appid");
+
+            return '<iframe src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'facebookpost';
+        tarteaucitron.fallback(['tac_facebookpost'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // amplitude
 tarteaucitron.services.amplitude = {
     "key": "amplitude",
