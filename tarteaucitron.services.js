@@ -1583,6 +1583,52 @@ tarteaucitron.services.hubspot = {
     }
 };
 
+// instagram
+tarteaucitron.services.instagram = {
+    "key": "instagram",
+    "type": "social",
+    "name": "Instagram",
+    "uri": "https://www.instagram.com/legal/privacy/",
+    "needConsent": true,
+    "cookies": ['shbts', 'sessionid', 'csrftoken', 'rur', 'shbid', 'mid', 'ds_usr_id', 'ig_did', 'ig_cb', 'datr'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['instagram_post'], function (x) {
+            var post_id = x.getAttribute("postId"),
+                embed_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                embed_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                post_frame;
+
+            if (post_id === undefined) {
+                return "";
+            }
+            if (embed_width !== undefined) {
+                frame_width += '"' + embed_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (embed_height !== undefined) {
+                frame_height +=  '"' + embed_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            post_frame = '<iframe src="//www.instagram.com/' + post_id + '/embed" ' + frame_width + frame_height + ' frameborder="0"></iframe>';
+            return post_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'instagram';
+        tarteaucitron.fallback(['instagram_post'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // jsapi
 tarteaucitron.services.jsapi = {
     "key": "jsapi",
