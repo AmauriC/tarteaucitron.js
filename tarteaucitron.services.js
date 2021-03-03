@@ -59,6 +59,35 @@ tarteaucitron.services.helloasso = {
     }
 };
 
+// podcloud
+tarteaucitron.services.podcloud = {
+    "key": "podcloud",
+    "type": "video",
+    "name": "podCloud",
+    "uri": "https://podcloud.fr/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_podcloud'], function (x) {
+            var width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = x.getAttribute("data-url");
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'podcloud';
+        tarteaucitron.fallback(['tac_podcloud'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // amplitude
 tarteaucitron.services.amplitude = {
     "key": "amplitude",
