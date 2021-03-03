@@ -30,6 +30,35 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// helloasso
+tarteaucitron.services.helloasso = {
+    "key": "helloasso",
+    "type": "api",
+    "name": "HelloAsso",
+    "uri": "https://www.helloasso.com/confidentialite",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_helloasso'], function (x) {
+            var width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                url = x.getAttribute("data-url");
+
+            return '<iframe id="haWidget" src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'helloasso';
+        tarteaucitron.fallback(['tac_helloasso'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // amplitude
 tarteaucitron.services.amplitude = {
     "key": "amplitude",
