@@ -1819,5 +1819,14 @@ var tarteaucitron = {
                 e.attachEvent("onclick", func);
             }
         }
+    },
+    "triggerJobsAfterAjaxCall": function() {
+        tarteaucitron.job.forEach(function(e) { tarteaucitron.job.push(e) });
+        var allowBtns = document.getElementsByClassName("tarteaucitronAllow");
+        for (i = 0; i < allowBtns.length; i++) {
+            tarteaucitron.addClickEventToElement(allowBtns[i], function () {
+                tarteaucitron.userInterface.respond(this, true);
+            });
+        }
     }
 };
