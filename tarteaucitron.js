@@ -254,7 +254,7 @@ var tarteaucitron = {
         if ( !tarteaucitron.parameters.useExternalCss ) {
             linkElement.rel = 'stylesheet';
             linkElement.type = 'text/css';
-            linkElement.href = cdn + 'css/tarteaucitron.css?v=' + tarteaucitron.version;
+            linkElement.href = cdn + 'css/tarteaucitron' + (useJSDelivrMinifiedJS ? '.min' : '') + '.css?v=' + tarteaucitron.version;
             document.getElementsByTagName('head')[0].appendChild(linkElement);
         }
         // Step 2: load language and services
@@ -471,7 +471,7 @@ var tarteaucitron = {
                     html += '</div>';
                 }
 
-                tarteaucitron.addInternalScript(tarteaucitron.cdn + 'advertising.js?v=' + tarteaucitron.version, '', function () {
+                tarteaucitron.addInternalScript(tarteaucitron.cdn + 'advertising' + (useJSDelivrMinifiedJS ? '.min' : '') + '.js?v=' + tarteaucitron.version, '', function () {
                     if (tarteaucitronNoAdBlocker === true || tarteaucitron.parameters.adblocker === false) {
 
                         // create a wrapper container at the same level than tarteaucitron so we can add an aria-hidden when tarteaucitron is opened
