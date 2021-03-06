@@ -2214,7 +2214,8 @@ tarteaucitron.services.soundcloud = {
                 showUser      = x.getAttribute('data-show-user'),
                 showReposts   = x.getAttribute('data-show-reposts'),
                 showTeaser    = x.getAttribute('data-show-teaser'),
-                visual        = x.getAttribute('data-visual');
+                visual        = x.getAttribute('data-visual'),
+                artwork       = x.getAttribute('data-artwork');
 
             var allowAutoplay = autoplay === 'true' ? 'allow="autoplay"' : '';
 
@@ -2223,15 +2224,16 @@ tarteaucitron.services.soundcloud = {
             }
 
             var qs = '?url=https%3A//api.soundcloud.com/' + playable_type + '/' + playable_id;
-            if (hideRelated.length > 0)  qs += '&hide_related=' + hideRelated;
-            if (color.length > 0)        qs += '&color=' + color.replace('#', '%23');
-            if (autoplay.length > 0)     qs += '&auto_play=' + autoplay;
-            if (showComments.length > 0) qs += '&show_comments=' + showComments;
-            if (hideRelated.length > 0)  qs += '&hide_related=' + hideRelated;
-            if (showUser.length > 0)     qs += '&show_user=' + showUser;
-            if (showReposts.length > 0)  qs += '&show_reposts=' + showReposts;
-            if (showTeaser.length > 0)   qs += '&show_teaser=' + showTeaser;
-            if (visual.length > 0)       qs += '&visual=' + visual;
+            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
+            if (color && color.length > 0)                  qs += '&color=' + color.replace('#', '%23');
+            if (autoplay && autoplay.length > 0)            qs += '&auto_play=' + autoplay;
+            if (showComments && showComments.length > 0)    qs += '&show_comments=' + showComments;
+            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
+            if (showUser && showUser.length > 0)            qs += '&show_user=' + showUser;
+            if (showReposts && showReposts.length > 0)      qs += '&show_reposts=' + showReposts;
+            if (showTeaser && showTeaser.length > 0)        qs += '&show_teaser=' + showTeaser;
+            if (visual && visual.length > 0)                qs += '&visual=' + visual;
+            if (artwork && artwork.length > 0)              qs += '&show_artwork=' + artwork;
 
             return '<iframe width="100%" ' + frame_height + ' scrolling="no" frameborder="no" ' + allowAutoplay + ' src="https://w.soundcloud.com/player/' + qs + '"></iframe>';
         });
