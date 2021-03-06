@@ -87,6 +87,5 @@ tarteaucitron.services.mycustomservice = {
 
 ## Thanks to the sponsors 😊
 
-| 🍋 Lemon | [🍰 Slice of pie](https://tarteaucitron.io/) | [🥧 Lemon pie](https://tarteaucitron.io/)<br/>[![sample](https://tarteaucitron.io/img/logo.png)](https://tarteaucitron.io/)| **[🧁 Lemon meringue pie](https://tarteaucitron.io/)<br/>[![sample](https://tarteaucitron.io/img/logo.png)](https://tarteaucitron.io/)** 
-|:---:|:---:|:---:|:---:|
-| **[🌳 Lemon tree](https://tarteaucitron.io/)<br/>[![sample](https://tarteaucitron.io/img/logo.png)](https://tarteaucitron.io/)** | **[🌳🍋🌳 Lemon tree forest](https://tarteaucitron.io/)<br/>[![sample](https://tarteaucitron.io/img/logo.png)](https://tarteaucitron.io/)** |
+| Be the first sponsor! |
+|:---:|
