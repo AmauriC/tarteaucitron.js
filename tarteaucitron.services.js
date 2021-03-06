@@ -2247,6 +2247,52 @@ tarteaucitron.services.soundcloud = {
     }
 };
 
+// spotify
+tarteaucitron.services.spotify = {
+    "key": "spotify",
+    "type": "video",
+    "name": "Spotify",
+    "uri": "https://www.spotify.com/us/legal/privacy-policy/",
+    "needConsent": true,
+    "cookies": ['sp_landing', '_ga', 'sp_ab', 'sp_landingref', 'sp_t', 'sp_usid', 'OptanonConsent', 'sp_m', 'spot'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['spotify_player'], function (x) {
+            var spotify_id = x.getAttribute("spotifyID"),
+                spotify_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                spotify_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                spotify_frame;
+
+            if (spotify_id === undefined) {
+                return "";
+            }
+            if (spotify_width !== undefined) {
+                frame_width += '"' + spotify_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (spotify_height !== undefined) {
+                frame_height +=  '"' + spotify_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            spotify_frame = '<iframe src="//open.spotify.com/embed/' + spotify_id + '" ' + frame_width + frame_height + ' frameborder="0" allowfullscreen></iframe>';
+            return spotify_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'spotify';
+        tarteaucitron.fallback(['spotify_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // statcounter
 tarteaucitron.services.statcounter = {
     "key": "statcounter",
