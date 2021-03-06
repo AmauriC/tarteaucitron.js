@@ -933,6 +933,70 @@ tarteaucitron.services.datingaffiliationpopup = {
     }
 };
 
+// deezer
+tarteaucitron.services.deezer = {
+    "key": "deezer",
+    "type": "video",
+    "name": "Deezer",
+    "uri": "https://www.deezer.com/legal/personal-datas",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['deezer_player'], function (x) {
+            var deezer_id = x.getAttribute("deezerID"),
+                deezer_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                deezer_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                deezer_frame,
+                embed_theme = x.getAttribute("theme"),
+                embed_type = x.getAttribute("embedType"),
+                radius = x.getAttribute("radius"),
+                tracklist = x.getAttribute("tracklist"),
+                params;
+
+            if (deezer_id === undefined) {
+                return "";
+            }
+            if (deezer_width !== undefined) {
+                frame_width += '"' + deezer_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (deezer_height !== undefined) {
+                frame_height +=  '"' + deezer_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            if (embed_theme === undefined || !['auto', 'light', 'dark'].includes(embed_theme) ) {
+                embed_theme = "auto";
+            }
+            if (embed_type === undefined || !['album', 'track', 'playlist'].includes(embed_type) ) {
+                embed_type = "album";
+            }
+            if (radius === undefined || !['true', 'false'].includes(radius) ) {
+                radius = "true";
+            }
+            if (tracklist === undefined || !['true', 'false'].includes(tracklist) ) {
+                tracklist = "true";
+            }
+            params = 'tracklist=' + tracklist + '&radius=' + radius;
+            deezer_frame = '<iframe src="//widget.deezer.com/widget/' + embed_theme + '/' + embed_type + '/' + deezer_id + '?' + params + '" ' + frame_width + frame_height + ' frameborder="0" allowfullscreen></iframe>';
+            return deezer_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'deezer';
+        tarteaucitron.fallback(['deezer_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // leadforensics
 tarteaucitron.services.leadforensics = {
     "key": "leadforensics",
