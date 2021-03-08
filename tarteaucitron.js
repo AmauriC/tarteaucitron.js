@@ -662,14 +662,13 @@ var tarteaucitron = {
                             tarteaucitron.userInterface.respond(this, false);
                         });
                     }
+                    if(tarteaucitron.events.load) {
+                        tarteaucitron.events.load();
+                    }
                 }, 500);
                 
             });
         });
-
-        if(tarteaucitron.events.load) {
-            tarteaucitron.events.load();
-        }
     },
     "addService": function (serviceId) {
         "use strict";
