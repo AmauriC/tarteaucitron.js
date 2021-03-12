@@ -125,7 +125,7 @@ tarteaucitron.services.facebookpost = {
     "key": "facebookpost",
     "type": "social",
     "name": "Facebook (post)",
-    "uri": "https://www.facebook.com/help/325807937506242",
+    "uri": "https://www.facebook.com/policy.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1093,7 +1093,7 @@ tarteaucitron.services.facebook = {
     "key": "facebook",
     "type": "social",
     "name": "Facebook",
-    "uri": "https://www.facebook.com/policies/cookies/",
+    "uri": "https://www.facebook.com/policy.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1118,7 +1118,7 @@ tarteaucitron.services.facebooklikebox = {
     "key": "facebooklikebox",
     "type": "social",
     "name": "Facebook (like box)",
-    "uri": "https://www.facebook.com/policies/cookies/",
+    "uri": "https://www.facebook.com/policy.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1143,7 +1143,7 @@ tarteaucitron.services.facebookcomment = {
     "key": "facebookcomment",
     "type": "comment",
     "name": "Facebook (commentaire)",
-    "uri": "https://www.facebook.com/policies/cookies/",
+    "uri": "https://www.facebook.com/policy.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1473,7 +1473,7 @@ tarteaucitron.services.gajs = {
     "key": "gajs",
     "type": "analytic",
     "name": "Google Analytics (ga.js)",
-    "uri": "https://support.google.com/analytics/answer/6004245",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": (function () {
         var googleIdentifier = tarteaucitron.user.gajsUa,
@@ -1513,7 +1513,7 @@ tarteaucitron.services.analytics = {
     "key": "analytics",
     "type": "analytic",
     "name": "Google Analytics (universal)",
-    "uri": "https://support.google.com/analytics/answer/6004245",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": (function () {
         var googleIdentifier = tarteaucitron.user.analyticsUa,
@@ -1564,7 +1564,7 @@ tarteaucitron.services.gtag = {
     "key": "gtag",
     "type": "analytic",
     "name": "Google Analytics (gtag.js)",
-    "uri": "https://support.google.com/analytics/answer/6004245",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": (function () {
         var googleIdentifier = tarteaucitron.user.gtagUa,
@@ -1596,7 +1596,7 @@ tarteaucitron.services.googlemaps = {
     "key": "googlemaps",
     "type": "api",
     "name": "Google Maps",
-    "uri": "https://adssettings.google.com/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -1647,7 +1647,7 @@ tarteaucitron.services.googlemapssearch = {
     "key": "googlemapssearch",
     "type": "api",
     "name": "Google Maps Search API",
-    "uri": "https://adssettings.google.com/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": ['nid'],
     "js": function () {
@@ -1679,7 +1679,7 @@ tarteaucitron.services.googlemapsembed = {
     "key": "googlemapsembed",
     "type": "api",
     "name": "Google Maps Embed",
-    "uri": "https://adssettings.google.com/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": ['apisid', 'hsid', 'nid', 'sapisid', 'sid', 'sidcc', 'ssid', '1p_jar'],
     "js": function () {
@@ -1708,7 +1708,7 @@ tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
     "type": "api",
     "name": "Google Tag Manager",
-    "uri": "https://adssettings.google.com/",
+    "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', '__gads', '_drt_', 'FLC', 'exchange_uid', 'id', 'fc', 'rrs', 'rds', 'rv', 'uid', 'UIDR', 'UID', 'clid', 'ipinfo', 'acs'],
     "js": function () {
@@ -1730,7 +1730,7 @@ tarteaucitron.services.multiplegoogletagmanager = {
   "key": "multiplegoogletagmanager",
   "type": "api",
   "name": "Google Tag Manager",
-  "uri": "https://adssettings.google.com/",
+  "uri": "https://policies.google.com/privacy",
   "needConsent": true,
   "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', '__gads', '_drt_', 'FLC', 'exchange_uid', 'id', 'fc', 'rrs', 'rds', 'rv', 'uid', 'UIDR', 'UID', 'clid', 'ipinfo', 'acs'],
   "js": function () {
@@ -1756,7 +1756,7 @@ tarteaucitron.services.googlefonts = {
   "key": "googlefonts",
   "type": "api",
   "name": "Google Webfonts",
-  "uri": "https://www.google.com/intl/de/policies/privacy/",
+  "uri": "https://policies.google.com/privacy",
   "needConsent": true,
   "cookies": [],
   "js": function () {
@@ -3290,7 +3290,7 @@ tarteaucitron.services.facebookpixel = {
     "key": "facebookpixel",
     "type": "ads",
     "name": "Facebook Pixel",
-    "uri": "https://fr-fr.facebook.com/business/help/www/651294705016616",
+    "uri": "https://www.facebook.com/policy.php",
     "needConsent": true,
     "cookies": ['datr', 'fr', 'reg_ext_ref', 'reg_fb_gate', 'reg_fb_ref', 'sb', 'wd', 'x-src'],
     "js": function () {
