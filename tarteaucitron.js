@@ -952,10 +952,11 @@ var tarteaucitron = {
             }
 
             // check if all services are allowed
+            var sumToRemove = 0;
             for (index = 0; index < sum; index += 1) {
 
                 if (typeof s[tarteaucitron.job[index]].safeanalytic !== "undefined" && s[tarteaucitron.job[index]].safeanalytic === true) {
-                    sum -= 1;
+                    sumToRemove += 1;
                     continue;
                 }
 
@@ -967,6 +968,7 @@ var tarteaucitron = {
                     nbAllowed += 1;
                 }
             }
+            sum -= sumToRemove;
 
             tarteaucitron.userInterface.css(c + 'DotGreen', 'width', ((100 / sum) * nbAllowed) + '%');
             tarteaucitron.userInterface.css(c + 'DotYellow', 'width', ((100 / sum) * nbPending) + '%');
