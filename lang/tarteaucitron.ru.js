@@ -38,6 +38,9 @@ tarteaucitron.lang = {
     "newWindow": "(new window)",
     "allowAll": "Разрешить использование cookies",
     "denyAll": "Запретить использование cookies",
+
+    "icon": "Cookies",
+    
     
     "fallback": "Деактивирован.",
 

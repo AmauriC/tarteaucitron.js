@@ -38,6 +38,8 @@ tarteaucitron.lang = {
     "newWindow": "(νέο παράθυρο)",
     "allowAll": "Επέτρεψε όλα τα &quot;μπισκότα&quot; (cookies)",
     "denyAll": "Απόρριψε όλα τα &quot;μπισκότα&quot; (cookies)",
+
+    "icon": "Cookies",
     
     "fallback": "είναι απενεργοποιημένο.",
 

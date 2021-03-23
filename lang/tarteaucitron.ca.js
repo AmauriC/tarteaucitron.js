@@ -38,6 +38,8 @@ tarteaucitron.lang = {
     "newWindow": "(finestra nova)",
     "allowAll": "Permet totes les galetes",
     "denyAll": "Denega totes les galetes",
+
+    "icon": "Cookies",
     
     "fallback": "està deshabilitat.",
 

@@ -39,6 +39,8 @@ tarteaucitron.lang = {
     "allowAll": "Tillåt alla cookie",
     "denyAll": "Neka alla cookies",
 
+    "icon": "Cookies",
+
     "fallback": "är ur funktion.",
 
     "ads": {
