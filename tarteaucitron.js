@@ -1844,5 +1844,11 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.respond(this, true);
             });
         }
+        var denyBtns = document.getElementsByClassName("tarteaucitronDeny");
+        for (i = 0; i < denyBtns.length; i++) {
+            tarteaucitron.addClickEventToElement(denyBtns[i], function () {
+                tarteaucitron.userInterface.respond(this, false);
+            });
+        }
     }
 };
