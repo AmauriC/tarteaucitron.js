@@ -37,6 +37,8 @@ tarteaucitron.lang = {
     "allowAll": "允许",
     "denyAll": "禁用",
 
+    "icon": "Cookies",
+
     "fallback": "已禁用。",
 
     "ads": {

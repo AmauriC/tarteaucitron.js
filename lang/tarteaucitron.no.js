@@ -40,6 +40,8 @@ tarteaucitron.lang = {
 	"allowAll"      : "Tillat alle informasjonskapsler",
 	"denyAll"       : "Nekt alle informasjonskapsler",
 
+    "icon": "Cookies",
+
 	"fallback" : "er skrudd av.",
 
 	"ads"      : {

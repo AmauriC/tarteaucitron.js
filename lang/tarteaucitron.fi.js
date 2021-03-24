@@ -39,6 +39,8 @@ tarteaucitron.lang = {
     "newWindow": "uusi ikkuna",
     "allowAll": "Hyväksy kaikki evästeet",
     "denyAll": "Kiellä kaikki evästeet",
+
+    "icon": "Cookies",
    
     "fallback": "hylätty.",
 

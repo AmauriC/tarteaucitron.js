@@ -41,6 +41,8 @@ tarteaucitron.lang = {
     "allowAll": "Sta alle cookies toe",
     "denyAll": "Weiger alle cookies",
 
+    "icon": "Cookies",
+
     "ads": {
         "title": "Advertentienetwerk",
         "details": "Advertentienetwerken kunnen inkomsten genereren door advertentieruimte op de site te verkopen."
