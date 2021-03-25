@@ -332,7 +332,7 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.mandatory == true) {
                    html += '<li id="tarteaucitronServicesTitle_mandatory">';
                    html += '<div class="tarteaucitronTitle">';
-                   html += '   <button type="button" tabindex="-1">&nbsp; ' + tarteaucitron.lang.mandatoryTitle + '</button>';
+                   html += '   <button type="button" tabindex="-1"><span class="tarteaucitronPlus"></span> ' + tarteaucitron.lang.mandatoryTitle + '</button>';
                    html += '</div>';
                    html += '<ul id="tarteaucitronServices_mandatory">';
                    html += '<li class="tarteaucitronLine">';
@@ -606,10 +606,10 @@ var tarteaucitron = {
                             html += '   </div>';
                             html += '   <div class="tarteaucitronAsk" id="tarteaucitron-group-'+cat+'">';
                             html += '       <button type="button"  class="tarteaucitronAllow" id="tarteaucitron-accept-group-'+cat+'">';
-                            html += '           &#10003; ' + tarteaucitron.lang.allow;
+                            html += '           <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
                             html += '       </button> ';
                             html += '       <button type="button"  class="tarteaucitronDeny" id="tarteaucitron-reject-group-'+cat+'">';
-                            html += '           &#10007; ' + tarteaucitron.lang.deny;
+                            html += '           <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.deny;
                             html += '       </button>';
                             html += '   </div>';
                             html += '</li>';
