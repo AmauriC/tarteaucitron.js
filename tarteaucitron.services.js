@@ -30,11 +30,12 @@ tarteaucitron.services.iframe = {
     }
 };
 
-// xandr
+// xandr universal pixel
+// https://docs.xandr.com/bundle/invest_invest-standard/page/topics/universal-pixel-overview.html
 tarteaucitron.services.xandr = {
     "key": "xandr",
     "type": "ads",
-    "name": "Xandr",
+    "name": "Xandr (Universal)",
     "uri": "https://www.xandr.com/privacy/cookie-policy/",
     "needConsent": true,
     "cookies": ['uuid2', 'uids', 'sess', 'icu', 'anj', 'usersync'],
@@ -59,6 +60,88 @@ tarteaucitron.services.xandr = {
             window.pixie('init', tarteaucitron.user.xandrId);
             window.pixie('event', 'PageView');
         });
+    }
+};
+
+// xandr segment
+// https://docs.xandr.com/bundle/invest_invest-standard/page/topics/segment-pixels-advanced.html
+tarteaucitron.services.xandrsegment = {
+    "key": "xandrsegment",
+    "type": "ads",
+    "name": "Xandr (Segment)",
+    "uri": "https://www.xandr.com/privacy/cookie-policy/",
+    "needConsent": true,
+    "cookies": ['uuid2', 'uids', 'sess', 'icu', 'anj', 'usersync'],
+    "js": function () {
+        "use strict";
+        var uniqIds = [],
+            i,
+            uri;
+
+        tarteaucitron.fallback(['xandrsegment-canvas'], function (x) {
+            var uniqId = '_' + Math.random().toString(36).substr(2, 9);
+            uniqIds.push(uniqId);
+            return '<div id="' + uniqId + '" xandrsegmentAdd="' + (x.getAttribute('xandrsegmentAdd') ?? '') + '" xandrsegmentAddCode="' + (x.getAttribute('xandrsegmentAddCode') ?? '')  + '" xandrsegmentRemove="' + (x.getAttribute('xandrsegmentRemove') ?? '') + '" xandrsegmentRemoveCode="' + (x.getAttribute('xandrsegmentRemoveCode') ?? '') + '" xandrsegmentMember="' + (x.getAttribute('xandrsegmentMember') ?? '') + '" xandrsegmentRedir="' + (x.getAttribute('xandrsegmentRedir') ?? '') + '" xandrsegmentValue="' + (x.getAttribute('xandrsegmentValue') ?? '') + '" xandrsegmentOther="' + (x.getAttribute('xandrsegmentOther') ?? '') + '"></div>';
+        });
+
+        for (i = 0; i < uniqIds.length; i += 1) {
+            uri = '//ib.adnxs.com/seg?t=2&';
+            uri += 'add=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentAdd') + '&';
+            uri += 'add_code=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentAddCode') + '&';
+            uri += 'remove=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRemove') + '&';
+            uri += 'remove_code=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRemoveCode') + '&';
+            uri += 'member=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentMember') + '&';
+            uri += 'redir=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRedir') + '&';
+            uri += 'value=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentValue')  + '&';
+            uri += 'other=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentOther');
+
+            document.getElementById(uniqIds[i]).innerHTML = '<img src=\'' + uri + '\' width=\'1\' height=\'1\' />';
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'xandrsegment';
+        tarteaucitron.fallback(['xandrsegment-canvas'], tarteaucitron.engage(id));
+    }
+};
+
+// xandr conversion
+// https://docs.xandr.com/bundle/invest_invest-standard/page/topics/working-with-conversion-pixels.html
+tarteaucitron.services.xandrconversion = {
+    "key": "xandrconversion",
+    "type": "ads",
+    "name": "Xandr (Conversion)",
+    "uri": "https://www.xandr.com/privacy/cookie-policy/",
+    "needConsent": true,
+    "cookies": ['uuid2', 'uids', 'sess', 'icu', 'anj', 'usersync'],
+    "js": function () {
+        "use strict";
+        var uniqIds = [],
+            i,
+            uri;
+
+        tarteaucitron.fallback(['xandrconversion-canvas'], function (x) {
+            var uniqId = '_' + Math.random().toString(36).substr(2, 9);
+            uniqIds.push(uniqId);
+            return '<div id="' + uniqId + '" xandrconversionId="' + (x.getAttribute('xandrconversionId') ?? '') + '" xandrconversionSeg="' + (x.getAttribute('xandrconversionSeg') ?? '') + '" xandrconversionOrderId="' + (x.getAttribute('xandrconversionOrderId') ?? '') + '" xandrconversionValue="' + (x.getAttribute('xandrconversionValue') ?? '') + '" xandrconversionRedir="' + (x.getAttribute('xandrconversionRedir') ?? '') + '" xandrconversionOther="' + (x.getAttribute('xandrconversionOther') ?? '') + '"></div>';
+        });
+
+        for (i = 0; i < uniqIds.length; i += 1) {
+            uri = '//ib.adnxs.com/px?t=2&';
+            uri += 'id=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionId') + '&';
+            uri += 'seg=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionSeg') + '&';
+            uri += 'order_id=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionOrderId') + '&';
+            uri += 'value=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionValue') + '&';
+            uri += 'redir=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionRedir') + '&';
+            uri += 'other=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionOther');
+
+            document.getElementById(uniqIds[i]).innerHTML = '<img src=\'' + uri + '\' width=\'1\' height=\'1\' />';
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'xandrconversion';
+        tarteaucitron.fallback(['xandrconversion-canvas'], tarteaucitron.engage(id));
     }
 };
 
