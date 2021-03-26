@@ -221,7 +221,7 @@ var tarteaucitron = {
                 "useExternalJs": false,
                 "mandatory": true,
                 "closePopup": false,
-                "groupServices": true
+                "groupServices": false
             },
             params = tarteaucitron.parameters;
 
