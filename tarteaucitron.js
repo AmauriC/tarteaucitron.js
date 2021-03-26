@@ -666,6 +666,10 @@ var tarteaucitron = {
                         tarteaucitron.events.load();
                     }
                 }, 500);
+
+                // Create event when all services are loaded
+                var event = new Event( 'tac.services_loaded' );
+                document.dispatchEvent( event );
                 
             });
         });
