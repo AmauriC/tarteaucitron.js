@@ -36,7 +36,9 @@ tarteaucitron.init({
     "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
     "cookieName": "tarteaucitron", /* Cookie name */
 
-    "orientation": "middle", /* Banner position (top - bottom) */
+    "orientation": "middle", /* Banner position (top - bottom - middle - popup) */
+
+    "groupServices": false, /* Group services by category */
 
     "showAlertSmall": false, /* Show the small banner on bottom right */
     "cookieslist": false, /* Show the cookie list */

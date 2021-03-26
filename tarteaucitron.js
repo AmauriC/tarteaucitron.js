@@ -266,8 +266,7 @@ var tarteaucitron = {
           }
             tarteaucitron.addInternalScript(pathToServices, '', function () {
 
-
-                // css for new middle bar
+                // css for the middle bar TODO: add it on the css file
                 if (tarteaucitron.orientation === 'middle') {
                     var customThemeMiddle = document.createElement('style'),
                         cssRuleMiddle = 'div#tarteaucitronRoot.tarteaucitronBeforeVisible:before {content: \'\';position: fixed;width: 100%;height: 100%;background: white;top: 0;left: 0;z-index: 999;opacity: 0.5;}div#tarteaucitronAlertBig:before {content: \'' + tarteaucitron.lang.middleBarHead + '\';font-size: 35px;}body #tarteaucitronRoot div#tarteaucitronAlertBig {width: 60%;min-width: 285px;height: auto;margin: auto;left: 50%;top: 50%;transform: translate(-50%, -50%);box-shadow: 0 0 9000px #000;border-radius: 20px;padding: 35px 25px;}span#tarteaucitronDisclaimerAlert {padding: 0 30px;}#tarteaucitronRoot span#tarteaucitronDisclaimerAlert {margin: 10px 0 30px;display: block;text-align: center;font-size: 21px;}@media screen and (max-width: 900px) {div#tarteaucitronAlertBig button {margin: 0 auto 10px!important;display: block!important;}}';
@@ -280,6 +279,21 @@ var tarteaucitron = {
                     }
                     document.getElementsByTagName('head')[0].appendChild(customThemeMiddle);
                 }
+
+                // css for the popup bar TODO: add it on the css file
+                if (tarteaucitron.orientation === 'popup') {
+                    var customThemePopup = document.createElement('style'),
+                        cssRulePopup = 'div#tarteaucitronAlertBig:before {content: \'' + tarteaucitron.lang.middleBarHead + '\';font-size: 22px;}body #tarteaucitronRoot div#tarteaucitronAlertBig {bottom: 0;top: auto!important;left: 8px!important;right: auto!important;transform: initial!important;border-radius: 5px 5px 0 0!important;max-width: 250px!important;width: Calc(100% - 16px)!important;min-width: 0!important;padding: 25px 0;}span#tarteaucitronDisclaimerAlert {padding: 0 30px;font-size: 15px!important;}#tarteaucitronRoot span#tarteaucitronDisclaimerAlert {margin: 10px 0 30px;display: block;text-align: center;font-size: 21px;}div#tarteaucitronAlertBig button {margin: 0 auto 10px!important;display: block!important;width: Calc(100% - 60px);box-sizing: border-box;}';
+
+                    customThemePopup.type = 'text/css';
+                    if (customThemePopup.styleSheet) {
+                        customThemePopup.styleSheet.cssText = cssRulePopup;
+                    } else {
+                        customThemePopup.appendChild(document.createTextNode(cssRulePopup));
+                    }
+                    document.getElementsByTagName('head')[0].appendChild(customThemePopup);
+                }
+                
                 var body = document.body,
                     div = document.createElement('div'),
                     html = '',
