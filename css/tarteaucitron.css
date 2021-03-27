@@ -5,6 +5,23 @@
 
 #tarteaucitronContentWrapper {display:unset;}
 
+/** 27032021 **/
+button.tarteaucitron-toggle-group {
+    display: block;
+}
+span.tarteaucitronH3 {
+    font-weight: 700!important;
+}
+#tarteaucitron #tarteaucitronServices_mandatory .tarteaucitronH3 {
+    font-weight: 500!important;
+    font-size: 14px;
+    margin-top: 7px;
+}
+.tarteaucitronLine {
+    border-left: 0px solid transparent!important;
+}
+/*****/
+
 /***
 * Reset CSS
 */
