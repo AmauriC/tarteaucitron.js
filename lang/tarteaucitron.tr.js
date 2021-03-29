@@ -40,6 +40,8 @@ tarteaucitron.lang = {
     "newWindow": "(yeni pencere)",
     "allowAll": "Tüm çerezlere izin verin",
     "denyAll": "Tüm çerezleri yasaklayın",
+
+    "icon": "Cookies",
     
     "fallback": "devre dışı.",
 

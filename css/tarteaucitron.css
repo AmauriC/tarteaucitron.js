@@ -1,9 +1,89 @@
-.modal-open{
+.tarteaucitron-modal-open{
     overflow: hidden;
     height: 100%;
 }
 
-#contentWrapper {display:unset;}
+#tarteaucitronContentWrapper {display:unset;}
+
+/** 27032021 **/
+button.tarteaucitron-toggle-group {
+    display: block;
+}
+span.tarteaucitronH3 {
+    font-weight: 700!important;
+}
+#tarteaucitron #tarteaucitronServices_mandatory .tarteaucitronH3 {
+    font-weight: 500!important;
+    font-size: 14px;
+    margin-top: 7px;
+}
+.tarteaucitronLine {
+    border-left: 0px solid transparent!important;
+}
+/*****/
+
+/** BETTER MOBILE MODE **/
+@media screen and (max-width: 767px) {
+ 
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button,
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronAsk,
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronName {
+        width:100%!important;
+        display: block!important;
+        margin-left: 0!important;
+        margin-right: 0!important;
+        box-sizing: border-box!important;
+    }
+
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder ul .tarteaucitronLine {
+        padding: 16px!important;
+    }
+
+    html body #tarteaucitronRoot #tarteaucitron div#tarteaucitronMainLineOffset .tarteaucitronName {
+        display: none!important;
+    }
+
+    #tarteaucitronServices_mandatory li.tarteaucitronLine .tarteaucitronName span {
+        width: 100%!important;
+        display: inline-block;
+    }
+    li.tarteaucitronLine .tarteaucitronName span {
+        width: 80%!important;
+        display: inline-block;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button.tarteaucitron-toggle-group {
+        width: 10%!important;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 0px;
+        padding: 10px 0;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button.tarteaucitron-toggle-group:before {
+        content: '\0025BE';
+        font-weight:700;
+        font-size: 14px;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder .tarteaucitronIsExpanded button.tarteaucitron-toggle-group:before {
+        content: '\0025B4';
+    }
+}
+@media screen and (min-width: 768px) {
+
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button.tarteaucitron-toggle-group:after {
+        content: '\0025BE';
+        font-weight:700;
+        font-size: 14px;
+        margin-left: 15px;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder .tarteaucitronIsExpanded button.tarteaucitron-toggle-group:after {
+        content: '\0025B4';
+        margin-left: 15px;
+    }
+}
+/****/
+
+
 
 /***
 * Reset CSS
@@ -42,8 +122,8 @@
     border-spacing: 0;
 }
 
-#tarteaucitronRoot a:focus, #tarteaucitronRoot button:focus {
-    /*outline: 2px solid #cb3333;*/
+#tarteaucitronRoot a:focus-visible, #tarteaucitronRoot button:focus-visible {
+    outline: 3px dashed #3d86d8;
 }
 
 /***
@@ -71,7 +151,7 @@ div#tarteaucitronServices {
 }
 
 div#tarteaucitronServices {
-    box-shadow: 0 0 35px #575757;
+    box-shadow: 0 40px 60px #545454;
 }
 
 /***
@@ -140,10 +220,6 @@ div#tarteaucitronServices {
 /***
  * Common value
  */
-#tarteaucitron * {
-    zoom: 1;
-}
-
 #tarteaucitronRoot div#tarteaucitron {
     left: 0;
     right: 0;
@@ -287,13 +363,9 @@ div#tarteaucitronServices {
     width: 80%;
 }
 
-.tarteaucitronSelfLink, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
+#tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden,
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
     background: rgba(51, 51, 51, 0.07);
-}a.tarteaucitronSelfLink {
-    text-align: center!important;
-    display: block;
-    padding: 7px!important;
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronHidden {
@@ -474,6 +546,13 @@ div#tarteaucitronServices {
     width: auto!important;
     margin-left: 0!important;
     font-size: 14px;
+}
+span#tarteaucitronDisclaimerAlert {
+    padding: 0 10px;
+    display: inline-block;
+}
+#tarteaucitron .tarteaucitronBorder, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden, #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine {
+    border-color: #333!important;
 }
 
 /***
@@ -855,11 +934,13 @@ a.tarteaucitronSelfLink {
     position: absolute;
     left: 0;
     right: 0;
-    padding-top: 13px!important;
+    bottom: -30px;
+    text-align: center!important;
     display: block;
-    text-shadow: 0 0 14px white;
-    text-transform: uppercase;
-}.tarteaucitronMainLine .tarteaucitronH2 {
+    height:30px;
+}
+
+.tarteaucitronMainLine .tarteaucitronH2 {
     font-size: 1.2em!important;
     margin-top: 4px!important;
 }
@@ -868,15 +949,24 @@ span.tarteaucitronTitle.tarteaucitronH3 {
     margin-top: 12px!important;
 }
 
-.spacer-20 {
+#tarteaucitronCloseCross {
+    position:absolute;
+    color: #FFFF;
+    font-size:1.8rem;
+    cursor: pointer;
+    top: 10px;
+    right: 26px
+}
+
+.tarteaucitron-spacer-20 {
     height: 20px;
     display: block;
 }
 
-.display-block {
+.tarteaucitron-display-block {
     display: block;
 }
 
-.display-none {
+.tarteaucitron-display-none {
     display: none;
 }

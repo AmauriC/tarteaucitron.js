@@ -40,6 +40,8 @@ tarteaucitron.lang = {
     "allowAll": "Cho phép tất cả các Cookies",
     "denyAll": "Từ chối cất cả cookies",
 
+    "icon": "Cookies",
+
     "fallback": "tắt.",
 
     "ads": {
