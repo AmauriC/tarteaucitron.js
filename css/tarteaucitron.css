@@ -22,6 +22,69 @@ span.tarteaucitronH3 {
 }
 /*****/
 
+/** BETTER MOBILE MODE **/
+@media screen and (max-width: 767px) {
+ 
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button,
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronAsk,
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronName {
+        width:100%!important;
+        display: block!important;
+        margin-left: 0!important;
+        margin-right: 0!important;
+        box-sizing: border-box!important;
+    }
+
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder ul .tarteaucitronLine {
+        padding: 16px!important;
+    }
+
+    html body #tarteaucitronRoot #tarteaucitron div#tarteaucitronMainLineOffset .tarteaucitronName {
+        display: none!important;
+    }
+
+    #tarteaucitronServices_mandatory li.tarteaucitronLine .tarteaucitronName span {
+        width: 100%!important;
+        display: inline-block;
+    }
+    li.tarteaucitronLine .tarteaucitronName span {
+        width: 80%!important;
+        display: inline-block;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button.tarteaucitron-toggle-group {
+        width: 10%!important;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 0px;
+        padding: 10px 0;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button.tarteaucitron-toggle-group:before {
+        content: '\0025BE';
+        font-weight:700;
+        font-size: 14px;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder .tarteaucitronIsExpanded button.tarteaucitron-toggle-group:before {
+        content: '\0025B4';
+    }
+}
+@media screen and (min-width: 768px) {
+
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button.tarteaucitron-toggle-group:after {
+        content: '\0025BE';
+        font-weight:700;
+        font-size: 14px;
+        margin-left: 15px;
+    }
+    html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder .tarteaucitronIsExpanded button.tarteaucitron-toggle-group:after {
+        content: '\0025B4';
+        margin-left: 15px;
+    }
+}
+/****/
+
+
+
 /***
 * Reset CSS
 */

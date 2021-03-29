@@ -633,7 +633,11 @@ var tarteaucitron = {
                             document.querySelector('#tarteaucitronServices_' + cat).style.display = 'none';
                             tarteaucitron.addClickEventToId("tarteaucitron-toggle-group-" + cat, function () {
                                 tarteaucitron.userInterface.toggle('tarteaucitronServices_' + cat);
-                                tarteaucitron.userInterface.jsSizing('main');
+                                if (document.getElementById('tarteaucitronServices_' + cat).style.display == 'block') {
+                                    tarteaucitron.userInterface.addClass('tarteaucitronServicesTitle_' + cat, 'tarteaucitronIsExpanded');
+                                } else {
+                                    tarteaucitron.userInterface.removeClass('tarteaucitronServicesTitle_' + cat, 'tarteaucitronIsExpanded');
+                                }
                             });
                             tarteaucitron.addClickEventToId("tarteaucitron-accept-group-" + cat, function () {
                                 tarteaucitron.userInterface.respondAll(true, cat);
