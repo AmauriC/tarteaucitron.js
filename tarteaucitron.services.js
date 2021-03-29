@@ -258,13 +258,13 @@ tarteaucitron.services.addthis = {
             window._atr = null;
             window._atw = null;
         }
-        tarteaucitron.fallback(['addthis_sharing_toolbox'], '');
+        tarteaucitron.fallback(['addthis_inline_share_toolbox'], '');
         tarteaucitron.addScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + tarteaucitron.user.addthisPubId);
     },
     "fallback": function () {
         "use strict";
         var id = 'addthis';
-        tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['addthis_inline_share_toolbox'], tarteaucitron.engage(id));
     }
 };
 
