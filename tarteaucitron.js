@@ -1655,8 +1655,7 @@ var tarteaucitron = {
         }
     },
     "fixSelfXSS": function(html) {
-        fixed = html.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        return fixed;
+        return html.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     },
     "getLanguage": function () {
         "use strict";
@@ -1936,6 +1935,7 @@ var tarteaucitron = {
     },
     "triggerJobsAfterAjaxCall": function() {
         tarteaucitron.job.forEach(function(e) { tarteaucitron.job.push(e) });
+        var i;
         var allowBtns = document.getElementsByClassName("tarteaucitronAllow");
         for (i = 0; i < allowBtns.length; i++) {
             tarteaucitron.addClickEventToElement(allowBtns[i], function () {
