@@ -2312,42 +2312,42 @@ tarteaucitron.services.soundcloud = {
     js: function () {
         "use strict";
         tarteaucitron.fallback(['soundcloud_player'], function (x) {
-            var player_height       = x.getAttribute('data-height'),
-                frame_height        = 'height="' + player_height + '" ',
-                playable_id         = x.getAttribute('data-playable-id'),
-                playable_type       = x.getAttribute('data-playable-type'),
-                data_playable_url   = x.getAttribute('data-playable-url'),
-                color               = x.getAttribute('data-color'),
-                autoplay            = x.getAttribute('data-auto-play'),
-                hideRelated         = x.getAttribute('data-hide-related'),
-                showComments        = x.getAttribute('data-show-comments'),
-                showUser            = x.getAttribute('data-show-user'),
-                showReposts         = x.getAttribute('data-show-reposts'),
-                showTeaser          = x.getAttribute('data-show-teaser'),
-                visual              = x.getAttribute('data-visual'),
-                artwork             = x.getAttribute('data-artwork');
+            var player_height   = x.getAttribute('data-height'),
+                frame_height    = 'height="' + player_height + '" ',
+                playable_id     = x.getAttribute('data-playable-id'),
+                playable_type   = x.getAttribute('data-playable-type'),
+                playable_url    = x.getAttribute('data-playable-url'),
+                color           = x.getAttribute('data-color'),
+                autoplay        = x.getAttribute('data-auto-play'),
+                hideRelated     = x.getAttribute('data-hide-related'),
+                showComments    = x.getAttribute('data-show-comments'),
+                showUser        = x.getAttribute('data-show-user'),
+                showReposts     = x.getAttribute('data-show-reposts'),
+                showTeaser      = x.getAttribute('data-show-teaser'),
+                visual          = x.getAttribute('data-visual'),
+                artwork         = x.getAttribute('data-artwork');
 
             var allowAutoplay = autoplay === 'true' ? 'allow="autoplay"' : '';
 
-            if (playable_id === undefined && data_playable_url === undefined) {
+            if (playable_id === undefined && playable_url === undefined) {
                 return "";
             }
 
             // Allow to embed from API results (playable_type + playable_id)
             var qs = '?url=https%3A//api.soundcloud.com/' + playable_type + '/' + playable_id;
             // Or from raw URL from Soundcloud website
-            if (data_playable_url && data_playable_url.length >0)   qs = '?url=' + escape(data_playable_url);
+            if (playable_url && playable_url.length >0)     qs = '?url=' + escape(playable_url);
 
-            if (hideRelated && hideRelated.length > 0)              qs += '&hide_related=' + hideRelated;
-            if (color && color.length > 0)                          qs += '&color=' + color.replace('#', '%23');
-            if (autoplay && autoplay.length > 0)                    qs += '&auto_play=' + autoplay;
-            if (showComments && showComments.length > 0)            qs += '&show_comments=' + showComments;
-            if (hideRelated && hideRelated.length > 0)              qs += '&hide_related=' + hideRelated;
-            if (showUser && showUser.length > 0)                    qs += '&show_user=' + showUser;
-            if (showReposts && showReposts.length > 0)              qs += '&show_reposts=' + showReposts;
-            if (showTeaser && showTeaser.length > 0)                qs += '&show_teaser=' + showTeaser;
-            if (visual && visual.length > 0)                        qs += '&visual=' + visual;
-            if (artwork && artwork.length > 0)                      qs += '&show_artwork=' + artwork;
+            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
+            if (color && color.length > 0)                  qs += '&color=' + color.replace('#', '%23');
+            if (autoplay && autoplay.length > 0)            qs += '&auto_play=' + autoplay;
+            if (showComments && showComments.length > 0)    qs += '&show_comments=' + showComments;
+            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
+            if (showUser && showUser.length > 0)            qs += '&show_user=' + showUser;
+            if (showReposts && showReposts.length > 0)      qs += '&show_reposts=' + showReposts;
+            if (showTeaser && showTeaser.length > 0)        qs += '&show_teaser=' + showTeaser;
+            if (visual && visual.length > 0)                qs += '&visual=' + visual;
+            if (artwork && artwork.length > 0)              qs += '&show_artwork=' + artwork;
 
             return '<iframe title="Soundcloud iframe" width="100%" ' + frame_height + ' scrolling="no" ' + allowAutoplay + ' src="https://w.soundcloud.com/player/' + qs + '"></iframe>';
         });
