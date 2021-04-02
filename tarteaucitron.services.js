@@ -1235,7 +1235,7 @@ tarteaucitron.services.stonly = {
         window.StonlyWidget || ((window.w = window.StonlyWidget = function() {
            window.w._api ? window.w._api.apply(window.w, arguments) : window.w.queue.push(arguments)
         }).queue = []);
-        
+
         tarteaucitron.addScript('https://stonly.com/js/widget/v2/stonly-widget.js?v=' + Date.now());
     }
 };
@@ -1885,7 +1885,7 @@ tarteaucitron.services.recaptcha = {
         } else {
             tarteaucitron.addScript('https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad&render=' + tarteaucitron.user.recaptchaapi);
         }
-        
+
     },
     "fallback": function () {
         "use strict";
@@ -2312,37 +2312,42 @@ tarteaucitron.services.soundcloud = {
     js: function () {
         "use strict";
         tarteaucitron.fallback(['soundcloud_player'], function (x) {
-            var player_height = x.getAttribute('data-height'),
-                frame_height  = 'height="' + player_height + '" ',
-                playable_id   = x.getAttribute('data-playable-id'),
-                playable_type = x.getAttribute('data-playable-type'),
-                color         = x.getAttribute('data-color'),
-                autoplay      = x.getAttribute('data-auto-play'),
-                hideRelated   = x.getAttribute('data-hide-related'),
-                showComments  = x.getAttribute('data-show-comments'),
-                showUser      = x.getAttribute('data-show-user'),
-                showReposts   = x.getAttribute('data-show-reposts'),
-                showTeaser    = x.getAttribute('data-show-teaser'),
-                visual        = x.getAttribute('data-visual'),
-                artwork       = x.getAttribute('data-artwork');
+            var player_height       = x.getAttribute('data-height'),
+                frame_height        = 'height="' + player_height + '" ',
+                playable_id         = x.getAttribute('data-playable-id'),
+                playable_type       = x.getAttribute('data-playable-type'),
+                data_playable_url   = x.getAttribute('data-playable-url'),
+                color               = x.getAttribute('data-color'),
+                autoplay            = x.getAttribute('data-auto-play'),
+                hideRelated         = x.getAttribute('data-hide-related'),
+                showComments        = x.getAttribute('data-show-comments'),
+                showUser            = x.getAttribute('data-show-user'),
+                showReposts         = x.getAttribute('data-show-reposts'),
+                showTeaser          = x.getAttribute('data-show-teaser'),
+                visual              = x.getAttribute('data-visual'),
+                artwork             = x.getAttribute('data-artwork');
 
             var allowAutoplay = autoplay === 'true' ? 'allow="autoplay"' : '';
 
-            if (playable_id === undefined) {
+            if (playable_id === undefined && data_playable_url === undefined) {
                 return "";
             }
 
+            // Allow to embed from API results (playable_type + playable_id)
             var qs = '?url=https%3A//api.soundcloud.com/' + playable_type + '/' + playable_id;
-            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
-            if (color && color.length > 0)                  qs += '&color=' + color.replace('#', '%23');
-            if (autoplay && autoplay.length > 0)            qs += '&auto_play=' + autoplay;
-            if (showComments && showComments.length > 0)    qs += '&show_comments=' + showComments;
-            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
-            if (showUser && showUser.length > 0)            qs += '&show_user=' + showUser;
-            if (showReposts && showReposts.length > 0)      qs += '&show_reposts=' + showReposts;
-            if (showTeaser && showTeaser.length > 0)        qs += '&show_teaser=' + showTeaser;
-            if (visual && visual.length > 0)                qs += '&visual=' + visual;
-            if (artwork && artwork.length > 0)              qs += '&show_artwork=' + artwork;
+            // Or from raw URL from Soundcloud website
+            if (data_playable_url && data_playable_url.length >0)   qs = '?url=' + escape(data_playable_url);
+
+            if (hideRelated && hideRelated.length > 0)              qs += '&hide_related=' + hideRelated;
+            if (color && color.length > 0)                          qs += '&color=' + color.replace('#', '%23');
+            if (autoplay && autoplay.length > 0)                    qs += '&auto_play=' + autoplay;
+            if (showComments && showComments.length > 0)            qs += '&show_comments=' + showComments;
+            if (hideRelated && hideRelated.length > 0)              qs += '&hide_related=' + hideRelated;
+            if (showUser && showUser.length > 0)                    qs += '&show_user=' + showUser;
+            if (showReposts && showReposts.length > 0)              qs += '&show_reposts=' + showReposts;
+            if (showTeaser && showTeaser.length > 0)                qs += '&show_teaser=' + showTeaser;
+            if (visual && visual.length > 0)                        qs += '&visual=' + visual;
+            if (artwork && artwork.length > 0)                      qs += '&show_artwork=' + artwork;
 
             return '<iframe title="Soundcloud iframe" width="100%" ' + frame_height + ' scrolling="no" ' + allowAutoplay + ' src="https://w.soundcloud.com/player/' + qs + '"></iframe>';
         });
@@ -3039,7 +3044,7 @@ tarteaucitron.services.atinternetoptin = {
     "js": function () {
         "use strict";
         tarteaucitron.launch['atinternetoptout'] = false;
-        
+
         setTimeout(function() {
             tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
             tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
@@ -3256,7 +3261,7 @@ tarteaucitron.services.linkedininsighttag = {
             window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
             window._linkedin_data_partner_ids.push(tarteaucitron.user.linkedininsighttag);
         }
-        
+
         tarteaucitron.addScript('https://snap.licdn.com/li.lms-analytics/insight.min.js');
     }
 };
@@ -3529,8 +3534,8 @@ tarteaucitron.services.matomo = {
         }, 100)
     }
 };
-                          
-                          
+
+
 tarteaucitron.services.matomohightrack = {
     "key": "matomohightrack",
     "type": "analytic",
@@ -3851,7 +3856,7 @@ tarteaucitron.services.userlike = {
         tarteaucitron.addScript('//userlike-cdn-widgets.s3-eu-west-1.amazonaws.com/' + tarteaucitron.user.userlikeKey);
     }
 };
-                          
+
 // adobeanalytics
 tarteaucitron.services.adobeanalytics = {
     "key": "adobeanalytics",
