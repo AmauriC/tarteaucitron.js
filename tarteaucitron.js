@@ -608,7 +608,7 @@ var tarteaucitron = {
                     tac_group_style.innerHTML = '.tarteaucitronTitle{display:none}';
                     document.head.appendChild(tac_group_style);
                     var cats = document.querySelectorAll('[id^="tarteaucitronServicesTitle_"]')
-                    cats.forEach(function(item) {
+                    Array.prototype.forEach.call(cats, function(item) {
                         var cat = item.getAttribute('id').replace(/^(tarteaucitronServicesTitle_)/, "");
                         if (cat !== "mandatory") {
                             var html = '';
@@ -633,7 +633,7 @@ var tarteaucitron = {
                             document.querySelector('#tarteaucitronServices_' + cat).style.display = 'none';
                             tarteaucitron.addClickEventToId("tarteaucitron-toggle-group-" + cat, function () {
                                 tarteaucitron.userInterface.toggle('tarteaucitronServices_' + cat);
-                                if (document.getElementById('tarteaucitronServices_' + cat).style.display == 'block') {
+                               if (document.getElementById('tarteaucitronServices_' + cat).style.display == 'block') {
                                     tarteaucitron.userInterface.addClass('tarteaucitronServicesTitle_' + cat, 'tarteaucitronIsExpanded');
                                 } else {
                                     tarteaucitron.userInterface.removeClass('tarteaucitronServicesTitle_' + cat, 'tarteaucitronIsExpanded');
@@ -1081,7 +1081,7 @@ var tarteaucitron = {
 
 	    // groups
             var cats = document.querySelectorAll('[id^="tarteaucitronServicesTitle_"]')
-            cats.forEach(function(item) {
+            Array.prototype.forEach.call(cats, function(item) {
                 var cat = item.getAttribute('id').replace(/^(tarteaucitronServicesTitle_)/, ""),
                     total = document.getElementById("tarteaucitronServices_"+cat).childElementCount;
                 var doc = document.getElementById("tarteaucitronServices_"+cat),
