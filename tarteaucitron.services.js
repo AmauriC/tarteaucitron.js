@@ -3892,3 +3892,24 @@ tarteaucitron.services.woopra = {
 		woopra.track();
     }
 };
+
+// Open Web Analytics
+tarteaucitron.services.openwebanalytics = {
+    "key": "openwebanalytics",
+    "type": "analytic",
+    "name": "Open Web Analytics",
+    "uri": "",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        window.owa_baseUrl = tarteaucitron.user.openwebanalyticsHost;
+        window.owa_cmds = window.owa_cmds || [];
+        window.owa_cmds.push(['setSiteId', tarteaucitron.user.openwebanalyticsId]);
+        window.owa_cmds.push(['trackPageView']);
+        window.owa_cmds.push(['trackClicks']);
+
+        tarteaucitron.addScript(window.owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js');
+    }
+};
