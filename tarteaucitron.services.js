@@ -1832,28 +1832,37 @@ tarteaucitron.services.instagram = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['instagram_post'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Instagram iframe'),
-                post_id = x.getAttribute("postId"),
-                embed_width = x.getAttribute("width"),
-                frame_width = 'width=',
-                embed_height = x.getAttribute("height"),
-                frame_height = 'height=',
+            var post_id = x.getAttribute('postId'),
+                post_permalink = x.getAttribute('data-instgrm-permalink'),
+                embed_width = x.getAttribute('width'),
+                embed_height = x.getAttribute('height'),
+                frame_width,
+                frame_height,
                 post_frame;
+
+            if (post_permalink != null) {
+                tarteaucitron.addScript('//www.instagram.com/embed.js', 'instagram-embed');
+
+                return '';
+            }
 
             if (post_id === undefined) {
                 return "";
             }
+
             if (embed_width !== undefined) {
-                frame_width += '"' + embed_width + '" ';
+                frame_width = 'width="' + embed_width + '" ';
             } else {
-                frame_width += '"" ';
+                frame_width = '"" ';
             }
             if (embed_height !== undefined) {
-                frame_height +=  '"' + embed_height + '" ';
+                frame_height = 'height="' + embed_height + '" ';
             } else {
-                frame_height += '"" ';
+                frame_height = '"" ';
             }
-            post_frame = '<iframe title="' + frame_title + '" src="//www.instagram.com/' + post_id + '/embed" ' + frame_width + frame_height + '></iframe>';
+
+            post_frame = '<iframe title="Instagram iframe" src="//www.instagram.com/' + post_id + '/embed" ' + frame_width + frame_height + '></iframe>';
+
             return post_frame;
         });
     },
