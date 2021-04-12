@@ -3937,3 +3937,43 @@ tarteaucitron.services.woopra = {
 		woopra.track();
     }
 };
+
+// ausha
+tarteaucitron.services.ausha = {
+    key: "ausha",
+    type: "video",
+    name: "Ausha",
+    needConsent: true,
+    cookies: [],
+    js: function () {
+        "use strict";
+        tarteaucitron.fallback(['ausha_player'], function (x) {
+            var player_height = x.getAttribute('data-height'),
+                podcast_id    = x.getAttribute('data-podcast-id'),
+                player_id     = x.getAttribute('data-player-id'),
+                playlist      = x.getAttribute('data-playlist'),
+                color         = x.getAttribute('data-color');
+
+            if (podcast_id === undefined) {
+                return "";
+            }
+
+            var src = 'https://player.ausha.co/index.html?podcastId=' + podcast_id + '&v=3';
+
+            if (playlist && playlist.length > 0)    src += '&playlist=' + playlist;
+            if (color && color.length > 0)          src += '&color=' + color.replace('#', '%23');
+            if (player_id && player_id.length > 0)  src += '&playerId=' + player_id;
+
+            return '<iframe id="' + player_id + '" loading="lazy" width="100%" height="' + player_height + '" scrolling="no" frameborder="no" src="' + src + '"></iframe>';
+        });
+
+        tarteaucitron.addScript('//player.ausha.co/ausha-player.js', 'ausha-player');
+    },
+    fallback: function () {
+        "use strict";
+        tarteaucitron.fallback(['ausha_player'], function (elem) {
+            elem.style.height = elem.getAttribute('data-height') + 'px';
+            return tarteaucitron.engage('ausha');
+        });
+    }
+};
