@@ -12,11 +12,12 @@ tarteaucitron.services.iframe = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_iframe'], function (x) {
-            var width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title")),
+                width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url");
 
-            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -27,6 +28,28 @@ tarteaucitron.services.iframe = {
             elem.style.height = elem.getAttribute('height') + 'px';
             return tarteaucitron.engage(id);
         });
+    }
+};
+
+// pardot
+tarteaucitron.services.pardot = {
+    "key": "pardot",
+    "type": "analytic",
+    "name": "Pardot",
+    "uri": "https://www.salesforce.com/company/privacy/full_privacy/",
+    "needConsent": true,
+    "cookies": ['visitor_id'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.piAId === undefined || tarteaucitron.user.piCId === undefined) {
+            return;
+        }
+
+        window.piAId = tarteaucitron.user.piAId;
+        window.piCId = tarteaucitron.user.piCId;
+        window.piHostname = 'pi.pardot.com';
+
+        tarteaucitron.addScript('https://pi.pardot.com/pd.js');
     }
 };
 
@@ -73,11 +96,12 @@ tarteaucitron.services.helloasso = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_helloasso'], function (x) {
-            var width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'HelloAsso iframe'),
+                width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url");
 
-            return '<iframe title="HelloAsso iframe" id="haWidget" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" id="haWidget" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -102,11 +126,12 @@ tarteaucitron.services.podcloud = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_podcloud'], function (x) {
-            var width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'podCloud iframe'),
+                width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url");
 
-            return '<iframe title="podCloud iframe" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -131,12 +156,13 @@ tarteaucitron.services.facebookpost = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_facebookpost'], function (x) {
-            var width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Facebook iframe'),
+                width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url"),
                 appId = x.getAttribute("data-appid");
 
-            return '<iframe title="Facebook iframe" src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -258,13 +284,13 @@ tarteaucitron.services.addthis = {
             window._atr = null;
             window._atw = null;
         }
-        tarteaucitron.fallback(['addthis_sharing_toolbox'], '');
+        tarteaucitron.fallback(['addthis_inline_share_toolbox'], '');
         tarteaucitron.addScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + tarteaucitron.user.addthisPubId);
     },
     "fallback": function () {
         "use strict";
         var id = 'addthis';
-        tarteaucitron.fallback(['addthis_sharing_toolbox'], tarteaucitron.engage(id));
+        tarteaucitron.fallback(['addthis_inline_share_toolbox'], tarteaucitron.engage(id));
     }
 };
 
@@ -538,10 +564,11 @@ tarteaucitron.services.amazon = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['amazon_product'], function (x) {
-            var amazonId = x.getAttribute("amazonid"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Amazon iframe'),
+                amazonId = x.getAttribute("amazonid"),
                 productId = x.getAttribute("productid"),
                 url = '//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=' + tarteaucitron.getLanguage().toUpperCase() + '&source=ss&ref=ss_til&ad_type=product_link&tracking_id=' + amazonId + '&marketplace=amazon&region=' + tarteaucitron.getLanguage().toUpperCase() + '&placement=' + productId + '&asins=' + productId + '&show_border=true&link_opens_in_new_window=true',
-                iframe = '<iframe title="Amazon iframe" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" src="' + url + '"></iframe>';
+                iframe = '<iframe title="' + frame_title + '" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" src="' + url + '"></iframe>';
 
             return iframe;
         });
@@ -564,12 +591,13 @@ tarteaucitron.services.calameo = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['calameo-canvas'], function (x) {
-            var id = x.getAttribute("data-id"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Calameo iframe'),
+                id = x.getAttribute("data-id"),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = '//v.calameo.com/?bkcode=' + id;
 
-            return '<iframe title="Calameo iframe" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -768,7 +796,8 @@ tarteaucitron.services.artetv = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['artetv_player'], function (x) {
-            var video_json = x.getAttribute("json"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Arte.tv iframe'),
+                video_json = x.getAttribute("json"),
                 video_width = x.getAttribute("width"),
                 video_height = x.getAttribute("height"),
                 video_frame;
@@ -777,7 +806,7 @@ tarteaucitron.services.artetv = {
                 return "";
             }
 
-            video_frame = '<iframe title="Arte.tv iframe" style="transition-duration: 0; transition-property: no; margin: 0 auto; position: relative; display: block; background-color: #000000;" src="https://www.arte.tv/player/v5/index.php?json_url=' + video_json + '" width="' + video_width + '" height="' + video_height + '" scrolling="no" allowfullscreen="allowfullscreen"></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" style="transition-duration: 0; transition-property: no; margin: 0 auto; position: relative; display: block; background-color: #000000;" src="https://www.arte.tv/player/v5/index.php?json_url=' + video_json + '" width="' + video_width + '" height="' + video_height + '" scrolling="no" allowfullscreen="allowfullscreen"></iframe>';
             return video_frame;
         });
     },
@@ -803,7 +832,8 @@ tarteaucitron.services.dailymotion = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['dailymotion_player'], function (x) {
-            var video_id = x.getAttribute("videoID"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Dailymotion iframe'),
+                video_id = x.getAttribute("videoID"),
                 video_width = x.getAttribute("width"),
                 frame_width = 'width=',
                 video_height = x.getAttribute("height"),
@@ -828,7 +858,7 @@ tarteaucitron.services.dailymotion = {
             if (embed_type === undefined || !['video', 'playlist'].includes(embed_type) ) {
                 embed_type = "video";
             }
-            video_frame = '<iframe title="Dailymotion iframe" src="//www.dailymotion.com/embed/' + embed_type + '/' + video_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" src="//www.dailymotion.com/embed/' + embed_type + '/' + video_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
             return video_frame;
         });
     },
@@ -854,7 +884,8 @@ tarteaucitron.services.datingaffiliation = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['datingaffiliation-canvas'], function (x) {
-            var comfrom = x.getAttribute("data-comfrom"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Dating Affiliation iframe'),
+                comfrom = x.getAttribute("data-comfrom"),
                 r = x.getAttribute("data-r"),
                 p = x.getAttribute("data-p"),
                 cf0 = x.getAttribute("data-cf0"),
@@ -866,7 +897,7 @@ tarteaucitron.services.datingaffiliation = {
                 height = x.getAttribute("height"),
                 url = 'http://www.tools-affil2.com/rotaban/ban.php?' + comfrom;
 
-            return '<iframe title="Dating Affiliation iframe" src="' + url + '&r=' + r + '&p=' + p + '&cf0=' + cf0 + '&langue=' + langue + '&forward_affiliate=' + forward_affiliate + '&cf2=' + cf2 + '&cfsa2=' + cfsa2 + '" width="' + width + '" height="' + height + '" marginheight="0" marginwidth="0" scrolling="no"></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '&r=' + r + '&p=' + p + '&cf0=' + cf0 + '&langue=' + langue + '&forward_affiliate=' + forward_affiliate + '&cf2=' + cf2 + '&cfsa2=' + cfsa2 + '" width="' + width + '" height="' + height + '" marginheight="0" marginwidth="0" scrolling="no"></iframe>';
         });
     },
     "fallback": function () {
@@ -944,7 +975,8 @@ tarteaucitron.services.deezer = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['deezer_player'], function (x) {
-            var deezer_id = x.getAttribute("deezerID"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Deezer iframe'),
+                deezer_id = x.getAttribute("deezerID"),
                 deezer_width = x.getAttribute("width"),
                 frame_width = 'width=',
                 deezer_height = x.getAttribute("height"),
@@ -982,7 +1014,7 @@ tarteaucitron.services.deezer = {
                 tracklist = "true";
             }
             params = 'tracklist=' + tracklist + '&radius=' + radius;
-            deezer_frame = '<iframe title="Deezer iframe" src="//widget.deezer.com/widget/' + embed_theme + '/' + embed_type + '/' + deezer_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
+            deezer_frame = '<iframe title="' + frame_title + '" src="//widget.deezer.com/widget/' + embed_theme + '/' + embed_type + '/' + deezer_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
             return deezer_frame;
         });
     },
@@ -1582,7 +1614,7 @@ tarteaucitron.services.gtag = {
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
             window.gtag = function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', tarteaucitron.user.gtagUa);
+            gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
 
             if (typeof tarteaucitron.user.gtagMore === 'function') {
                 tarteaucitron.user.gtagMore();
@@ -1653,13 +1685,14 @@ tarteaucitron.services.googlemapssearch = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['googlemapssearch'], function (x) {
-            var width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Google search iframe'),
+                width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 // url = x.getAttribute("data-url");
                 query = escape(x.getAttribute("data-search")),
                 key = x.getAttribute("data-api-key");
 
-            return '<iframe title="Google search iframe" width="' + width +'" height="' + height + '" style="border:0" src="https://www.google.com/maps/embed/v1/place?q='+query+'&key='+key+'" allowfullscreen></iframe> '
+            return '<iframe title="' + frame_title + '" width="' + width +'" height="' + height + '" style="border:0" src="https://www.google.com/maps/embed/v1/place?q='+query+'&key='+key+'" allowfullscreen></iframe> '
         });
     },
     "fallback": function () {
@@ -1684,11 +1717,12 @@ tarteaucitron.services.googlemapsembed = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['googlemapsembed'], function (x) {
-            var width = tarteaucitron.getElemWidth(x),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Google maps iframe'),
+                width = tarteaucitron.getElemWidth(x),
                 height = tarteaucitron.getElemHeight(x),
                 url = x.getAttribute("data-url");
 
-            return '<iframe title="Google maps iframe" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -1798,27 +1832,38 @@ tarteaucitron.services.instagram = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['instagram_post'], function (x) {
-            var post_id = x.getAttribute("postId"),
-                embed_width = x.getAttribute("width"),
-                frame_width = 'width=',
-                embed_height = x.getAttribute("height"),
-                frame_height = 'height=',
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Instagram iframe'),
+                post_id = x.getAttribute('postId'),
+                post_permalink = x.getAttribute('data-instgrm-permalink'),
+                embed_width = x.getAttribute('width'),
+                embed_height = x.getAttribute('height'),
+                frame_width,
+                frame_height,
                 post_frame;
+
+            if (post_permalink != null) {
+                tarteaucitron.addScript('//www.instagram.com/embed.js', 'instagram-embed');
+
+                return '';
+            }
 
             if (post_id === undefined) {
                 return "";
             }
+
             if (embed_width !== undefined) {
-                frame_width += '"' + embed_width + '" ';
+                frame_width = 'width="' + embed_width + '" ';
             } else {
-                frame_width += '"" ';
+                frame_width = '"" ';
             }
             if (embed_height !== undefined) {
-                frame_height +=  '"' + embed_height + '" ';
+                frame_height = 'height="' + embed_height + '" ';
             } else {
-                frame_height += '"" ';
+                frame_height = '"" ';
             }
-            post_frame = '<iframe title="Instagram iframe" src="//www.instagram.com/' + post_id + '/embed" ' + frame_width + frame_height + '></iframe>';
+
+            post_frame = '<iframe title="' + frame_title + '" src="//www.instagram.com/' + post_id + '/embed" ' + frame_width + frame_height + '></iframe>';
+
             return post_frame;
         });
     },
@@ -2059,12 +2104,13 @@ tarteaucitron.services.prezi = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['prezi-canvas'], function (x) {
-            var id = x.getAttribute("data-id"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Prezi iframe'),
+                id = x.getAttribute("data-id"),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = 'https://prezi.com/embed/' + id + '/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0';
 
-            return '<iframe title="Prezi iframe" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -2283,12 +2329,13 @@ tarteaucitron.services.slideshare = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['slideshare-canvas'], function (x) {
-            var id = x.getAttribute("data-id"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Slideshare iframe'),
+                id = x.getAttribute("data-id"),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = '//www.slideshare.net/slideshow/embed_code/' + id;
 
-            return '<iframe title="Slideshare iframe" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -2312,20 +2359,21 @@ tarteaucitron.services.soundcloud = {
     js: function () {
         "use strict";
         tarteaucitron.fallback(['soundcloud_player'], function (x) {
-            var player_height   = x.getAttribute('data-height'),
-                frame_height    = 'height="' + player_height + '" ',
-                playable_id     = x.getAttribute('data-playable-id'),
-                playable_type   = x.getAttribute('data-playable-type'),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Soundcloud iframe'),
+                player_height = x.getAttribute('data-height'),
+                frame_height  = 'height="' + player_height + '" ',
+                playable_id   = x.getAttribute('data-playable-id'),
+                playable_type = x.getAttribute('data-playable-type'),
                 playable_url    = x.getAttribute('data-playable-url'),
-                color           = x.getAttribute('data-color'),
-                autoplay        = x.getAttribute('data-auto-play'),
-                hideRelated     = x.getAttribute('data-hide-related'),
-                showComments    = x.getAttribute('data-show-comments'),
-                showUser        = x.getAttribute('data-show-user'),
-                showReposts     = x.getAttribute('data-show-reposts'),
-                showTeaser      = x.getAttribute('data-show-teaser'),
-                visual          = x.getAttribute('data-visual'),
-                artwork         = x.getAttribute('data-artwork');
+                color         = x.getAttribute('data-color'),
+                autoplay      = x.getAttribute('data-auto-play'),
+                hideRelated   = x.getAttribute('data-hide-related'),
+                showComments  = x.getAttribute('data-show-comments'),
+                showUser      = x.getAttribute('data-show-user'),
+                showReposts   = x.getAttribute('data-show-reposts'),
+                showTeaser    = x.getAttribute('data-show-teaser'),
+                visual        = x.getAttribute('data-visual'),
+                artwork       = x.getAttribute('data-artwork');
 
             var allowAutoplay = autoplay === 'true' ? 'allow="autoplay"' : '';
 
@@ -2349,7 +2397,7 @@ tarteaucitron.services.soundcloud = {
             if (visual && visual.length > 0)                qs += '&visual=' + visual;
             if (artwork && artwork.length > 0)              qs += '&show_artwork=' + artwork;
 
-            return '<iframe title="Soundcloud iframe" width="100%" ' + frame_height + ' scrolling="no" ' + allowAutoplay + ' src="https://w.soundcloud.com/player/' + qs + '"></iframe>';
+            return '<iframe title="' + frame_title + '" width="100%" ' + frame_height + ' scrolling="no" ' + allowAutoplay + ' src="https://w.soundcloud.com/player/' + qs + '"></iframe>';
         });
     },
     fallback: function () {
@@ -2372,7 +2420,8 @@ tarteaucitron.services.spotify = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['spotify_player'], function (x) {
-            var spotify_id = x.getAttribute("spotifyID"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Spotify iframe'),
+                spotify_id = x.getAttribute("spotifyID"),
                 spotify_width = x.getAttribute("width"),
                 frame_width = 'width=',
                 spotify_height = x.getAttribute("height"),
@@ -2392,7 +2441,7 @@ tarteaucitron.services.spotify = {
             } else {
                 frame_height += '"" ';
             }
-            spotify_frame = '<iframe title="Spotify iframe" src="//open.spotify.com/embed/' + spotify_id + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
+            spotify_frame = '<iframe title="' + frame_title + '" src="//open.spotify.com/embed/' + spotify_id + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
             return spotify_frame;
         });
     },
@@ -2449,7 +2498,8 @@ tarteaucitron.services.timelinejs = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['timelinejs-canvas'], function (x) {
-            var spreadsheet_id = x.getAttribute("spreadsheet_id"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Twitter iframe'),
+                spreadsheet_id = x.getAttribute("spreadsheet_id"),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 lang = x.getAttribute("lang_2_letter"),
@@ -2461,7 +2511,7 @@ tarteaucitron.services.timelinejs = {
                 start_zoom = x.getAttribute("start_zoom"),
                 url = '//cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=' + spreadsheet_id + '&font=' + font + '&maptype=' + map + '&lang=' + lang + '&start_at_end=' + start_at_end + '&hash_bookmark=' + hash_bookmark + '&start_at_slide=' + start_at_slide + '&start_zoom_adjust=' + start_zoom + '&height=' + height;
 
-            return '<iframe title="Twitter iframe" src="' + url + '" width="' + width + '" height="' + height + '" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" allowtransparency allowfullscreen></iframe>';
         });
     },
     "fallback": function () {
@@ -2682,7 +2732,8 @@ tarteaucitron.services.vimeo = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['vimeo_player'], function (x) {
-            var video_width = x.getAttribute("data-width") || x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("data-title") || x.getAttribute("title") || 'Vimeo iframe'),
+                video_width = x.getAttribute("data-width") || x.getAttribute("width"),
                 frame_width = 'width=',
                 video_height = x.getAttribute("data-height") || x.getAttribute("height"),
                 frame_height = 'height=',
@@ -2829,7 +2880,7 @@ tarteaucitron.services.vimeo = {
                 video_qs = "";
             }
 
-            video_frame = '<iframe title="Vimeo iframe" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + ' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + ' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
 
             return video_frame;
         });
@@ -2981,8 +3032,8 @@ tarteaucitron.services.atinternet = {
     "type": "analytic",
     "name": "AT Internet (privacy by design)",
     "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
-    "needConsent": false,
-    "safeanalytic": true,
+    "needConsent": true,
+    "safeanalytic": false,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
         "use strict";
@@ -2999,99 +3050,32 @@ tarteaucitron.services.atinternet = {
             }
 
             if (typeof window.tag.privacy !== 'undefined') {
-
-                document.getElementById('atinternetLine').style.display = 'none';
-
-                if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
-                     window.tag.privacy.setVisitorMode('cnil', 'exempt');
-                }
-
-                tarteaucitron.addClickEventToElement(document.getElementById('atinternetDenied'), function () {
-                    tarteaucitron.launch['atinternetoptout'] = false;
-                    tarteaucitron.launch['atinternetoptin'] = false;
-                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
-                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
-                });
-
-                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptoutDenied'), function () {
-                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
-                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
-                     }
-                });
-
-                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptinDenied'), function () {
-                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
-                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
-                     }
-                });
+                window.tag.privacy.setVisitorOptin();
             }
 
-            setTimeout(function() {
-                tag.page.send();
-            }, 70);
+            window.tag.page.send();
         });
-    }
-};
-
-// AT Internet (optin)
-tarteaucitron.services.atinternetoptin = {
-    "key": "atinternetoptin",
-    "type": "analytic",
-    "name": "AT Internet",
-    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
-    "needConsent": true,
-    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
-    "js": function () {
+    },
+    "fallback": function () {
         "use strict";
-        tarteaucitron.launch['atinternetoptout'] = false;
-
-        setTimeout(function() {
-            tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
-            tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
-        }, 50);
-
-        setTimeout(function() {
-            if (typeof window.tag.privacy !== 'undefined') {
-               window.tag.privacy.setVisitorOptin();
-            }
-        }, 60);
-
-        window.tarteaucitronHackNoSwitch = true;
-        setTimeout(function() {window.tarteaucitronHackNoSwitch = false;}, 200);
-    }
-};
-
-// AT Internet (optout)
-tarteaucitron.services.atinternetoptout = {
-    "key": "atinternetoptout",
-    "type": "analytic",
-    "name": "AT Internet [minimal]",
-    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
-    "needConsent": true,
-    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
-    "js": function () {
-        "use strict";
-
-        // hack accept all
-        if (window.tarteaucitronHackNoSwitch) {
-            setTimeout(function() {
-                tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
-            }, 60);
+        if (tarteaucitron.user.atLibUrl === undefined) {
             return;
         }
 
-        tarteaucitron.launch['atinternetoptin'] = false;
+        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
 
-        setTimeout(function() {
-             tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
-             tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
-        }, 50);
+            window.tag = new ATInternet.Tracker.Tag();
 
-        setTimeout(function() {
-            if (typeof window.tag.privacy !== 'undefined') {
-               window.tag.privacy.setVisitorOptout();
+            if (typeof tarteaucitron.user.atMore === 'function') {
+                tarteaucitron.user.atMore();
             }
-        }, 60);
+
+            if (typeof window.tag.privacy !== 'undefined') {
+                window.tag.privacy.setVisitorMode('cnil', 'exempt');
+            }
+
+            window.tag.page.send();
+        });
     }
 };
 
@@ -3131,7 +3115,8 @@ tarteaucitron.services.youtube = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_player'], function (x) {
-            var video_id = x.getAttribute("videoID"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Youtube iframe'),
+                video_id = x.getAttribute("videoID"),
                 video_width = x.getAttribute("width"),
                 frame_width = 'width=',
                 video_height = x.getAttribute("height"),
@@ -3152,7 +3137,7 @@ tarteaucitron.services.youtube = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe title="Youtube iframe" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '" allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '" allowfullscreen></iframe>';
             return video_frame;
         });
     },
@@ -3178,7 +3163,8 @@ tarteaucitron.services.youtubeplaylist = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_playlist_player'], function (x) {
-            var playlist_id = x.getAttribute("playlistID"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Youtube iframe'),
+                playlist_id = x.getAttribute("playlistID"),
                 video_width = x.getAttribute("width"),
                 frame_width = 'width=',
                 video_height = x.getAttribute("height"),
@@ -3199,7 +3185,7 @@ tarteaucitron.services.youtubeplaylist = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe title="Youtube iframe" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/videoseries?list=' + playlist_id + '&' + params + '" allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/videoseries?list=' + playlist_id + '&' + params + '" allowfullscreen></iframe>';
             return video_frame;
         });
     },
@@ -3328,7 +3314,8 @@ tarteaucitron.services.issuu = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['issuu_player'], function (x) {
-            var issuu_id = x.getAttribute("issuuID"),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Issuu iframe'),
+                issuu_id = x.getAttribute("issuuID"),
                 issuu_width = x.getAttribute("width"),
                 frame_width = 'width=',
                 issuu_height = x.getAttribute("height"),
@@ -3354,7 +3341,7 @@ tarteaucitron.services.issuu = {
             if (issuu_id.match(/\d+\/\d+/)) { issuu_embed = '#' + issuu_id; } else if (issuu_id.match(/d=(.*)&u=(.*)/)) { issuu_embed = '?' + issuu_id; }
 
 
-            issuu_frame = '<iframe title="Issuu iframe" type="text/html" ' + frame_width + frame_height + ' src="//e.issuu.com/embed.html' + issuu_embed + '"></iframe>';
+            issuu_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//e.issuu.com/embed.html' + issuu_embed + '"></iframe>';
 
             return issuu_frame;
         });
@@ -3541,7 +3528,7 @@ tarteaucitron.services.matomohightrack = {
     "type": "analytic",
     "name": "Matomo",
     "uri": "https://matomo.org/faq/general/faq_146/",
-    "needConsent": true,
+    "needConsent": false,
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
     "js": function () {
         "use strict";
@@ -3654,7 +3641,8 @@ tarteaucitron.services.matterport = {
   "js": function () {
     "use strict";
     tarteaucitron.fallback(['matterport'], function (x) {
-      var matterport_id = x.getAttribute("matterportID"),
+      var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Matterport iframe'),
+        matterport_id = x.getAttribute("matterportID"),
         matterport_width = x.getAttribute("width"),
         frame_width = 'width=',
         matterport_height = x.getAttribute("height"),
@@ -3679,7 +3667,7 @@ tarteaucitron.services.matterport = {
         return "";
       }
 
-      matterport_frame = '<iframe title="Matterport iframe" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '" allowfullscreen="allowfullscreen"></iframe>';
+      matterport_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '" allowfullscreen="allowfullscreen"></iframe>';
       return matterport_frame;
     });
   },
@@ -3775,11 +3763,15 @@ tarteaucitron.services.getquanty = {
             return;
         }
 
-        window.webleads_site_ids = window.webleads_site_ids || [];
-        window.webleads_site_ids.push(tarteaucitron.user.getguanty);
+        tarteaucitron.addScript('https://get.smart-data-systems.com/gq?site_id=' + tarteaucitron.user.getguanty + '&consent=1');
+    },
+    "fallback": function () {
+        "use strict";
+        if (tarteaucitron.user.getguanty === undefined) {
+            return;
+        }
 
-        tarteaucitron.addScript('https://stats.webleads-tracker.com/js');
-        tarteaucitron.addScript('https://get.smart-data-systems.com/track?site_id=' + tarteaucitron.user.getguanty);
+        tarteaucitron.addScript('https://get.smart-data-systems.com/gq?site_id=' + tarteaucitron.user.getguanty + '&notrack=1');
     }
 };
 
@@ -3895,5 +3887,46 @@ tarteaucitron.services.woopra = {
 		    domain: tarteaucitron.user.woopraDomain
 		});
 		woopra.track();
+    }
+};
+
+// ausha
+tarteaucitron.services.ausha = {
+    key: "ausha",
+    type: "video",
+    name: "Ausha",
+    uri: "https://www.ausha.co/protection-personal-data/",
+    needConsent: true,
+    cookies: [],
+    js: function () {
+        "use strict";
+        tarteaucitron.fallback(['ausha_player'], function (x) {
+            var player_height = x.getAttribute('data-height'),
+                podcast_id    = x.getAttribute('data-podcast-id'),
+                player_id     = x.getAttribute('data-player-id'),
+                playlist      = x.getAttribute('data-playlist'),
+                color         = x.getAttribute('data-color');
+
+            if (podcast_id === undefined) {
+                return "";
+            }
+
+            var src = 'https://player.ausha.co/index.html?podcastId=' + podcast_id + '&v=3';
+
+            if (playlist && playlist.length > 0)    src += '&playlist=' + playlist;
+            if (color && color.length > 0)          src += '&color=' + color.replace('#', '%23');
+            if (player_id && player_id.length > 0)  src += '&playerId=' + player_id;
+
+            return '<iframe id="' + player_id + '" loading="lazy" width="100%" height="' + player_height + '" scrolling="no" frameborder="no" src="' + src + '"></iframe>';
+        });
+
+        tarteaucitron.addScript('//player.ausha.co/ausha-player.js', 'ausha-player');
+    },
+    fallback: function () {
+        "use strict";
+        tarteaucitron.fallback(['ausha_player'], function (elem) {
+            elem.style.height = elem.getAttribute('data-height') + 'px';
+            return tarteaucitron.engage('ausha');
+        });
     }
 };

@@ -24,6 +24,10 @@ span.tarteaucitronH3 {
 
 /** BETTER MOBILE MODE **/
 @media screen and (max-width: 767px) {
+
+    html body #tarteaucitronRoot #tarteaucitron ul#tarteaucitronServices_mandatory .tarteaucitronDeny {
+        display: none!important;
+    }
  
     html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button,
     html body #tarteaucitronRoot #tarteaucitron .tarteaucitronAsk,
@@ -33,6 +37,8 @@ span.tarteaucitronH3 {
         margin-left: 0!important;
         margin-right: 0!important;
         box-sizing: border-box!important;
+        max-width: 100%!important;
+        margin-bottom: 8px!important;
     }
 
     html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder ul .tarteaucitronLine {
