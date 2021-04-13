@@ -3815,11 +3815,15 @@ tarteaucitron.services.getquanty = {
             return;
         }
 
-        window.webleads_site_ids = window.webleads_site_ids || [];
-        window.webleads_site_ids.push(tarteaucitron.user.getguanty);
+        tarteaucitron.addScript('https://get.smart-data-systems.com/gq?site_id=' + tarteaucitron.user.getguanty + '&consent=1');
+    },
+    "fallback": function () {
+        "use strict";
+        if (tarteaucitron.user.getguanty === undefined) {
+            return;
+        }
 
-        tarteaucitron.addScript('https://stats.webleads-tracker.com/js');
-        tarteaucitron.addScript('https://get.smart-data-systems.com/track?site_id=' + tarteaucitron.user.getguanty);
+        tarteaucitron.addScript('https://get.smart-data-systems.com/gq?site_id=' + tarteaucitron.user.getguanty + '&notrack=1');
     }
 };
 
