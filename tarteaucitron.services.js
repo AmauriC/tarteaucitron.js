@@ -3017,8 +3017,8 @@ tarteaucitron.services.atinternet = {
     "type": "analytic",
     "name": "AT Internet (privacy by design)",
     "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
-    "needConsent": false,
-    "safeanalytic": true,
+    "needConsent": true,
+    "safeanalytic": false,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
     "js": function () {
         "use strict";
@@ -3035,99 +3035,32 @@ tarteaucitron.services.atinternet = {
             }
 
             if (typeof window.tag.privacy !== 'undefined') {
-
-                document.getElementById('atinternetLine').style.display = 'none';
-
-                if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
-                     window.tag.privacy.setVisitorMode('cnil', 'exempt');
-                }
-
-                tarteaucitron.addClickEventToElement(document.getElementById('atinternetDenied'), function () {
-                    tarteaucitron.launch['atinternetoptout'] = false;
-                    tarteaucitron.launch['atinternetoptin'] = false;
-                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
-                    tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
-                });
-
-                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptoutDenied'), function () {
-                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
-                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
-                     }
-                });
-
-                tarteaucitron.addClickEventToElement(document.getElementById('atinternetoptinDenied'), function () {
-                     if (tarteaucitron.cookie.read().indexOf('atinternetoptin=true') === -1 && tarteaucitron.cookie.read().indexOf('atinternetoptout=true') === -1) {
-                         window.tag.privacy.setVisitorMode('cnil', 'exempt');
-                     }
-                });
+                window.tag.privacy.setVisitorOptin();
             }
 
-            setTimeout(function() {
-                tag.page.send();
-            }, 70);
+            window.tag.page.send();
         });
-    }
-};
-
-// AT Internet (optin)
-tarteaucitron.services.atinternetoptin = {
-    "key": "atinternetoptin",
-    "type": "analytic",
-    "name": "AT Internet",
-    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
-    "needConsent": true,
-    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
-    "js": function () {
+    },
+    "fallback": function () {
         "use strict";
-        tarteaucitron.launch['atinternetoptout'] = false;
-
-        setTimeout(function() {
-            tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
-            tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
-        }, 50);
-
-        setTimeout(function() {
-            if (typeof window.tag.privacy !== 'undefined') {
-               window.tag.privacy.setVisitorOptin();
-            }
-        }, 60);
-
-        window.tarteaucitronHackNoSwitch = true;
-        setTimeout(function() {window.tarteaucitronHackNoSwitch = false;}, 200);
-    }
-};
-
-// AT Internet (optout)
-tarteaucitron.services.atinternetoptout = {
-    "key": "atinternetoptout",
-    "type": "analytic",
-    "name": "AT Internet [minimal]",
-    "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
-    "needConsent": true,
-    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
-    "js": function () {
-        "use strict";
-
-        // hack accept all
-        if (window.tarteaucitronHackNoSwitch) {
-            setTimeout(function() {
-                tarteaucitron.userInterface.respond(document.getElementById('atinternetoptoutDenied'), false);
-            }, 60);
+        if (tarteaucitron.user.atLibUrl === undefined) {
             return;
         }
 
-        tarteaucitron.launch['atinternetoptin'] = false;
+        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
 
-        setTimeout(function() {
-             tarteaucitron.userInterface.respond(document.getElementById('atinternetAllowed'), true);
-             tarteaucitron.userInterface.respond(document.getElementById('atinternetoptinDenied'), false);
-        }, 50);
+            window.tag = new ATInternet.Tracker.Tag();
 
-        setTimeout(function() {
-            if (typeof window.tag.privacy !== 'undefined') {
-               window.tag.privacy.setVisitorOptout();
+            if (typeof tarteaucitron.user.atMore === 'function') {
+                tarteaucitron.user.atMore();
             }
-        }, 60);
+
+            if (typeof window.tag.privacy !== 'undefined') {
+                window.tag.privacy.setVisitorMode('cnil', 'exempt');
+            }
+
+            window.tag.page.send();
+        });
     }
 };
 
@@ -3580,7 +3513,7 @@ tarteaucitron.services.matomohightrack = {
     "type": "analytic",
     "name": "Matomo",
     "uri": "https://matomo.org/faq/general/faq_146/",
-    "needConsent": true,
+    "needConsent": false,
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
     "js": function () {
         "use strict";
