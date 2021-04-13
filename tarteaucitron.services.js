@@ -1833,6 +1833,7 @@ tarteaucitron.services.instagram = {
         "use strict";
         tarteaucitron.fallback(['instagram_post'], function (x) {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Instagram iframe'),
+                post_id = x.getAttribute('postId'),
                 post_permalink = x.getAttribute('data-instgrm-permalink'),
                 embed_width = x.getAttribute('width'),
                 embed_height = x.getAttribute('height'),
