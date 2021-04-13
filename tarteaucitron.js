@@ -1234,6 +1234,10 @@ var tarteaucitron = {
             }
             //end ie compatibility
 
+            if (document.getElementById('tarteaucitronPersonalize2') !== null) {
+                document.getElementById('tarteaucitronPersonalize2').focus();
+            }
+
             window.dispatchEvent(tacOpenAlertEvent);
         },
         "closeAlert": function () {
