@@ -3943,6 +3943,7 @@ tarteaucitron.services.ausha = {
     key: "ausha",
     type: "video",
     name: "Ausha",
+    uri: "https://www.ausha.co/protection-personal-data/",
     needConsent: true,
     cookies: [],
     js: function () {
