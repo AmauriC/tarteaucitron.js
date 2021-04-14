@@ -4013,3 +4013,16 @@ tarteaucitron.services.ausha = {
         });
     }
 };
+
+// New Relic
+tarteaucitron.services.newrelic = {
+    key: "newrelic",
+    type: "analytic",
+    name: "New Relic",
+    uri: "https://newrelic.com/termsandconditions/privacy",
+    needConsent: true,
+    cookies: ["JSESSIONID", "NREUM", "NRAGENT"],
+    js: function () {
+        "use strict";
+    }
+};
