@@ -5,6 +5,12 @@
 
 #tarteaucitronContentWrapper {display:unset;}
 
+/** 14042021 **/
+span.tarteaucitronReadmoreSeparator {
+    display: inline!important;
+}
+/******/
+
 /** 27032021 **/
 button.tarteaucitron-toggle-group {
     display: block;
