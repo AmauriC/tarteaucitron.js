@@ -2364,6 +2364,7 @@ tarteaucitron.services.soundcloud = {
                 frame_height  = 'height="' + player_height + '" ',
                 playable_id   = x.getAttribute('data-playable-id'),
                 playable_type = x.getAttribute('data-playable-type'),
+                playable_url    = x.getAttribute('data-playable-url'),
                 color         = x.getAttribute('data-color'),
                 autoplay      = x.getAttribute('data-auto-play'),
                 hideRelated   = x.getAttribute('data-hide-related'),
@@ -2376,11 +2377,15 @@ tarteaucitron.services.soundcloud = {
 
             var allowAutoplay = autoplay === 'true' ? 'allow="autoplay"' : '';
 
-            if (playable_id === undefined) {
+            if (playable_id === undefined && playable_url === undefined) {
                 return "";
             }
 
+            // Allow to embed from API results (playable_type + playable_id)
             var qs = '?url=https%3A//api.soundcloud.com/' + playable_type + '/' + playable_id;
+            // Or from raw URL from Soundcloud website
+            if (playable_url && playable_url.length >0)     qs = '?url=' + escape(playable_url);
+
             if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
             if (color && color.length > 0)                  qs += '&color=' + color.replace('#', '%23');
             if (autoplay && autoplay.length > 0)            qs += '&auto_play=' + autoplay;
