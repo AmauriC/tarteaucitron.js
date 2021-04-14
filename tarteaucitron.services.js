@@ -3904,6 +3904,10 @@ tarteaucitron.services.openwebanalytics = {
     "js": function () {
         "use strict";
 
+        if (tarteaucitron.user.openwebanalyticsId === undefined) {
+            return;
+        }
+
         window.owa_baseUrl = tarteaucitron.user.openwebanalyticsHost;
         window.owa_cmds = window.owa_cmds || [];
         window.owa_cmds.push(['setSiteId', tarteaucitron.user.openwebanalyticsId]);
