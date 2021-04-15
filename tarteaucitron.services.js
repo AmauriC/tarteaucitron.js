@@ -31,6 +31,30 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// sharpspring
+tarteaucitron.services.sharpspring = {
+    "key": "sharpspring",
+    "type": "analytic",
+    "name": "SharpSpring",
+    "uri": "https://sharpspring.com/legal/sharpspring-cookie-policy/",
+    "needConsent": true,
+    "cookies": ['koitk', '__ss', '__ss_tk', '__ss_referrer'],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.sharpspringAccount === undefined || tarteaucitron.user.sharpspringForm === undefined) {
+            return;
+        }
+
+        window.ss_form = {'account': tarteaucitron.user.sharpspringAccount, 'formID': tarteaucitron.user.sharpspringForm};
+        window.ss_form.width = '100%';
+        window.ss_form.height = '1000';
+        window.ss_form.domain = tarteaucitron.user.sharpspringUrl;
+
+        tarteaucitron.addScript('https://' + tarteaucitron.user.sharpspringUrl + '/client/form.js?ver=2.0.1');
+    }
+};
+
 // pardot
 tarteaucitron.services.pardot = {
     "key": "pardot",
