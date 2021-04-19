@@ -595,11 +595,11 @@ var tarteaucitron = {
                     }, 1500);
                 }
                 if(tarteaucitron.parameters.closePopup === true){
-                    let element = document.getElementById('tarteaucitronAlertBig');
-                    let span = document.createElement('span')
-                    span.textContent = 'X';
-                    span.setAttribute('id', "tarteaucitronCloseCross")
-                    element.insertBefore(span, element.firstElementChild)
+                    var closeElement = document.getElementById('tarteaucitronAlertBig'),
+                        closeSpan = document.createElement('span');
+                    closeSpan.textContent = 'X';
+                    closeSpan.setAttribute('id', "tarteaucitronCloseCross");
+                    closeElement.insertBefore(closeSpan, closeElement.firstElementChild);
                 }
 
 
