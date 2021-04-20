@@ -391,7 +391,7 @@ var tarteaucitron = {
                 }
 
                 if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
-                    html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
@@ -411,7 +411,7 @@ var tarteaucitron = {
                     //html += '</div>';
                     html += '</div>';
                 } else {
-                    html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
 
@@ -1234,8 +1234,8 @@ var tarteaucitron = {
             }
             //end ie compatibility
 
-            if (document.getElementById('tarteaucitronPersonalize2') !== null) {
-                document.getElementById('tarteaucitronPersonalize2').focus();
+            if (document.getElementById('tarteaucitronAlertBig') !== null) {
+                document.getElementById('tarteaucitronAlertBig').focus();
             }
 
             window.dispatchEvent(tacOpenAlertEvent);

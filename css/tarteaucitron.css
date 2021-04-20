@@ -1,3 +1,5 @@
+div#tarteaucitronAlertBig:focus {outline: 0;}
+
 .tarteaucitron-modal-open{
     overflow: hidden;
     height: 100%;
