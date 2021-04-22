@@ -596,7 +596,7 @@ var tarteaucitron = {
                 }
                 if(tarteaucitron.parameters.closePopup === true){
                     var closeElement = document.getElementById('tarteaucitronAlertBig'),
-                    closeSpan = document.createElement('span');
+                        closeSpan = document.createElement('span');
                     closeSpan.textContent = 'X';
                     closeSpan.setAttribute('id', "tarteaucitronCloseCross");
                     closeElement.insertBefore(closeSpan, closeElement.firstElementChild);
