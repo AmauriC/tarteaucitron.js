@@ -42,6 +42,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "е изключен.",
+    "allowed": "Позволен",
+    "disallowed": "Забранено",
 
     "ads": {
         "title": "Рекламодатели",

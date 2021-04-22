@@ -43,6 +43,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "je zakázané.",
+    "allowed": "povolený",
+    "disallowed": "nepovolený",
 
     "ads": {
         "title": "Reklamná sieť",

@@ -41,6 +41,9 @@ tarteaucitron.lang = {
     "icon": "Cookies",
 
     "fallback": "está desativado.",
+    "allowed": "permitido",
+    "disallowed": "não permitido",
+    
     "ads": {
         "title": "Rede de anúncios",
         "details": "As redes de anúncios podem gerar receitas com a venda de espaço publicitário no site."

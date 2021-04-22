@@ -40,6 +40,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
 
     "fallback": "已禁用。",
+    "allowed": "允许的",
+    "disallowed": "不允许的",
 
     "ads": {
         "title": "广告组",

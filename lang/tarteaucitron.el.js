@@ -42,6 +42,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "είναι απενεργοποιημένο.",
+    "allowed": "επιτρέπεται",
+    "disallowed": "απαγορεύεται",
 
     "ads": {
         "title": "Διαφημιστικό Δίκτυο",
