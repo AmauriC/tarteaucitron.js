@@ -43,6 +43,8 @@ tarteaucitron.lang = {
     
     
     "fallback": "Деактивирован.",
+    "allowed": "разрешается",
+    "disallowed": "запрещено",
 
     "ads": {
         "title": "Рекламная сеть",

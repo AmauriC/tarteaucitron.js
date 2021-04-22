@@ -43,6 +43,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
 
 	"fallback" : "er skrudd av.",
+	"allowed": "tillatt",
+    "disallowed": "ikke tillatt",
 
 	"ads"      : {
 		"title"   : "Annonsenettverk",

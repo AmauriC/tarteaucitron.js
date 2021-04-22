@@ -43,6 +43,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
 
     "fallback": "tắt.",
+    "allowed": "được phép",
+    "disallowed": "không được phép",
 
     "ads": {
         "title": "Mạng quảng cáo",

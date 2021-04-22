@@ -43,6 +43,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
    
     "fallback": "hylätty.",
+    "allowed": "sallittu",
+    "disallowed": "kielletty",
 
     "ads": {
         "title": "Mainosverkosto",
