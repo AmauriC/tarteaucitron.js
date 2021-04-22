@@ -17,7 +17,7 @@ var scripts = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": 20210310,
+    "version": 20210422,
     "cdn": cdn,
     "user": {},
     "lang": {},
@@ -391,7 +391,7 @@ var tarteaucitron = {
                 }
 
                 if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
-                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
@@ -411,7 +411,7 @@ var tarteaucitron = {
                     //html += '</div>';
                     html += '</div>';
                 } else {
-                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
                     html += '   <span id="tarteaucitronDisclaimerAlert">';
 
@@ -595,11 +595,11 @@ var tarteaucitron = {
                     }, 1500);
                 }
                 if(tarteaucitron.parameters.closePopup === true){
-                    var closeElement = document.getElementById('tarteaucitronAlertBig'),
-                        closeSpan = document.createElement('span');
-                    closeSpan.textContent = 'X';
-                    closeSpan.setAttribute('id', "tarteaucitronCloseCross");
-                    closeElement.insertBefore(closeSpan, closeElement.firstElementChild);
+                    let element = document.getElementById('tarteaucitronAlertBig');
+                    let span = document.createElement('span')
+                    span.textContent = 'X';
+                    span.setAttribute('id', "tarteaucitronCloseCross")
+                    element.insertBefore(span, element.firstElementChild)
                 }
 
 
@@ -745,14 +745,15 @@ var tarteaucitron = {
             isDenied = (cookie.indexOf(service.key + '=false') >= 0),
             isAllowed = ((cookie.indexOf(service.key + '=true') >= 0) || (!service.needConsent && cookie.indexOf(service.key + '=false') < 0)),
             isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0),
-            isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1");
+            isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1"),
+            currentStatus = (isAllowed) ? tarteaucitron.lang.allowed : tarteaucitron.lang.disallowed;
 
         if (tarteaucitron.added[service.key] !== true) {
             tarteaucitron.added[service.key] = true;
 
             html += '<li id="' + service.key + 'Line" class="tarteaucitronLine">';
             html += '   <div class="tarteaucitronName">';
-            html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + service.name + '</span>';
+            html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + service.name + ' (<span id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>)</span>';
             html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
 
             if (tarteaucitron.parameters.moreInfoLink == true) {
@@ -955,6 +956,12 @@ var tarteaucitron = {
                         if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) { tarteaucitron.services[key].js(); }
                         tarteaucitron.sendEvent(key + '_loaded');
                     }
+                    var itemStatusElem = document.getElementById('tacCurrentStatus'+key);
+                    if(status == true){
+                        itemStatusElem.innerHTML = tarteaucitron.lang.allowed;
+                    }else{
+                        itemStatusElem.innerHTML = tarteaucitron.lang.disallowed;
+                    }
                     tarteaucitron.state[key] = status;
                     tarteaucitron.cookie.create(key, status);
                     tarteaucitron.userInterface.color(key, status);
@@ -989,6 +996,12 @@ var tarteaucitron = {
                     tarteaucitron.sendEvent(key + '_loaded');
                     if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) { tarteaucitron.services[key].js(); }
                 }
+            }
+            var itemStatusElem = document.getElementById('tacCurrentStatus'+key);
+            if(status == true){
+                itemStatusElem.innerHTML = tarteaucitron.lang.allowed;
+            }else{
+                itemStatusElem.innerHTML = tarteaucitron.lang.disallowed;
             }
             tarteaucitron.state[key] = status;
             tarteaucitron.cookie.create(key, status);
@@ -1234,8 +1247,8 @@ var tarteaucitron = {
             }
             //end ie compatibility
 
-            if (document.getElementById('tarteaucitronAlertBig') !== null) {
-                document.getElementById('tarteaucitronAlertBig').focus();
+            if (document.getElementById('tarteaucitronPersonalize2') !== null) {
+                document.getElementById('tarteaucitronPersonalize2').focus();
             }
 
             window.dispatchEvent(tacOpenAlertEvent);

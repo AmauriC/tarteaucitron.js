@@ -44,6 +44,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "devre dışı.",
+    "allowed": "izin verildi",
+    "disallowed": "izin verilmeyen",
 
     "ads": {
         "title": "Reklam yönetimi",
