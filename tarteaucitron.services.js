@@ -3203,7 +3203,7 @@ tarteaucitron.services.atinternet = {
             if (typeof window.tag.privacy !== 'undefined') {
 
                 var visitorMode = tag.privacy.getVisitorMode();
-                if (visitorMode->name == "optout") {
+                if (visitorMode.name == "optout") {
                     window.tag.privacy.setVisitorOptout();
                 } else {
                     window.tag.privacy.setVisitorMode('cnil', 'exempt');
