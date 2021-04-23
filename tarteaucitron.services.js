@@ -3166,7 +3166,7 @@ tarteaucitron.services.atinternet = {
     "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": true,
     "safeanalytic": false,
-    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.atLibUrl === undefined) {
@@ -3184,8 +3184,6 @@ tarteaucitron.services.atinternet = {
             if (typeof window.tag.privacy !== 'undefined') {
                 window.tag.privacy.setVisitorOptin();
             }
-
-            window.tag.page.send();
         });
     },
     "fallback": function () {
@@ -3203,10 +3201,14 @@ tarteaucitron.services.atinternet = {
             }
 
             if (typeof window.tag.privacy !== 'undefined') {
-                window.tag.privacy.setVisitorMode('cnil', 'exempt');
-            }
 
-            window.tag.page.send();
+                var visitorMode = tag.privacy.getVisitorMode();
+                if (visitorMode->name == "optout") {
+                    window.tag.privacy.setVisitorOptout();
+                } else {
+                    window.tag.privacy.setVisitorMode('cnil', 'exempt');
+                }
+            }
         });
     }
 };
@@ -3218,7 +3220,7 @@ tarteaucitron.services.atinternethightrack = {
     "name": "AT Internet",
     "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": true,
-    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession', 'atuserid'],
+    "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.atLibUrl === undefined) {
@@ -3396,7 +3398,7 @@ tarteaucitron.services.xiti_smarttag = {
     "name": "Xiti (SmartTag)",
     "uri": "https://helpcentre.atinternet-solutions.com/hc/fr/categories/360002439300-Privacy-Centre",
     "needConsent": true,
-    "cookies": ["atidvisitor", "atreman", "atredir", "atsession", "atuserid", "attvtreman", "attvtsession"],
+    "cookies": ["atidvisitor", "atreman", "atredir", "atsession", "attvtreman", "attvtsession"],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.xiti_smarttagLocalPath !== undefined) {
