@@ -3184,6 +3184,8 @@ tarteaucitron.services.atinternet = {
             if (typeof window.tag.privacy !== 'undefined') {
                 window.tag.privacy.setVisitorOptin();
             }
+
+            window.tag.page.send();
         });
     },
     "fallback": function () {
@@ -3209,6 +3211,8 @@ tarteaucitron.services.atinternet = {
                     window.tag.privacy.setVisitorMode('cnil', 'exempt');
                 }
             }
+
+            window.tag.page.send();
         });
     }
 };
