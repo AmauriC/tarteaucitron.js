@@ -1746,7 +1746,23 @@ tarteaucitron.services.gtag = {
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
             window.gtag = function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
+
+            if (tarteaucitron.user.gtagCrossdomain) {
+                /**
+                 * https://support.google.com/analytics/answer/7476333?hl=en
+                 * https://developers.google.com/analytics/devguides/collection/gtagjs/cross-domain
+                 */
+                gtag(
+                    'config',
+                    tarteaucitron.user.gtagUa,
+                    { 'anonymize_ip': true },
+                    {linker: {
+                        domains: tarteaucitron.user.gtagCrossdomain,
+                    }},
+                );
+            } else {
+                gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
+            }
 
             if (typeof tarteaucitron.user.gtagMore === 'function') {
                 tarteaucitron.user.gtagMore();
