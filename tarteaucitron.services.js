@@ -2500,6 +2500,67 @@ tarteaucitron.services.purechat = {
     }
 };
 
+// Intercom
+tarteaucitron.services.intercomChat = {
+    "key": "intercomChat",
+    "type": "support",
+    "name": "Intercom",
+    "uri": "https://www.intercom.com/",
+    "needConsent": true,
+    "cookies": [
+        "intercom-id-" + tarteaucitron.user.intercomKey,
+        "intercom-session-" + tarteaucitron.user.intercomKey,
+    ],
+    "readmoreLink": "https://www.intercom.com/legal/privacy",
+    "js": function () {
+        window.intercomSettings = {
+            app_id: tarteaucitron.user.intercomKey,
+        };
+
+        var w = window;
+        var ic = w.Intercom;
+        if (typeof ic === "function") {
+            ic("reattach_activator");
+            ic("update", w.intercomSettings);
+        } else {
+            var i = function () {
+                i.c(arguments);
+            };
+            i.q = [];
+            i.c = function (args) {
+                i.q.push(args);
+            };
+            w.Intercom = i;
+            tarteaucitron.addScript(
+                "https://widget.intercom.io/widget/" + tarteaucitron.user.intercomKey,
+                "",
+                function () {
+                    // Execute callback if function `intercomChatEnable`
+                    // is defined
+                    if (typeof intercomChatEnable === 'function') {
+                        intercomChatEnable()
+                    }
+                },
+            );
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "intercomChat";
+        tarteaucitron.fallback(
+            ["intercom-chat"],
+            function () {
+                // Execute callback if function `intercomChatDisable`
+                // is defined
+                if (typeof intercomChatDisable === 'function') {
+                    intercomChatDisable()
+                }
+                return tarteaucitron.engage(id)
+            }
+        );
+    },
+};
+
 // rumbletalk
 tarteaucitron.services.rumbletalk = {
     "key": "rumbletalk",
