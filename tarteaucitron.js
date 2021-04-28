@@ -531,7 +531,11 @@ var tarteaucitron = {
                                 tarteaucitron.addService(tarteaucitron.job[index]);
                             }
                         } else {
-                            tarteaucitron.job = []
+                            tarteaucitron.job = [];
+                        }
+
+                        if (tarteaucitron.job.length == 0) {
+                            tarteaucitron.userInterface.closeAlert();
                         }
 
                         tarteaucitron.isAjax = true;
