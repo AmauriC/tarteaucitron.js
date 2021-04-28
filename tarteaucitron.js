@@ -595,11 +595,15 @@ var tarteaucitron = {
                     }, 1500);
                 }
                 if(tarteaucitron.parameters.closePopup === true){
-                    var closeElement = document.getElementById('tarteaucitronAlertBig'),
-                        closeSpan = document.createElement('span');
-                    closeSpan.textContent = 'X';
-                    closeSpan.setAttribute('id', "tarteaucitronCloseCross");
-                    closeElement.insertBefore(closeSpan, closeElement.firstElementChild);
+                    setTimeout(function() {
+                        var closeElement = document.getElementById('tarteaucitronAlertBig'),
+                            closeSpan = document.createElement('span');
+                        if (closeElement) {
+                            closeSpan.textContent = 'X';
+                            closeSpan.setAttribute('id', "tarteaucitronCloseCross");
+                            closeElement.insertBefore(closeSpan, closeElement.firstElementChild);
+                        }
+                    }, 100);
                 }
 
 
