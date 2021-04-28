@@ -2493,6 +2493,52 @@ tarteaucitron.services.purechat = {
     }
 };
 
+// Intercom
+tarteaucitron.services.intercomChat = {
+    "key": "intercomChat",
+    "type": "support",
+    "name": "Intercom",
+    "uri": "https://www.intercom.com/",
+    "needConsent": true,
+    "cookies": [
+        "intercom-id-" + tarteaucitron.user.ingercomKey,
+        "intercom-session-" + tarteaucitron.user.ingercomKey,
+    ],
+    "readmoreLink": "https://www.intercom.com/legal/privacy",
+    "js": function () {
+        window.intercomSettings = {
+            app_id: tarteaucitron.user.ingercomKey,
+        };
+
+        var w = window;
+        var ic = w.Intercom;
+        if (typeof ic === "function") {
+            ic("reattach_activator");
+            ic("update", w.intercomSettings);
+        } else {
+            var i = function () {
+                i.c(arguments);
+            };
+            i.q = [];
+            i.c = function (args) {
+                i.q.push(args);
+            };
+            w.Intercom = i;
+            tarteaucitron.addScript(
+                "https://widget.intercom.io/widget/" + tarteaucitron.user.intercomKey,
+                "",
+                intercomChatEnable(),
+            );
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "intercomChat";
+        tarteaucitron.fallback(["intercom-chat"], tarteaucitron.engage(id));
+        intercomChatDisable()
+    },
+};
+
 // rumbletalk
 tarteaucitron.services.rumbletalk = {
     "key": "rumbletalk",
