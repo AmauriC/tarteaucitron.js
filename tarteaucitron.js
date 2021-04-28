@@ -534,7 +534,7 @@ var tarteaucitron = {
                             tarteaucitron.job = [];
                         }
 
-                        if (tarteaucitron.job.length == 0) {
+                        if (tarteaucitron.job.length === 0) {
                             tarteaucitron.userInterface.closeAlert();
                         }
 
