@@ -265,9 +265,10 @@ tarteaucitron.services.podcloud = {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'podCloud iframe'),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
-                url = x.getAttribute("data-url");
+                url = x.getAttribute("data-url"),
+                allowfullscreen= x.getAttribute("allowfullscreen");
 
-            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
