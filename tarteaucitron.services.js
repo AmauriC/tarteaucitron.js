@@ -3282,6 +3282,7 @@ tarteaucitron.services.youtube = {
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
                 video_frame,
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start"],
                 params = attrs.filter(function (a) {
                   return x.getAttribute(a) !== null;
@@ -3302,7 +3303,7 @@ tarteaucitron.services.youtube = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '" allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '"' + (allowfullscreen == '0' ? '' : ' allowfullscreen') + '></iframe>';
             return video_frame;
         });
     },
