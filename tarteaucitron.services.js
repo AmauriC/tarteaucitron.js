@@ -3816,6 +3816,7 @@ tarteaucitron.services.matterport = {
         matterport_height = x.getAttribute("height"),
         frame_height = 'height=',
         matterport_parameters = x.getAttribute("parameters"),
+        matterport_allowfullscreen = x.getAttribute('allowfullscreen'),
         matterport_frame;
 
       if (matterport_id === undefined) {
@@ -3835,7 +3836,7 @@ tarteaucitron.services.matterport = {
         return "";
       }
 
-      matterport_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '" allowfullscreen="allowfullscreen"></iframe>';
+      matterport_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '"' + (matterport_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
       return matterport_frame;
     });
   },
