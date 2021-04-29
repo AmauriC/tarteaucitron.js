@@ -1807,6 +1807,7 @@ tarteaucitron.services.googlemaps = {
                 return '<div id="' + uniqId + '" zoom="' + x.getAttribute('zoom') + '" latitude="' + x.getAttribute('latitude') + '" longitude="' + x.getAttribute('longitude') + '" style="width:' + x.offsetWidth + 'px;height:' + x.offsetHeight + 'px"></div>';
             });
 
+            var i;
             for (i = 0; i < uniqIds.length; i += 1) {
                 mapOptions = {
                     zoom: parseInt(document.getElementById(uniqIds[i]).getAttribute('zoom'), 10),
@@ -2782,6 +2783,7 @@ tarteaucitron.services.twitterembed = {
         });
 
         tarteaucitron.addScript('//platform.twitter.com/widgets.js', 'twitter-wjs', function () {
+            var i;
             for (i = 0; i < uniqIds.length; i += 1) {
                 e = document.getElementById(uniqIds[i]);
                 twttr.widgets.createTweet(
