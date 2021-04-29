@@ -15,9 +15,10 @@ tarteaucitron.services.iframe = {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title")),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 url = x.getAttribute("data-url");
 
-            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
