@@ -2889,6 +2889,7 @@ tarteaucitron.services.vimeo = {
                 frame_height = 'height=',
 
                 video_id = x.getAttribute("data-videoID") || x.getAttribute("videoID"),
+                video_allowfullscreen = x.getAttribute("data-allowfullscreen"),
                 video_autopause = x.getAttribute("data-autopause") || '',
                 video_autoplay = x.getAttribute("data-autoplay") || x.getAttribute("autoplay") || '',
                 video_background = x.getAttribute("data-background") || '',
@@ -3030,7 +3031,7 @@ tarteaucitron.services.vimeo = {
                 video_qs = "";
             }
 
-            video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + ' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height  + (video_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
 
             return video_frame;
         });
