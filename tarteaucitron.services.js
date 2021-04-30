@@ -733,9 +733,10 @@ tarteaucitron.services.calameo = {
                 id = x.getAttribute("data-id"),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
-                url = '//v.calameo.com/?bkcode=' + id;
+                url = '//v.calameo.com/?bkcode=' + id,
+                allowfullscreen = x.getAttribute("allowfullscreen");
 
-            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
