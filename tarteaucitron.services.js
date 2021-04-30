@@ -293,13 +293,14 @@ tarteaucitron.services.facebookpost = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_facebookpost'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Facebook iframe'),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Michel'),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url"),
-                appId = x.getAttribute("data-appid");
+                appId = x.getAttribute("data-appid"),
+                allowfullscreen = x.getAttribute("allowfullscreen");
 
-            return '<iframe title="' + frame_title + '" src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
