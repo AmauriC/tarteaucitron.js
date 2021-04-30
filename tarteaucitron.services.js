@@ -3934,6 +3934,10 @@ tarteaucitron.services.getquanty = {
             return;
         }
 
+        if (tarteaucitron.user.getquantyAlreadyLoaded !== undefined) {
+            return;
+        }
+
         tarteaucitron.addScript('https://get.smart-data-systems.com/gq?site_id=' + tarteaucitron.user.getguanty + '&consent=1');
     },
     "fallback": function () {
@@ -3941,6 +3945,8 @@ tarteaucitron.services.getquanty = {
         if (tarteaucitron.user.getguanty === undefined) {
             return;
         }
+
+        tarteaucitron.user.getquantyAlreadyLoaded = true;
 
         tarteaucitron.addScript('https://get.smart-data-systems.com/gq?site_id=' + tarteaucitron.user.getguanty + '&notrack=1');
     }
