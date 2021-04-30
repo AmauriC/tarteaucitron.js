@@ -980,6 +980,7 @@ tarteaucitron.services.dailymotion = {
                 frame_height = 'height=',
                 video_frame,
                 embed_type = x.getAttribute("embedType"),
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 params = 'info=' + x.getAttribute("showinfo") + '&autoPlay=' + x.getAttribute("autoplay");
 
             if (video_id === undefined) {
@@ -998,7 +999,7 @@ tarteaucitron.services.dailymotion = {
             if (embed_type === undefined || !['video', 'playlist'].includes(embed_type) ) {
                 embed_type = "video";
             }
-            video_frame = '<iframe title="' + frame_title + '" src="//www.dailymotion.com/embed/' + embed_type + '/' + video_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" src="//www.dailymotion.com/embed/' + embed_type + '/' + video_id + '?' + params + '" ' + frame_width + frame_height + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return video_frame;
         });
     },
