@@ -3191,6 +3191,10 @@ tarteaucitron.services.atinternet = {
             return;
         }
 
+        if (tarteaucitron.user.atinternetAlreadyLoaded !== undefined) {
+            return;
+        }
+
         tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
 
             window.tag = new ATInternet.Tracker.Tag();
@@ -3213,6 +3217,8 @@ tarteaucitron.services.atinternet = {
         if (tarteaucitron.user.atLibUrl === undefined) {
             return;
         }
+
+        tarteaucitron.user.atinternetAlreadyLoaded = true;
 
         tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
 
