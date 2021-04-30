@@ -1127,6 +1127,7 @@ tarteaucitron.services.deezer = {
                 embed_type = x.getAttribute("embedType"),
                 radius = x.getAttribute("radius"),
                 tracklist = x.getAttribute("tracklist"),
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 params;
 
             if (deezer_id === undefined) {
@@ -1155,7 +1156,7 @@ tarteaucitron.services.deezer = {
                 tracklist = "true";
             }
             params = 'tracklist=' + tracklist + '&radius=' + radius;
-            deezer_frame = '<iframe title="' + frame_title + '" src="//widget.deezer.com/widget/' + embed_theme + '/' + embed_type + '/' + deezer_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
+            deezer_frame = '<iframe title="' + frame_title + '" src="//widget.deezer.com/widget/' + embed_theme + '/' + embed_type + '/' + deezer_id + '?' + params + '" ' + frame_width + frame_height + ' ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return deezer_frame;
         });
     },
