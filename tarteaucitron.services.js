@@ -4107,3 +4107,58 @@ tarteaucitron.services.ausha = {
         });
     }
 };
+
+// bandcamp
+tarteaucitron.services.bandcamp = {
+    key: "bandcamp",
+    type: "video",
+    name: "Bandcamp",
+    uri: "https://bandcamp.com",
+    readmoreLink: "https://bandcamp.com/privacy",
+    needConsent: true,
+    cookies: ['client_id', 'BACKENDID', '_comm_playlist'],
+    js: function () {
+        "use strict";
+        tarteaucitron.fallback(['bandcamp_player'], function (x) {
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Bandcamp iframe'),
+                album_id        = x.getAttribute("albumID"),
+                bandcamp_width  = x.getAttribute("width"),
+                frame_width     = 'width=',
+                bandcamp_height = x.getAttribute("height"),
+                frame_height    = 'height=',
+                attrs = ["size", "bgcol", "linkcol", "artwork", "minimal", "tracklist", "package", "transparent"],
+                params = attrs.filter(function (a) {
+                    return x.getAttribute(a) !== null;
+                }).map(function (a) {
+                    if (a && a.length > 0) return a + "=" + x.getAttribute(a);
+                }).join("/");
+
+                if (album_id === null) {
+                    return "";
+                }
+
+                if (bandcamp_width !== null || bandcamp_width !== "") {
+                    frame_width += '"' + bandcamp_width + '" ';
+                } else {
+                    frame_width += '"" ';
+                }
+                if (bandcamp_height !== null || bandcamp_height !== "") {
+                    frame_height += '"' + bandcamp_height + '" ';
+                } else {
+                    frame_height += '"" ';
+                }
+
+                var src = 'https://bandcamp.com/EmbeddedPlayer/album=' + album_id + '/' + params;
+
+                return '<iframe title="' + frame_title + '"' + frame_width + frame_height + 'src="' + src + '" frameborder="0" allowfullscreen seamless></iframe>';
+        });
+    },
+    fallback: function () {
+        "use strict";
+        tarteaucitron.fallback(['bandcamp_player'], function (elem) {
+            elem.style.width = elem.getAttribute('width');
+            elem.style.height = elem.getAttribute('height');
+            return tarteaucitron.engage('bandcamp');
+        });
+    }
+}
