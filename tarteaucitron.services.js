@@ -1261,7 +1261,7 @@ tarteaucitron.services.facebook = {
     "name": "Facebook",
     "uri": "https://www.facebook.com/policy.php",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['xs', 'sb', 'fr', 'datr', 'dpr', 'c_user'],
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['fb-post', 'fb-follow', 'fb-activity', 'fb-send', 'fb-share-button', 'fb-like', 'fb-video'], '');
@@ -2505,7 +2505,7 @@ tarteaucitron.services.soundcloud = {
     type: 'video',
     name: 'SoundCloud',
     needConsent: true,
-    cookies: ['sc_anonymous_id'],
+    cookies: ['sc_anonymous_id', 'sclocale'],
     js: function () {
         "use strict";
         tarteaucitron.fallback(['soundcloud_player'], function (x) {
