@@ -155,7 +155,7 @@ tarteaucitron.services.xandrsegment = {
         tarteaucitron.fallback(['xandrsegment-canvas'], function (x) {
             var uniqId = '_' + Math.random().toString(36).substr(2, 9);
             uniqIds.push(uniqId);
-            return '<div id="' + uniqId + '" xandrsegmentAdd="' + (x.getAttribute('xandrsegmentAdd') ?? '') + '" xandrsegmentAddCode="' + (x.getAttribute('xandrsegmentAddCode') ?? '')  + '" xandrsegmentRemove="' + (x.getAttribute('xandrsegmentRemove') ?? '') + '" xandrsegmentRemoveCode="' + (x.getAttribute('xandrsegmentRemoveCode') ?? '') + '" xandrsegmentMember="' + (x.getAttribute('xandrsegmentMember') ?? '') + '" xandrsegmentRedir="' + (x.getAttribute('xandrsegmentRedir') ?? '') + '" xandrsegmentValue="' + (x.getAttribute('xandrsegmentValue') ?? '') + '" xandrsegmentOther="' + (x.getAttribute('xandrsegmentOther') ?? '') + '"></div>';
+            return '<div id="' + uniqId + '" xandrsegmentAdd="' + x.getAttribute('xandrsegmentAdd') + '" xandrsegmentAddCode="' + x.getAttribute('xandrsegmentAddCode')  + '" xandrsegmentRemove="' + x.getAttribute('xandrsegmentRemove') + '" xandrsegmentRemoveCode="' + x.getAttribute('xandrsegmentRemoveCode') + '" xandrsegmentMember="' + x.getAttribute('xandrsegmentMember') + '" xandrsegmentRedir="' + x.getAttribute('xandrsegmentRedir') + '" xandrsegmentValue="' + x.getAttribute('xandrsegmentValue') + '" xandrsegmentOther="' + x.getAttribute('xandrsegmentOther') + '"></div>';
         });
 
         for (i = 0; i < uniqIds.length; i += 1) {
@@ -197,7 +197,7 @@ tarteaucitron.services.xandrconversion = {
         tarteaucitron.fallback(['xandrconversion-canvas'], function (x) {
             var uniqId = '_' + Math.random().toString(36).substr(2, 9);
             uniqIds.push(uniqId);
-            return '<div id="' + uniqId + '" xandrconversionId="' + (x.getAttribute('xandrconversionId') ?? '') + '" xandrconversionSeg="' + (x.getAttribute('xandrconversionSeg') ?? '') + '" xandrconversionOrderId="' + (x.getAttribute('xandrconversionOrderId') ?? '') + '" xandrconversionValue="' + (x.getAttribute('xandrconversionValue') ?? '') + '" xandrconversionRedir="' + (x.getAttribute('xandrconversionRedir') ?? '') + '" xandrconversionOther="' + (x.getAttribute('xandrconversionOther') ?? '') + '"></div>';
+            return '<div id="' + uniqId + '" xandrconversionId="' + x.getAttribute('xandrconversionId') + '" xandrconversionSeg="' + x.getAttribute('xandrconversionSeg') + '" xandrconversionOrderId="' + x.getAttribute('xandrconversionOrderId') + '" xandrconversionValue="' + x.getAttribute('xandrconversionValue') + '" xandrconversionRedir="' + x.getAttribute('xandrconversionRedir') + '" xandrconversionOther="' + x.getAttribute('xandrconversionOther') + '"></div>';
         });
 
         for (i = 0; i < uniqIds.length; i += 1) {
