@@ -47,6 +47,25 @@ tarteaucitron.services.elfsight = {
     }
 };
 
+// plezi
+tarteaucitron.services.plezi = {
+    "key": "plezi",
+    "type": "analytic",
+    "name": "Plezi",
+    "uri": "https://www.plezi.co/fr/mentions-legales/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.pleziTenant === undefined || tarteaucitron.user.pleziTw === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://app.plezi.co/scripts/ossleads_analytics.js?tenant=' + tarteaucitron.user.pleziTenant + '&tw=' + tarteaucitron.user.pleziTw);
+    }
+};
+
 // sharpspring
 tarteaucitron.services.sharpspring = {
     "key": "sharpspring",
