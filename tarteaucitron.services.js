@@ -82,7 +82,7 @@ tarteaucitron.services.smartsupp = {
             return;
         }
 
-        window._smartsupp = _smartsupp || {};
+        window._smartsupp = window._smartsupp || {};
         window._smartsupp.key = tarteaucitron.user.smartsuppKey;
         window.smartsupp = function() {
             window.smartsupp._.push(arguments)
