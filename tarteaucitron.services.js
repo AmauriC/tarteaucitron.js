@@ -15,9 +15,10 @@ tarteaucitron.services.iframe = {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title")),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 url = x.getAttribute("data-url");
 
-            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
@@ -297,9 +298,10 @@ tarteaucitron.services.helloasso = {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'HelloAsso iframe'),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
-                url = x.getAttribute("data-url");
+                url = x.getAttribute("data-url"),
+                allowfullscreen = x.getAttribute("allowfullscreen");
 
-            return '<iframe title="' + frame_title + '" id="haWidget" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" id="haWidget" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
@@ -327,9 +329,10 @@ tarteaucitron.services.podcloud = {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'podCloud iframe'),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
-                url = x.getAttribute("data-url");
+                url = x.getAttribute("data-url"),
+                allowfullscreen= x.getAttribute("allowfullscreen");
 
-            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
@@ -354,13 +357,14 @@ tarteaucitron.services.facebookpost = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_facebookpost'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Facebook iframe'),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Michel'),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url"),
-                appId = x.getAttribute("data-appid");
+                appId = x.getAttribute("data-appid"),
+                allowfullscreen = x.getAttribute("allowfullscreen");
 
-            return '<iframe title="' + frame_title + '" src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="https://www.facebook.com/plugins/post.php?href=' + encodeURIComponent(url) + '&amp;width=' + width + '&amp;show_text=false&amp;appId=' + appId + '&amp;height=' + height + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
@@ -793,9 +797,10 @@ tarteaucitron.services.calameo = {
                 id = x.getAttribute("data-id"),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
-                url = '//v.calameo.com/?bkcode=' + id;
+                url = '//v.calameo.com/?bkcode=' + id,
+                allowfullscreen = x.getAttribute("allowfullscreen");
 
-            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
@@ -998,13 +1003,14 @@ tarteaucitron.services.artetv = {
                 video_json = x.getAttribute("json"),
                 video_width = x.getAttribute("width"),
                 video_height = x.getAttribute("height"),
-                video_frame;
+                video_frame,
+                video_allowfullscreen = x.getAttribute("allowfullscreen");
 
             if (video_json === undefined) {
                 return "";
             }
 
-            video_frame = '<iframe title="' + frame_title + '" style="transition-duration: 0; transition-property: no; margin: 0 auto; position: relative; display: block; background-color: #000000;" src="https://www.arte.tv/player/v5/index.php?json_url=' + video_json + '" width="' + video_width + '" height="' + video_height + '" scrolling="no" allowfullscreen="allowfullscreen"></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" style="transition-duration: 0; transition-property: no; margin: 0 auto; position: relative; display: block; background-color: #000000;" src="https://www.arte.tv/player/v5/index.php?json_url=' + video_json + '" width="' + video_width + '" height="' + video_height + '" scrolling="no" ' + (video_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return video_frame;
         });
     },
@@ -1038,6 +1044,7 @@ tarteaucitron.services.dailymotion = {
                 frame_height = 'height=',
                 video_frame,
                 embed_type = x.getAttribute("embedType"),
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 params = 'info=' + x.getAttribute("showinfo") + '&autoPlay=' + x.getAttribute("autoplay");
 
             if (video_id === undefined) {
@@ -1056,7 +1063,7 @@ tarteaucitron.services.dailymotion = {
             if (embed_type === undefined || !['video', 'playlist'].includes(embed_type) ) {
                 embed_type = "video";
             }
-            video_frame = '<iframe title="' + frame_title + '" src="//www.dailymotion.com/embed/' + embed_type + '/' + video_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" src="//www.dailymotion.com/embed/' + embed_type + '/' + video_id + '?' + params + '" ' + frame_width + frame_height + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return video_frame;
         });
     },
@@ -1184,6 +1191,7 @@ tarteaucitron.services.deezer = {
                 embed_type = x.getAttribute("embedType"),
                 radius = x.getAttribute("radius"),
                 tracklist = x.getAttribute("tracklist"),
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 params;
 
             if (deezer_id === undefined) {
@@ -1212,7 +1220,7 @@ tarteaucitron.services.deezer = {
                 tracklist = "true";
             }
             params = 'tracklist=' + tracklist + '&radius=' + radius;
-            deezer_frame = '<iframe title="' + frame_title + '" src="//widget.deezer.com/widget/' + embed_theme + '/' + embed_type + '/' + deezer_id + '?' + params + '" ' + frame_width + frame_height + ' allowfullscreen></iframe>';
+            deezer_frame = '<iframe title="' + frame_title + '" src="//widget.deezer.com/widget/' + embed_theme + '/' + embed_type + '/' + deezer_id + '?' + params + '" ' + frame_width + frame_height + ' ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return deezer_frame;
         });
     },
@@ -2953,6 +2961,7 @@ tarteaucitron.services.vimeo = {
                 frame_height = 'height=',
 
                 video_id = x.getAttribute("data-videoID") || x.getAttribute("videoID"),
+                video_allowfullscreen = x.getAttribute("data-allowfullscreen"),
                 video_autopause = x.getAttribute("data-autopause") || '',
                 video_autoplay = x.getAttribute("data-autoplay") || x.getAttribute("autoplay") || '',
                 video_background = x.getAttribute("data-background") || '',
@@ -3094,7 +3103,7 @@ tarteaucitron.services.vimeo = {
                 video_qs = "";
             }
 
-            video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + ' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height  + (video_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
 
             return video_frame;
         });
@@ -3352,6 +3361,7 @@ tarteaucitron.services.youtube = {
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
                 video_frame,
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start"],
                 params = attrs.filter(function (a) {
                   return x.getAttribute(a) !== null;
@@ -3372,7 +3382,7 @@ tarteaucitron.services.youtube = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '" allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '"' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return video_frame;
         });
     },
@@ -3405,6 +3415,7 @@ tarteaucitron.services.youtubeplaylist = {
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
                 video_frame,
+                allowfullscreen = x.getAttribute("allowfullscreen"),
                 params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay") + '&mute=' + x.getAttribute("mute");
 
             if (playlist_id === undefined) {
@@ -3420,7 +3431,7 @@ tarteaucitron.services.youtubeplaylist = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/videoseries?list=' + playlist_id + '&' + params + '" allowfullscreen></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/videoseries?list=' + playlist_id + '&' + params + '"' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return video_frame;
         });
     },
@@ -3883,6 +3894,7 @@ tarteaucitron.services.matterport = {
         matterport_height = x.getAttribute("height"),
         frame_height = 'height=',
         matterport_parameters = x.getAttribute("parameters"),
+        matterport_allowfullscreen = x.getAttribute('allowfullscreen'),
         matterport_frame;
 
       if (matterport_id === undefined) {
@@ -3902,7 +3914,7 @@ tarteaucitron.services.matterport = {
         return "";
       }
 
-      matterport_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '" allowfullscreen="allowfullscreen"></iframe>';
+      matterport_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '"' + (matterport_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
       return matterport_frame;
     });
   },
