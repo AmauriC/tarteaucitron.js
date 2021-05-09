@@ -357,7 +357,7 @@ tarteaucitron.services.facebookpost = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_facebookpost'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Michel'),
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Facebook iframe'),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url"),
@@ -1826,14 +1826,7 @@ tarteaucitron.services.gtag = {
                  * https://support.google.com/analytics/answer/7476333?hl=en
                  * https://developers.google.com/analytics/devguides/collection/gtagjs/cross-domain
                  */
-                gtag(
-                    'config',
-                    tarteaucitron.user.gtagUa,
-                    { 'anonymize_ip': true },
-                    {linker: {
-                        domains: tarteaucitron.user.gtagCrossdomain,
-                    }},
-                );
+                gtag('config',tarteaucitron.user.gtagUa,{ 'anonymize_ip': true },{linker: {domains: tarteaucitron.user.gtagCrossdomain,}});
             } else {
                 gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
             }
@@ -3158,7 +3151,7 @@ tarteaucitron.services.verizondottag = {
         });
 
         tarteaucitron.addScript('https://s.yimg.com/wi/ytc.js', '', function () {
-            const items = window.dotq;
+            //const items = window.dotq;
             window.dotq = [];
             window.dotq.push = function (item) {
                 YAHOO.ywa.I13N.fireBeacon([item])
