@@ -13,6 +13,14 @@ span.tarteaucitronReadmoreSeparator {
 }
 /******/
 
+/** 09052021 **/
+.tarteaucitronName .tacCurrentStatus, .tarteaucitronName .tarteaucitronReadmoreSeparator {
+    color: #333!important;
+    font-size: 12px!important;
+    text-transform: capitalize;
+}
+/**************/
+
 /** 27032021 **/
 button.tarteaucitron-toggle-group {
     display: block;

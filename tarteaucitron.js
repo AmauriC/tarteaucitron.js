@@ -761,9 +761,10 @@ var tarteaucitron = {
 
             html += '<li id="' + service.key + 'Line" class="tarteaucitronLine">';
             html += '   <div class="tarteaucitronName">';
-            html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + service.name + ' (<span id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>)</span>';
+            html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + service.name + '</span>';
+            html += '       <span class="tacCurrentStatus" id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>';
+            html += '       <span class="tarteaucitronReadmoreSeparator"> - </span>';
             html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
-
             if (tarteaucitron.parameters.moreInfoLink == true) {
 
                 var link = 'https://tarteaucitron.io/service/' + service.key + '/';
