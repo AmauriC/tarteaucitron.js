@@ -3355,7 +3355,7 @@ tarteaucitron.services.youtube = {
                 frame_height = 'height=',
                 video_frame,
                 allowfullscreen = x.getAttribute("allowfullscreen"),
-                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start"],
+                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "srcdoc", "loading", "loop"],
                 params = attrs.filter(function (a) {
                   return x.getAttribute(a) !== null;
                 }).map(function (a) {
