@@ -3349,13 +3349,15 @@ tarteaucitron.services.youtube = {
         tarteaucitron.fallback(['youtube_player'], function (x) {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Youtube iframe'),
                 video_id = x.getAttribute("videoID"),
+                srcdoc = x.getAttribute("srcdoc"),
+                loading = x.getAttribute("loading"),
                 video_width = x.getAttribute("width"),
                 frame_width = 'width=',
                 video_height = x.getAttribute("height"),
                 frame_height = 'height=',
                 video_frame,
                 allowfullscreen = x.getAttribute("allowfullscreen"),
-                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "srcdoc", "loading", "loop"],
+                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "loop"],
                 params = attrs.filter(function (a) {
                   return x.getAttribute(a) !== null;
                 }).map(function (a) {
@@ -3375,7 +3377,20 @@ tarteaucitron.services.youtube = {
             } else {
                 frame_height += '"" ';
             }
-            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '"' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+
+            if (srcdoc !== undefined && srcdoc !== null && srcdoc !== "") {
+                srcdoc =  'srcdoc="' + srcdoc + '" ';
+            } else {
+                srcdoc = '';
+            }
+
+            if (loading !== undefined && loading !== null && loading !== "") {
+                loading =  'loading ';
+            } else {
+                loading = '';
+            }
+
+            video_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="//www.youtube-nocookie.com/embed/' + video_id + '?' + params + '"' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + ' ' + srcdoc + ' ' + loading + '></iframe>';
             return video_frame;
         });
     },
