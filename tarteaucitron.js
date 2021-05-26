@@ -1483,7 +1483,18 @@ var tarteaucitron = {
     },
     "cookie": {
         "owner": {},
-        "create": function (key, status) {
+        "isCookieEnabledOnCurrentDomain": function() {
+            "use strict";
+            try {
+                document.cookie = 'cookietest=1';
+                var cookiesEnabled = document.cookie.indexOf('cookietest=') !== -1;
+                document.cookie = 'cookietest=1; expires=Thu, 01-Jan-1970 00:00:01 GMT';
+                return cookiesEnabled;
+            } catch (e) {
+                return false;
+            }
+        }(),
+        "create": function(key, status) {
             "use strict";
 
             if (tarteaucitronForceExpire !== '') {
@@ -1501,17 +1512,42 @@ var tarteaucitron = {
 
             var d = new Date(),
                 time = d.getTime(),
-                expireTime = time + timeExpire, // 365 days
-                regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
+                expireTime = time + timeExpire; // 365 days
+            d.setTime(expireTime);
+
+            tarteaucitron.cookie.isCookieEnabledOnCurrentDomain ?
+                tarteaucitron.cookie.createInCookie(key, status, d) :
+                tarteaucitron.cookie.createInLocalStorage(key, status, d);
+        },
+        "createInCookie": function (key, status, expiryDate) {
+            "use strict";
+            var regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
                 cookie = tarteaucitron.cookie.read().replace(regex, ""),
                 value = tarteaucitron.parameters.cookieName + '=' + cookie + '!' + key + '=' + status,
                 domain = (tarteaucitron.parameters.cookieDomain !== undefined && tarteaucitron.parameters.cookieDomain !== '') ? '; domain=' + tarteaucitron.parameters.cookieDomain : '',
                 secure = location.protocol === 'https:' ? '; Secure' : '';
 
-            d.setTime(expireTime);
-            document.cookie = value + '; expires=' + d.toGMTString() + '; path=/' + domain + secure + '; samesite=lax';
+            document.cookie = value + '; expires=' + expiryDate.toGMTString() + '; path=/' + domain + secure + '; samesite=lax';
         },
-        "read": function () {
+        "createInLocalStorage": function (key, status, expiryDate) {
+            "use strict";
+
+            var regex = new RegExp("!" + key + "=(wait|true|false)", "g"),
+                cookie = tarteaucitron.cookie.read().replace(regex, ""),
+                value = cookie + '!' + key + '=' + status,
+                item = {
+                    expiryDate: expiryDate,
+                    value: value
+                }
+
+            localStorage.setItem(tarteaucitron.parameters.cookieName, JSON.stringify(item));
+        },
+        "read": function() {
+            return tarteaucitron.cookie.isCookieEnabledOnCurrentDomain ?
+                tarteaucitron.cookie.readInCookie() :
+                tarteaucitron.cookie.readInLocalStorage();
+        },
+        "readInCookie": function () {
             "use strict";
             var nameEQ = tarteaucitron.parameters.cookieName + "=",
                 ca = document.cookie.split(';'),
@@ -1528,6 +1564,23 @@ var tarteaucitron = {
                 }
             }
             return '';
+        },
+        "readInLocalStorage": function () {
+            "use strict";
+            var storedValue = localStorage.getItem(tarteaucitron.parameters.cookieName);
+
+            if (!storedValue) {
+                return '';
+            }
+
+            var parsedValue = JSON.parse(storedValue);
+            var now = new Date();
+            if (now.getTime() > parsedValue.expiryDate) {
+                localStorage.removeItem(tarteaucitron.parameters.cookieName);
+                return '';
+            }
+
+            return parsedValue.value;
         },
         "purge": function (arr) {
             "use strict";
@@ -1550,7 +1603,7 @@ var tarteaucitron = {
                 nbCurrent = 0,
                 html = '',
                 i,
-                status = document.cookie.indexOf(key + '=true');
+                status = tarteaucitron.cookie.read().indexOf(key + '=true');
 
             if (status >= 0 && nb === 0) {
                 html += tarteaucitron.lang.useNoCookie;
