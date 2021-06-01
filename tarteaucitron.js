@@ -1940,8 +1940,7 @@ var tarteaucitron = {
         /**
          Utility function to Add or update the fields of obj1 with the ones in obj2
          */
-        var key;
-        for(key in custom){
+        for(var key in custom){
             if(custom[key] instanceof Object){
                 source[key] = tarteaucitron.AddOrUpdate(source[key], custom[key]);
             }else{
