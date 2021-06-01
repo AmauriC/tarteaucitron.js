@@ -293,7 +293,7 @@ var tarteaucitron = {
                     }
                     document.getElementsByTagName('head')[0].appendChild(customThemePopup);
                 }
-                
+
                 var body = document.body,
                     div = document.createElement('div'),
                     html = '',
@@ -660,7 +660,7 @@ var tarteaucitron = {
 
                 // add a little timeout to be sure everything is accessible
                 setTimeout(function () {
-                    
+
                     // Setup events
                     tarteaucitron.addClickEventToId("tarteaucitronCloseCross", function () {
                         tarteaucitron.userInterface.closeAlert();
@@ -735,7 +735,7 @@ var tarteaucitron = {
                         tarteaucitron.events.load();
                     }
                 }, 500);
-                
+
             });
         });
     },
@@ -909,12 +909,12 @@ var tarteaucitron = {
                 } else {
 
                     document.getElementById(id).style[property] = value;
-                    
+
                     if (property == "display" && value == "block" && (id == "tarteaucitron" || id == "tarteaucitronAlertBig")) {
                         document.getElementById(id).style["opacity"] = "0";
                         setTimeout(function() {document.getElementById(id).style["opacity"] = "1";}, 1);
                     }
-                    
+
                     if (property == "display" && value == "block" && id == "tarteaucitronBack") {
                         document.getElementById(id).style["opacity"] = "0";
                         setTimeout(function() {document.getElementById(id).style["opacity"] = "0.7";}, 1);
@@ -1111,10 +1111,10 @@ var tarteaucitron = {
                     groupallowed = 0;
                 for (var ii = 0; ii < doc.children.length; ii++) {
                     if (doc.children[ii].className == "tarteaucitronLine tarteaucitronIsDenied") {
-                        groupdenied++;                        
+                        groupdenied++;
                     }
                     if (doc.children[ii].className == "tarteaucitronLine tarteaucitronIsAllowed") {
-                        groupallowed++;                        
+                        groupallowed++;
                     }
                 }
                 if (total === groupallowed) {
@@ -1129,8 +1129,8 @@ var tarteaucitron = {
                     tarteaucitron.userInterface.removeClass('tarteaucitron-group-'+cat, 'tarteaucitronIsDenied');
                     tarteaucitron.userInterface.removeClass('tarteaucitron-group-'+cat, 'tarteaucitronIsAllowed');
                 }
-                groupdenied = 0;   
-                groupallowed = 0; 
+                groupdenied = 0;
+                groupallowed = 0;
             });
 
         },
@@ -1940,7 +1940,7 @@ var tarteaucitron = {
         /**
          Utility function to Add or update the fields of obj1 with the ones in obj2
          */
-        for(key in custom){
+        for(var key in custom){
             if(custom[key] instanceof Object){
                 source[key] = tarteaucitron.AddOrUpdate(source[key], custom[key]);
             }else{
