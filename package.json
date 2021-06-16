@@ -1,6 +1,7 @@
 {
   "name": "tarteaucitronjs",
   "version": "1.9.1",
+  "main": "tarteaucitron.js",
   "description": "Comply to the European cookie law",
   "dependencies": {},
   "devDependencies": {},
