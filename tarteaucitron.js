@@ -1040,6 +1040,9 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.addClass(key + 'Line', 'tarteaucitronIsDenied');
                 document.getElementById(key + 'Allowed').setAttribute('aria-pressed', 'false');
                 document.getElementById(key + 'Denied').setAttribute('aria-pressed', 'true');
+            } else {
+                document.getElementById(key + 'Allowed').setAttribute('aria-pressed', 'false');
+                document.getElementById(key + 'Denied').setAttribute('aria-pressed', 'false');
             }
 
             // check if all services are allowed
