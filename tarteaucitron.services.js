@@ -1838,6 +1838,39 @@ tarteaucitron.services.gtag = {
     }
 };
 
+tarteaucitron.services.firebase = {
+    "key": "firebase",
+    "type": "analytic",
+    "name": "Firebase",
+    "uri": "https://firebase.google.com/support/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.firebaseApiKey === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js', '', function() {
+            tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js', '', function() {
+
+                var firebaseConfig = {
+                  apiKey: tarteaucitron.user.firebaseApiKey,
+                  authDomain: tarteaucitron.user.firebaseAuthDomain,
+                  databaseURL: tarteaucitron.user.firebaseDatabaseUrl,
+                  projectId: tarteaucitron.user.firebaseProjectId,
+                  storageBucket: tarteaucitron.user.firebaseStorageBucket,
+                  appId: tarteaucitron.user.firebaseAppId,
+                  measurementId: tarteaucitron.user.firebaseMeasurementId,
+                };
+                firebase.initializeApp(firebaseConfig);
+                firebase.analytics();
+            });
+        });
+    }
+};
+
 // google maps
 tarteaucitron.services.googlemaps = {
     "key": "googlemaps",
