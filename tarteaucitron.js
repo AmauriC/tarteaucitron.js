@@ -1950,7 +1950,7 @@ var tarteaucitron = {
     },
     "proPing": function () {
         "use strict";
-        if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined && tarteaucitron.proTemp !== '') {
+        if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined && tarteaucitron.proTemp !== '' && tarteaucitronStatsEnabled) {
             var div = document.getElementById('tarteaucitronPremium'),
                 timestamp = new Date().getTime(),
                 url = 'https://tarteaucitron.io/log/?';
