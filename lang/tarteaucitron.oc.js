@@ -44,8 +44,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "es desactivat.",
-    "allowed": "allowed",
-    "disallowed": "disallowed",
+    "allowed": "autorizat",
+    "disallowed": "interdit",
 
     "ads": {
         "title": "Regias publicitàrias",
