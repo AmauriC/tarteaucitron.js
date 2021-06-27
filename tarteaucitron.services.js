@@ -4451,7 +4451,7 @@ tarteaucitron.services.acast = {
             width = x.getAttribute('width'),
             height = x.getAttribute('height'),
             seek = x.getAttribute('seek');
-            var widgetURL = `https://embed.acast.com/${id}/?seek=${seek}`
+            var widgetURL = `https://embed.acast.com/${id}/${id2}?seek=${seek}`
             return `<iframe title="Embed Player" width="${width}" height="${height}" src="${widgetURL}" scrolling="no" frameBorder="0" style="border:none;overflow:hidden;"></iframe>`;
         });
     },
