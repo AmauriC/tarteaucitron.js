@@ -4331,3 +4331,284 @@ tarteaucitron.services.bandcamp = {
         });
     }
 };
+
+
+// Discord Widget
+tarteaucitron.services.discord = {
+    "key": "discord",
+    "type": "social",
+    "name": "Discord (Server Widget)",
+    "needConsent": true,
+    "cookies": ["__cfruid", "__dcfduid", "_ga", "_gcl_au", "OptanonConsent", "locale", "_gid"],
+    "uri": "https://discord.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['discord_widget'], function (x) {
+           var id = x.getAttribute("guildID"),
+           width = x.getAttribute("width"),
+           height = x.getAttribute("height")
+           var widgetURL = "https://discord.com/widget?id=" + id;
+           return "<iframe width=\""+ width + "\" height=\"" + height + "\"src=\"" + widgetURL + "\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'discord';
+        tarteaucitron.fallback(['discord_widget'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// Google Maps
+tarteaucitron.services.maps_noapi = {
+    "key": "maps_noapi",
+    "type": "other",
+    "name": "Google Maps",
+    "needConsent": true,
+    "cookies": ["NID", "OGPC", "1P_JAR", "CONSENT"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['googlemaps_embed'], function (x) {
+           var id = x.getAttribute("id"),
+           width = x.getAttribute("width"),
+           height = x.getAttribute("height")
+           var widgetURL = "https://google.com/maps/embed?pb=" + id;
+           return "<iframe width=\""+ width + "\" height=\"" + height + "\"src=\"" + widgetURL + "\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'maps_noapi';
+        tarteaucitron.fallback(['googlemaps_embed'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// hCaptcha
+tarteaucitron.services.hcaptcha = {
+    "key": "hcaptcha",
+    "type": "other",
+    "name": "hCaptcha",
+    "needConsent": true,
+    "cookies": [],
+    "uri": "https://www.hcaptcha.com/privacy",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(["h-captcha"], '');
+        tarteaucitron.addScript("https://hcaptcha.com/1/api.js", "hcaptcha")
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "hcaptcha";
+        tarteaucitron.fallback(["h-captcha"], tarteaucitron.engage(id));
+    }
+};
+
+// France Culture
+tarteaucitron.services.fculture = {
+    "key": "fculture",
+    "type": "video",
+    "name": "France Culture",
+    "needConsent": true,
+    "cookies": ["_gid", "didomi_token", "outbrain_cid_fetch", "xtvrn", "xtant", "YSC", "ABTasty", "xtan", "ABTastySession", "xtidc", "_ga", "VISITOR_INFO1_LIVE", "euconsent-v2", "v1st", "dmvk", "ts", "VISITOR_INFO1_LIVE", "YSC"],
+    "uri": "https://www.radiofrance.com/politique-d-utilisation-des-cookies-sur-les-sites-internet-du-groupe-radio-france",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['fculture_embed'], function (x) {
+            var id = x.getAttribute('id'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height');
+            return "<iframe src=\"https://www.franceculture.fr/player/export-reecouter?content="+ id + "\" height=\""+ height+"\" width=\"" + width + "\"></iframe>"
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "fculture";
+        tarteaucitron.fallback(["fculture_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Acast
+tarteaucitron.services.acast = {
+    "key": "acast",
+    "type": "video",
+    "name": "Acast",
+    "needConsent": true,
+    "cookies": ["intercom-id-ayi0335i", "intercom-session-ayi0335i"],
+    "uri": "https://www.acast.com/en/privacy",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['acast_embed'], function (x) {
+            var id = x.getAttribute('id1'),
+            id2 = x.getAttribute('id2'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height'),
+            seek = x.getAttribute('seek');
+            var widgetURL = `https://embed.acast.com/${id}/?seek=${seek}`
+            return `<iframe title="Embed Player" width="${width}" height="${height}" src="${widgetURL}" scrolling="no" frameBorder="0" style="border:none;overflow:hidden;"></iframe>`;
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "acast";
+        tarteaucitron.fallback(["acast_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Mixcloud
+tarteaucitron.services.mixcloud = {
+    "key": "mixcloud",
+    "type": "video",
+    "name": "Mixcloud",
+    "needConsent": true,
+    "cookies": ["UID", "_gat", "__stripe_mid", "_gid", "_ga", "c", "csrftoken", "__stripe_sid", "mx_t"],
+    "uri": "https://www.mixcloud.com/privacy/",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['mixcloud_embed'], function (x) {
+            var id = x.getAttribute('id'),
+            hidecover = x.getAttribute('hidecover'),
+            mini = x.getAttribute('mini'),
+            light = x.getAttribute('light'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height');
+            return `<iframe width="${width}" height="${height}" src="https://www.mixcloud.com/widget/iframe/?hide_cover=${hidecover}&mini=${mini}&light=${light}&feed=${id}" frameborder="0" ></iframe>`;
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "mixcloud";
+        tarteaucitron.fallback(["mixcloud_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Agenda
+tarteaucitron.services.gagenda = {
+    "key": "gagenda",
+    "type": "other",
+    "name": "Google Agenda",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['gagenda_embed'], function (x) {
+            var calendar_data = x.getAttribute('data'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height');
+            return `<iframe loarding="lazy" width="${width}" height="${height}" src="https://www.google.com/calendar/embed?${calendar_data}" frameborder="0" scrolling="no" style="border-width:0"></iframe>`;
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "gagenda";
+        tarteaucitron.fallback(["gagenda_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Docs
+tarteaucitron.services.gdocs = {
+    "key": "gdocs",
+    "type": "other",
+    "name": "Google Docs",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['gdocs_embed'], function (x) {
+            var id = x.getAttribute('id'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height');
+            return `<iframe width="${width}" height="${height}" src="https://docs.google.com/document/d/e/${id}/pub?embedded=true"></iframe>`;
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "gdocs";
+        tarteaucitron.fallback(["gdocs_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Sheets
+tarteaucitron.services.gsheets = {
+    "key": "gsheets",
+    "type": "other",
+    "name": "Google Sheets",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['gsheets_embed'], function (x) {
+            var id = x.getAttribute('id'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height'),
+            headers = x.getAttribute('headers');
+            return `<iframe width="${width}" height="${height}" src="https://docs.google.com/spreadsheets/d/e/${id}/pubhtml?widget=true&amp;headers=${headers}"></iframe>`;
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "gsheets";
+        tarteaucitron.fallback(["gsheets_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Slides
+tarteaucitron.services.gslides = {
+    "key": "gslides",
+    "type": "other",
+    "name": "Google Slides",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['gslides_embed'], function (x) {
+            var id = x.getAttribute('id'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height'),
+            autostart = x.getAttribute('autostart'),
+            loop = x.getAttribute('loop'),
+            delay = x.getAttribute('delay');
+            return `<iframe width="${width}" height="${height}" src="https://docs.google.com/presentation/d/e/${id}/embed?start=${autostart}&loop=${loop}&delayms=${delay}" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>`;
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "gslides";
+        tarteaucitron.fallback(["gslides_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Forms
+tarteaucitron.services.gforms = {
+    "key": "gforms",
+    "type": "other",
+    "name": "Google Forms",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function() {
+        "use strict";
+        tarteaucitron.fallback(['gforms_embed'], function (x) {
+            var id = x.getAttribute('id'),
+            width = x.getAttribute('width'),
+            height = x.getAttribute('height');
+            return `<iframe width="${width}" height="${height}" src="https://docs.google.com/forms/d/e/${id}/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0"></iframe>`;
+        });
+    },
+    "fallback": function() {
+        "use strict";
+        var id = "gforms";
+        tarteaucitron.fallback(['gforms_embed'], tarteaucitron.engage(id));
+    }
+};
