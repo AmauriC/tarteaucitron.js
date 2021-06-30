@@ -32,6 +32,37 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// pinterestpixel
+tarteaucitron.services.pinterestpixel = {
+    "key": "pinterestpixel",
+    "type": "ads",
+    "name": "Pinterest Pixel",
+    "uri": "https://help.pinterest.com/fr/business/article/track-conversions-with-pinterest-tag",
+    "needConsent": true,
+    "cookies": [ '_pinterest_sess', '_pinterest_ct', '_pinterest_ct_mw', '_pinterest_ct_rt', '_epik', '_derived_epik', '_pin_unauth', '_pinterest_ct_ua'],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.pinterestpixelId === undefined) {
+            return;
+        }
+
+        if(!window.pintrk) {
+            window.pintrk = function() {
+                window.pintrk.queue.push(Array.prototype.slice.call(arguments));
+            };
+
+            var n=window.pintrk;
+            n.queue=[];
+            n.version="3.0";
+
+            tarteaucitron.addScript('https://s.pinimg.com/ct/core.js', '', function() {
+                window.pintrk('load', tarteaucitron.user.pinterestpixelId);
+                window.pintrk('page');
+            });
+        }
+    }
+};
 
 // elfsight
 tarteaucitron.services.elfsight = {
