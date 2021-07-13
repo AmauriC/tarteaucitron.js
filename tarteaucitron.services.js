@@ -3446,15 +3446,15 @@ tarteaucitron.services.youtube = {
         "use strict";
         tarteaucitron.fallback(['youtube_player'], function (x) {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Youtube iframe'),
-                video_id = x.getAttribute("videoID"),
-                srcdoc = x.getAttribute("srcdoc"),
-                loading = x.getAttribute("loading"),
-                video_width = x.getAttribute("width"),
+                video_id = x.getAttribute("data-videoID") || x.getAttribute("videoID"),
+                srcdoc = x.getAttribute("data-srcdoc") || x.getAttribute("srcdoc"),
+                loading = x.getAttribute("data-loading") || x.getAttribute("loading"),
+                video_width = x.getAttribute("data-width") || x.getAttribute("width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = x.getAttribute("data-height") || x.getAttribute("height"),
                 frame_height = 'height=',
                 video_frame,
-                allowfullscreen = x.getAttribute("allowfullscreen"),
+                allowfullscreen = x.getAttribute("data-allowfullscreen") || x.getAttribute("allowfullscreen"),
                 attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "loop"],
                 params = attrs.filter(function (a) {
                   return x.getAttribute(a) !== null;
