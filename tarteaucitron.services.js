@@ -1875,7 +1875,14 @@ tarteaucitron.services.firebase = {
     "name": "Firebase",
     "uri": "https://firebase.google.com/support/privacy",
     "needConsent": true,
-    "cookies": [],
+    "cookies": (function () {
+        var googleIdentifier = tarteaucitron.user.firebaseMeasurementId,
+        tagGCookie = '_ga_' + googleIdentifier;
+
+        tagGCookie = tagGCookie.replace(/G-/g, '');
+
+        return ['_ga', tagGCookie];
+    })(),
     "js": function () {
         "use strict";
 
