@@ -3985,6 +3985,10 @@ tarteaucitron.services.bingads = {
             bingadsCreate.q = window.uetq;
             window.uetq = new UET(bingadsCreate);
             window.uetq.push('pageLoad');
+
+            if (typeof tarteaucitron.user.bingadsMore === 'function') {
+                tarteaucitron.user.bingadsMore();
+            }
         });
     }
 };
