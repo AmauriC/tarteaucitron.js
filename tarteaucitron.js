@@ -1004,8 +1004,8 @@ var tarteaucitron = {
                     tarteaucitron.pro('!' + key + '=engage');
 
                     tarteaucitron.launch[key] = true;
-                    tarteaucitron.sendEvent(key + '_loaded');
                     if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) { tarteaucitron.services[key].js(); }
+                    tarteaucitron.sendEvent(key + '_loaded');
                 }
             }
             var itemStatusElem = document.getElementById('tacCurrentStatus'+key);
