@@ -3771,7 +3771,7 @@ tarteaucitron.services.multiplegtag = {
                 tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
                     window.gtag = function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
-                    gtag('config', ua);
+                    gtag('config', ua, { 'anonymize_ip': true });
                 });
             });
 	}
