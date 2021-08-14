@@ -4373,3 +4373,37 @@ tarteaucitron.services.bandcamp = {
         });
     }
 };
+
+// Marketo munchkin
+tarteaucitron.services.marketomunchkin = {
+    "key": "marketomunchkin",
+    "type": "api",
+    "name": "Marketo munchkin",
+    "uri": "https://documents.marketo.com/legal/cookies",
+    "needConsent": true,
+    "cookies": ['OptAnon', '_mkto_trk'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.marketomunchkinkey === undefined) {
+            return;
+        }
+        var didInit = false;
+        function initMunchkin() {
+          if(didInit === false) {
+            didInit = true;
+            Munchkin.init(tarteaucitron.user.marketomunchkinkey);
+          }
+        }
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//munchkin.marketo.net/munchkin.js';
+        s.onreadystatechange = function() {
+          if (this.readyState == 'complete' || this.readyState == 'loaded') {
+            initMunchkin();
+          }
+        };
+        s.onload = initMunchkin;
+        document.getElementsByTagName('head')[0].appendChild(s);
+    }
+};
