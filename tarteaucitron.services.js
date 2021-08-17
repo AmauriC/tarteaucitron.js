@@ -32,6 +32,37 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// pinterestpixel
+tarteaucitron.services.pinterestpixel = {
+    "key": "pinterestpixel",
+    "type": "ads",
+    "name": "Pinterest Pixel",
+    "uri": "https://help.pinterest.com/fr/business/article/track-conversions-with-pinterest-tag",
+    "needConsent": true,
+    "cookies": [ '_pinterest_sess', '_pinterest_ct', '_pinterest_ct_mw', '_pinterest_ct_rt', '_epik', '_derived_epik', '_pin_unauth', '_pinterest_ct_ua'],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.pinterestpixelId === undefined) {
+            return;
+        }
+
+        if(!window.pintrk) {
+            window.pintrk = function() {
+                window.pintrk.queue.push(Array.prototype.slice.call(arguments));
+            };
+
+            var n=window.pintrk;
+            n.queue=[];
+            n.version="3.0";
+
+            tarteaucitron.addScript('https://s.pinimg.com/ct/core.js', '', function() {
+                window.pintrk('load', tarteaucitron.user.pinterestpixelId);
+                window.pintrk('page');
+            });
+        }
+    }
+};
 
 // elfsight
 tarteaucitron.services.elfsight = {
@@ -1844,7 +1875,14 @@ tarteaucitron.services.firebase = {
     "name": "Firebase",
     "uri": "https://firebase.google.com/support/privacy",
     "needConsent": true,
-    "cookies": [],
+    "cookies": (function () {
+        var googleIdentifier = tarteaucitron.user.firebaseMeasurementId,
+        tagGCookie = '_ga_' + googleIdentifier;
+
+        tagGCookie = tagGCookie.replace(/G-/g, '');
+
+        return ['_ga', tagGCookie];
+    })(),
     "js": function () {
         "use strict";
 
@@ -3733,7 +3771,7 @@ tarteaucitron.services.multiplegtag = {
                 tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
                     window.gtag = function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
-                    gtag('config', ua);
+                    gtag('config', ua, { 'anonymize_ip': true });
                 });
             });
 	}
@@ -3947,6 +3985,10 @@ tarteaucitron.services.bingads = {
             bingadsCreate.q = window.uetq;
             window.uetq = new UET(bingadsCreate);
             window.uetq.push('pageLoad');
+
+            if (typeof tarteaucitron.user.bingadsMore === 'function') {
+                tarteaucitron.user.bingadsMore();
+            }
         });
     }
 };
@@ -4332,6 +4374,7 @@ tarteaucitron.services.bandcamp = {
     }
 };
 
+<<<<<<< HEAD
 
 // Discord Widget
 tarteaucitron.services.discord = {
@@ -4610,5 +4653,38 @@ tarteaucitron.services.gforms = {
         "use strict";
         var id = "gforms";
         tarteaucitron.fallback(['gforms_embed'], tarteaucitron.engage(id));
+=======
+// Marketo munchkin
+tarteaucitron.services.marketomunchkin = {
+    "key": "marketomunchkin",
+    "type": "api",
+    "name": "Marketo munchkin",
+    "uri": "https://documents.marketo.com/legal/cookies",
+    "needConsent": true,
+    "cookies": ['OptAnon', '_mkto_trk'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.marketomunchkinkey === undefined) {
+            return;
+        }
+        var didInit = false;
+        function initMunchkin() {
+          if(didInit === false) {
+            didInit = true;
+            Munchkin.init(tarteaucitron.user.marketomunchkinkey);
+          }
+        }
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = '//munchkin.marketo.net/munchkin.js';
+        s.onreadystatechange = function() {
+          if (this.readyState == 'complete' || this.readyState == 'loaded') {
+            initMunchkin();
+          }
+        };
+        s.onload = initMunchkin;
+        document.getElementsByTagName('head')[0].appendChild(s);
+>>>>>>> 28cff26d20b74e70f70fef9adf9d711baee845df
     }
 };
