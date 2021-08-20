@@ -35,6 +35,7 @@ tarteaucitron.lang = {
     "title": "Panel de gestión de cookies",
     "cookieDetail": "Detalles de las cookies para",
     "ourSite": "en nuestra web",
+    "modalWindow": "(ventana modal)",
     "newWindow": "(ventana nueva)",
     "allowAll": "Permitir todas las cookies",
     "denyAll": "Denegar todas las cookies",

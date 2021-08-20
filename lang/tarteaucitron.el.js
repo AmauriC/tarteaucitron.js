@@ -35,6 +35,7 @@ tarteaucitron.lang = {
     "title": "Πίνακας διαχείρισης &quot;Μπισκότων&quot; (Cookies)",
     "cookieDetail": "Λεπτομέρειες &quot;μπισκότων&quot; (cookies) για",
     "ourSite": "στον ιστότοπο μας",
+    "modalWindow": "(modal παράθυρο)",
     "newWindow": "(νέο παράθυρο)",
     "allowAll": "Επέτρεψε όλα τα &quot;μπισκότα&quot; (cookies)",
     "denyAll": "Απόρριψε όλα τα &quot;μπισκότα&quot; (cookies)",

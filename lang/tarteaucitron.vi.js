@@ -36,6 +36,7 @@ tarteaucitron.lang = {
     "title": "Bảng quản lý cookie",
     "cookieDetail": "Cookie chi tiết",
     "ourSite": "trên site của chúng ta",
+    "modalWindow": "(cửa sổ phương thức)",
     "newWindow": "(Cửa sổ mới)",
     "allowAll": "Cho phép tất cả các Cookies",
     "denyAll": "Từ chối cất cả cookies",
