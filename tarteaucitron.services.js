@@ -1069,16 +1069,16 @@ tarteaucitron.services.dailymotion = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['dailymotion_player'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Dailymotion iframe'),
-                video_id = x.getAttribute("videoID"),
-                video_width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "title") || 'Dailymotion iframe'),
+                video_id = tarteaucitron.getElemAttr(x, "videoID"),
+                video_width = tarteaucitron.getElemAttr(x, "width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = tarteaucitron.getElemAttr(x, "height"),
                 frame_height = 'height=',
                 video_frame,
-                embed_type = x.getAttribute("embedType"),
-                allowfullscreen = x.getAttribute("allowfullscreen"),
-                params = 'info=' + x.getAttribute("showinfo") + '&autoPlay=' + x.getAttribute("autoplay");
+                embed_type = tarteaucitron.getElemAttr(x, "embedType"),
+                allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen"),
+                params = 'info=' + tarteaucitron.getElemAttr(x, "showinfo") + '&autoPlay=' + tarteaucitron.getElemAttr(x, "autoplay");
 
             if (video_id === undefined) {
                 return "";
@@ -3115,29 +3115,29 @@ tarteaucitron.services.vimeo = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['vimeo_player'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("data-title") || x.getAttribute("title") || 'Vimeo iframe'),
-                video_width = x.getAttribute("data-width") || x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "data-title") || tarteaucitron.getElemAttr(x, "title") || 'Vimeo iframe'),
+                video_width = tarteaucitron.getElemAttr(x, "data-width") || tarteaucitron.getElemAttr(x, "width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("data-height") || x.getAttribute("height"),
+                video_height = tarteaucitron.getElemAttr(x, "data-height") || tarteaucitron.getElemAttr(x, "height"),
                 frame_height = 'height=',
 
-                video_id = x.getAttribute("data-videoID") || x.getAttribute("videoID"),
-                video_allowfullscreen = x.getAttribute("data-allowfullscreen"),
-                video_autopause = x.getAttribute("data-autopause") || '',
-                video_autoplay = x.getAttribute("data-autoplay") || x.getAttribute("autoplay") || '',
-                video_background = x.getAttribute("data-background") || '',
-                video_byline = x.getAttribute("data-byline") || x.getAttribute("byline") || '',
-                video_color = x.getAttribute("data-color") || '',
-                video_controls = x.getAttribute("data-controls") || '',
-                video_loop = x.getAttribute("data-loop") || x.getAttribute("loop") || '',
-                video_maxheight = x.getAttribute("data-maxheight") || '',
-                video_maxwidth = x.getAttribute("data-maxwidth") || '',
-                video_muted = x.getAttribute("data-muted") || '',
-                video_playsinline = x.getAttribute("data-playsinline") || '',
-                video_portrait = x.getAttribute("data-portrait") || x.getAttribute("portrait") || '',
-                video_speed = x.getAttribute("data-speed") || '',
-                video_title = x.getAttribute("data-title") || x.getAttribute("title") || '',
-                video_transparent = x.getAttribute("data-transparent") || '',
+                video_id = tarteaucitron.getElemAttr(x, "data-videoID") || tarteaucitron.getElemAttr(x, "videoID"),
+                video_allowfullscreen = tarteaucitron.getElemAttr(x, "data-allowfullscreen"),
+                video_autopause = tarteaucitron.getElemAttr(x, "data-autopause") || '',
+                video_autoplay = tarteaucitron.getElemAttr(x, "data-autoplay") || tarteaucitron.getElemAttr(x, "autoplay") || '',
+                video_background = tarteaucitron.getElemAttr(x, "data-background") || '',
+                video_byline = tarteaucitron.getElemAttr(x, "data-byline") || tarteaucitron.getElemAttr(x, "byline") || '',
+                video_color = tarteaucitron.getElemAttr(x, "data-color") || '',
+                video_controls = tarteaucitron.getElemAttr(x, "data-controls") || '',
+                video_loop = tarteaucitron.getElemAttr(x, "data-loop") || tarteaucitron.getElemAttr(x, "loop") || '',
+                video_maxheight = tarteaucitron.getElemAttr(x, "data-maxheight") || '',
+                video_maxwidth = tarteaucitron.getElemAttr(x, "data-maxwidth") || '',
+                video_muted = tarteaucitron.getElemAttr(x, "data-muted") || '',
+                video_playsinline = tarteaucitron.getElemAttr(x, "data-playsinline") || '',
+                video_portrait = tarteaucitron.getElemAttr(x, "data-portrait") || tarteaucitron.getElemAttr(x, "portrait") || '',
+                video_speed = tarteaucitron.getElemAttr(x, "data-speed") || '',
+                video_title = tarteaucitron.getElemAttr(x, "data-title") || tarteaucitron.getElemAttr(x, "title") || '',
+                video_transparent = tarteaucitron.getElemAttr(x, "data-transparent") || '',
 
                 video_frame;
 
@@ -3515,22 +3515,24 @@ tarteaucitron.services.youtube = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_player'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Youtube iframe'),
-                video_id = x.getAttribute("videoID"),
-                srcdoc = x.getAttribute("srcdoc"),
-                loading = x.getAttribute("loading"),
-                video_width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "title") || 'Youtube iframe'),
+                video_id = tarteaucitron.getElemAttr(x, "videoID"),
+                srcdoc = tarteaucitron.getElemAttr(x, "srcdoc"),
+                loading = tarteaucitron.getElemAttr(x, "loading"),
+                video_width = tarteaucitron.getElemAttr(x, "width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = tarteaucitron.getElemAttr(x, "height"),
                 frame_height = 'height=',
                 video_frame,
-                allowfullscreen = x.getAttribute("allowfullscreen"),
+                allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen"),
                 attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "loop"],
                 params = attrs.filter(function (a) {
-                    return x.getAttribute(a) !== null;
+
+                  return tarteaucitron.getElemAttr(x, a) !== null;
                 }).map(function (a) {
-                    return a + "=" + x.getAttribute(a);
-                }).join("&");
+                  return a + "=" + tarteaucitron.getElemAttr(x, a);
+               }).join("&");
+
 
             if (video_id === undefined) {
                 return "";
@@ -3584,15 +3586,15 @@ tarteaucitron.services.youtubeplaylist = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_playlist_player'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Youtube iframe'),
-                playlist_id = x.getAttribute("playlistID"),
-                video_width = x.getAttribute("width"),
+            var frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "title") || 'Youtube iframe'),
+                playlist_id = tarteaucitron.getElemAttr(x, "playlistID"),
+                video_width = tarteaucitron.getElemAttr(x, "width"),
                 frame_width = 'width=',
-                video_height = x.getAttribute("height"),
+                video_height = tarteaucitron.getElemAttr(x, "height"),
                 frame_height = 'height=',
                 video_frame,
-                allowfullscreen = x.getAttribute("allowfullscreen"),
-                params = 'theme=' + x.getAttribute("theme") + '&rel=' + x.getAttribute("rel") + '&controls=' + x.getAttribute("controls") + '&showinfo=' + x.getAttribute("showinfo") + '&autoplay=' + x.getAttribute("autoplay") + '&mute=' + x.getAttribute("mute");
+                allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen"),
+                params = 'theme=' + tarteaucitron.getElemAttr(x, "theme") + '&rel=' + tarteaucitron.getElemAttr(x, "rel") + '&controls=' + tarteaucitron.getElemAttr(x, "controls") + '&showinfo=' + tarteaucitron.getElemAttr(x, "showinfo") + '&autoplay=' + tarteaucitron.getElemAttr(x, "autoplay") + '&mute=' + tarteaucitron.getElemAttr(x, "mute");
 
             if (playlist_id === undefined) {
                 return "";

@@ -1990,6 +1990,9 @@ var tarteaucitron = {
     "getElemHeight": function(elem) {
         return elem.getAttribute('height') || elem.clientHeight;
     },
+    "getElemAttr": function (elem, attr) {
+        return elem.getAttribute('data-' + attr) || elem.getAttribute(attr);
+    },
     "addClickEventToId": function (elemId, func) {
         tarteaucitron.addClickEventToElement(document.getElementById(elemId), func);
     },
