@@ -36,6 +36,7 @@ tarteaucitron.lang = {
     "title": "Slapukų valdymo skydelis",
     "cookieDetail": "Išsami slapuko informacija",
     "ourSite": "mūsų svetainėje",
+    "modalWindow": "(modalinis langas)",
     "newWindow": "(naujas langas)",
     "allowAll": "Leisti visus slapukus",
     "denyAll": "Atsisakyti visų slapukų",
