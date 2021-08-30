@@ -4454,7 +4454,7 @@ tarteaucitron.services.discord = {
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height")
             var widgetURL = "https://discord.com/widget?id=" + id;
-            return "<iframe width=\"" + width + "\" height=\"" + height + "\"src=\"https://discord.com/widget?id=" + widgetURL + "\"></iframe>";
+            return "<iframe width=\"" + width + "\" height=\"" + height + "\" src=\"" + widgetURL + "\"></iframe>";
         });
     },
     "fallback": function () {
