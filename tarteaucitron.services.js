@@ -39,7 +39,7 @@ tarteaucitron.services.pinterestpixel = {
     "name": "Pinterest Pixel",
     "uri": "https://help.pinterest.com/fr/business/article/track-conversions-with-pinterest-tag",
     "needConsent": true,
-    "cookies": [ '_pinterest_sess', '_pinterest_ct', '_pinterest_ct_mw', '_pinterest_ct_rt', '_epik', '_derived_epik', '_pin_unauth', '_pinterest_ct_ua'],
+    "cookies": ['_pinterest_sess', '_pinterest_ct', '_pinterest_ct_mw', '_pinterest_ct_rt', '_epik', '_derived_epik', '_pin_unauth', '_pinterest_ct_ua'],
     "js": function () {
         "use strict";
 
@@ -47,16 +47,16 @@ tarteaucitron.services.pinterestpixel = {
             return;
         }
 
-        if(!window.pintrk) {
-            window.pintrk = function() {
+        if (!window.pintrk) {
+            window.pintrk = function () {
                 window.pintrk.queue.push(Array.prototype.slice.call(arguments));
             };
 
-            var n=window.pintrk;
-            n.queue=[];
-            n.version="3.0";
+            var n = window.pintrk;
+            n.queue = [];
+            n.version = "3.0";
 
-            tarteaucitron.addScript('https://s.pinimg.com/ct/core.js', '', function() {
+            tarteaucitron.addScript('https://s.pinimg.com/ct/core.js', '', function () {
                 window.pintrk('load', tarteaucitron.user.pinterestpixelId);
                 window.pintrk('page');
             });
@@ -116,7 +116,7 @@ tarteaucitron.services.smartsupp = {
 
         window._smartsupp = window._smartsupp || {};
         window._smartsupp.key = tarteaucitron.user.smartsuppKey;
-        window.smartsupp = function() {
+        window.smartsupp = function () {
             window.smartsupp._.push(arguments)
         };
         window.smartsupp._ = [];
@@ -216,7 +216,7 @@ tarteaucitron.services.xandr = {
         }
 
         if (!window.pixie) {
-            var n = window.pixie = function(e, i, a) {
+            var n = window.pixie = function (e, i, a) {
                 n.actionQueue.push({
                     action: e,
                     actionValue: i,
@@ -226,7 +226,7 @@ tarteaucitron.services.xandr = {
             n.actionQueue = [];
         }
 
-        tarteaucitron.addScript('https://acdn.adnxs.com/dmp/up/pixie.js', '', function() {
+        tarteaucitron.addScript('https://acdn.adnxs.com/dmp/up/pixie.js', '', function () {
             window.pixie('init', tarteaucitron.user.xandrId);
             window.pixie('event', 'PageView');
         });
@@ -251,7 +251,7 @@ tarteaucitron.services.xandrsegment = {
         tarteaucitron.fallback(['xandrsegment-canvas'], function (x) {
             var uniqId = '_' + Math.random().toString(36).substr(2, 9);
             uniqIds.push(uniqId);
-            return '<div id="' + uniqId + '" xandrsegmentAdd="' + x.getAttribute('xandrsegmentAdd') + '" xandrsegmentAddCode="' + x.getAttribute('xandrsegmentAddCode')  + '" xandrsegmentRemove="' + x.getAttribute('xandrsegmentRemove') + '" xandrsegmentRemoveCode="' + x.getAttribute('xandrsegmentRemoveCode') + '" xandrsegmentMember="' + x.getAttribute('xandrsegmentMember') + '" xandrsegmentRedir="' + x.getAttribute('xandrsegmentRedir') + '" xandrsegmentValue="' + x.getAttribute('xandrsegmentValue') + '" xandrsegmentOther="' + x.getAttribute('xandrsegmentOther') + '"></div>';
+            return '<div id="' + uniqId + '" xandrsegmentAdd="' + x.getAttribute('xandrsegmentAdd') + '" xandrsegmentAddCode="' + x.getAttribute('xandrsegmentAddCode') + '" xandrsegmentRemove="' + x.getAttribute('xandrsegmentRemove') + '" xandrsegmentRemoveCode="' + x.getAttribute('xandrsegmentRemoveCode') + '" xandrsegmentMember="' + x.getAttribute('xandrsegmentMember') + '" xandrsegmentRedir="' + x.getAttribute('xandrsegmentRedir') + '" xandrsegmentValue="' + x.getAttribute('xandrsegmentValue') + '" xandrsegmentOther="' + x.getAttribute('xandrsegmentOther') + '"></div>';
         });
 
         for (i = 0; i < uniqIds.length; i += 1) {
@@ -262,7 +262,7 @@ tarteaucitron.services.xandrsegment = {
             uri += 'remove_code=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRemoveCode') + '&';
             uri += 'member=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentMember') + '&';
             uri += 'redir=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRedir') + '&';
-            uri += 'value=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentValue')  + '&';
+            uri += 'value=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentValue') + '&';
             uri += 'other=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentOther');
 
             document.getElementById(uniqIds[i]).innerHTML = '<img src=\'' + uri + '\' width=\'1\' height=\'1\' />';
@@ -361,7 +361,7 @@ tarteaucitron.services.podcloud = {
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 url = x.getAttribute("data-url"),
-                allowfullscreen= x.getAttribute("allowfullscreen");
+                allowfullscreen = x.getAttribute("allowfullscreen");
 
             return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
@@ -422,27 +422,27 @@ tarteaucitron.services.amplitude = {
         if (tarteaucitron.user.amplitude === undefined) {
             return;
         }
-        tarteaucitron.addScript('https://cdn.amplitude.com/libs/amplitude-5.8.0-min.gz.js', '', function() {
+        tarteaucitron.addScript('https://cdn.amplitude.com/libs/amplitude-5.8.0-min.gz.js', '', function () {
 
-          window.amplitude = {
-             _q: [],
-             _iq: {}
-          };
-          function s(e,t){e.prototype[t]=function(){this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
-          var o=function(){this._q=[];return this};
-          var a=["add","append","clearAll","prepend","set","setOnce","unset"];
-          for(var u=0;u<a.length;u++){s(o,a[u])}
-          amplitude.Identify=o;
-          var c=function(){this._q=[];return this};
-          var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];
-          for(var p=0;p<l.length;p++){s(c,l[p])}
-          amplitude.Revenue=c;
-          var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","enableTracking","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"];
-          function v(e){function t(t){e[t]=function(){e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var n=0;n<d.length;n++){t(d[n])}}
-          v(amplitude);
-          amplitude.getInstance=function(e){e=(!e||e.length===0?"$default_instance":e).toLowerCase();if(!amplitude._iq.hasOwnProperty(e)){amplitude._iq[e]={_q:[]};v(amplitude._iq[e])}return amplitude._iq[e]};
+            window.amplitude = {
+                _q: [],
+                _iq: {}
+            };
+            function s(e, t) { e.prototype[t] = function () { this._q.push([t].concat(Array.prototype.slice.call(arguments, 0))); return this } }
+            var o = function () { this._q = []; return this };
+            var a = ["add", "append", "clearAll", "prepend", "set", "setOnce", "unset"];
+            for (var u = 0; u < a.length; u++) { s(o, a[u]) }
+            amplitude.Identify = o;
+            var c = function () { this._q = []; return this };
+            var l = ["setProductId", "setQuantity", "setPrice", "setRevenueType", "setEventProperties"];
+            for (var p = 0; p < l.length; p++) { s(c, l[p]) }
+            amplitude.Revenue = c;
+            var d = ["init", "logEvent", "logRevenue", "setUserId", "setUserProperties", "setOptOut", "setVersionName", "setDomain", "setDeviceId", "enableTracking", "setGlobalUserProperties", "identify", "clearUserProperties", "setGroup", "logRevenueV2", "regenerateDeviceId", "groupIdentify", "onInit", "logEventWithTimestamp", "logEventWithGroups", "setSessionId", "resetSessionId"];
+            function v(e) { function t(t) { e[t] = function () { e._q.push([t].concat(Array.prototype.slice.call(arguments, 0))) } } for (var n = 0; n < d.length; n++) { t(d[n]) } }
+            v(amplitude);
+            amplitude.getInstance = function (e) { e = (!e || e.length === 0 ? "$default_instance" : e).toLowerCase(); if (!amplitude._iq.hasOwnProperty(e)) { amplitude._iq[e] = { _q: [] }; v(amplitude._iq[e]) } return amplitude._iq[e] };
 
-          amplitude.getInstance().init(tarteaucitron.user.amplitude);
+            amplitude.getInstance().init(tarteaucitron.user.amplitude);
         });
     }
 };
@@ -460,7 +460,7 @@ tarteaucitron.services.abtasty = {
         if (tarteaucitron.user.abtastyID === undefined) {
             return;
         }
-        tarteaucitron.addScript('//try.abtasty.com/'+tarteaucitron.user.abtastyID+'.js');
+        tarteaucitron.addScript('//try.abtasty.com/' + tarteaucitron.user.abtastyID + '.js');
     }
 };
 
@@ -472,24 +472,26 @@ tarteaucitron.services.metrica = {
     "name": "Yandex Metrica",
     "uri": "https://yandex.com/legal/confidential/",
     "needConsent": true,
-    "cookies": ['_ym_metrika_enabled','_ym_isad', '_ym_uid', '_ym_d','yabs-sid','_ym_debug','_ym_mp2_substs','_ym_hostIndex','_ym_mp2_track','yandexuid','usst'],
+    "cookies": ['_ym_metrika_enabled', '_ym_isad', '_ym_uid', '_ym_d', 'yabs-sid', '_ym_debug', '_ym_mp2_substs', '_ym_hostIndex', '_ym_mp2_track', 'yandexuid', 'usst'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.yandexmetrica === undefined) {
             return;
         }
-        tarteaucitron.addScript('https://mc.yandex.ru/metrika/tag.js', '', function() {
+        tarteaucitron.addScript('https://mc.yandex.ru/metrika/tag.js', '', function () {
 
-           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            (function (m, e, t, r, i, k, a) {
+                m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+                m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+            })
+                (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-           ym(tarteaucitron.user.yandexmetrica, "init", {
-                clickmap:true,
-                trackLinks:true,
-                accurateTrackBounce:true,
-                webvisor:true,
-                ecommerce:"dataLayer"
+            ym(tarteaucitron.user.yandexmetrica, "init", {
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                webvisor: true,
+                ecommerce: "dataLayer"
             });
         });
     }
@@ -592,7 +594,7 @@ tarteaucitron.services.aduptech_ads = {
 
         tarteaucitron.fallback([IDENTIFIER], "");
 
-        tarteaucitron.addScript(API_URL, "", function() {
+        tarteaucitron.addScript(API_URL, "", function () {
             for (var i = 0; i < elements.length; i++) {
                 var element = elements[i];
 
@@ -702,7 +704,7 @@ tarteaucitron.services.aduptech_retargeting = {
 
         tarteaucitron.fallback([IDENTIFIER], "");
 
-        window.AdUpRetargeting = function(api) {
+        window.AdUpRetargeting = function (api) {
             for (var i = 0; i < elements.length; i++) {
                 var element = elements[i];
 
@@ -918,7 +920,7 @@ tarteaucitron.services.compteur = {
         if (tarteaucitron.user.compteurID === undefined) {
             return;
         }
-        tarteaucitron.addScript('https://server2.compteur.fr/log7.js', '', function() {wtslog7(tarteaucitron.user.compteurID,1);});
+        tarteaucitron.addScript('https://server2.compteur.fr/log7.js', '', function () { wtslog7(tarteaucitron.user.compteurID, 1); });
     }
 };
 
@@ -935,7 +937,7 @@ tarteaucitron.services.contentsquare = {
         if (tarteaucitron.user.contentsquareID === undefined) {
             return;
         }
-        tarteaucitron.addScript('//t.contentsquare.net/uxa/'+tarteaucitron.user.contentsquareID+'.js');
+        tarteaucitron.addScript('//t.contentsquare.net/uxa/' + tarteaucitron.user.contentsquareID + '.js');
     }
 };
 
@@ -969,7 +971,7 @@ tarteaucitron.services.clarity = {
     "js": function () {
         "use strict";
 
-        window["clarity"]= window["clarity"]||function(){(window["clarity"].q= window["clarity"].q||[]).push(arguments)};
+        window["clarity"] = window["clarity"] || function () { (window["clarity"].q = window["clarity"].q || []).push(arguments) };
 
         tarteaucitron.addScript('https://www.clarity.ms/tag/' + tarteaucitron.user.clarity);
     }
@@ -1087,11 +1089,11 @@ tarteaucitron.services.dailymotion = {
                 frame_width += '"" ';
             }
             if (video_height !== undefined) {
-                frame_height +=  '"' + video_height + '" ';
+                frame_height += '"' + video_height + '" ';
             } else {
                 frame_height += '"" ';
             }
-            if (embed_type === undefined || !['video', 'playlist'].includes(embed_type) ) {
+            if (embed_type === undefined || !['video', 'playlist'].includes(embed_type)) {
                 embed_type = "video";
             }
             video_frame = '<iframe title="' + frame_title + '" src="//www.dailymotion.com/embed/' + embed_type + '/' + video_id + '?' + params + '" ' + frame_width + frame_height + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
@@ -1234,20 +1236,20 @@ tarteaucitron.services.deezer = {
                 frame_width += '"" ';
             }
             if (deezer_height !== undefined) {
-                frame_height +=  '"' + deezer_height + '" ';
+                frame_height += '"' + deezer_height + '" ';
             } else {
                 frame_height += '"" ';
             }
-            if (embed_theme === undefined || !['auto', 'light', 'dark'].includes(embed_theme) ) {
+            if (embed_theme === undefined || !['auto', 'light', 'dark'].includes(embed_theme)) {
                 embed_theme = "auto";
             }
-            if (embed_type === undefined || !['album', 'track', 'playlist'].includes(embed_type) ) {
+            if (embed_type === undefined || !['album', 'track', 'playlist'].includes(embed_type)) {
                 embed_type = "album";
             }
-            if (radius === undefined || !['true', 'false'].includes(radius) ) {
+            if (radius === undefined || !['true', 'false'].includes(radius)) {
                 radius = "true";
             }
-            if (tracklist === undefined || !['true', 'false'].includes(tracklist) ) {
+            if (tracklist === undefined || !['true', 'false'].includes(tracklist)) {
                 tracklist = "true";
             }
             params = 'tracklist=' + tracklist + '&radius=' + radius;
@@ -1283,7 +1285,7 @@ tarteaucitron.services.leadforensics = {
 
         window.sf14gv = tarteaucitron.user.leadforensicsSf14gv;
 
-        (function() {
+        (function () {
             var sf14g = document.createElement('script'); sf14g.async = true;
             sf14g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 't.sf14g.com/sf14g.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sf14g, s);
@@ -1333,7 +1335,7 @@ tarteaucitron.services.ekomi = {
             return;
         }
         window.eKomiIntegrationConfig = [
-            {certId: tarteaucitron.user.ekomiCertId}
+            { certId: tarteaucitron.user.ekomiCertId }
         ];
         tarteaucitron.addScript('//connect.ekomi.de/integration_1410173009/' + tarteaucitron.user.ekomiCertId + '.js');
     }
@@ -1353,7 +1355,7 @@ tarteaucitron.services.etracker = {
             return;
         }
 
-        tarteaucitron.addScript('//static.etracker.com/code/e.js', '_etLoader', function () {}, true, "data-secure-code", tarteaucitron.user.etracker);
+        tarteaucitron.addScript('//static.etracker.com/code/e.js', '_etLoader', function () { }, true, "data-secure-code", tarteaucitron.user.etracker);
     }
 };
 
@@ -1501,8 +1503,8 @@ tarteaucitron.services.stonly = {
         }
 
         window.STONLY_WID = tarteaucitron.user.stonlyId;
-        window.StonlyWidget || ((window.w = window.StonlyWidget = function() {
-           window.w._api ? window.w._api.apply(window.w, arguments) : window.w.queue.push(arguments)
+        window.StonlyWidget || ((window.w = window.StonlyWidget = function () {
+            window.w._api ? window.w._api.apply(window.w, arguments) : window.w.queue.push(arguments)
         }).queue = []);
 
         tarteaucitron.addScript('https://stonly.com/js/widget/v2/stonly-widget.js?v=' + Date.now());
@@ -1746,8 +1748,8 @@ tarteaucitron.services.gajs = {
     "needConsent": true,
     "cookies": (function () {
         var googleIdentifier = tarteaucitron.user.gajsUa,
-        tagUaCookie = '_gat_gtag_' + googleIdentifier,
-        tagGCookie = '_ga_' + googleIdentifier;
+            tagUaCookie = '_gat_gtag_' + googleIdentifier,
+            tagGCookie = '_ga_' + googleIdentifier;
 
         tagUaCookie = tagUaCookie.replace(/-/g, '_');
         tagGCookie = tagGCookie.replace(/G-/g, '');
@@ -1760,7 +1762,7 @@ tarteaucitron.services.gajs = {
         window._gaq.push(['_setAccount', tarteaucitron.user.gajsUa]);
 
         if (tarteaucitron.user.gajsAnonymizeIp) {
-            window._gaq.push (['_gat._anonymizeIp']);
+            window._gaq.push(['_gat._anonymizeIp']);
         }
 
         if (tarteaucitron.user.gajsPageView) {
@@ -1786,8 +1788,8 @@ tarteaucitron.services.analytics = {
     "needConsent": true,
     "cookies": (function () {
         var googleIdentifier = tarteaucitron.user.analyticsUa,
-        tagUaCookie = '_gat_gtag_' + googleIdentifier,
-        tagGCookie = '_ga_' + googleIdentifier;
+            tagUaCookie = '_gat_gtag_' + googleIdentifier,
+            tagGCookie = '_ga_' + googleIdentifier;
 
         tagUaCookie = tagUaCookie.replace(/-/g, '_');
         tagGCookie = tagGCookie.replace(/G-/g, '');
@@ -1803,7 +1805,7 @@ tarteaucitron.services.analytics = {
         };
         window.ga.l = new Date();
         tarteaucitron.addScript('https://www.google-analytics.com/analytics.js', '', function () {
-            var uaCreate = {'cookieExpires': 34128000};
+            var uaCreate = { 'cookieExpires': 34128000 };
             tarteaucitron.extend(uaCreate, tarteaucitron.user.analyticsUaCreate || {});
             ga('create', tarteaucitron.user.analyticsUa, uaCreate);
 
@@ -1837,8 +1839,8 @@ tarteaucitron.services.gtag = {
     "needConsent": true,
     "cookies": (function () {
         var googleIdentifier = tarteaucitron.user.gtagUa,
-        tagUaCookie = '_gat_gtag_' + googleIdentifier,
-        tagGCookie = '_ga_' + googleIdentifier;
+            tagUaCookie = '_gat_gtag_' + googleIdentifier,
+            tagGCookie = '_ga_' + googleIdentifier;
 
         tagUaCookie = tagUaCookie.replace(/-/g, '_');
         tagGCookie = tagGCookie.replace(/G-/g, '');
@@ -1849,7 +1851,7 @@ tarteaucitron.services.gtag = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
-            window.gtag = function gtag(){dataLayer.push(arguments);}
+            window.gtag = function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
 
             if (tarteaucitron.user.gtagCrossdomain) {
@@ -1857,7 +1859,7 @@ tarteaucitron.services.gtag = {
                  * https://support.google.com/analytics/answer/7476333?hl=en
                  * https://developers.google.com/analytics/devguides/collection/gtagjs/cross-domain
                  */
-                gtag('config',tarteaucitron.user.gtagUa,{ 'anonymize_ip': true },{linker: {domains: tarteaucitron.user.gtagCrossdomain,}});
+                gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true }, { linker: { domains: tarteaucitron.user.gtagCrossdomain, } });
             } else {
                 gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
             }
@@ -1877,7 +1879,7 @@ tarteaucitron.services.firebase = {
     "needConsent": true,
     "cookies": (function () {
         var googleIdentifier = tarteaucitron.user.firebaseMeasurementId,
-        tagGCookie = '_ga_' + googleIdentifier;
+            tagGCookie = '_ga_' + googleIdentifier;
 
         tagGCookie = tagGCookie.replace(/G-/g, '');
 
@@ -1890,17 +1892,17 @@ tarteaucitron.services.firebase = {
             return;
         }
 
-        tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js', '', function() {
-            tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js', '', function() {
+        tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js', '', function () {
+            tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js', '', function () {
 
                 var firebaseConfig = {
-                  apiKey: tarteaucitron.user.firebaseApiKey,
-                  authDomain: tarteaucitron.user.firebaseAuthDomain,
-                  databaseURL: tarteaucitron.user.firebaseDatabaseUrl,
-                  projectId: tarteaucitron.user.firebaseProjectId,
-                  storageBucket: tarteaucitron.user.firebaseStorageBucket,
-                  appId: tarteaucitron.user.firebaseAppId,
-                  measurementId: tarteaucitron.user.firebaseMeasurementId,
+                    apiKey: tarteaucitron.user.firebaseApiKey,
+                    authDomain: tarteaucitron.user.firebaseAuthDomain,
+                    databaseURL: tarteaucitron.user.firebaseDatabaseUrl,
+                    projectId: tarteaucitron.user.firebaseProjectId,
+                    storageBucket: tarteaucitron.user.firebaseStorageBucket,
+                    appId: tarteaucitron.user.firebaseAppId,
+                    measurementId: tarteaucitron.user.firebaseMeasurementId,
                 };
                 firebase.initializeApp(firebaseConfig);
                 firebase.analytics();
@@ -1925,7 +1927,7 @@ tarteaucitron.services.genially = {
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 geniallyid = x.getAttribute("geniallyid"),
-                allowfullscreen= x.getAttribute("allowfullscreen");
+                allowfullscreen = x.getAttribute("allowfullscreen");
 
             return '<div style="position: relative; padding-bottom: 109.00%; padding-top: 0; height: 0;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" title="' + frame_title + '" src="https://view.genial.ly/' + geniallyid + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe></div>';
         });
@@ -1966,7 +1968,7 @@ tarteaucitron.services.googlemaps = {
             googleMapsLibraries = '&libraries=' + tarteaucitron.user.googlemapsLibraries;
         }
 
-        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback='+tarteaucitron.user.mapscallback + googleMapsLibraries);
+        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback=' + tarteaucitron.user.mapscallback + googleMapsLibraries);
 
         window.tac_googlemaps_callback = function () {
             tarteaucitron.fallback(['googlemaps-canvas'], function (x) {
@@ -1982,7 +1984,7 @@ tarteaucitron.services.googlemaps = {
                     center: new google.maps.LatLng(parseFloat(document.getElementById(uniqIds[i]).getAttribute('latitude'), 10), parseFloat(document.getElementById(uniqIds[i]).getAttribute('longitude'), 10))
                 };
                 map = new google.maps.Map(document.getElementById(uniqIds[i]), mapOptions);
-		new google.maps.Marker({position:{lat:parseFloat(document.getElementById(uniqIds[i]).getAttribute('latitude'), 10),lng:parseFloat(document.getElementById(uniqIds[i]).getAttribute('longitude'), 10)},map:map});
+                new google.maps.Marker({ position: { lat: parseFloat(document.getElementById(uniqIds[i]).getAttribute('latitude'), 10), lng: parseFloat(document.getElementById(uniqIds[i]).getAttribute('longitude'), 10) }, map: map });
             }
         };
     },
@@ -2011,7 +2013,7 @@ tarteaucitron.services.googlemapssearch = {
                 query = escape(x.getAttribute("data-search")),
                 key = x.getAttribute("data-api-key");
 
-            return '<iframe title="' + frame_title + '" width="' + width +'" height="' + height + '" style="border:0" src="https://www.google.com/maps/embed/v1/place?q='+query+'&key='+key+'" allowfullscreen></iframe> '
+            return '<iframe title="' + frame_title + '" width="' + width + '" height="' + height + '" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=' + query + '&key=' + key + '" allowfullscreen></iframe> '
         });
     },
     "fallback": function () {
@@ -2079,51 +2081,51 @@ tarteaucitron.services.googletagmanager = {
 
 // google tag manager multiple
 tarteaucitron.services.multiplegoogletagmanager = {
-  "key": "multiplegoogletagmanager",
-  "type": "api",
-  "name": "Google Tag Manager",
-  "uri": "https://policies.google.com/privacy",
-  "needConsent": true,
-  "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', '__gads', '_drt_', 'FLC', 'exchange_uid', 'id', 'fc', 'rrs', 'rds', 'rv', 'uid', 'UIDR', 'UID', 'clid', 'ipinfo', 'acs'],
-  "js": function () {
-    "use strict";
-    if (tarteaucitron.user.multiplegoogletagmanagerId === undefined) {
-      return;
+    "key": "multiplegoogletagmanager",
+    "type": "api",
+    "name": "Google Tag Manager",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": ['_ga', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz', '__gads', '_drt_', 'FLC', 'exchange_uid', 'id', 'fc', 'rrs', 'rds', 'rv', 'uid', 'UIDR', 'UID', 'clid', 'ipinfo', 'acs'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.multiplegoogletagmanagerId === undefined) {
+            return;
+        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+
+        tarteaucitron.user.multiplegoogletagmanagerId.forEach(function (id) {
+            tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + id);
+        });
+
     }
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      'gtm.start': new Date().getTime(),
-      event: 'gtm.js'
-    });
-
-    tarteaucitron.user.multiplegoogletagmanagerId.forEach(function (id) {
-      tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + id);
-    });
-
-  }
 };
 
 // google webfonts
 tarteaucitron.services.googlefonts = {
-  "key": "googlefonts",
-  "type": "api",
-  "name": "Google Webfonts",
-  "uri": "https://policies.google.com/privacy",
-  "needConsent": true,
-  "cookies": [],
-  "js": function () {
-    "use strict";
-    if (tarteaucitron.user.googleFonts === undefined) {
-      return;
-    }
-    tarteaucitron.addScript('//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', function () {
-      WebFont.load({
-        google: {
-          families: tarteaucitron.user.googleFonts
+    "key": "googlefonts",
+    "type": "api",
+    "name": "Google Webfonts",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.googleFonts === undefined) {
+            return;
         }
-      });
-    });
-  }
+        tarteaucitron.addScript('//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', function () {
+            WebFont.load({
+                google: {
+                    families: tarteaucitron.user.googleFonts
+                }
+            });
+        });
+    }
 };
 
 // hubspot
@@ -2241,7 +2243,7 @@ tarteaucitron.services.recaptcha = {
     "cookies": ['nid'],
     "js": function () {
         "use strict";
-        window.tacRecaptchaOnLoad = tarteaucitron.user.recaptchaOnLoad || function() {};
+        window.tacRecaptchaOnLoad = tarteaucitron.user.recaptchaOnLoad || function () { };
         tarteaucitron.fallback(['g-recaptcha'], '');
 
         if (tarteaucitron.user.recaptchaapi === undefined) {
@@ -2303,7 +2305,7 @@ tarteaucitron.services.mautic = {
             window.mt.q.push(arguments);
         };
 
-        tarteaucitron.addScript(tarteaucitron.user.mauticurl, '', function() {
+        tarteaucitron.addScript(tarteaucitron.user.mauticurl, '', function () {
             mt('send', 'pageview');
         });
     }
@@ -2324,8 +2326,8 @@ tarteaucitron.services.microsoftcampaignanalytics = {
         }
 
         tarteaucitron.addScript('//flex.atdmt.com/mstag/site/' + tarteaucitron.user.microsoftcampaignanalyticsUUID + '/mstag.js', 'mstag_tops', function () {
-            window.mstag = {loadTag : function () {}, time : (new Date()).getTime()};
-            window.mstag.loadTag("analytics", {dedup: "1", domainId: tarteaucitron.user.microsoftcampaignanalyticsdomainId, type: "1", actionid: tarteaucitron.user.microsoftcampaignanalyticsactionId});
+            window.mstag = { loadTag: function () { }, time: (new Date()).getTime() };
+            window.mstag.loadTag("analytics", { dedup: "1", domainId: tarteaucitron.user.microsoftcampaignanalyticsdomainId, type: "1", actionid: tarteaucitron.user.microsoftcampaignanalyticsactionId });
         });
     }
 };
@@ -2345,10 +2347,10 @@ tarteaucitron.services.onesignal = {
         }
         window.OneSignal = window.OneSignal || [];
 
-        window.OneSignal.push(function() {
-           window.OneSignal.init({
-              appId: tarteaucitron.user.onesignalAppId,
-           });
+        window.OneSignal.push(function () {
+            window.OneSignal.init({
+                appId: tarteaucitron.user.onesignalAppId,
+            });
         });
 
         tarteaucitron.addScript('https://cdn.onesignal.com/sdks/OneSignalSDK.js');
@@ -2495,9 +2497,70 @@ tarteaucitron.services.purechat = {
         tarteaucitron.addScript('//app.purechat.com/VisitorWidget/WidgetScript', '', function () {
             try {
                 window.w = new PCWidget({ c: tarteaucitron.user.purechatId, f: true });
-            } catch (e) {}
+            } catch (e) { }
         });
     }
+};
+
+// Intercom
+tarteaucitron.services.intercomChat = {
+    "key": "intercomChat",
+    "type": "support",
+    "name": "Intercom",
+    "uri": "https://www.intercom.com/",
+    "needConsent": true,
+    "cookies": [
+        "intercom-id-" + tarteaucitron.user.intercomKey,
+        "intercom-session-" + tarteaucitron.user.intercomKey,
+    ],
+    "readmoreLink": "https://www.intercom.com/legal/privacy",
+    "js": function () {
+        window.intercomSettings = {
+            app_id: tarteaucitron.user.intercomKey,
+        };
+
+        var w = window;
+        var ic = w.Intercom;
+        if (typeof ic === "function") {
+            ic("reattach_activator");
+            ic("update", w.intercomSettings);
+        } else {
+            var i = function () {
+                i.c(arguments);
+            };
+            i.q = [];
+            i.c = function (args) {
+                i.q.push(args);
+            };
+            w.Intercom = i;
+            tarteaucitron.addScript(
+                "https://widget.intercom.io/widget/" + tarteaucitron.user.intercomKey,
+                "",
+                function () {
+                    // Execute callback if function `intercomChatEnable`
+                    // is defined
+                    if (typeof intercomChatEnable === 'function') {
+                        intercomChatEnable()
+                    }
+                },
+            );
+        }
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "intercomChat";
+        tarteaucitron.fallback(
+            ["intercom-chat"],
+            function () {
+                // Execute callback if function `intercomChatDisable`
+                // is defined
+                if (typeof intercomChatDisable === 'function') {
+                    intercomChatDisable()
+                }
+                return tarteaucitron.engage(id)
+            }
+        );
+    },
 };
 
 // rumbletalk
@@ -2520,20 +2583,20 @@ tarteaucitron.services.rumbletalk = {
                 height = tarteaucitron.getElemHeight(x),
                 id = x.getAttribute("data-id");
 
-                return '<div style="height: ' + height + 'px; width: ' + width + 'px;"><div id="' + id + '"></div></div>';
-      });
+            return '<div style="height: ' + height + 'px; width: ' + width + 'px;"><div id="' + id + '"></div></div>';
+        });
     },
     "fallback": function () {
-      "use strict";
+        "use strict";
         var id = 'rumbletalk';
-            tarteaucitron.fallback(['rumbletalk'], function (elem) {
-                elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
-                elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
+        tarteaucitron.fallback(['rumbletalk'], function (elem) {
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
 
-                return tarteaucitron.engage(id);
-            });
+            return tarteaucitron.engage(id);
+        });
     }
-  };
+};
 
 // shareaholic
 tarteaucitron.services.shareaholic = {
@@ -2553,7 +2616,7 @@ tarteaucitron.services.shareaholic = {
         tarteaucitron.addScript('//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js', '', function () {
             try {
                 Shareaholic.init(tarteaucitron.user.shareaholicSiteId);
-            } catch (e) {}
+            } catch (e) { }
         });
     },
     "fallback": function () {
@@ -2621,7 +2684,7 @@ tarteaucitron.services.sharethis = {
 
         tarteaucitron.fallback(['tacSharethis'], '');
         tarteaucitron.addScript(uri, '', function () {
-            stLight.options({publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false});
+            stLight.options({ publisher: tarteaucitron.user.sharethisPublisher, doNotHash: false, doNotCopy: false, hashAddressBar: false });
         });
 
         if (tarteaucitron.isAjax === true) {
@@ -2680,19 +2743,19 @@ tarteaucitron.services.soundcloud = {
         tarteaucitron.fallback(['soundcloud_player'], function (x) {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Soundcloud iframe'),
                 player_height = x.getAttribute('data-height'),
-                frame_height  = 'height="' + player_height + '" ',
-                playable_id   = x.getAttribute('data-playable-id'),
+                frame_height = 'height="' + player_height + '" ',
+                playable_id = x.getAttribute('data-playable-id'),
                 playable_type = x.getAttribute('data-playable-type'),
-                playable_url    = x.getAttribute('data-playable-url'),
-                color         = x.getAttribute('data-color'),
-                autoplay      = x.getAttribute('data-auto-play'),
-                hideRelated   = x.getAttribute('data-hide-related'),
-                showComments  = x.getAttribute('data-show-comments'),
-                showUser      = x.getAttribute('data-show-user'),
-                showReposts   = x.getAttribute('data-show-reposts'),
-                showTeaser    = x.getAttribute('data-show-teaser'),
-                visual        = x.getAttribute('data-visual'),
-                artwork       = x.getAttribute('data-artwork');
+                playable_url = x.getAttribute('data-playable-url'),
+                color = x.getAttribute('data-color'),
+                autoplay = x.getAttribute('data-auto-play'),
+                hideRelated = x.getAttribute('data-hide-related'),
+                showComments = x.getAttribute('data-show-comments'),
+                showUser = x.getAttribute('data-show-user'),
+                showReposts = x.getAttribute('data-show-reposts'),
+                showTeaser = x.getAttribute('data-show-teaser'),
+                visual = x.getAttribute('data-visual'),
+                artwork = x.getAttribute('data-artwork');
 
             var allowAutoplay = autoplay === 'true' ? 'allow="autoplay"' : '';
 
@@ -2703,18 +2766,18 @@ tarteaucitron.services.soundcloud = {
             // Allow to embed from API results (playable_type + playable_id)
             var qs = '?url=https%3A//api.soundcloud.com/' + playable_type + '/' + playable_id;
             // Or from raw URL from Soundcloud website
-            if (playable_url && playable_url.length >0)     qs = '?url=' + escape(playable_url);
+            if (playable_url && playable_url.length > 0) qs = '?url=' + escape(playable_url);
 
-            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
-            if (color && color.length > 0)                  qs += '&color=' + color.replace('#', '%23');
-            if (autoplay && autoplay.length > 0)            qs += '&auto_play=' + autoplay;
-            if (showComments && showComments.length > 0)    qs += '&show_comments=' + showComments;
-            if (hideRelated && hideRelated.length > 0)      qs += '&hide_related=' + hideRelated;
-            if (showUser && showUser.length > 0)            qs += '&show_user=' + showUser;
-            if (showReposts && showReposts.length > 0)      qs += '&show_reposts=' + showReposts;
-            if (showTeaser && showTeaser.length > 0)        qs += '&show_teaser=' + showTeaser;
-            if (visual && visual.length > 0)                qs += '&visual=' + visual;
-            if (artwork && artwork.length > 0)              qs += '&show_artwork=' + artwork;
+            if (hideRelated && hideRelated.length > 0) qs += '&hide_related=' + hideRelated;
+            if (color && color.length > 0) qs += '&color=' + color.replace('#', '%23');
+            if (autoplay && autoplay.length > 0) qs += '&auto_play=' + autoplay;
+            if (showComments && showComments.length > 0) qs += '&show_comments=' + showComments;
+            if (hideRelated && hideRelated.length > 0) qs += '&hide_related=' + hideRelated;
+            if (showUser && showUser.length > 0) qs += '&show_user=' + showUser;
+            if (showReposts && showReposts.length > 0) qs += '&show_reposts=' + showReposts;
+            if (showTeaser && showTeaser.length > 0) qs += '&show_teaser=' + showTeaser;
+            if (visual && visual.length > 0) qs += '&visual=' + visual;
+            if (artwork && artwork.length > 0) qs += '&show_artwork=' + artwork;
 
             return '<iframe title="' + frame_title + '" width="100%" ' + frame_height + ' scrolling="no" ' + allowAutoplay + ' src="https://w.soundcloud.com/player/' + qs + '"></iframe>';
         });
@@ -2756,7 +2819,7 @@ tarteaucitron.services.spotify = {
                 frame_width += '"" ';
             }
             if (spotify_height !== undefined) {
-                frame_height +=  '"' + spotify_height + '" ';
+                frame_height += '"' + spotify_height + '" ';
             } else {
                 frame_height += '"" ';
             }
@@ -2877,7 +2940,7 @@ tarteaucitron.services.typekit = {
         tarteaucitron.addScript('//use.typekit.net/' + tarteaucitron.user.typekitId + '.js', '', function () {
             try {
                 Typekit.load();
-            } catch (e) {}
+            } catch (e) { }
         });
     }
 };
@@ -3201,7 +3264,7 @@ tarteaucitron.services.vimeo = {
                 video_qs = "";
             }
 
-            video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height  + (video_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+            video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + (video_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
 
             return video_frame;
         });
@@ -3233,7 +3296,7 @@ tarteaucitron.services.visualrevenue = {
         window._vrq = window._vrq || [];
         window._vrq.push(['id', tarteaucitron.user.visualrevenueId]);
         window._vrq.push(['automate', true]);
-        window._vrq.push(['track', function () {}]);
+        window._vrq.push(['track', function () { }]);
         tarteaucitron.addScript('http://a.visualrevenue.com/vrs.js');
     }
 };
@@ -3252,7 +3315,7 @@ tarteaucitron.services.verizondottag = {
         window.dotq = window.dotq || [];
         window.dotq.push({
             'projectId': tarteaucitron.user.verizondottagProjectId,
-            'properties': {'pixelId': tarteaucitron.user.verizondottagPixelId}
+            'properties': { 'pixelId': tarteaucitron.user.verizondottagPixelId }
         });
 
         tarteaucitron.addScript('https://s.yimg.com/wi/ytc.js', '', function () {
@@ -3366,7 +3429,7 @@ tarteaucitron.services.atinternet = {
             return;
         }
 
-        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
+        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function () {
 
             window.tag = new ATInternet.Tracker.Tag();
 
@@ -3391,7 +3454,7 @@ tarteaucitron.services.atinternet = {
 
         tarteaucitron.user.atinternetAlreadyLoaded = true;
 
-        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
+        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function () {
 
             window.tag = new ATInternet.Tracker.Tag();
 
@@ -3430,7 +3493,7 @@ tarteaucitron.services.atinternethightrack = {
             return;
         }
 
-        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function() {
+        tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function () {
 
             var tag = new ATInternet.Tracker.Tag();
 
@@ -3464,10 +3527,12 @@ tarteaucitron.services.youtube = {
                 allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen"),
                 attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "loop"],
                 params = attrs.filter(function (a) {
+
                   return tarteaucitron.getElemAttr(x, a) !== null;
                 }).map(function (a) {
                   return a + "=" + tarteaucitron.getElemAttr(x, a);
                }).join("&");
+
 
             if (video_id === undefined) {
                 return "";
@@ -3478,19 +3543,19 @@ tarteaucitron.services.youtube = {
                 frame_width += '"" ';
             }
             if (video_height !== undefined) {
-                frame_height +=  '"' + video_height + '" ';
+                frame_height += '"' + video_height + '" ';
             } else {
                 frame_height += '"" ';
             }
 
             if (srcdoc !== undefined && srcdoc !== null && srcdoc !== "") {
-                srcdoc =  'srcdoc="' + srcdoc + '" ';
+                srcdoc = 'srcdoc="' + srcdoc + '" ';
             } else {
                 srcdoc = '';
             }
 
             if (loading !== undefined && loading !== null && loading !== "") {
-                loading =  'loading ';
+                loading = 'loading ';
             } else {
                 loading = '';
             }
@@ -3540,7 +3605,7 @@ tarteaucitron.services.youtubeplaylist = {
                 frame_width += '"" ';
             }
             if (video_height !== undefined) {
-                frame_height +=  '"' + video_height + '" ';
+                frame_height += '"' + video_height + '" ';
             } else {
                 frame_height += '"" ';
             }
@@ -3645,13 +3710,13 @@ tarteaucitron.services.facebookpixel = {
     "js": function () {
         "use strict";
         var n;
-        if(window.fbq)return;
-        n=window.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)} ;
-        if(!window._fbq)window._fbq=n;
-        n.push=n;
-        n.loaded=!0;
-        n.version='2.0';
-        n.queue=[];
+        if (window.fbq) return;
+        n = window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+        if (!window._fbq) window._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
         tarteaucitron.addScript('https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', tarteaucitron.user.facebookpixelId);
         fbq('track', 'PageView');
@@ -3691,7 +3756,7 @@ tarteaucitron.services.issuu = {
                 frame_width += '"" ';
             }
             if (issuu_height !== undefined) {
-                frame_height +=  '"' + issuu_height + '" ';
+                frame_height += '"' + issuu_height + '" ';
             } else {
                 frame_height += '"" ';
             }
@@ -3736,7 +3801,7 @@ tarteaucitron.services.webmecanik = {
             window.mt.q.push(arguments);
         };
 
-        tarteaucitron.addScript(tarteaucitron.user.webmecanikurl, '', function() {
+        tarteaucitron.addScript(tarteaucitron.user.webmecanikurl, '', function () {
             mt('send', 'pageview');
         });
     }
@@ -3754,7 +3819,7 @@ tarteaucitron.services.multiplegtag = {
         var cookies = ['_ga', '_gat', '_gid', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
 
         if (tarteaucitron.user.multiplegtagUa !== undefined) {
-            tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
+            tarteaucitron.user.multiplegtagUa.forEach(function (ua) {
                 cookies.push('_gat_gtag_' + ua.replace(/-/g, '_'));
                 cookies.push('_ga_' + ua.replace(/G-/g, ''));
             });
@@ -3766,15 +3831,15 @@ tarteaucitron.services.multiplegtag = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
 
-	if (tarteaucitron.user.multiplegtagUa !== undefined) {
-            tarteaucitron.user.multiplegtagUa.forEach(function(ua) {
+        if (tarteaucitron.user.multiplegtagUa !== undefined) {
+            tarteaucitron.user.multiplegtagUa.forEach(function (ua) {
                 tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
-                    window.gtag = function gtag(){dataLayer.push(arguments);}
+                    window.gtag = function gtag() { dataLayer.push(arguments); }
                     gtag('js', new Date());
                     gtag('config', ua, { 'anonymize_ip': true });
                 });
             });
-	}
+        }
     }
 };
 
@@ -3795,13 +3860,13 @@ tarteaucitron.services.koban = {
             return;
         }
         window.KobanObject = 'kb';
-        window.kb = window.kb || function() {
+        window.kb = window.kb || function () {
             window.kb.q = window.kb.q || [];
             window.kb.q.push(arguments);
         };
         window.kb.l = new Date();
         kb('reg', tarteaucitron.user.kobanapi);
-        tarteaucitron.addScript(tarteaucitron.user.kobanurl, '', function() {
+        tarteaucitron.addScript(tarteaucitron.user.kobanurl, '', function () {
         });
     }
 };
@@ -3841,24 +3906,24 @@ tarteaucitron.services.matomo = {
         window._paq.push(["trackPageView"]);
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
-        window._paq.push([function() {
+        window._paq.push([function () {
             var self = this;
             function getOriginalVisitorCookieTimeout() {
                 var now = new Date(),
-                nowTs = Math.round(now.getTime() / 1000),
-                visitorInfo = self.getVisitorInfo();
+                    nowTs = Math.round(now.getTime() / 1000),
+                    visitorInfo = self.getVisitorInfo();
                 var createTs = parseInt(visitorInfo[2]);
                 var cookieTimeout = 33696000; // 13 mois en secondes
                 var originalTimeout = createTs + cookieTimeout - nowTs;
                 return originalTimeout;
             }
-            this.setVisitorCookieTimeout( getOriginalVisitorCookieTimeout() );
+            this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
         }]);
 
         tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
 
         // waiting for piwik to be ready to check first party cookies
-        var interval = setInterval(function() {
+        var interval = setInterval(function () {
             if (typeof Piwik === 'undefined') return
 
             clearInterval(interval)
@@ -3868,8 +3933,8 @@ tarteaucitron.services.matomo = {
 
             // looping throught cookies
             var theCookies = document.cookie.split(';');
-            for (var i = 1 ; i <= theCookies.length; i++) {
-                var cookie = theCookies[i-1].split('=');
+            for (var i = 1; i <= theCookies.length; i++) {
+                var cookie = theCookies[i - 1].split('=');
                 var cookieName = cookie[0].trim();
 
                 // if cookie starts like a piwik one, register it
@@ -3901,22 +3966,22 @@ tarteaucitron.services.matomohightrack = {
         window._paq.push(["trackPageView"]);
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
-        window._paq.push([function() {
+        window._paq.push([function () {
             var self = this;
         }]);
 
         tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
 
         // waiting for piwik to be ready to check first party cookies
-        var interval = setInterval(function() {
+        var interval = setInterval(function () {
             if (typeof Piwik === 'undefined') return
 
             clearInterval(interval)
             Piwik.getTracker();
 
             var theCookies = document.cookie.split(';');
-            for (var i = 1 ; i <= theCookies.length; i++) {
-                var cookie = theCookies[i-1].split('=');
+            for (var i = 1; i <= theCookies.length; i++) {
+                var cookie = theCookies[i - 1].split('=');
                 var cookieName = cookie[0].trim();
 
                 if (cookieName.indexOf('_pk_') === 0) {
@@ -3928,15 +3993,15 @@ tarteaucitron.services.matomohightrack = {
 };
 
 // Hotjar
- /*
-    1. Set the following variable before the initialization :
-     tarteaucitron.user.hotjarId = YOUR_WEBSITE_ID;
-    tarteaucitron.user.HotjarSv = XXXX; // Can be found in your website tracking code as "hjvs=XXXX"
-     2. Push the service :
-     (tarteaucitron.job = tarteaucitron.job || []).push('hotjar');
-     3. HTML
-    You don't need to add any html code, if the service is autorized, the javascript is added. otherwise no.
-  */
+/*
+   1. Set the following variable before the initialization :
+    tarteaucitron.user.hotjarId = YOUR_WEBSITE_ID;
+   tarteaucitron.user.HotjarSv = XXXX; // Can be found in your website tracking code as "hjvs=XXXX"
+    2. Push the service :
+    (tarteaucitron.job = tarteaucitron.job || []).push('hotjar');
+    3. HTML
+   You don't need to add any html code, if the service is autorized, the javascript is added. otherwise no.
+ */
 tarteaucitron.services.hotjar = {
     "key": "hotjar",
     "type": "analytic",
@@ -3949,14 +4014,14 @@ tarteaucitron.services.hotjar = {
         if (tarteaucitron.user.hotjarId === undefined || tarteaucitron.user.HotjarSv === undefined) {
             return;
         }
-         window.hj = window.hj || function() {
+        window.hj = window.hj || function () {
             (window.hj.q = window.hj.q || []).push(arguments)
         };
         window._hjSettings = {
             hjid: tarteaucitron.user.hotjarId,
             hjsv: tarteaucitron.user.HotjarSv
         };
-         var uri = 'https://static.hotjar.com/c/hotjar-';
+        var uri = 'https://static.hotjar.com/c/hotjar-';
         var extension = '.js?sv=';
         tarteaucitron.addScript(uri + window._hjSettings.hjid + extension + window._hjSettings.hjsv);
     }
@@ -3976,7 +4041,7 @@ tarteaucitron.services.bingads = {
         window.uetq = window.uetq || [];
 
         tarteaucitron.addScript('https://bat.bing.com/bat.js', '', function () {
-            var bingadsCreate = {ti: tarteaucitron.user.bingadsID};
+            var bingadsCreate = { ti: tarteaucitron.user.bingadsID };
 
             if ('bingadsStoreCookies' in tarteaucitron.user) {
                 bingadsCreate['storeConvTrackCookies'] = tarteaucitron.user.bingadsStoreCookies;
@@ -3995,55 +4060,55 @@ tarteaucitron.services.bingads = {
 
 //Matterport
 tarteaucitron.services.matterport = {
-  "key": "matterport",
-  "type": "other",
-  "name": "Matterport",
-  "uri": "https://matterport.com/es/legal/privacy-policy/",
-  "needConsent": true,
-  "cookies": ['__cfduid', 'ajs_anonymous_id', 'ajs_group_id', 'ajs_user_id'],
-  "js": function () {
-    "use strict";
-    tarteaucitron.fallback(['matterport'], function (x) {
-      var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Matterport iframe'),
-        matterport_id = x.getAttribute("matterportID"),
-        matterport_width = x.getAttribute("width"),
-        frame_width = 'width=',
-        matterport_height = x.getAttribute("height"),
-        frame_height = 'height=',
-        matterport_parameters = x.getAttribute("parameters"),
-        matterport_allowfullscreen = x.getAttribute('allowfullscreen'),
-        matterport_frame;
+    "key": "matterport",
+    "type": "other",
+    "name": "Matterport",
+    "uri": "https://matterport.com/es/legal/privacy-policy/",
+    "needConsent": true,
+    "cookies": ['__cfduid', 'ajs_anonymous_id', 'ajs_group_id', 'ajs_user_id'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['matterport'], function (x) {
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Matterport iframe'),
+                matterport_id = x.getAttribute("matterportID"),
+                matterport_width = x.getAttribute("width"),
+                frame_width = 'width=',
+                matterport_height = x.getAttribute("height"),
+                frame_height = 'height=',
+                matterport_parameters = x.getAttribute("parameters"),
+                matterport_allowfullscreen = x.getAttribute('allowfullscreen'),
+                matterport_frame;
 
-      if (matterport_id === undefined) {
-        return "";
-      }
-      if (matterport_width !== undefined) {
-        frame_width += '"' + matterport_width + '" ';
-      } else {
-        frame_width += '"" ';
-      }
-      if (matterport_height !== undefined) {
-        frame_height += '"' + matterport_height + '" ';
-      } else {
-        frame_height += '"" ';
-      }
-      if (matterport_parameters === undefined) {
-        return "";
-      }
+            if (matterport_id === undefined) {
+                return "";
+            }
+            if (matterport_width !== undefined) {
+                frame_width += '"' + matterport_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (matterport_height !== undefined) {
+                frame_height += '"' + matterport_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            if (matterport_parameters === undefined) {
+                return "";
+            }
 
-      matterport_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '"' + (matterport_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
-      return matterport_frame;
-    });
-  },
-  "fallback": function () {
-    "use strict";
-    var id = 'matterport';
-    tarteaucitron.fallback(['matterport'], function (elem) {
-      elem.style.width = elem.getAttribute('width') + 'px';
-      elem.style.height = elem.getAttribute('height') + 'px';
-      return tarteaucitron.engage(id);
-    });
-  }
+            matterport_frame = '<iframe title="' + frame_title + '" type="text/html" ' + frame_width + frame_height + ' src="https://my.matterport.com/show/?m=' + matterport_id + '&utm_source=hit-content' + matterport_parameters + '"' + (matterport_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+            return matterport_frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'matterport';
+        tarteaucitron.fallback(['matterport'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
 };
 
 // Adform
@@ -4087,7 +4152,7 @@ tarteaucitron.services.activecampaign = {
 
         window.trackcmp_email = '';
 
-        tarteaucitron.addScript('https://trackcmp.net/visit?actid='+tarteaucitron.user.actid+'&e='+encodeURIComponent(trackcmp_email)+'&r='+encodeURIComponent(document.referrer)+'&u='+encodeURIComponent(window.location.href));
+        tarteaucitron.addScript('https://trackcmp.net/visit?actid=' + tarteaucitron.user.actid + '&e=' + encodeURIComponent(trackcmp_email) + '&r=' + encodeURIComponent(document.referrer) + '&u=' + encodeURIComponent(window.location.href));
     }
 };
 
@@ -4105,8 +4170,8 @@ tarteaucitron.services.tawkto = {
             return;
         }
 
-        window.Tawk_API=window.Tawk_API||{};
-        window.Tawk_LoadStart=new Date();
+        window.Tawk_API = window.Tawk_API || {};
+        window.Tawk_LoadStart = new Date();
 
         tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
     }
@@ -4120,7 +4185,7 @@ tarteaucitron.services.getquanty = {
     "name": "GetQuanty",
     "uri": "https://www.getquanty.com/mentions-legales/",
     "needConsent": true,
-    "cookies": ['_first_pageview', 'eqy_sessionid', 'eqy_siteid','cluid','eqy_company', 'cluid', 'gq_utm', '_jsuid'],
+    "cookies": ['_first_pageview', 'eqy_sessionid', 'eqy_siteid', 'cluid', 'eqy_company', 'cluid', 'gq_utm', '_jsuid'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.getguanty === undefined) {
@@ -4159,7 +4224,7 @@ tarteaucitron.services.emolytics = {
             return;
         }
         var scriptEmolytics = document.createElement('script');
-        scriptEmolytics.text = 'var getsmily_id="'+tarteaucitron.user.emolyticsID+'";';
+        scriptEmolytics.text = 'var getsmily_id="' + tarteaucitron.user.emolyticsID + '";';
         document.getElementsByTagName('body')[0].appendChild(scriptEmolytics);
         tarteaucitron.addScript('https://cdn.emolytics.com/script/emolytics-widget.js')
     }
@@ -4193,8 +4258,8 @@ tarteaucitron.services.faciliti = {
             return;
         }
 
-        (function(w, d, s, f) {
-            w[f] = w[f] || {conf: function () { (w[f].data = w[f].data || []).push(arguments);}};
+        (function (w, d, s, f) {
+            w[f] = w[f] || { conf: function () { (w[f].data = w[f].data || []).push(arguments); } };
             var l = d.createElement(s), e = d.getElementsByTagName(s)[0];
             l.async = 1; l.src = 'https://ws.facil-iti.com/tag/faciliti-tag.min.js'; e.parentNode.insertBefore(l, e);
         }(window, document, 'script', 'FACIL_ITI'));
@@ -4249,14 +4314,14 @@ tarteaucitron.services.woopra = {
         //var w = tarteaucitron.user.woopraDomain;
         //window[w] = window[w] || [];
 
-        (function(){
-		  var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
-		})("woopra");
+        (function () {
+            var t, i, e, n = window, o = document, a = arguments, s = "script", r = ["config", "track", "identify", "visit", "push", "call", "trackForm", "trackClick"], c = function () { var t, i = this; for (i._e = [], t = 0; r.length > t; t++)(function (t) { i[t] = function () { return i._e.push([t].concat(Array.prototype.slice.call(arguments, 0))), i } })(r[t]) }; for (n._w = n._w || {}, t = 0; a.length > t; t++)n._w[a[t]] = n[a[t]] = n[a[t]] || new c; i = o.createElement(s), i.async = 1, i.src = "//static.woopra.com/js/w.js", e = o.getElementsByTagName(s)[0], e.parentNode.insertBefore(i, e)
+        })("woopra");
 
-		woopra.config({
-		    domain: tarteaucitron.user.woopraDomain
-		});
-		woopra.track();
+        woopra.config({
+            domain: tarteaucitron.user.woopraDomain
+        });
+        woopra.track();
     }
 };
 
@@ -4272,10 +4337,10 @@ tarteaucitron.services.ausha = {
         "use strict";
         tarteaucitron.fallback(['ausha_player'], function (x) {
             var player_height = x.getAttribute('data-height'),
-                podcast_id    = x.getAttribute('data-podcast-id'),
-                player_id     = x.getAttribute('data-player-id'),
-                playlist      = x.getAttribute('data-playlist'),
-                color         = x.getAttribute('data-color');
+                podcast_id = x.getAttribute('data-podcast-id'),
+                player_id = x.getAttribute('data-player-id'),
+                playlist = x.getAttribute('data-playlist'),
+                color = x.getAttribute('data-color');
 
             if (podcast_id === undefined) {
                 return "";
@@ -4283,9 +4348,9 @@ tarteaucitron.services.ausha = {
 
             var src = 'https://player.ausha.co/index.html?podcastId=' + podcast_id + '&v=3';
 
-            if (playlist && playlist.length > 0)    src += '&playlist=' + playlist;
-            if (color && color.length > 0)          src += '&color=' + color.replace('#', '%23');
-            if (player_id && player_id.length > 0)  src += '&playerId=' + player_id;
+            if (playlist && playlist.length > 0) src += '&playlist=' + playlist;
+            if (color && color.length > 0) src += '&color=' + color.replace('#', '%23');
+            if (player_id && player_id.length > 0) src += '&playerId=' + player_id;
 
             return '<iframe id="' + player_id + '" loading="lazy" width="100%" height="' + player_height + '" scrolling="no" frameborder="no" src="' + src + '"></iframe>';
         });
@@ -4308,14 +4373,14 @@ tarteaucitron.services.visiblee = {
     name: "Visiblee",
     uri: "http://confidentiality.visiblee.io/fr/confidentialite",
     needConsent: true,
-    cookies: ["visitor_v2", tarteaucitron.user.visibleedomain, "check", "campaign_ref_"+tarteaucitron.user.visibleedomain, "reload_"+tarteaucitron.user.visibleedomain],
+    cookies: ["visitor_v2", tarteaucitron.user.visibleedomain, "check", "campaign_ref_" + tarteaucitron.user.visibleedomain, "reload_" + tarteaucitron.user.visibleedomain],
     js: function () {
         "use strict";
 
         if (tarteaucitron.user.visibleeclientid === undefined) {
             return;
         }
-        tarteaucitron.addScript('//www.link-page.info/tracking_'+tarteaucitron.user.visibleeclientid+'.js', 'visiblee');
+        tarteaucitron.addScript('//www.link-page.info/tracking_' + tarteaucitron.user.visibleeclientid + '.js', 'visiblee');
     }
 };
 
@@ -4332,11 +4397,11 @@ tarteaucitron.services.bandcamp = {
         "use strict";
         tarteaucitron.fallback(['bandcamp_player'], function (x) {
             var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Bandcamp iframe'),
-                album_id        = x.getAttribute("albumID"),
-                bandcamp_width  = x.getAttribute("width"),
-                frame_width     = 'width=',
+                album_id = x.getAttribute("albumID"),
+                bandcamp_width = x.getAttribute("width"),
+                frame_width = 'width=',
                 bandcamp_height = x.getAttribute("height"),
-                frame_height    = 'height=',
+                frame_height = 'height=',
                 attrs = ["size", "bgcol", "linkcol", "artwork", "minimal", "tracklist", "package", "transparent"],
                 params = attrs.filter(function (a) {
                     return x.getAttribute(a) !== null;
@@ -4344,24 +4409,24 @@ tarteaucitron.services.bandcamp = {
                     if (a && a.length > 0) return a + "=" + x.getAttribute(a);
                 }).join("/");
 
-                if (album_id === null) {
-                    return "";
-                }
+            if (album_id === null) {
+                return "";
+            }
 
-                if (bandcamp_width !== null || bandcamp_width !== "") {
-                    frame_width += '"' + bandcamp_width + '" ';
-                } else {
-                    frame_width += '"" ';
-                }
-                if (bandcamp_height !== null || bandcamp_height !== "") {
-                    frame_height += '"' + bandcamp_height + '" ';
-                } else {
-                    frame_height += '"" ';
-                }
+            if (bandcamp_width !== null || bandcamp_width !== "") {
+                frame_width += '"' + bandcamp_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (bandcamp_height !== null || bandcamp_height !== "") {
+                frame_height += '"' + bandcamp_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
 
-                var src = 'https://bandcamp.com/EmbeddedPlayer/album=' + album_id + '/' + params;
+            var src = 'https://bandcamp.com/EmbeddedPlayer/album=' + album_id + '/' + params;
 
-                return '<iframe title="' + frame_title + '"' + frame_width + frame_height + 'src="' + src + '" frameborder="0" allowfullscreen seamless></iframe>';
+            return '<iframe title="' + frame_title + '"' + frame_width + frame_height + 'src="' + src + '" frameborder="0" allowfullscreen seamless></iframe>';
         });
     },
     fallback: function () {
@@ -4374,6 +4439,285 @@ tarteaucitron.services.bandcamp = {
     }
 };
 
+// Discord Widget
+tarteaucitron.services.discord = {
+    "key": "discord",
+    "type": "social",
+    "name": "Discord (Server Widget)",
+    "needConsent": true,
+    "cookies": ["__cfruid", "__dcfduid", "_ga", "_gcl_au", "OptanonConsent", "locale", "_gid"],
+    "uri": "https://discord.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['discord_widget'], function (x) {
+            var id = x.getAttribute("guildID"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height")
+            var widgetURL = "https://discord.com/widget?id=" + id;
+            return "<iframe width=\"" + width + "\" height=\"" + height + "\"src=\"https://discord.com/widget?id=" + widgetURL + "\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'discord';
+        tarteaucitron.fallback(['discord_widget'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// Google Maps
+tarteaucitron.services.maps_noapi = {
+    "key": "maps_noapi",
+    "type": "other",
+    "name": "Google Maps",
+    "needConsent": true,
+    "cookies": ["NID", "OGPC", "1P_JAR", "CONSENT"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['googlemaps_embed'], function (x) {
+            var id = x.getAttribute("id"),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height")
+            var widgetURL = "https://google.com/maps/embed?pb=" + id;
+            return "<iframe width=\"" + width + "\" height=\"" + height + "\"src=\"" + widgetURL + "\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'maps_noapi';
+        tarteaucitron.fallback(['googlemaps_embed'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// hCaptcha
+tarteaucitron.services.hcaptcha = {
+    "key": "hcaptcha",
+    "type": "other",
+    "name": "hCaptcha",
+    "needConsent": true,
+    "cookies": [],
+    "uri": "https://www.hcaptcha.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(["h-captcha"], '');
+        tarteaucitron.addScript("https://hcaptcha.com/1/api.js", "hcaptcha")
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "hcaptcha";
+        tarteaucitron.fallback(["h-captcha"], tarteaucitron.engage(id));
+    }
+};
+
+// France Culture
+tarteaucitron.services.fculture = {
+    "key": "fculture",
+    "type": "video",
+    "name": "France Culture",
+    "needConsent": true,
+    "cookies": ["_gid", "didomi_token", "outbrain_cid_fetch", "xtvrn", "xtant", "YSC", "ABTasty", "xtan", "ABTastySession", "xtidc", "_ga", "VISITOR_INFO1_LIVE", "euconsent-v2", "v1st", "dmvk", "ts", "VISITOR_INFO1_LIVE", "YSC"],
+    "uri": "https://www.radiofrance.com/politique-d-utilisation-des-cookies-sur-les-sites-internet-du-groupe-radio-france",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['fculture_embed'], function (x) {
+            var id = x.getAttribute('id'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height');
+            return "<iframe src=\"https://www.franceculture.fr/player/export-reecouter?content=" + id + "\" height=\"" + height + "\" width=\"" + width + "\"></iframe>"
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "fculture";
+        tarteaucitron.fallback(["fculture_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Acast
+tarteaucitron.services.acast = {
+    "key": "acast",
+    "type": "video",
+    "name": "Acast",
+    "needConsent": true,
+    "cookies": ["intercom-id-ayi0335i", "intercom-session-ayi0335i"],
+    "uri": "https://www.acast.com/en/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['acast_embed'], function (x) {
+            var id = x.getAttribute('id1'),
+                id2 = x.getAttribute('id2'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height'),
+                seek = x.getAttribute('seek');
+            var widgetURL = "https://embed.acast.com/" + id + "/" + id2 + "?seek=" + seek;
+            return "<iframe title=\"Embed Player\" width=" + width + " height=" + height + " src=" + widgetURL + " scrolling=\"no\" frameBorder=\"0\" style=\"border: none; overflow: hidden;\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "acast";
+        tarteaucitron.fallback(["acast_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Mixcloud
+tarteaucitron.services.mixcloud = {
+    "key": "mixcloud",
+    "type": "video",
+    "name": "Mixcloud",
+    "needConsent": true,
+    "cookies": ["UID", "_gat", "__stripe_mid", "_gid", "_ga", "c", "csrftoken", "__stripe_sid", "mx_t"],
+    "uri": "https://www.mixcloud.com/privacy/",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['mixcloud_embed'], function (x) {
+            var id = x.getAttribute('id'),
+                hidecover = x.getAttribute('hidecover'),
+                mini = x.getAttribute('mini'),
+                light = x.getAttribute('light'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height');
+            return "<iframe width=\"" + width + " height=\"" + height + "\" src=\"https://www.mixcloud.com/widget/iframe/?hide_cover=" + hidecover + "&mini=" + mini + "&light=" + light + "&feed=" + id + "\" frameborder=\"0\" ></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "mixcloud";
+        tarteaucitron.fallback(["mixcloud_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Agenda
+tarteaucitron.services.gagenda = {
+    "key": "gagenda",
+    "type": "other",
+    "name": "Google Agenda",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['gagenda_embed'], function (x) {
+            var calendar_data = x.getAttribute('data'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height');
+            return "<iframe loarding=\"lazy\" width=\"" + width + "\" height=\"" + height + "\" src=\"https://www.google.com/calendar/embed?" + calendar_data + "\" frameborder=\"0\" scrolling=\"no\" style=\"border-width:0\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "gagenda";
+        tarteaucitron.fallback(["gagenda_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Docs
+tarteaucitron.services.gdocs = {
+    "key": "gdocs",
+    "type": "other",
+    "name": "Google Docs",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['gdocs_embed'], function (x) {
+            var id = x.getAttribute('id'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height');
+            return "<iframe width=" + width +" height=" + height + " src=\"https://docs.google.com/document/d/e/" + id + "/pub?embedded=true\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "gdocs";
+        tarteaucitron.fallback(["gdocs_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Sheets
+tarteaucitron.services.gsheets = {
+    "key": "gsheets",
+    "type": "other",
+    "name": "Google Sheets",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['gsheets_embed'], function (x) {
+            var id = x.getAttribute('id'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height'),
+                headers = x.getAttribute('headers');
+            return "<iframe width=\"" + width + "\" height=\"" + height + "\" src=\"https://docs.google.com/spreadsheets/d/e/" + id + "/pubhtml?widget=true&amp;headers=\"" + headers + "\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "gsheets";
+        tarteaucitron.fallback(["gsheets_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Slides
+tarteaucitron.services.gslides = {
+    "key": "gslides",
+    "type": "other",
+    "name": "Google Slides",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['gslides_embed'], function (x) {
+            var id = x.getAttribute('id'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height'),
+                autostart = x.getAttribute('autostart'),
+                loop = x.getAttribute('loop'),
+                delay = x.getAttribute('delay');
+            return "<iframe width=" + width + " height=" + height + " src=\"https://docs.google.com/presentation/d/e/" + id + "/embed?start=\"" + autostart + "&loop=\"" + loop + "&delayms=\"" + delay + " frameborder=\"0\" allowfullscreen=\"true\" mozallowfullscreen=\"true\" webkitallowfullscreen=\"true\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "gslides";
+        tarteaucitron.fallback(["gslides_embed"], tarteaucitron.engage(id));
+    }
+};
+
+// Google Forms
+tarteaucitron.services.gforms = {
+    "key": "gforms",
+    "type": "other",
+    "name": "Google Forms",
+    "needConsent": true,
+    "cookies": ["CONSENT", "NID"],
+    "uri": "https://policies.google.com/privacy",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['gforms_embed'], function (x) {
+            var id = x.getAttribute('id'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height');
+            return "<iframe width=" + width + " height=" + height + "src=\"https://docs.google.com/forms/d/e/" + id + "/viewform?embedded=true\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "gforms";
+        tarteaucitron.fallback(['gforms_embed'], tarteaucitron.engage(id));
+    }
+}
 // Marketo munchkin
 tarteaucitron.services.marketomunchkin = {
     "key": "marketomunchkin",
@@ -4389,21 +4733,21 @@ tarteaucitron.services.marketomunchkin = {
         }
         var didInit = false;
         function initMunchkin() {
-          if(didInit === false) {
-            didInit = true;
-            Munchkin.init(tarteaucitron.user.marketomunchkinkey);
-          }
+            if (didInit === false) {
+                didInit = true;
+                Munchkin.init(tarteaucitron.user.marketomunchkinkey);
+            }
         }
         var s = document.createElement('script');
         s.type = 'text/javascript';
         s.async = true;
         s.src = '//munchkin.marketo.net/munchkin.js';
-        s.onreadystatechange = function() {
-          if (this.readyState == 'complete' || this.readyState == 'loaded') {
-            initMunchkin();
-          }
+        s.onreadystatechange = function () {
+            if (this.readyState == 'complete' || this.readyState == 'loaded') {
+                initMunchkin();
+            }
         };
         s.onload = initMunchkin;
         document.getElementsByTagName('head')[0].appendChild(s);
     }
-};
+}
