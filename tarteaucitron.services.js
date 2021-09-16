@@ -4808,6 +4808,7 @@ tarteaucitron.services.affilae = {
     }
 };
 
+// Canal-U.tv
 tarteaucitron.services.canalu = {
     "key": "canalu",
     "type": "video",
@@ -4835,6 +4836,32 @@ tarteaucitron.services.canalu = {
         "use strict";
         tarteaucitron.fallback(['canalu_player'], function (elem) {
             return tarteaucitron.engage('canalu');
+        });
+    }
+};
+
+// WebTV Normandie Université
+tarteaucitron.services.webtvnu = {
+    "key": "webtvnu",
+    "type": "video",
+    "name": "WebTV Normandie Université",
+    "uri": "https://docs.google.com/document/d/1tpVclj4QBoAq1meSZgYrpNECwp7dbmb_IhICY3sTl9c/edit",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['webtvnu_player'], function (x) {
+            var frame_url = 'https://webtv.normandie-univ.fr/permalink/' + x.getAttribute("videoID") + '/iframe/',
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height");
+
+            return '<iframe width="' + width + '" height="' + height + '" src="' + frame_url + '" allowfullscreen="allowfullscreen" allow="autoplay"></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        tarteaucitron.fallback(['webtvnu_player'], function (elem) {
+            return tarteaucitron.engage('webtvnu');
         });
     }
 };
