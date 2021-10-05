@@ -2542,7 +2542,7 @@ tarteaucitron.services.intercomChat = {
                     if (typeof intercomChatEnable === 'function') {
                         intercomChatEnable()
                     }
-                },
+                }
             );
         }
     },
