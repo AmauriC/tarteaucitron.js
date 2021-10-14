@@ -4870,7 +4870,7 @@ tarteaucitron.services.webtvnu = {
 tarteaucitron.services.studizz = {
     "key": "studizz",
     "type": "other",
-    "name": "studizz",
+    "name": "Studizz Chatbot",
     "uri": "https://group.studizz.fr/",
     "needConsent": true,
     "cookies": [],
@@ -4884,3 +4884,4 @@ tarteaucitron.services.studizz = {
         tarteaucitron.addScript('https://webchat.studizz.fr/webchat.js?token=' + tarteaucitron.user.studizzToken);
     }
 };
+
