@@ -3706,7 +3706,7 @@ tarteaucitron.services.facebookpixel = {
     "name": "Facebook Pixel",
     "uri": "https://www.facebook.com/policy.php",
     "needConsent": true,
-    "cookies": ['datr', 'fr', 'reg_ext_ref', 'reg_fb_gate', 'reg_fb_ref', 'sb', 'wd', 'x-src'],
+    "cookies": ['datr', 'fr', 'reg_ext_ref', 'reg_fb_gate', 'reg_fb_ref', 'sb', 'wd', 'x-src', '_fbq'],
     "js": function () {
         "use strict";
         var n;
