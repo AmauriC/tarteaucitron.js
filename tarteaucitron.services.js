@@ -563,7 +563,9 @@ tarteaucitron.services.addtoanyshare = {
     "cookies": [],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['tac_addtoanyshare'], '');
+        tarteaucitron.fallback(['tac_addtoanyshare'], function (elem) {
+            elem.remove();
+        }, true);
         tarteaucitron.addScript('//static.addtoany.com/menu/page.js');
     },
     "fallback": function () {
