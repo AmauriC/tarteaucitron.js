@@ -569,7 +569,8 @@ div#tarteaucitronServices {
     margin-left: 0!important;
     font-size: 14px;
 }
-span#tarteaucitronDisclaimerAlert {
+span#tarteaucitronDisclaimerAlert,
+p#tarteaucitronDisclaimerAlert {
     padding: 0 10px;
     display: inline-block;
 }
@@ -939,7 +940,8 @@ div.amazon_product {
     opacity: 1;
 }
 
-div#tarteaucitronInfo {
+div#tarteaucitronInfo,
+p#tarteaucitronInfo {
     display: block!important;
     position: relative !important;
     text-align: center!important;
