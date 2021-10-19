@@ -1614,6 +1614,7 @@ tarteaucitron.services.adsense = {
     "name": "Google Adsense",
     "uri": "https://adssettings.google.com/",
     "needConsent": true,
+    "readmoreLink": "https://policies.google.com/technologies/partner-sites",
     "cookies": [],
     "js": function () {
         "use strict";
