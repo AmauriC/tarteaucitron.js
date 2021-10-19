@@ -3533,6 +3533,9 @@ tarteaucitron.services.youtube = {
                   return a + "=" + tarteaucitron.getElemAttr(x, a);
                }).join("&");
 
+            if(tarteaucitron.getElemAttr(x, "loop") == 1) {
+               params = params + "&playlist=" + video_id;
+            }
 
             if (video_id === undefined) {
                 return "";
