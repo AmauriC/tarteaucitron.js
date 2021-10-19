@@ -563,7 +563,9 @@ tarteaucitron.services.addtoanyshare = {
     "cookies": [],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['tac_addtoanyshare'], '');
+        tarteaucitron.fallback(['tac_addtoanyshare'], function (elem) {
+            elem.remove();
+        }, true);
         tarteaucitron.addScript('//static.addtoany.com/menu/page.js');
     },
     "fallback": function () {
@@ -1614,6 +1616,7 @@ tarteaucitron.services.adsense = {
     "name": "Google Adsense",
     "uri": "https://adssettings.google.com/",
     "needConsent": true,
+    "readmoreLink": "https://policies.google.com/technologies/partner-sites",
     "cookies": [],
     "js": function () {
         "use strict";
