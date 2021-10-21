@@ -1617,7 +1617,7 @@ tarteaucitron.services.adsense = {
     "uri": "https://adssettings.google.com/",
     "needConsent": true,
     "readmoreLink": "https://policies.google.com/technologies/partner-sites",
-    "cookies": [],
+    "cookies": ['__gads'],
     "js": function () {
         "use strict";
         tarteaucitron.addScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
