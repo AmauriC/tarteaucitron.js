@@ -3890,7 +3890,7 @@ tarteaucitron.services.koban = {
     (tarteaucitron.job = tarteaucitron.job || []).push('matomo');
 
     3. HTML
-    You don't need to add any html code, if the service is autorized, the javascript is added. otherwise no.
+    You don't need to add any html code, if the service is authorized, the javascript is added. otherwise no.
  */
 tarteaucitron.services.matomo = {
     "key": "matomo",
