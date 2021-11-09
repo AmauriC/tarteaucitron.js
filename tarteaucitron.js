@@ -474,7 +474,7 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.showAlertSmall === true) {
                     html += '<div id="tarteaucitronAlertSmall" class="tarteaucitronAlertSmall' + orientation + '">';
                     html += '   <button type="button" id="tarteaucitronManager" aria-label="' + tarteaucitron.lang.alertSmall + ' ' + tarteaucitron.lang.modalWindow + '" title="' + tarteaucitron.lang.alertSmall + ' ' + tarteaucitron.lang.modalWindow + '">';
-                    html += '       ' + tarteaucitron.lang.alertSmall;
+                    html += '       ' + (tarteaucitron.lang.alertSmallIcon ? tarteaucitron.lang.alertSmallIcon : tarteaucitron.lang.alertSmall);
                     html += '       <span id="tarteaucitronDot">';
                     html += '           <span id="tarteaucitronDotGreen"></span>';
                     html += '           <span id="tarteaucitronDotYellow"></span>';
