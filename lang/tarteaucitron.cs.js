@@ -31,17 +31,20 @@ tarteaucitron.lang = {
     "source": "Zobrazit oficiální stránku",
     "credit": "Správce cookies od tarteaucitron.js",
 
-    "toggleInfoBox": "Show/hide informations about cookie storage",
-    "title": "Cookies management panel",
-    "cookieDetail": "Cookie detail for",
-    "ourSite": "on our site",
-    "newWindow": "(new window)",
-    "allowAll": "Allow all cookies",
-    "denyAll": "Deny all cookies",
+    "toggleInfoBox": "Zobrazit/skrýt informace o ukládání souborů cookie",
+    "title": "Panel pro správu cookies",
+    "cookieDetail": "Podrobnosti o souboru cookie pro",
+    "ourSite": "na našem webu",
+    "modalWindow": "(modální okno)",
+    "newWindow": "(nové okno)",
+    "allowAll": "Povolit všechny soubory cookie",
+    "denyAll": "Odmítnout všechny cookies",
 
     "icon": "Cookies",
     
     "fallback": "je vypnutý.",
+    "allowed": "povoleno",
+    "disallowed": "nepovoleno",
 
     "ads": {
         "title": "Reklamní síť",

@@ -35,6 +35,7 @@ tarteaucitron.lang = {
     "title": "Panel zarządzania plikami cookies",
     "cookieDetail": "Szczegóły plików cookie dla",
     "ourSite": "na naszej stronie",
+    "modalWindow": "(okno modalne)",
     "newWindow": "(nowe okno)",
     "allowAll": "Zezwól na wszystkie pliki cookies",
     "denyAll": "Zablokuj wszystkie pliki cookies",
@@ -42,6 +43,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "jest nieaktywna.",
+    "allowed": "dozwolony",
+    "disallowed": "niedozwolone",
 
     "ads": {
         "title": "Sieć reklamowa",

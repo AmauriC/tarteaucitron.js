@@ -37,6 +37,7 @@ tarteaucitron.lang = {
     "title": "Panèl de gestion dels cookies",
     "cookieDetail": "Detalh dels cookies",
     "ourSite": "sus nòstre site",
+    "modalWindow": "(modale fenèstra)",
     "newWindow": "(novèla fenèstra)",
     "allowAll": "Autorizar totes los cookies",
     "denyAll": "Interdire totes los cookies",
@@ -44,6 +45,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "es desactivat.",
+    "allowed": "autorizat",
+    "disallowed": "interdit",
 
     "ads": {
         "title": "Regias publicitàrias",

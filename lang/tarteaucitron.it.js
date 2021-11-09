@@ -35,13 +35,16 @@ tarteaucitron.lang = {
     "title": "Cookies management panel",
     "cookieDetail": "Cookie detail for",
     "ourSite": "on our site",
-    "newWindow": "(new window)",
-    "allowAll": "Allow all cookies",
-    "denyAll": "Deny all cookies",
+    "modalWindow": "(finestra modale)",
+    "newWindow": "(nuova finestra)",
+    "allowAll": "Consenti tutti i cookie",
+    "denyAll": "Rifiuta tutti i cookie",
 
     "icon": "Cookies",
     
     "fallback": "è disattivato",
+    "allowed": "permesso",
+    "disallowed": "non consentito",
     
     "ads": {
         "title": "Regie pubblicitarie",

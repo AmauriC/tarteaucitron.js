@@ -1,9 +1,25 @@
+div#tarteaucitronAlertBig:focus {outline: 0;}
+
 .tarteaucitron-modal-open{
     overflow: hidden;
     height: 100%;
 }
 
 #tarteaucitronContentWrapper {display:unset;}
+
+/** 14042021 **/
+span.tarteaucitronReadmoreSeparator {
+    display: inline!important;
+}
+/******/
+
+/** 09052021 **/
+.tarteaucitronName .tacCurrentStatus, .tarteaucitronName .tarteaucitronReadmoreSeparator {
+    color: #333!important;
+    font-size: 12px!important;
+    text-transform: capitalize;
+}
+/**************/
 
 /** 27032021 **/
 button.tarteaucitron-toggle-group {
@@ -24,6 +40,10 @@ span.tarteaucitronH3 {
 
 /** BETTER MOBILE MODE **/
 @media screen and (max-width: 767px) {
+
+    html body #tarteaucitronRoot #tarteaucitron ul#tarteaucitronServices_mandatory .tarteaucitronDeny {
+        display: none!important;
+    }
  
     html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder button,
     html body #tarteaucitronRoot #tarteaucitron .tarteaucitronAsk,
@@ -33,6 +53,8 @@ span.tarteaucitronH3 {
         margin-left: 0!important;
         margin-right: 0!important;
         box-sizing: border-box!important;
+        max-width: 100%!important;
+        margin-bottom: 8px!important;
     }
 
     html body #tarteaucitronRoot #tarteaucitron .tarteaucitronBorder ul .tarteaucitronLine {

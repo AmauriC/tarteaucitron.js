@@ -35,6 +35,7 @@ tarteaucitron.lang = {
     "title": "Управление на бисквитките",
     "cookieDetail": "Информация за",
     "ourSite": "в нашият сайт",
+    "modalWindow": "(модален прозорец)",
     "newWindow": "(нов прозорец)",
     "allowAll": "Разреши всички",
     "denyAll": "Забрани всички",
@@ -42,6 +43,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "е изключен.",
+    "allowed": "Позволен",
+    "disallowed": "Забранено",
 
     "ads": {
         "title": "Рекламодатели",

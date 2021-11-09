@@ -37,6 +37,7 @@ tarteaucitron.lang = {
     "title": "Çerez yönetimi paneli",
     "cookieDetail": "Ayrıntı çerezleri",
     "ourSite": "sitemizde",
+    "modalWindow": "(kalıcı pencere)",
     "newWindow": "(yeni pencere)",
     "allowAll": "Tüm çerezlere izin verin",
     "denyAll": "Tüm çerezleri yasaklayın",
@@ -44,6 +45,8 @@ tarteaucitron.lang = {
     "icon": "Cookies",
     
     "fallback": "devre dışı.",
+    "allowed": "izin verildi",
+    "disallowed": "izin verilmeyen",
 
     "ads": {
         "title": "Reklam yönetimi",
