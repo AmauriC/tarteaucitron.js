@@ -341,10 +341,10 @@ var tarteaucitron = {
                 html += '         </div>';
                 html += '         <div class="tarteaucitronAsk" id="tarteaucitronScrollbarAdjust">';
                 html += '            <button type="button" id="tarteaucitronAllAllowed" class="tarteaucitronAllow">';
-                html += '               <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allowAll;
+                html += '               <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allowAll;
                 html += '            </button> ';
                 html += '            <button type="button" id="tarteaucitronAllDenied" class="tarteaucitronDeny">';
-                html += '               <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.denyAll;
+                html += '               <span class="tarteaucitronCross" aria-hidden="true"></span> ' + tarteaucitron.lang.denyAll;
                 html += '            </button>';
                 html += '         </div>';
                 html += '      </div>';
@@ -355,20 +355,20 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.mandatory == true) {
                    html += '<li id="tarteaucitronServicesTitle_mandatory">';
                    html += '<div class="tarteaucitronTitle">';
-                   html += '   <button type="button" tabindex="-1"><span class="tarteaucitronPlus"></span> ' + tarteaucitron.lang.mandatoryTitle + '</button>';
+                   html += '   <button type="button" tabindex="-1"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang.mandatoryTitle + '</button>';
                    html += '</div>';
                    html += '<ul id="tarteaucitronServices_mandatory">';
                    html += '<li class="tarteaucitronLine">';
                    html += '   <div class="tarteaucitronName">';
                    html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + tarteaucitron.lang.mandatoryText + '</span>';
-                   html += '       <span class="tarteaucitronListCookies"></span><br/>';
+                   html += '       <span class="tarteaucitronListCookies" aria-hidden="true"></span><br/>';
                    html += '   </div>';
                    html += '   <div class="tarteaucitronAsk">';
                    html += '       <button type="button" class="tarteaucitronAllow" tabindex="-1" disabled>';
-                   html += '           <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
+                   html += '           <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allow;
                    html += '       </button> ';
                    html += '       <button type="button" class="tarteaucitronDeny" style="visibility:hidden" tabindex="-1">';
-                   html += '           <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.deny;
+                   html += '           <span class="tarteaucitronCross" aria-hidden="true"></span> ' + tarteaucitron.lang.deny;
                    html += '       </button> ';
                    html += '   </div>';
                    html += '</li>';
@@ -378,7 +378,7 @@ var tarteaucitron = {
                 for (i = 0; i < cat.length; i += 1) {
                     html += '         <li id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
                     html += '            <div class="tarteaucitronTitle">';
-                    html += '               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetails' + cat[i] + '"><span class="tarteaucitronPlus"></span> ' + tarteaucitron.lang[cat[i]].title + '</button>';
+                    html += '               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetails' + cat[i] + '"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang[cat[i]].title + '</button>';
                     html += '            </div>';
                     html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails tarteaucitronInfoBox">';
                     html += '               ' + tarteaucitron.lang[cat[i]].details;
@@ -433,7 +433,7 @@ var tarteaucitron = {
                     html += '   </span>';
                     //html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
                     html += '   <button type="button" class="tarteaucitronCTAButton tarteaucitronAllow" id="tarteaucitronPersonalize2">';
-                    html += '       <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.acceptAll;
+                    html += '       <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.acceptAll;
                     html += '   </button>';
 
 
@@ -443,7 +443,7 @@ var tarteaucitron = {
                         } else {
                                     html += '   <button type="button" class="tarteaucitronCTAButton tarteaucitronDeny" id="tarteaucitronAllDenied2">';
                         }
-                                    html += '       <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.denyAll;
+                                    html += '       <span class="tarteaucitronCross" aria-hidden="true"></span> ' + tarteaucitron.lang.denyAll;
                                     html += '   </button>';
                                     //html += '   <br/><br/>';
                     }
@@ -645,10 +645,10 @@ var tarteaucitron = {
                             html += '   </div>';
                             html += '   <div class="tarteaucitronAsk" id="tarteaucitron-group-'+cat+'">';
                             html += '       <button type="button" aria-label="' + tarteaucitron.lang.allow + ' ' + tarteaucitron.lang[cat].title + '" class="tarteaucitronAllow" id="tarteaucitron-accept-group-'+cat+'">';
-                            html += '           <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
+                            html += '           <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allow;
                             html += '       </button> ';
                             html += '       <button type="button" aria-label="' + tarteaucitron.lang.deny + ' ' + tarteaucitron.lang[cat].title + '" class="tarteaucitronDeny" id="tarteaucitron-reject-group-'+cat+'">';
-                            html += '           <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.deny;
+                            html += '           <span class="tarteaucitronCross" aria-hidden="true"></span> ' + tarteaucitron.lang.deny;
                             html += '       </button>';
                             html += '   </div>';
                             html += '</li>';
@@ -805,10 +805,10 @@ var tarteaucitron = {
             html += '   </div>';
             html += '   <div class="tarteaucitronAsk">';
             html += '       <button type="button" aria-label="' + tarteaucitron.lang.allow + ' ' + service.name + '" id="' + service.key + 'Allowed" class="tarteaucitronAllow">';
-            html += '           <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
+            html += '           <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allow;
             html += '       </button> ';
             html += '       <button type="button" aria-label="' + tarteaucitron.lang.deny + ' ' + service.name + '" id="' + service.key + 'Denied" class="tarteaucitronDeny">';
-            html += '           <span class="tarteaucitronCross"></span> ' + tarteaucitron.lang.deny;
+            html += '           <span class="tarteaucitronCross" aria-hidden="true"></span> ' + tarteaucitron.lang.deny;
             html += '       </button>';
             html += '   </div>';
             html += '</li>';
@@ -1970,7 +1970,7 @@ var tarteaucitron = {
         html += '   <div class="tac_float">';
         html += '      ' + engage;
         html += '      <button type="button" class="tarteaucitronAllow" id="Eng' + r + 'ed' + id + '">';
-        html += '          <span class="tarteaucitronCheck"></span> ' + tarteaucitron.lang.allow;
+        html += '          <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allow;
         html += '       </button>';
         html += '   </div>';
         html += '</div>';
