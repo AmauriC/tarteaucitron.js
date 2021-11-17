@@ -3958,7 +3958,7 @@ tarteaucitron.services.matomohightrack = {
     "type": "analytic",
     "name": "Matomo",
     "uri": "https://matomo.org/faq/general/faq_146/",
-    "needConsent": false,
+    "needConsent": true,
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
     "js": function () {
         "use strict";
