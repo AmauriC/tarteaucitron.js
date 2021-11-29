@@ -4176,10 +4176,12 @@ tarteaucitron.services.tawkto = {
             return;
         }
 
+        tarteaucitron.user.tawktoWidgetId = tarteaucitron.user.tawktoWidgetId || 'default';
+
         window.Tawk_API = window.Tawk_API || {};
         window.Tawk_LoadStart = new Date();
 
-        tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
+        tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/' + tarteaucitron.user.tawktoWidgetId);
     }
 
 };
