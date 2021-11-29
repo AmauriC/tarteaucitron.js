@@ -929,6 +929,21 @@ div.amazon_product {
     width:120px;
 }
 
+.tarteaucitronIsAllowed .tarteaucitronDeny {
+    opacity: 0.4!important;
+}.tarteaucitronIsDenied .tarteaucitronAllow {
+    opacity: 0.4!important;
+}.tarteaucitronIsAllowed .tarteaucitronAllow {
+    opacity: 1!important;
+}.tarteaucitronIsDenied .tarteaucitronDeny {
+    opacity: 1!important;
+}
+.tarteaucitronLine .tarteaucitronAllow, .tarteaucitronLine .tarteaucitronDeny {
+    opacity: 0.4;
+}
+#tarteaucitronServices_mandatory button.tarteaucitronAllow {
+    opacity: 1;
+}
 
 div#tarteaucitronInfo {
     display: block!important;
