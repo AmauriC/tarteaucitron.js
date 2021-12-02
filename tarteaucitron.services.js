@@ -1080,7 +1080,10 @@ tarteaucitron.services.dailymotion = {
                 video_frame,
                 embed_type = tarteaucitron.getElemAttr(x, "embedType"),
                 allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen"),
-                params = 'info=' + tarteaucitron.getElemAttr(x, "showinfo") + '&autoPlay=' + tarteaucitron.getElemAttr(x, "autoplay");
+                showinfo = tarteaucitron.getElemAttr(x, "showinfo"),
+                autoplay = tarteaucitron.getElemAttr(x, "autoplay"),
+                api = tarteaucitron.getElemAttr(x, "api"),
+                params = 'info=' + showinfo + '&autoPlay=' + autoplay + '&api=' + api;
 
             if (video_id === undefined) {
                 return "";
@@ -3528,12 +3531,11 @@ tarteaucitron.services.youtube = {
                 frame_height = 'height=',
                 video_frame,
                 allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen"),
-                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "loop"],
+                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "loop", "enablejsapi"],
                 params = attrs.filter(function (a) {
-
-                  return tarteaucitron.getElemAttr(x, a) !== null;
+                    return tarteaucitron.getElemAttr(x, a) !== null;
                 }).map(function (a) {
-                  return a + "=" + tarteaucitron.getElemAttr(x, a);
+                    return a + "=" + tarteaucitron.getElemAttr(x, a);
                }).join("&");
 
             if(tarteaucitron.getElemAttr(x, "loop") == 1) {
