@@ -1083,7 +1083,7 @@ tarteaucitron.services.dailymotion = {
                 showinfo = tarteaucitron.getElemAttr(x, "showinfo"),
                 autoplay = tarteaucitron.getElemAttr(x, "autoplay"),
                 api = tarteaucitron.getElemAttr(x, "api"),
-                params = `info=${showinfo}&autoPlay=${autoplay}&api=${api}`;
+                params = 'info=' + showinfo + '&autoPlay=' + autoplay + '&api=' + api;
 
             if (video_id === undefined) {
                 return "";
