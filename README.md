@@ -68,7 +68,9 @@ tarteaucitron.init({
 </script>
 ```
 
-# Create custom service
+# Customization
+
+## Create custom service
 ```js
 tarteaucitron.services.mycustomservice = {
   "key": "mycustomservice",
@@ -88,7 +90,38 @@ tarteaucitron.services.mycustomservice = {
 };
 ```
 
-## Thanks to the sponsors 😊
+## Events
+
+The following events are available:
+* `tac.root_available`: the root element with panel has been created, services will be loaded
+* {SERVICE_KEY}`.added` for each enabled service
+* {SERVICE_KEY}`.loaded` for each enabled service
+* `tac.open_alert`
+* `tac.close_alert`
+* `tac.open_panel`
+* `tac.close_panel`
+
+## Customize text
+
+To change a translation, use `tarteaucitronCustomText` variable. It will be merge with the translation shipping with TAC. This variable must be defined before the initialization. For example:
+```js
+tarteaucitronCustomText = {
+  'support': {
+    'title': 'Support client',
+  },
+  'close': 'Enregistrer et fermer',
+};
+tarteaucitron.init(...);
+```
+
+There is a special case for engagement text. By the default, the engagement text is  _{SERVICE_NAME} is disabled._, however you can change it per service. For example:
+```js
+tarteaucitronCustomText = {
+  'engage-twitter': 'Follow us on Twitter!'
+};
+```
+
+# Thanks to the sponsors 😊
 
 | Be the first sponsor! |
 |:---:|
