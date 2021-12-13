@@ -4893,3 +4893,62 @@ tarteaucitron.services.studizz = {
     }
 };
 
+// meteofrance
+tarteaucitron.services.meteofrance = {
+    "key": "meteofrance",
+    "type": "api",
+    "name": "Météo France",
+    "uri": "https://meteofrance.com/politique-de-confidentialite",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_meteofrance'], function (x) {
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Météo France iframe'),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                insee = x.getAttribute("data-insee"),
+                allowfullscreen = x.getAttribute("allowfullscreen");
+
+            return '<iframe title="' + frame_title + '" src="https://meteofrance.com/widget/prevision/' + insee + '" width="' + width + '" height="' + height + '" scrolling="auto" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'meteofrance';
+        tarteaucitron.fallback(['tac_meteofrance'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// m6meteo
+tarteaucitron.services.m6meteo = {
+    "key": "m6meteo",
+    "type": "api",
+    "name": "M6 Météo",
+    "uri": "https://gdpr.m6tech.net/charte-confidentialite-m6-web-meteocity.pdf",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_m6meteo'], function (x) {
+            var id = x.getAttribute("data-id");
+
+            tarteaucitron.getScript('https://www.meteocity.com/widget/js/'+id);
+
+            return '<div id="cont_'+id+'"><div id="spa_'+id+'"><a id="a_'+id+'" href="#"></a> ©<a target="_top" href="https://www.meteocity.com">M6météo</a></div></div>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'm6meteo';
+        tarteaucitron.fallback(['tac_m6meteo'], function (elem) {
+
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
