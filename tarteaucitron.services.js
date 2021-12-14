@@ -1023,6 +1023,32 @@ tarteaucitron.services.criteo = {
     }
 };
 
+// criteo onetag
+tarteaucitron.services.criteoonetag = {
+    "key": "criteoonetag",
+    "type": "ads",
+    "name": "Criteo OneTag",
+    "uri": "https://www.criteo.com/privacy/",
+    "needConsent": true,
+    "cookies": ['uid', 'tk', 'uid3pd'],
+    "js": function() {
+        "use strict";
+        if (tarteaucitron.user.criteoonetagAccount === undefined) return;
+
+        window.criteo_q = window.criteo_q || []; 
+        window.criteo_q.push({
+            event: "setAccount",
+            account: tarteaucitron.user.criteoonetagAccount
+        })
+
+        tarteaucitron.addScript('//static.criteo.net/js/ld/ld.js', '', function() {
+            if (typeof tarteaucitron.user.criteoonetagMore === 'function') {
+                tarteaucitron.user.criteoonetagMore();
+            }
+        });
+    }
+};
+
 // artetv
 tarteaucitron.services.artetv = {
     "key": "artetv",
@@ -4178,10 +4204,12 @@ tarteaucitron.services.tawkto = {
             return;
         }
 
+        tarteaucitron.user.tawktoWidgetId = tarteaucitron.user.tawktoWidgetId || 'default';
+
         window.Tawk_API = window.Tawk_API || {};
         window.Tawk_LoadStart = new Date();
 
-        tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/default');
+        tarteaucitron.addScript('https://embed.tawk.to/' + tarteaucitron.user.tawktoId + '/' + tarteaucitron.user.tawktoWidgetId);
     }
 
 };
