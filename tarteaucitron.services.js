@@ -5001,34 +5001,48 @@ tarteaucitron.services.mtcaptcha = {
     }
 };
 
-// Gallica
-tarteaucitron.services.gallica = {
-    "key": "gallica",
-    "type": "other",
-    "name": "Gallica",
-    "uri": "https://gallica.bnf.fr/edit/und/conditions-dutilisation-des-contenus-de-gallica",
+// Internet Archive / https://archive.org
+tarteaucitron.services.archive = {
+    "key": "archive",
+    "type": "video",
+    "name": "Internet Archive",
+    "uri": "https://archive.org/about/terms.php",
     "needConsent": true,
-    "cookies": ['dtCookie', 'dtLatC', 'dtPC', 'dtSa', 'JSESSIONID', 'rxVisitor', 'rxvt', 'xtvrn'],
+    "cookies": ['abtest-identifier','donation-identifier','PHPSESSID','search-inside-XXX'],
     "js": function () {
         "use strict";
-        tarteaucitron.fallback(['gallica_player'], function (x) {
-            var src = tarteaucitron.getElemAttr(x, "data-src"),
-                style = tarteaucitron.getElemAttr(x, "data-style"),
-                frame;
-            if (src === undefined) {
+        tarteaucitron.fallback(['archive_player'], function (x) {
+            var video_id = tarteaucitron.getElemAttr(x, "data-videoID"),
+                video_width = tarteaucitron.getElemAttr(x, "data-width"),
+                frame_width = 'width=',
+                video_height = tarteaucitron.getElemAttr(x, "data-height"),
+                frame_height = 'height=',
+                video_frame;
+
+            if (video_id === undefined) {
                 return "";
             }
-            frame = '<iframe style="'+ style + '" src="' + src + '"></iframe>';
-            return frame;
+            if (video_width !== undefined) {
+                frame_width += '"' + video_width + '" ';
+            } else {
+                frame_width += '"" ';
+            }
+            if (video_height !== undefined) {
+                frame_height += '"' + video_height + '" ';
+            } else {
+                frame_height += '"" ';
+            }
+            video_frame = '<iframe src="https://archive.org/embed/' + video_id + '" ' + frame_width + frame_height + ' frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>';
+            return video_frame;
         });
     },
     "fallback": function () {
         "use strict";
-        var id = 'gallica';
-        tarteaucitron.fallback(['gallica_player'], function (elem) {
-            elem.style = elem.getAttribute('data-style');
+        var id = 'archive';
+        tarteaucitron.fallback(['archive_player'], function (elem) {
+            elem.style.width = elem.getAttribute('data-width') + 'px';
+            elem.style.height = elem.getAttribute('data-height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
 };
-
