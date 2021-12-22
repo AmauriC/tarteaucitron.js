@@ -5008,7 +5008,7 @@ tarteaucitron.services.archive = {
     "name": "Internet Archive",
     "uri": "https://archive.org/about/terms.php",
     "needConsent": true,
-    "cookies": ['abtest-identifier','donation-identifier','PHPSESSID','search-inside-XXX'],
+    "cookies": ['abtest-identifier','donation-identifier'],
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['archive_player'], function (x) {
@@ -5046,3 +5046,35 @@ tarteaucitron.services.archive = {
         });
     }
 };
+
+// Gallica
+tarteaucitron.services.gallica = {
+    "key": "gallica",
+    "type": "other",
+    "name": "Gallica",
+    "uri": "https://gallica.bnf.fr/edit/und/conditions-dutilisation-des-contenus-de-gallica",
+    "needConsent": true,
+    "cookies": ['dtCookie', 'dtLatC', 'dtPC', 'dtSa', 'rxVisitor', 'rxvt', 'xtvrn'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['gallica_player'], function (x) {
+            var src = tarteaucitron.getElemAttr(x, "data-src"),
+                style = tarteaucitron.getElemAttr(x, "data-style"),
+                frame;
+            if (src === undefined) {
+                return "";
+            }
+            frame = '<iframe style="'+ style + '" src="' + src + '"></iframe>';
+            return frame;
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'gallica';
+        tarteaucitron.fallback(['gallica_player'], function (elem) {
+            elem.style = elem.getAttribute('data-style');
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
