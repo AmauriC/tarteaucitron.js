@@ -3147,36 +3147,39 @@ tarteaucitron.services.vimeo = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['vimeo_player'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "data-title") || tarteaucitron.getElemAttr(x, "title") || 'Vimeo iframe'),
+            let frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "data-title") || tarteaucitron.getElemAttr(x, "title") || 'Vimeo iframe'),
                 video_width = tarteaucitron.getElemAttr(x, "data-width") || tarteaucitron.getElemAttr(x, "width"),
                 frame_width = 'width=',
                 video_height = tarteaucitron.getElemAttr(x, "data-height") || tarteaucitron.getElemAttr(x, "height"),
                 frame_height = 'height=',
 
-                video_id = tarteaucitron.getElemAttr(x, "data-videoID") || tarteaucitron.getElemAttr(x, "videoID"),
+                video_id = tarteaucitron.getElemAttr(x, "videoID"),
+                video_hash = tarteaucitron.getElemAttr(x, "data-hash") || '',
                 video_allowfullscreen = tarteaucitron.getElemAttr(x, "data-allowfullscreen"),
-                video_autopause = tarteaucitron.getElemAttr(x, "data-autopause") || '',
-                video_autoplay = tarteaucitron.getElemAttr(x, "data-autoplay") || tarteaucitron.getElemAttr(x, "autoplay") || '',
-                video_background = tarteaucitron.getElemAttr(x, "data-background") || '',
-                video_byline = tarteaucitron.getElemAttr(x, "data-byline") || tarteaucitron.getElemAttr(x, "byline") || '',
-                video_color = tarteaucitron.getElemAttr(x, "data-color") || '',
-                video_controls = tarteaucitron.getElemAttr(x, "data-controls") || '',
-                video_loop = tarteaucitron.getElemAttr(x, "data-loop") || tarteaucitron.getElemAttr(x, "loop") || '',
-                video_maxheight = tarteaucitron.getElemAttr(x, "data-maxheight") || '',
-                video_maxwidth = tarteaucitron.getElemAttr(x, "data-maxwidth") || '',
-                video_muted = tarteaucitron.getElemAttr(x, "data-muted") || '',
-                video_playsinline = tarteaucitron.getElemAttr(x, "data-playsinline") || '',
-                video_portrait = tarteaucitron.getElemAttr(x, "data-portrait") || tarteaucitron.getElemAttr(x, "portrait") || '',
-                video_speed = tarteaucitron.getElemAttr(x, "data-speed") || '',
-                video_title = tarteaucitron.getElemAttr(x, "data-title") || tarteaucitron.getElemAttr(x, "title") || '',
-                video_transparent = tarteaucitron.getElemAttr(x, "data-transparent") || '',
+
+                video_qs = "",
+                attrs = ["title", "byline", "portrait", "loop", "autoplay", "autopause", "background", "color", "controls", "maxheight", "maxwidth", "muted", "playsinline", "speed", "transparent"],
+                params = attrs.filter(function (a) {
+                    return tarteaucitron.getElemAttr(x, a) !== null;
+                }).map(function (a) {
+                    return a + "=" + tarteaucitron.getElemAttr(x, a);
+                }),
 
                 video_frame;
-
 
             if (video_id === undefined) {
                 return "";
             }
+
+            // query params
+            if (video_hash.length > 0) {
+                params.push("h=" + video_hash);
+            }
+            if (params.length > 0) {
+                video_qs = "?" + params.join("&");
+            }
+
+            // attributes
             if (video_width !== undefined) {
                 frame_width += '"' + video_width + '" ';
             } else {
@@ -3186,114 +3189,6 @@ tarteaucitron.services.vimeo = {
                 frame_height += '"' + video_height + '" ';
             } else {
                 frame_height += '"" ';
-            }
-
-            var video_qs = "?";
-
-            if (video_title.length > 0) {
-                video_qs += "title=" + video_title;
-            }
-
-            if (video_byline.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "byline=" + video_byline;
-            }
-
-            if (video_portrait.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "portrait=" + video_portrait;
-            }
-
-            if (video_loop.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "loop=" + video_loop;
-            }
-
-            if (video_autoplay.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "autoplay=" + video_autoplay;
-            }
-
-            if (video_autopause.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "autopause=" + video_autopause;
-            }
-
-            if (video_background.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "background=" + video_background;
-            }
-
-            if (video_color.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "color=" + video_color;
-            }
-
-            if (video_controls.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "controls=" + video_controls;
-            }
-
-            if (video_maxheight.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "maxheight=" + video_maxheight;
-            }
-
-            if (video_maxwidth.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "maxwidth=" + video_maxwidth;
-            }
-
-            if (video_muted.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "muted=" + video_muted;
-            }
-
-            if (video_playsinline.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "playsinline=" + video_playsinline;
-            }
-
-            if (video_speed.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "speed=" + video_speed;
-            }
-
-            if (video_transparent.length > 0) {
-                if (video_qs.length > 0) {
-                    video_qs += "&";
-                }
-                video_qs += "transparent=" + video_transparent;
-            }
-
-            if (video_qs === "?") {
-                video_qs = "";
             }
 
             video_frame = '<iframe title="' + frame_title + '" src="//player.vimeo.com/video/' + video_id + video_qs + '" ' + frame_width + frame_height + (video_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
