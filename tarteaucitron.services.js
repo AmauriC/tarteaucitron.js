@@ -3147,7 +3147,7 @@ tarteaucitron.services.vimeo = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['vimeo_player'], function (x) {
-            let frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "title") || 'Vimeo iframe'),
+            var frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "title") || 'Vimeo iframe'),
                 video_width = tarteaucitron.getElemAttr(x, "width"),
                 frame_width = 'width=',
                 video_height = tarteaucitron.getElemAttr(x, "height"),
