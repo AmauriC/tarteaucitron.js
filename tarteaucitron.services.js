@@ -3810,7 +3810,7 @@ tarteaucitron.services.koban = {
 
     2. Push the service :
 
-    (tarteaucitron.job = tarteaucitron.job || []).push('matomo');
+    (tarteaucitron.job = tarteaucitron.job || []).push('matomo');  // (or 'matomocloud' for cloud version)
 
     3. HTML
     You don't need to add any html code, if the service is authorized, the javascript is added. otherwise no.
@@ -3920,6 +3920,68 @@ tarteaucitron.services.matomohightrack = {
         }, 100)
     }
 };
+
+
+tarteaucitron.services.matomocloud = {
+    "key": "matomocloud",
+    "type": "analytic",
+    "name": "Matomo Cloud (privacy by design)",
+    "uri": "https://matomo.org/faq/general/faq_146/",
+    "needConsent": false,
+    "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'mtm_consent', 'matomo_ignore', 'matomo_sessid'],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.matomoId === undefined) {
+            return;
+        }
+
+        window._paq = window._paq || [];
+        window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
+        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
+        window._paq.push(["setDoNotTrack", 1]);
+        window._paq.push(["trackPageView"]);
+        window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
+        window._paq.push(["enableLinkTracking"]);
+        window._paq.push([function () {
+            var self = this;
+            function getOriginalVisitorCookieTimeout() {
+                var now = new Date(),
+                    nowTs = Math.round(now.getTime() / 1000),
+                    visitorInfo = self.getVisitorInfo();
+                var createTs = parseInt(visitorInfo[2]);
+                var cookieTimeout = 33696000; // 13 mois en secondes
+                var originalTimeout = createTs + cookieTimeout - nowTs;
+                return originalTimeout;
+            }
+            this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
+        }]);
+
+        tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
+
+        // waiting for Matomo to be ready to check first party cookies
+        var interval = setInterval(function () {
+            if (typeof Matomo === 'undefined') return
+
+            clearInterval(interval)
+
+            // make Matomo cookie accessible by getting tracker
+            Matomo.getTracker();
+
+            // looping through cookies
+            var theCookies = document.cookie.split(';');
+            for (var i = 1; i <= theCookies.length; i++) {
+                var cookie = theCookies[i - 1].split('=');
+                var cookieName = cookie[0].trim();
+
+                // if cookie starts like a matomo one, register it
+                if (cookieName.indexOf('_pk_') === 0) {
+                    tarteaucitron.services.matomo.cookies.push(cookieName);
+                }
+            }
+        }, 100)
+    }
+};
+
 
 // Hotjar
 /*
