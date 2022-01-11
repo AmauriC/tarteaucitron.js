@@ -221,7 +221,8 @@ var tarteaucitron = {
                 "useExternalJs": false,
                 "mandatory": true,
                 "closePopup": false,
-                "groupServices": false
+                "groupServices": false,
+                "serviceDefaultState": 'wait',
             },
             params = tarteaucitron.parameters;
 
@@ -865,12 +866,15 @@ var tarteaucitron = {
             tarteaucitron.state[service.key] = false;
             tarteaucitron.userInterface.color(service.key, false);
         } else if (!isResponded) {
-            tarteaucitron.cookie.create(service.key, 'wait');
+            tarteaucitron.cookie.create(service.key, service.defaultState || tarteaucitron.parameters.serviceDefaultState);
             if (typeof service.fallback === 'function') {
                 if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) { service.fallback(); }
             }
-            tarteaucitron.userInterface.color(service.key, 'wait');
-            tarteaucitron.userInterface.openAlert();
+            tarteaucitron.userInterface.color(service.key, service.defaultState || tarteaucitron.parameters.serviceDefaultState);
+
+            if( 'wait' === (service.defaultState || tarteaucitron.parameters.serviceDefaultState) ) {
+                tarteaucitron.userInterface.openAlert();
+            }
         }
 
         tarteaucitron.cookie.checkCount(service.key);
