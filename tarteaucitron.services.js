@@ -3153,7 +3153,7 @@ tarteaucitron.services.vimeo = {
                 video_height = tarteaucitron.getElemAttr(x, "height"),
                 frame_height = 'height=',
 
-                video_id = tarteaucitron.getElemAttr(x, "videoID"),
+                video_id = tarteaucitron.getElemAttr(x, "data-videoID") || tarteaucitron.getElemAttr(x, "videoID"),
                 video_hash = tarteaucitron.getElemAttr(x, "data-hash") || '',
                 video_allowfullscreen = tarteaucitron.getElemAttr(x, "data-allowfullscreen"),
 
