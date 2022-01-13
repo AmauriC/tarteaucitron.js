@@ -3443,7 +3443,7 @@ tarteaucitron.services.youtube = {
         "use strict";
         tarteaucitron.fallback(['youtube_player'], function (x) {
             var frame_title = tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x, "title") || 'Youtube iframe'),
-                video_id = tarteaucitron.getElemAttr(x, "videoID"),
+                tarteaucitron.getElemAttr(x, "data-videoID") || tarteaucitron.getElemAttr(x, "videoID"),
                 srcdoc = tarteaucitron.getElemAttr(x, "srcdoc"),
                 loading = tarteaucitron.getElemAttr(x, "loading"),
                 video_width = tarteaucitron.getElemAttr(x, "width"),
