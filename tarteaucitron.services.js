@@ -2089,6 +2089,66 @@ tarteaucitron.services.googlemapsembed = {
     }
 };
 
+
+// openstreetmap embed iframe
+tarteaucitron.services.openstreetmap = {
+    "key": "openstreetmap",
+    "type": "api",
+    "name": "Openstreetmap Embed",
+    "uri": "https://wiki.osmfoundation.org/wiki/Privacy_Policy#Cookies",
+    "needConsent": true,
+    "cookies": ['apisid', 'hsid', 'nid', 'sapisid', 'sid', 'sidcc', 'ssid', '1p_jar'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['openstreetmap'], function (x) {
+            var width = tarteaucitron.getElemWidth(x),
+                height = tarteaucitron.getElemHeight(x),
+                url = x.getAttribute("data-url");
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'openstreetmap';
+        tarteaucitron.fallback(['openstreetmap'], function (elem) {
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+// geoportail embed iframe
+tarteaucitron.services.geoportail = {
+    "key": "geoportail",
+    "type": "api",
+    "name": "Geoportail maps Embed",
+    "uri": "https://www.ign.fr/institut/gestion-des-cookies",
+    "needConsent": true,
+    "cookies": ['apisid', 'hsid', 'nid', 'sapisid', 'sid', 'sidcc', 'ssid', '1p_jar'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['geoportail'], function (x) {
+            var width = tarteaucitron.getElemWidth(x),
+                height = tarteaucitron.getElemHeight(x),
+                url = x.getAttribute("data-url");
+
+            return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" sandbox="allow-forms allow-scripts allow-same-origin" allowfullscreen></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'geoportail';
+        tarteaucitron.fallback(['geoportail'], function (elem) {
+            elem.style.width = tarteaucitron.getElemWidth(elem) + 'px';
+            elem.style.height = tarteaucitron.getElemHeight(elem) + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
+
 // google tag manager
 tarteaucitron.services.googletagmanager = {
     "key": "googletagmanager",
