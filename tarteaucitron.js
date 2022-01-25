@@ -774,7 +774,10 @@ var tarteaucitron = {
             isAllowed = ((cookie.indexOf(service.key + '=true') >= 0) || (!service.needConsent && cookie.indexOf(service.key + '=false') < 0)),
             isResponded = (cookie.indexOf(service.key + '=false') >= 0 || cookie.indexOf(service.key + '=true') >= 0),
             isDNTRequested = (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1" || window.doNotTrack === "1"),
-            currentStatus = (isAllowed) ? tarteaucitron.lang.allowed : tarteaucitron.lang.disallowed;
+            currentStatus = (isAllowed) ? tarteaucitron.lang.allowed : tarteaucitron.lang.disallowed,
+            state = (undefined !== service.defaultState) ? service.defaultState :
+                    (undefined !== tarteaucitron.parameters.serviceDefaultState ? tarteaucitron.parameters.serviceDefaultState : 'wait');
+
 
         if (tarteaucitron.added[service.key] !== true) {
             tarteaucitron.added[service.key] = true;
@@ -866,13 +869,18 @@ var tarteaucitron = {
             tarteaucitron.state[service.key] = false;
             tarteaucitron.userInterface.color(service.key, false);
         } else if (!isResponded) {
-            tarteaucitron.cookie.create(service.key, service.defaultState || tarteaucitron.parameters.serviceDefaultState);
-            if (typeof service.fallback === 'function') {
-                if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) { service.fallback(); }
+            tarteaucitron.cookie.create(service.key, state);
+            if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) {
+                if(true === state && typeof service.js === 'function') {
+                    service.js();
+                } else if (typeof service.fallback === 'function') {
+                    service.fallback();
+                }
             }
-            tarteaucitron.userInterface.color(service.key, service.defaultState || tarteaucitron.parameters.serviceDefaultState);
 
-            if( 'wait' === (service.defaultState || tarteaucitron.parameters.serviceDefaultState) ) {
+            tarteaucitron.userInterface.color(service.key, state);
+
+            if( 'wait' === state ) {
                 tarteaucitron.userInterface.openAlert();
             }
         }
