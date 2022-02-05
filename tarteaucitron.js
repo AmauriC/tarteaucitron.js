@@ -1000,8 +1000,10 @@ var tarteaucitron = {
                     var itemStatusElem = document.getElementById('tacCurrentStatus'+key);
                     if(status == true){
                         itemStatusElem.innerHTML = tarteaucitron.lang.allowed;
+                        tarteaucitron.sendEvent(key + '_allowed');
                     }else{
                         itemStatusElem.innerHTML = tarteaucitron.lang.disallowed;
+                        tarteaucitron.sendEvent(key + '_disallowed');
                     }
                     tarteaucitron.state[key] = status;
                     tarteaucitron.cookie.create(key, status);
@@ -1046,8 +1048,10 @@ var tarteaucitron = {
             var itemStatusElem = document.getElementById('tacCurrentStatus'+key);
             if(status == true){
                 itemStatusElem.innerHTML = tarteaucitron.lang.allowed;
+                tarteaucitron.sendEvent(key + '_allowed');
             }else{
                 itemStatusElem.innerHTML = tarteaucitron.lang.disallowed;
+                tarteaucitron.sendEvent(key + '_disallowed');
             }
             tarteaucitron.state[key] = status;
             tarteaucitron.cookie.create(key, status);
