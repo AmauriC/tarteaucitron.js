@@ -1787,16 +1787,22 @@ var tarteaucitron = {
             }
         }
 
-        if (!navigator) { return 'en'; }
+        // get the html lang
+        if (availableLanguages.indexOf(document.documentElement.getAttribute("lang")) !== -1) {
+            return document.documentElement.getAttribute("lang");
+        }
+
+        if (!navigator) { return defaultLanguage; }
 
         var lang = navigator.language || navigator.browserLanguage ||
                 navigator.systemLanguage || navigator.userLang || null,
             userLanguage = lang ? lang.substr(0, 2) : null;
 
-        if (availableLanguages.indexOf(userLanguage) === -1) {
-            return defaultLanguage;
+        if (availableLanguages.indexOf(userLanguage) !== -1) {
+            return userLanguage;
         }
-        return userLanguage;
+
+        return defaultLanguage;
     },
     "getLocale": function () {
         "use strict";
