@@ -529,6 +529,8 @@ var tarteaucitron = {
                             // Append tarteaucitron: #tarteaucitronRoot last-child of the body
                             body.appendChild(div, body);
                         }
+
+                        div.setAttribute('lang', language);
                         div.innerHTML = html;
 
                         //ie compatibility
@@ -612,6 +614,8 @@ var tarteaucitron = {
                                 // Append tarteaucitron: #tarteaucitronRoot last-child of the body
                                 body.appendChild(div, body);
                             }
+
+                            div.setAttribute('lang', language);
                             div.innerHTML = html;
                         }
                     }, 1500);
