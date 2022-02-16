@@ -12,7 +12,7 @@ tarteaucitron.services.iframe = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_iframe'], function (x) {
-            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title")),
+            var frame_title = (x.getAttribute("title")) ? tarteaucitron.fixSelfXSS(x.getAttribute("title")) : '',
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height"),
                 allowfullscreen = x.getAttribute("allowfullscreen"),
