@@ -904,7 +904,9 @@ var tarteaucitron = {
             }
             //end ie compatibility
 
-            document.dispatchEvent(send_event_item);
+            if (typeof(window.dispatchEvent) === 'function') {window.dispatchEvent(send_event_item);}
+            // TODO: remove the next for the next major release
+            if (typeof(document.dispatchEvent) === 'function') {document.dispatchEvent(send_event_item);
         }
     },
     "cleanArray": function cleanArray(arr) {

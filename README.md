@@ -96,10 +96,10 @@ tarteaucitron.services.mycustomservice = {
 ## Events
 
 The following events are available:
-* (document) `{SERVICE_KEY}_added` for each enabled service
-* (document) `{SERVICE_KEY}_loaded` for each enabled service
-* (document) `{SERVICE_KEY}_allowed` for each service when allowed
-* (document) `{SERVICE_KEY}_disallowed ` for each service when disallowed
+* (window and document) `{SERVICE_KEY}_added` for each enabled service
+* (window and document) `{SERVICE_KEY}_loaded` for each enabled service
+* (window and document) `{SERVICE_KEY}_allowed` for each service when allowed
+* (window and document) `{SERVICE_KEY}_disallowed ` for each service when disallowed
 
 * (window) `tac.root_available`: the root element with panel has been created, services will be loaded
 * (window) `tac.open_alert`
