@@ -4866,14 +4866,14 @@ tarteaucitron.services.canalu = {
     "key": "canalu",
     "type": "video",
     "name": "Canal-U.tv",
-    "uri": "https://www.canal-u.tv/utilisation-des-cookies/",
+    "uri": "https://www.canal-u.tv/conditions-generales-utilisations",
     "needConsent": true,
     "cookies": [],
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['canalu_player'], function (x) {
             var video_title = tarteaucitron.fixSelfXSS(x.getAttribute("videoTitle")),
-                frame_url = 'https://www.canal-u.tv/video/embed_code_plugin.1/' + video_title;
+                frame_url = 'https://www.canal-u.tv/embed/' + video_title;
 
             return '<div style="position:relative;padding-bottom:56.25%;padding-top:10px;height:0;overflow:hidden;">' +
                    '<iframe src="' + frame_url + '?width=100%&amp;height=100%" ' +
