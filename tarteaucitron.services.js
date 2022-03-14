@@ -5095,3 +5095,25 @@ tarteaucitron.services.gallica = {
     }
 };
 
+// crisp
+tarteaucitron.services.crisp = {
+    "key": "crisp",
+    "type": "other",
+    "name": "Crisp Chat",
+    "uri": "https://help.crisp.chat/en/article/crisp-chatbox-cookie-ip-policy-1147xor/",
+    "needConsent": false,
+    "cookies": ['crisp-client', '__cfduid'],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.crispID === undefined) {
+            return;
+        }
+
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = tarteaucitron.user.crispID;
+
+        tarteaucitron.addScript('https://client.crisp.chat/l.js');
+    }
+};
+
