@@ -119,7 +119,7 @@ tarteaucitron.services.piwikpro = {
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.tarteaucitron.user.piwikProId === undefined) {
+        if (tarteaucitron.user.piwikProId === undefined) {
             return;
         }
 
