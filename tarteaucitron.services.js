@@ -5133,7 +5133,7 @@ tarteaucitron.services.microanalytics = {
             return;
         }
 
-        tarteaucitron.addScript('https://microanalytics.io/js/script.js', tarteaucitron.user.microanalyticsID);
+        tarteaucitron.addScript('https://microanalytics.io/js/script.js', tarteaucitron.user.microanalyticsID, undefined, true, "data-host", "https://microanalytics.io");
     }
 };
 
