@@ -531,6 +531,7 @@ var tarteaucitron = {
                             body.appendChild(div, body);
                         }
 
+                        div.setAttribute('data-nosnippet', 'true');
                         div.setAttribute('lang', language);
                         div.setAttribute('role', 'region');
                         div.setAttribute('aria-labelledby', 'tac_title');
@@ -620,6 +621,7 @@ var tarteaucitron = {
                                 body.appendChild(div, body);
                             }
 
+                            div.setAttribute('data-nosnippet', 'true');
                             div.setAttribute('lang', language);
                             div.setAttribute('role', 'region');
                             div.setAttribute('aria-labelledby', 'tac_title');
