@@ -379,7 +379,7 @@ var tarteaucitron = {
 
                 for (i = 0; i < cat.length; i += 1) {
                     html += '         <li id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
-                    html += '            <div class="tarteaucitronTitle">';
+                    html += '            <div class="tarteaucitronTitle" role="heading" aria-level="2">';
                     html += '               <button type="button" class="catToggleBtn" data-cat="tarteaucitronDetails' + cat[i] + '"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang[cat[i]].title + '</button>';
                     html += '            </div>';
                     html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails tarteaucitronInfoBox">';
