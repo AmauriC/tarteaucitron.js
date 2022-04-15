@@ -63,7 +63,8 @@ tarteaucitron.init({
 
     "readmoreLink": "", /* Change the default readmore link pointing to tarteaucitron.io */
     
-    "mandatory": true /* Show a message about mandatory cookies */
+    "mandatory": true, /* Show a message about mandatory cookies */
+    "mandatoryCta": true /* Show the disabled accept button when mandatory on */
 });
 </script>
 ```
