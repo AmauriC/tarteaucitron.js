@@ -220,6 +220,7 @@ var tarteaucitron = {
                 "useExternalCss": false,
                 "useExternalJs": false,
                 "mandatory": true,
+                "mandatoryCta": true,
                 "closePopup": false,
                 "groupServices": false,
                 "serviceDefaultState": 'wait',
@@ -365,14 +366,16 @@ var tarteaucitron = {
                    html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + tarteaucitron.lang.mandatoryText + '</span>';
                    html += '       <span class="tarteaucitronListCookies" aria-hidden="true"></span><br/>';
                    html += '   </div>';
-                   html += '   <div class="tarteaucitronAsk">';
-                   html += '       <button type="button" class="tarteaucitronAllow" tabindex="-1" disabled>';
-                   html += '           <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allow;
-                   html += '       </button> ';
-                   html += '       <button type="button" class="tarteaucitronDeny" style="visibility:hidden" tabindex="-1">';
-                   html += '           <span class="tarteaucitronCross" aria-hidden="true"></span> ' + tarteaucitron.lang.deny;
-                   html += '       </button> ';
-                   html += '   </div>';
+                   if (tarteaucitron.parameters.mandatoryCta == true) {
+                       html += '   <div class="tarteaucitronAsk">';
+                       html += '       <button type="button" class="tarteaucitronAllow" tabindex="-1" disabled>';
+                       html += '           <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allow;
+                       html += '       </button> ';
+                       html += '       <button type="button" class="tarteaucitronDeny" style="visibility:hidden" tabindex="-1">';
+                       html += '           <span class="tarteaucitronCross" aria-hidden="true"></span> ' + tarteaucitron.lang.deny;
+                       html += '       </button> ';
+                       html += '   </div>';
+                   }
                    html += '</li>';
                    html += '</ul></li>';
                 }
