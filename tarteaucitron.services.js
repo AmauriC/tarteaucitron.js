@@ -1163,7 +1163,7 @@ tarteaucitron.services.criteoonetag = {
         "use strict";
         if (tarteaucitron.user.criteoonetagAccount === undefined) return;
 
-        window.criteo_q = window.criteo_q || []; 
+        window.criteo_q = window.criteo_q || [];
         window.criteo_q.push({
             event: "setAccount",
             account: tarteaucitron.user.criteoonetagAccount
@@ -4009,38 +4009,53 @@ tarteaucitron.services.matomo = {
     "name": "Matomo (privacy by design)",
     "uri": "https://matomo.org/faq/general/faq_146/",
     "needConsent": false,
-    "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
+    "cookies": [
+        '_pk_ref',
+        '_pk_cvar',
+        '_pk_id',
+        '_pk_ses',
+        '_pk_hsr',
+        'mtm_consent',
+        'mtm_consent_removed',
+        'mtm_cookie_consent',
+        'matomo_ignore',
+        'matomo_sessid'
+    ],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.matomoId === undefined) {
+        if (tarteaucitron.user.matomoId === undefined || tarteaucitron.user.matomoHost === undefined ) {
             return;
         }
 
+        const matomoID = tarteaucitron.user.matomoId;
+        const matomoHost = tarteaucitron.user.matomoHost;
+        const matomoType = (tarteaucitron.user.matomoType === undefined)?'matomo':tarteaucitron.user.matomoType;
+        const matomoURL = matomoHost + matomoType
+
         window._paq = window._paq || [];
-        window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
-        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "piwik.php"]);
+        window._paq.push(["setSiteId", matomoID]);
+        window._paq.push(["setTrackerUrl", matomoURL +".php"]);
         window._paq.push(["setDoNotTrack", 1]);
         window._paq.push(["trackPageView"]);
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
         window._paq.push([function () {
-            var self = this;
+            const self = this;
             function getOriginalVisitorCookieTimeout() {
-                var now = new Date(),
+                const now = new Date(),
                     nowTs = Math.round(now.getTime() / 1000),
                     visitorInfo = self.getVisitorInfo();
-                var createTs = parseInt(visitorInfo[2]);
-                var cookieTimeout = 33696000; // 13 mois en secondes
-                var originalTimeout = createTs + cookieTimeout - nowTs;
-                return originalTimeout;
+                const createTs = parseInt(visitorInfo[2]);
+                const cookieTimeout = 33696000; // 13 mois en secondes
+                return createTs + cookieTimeout - nowTs;
             }
             this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
         }]);
 
-        tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
+        tarteaucitron.addScript(matomoURL + '.js', '', '', true, 'defer', true);
 
         // waiting for piwik to be ready to check first party cookies
-        var interval = setInterval(function () {
+        const interval = setInterval(function () {
             if (typeof Piwik === 'undefined') return
 
             clearInterval(interval)
@@ -4049,10 +4064,10 @@ tarteaucitron.services.matomo = {
             Piwik.getTracker();
 
             // looping throught cookies
-            var theCookies = document.cookie.split(';');
-            for (var i = 1; i <= theCookies.length; i++) {
-                var cookie = theCookies[i - 1].split('=');
-                var cookieName = cookie[0].trim();
+            const theCookies = document.cookie.split(';');
+            for (let i = 1; i <= theCookies.length; i++) {
+                const cookie = theCookies[i - 1].split('=');
+                const cookieName = cookie[0].trim();
 
                 // if cookie starts like a piwik one, register it
                 if (cookieName.indexOf('_pk_') === 0) {
@@ -4062,6 +4077,7 @@ tarteaucitron.services.matomo = {
         }, 100)
     }
 };
+
 
 
 tarteaucitron.services.matomohightrack = {
@@ -4982,7 +4998,7 @@ tarteaucitron.services.affilae = {
         if (tarteaucitron.user.affilae === undefined) {
            return;
         }
-        
+
         window._ae = { "pid": tarteaucitron.user.affilae };
 
         tarteaucitron.addScript('https://static.affilae.com/ae-v3.5.js');
