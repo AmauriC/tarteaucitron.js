@@ -1358,7 +1358,9 @@ var tarteaucitron = {
             }
 
             firstFocusableEl = filtered[0];
-            firstFocusableEl.focus();
+            if(firstFocusableEl){
+                firstFocusableEl.focus();
+            }
             lastFocusableEl = filtered[filtered.length - 1];
 
             //loop focus inside tarteaucitron
