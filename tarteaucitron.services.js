@@ -5304,3 +5304,21 @@ tarteaucitron.services.weborama = {
     }
 };
 
+// tiktok
+tarteaucitron.services.tiktok = {
+    "key": "tiktok",
+    "type": "analytic",
+    "name": "Tiktok",
+    "uri": "https://www.tiktok.com/legal/tiktok-website-cookies-policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.tiktokId === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=' + tarteaucitron.user.tiktokId);
+    }
+};
