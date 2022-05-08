@@ -3567,6 +3567,10 @@ tarteaucitron.services.atinternet = {
             return;
         }
 
+        if (tarteaucitron.user.atNoFallback !== undefined) {
+            return;
+        }
+
         tarteaucitron.user.atinternetAlreadyLoaded = true;
 
         tarteaucitron.addScript(tarteaucitron.user.atLibUrl, '', function () {
