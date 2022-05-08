@@ -1994,7 +1994,7 @@ tarteaucitron.services.analytics = {
 tarteaucitron.services.gtag = {
     "key": "gtag",
     "type": "analytic",
-    "name": "Google Analytics (gtag.js)",
+    "name": "Google Analytics (GA4)",
     "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": (function () {
