@@ -3567,7 +3567,7 @@ tarteaucitron.services.atinternet = {
             return;
         }
 
-        if (tarteaucitron.user.atNoFallback !== undefined) {
+        if (tarteaucitron.user.atNoFallback === true) {
             return;
         }
 
