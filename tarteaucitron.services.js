@@ -5337,7 +5337,7 @@ tarteaucitron.services.klaviyo = {
     "cookies": ['__kla_id'],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.klaviyoCompanyId === undefined || klCustomer === undefined) {
+        if (tarteaucitron.user.klaviyoCompanyId === undefined) {
             return;
         }
         tarteaucitron.addScript('//static.klaviyo.com/onsite/js/klaviyo.js?company_id=' + tarteaucitron.user.klaviyoCompanyId);
