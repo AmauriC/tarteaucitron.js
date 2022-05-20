@@ -8,7 +8,8 @@ tarteaucitron.lang = {
     "alertBigScroll": "By continuing to scroll,",
     "alertBigClick": "If you continue to browse this website,",
     "alertBig": "you are allowing all third-party services",
-    
+
+    "alertBigPrivacyTitle": "This site uses cookies",
     "alertBigPrivacy": "This site uses cookies and gives you control over what you want to activate",
     "alertSmall": "Manage services",
     "personalize": "Personalize",

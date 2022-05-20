@@ -586,7 +586,8 @@ div#tarteaucitronServices {
     margin-left: 0!important;
     font-size: 14px;
 }
-span#tarteaucitronDisclaimerAlert {
+span#tarteaucitronDisclaimerAlert,
+h2#tarteaucitronDisclaimerAlertTitle {
     padding: 0 10px;
     display: inline-block;
 }
@@ -618,6 +619,14 @@ span#tarteaucitronDisclaimerAlert {
     padding: 10px 0 10px 0;
     margin: auto;
     width: 100%;
+}
+
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlertTitle {
+    display: block;
+    font: 15px verdana;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
 }
 
 #tarteaucitronAlertBig #tarteaucitronPrivacyUrl,
