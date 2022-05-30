@@ -1920,6 +1920,9 @@ tarteaucitron.services.gajs = {
         "use strict";
         window._gaq = window._gaq || [];
         window._gaq.push(['_setAccount', tarteaucitron.user.gajsUa]);
+        if (timeExpire !== undefined) {
+            _gaq.push(['_setVisitorCookieTimeout', timeExpire]);
+        }
 
         if (tarteaucitron.user.gajsAnonymizeIp) {
             window._gaq.push(['_gat._anonymizeIp']);
@@ -1965,7 +1968,7 @@ tarteaucitron.services.analytics = {
         };
         window.ga.l = new Date();
         tarteaucitron.addScript('https://www.google-analytics.com/analytics.js', '', function () {
-            var uaCreate = { 'cookieExpires': 34128000 };
+            var uaCreate = { 'cookieExpires': (timeExpire !== undefined) ? timeExpire : 34128000 };
             tarteaucitron.extend(uaCreate, tarteaucitron.user.analyticsUaCreate || {});
             ga('create', tarteaucitron.user.analyticsUa, uaCreate);
 
@@ -2013,15 +2016,16 @@ tarteaucitron.services.gtag = {
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
             window.gtag = function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
+            var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
 
             if (tarteaucitron.user.gtagCrossdomain) {
                 /**
                  * https://support.google.com/analytics/answer/7476333?hl=en
                  * https://developers.google.com/analytics/devguides/collection/gtagjs/cross-domain
                  */
-                gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true }, { linker: { domains: tarteaucitron.user.gtagCrossdomain, } });
+                gtag('config', tarteaucitron.user.gtagUa, additional_config_info, { linker: { domains: tarteaucitron.user.gtagCrossdomain, } });
             } else {
-                gtag('config', tarteaucitron.user.gtagUa, { 'anonymize_ip': true });
+                gtag('config', tarteaucitron.user.gtagUa, additional_config_info);
             }
 
             if (typeof tarteaucitron.user.gtagMore === 'function') {
@@ -3957,7 +3961,8 @@ tarteaucitron.services.multiplegtag = {
                 tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
                     window.gtag = function gtag() { dataLayer.push(arguments); }
                     gtag('js', new Date());
-                    gtag('config', ua, { 'anonymize_ip': true });
+                    var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
+                    gtag('config', ua, additional_config_info);
                 });
             });
         }
