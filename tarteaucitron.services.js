@@ -1816,7 +1816,6 @@ tarteaucitron.services.adsensesearch = {
     "js": function () {
         "use strict";
         tarteaucitron.addScript('https://www.google.com/adsense/search/ads.js');
-        (function(g,o){g[o]=g[o]||function(){(g[o]['q']=g[o]['q']||[]).push(arguments)},g[o]['t']=1*new Date})(window,'_googCsa');
     },
     "fallback": function () {
         "use strict";
