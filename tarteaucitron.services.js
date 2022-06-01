@@ -4602,6 +4602,7 @@ tarteaucitron.services.ausha = {
                 podcast_id = x.getAttribute('data-podcast-id'),
                 player_id = x.getAttribute('data-player-id'),
                 playlist = x.getAttribute('data-playlist'),
+                useshowid = x.getAttribute('data-useshowid'),
                 color = x.getAttribute('data-color');
 
             if (podcast_id === undefined) {
@@ -4609,6 +4610,10 @@ tarteaucitron.services.ausha = {
             }
 
             var src = 'https://player.ausha.co/index.html?podcastId=' + podcast_id + '&v=3';
+
+            if (useshowid == "1") {
+                src = 'https://player.ausha.co/index.html?showId=' + podcast_id + '&v=3';
+            }
 
             if (playlist && playlist.length > 0) src += '&playlist=' + playlist;
             if (color && color.length > 0) src += '&color=' + color.replace('#', '%23');
