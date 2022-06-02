@@ -12,11 +12,11 @@ tarteaucitron.services.iframe = {
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['tac_iframe'], function (x) {
-            var frame_title = (x.getAttribute("title")) ? tarteaucitron.fixSelfXSS(x.getAttribute("title")) : '',
-                width = x.getAttribute("width"),
-                height = x.getAttribute("height"),
-                allowfullscreen = x.getAttribute("allowfullscreen"),
-                url = x.getAttribute("data-url");
+            var frame_title = (tarteaucitron.getElemAttr(x,"title")) ? tarteaucitron.fixSelfXSS(tarteaucitron.getElemAttr(x,"title")) : '',
+                width = tarteaucitron.getElemAttr(x,"width"),
+                height = tarteaucitron.getElemAttr(x,"height"),
+                allowfullscreen = tarteaucitron.getElemAttr(x,"allowfullscreen"),
+                url = tarteaucitron.getElemAttr(x,"url");
 
             return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
@@ -25,8 +25,8 @@ tarteaucitron.services.iframe = {
         "use strict";
         var id = 'iframe';
         tarteaucitron.fallback(['tac_iframe'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem,'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem,'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
