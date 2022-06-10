@@ -32,6 +32,37 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// videas
+tarteaucitron.services.videas = {
+    "key": "videas",
+    "type": "video",
+    "name": "Videas",
+    "uri": "https://videas.fr/fr/legal",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_videas'], function (x) {
+            var frame_title = tarteaucitron.fixSelfXSS(x.getAttribute("title") || 'Videas iframe'),
+                width = x.getAttribute("width"),
+                height = x.getAttribute("height"),
+                id = x.getAttribute("data-id"),
+                allowfullscreen = x.getAttribute("allowfullscreen");
+
+            return '<iframe title="' + frame_title + '" src="https://app.videas.fr/embed/' + id + '/" width="' + width + '" height="' + height + '" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'videas';
+        tarteaucitron.fallback(['tac_videas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // myfeelback
 tarteaucitron.services.myfeelback = {
     "key": "myfeelback",
