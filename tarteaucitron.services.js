@@ -32,6 +32,25 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// plausible
+tarteaucitron.services.plausible = {
+    "key": "plausible",
+    "type": "analytic",
+    "name": "Plausible",
+    "uri": "https://plausible.io/privacy",
+    "needConsent": false,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.plausibleDomain === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://plausible.io/js/script.js', '', '', '', 'data-domain', tarteaucitron.user.plausibleDomain);
+    }
+};
+
 // videas
 tarteaucitron.services.videas = {
     "key": "videas",
