@@ -32,6 +32,20 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// antvoice
+tarteaucitron.services.antvoice = {
+    "key": "antvoice",
+    "type": "ads",
+    "name": "antvoice",
+    "uri": "https://www.antvoice.com/fr/privacy-policy/",
+    "needConsent": true,
+    "cookies": ['antvoice'],
+    "js": function () {
+        "use strict";
+        tarteaucitron.addScript('https://static.avads.net/avtag.min.js');
+    }
+};
+
 // plausible
 tarteaucitron.services.plausible = {
     "key": "plausible",
