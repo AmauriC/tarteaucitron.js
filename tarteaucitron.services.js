@@ -56,6 +56,34 @@ tarteaucitron.services.trustpilot = {
     }
 };
 
+// snapchat
+tarteaucitron.services.snapchat = {
+    "key": "snapchat",
+    "type": "analytic",
+    "name": "Snapchat",
+    "uri": "https://snap.com/fr-FR/privacy/privacy-policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.snapchatId === undefined || tarteaucitron.user.snapchatEmail === undefined) {
+            return;
+        }
+
+	var a = window.snaptr = function() {
+		a.handleRequest ? a.handleRequest.apply(a, arguments) : a.queue.push(arguments)
+	};
+	a.queue = [];
+        window.snaptr('init', tarteaucitron.user.snapchatId, {
+	    'user_email': tarteaucitron.user.snapchatEmail
+        });
+        window.snaptr('track', 'PAGE_VIEW');
+
+        tarteaucitron.addScript('https://sc-static.net/scevent.min.js');
+    }
+};
+
 // antvoice
 tarteaucitron.services.antvoice = {
     "key": "antvoice",
