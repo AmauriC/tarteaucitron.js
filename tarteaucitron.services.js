@@ -222,16 +222,19 @@ tarteaucitron.services.doubleclick = {
         tarteaucitron.fallback(['doubleclick_container'], function (x) {
             var id1 = tarteaucitron.getElemAttr(x, "data-id1"),
                 id2 = tarteaucitron.getElemAttr(x, "data-id2"),
+                type = tarteaucitron.getElemAttr(x, "data-type"),
+                cat = tarteaucitron.getElemAttr(x, "data-cat"),
                 item = tarteaucitron.getElemAttr(x, "data-item"),
                 quantity = tarteaucitron.getElemAttr(x, "data-quantity"),
                 price = tarteaucitron.getElemAttr(x, "data-price"),
                 postage = tarteaucitron.getElemAttr(x, "data-postage"),
                 seller = tarteaucitron.getElemAttr(x, "data-seller"),
-                axel = Math.random() + "",
-                a = axel * 10000000000000;
+                gdpr = tarteaucitron.getElemAttr(x, "data-gdpr"),
+                gdpr_consent = tarteaucitron.getElemAttr(x, "data-gdpr-consent"),
+                ord = tarteaucitron.getElemAttr(x, "data-ord"),
+                num = tarteaucitron.getElemAttr(x, "data-num");
 
-             iframe = '<iframe src="http://'+id1+'.fls.doubleclick.net/activityi;src='+id2+';type=;cat=;u1='+item+';u2='+quantity+';u3='+price+';u4='+postage+';u5='+seller+';ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>';
-            return iframe;
+            return '<iframe src="https://'+id1+'.fls.doubleclick.net/activityi;src='+id2+';type='+type+';cat='+cat+';item='+item+';quantity='+quantity+';price='+price+';postage='+postage+';seller='+seller+';gdpr='+gdpr+';gdpr_consent='+gdpr_consent+';num='+num+';ord='+ord+'?" width="1" height="1" frameborder="0" style="display:none"></iframe>';
         });
     }
 };
