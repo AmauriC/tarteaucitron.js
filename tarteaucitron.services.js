@@ -3714,7 +3714,7 @@ tarteaucitron.services.xiti = {
     "key": "xiti",
     "type": "analytic",
     "name": "Xiti",
-    "uri": "https://support.piano.io/hc/fr/categories/4467759793298",
+    "uri": "https://www.atinternet.com/rgpd-et-vie-privee/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -3756,7 +3756,7 @@ tarteaucitron.services.atinternet = {
     "key": "atinternet",
     "type": "analytic",
     "name": "AT Internet (privacy by design)",
-    "uri": "https://support.piano.io/hc/fr/categories/4467759793298",
+    "uri": "https://www.atinternet.com/rgpd-et-vie-privee/",
     "needConsent": true,
     "safeanalytic": false,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession'],
@@ -3829,7 +3829,7 @@ tarteaucitron.services.atinternethightrack = {
     "key": "atinternethightrack",
     "type": "analytic",
     "name": "AT Internet",
-    "uri": "https://support.piano.io/hc/fr/categories/4467759793298",
+    "uri": "https://www.atinternet.com/rgpd-et-vie-privee/",
     "needConsent": true,
     "cookies": ['atidvisitor', 'atreman', 'atredir', 'atsession'],
     "js": function () {
@@ -4028,7 +4028,7 @@ tarteaucitron.services.xiti_smarttag = {
     "key": "xiti_smarttag",
     "type": "analytic",
     "name": "Xiti (SmartTag)",
-    "uri": "https://support.piano.io/hc/fr/categories/4467759793298",
+    "uri": "https://www.atinternet.com/rgpd-et-vie-privee/",
     "needConsent": true,
     "cookies": ["atidvisitor", "atreman", "atredir", "atsession", "attvtreman", "attvtsession"],
     "js": function () {
