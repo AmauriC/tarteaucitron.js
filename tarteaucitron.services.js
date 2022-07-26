@@ -4401,6 +4401,27 @@ tarteaucitron.services.matomocloud = {
     }
 };
 
+// matomotm
+tarteaucitron.services.matomotm = {
+    "key": "matomotm",
+    "type": "api",
+    "name": "Matomo Tag Manager",
+    "uri": "https://matomo.org/privacy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.matomotmUrl === undefined) {
+            return;
+        }
+
+        var _mtm = window._mtm = window._mtm || [];
+        _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+
+        tarteaucitron.addScript(tarteaucitron.user.matomotmUrl);
+    }
+};
+
 
 // Hotjar
 /*
