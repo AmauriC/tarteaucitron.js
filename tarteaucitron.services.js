@@ -1925,6 +1925,7 @@ tarteaucitron.services.adsense = {
     "cookies": ['__gads'],
     "js": function () {
         "use strict";
+        tarteaucitron.fallback(['adsbygoogle'], '');
         tarteaucitron.addScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
     },
     "fallback": function () {
