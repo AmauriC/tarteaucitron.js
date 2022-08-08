@@ -5578,6 +5578,10 @@ tarteaucitron.services.tiktok = {
         }
 
         tarteaucitron.addScript('https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=' + tarteaucitron.user.tiktokId);
+
+	if (typeof tarteaucitron.user.tiktokMore === 'function') {
+            tarteaucitron.user.tiktokMore();
+        }
     }
 };
 
