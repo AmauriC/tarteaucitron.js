@@ -81,6 +81,10 @@ tarteaucitron.services.snapchat = {
         window.snaptr('track', 'PAGE_VIEW');
 
         tarteaucitron.addScript('https://sc-static.net/scevent.min.js');
+	    
+	if (typeof tarteaucitron.user.snapchatMore === 'function') {
+            tarteaucitron.user.snapchatMore();
+        }
     }
 };
 
