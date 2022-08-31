@@ -3780,12 +3780,12 @@ tarteaucitron.services.atinternet = {
 
             window.tag = new ATInternet.Tracker.Tag();
 
-            if (typeof tarteaucitron.user.atMore === 'function') {
-                tarteaucitron.user.atMore();
-            }
-
             if (typeof window.tag.privacy !== 'undefined') {
                 window.tag.privacy.setVisitorOptin();
+            }
+
+            if (typeof tarteaucitron.user.atMore === 'function') {
+                tarteaucitron.user.atMore();
             }
 
             if (tarteaucitron.user.atinternetSendData !== false) {
@@ -3809,10 +3809,6 @@ tarteaucitron.services.atinternet = {
 
             window.tag = new ATInternet.Tracker.Tag();
 
-            if (typeof tarteaucitron.user.atMore === 'function') {
-                tarteaucitron.user.atMore();
-            }
-
             if (typeof window.tag.privacy !== 'undefined') {
 
                 var visitorMode = window.tag.privacy.getVisitorMode();
@@ -3821,6 +3817,10 @@ tarteaucitron.services.atinternet = {
                 } else {
                     window.tag.privacy.setVisitorMode('cnil', 'exempt');
                 }
+            }
+
+            if (typeof tarteaucitron.user.atMore === 'function') {
+                tarteaucitron.user.atMore();
             }
 
             if (tarteaucitron.user.atinternetSendData !== false) {
