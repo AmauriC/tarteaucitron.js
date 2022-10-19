@@ -117,6 +117,32 @@ tarteaucitron.services.wysistathightrack = {
     }
 };
 
+// robofabrica
+tarteaucitron.services.robofabrica = {
+    "key": "robofabrica",
+    "type": "other",
+    "name": "Robo Fabrica Chatbot",
+    "uri": "https://robofabrica.tech/charte-vie-privee/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.robofabricaUuid === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://app.robofabrica.tech/widget/script', 'inceptive-cw-script', function() {
+
+            document.getElementById('inceptive-cw-script').setAttribute('unique-url', tarteaucitron.user.robofabricaUuid);
+            document.getElementById('inceptive-cw-script').setAttribute('label', 'start');
+            document.getElementById('inceptive-cw-script').setAttribute('launch-btn-id', 'inceptive-cw-launch');
+            document.getElementById('inceptive-cw-script').setAttribute('chat-server-url', 'https://app.robofabrica.tech:443');
+
+        });
+    }
+};
+
 // trustpilot
 tarteaucitron.services.trustpilot = {
     "key": "trustpilot",
