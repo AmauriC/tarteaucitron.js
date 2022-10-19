@@ -78,7 +78,7 @@ tarteaucitron.services.leadforensics = {
 // ubib
 tarteaucitron.services.ubib = {
     "key": "ubib",
-    "type": "other",
+    "type": "support",
     "name": "Ubib Chatbot",
     "uri": "https://ubib.libanswers.com/",
     "needConsent": true,
@@ -120,7 +120,7 @@ tarteaucitron.services.wysistathightrack = {
 // robofabrica
 tarteaucitron.services.robofabrica = {
     "key": "robofabrica",
-    "type": "other",
+    "type": "support",
     "name": "Robo Fabrica Chatbot",
     "uri": "https://robofabrica.tech/charte-vie-privee/",
     "needConsent": true,
