@@ -1,3 +1,7 @@
+[aria-pressed="true"] {
+    font-weight:700;
+}
+
 .tac_visually-hidden {
       position: absolute;
       width: 1px;
