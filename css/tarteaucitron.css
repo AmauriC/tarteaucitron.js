@@ -1014,3 +1014,53 @@ span.tarteaucitronTitle.tarteaucitronH3 {
 .tarteaucitron-display-none {
     display: none;
 }
+
+/*
+* css for the middle bar
+*/
+
+div#tarteaucitronRoot.tarteaucitronBeforeVisible:before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    top: 0;
+    left: 0;
+    z-index: 9999;opacity: 0.5;
+}
+div#tarteaucitronAlertBig:before {
+    content: var(--tarteaucitronmiddleBarHead, '' );
+    font-size: 35px;
+}
+
+body #tarteaucitronRoot div#tarteaucitronAlertBig {
+    width: 60%;
+    min-width: 285px;
+    height: auto;
+    margin: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 9000px #000;
+    border-radius: 20px;
+    padding: 35px 25px;
+    }
+
+span#tarteaucitronDisclaimerAlert {
+    padding: 0 30px;
+}
+#tarteaucitronRoot span#tarteaucitronDisclaimerAlert {
+    margin: 10px 0 30px;
+    display: block;
+    text-align: center;
+    font-size: 21px;
+    }
+
+
+@media screen and (max-width: 900px) {
+    div#tarteaucitronAlertBig button {
+        margin: 0 auto 10px!important;
+        display: block!important;
+    }
+}
