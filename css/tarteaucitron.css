@@ -1,3 +1,5 @@
+div#tarteaucitronMainLineOffset,.tarteaucitronBorder {border:0!important;}
+
 #tarteaucitron [aria-pressed="true"] {
     font-weight:700;
 }
