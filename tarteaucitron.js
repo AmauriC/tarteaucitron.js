@@ -683,6 +683,7 @@ var tarteaucitron = {
                                     tarteaucitron.userInterface.removeClass('tarteaucitronServicesTitle_' + cat, 'tarteaucitronIsExpanded');
                                     document.getElementById('tarteaucitron-toggle-group-'+cat).setAttribute('aria-expanded', 'false');
                                 }
+                                tarteaucitron.initEvents.resizeEvent();
                             });
                             tarteaucitron.addClickEventToId("tarteaucitron-accept-group-" + cat, function () {
                                 tarteaucitron.userInterface.respondAll(true, cat);
