@@ -4492,7 +4492,7 @@ tarteaucitron.services.matomocloud = {
             this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
         }]);
 
-        if (tarteaucitron.user.matomoCustomJSPath === undefined) {
+        if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
             tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
         } else {
             tarteaucitron.addScript(tarteaucitron.user.matomoCustomJSPath, '', '', true, 'defer', true);
