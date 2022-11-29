@@ -4371,6 +4371,11 @@ tarteaucitron.services.matomo = {
         window._paq.push(["trackPageView"]);
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
+
+        if (typeof tarteaucitron.user.matomoMore === 'function') {
+           tarteaucitron.user.matomoMore();
+        }
+
         window._paq.push([function () {
             var self = this;
             function getOriginalVisitorCookieTimeout() {
