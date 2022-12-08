@@ -5046,7 +5046,7 @@ tarteaucitron.services.maps_noapi = {
             var id = x.getAttribute("id"),
                 width = x.getAttribute("width"),
                 height = x.getAttribute("height")
-            var widgetURL = "https://google.com/maps/embed?pb=" + id;
+            var widgetURL = "https://www.google.com/maps/embed?pb=" + id;
             return "<iframe width=\"" + width + "\" height=\"" + height + "\" src=\"" + widgetURL + "\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>";
         });
     },
