@@ -90,6 +90,21 @@ tarteaucitron.services.googlesignin = {
     }
 };
 
+// calendly
+tarteaucitron.services.calendly = {
+    "key": "calendly",
+    "type": "other",
+    "name": "Calendly",
+    "uri": "https://calendly.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        tarteaucitron.addScript('https://assets.calendly.com/assets/external/widget.js');
+    }
+};
+
 // kwanko
 tarteaucitron.services.kwanko = {
     "key": "kwanko",
