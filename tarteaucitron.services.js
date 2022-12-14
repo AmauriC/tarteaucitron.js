@@ -4425,7 +4425,6 @@ tarteaucitron.services.matomohightrack = {
             return;
         }
 
-        console.log(window._paq);
         window._paq = window._paq || [];
         if (window._paq.find(e => e[0] === "setSiteId") === undefined) {
             window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
@@ -4480,7 +4479,6 @@ tarteaucitron.services.matomoecommerce = {
             return;
         }
 
-        console.log(window._paq);
         window._paq = window._paq || [];
         if (window._paq.find(e => e[0] === "setSiteId") === undefined) {
             window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
