@@ -120,13 +120,12 @@ tarteaucitron.services.tolkai = {
             return;
         }
 
-        window.cfbot = tarteaucitron.user.tolkaiBot;
+        window.tcfbot = tarteaucitron.user.tolkaiBot;
         window.TcfWbchtParams = { behaviour: 'default' };
         window.display = 'iframe';
         tarteaucitron.addScript('https://script.tolk.ai/iframe-latest.js');
     }
 };
-
 
 // kwanko
 tarteaucitron.services.kwanko = {
