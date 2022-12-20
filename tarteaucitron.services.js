@@ -287,7 +287,7 @@ tarteaucitron.services.snapchat = {
         window.snaptr('track', 'PAGE_VIEW');
 
         tarteaucitron.addScript('https://sc-static.net/scevent.min.js');
-	    
+
 	if (typeof tarteaucitron.user.snapchatMore === 'function') {
             tarteaucitron.user.snapchatMore();
         }
@@ -1522,7 +1522,7 @@ tarteaucitron.services.criteoonetag = {
         "use strict";
         if (tarteaucitron.user.criteoonetagAccount === undefined) return;
 
-        window.criteo_q = window.criteo_q || []; 
+        window.criteo_q = window.criteo_q || [];
         window.criteo_q.push({
             event: "setAccount",
             account: tarteaucitron.user.criteoonetagAccount
@@ -4461,7 +4461,7 @@ tarteaucitron.services.matomo = {
 
         window._paq = window._paq || [];
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
-        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "piwik.php"]);
+        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
         window._paq.push(["setDoNotTrack", 1]);
         window._paq.push(["trackPageView"]);
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
@@ -4485,7 +4485,7 @@ tarteaucitron.services.matomo = {
             this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
         }]);
 
-        tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
+        tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'matomo.js', '', '', true, 'defer', true);
 
         // waiting for piwik to be ready to check first party cookies
         var interval = setInterval(function () {
@@ -4527,7 +4527,7 @@ tarteaucitron.services.matomohightrack = {
 
         window._paq = window._paq || [];
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
-        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "piwik.php"]);
+        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
         window._paq.push(["trackPageView"]);
         window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
@@ -4535,7 +4535,7 @@ tarteaucitron.services.matomohightrack = {
             var self = this;
         }]);
 
-        tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'piwik.js', '', '', true, 'defer', true);
+        tarteaucitron.addScript(tarteaucitron.user.matomoHost + 'matomo.js', '', '', true, 'defer', true);
 
         // waiting for piwik to be ready to check first party cookies
         var interval = setInterval(function () {
@@ -5460,7 +5460,7 @@ tarteaucitron.services.affilae = {
         if (tarteaucitron.user.affilae === undefined) {
            return;
         }
-        
+
         window._ae = { "pid": tarteaucitron.user.affilae };
 
         tarteaucitron.addScript('https://static.affilae.com/ae-v3.5.js');
