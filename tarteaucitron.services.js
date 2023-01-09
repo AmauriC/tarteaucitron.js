@@ -59,6 +59,42 @@ tarteaucitron.services.activecampaignvgo = {
     }
 };
 
+// sendinblue
+tarteaucitron.services.sendinblue = {
+    "key": "sendinblue",
+    "type": "other",
+    "name": "sendinblue",
+    "uri": "https://sendinblue.com/rgpd/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.sendinblueKey === undefined) {
+            return;
+        }
+
+        window.sib = {equeue: [], client_key: tarteaucitron.user.sendinblueKey};
+        window.sendinblue = {};
+        for (var j = ['track', 'identify', 'trackLink', 'page'], i = 0; i < j.length; i++) {
+            (function(k) {
+                window.sendinblue[k] = function() {
+                    var arg = Array.prototype.slice.call(arguments);
+                    (window.sib[k] || function() {
+                            var t = {};
+                            t[k] = arg;
+                            window.sib.equeue.push(t);
+                    })(arg[0], arg[1], arg[2], arg[3]);
+                };
+            })(j[i]);
+         }
+
+        tarteaucitron.addScript('https://sibautomation.com/sa.js?key=' + window.sib.client_key, 'sendinblue-js', function () {
+            window.sendinblue.page();
+        });
+    }
+};
+
 // collectchat
 tarteaucitron.services.collectchat = {
     "key": "collectchat",
