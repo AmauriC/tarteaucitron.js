@@ -16,9 +16,14 @@ tarteaucitron.services.iframe = {
                 width = tarteaucitron.getElemAttr(x,"width"),
                 height = tarteaucitron.getElemAttr(x,"height"),
                 allowfullscreen = tarteaucitron.getElemAttr(x,"allowfullscreen"),
+                scrolling = (tarteaucitron.getElemAttr(x,"scrolling")),
                 url = tarteaucitron.getElemAttr(x,"url");
 
-            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+            if(!scrolling){
+                scrolling = 'no';
+            }
+
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="'+scrolling+'" allowtransparency' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
