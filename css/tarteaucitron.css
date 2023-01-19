@@ -140,9 +140,6 @@ span.tarteaucitronH3 {
     text-shadow: initial;
 }
 
-/* Animation */
-#tarteaucitronRoot * {transition: border 300ms, background 300ms, opacity 200ms, box-shadow 400ms}
-
 /* HTML5 display-role reset for older browsers */
 #tarteaucitronRoot article, #tarteaucitronRoot aside, #tarteaucitronRoot details, #tarteaucitronRoot figcaption, #tarteaucitronRoot figure, #tarteaucitronRoot footer, #tarteaucitronRoot header, #tarteaucitronRoot hgroup, #tarteaucitronRoot menu, #tarteaucitronRoot nav, #tarteaucitronRoot section {
     display: block;
@@ -173,10 +170,6 @@ div#tarteaucitronMainLineOffset {
     margin-top: 0!important;
 }
 
-div#tarteaucitronServices {
-    margin-top: 21px!important;
-}
-
 #tarteaucitronServices::-webkit-scrollbar {
     width: 5px;
 }
@@ -191,6 +184,7 @@ div#tarteaucitronServices {
 }
 
 div#tarteaucitronServices {
+    margin-top: 21px!important;
     box-shadow: 0 40px 60px #545454;
 }
 
@@ -321,9 +315,10 @@ div#tarteaucitronServices {
 }
 
 #tarteaucitronRoot * {
+    transition: border 300ms, background 300ms, opacity 200ms, box-shadow 400ms;
     box-sizing: initial;
     color: #333;
-    font-family: sans-serif !important;
+    /*font-family: sans-serif !important;*/
     font-size: 14px;
     line-height: normal;
     vertical-align: initial;
