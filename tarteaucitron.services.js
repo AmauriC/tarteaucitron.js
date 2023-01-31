@@ -4312,7 +4312,7 @@ tarteaucitron.services.linkedininsighttag = {
     "name": "Linkedin Insight",
     "uri": "https://www.linkedin.com/legal/cookie_policy",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['li_fat_id'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.linkedininsighttag !== undefined) {
