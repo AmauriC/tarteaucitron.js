@@ -1875,9 +1875,9 @@ tarteaucitron.services.deezer = {
     }
 };
 
-// leadforensics
-tarteaucitron.services.leadforensics = {
-    "key": "leadforensics",
+// leadforensicsold
+tarteaucitron.services.leadforensicsold = {
+    "key": "leadforensicsold",
     "type": "analytic",
     "name": "LeadForensics",
     "uri": "https://www.leadforensics.com/privacy-policy/",
