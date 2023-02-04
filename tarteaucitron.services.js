@@ -4588,21 +4588,7 @@ tarteaucitron.services.koban = {
     }
 };
 
-// matomo
-
-/*
-    1. Set the following variable before the initialization :
-
-    tarteaucitron.user.matomoId = YOUR_SITE_ID_FROM_MATOMO;
-    tarteaucitron.user.matomoHost = "YOUR_MATOMO_URL"; //eg: https://stat.mydomain.com/
-
-    2. Push the service :
-
-    (tarteaucitron.job = tarteaucitron.job || []).push('matomo');  // (or 'matomocloud' for cloud version)
-
-    3. HTML
-    You don't need to add any html code, if the service is authorized, the javascript is added. otherwise no.
- */
+// DEPRECATED, USE MATOMO CLOUD
 tarteaucitron.services.matomo = {
     "key": "matomo",
     "type": "analytic",
@@ -4668,7 +4654,7 @@ tarteaucitron.services.matomo = {
     }
 };
 
-
+// DEPRECATED, USE MATOMO CLOUD
 tarteaucitron.services.matomohightrack = {
     "key": "matomohightrack",
     "type": "analytic",
@@ -4714,7 +4700,7 @@ tarteaucitron.services.matomohightrack = {
     }
 };
 
-
+// matomocloud
 tarteaucitron.services.matomocloud = {
     "key": "matomocloud",
     "type": "analytic",
@@ -4729,25 +4715,12 @@ tarteaucitron.services.matomocloud = {
         }
 
         window._paq = window._paq || [];
+        window._paq.push(["requireCookieConsent"]);
+        window._paq.push(["setCookieConsentGiven"]);
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
-        window._paq.push(["setDoNotTrack", 1]);
         window._paq.push(["trackPageView"]);
-        window._paq.push(["setIgnoreClasses", ["no-tracking", "colorbox"]]);
         window._paq.push(["enableLinkTracking"]);
-        window._paq.push([function () {
-            var self = this;
-            function getOriginalVisitorCookieTimeout() {
-                var now = new Date(),
-                    nowTs = Math.round(now.getTime() / 1000),
-                    visitorInfo = self.getVisitorInfo();
-                var createTs = parseInt(visitorInfo[2]);
-                var cookieTimeout = 33696000; // 13 mois en secondes
-                var originalTimeout = createTs + cookieTimeout - nowTs;
-                return originalTimeout;
-            }
-            this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
-        }]);
 
         if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
             tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
@@ -4775,7 +4748,27 @@ tarteaucitron.services.matomocloud = {
                     tarteaucitron.services.matomo.cookies.push(cookieName);
                 }
             }
-        }, 100)
+        }, 100);
+    },
+    "fallback": function () {
+        "use strict";
+        if (tarteaucitron.user.matomoId === undefined) {
+            return;
+        }
+
+        window._paq = window._paq || [];
+        window._paq.push(["forgetCookieConsentGiven"]);
+        window._paq.push(["requireCookieConsent"]);
+        window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
+        window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
+        window._paq.push(["trackPageView"]);
+        window._paq.push(["enableLinkTracking"]);
+
+        if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
+            tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
+        } else {
+            tarteaucitron.addScript(tarteaucitron.user.matomoCustomJSPath, '', '', true, 'defer', true);
+        }
     }
 };
 
