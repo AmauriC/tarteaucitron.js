@@ -12,7 +12,7 @@ tarteaucitron.lang = {
     "alertBigPrivacy": "This site uses cookies and gives you control over what you want to activate",
     "alertSmall": "Manage services",
     "personalize": "Personalize",
-    "acceptAll": "OK, accept all",
+    "acceptAll": "Accept all",
     "close": "Close",
 
     "privacyUrl": "Privacy policy",
@@ -39,7 +39,7 @@ tarteaucitron.lang = {
     "modalWindow": "(modal window)",
     "newWindow": "(new window)",
     "allowAll": "Allow all cookies",
-    "denyAll": "Deny all cookies",
+    "denyAll": "Reject all cookies",
 
     "icon": "Cookies",
     
