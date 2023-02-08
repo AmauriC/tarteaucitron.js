@@ -4757,7 +4757,6 @@ tarteaucitron.services.matomocloud = {
         }
 
         window._paq = window._paq || [];
-        window._paq.push(["forgetCookieConsentGiven"]);
         window._paq.push(["requireCookieConsent"]);
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
