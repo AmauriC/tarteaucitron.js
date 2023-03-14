@@ -8256,13 +8256,18 @@ tarteaucitron.services.zohoPageSense = {
   js: function () {
     "use strict";
 
-    if (tarteaucitron.user.zohoPageSenseProjectId === undefined) {
+    if (
+      tarteaucitron.user.zohoPageSenseProjectId === undefined ||
+      tarteaucitron.user.zohoPageSenseProjectHash === undefined
+    ) {
       return;
     }
 
     tarteaucitron.addScript(
       "https://cdn-eu.pagesense.io/js/" +
         tarteaucitron.user.zohoPageSenseProjectId +
+        "/" +
+        tarteaucitron.user.zohoPageSenseProjectHash +
         ".js"
     );
   },
