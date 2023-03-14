@@ -461,18 +461,18 @@ tarteaucitron.services.snapchat = {
             return;
         }
 
-    var a = window.snaptr = function() {
-        a.handleRequest ? a.handleRequest.apply(a, arguments) : a.queue.push(arguments)
-    };
-    a.queue = [];
+	var a = window.snaptr = function() {
+		a.handleRequest ? a.handleRequest.apply(a, arguments) : a.queue.push(arguments)
+	};
+	a.queue = [];
         window.snaptr('init', tarteaucitron.user.snapchatId, {
-        'user_email': tarteaucitron.user.snapchatEmail
+	    'user_email': tarteaucitron.user.snapchatEmail
         });
         window.snaptr('track', 'PAGE_VIEW');
 
         tarteaucitron.addScript('https://sc-static.net/scevent.min.js');
-        
-    if (typeof tarteaucitron.user.snapchatMore === 'function') {
+	    
+	if (typeof tarteaucitron.user.snapchatMore === 'function') {
             tarteaucitron.user.snapchatMore();
         }
     }
@@ -1706,7 +1706,7 @@ tarteaucitron.services.criteoonetag = {
         "use strict";
         if (tarteaucitron.user.criteoonetagAccount === undefined) return;
 
-        window.criteo_q = window.criteo_q || [];
+        window.criteo_q = window.criteo_q || []; 
         window.criteo_q.push({
             event: "setAccount",
             account: tarteaucitron.user.criteoonetagAccount
@@ -5934,8 +5934,8 @@ tarteaucitron.services.facebookcustomerchat = {
         }
 
         tarteaucitron.fallback(['fb-customerchat'], '');
-    window.fbAsyncInit=function(){FB.init({appId:tarteaucitron.user.facebookChatID,autoLogAppEvents:!0,xfbml:!0,version:"v3.0"})};
-    tarteaucitron.addScript('https://connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk/xfbml.customerchat.js', 'facebook-jssdk');
+	window.fbAsyncInit=function(){FB.init({appId:tarteaucitron.user.facebookChatID,autoLogAppEvents:!0,xfbml:!0,version:"v3.0"})};
+	tarteaucitron.addScript('https://connect.facebook.net/' + tarteaucitron.getLocale() + '/sdk/xfbml.customerchat.js', 'facebook-jssdk');
     },
     "fallback": function () {
         "use strict";
@@ -5975,7 +5975,7 @@ tarteaucitron.services.tiktok = {
 
         tarteaucitron.addScript('https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=' + tarteaucitron.user.tiktokId);
 
-    if (typeof tarteaucitron.user.tiktokMore === 'function') {
+	if (typeof tarteaucitron.user.tiktokMore === 'function') {
             tarteaucitron.user.tiktokMore();
         }
     }
@@ -5998,7 +5998,7 @@ tarteaucitron.services.klaviyo = {
     }
 };
 
-// Zoho Pagesense
+// Zoho PageSense
 tarteaucitron.services.zohopagesense = {
   key: "zohopagesense",
   type: "analytic",
