@@ -8219,10 +8219,10 @@ tarteaucitron.services.klaviyo = {
 };
 
 // Zoho Pagesense
-tarteaucitron.services.zohoPageSense = {
-  key: "zoho-pagesense",
+tarteaucitron.services.zohopagesense = {
+  key: "zohopagesense",
   type: "analytic",
-  name: "zohoPagesense",
+  name: "Zoho Page Sense",
   uri: "https://www.zoho.com/pagesense/cookie-policy.html",
   needConsent: true,
   cookies: [
@@ -8258,7 +8258,7 @@ tarteaucitron.services.zohoPageSense = {
 
     if (
       tarteaucitron.user.zohoPageSenseProjectId === undefined ||
-      tarteaucitron.user.zohoPageSenseProjectHash === undefined
+      tarteaucitron.user.zohoPageSenseScriptHash === undefined
     ) {
       return;
     }
@@ -8267,7 +8267,7 @@ tarteaucitron.services.zohoPageSense = {
       "https://cdn-eu.pagesense.io/js/" +
         tarteaucitron.user.zohoPageSenseProjectId +
         "/" +
-        tarteaucitron.user.zohoPageSenseProjectHash +
+        tarteaucitron.user.zohoPageSenseScriptHash +
         ".js"
     );
   },
