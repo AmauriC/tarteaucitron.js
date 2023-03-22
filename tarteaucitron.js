@@ -1821,8 +1821,8 @@ var tarteaucitron = {
         }
 
         // get the html lang
-        if (availableLanguages.indexOf(document.documentElement.getAttribute("lang")) !== -1) {
-            return document.documentElement.getAttribute("lang");
+        if (availableLanguages.indexOf(document.documentElement.getAttribute("lang").substr(0, 2)) !== -1) {
+          return document.documentElement.getAttribute("lang").substr(0, 2);
         }
 
         if (!navigator) { return defaultLanguage; }
