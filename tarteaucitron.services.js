@@ -2963,7 +2963,7 @@ tarteaucitron.services.googlefonts = {
         tarteaucitron.addScript('//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', function () {
             WebFont.load({
                 google: {
-                    families: tarteaucitron.user.googleFonts
+                    families: [tarteaucitron.user.googleFonts]
                 }
             });
         });
