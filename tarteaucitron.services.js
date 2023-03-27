@@ -164,7 +164,7 @@ tarteaucitron.services.sendinblue = {
     "key": "sendinblue",
     "type": "other",
     "name": "sendinblue",
-    "uri": "https://sendinblue.com/rgpd/",
+    "uri": "https://fr.sendinblue.com/legal/cookies/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
