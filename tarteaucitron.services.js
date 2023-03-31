@@ -2961,11 +2961,20 @@ tarteaucitron.services.googlefonts = {
             return;
         }
         tarteaucitron.addScript('//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', '', function () {
-            WebFont.load({
-                google: {
-                    families: tarteaucitron.user.googleFonts
-                }
-            });
+
+            if (tarteaucitron.user.googleFonts instanceof Array) {
+                WebFont.load({
+                    google: {
+                        families: tarteaucitron.user.googleFonts
+                    }
+                });
+            } else {
+                WebFont.load({
+                    google: {
+                        families: [tarteaucitron.user.googleFonts]
+                    }
+                });
+            }
         });
     }
 };
