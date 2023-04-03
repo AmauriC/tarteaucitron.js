@@ -37,6 +37,36 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// playplay
+tarteaucitron.services.playplay = {
+    "key": "playplay",
+    "type": "video",
+    "name": "PlayPlay",
+    "uri": "https://playplay.com/fr/confidentialite",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        tarteaucitron.fallback(['tac_playplay'], function (x) {
+            var id = tarteaucitron.getElemAttr(x, "data-id"),
+                width = tarteaucitron.getElemAttr(x, "width"),
+                height = tarteaucitron.getElemAttr(x, "height");
+
+            var playURL = "https://playplay.com/app/embed-video/" + id;
+
+            return "<iframe width=\"" + width + "\" height=\"" + height + "\" src=\"" + playURL + "\" style=\"border:0;\" allowfullscreen=\"\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'playplay';
+        tarteaucitron.fallback(['tac_playplay'], function (elem) {
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // adobeworkspace
 tarteaucitron.services.adobeworkspace = {
     "key": "adobeworkspace",
