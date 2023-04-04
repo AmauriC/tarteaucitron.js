@@ -4846,7 +4846,7 @@ tarteaucitron.services.matomocloud = {
     "type": "analytic",
     "name": "Matomo Cloud (privacy by design)",
     "uri": "https://matomo.org/faq/general/faq_146/",
-    "needConsent": false,
+    "needConsent": true,
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'mtm_consent', 'matomo_ignore', 'matomo_sessid'],
     "js": function () {
         "use strict";
