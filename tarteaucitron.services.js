@@ -4855,8 +4855,8 @@ tarteaucitron.services.matomocloud = {
         }
 
         window._paq = window._paq || [];
-        window._paq.push(["requireCookieConsent"]);
-        window._paq.push(["setCookieConsentGiven"]);
+        window._paq.push(["requireConsent"]);
+        window._paq.push(["setConsentGiven"]);
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
         window._paq.push(["trackPageView"]);
@@ -4897,7 +4897,7 @@ tarteaucitron.services.matomocloud = {
         }
 
         window._paq = window._paq || [];
-        window._paq.push(["requireCookieConsent"]);
+        window._paq.push(["requireConsent"]);
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
         window._paq.push(["trackPageView"]);
