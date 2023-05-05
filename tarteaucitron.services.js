@@ -4381,7 +4381,7 @@ tarteaucitron.services.youtube = {
                 allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen"),
                 start = tarteaucitron.getElemAttr(x, "start"),
                 end = tarteaucitron.getElemAttr(x, "end"),
-                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "loop", "enablejsapi"],
+                attrs = ["theme", "rel", "controls", "showinfo", "autoplay", "mute", "start", "end", "loop", "enablejsapi"],
                 params = attrs.filter(function (a) {
                     return tarteaucitron.getElemAttr(x, a) !== null;
                 }).map(function (a) {
