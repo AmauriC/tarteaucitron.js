@@ -2317,9 +2317,9 @@ tarteaucitron.services.simpleanalytics = {
 tarteaucitron.services.stonly = {
     "key": "stonly",
     "type": "api",
-    "name": "Stonly",
-    "uri": "https://stonly.com/privacy",
-    "needConsent": true,
+    "name": "Stonly (privacy by design)",
+    "uri": "https://trust.stonly.com/",
+    "needConsent": false,
     "cookies": [],
     "js": function () {
         "use strict";
