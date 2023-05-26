@@ -1,6 +1,6 @@
 /*jslint browser: true, evil: true */
 
-var scripts = document.getElementsByTagName('script'),
+export var scripts = document.getElementsByTagName('script'),
     path = scripts[scripts.length - 1].src.split('?')[0],
     tarteaucitronForceCDN = (tarteaucitronForceCDN === undefined) ? '' : tarteaucitronForceCDN,
     cdn = (tarteaucitronForceCDN === '') ? path.split('/').slice(0, -1).join('/') + '/' : tarteaucitronForceCDN,
@@ -14,9 +14,7 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronProLoadServices,
     tarteaucitronNoAdBlocker = false;
 
-
-
-var tarteaucitron = {
+export var tarteaucitron = {
     "version": 20230203,
     "cdn": cdn,
     "user": {},
