@@ -19,13 +19,16 @@
     "url": "https://github.com/AmauriC/tarteaucitron.js/issues"
   },
   "homepage": "https://github.com/AmauriC/tarteaucitron.js#readme",
+  "type": "module",
   "scripts": {
-    "dev": "parcel src/index.html --no-cache",
-    "build": "parcel build src/index.html",
+    "dev": "parcel ./src/index.html ./src/tarteaucitron.services.js ./src/advertising.js ./src/lang/* ./src/css/tarteaucitron.scss   --no-cache",
+    "build": "parcel build ./src/index.html ./src/tarteaucitron.services.js ./src/advertising.js ./src/lang/* ./src/css/tarteaucitron.scss",
     "prebuild": "npx rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@parcel/resolver-glob": "^2.9.0",
+    "@parcel/transformer-sass": "^2.9.0",
     "parcel": "^2.9.0"
   }
 }

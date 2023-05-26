@@ -1,7 +1,6 @@
 //import * as tarteaucitron from './tarteaucitron.js'
 import {tarteaucitron} from './tarteaucitron.js'
 
-
 if (tarteaucitron) {
   console.log("tarteaucitron is defined")
 } else {
@@ -37,10 +36,14 @@ try {
 
     //"mandatory": true, /* Show a message about mandatory cookies */
   });
+  // let add one service
+  (tarteaucitron.job = tarteaucitron.job || []).push("facebook")
 } catch (e) {
-  console.log("tarteaucitron init failed")
+  console.log("tarteaucitron failed")
   console.log(e)
 }
+
+
 
 
 
