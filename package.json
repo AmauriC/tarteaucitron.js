@@ -1,18 +1,7 @@
 {
   "name": "tarteaucitronjs",
   "version": "1.11.0-refactoring",
-  "source": "src/tarteaucitron.js",
-  "main": "dist/tarteaucitron.js",
-  "module": "dist/module.js",
   "description": "Comply to the European cookie law",
-  "devDependencies": {
-    "parcel": "^2.9.0"
-  },
-  "scripts": {
-    "watch": "parcel watch",
-    "build": "parcel build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmauriC/tarteaucitron.js.git"
@@ -29,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/AmauriC/tarteaucitron.js/issues"
   },
-  "homepage": "https://github.com/AmauriC/tarteaucitron.js#readme"
+  "homepage": "https://github.com/AmauriC/tarteaucitron.js#readme",
+  "scripts": {
+    "dev": "parcel src/index.html --no-cache",
+    "build": "parcel build src/index.html",
+    "prebuild": "npx rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "parcel": "^2.9.0"
+  }
 }
