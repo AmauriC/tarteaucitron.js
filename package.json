@@ -1,11 +1,16 @@
 {
   "name": "tarteaucitronjs",
-  "version": "1.11.0",
-  "main": "tarteaucitron.js",
+  "version": "1.11.0-refactoring",
+  "source": "src/tarteaucitron.js",
+  "main": "dist/tarteaucitron.js",
+  "module": "dist/module.js",
   "description": "Comply to the European cookie law",
-  "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "parcel": "^2.9.0"
+  },
   "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
