@@ -1,4 +1,6 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Xin chào! Trang web này minh bạch và cho phép bạn chọn dịch vụ bên thứ 3 mà bạn muốn cho phép.",
@@ -79,7 +81,7 @@ tarteaucitron.lang = {
         "title": "Dịch vụ khác",
         "details": "Dịch vụ hiển thị nội dung web."
     },
-    
+
     "mandatoryTitle": "Mandatory cookies",
     "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 };

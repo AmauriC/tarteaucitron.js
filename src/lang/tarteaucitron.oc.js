@@ -1,15 +1,17 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
 
     "middleBarHead": "☝ 🍪",
     "adblock": "Bonjorn! Aqueste site jòga la transparéncia e vos dòna la possibilitat de causir los servicis tèrces a activar.",
     "adblock_call": "Mercés de desactivar vòstre adblocker per començar la personalizacion.",
     "reload": "Recargar la pagina",
-    
+
     "alertBigScroll": "En contunhant de desfilar,",
     "alertBigClick": "En seguissent vòstra navigacion,",
     "alertBig": "acceptatz l'utilizacion de servicis tèrces que pòdon installar de cookies",
-    
+
     "alertBigPrivacy": "Aqueste site utiliza de cookies e vos dòna lo contraròtle sus çò que volètz activar",
     "alertSmall": "Gestion dels servicis",
     "acceptAll": "OK, tot acceptar",
@@ -43,7 +45,7 @@ tarteaucitron.lang = {
     "denyAll": "Interdire totes los cookies",
 
     "icon": "Cookies",
-    
+
     "fallback": "es desactivat.",
     "allowed": "autorizat",
     "disallowed": "interdit",
@@ -80,7 +82,7 @@ tarteaucitron.lang = {
         "title": "Autre",
         "details": "Servicis que cèrcan a afichar de contengut web."
     },
-    
+
     "mandatoryTitle": "Cookies necessaris",
     "mandatoryText": "Aqueste site utiliza de cookies necessaris pel seu pròpri foncionament que pòdon pas èsser desactivats."
 };

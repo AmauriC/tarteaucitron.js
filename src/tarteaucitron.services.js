@@ -1,6 +1,8 @@
 /*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google, Typekit, FB, ferankReady, IN, stButtons, twttr, PCWidget*/
 /*jslint regexp: true, nomen: true*/
 
+import {tarteaucitron} from "./tarteaucitron";
+
 // generic iframe
 tarteaucitron.services.iframe = {
     "key": "iframe",
@@ -594,7 +596,7 @@ tarteaucitron.services.snapchat = {
         window.snaptr('track', 'PAGE_VIEW');
 
         tarteaucitron.addScript('https://sc-static.net/scevent.min.js');
-	    
+
 	if (typeof tarteaucitron.user.snapchatMore === 'function') {
             tarteaucitron.user.snapchatMore();
         }
@@ -1829,7 +1831,7 @@ tarteaucitron.services.criteoonetag = {
         "use strict";
         if (tarteaucitron.user.criteoonetagAccount === undefined) return;
 
-        window.criteo_q = window.criteo_q || []; 
+        window.criteo_q = window.criteo_q || [];
         window.criteo_q.push({
             event: "setAccount",
             account: tarteaucitron.user.criteoonetagAccount
@@ -5770,7 +5772,7 @@ tarteaucitron.services.affilae = {
         if (tarteaucitron.user.affilae === undefined) {
            return;
         }
-        
+
         window._ae = { "pid": tarteaucitron.user.affilae };
 
         tarteaucitron.addScript('https://static.affilae.com/ae-v3.5.js');

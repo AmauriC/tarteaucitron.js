@@ -1,4 +1,6 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Hej! Dette sted er gennemsigtigt og giver dig mulighed for at vælge de tredjeparts tjenester, du vil tillade.",
@@ -79,7 +81,7 @@ tarteaucitron.lang = {
         "title": "Andet",
         "details": "Tjenester til visning af webindhold."
     },
-    
+
     "mandatoryTitle": "Mandatory cookies",
     "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 };

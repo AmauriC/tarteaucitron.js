@@ -1,14 +1,16 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Sveiki! Ši svetainė veikia skaidriai ir leidžia pasirinkti trečiosios šalies paslaugas, kurias norite leisti.",
     "adblock_call": "Norėdami pradėti taikyti, išjunkite ,Adblocker",
     "reload": "Atnaujinkite puslapį",
-    
+
     "alertBigScroll": "Tęsiant slankiojimą",
     "alertBigClick": "Jei ir toliau naršote šioje svetainėje,",
     "alertBig": "leidžiate naudotis visomis trečiųjų šalių paslaugomis",
-    
+
     "alertBigPrivacy": "Ši svetainė naudoja slapukus ir suteikia jums galimybę valdyti, ką norite suaktyvinti",
     "alertSmall": "Tvarkykite paslaugas",
     "personalize": "Suasmeninkite",
@@ -79,7 +81,7 @@ tarteaucitron.lang = {
         "title": "Kita",
         "details": "Paslaugos, rodančios svetainės turinį."
     },
-    
+
     "mandatoryTitle": "Privalomi slapukai",
     "mandatoryText": "Ši svetainė naudoja slapukus, reikalingus tinkamam jos veikimui, kurių negalima išjungti."
 };

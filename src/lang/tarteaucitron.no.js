@@ -1,4 +1,6 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
 	"middleBarHead" : "☝ 🍪",
 	"adblock"       : "Hei! Dette nettstedet er gjennomsiktig og lar deg kontrollere hvilke tredjeparts tjenester du vil tillate.",

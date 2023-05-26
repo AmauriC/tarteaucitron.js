@@ -1,14 +1,16 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Olá! Em uma ação de transparência, este site permite que você escolha quais serviços de terceiros ativar.",
     "adblock_call": "Por favor, desative seu bloqueador de publicidades para poder personalizar.",
     "reload": "Atualizar esta página",
-    
+
     "alertBigScroll": "Ao continuar a rolar,",
     "alertBigClick": "Se você continuar a navegação neste site,",
     "alertBig": "você estará aceitando todos os serviços de terceiros",
-    
+
     "alertBigPrivacy": "Este site utiliza cookies e dá-lhe controle sobre o que quer ativar",
     "alertSmall": "Gerenciar serviços",
     "personalize": "Personalizar",
@@ -44,7 +46,7 @@ tarteaucitron.lang = {
     "fallback": "está desativado.",
     "allowed": "permitido",
     "disallowed": "não permitido",
-    
+
     "ads": {
         "title": "Redes de anúncios",
         "details": "As redes de anúncios podem gerar receitas com a venda de espaço publicitário no site."
@@ -77,7 +79,7 @@ tarteaucitron.lang = {
         "title": "De outros",
         "details": "Serviços para exibir conteúdo da web."
     },
-    
+
     "mandatoryTitle": "Cookies obrigatórios",
     "mandatoryText": "Este site utiliza alguns cookies que são necessários ao seu funcionamento e não podem ser desativados."
 };

@@ -1,4 +1,6 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Hej! Denna webbplats är transparent och låter dig välja de tredjeparts tjänster du vill tillåta.",
@@ -79,7 +81,7 @@ tarteaucitron.lang = {
         "title": "Övrig",
         "details": "Tjänster för att visa webbinnehåll."
     },
-    
+
     "mandatoryTitle": "Mandatory cookies",
     "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 };

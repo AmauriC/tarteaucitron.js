@@ -1,14 +1,16 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Ahoj! Táto stránka je transparentná a umožňuje vám vybrať služby tretích strán, ktoré chcete povoliť.",
     "adblock_call": "Prosím, vypnite blokovanie reklám k začatiu prispôsobovania",
     "reload": "Obnovte stránku",
-    
+
     "alertBigScroll": "Pokračovaním v posúvaní,",
     "alertBigClick": "Ak budete pokračovať v prehliadaní tejto webovej stránky,",
     "alertBig": "povoľujete všetky služby tretích strán",
-    
+
     "alertBigPrivacy": "Táto stránka používa cookies a dáva vám kontrolu nad tým, čo chcete aktivovať",
     "alertSmall": "Spravovať služby",
     "personalize": "Prispôsobiť",
@@ -16,7 +18,7 @@ tarteaucitron.lang = {
     "close": "Zatvoriť",
 
     "privacyUrl": "Zásady ochrany osobných údajov",
-    
+
     "all": "Prednosť pre všetky služby",
 
     "info": "Ochrana vášho súkromia",
@@ -42,7 +44,7 @@ tarteaucitron.lang = {
     "denyAll": "Odmietnuť všetky súbory cookie",
 
     "icon": "Cookies",
-    
+
     "fallback": "je zakázané.",
     "allowed": "povolený",
     "disallowed": "nepovolený",
@@ -79,7 +81,7 @@ tarteaucitron.lang = {
         "title": "Ostatné",
         "details": "Služby na zobrazovanie webového obsahu."
     },
-    
+
     "mandatoryTitle": "Mandatory cookies",
     "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 };

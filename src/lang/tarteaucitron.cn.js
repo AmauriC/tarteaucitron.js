@@ -1,4 +1,6 @@
 /*global tarteaucitron */
+import {tarteaucitron} from "../tarteaucitron";
+
 tarteaucitron.lang = {
     "adblock": "您好！这是一个透明的网站，您可以选择激活不同的第三方服务。",
     "adblock_call": "感谢您停用广告拦截功能并开始个性化设置。",
@@ -76,7 +78,7 @@ tarteaucitron.lang = {
         "title": "其他",
         "details": "旨在显示网页内容的服务。"
     },
-    
+
     "mandatoryTitle": "Mandatory cookies",
     "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
 };
