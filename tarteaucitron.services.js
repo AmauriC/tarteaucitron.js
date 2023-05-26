@@ -3157,7 +3157,7 @@ tarteaucitron.services.instagram = {
                 frame_height = '"" ';
             }
 
-            post_frame = '<iframe title="' + frame_title + '" src="//www.instagram.com/' + post_id + '/embed" ' + frame_width + frame_height + '></iframe>';
+            post_frame = '<iframe title="' + frame_title + '" src="//www.instagram.com/p/' + post_id + '/embed" ' + frame_width + frame_height + '></iframe>';
 
             return post_frame;
         });
