@@ -785,7 +785,7 @@ tarteaucitron.services.piwikpro = {
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'piwik_ignore', '_pk_uid'],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.piwikProId === undefined) {
+        if (tarteaucitron.user.piwikProId === undefined || tarteaucitron.user.piwikProContainer === undefined) {
             return;
         }
 
@@ -808,7 +808,7 @@ tarteaucitron.services.piwikpro = {
         var qP = [];
 
         var qPString = qP.length > 0 ? ("?" + qP.join("&")) : "";
-        tarteaucitron.addScript('https://carsatse.containers.piwik.pro/'+tarteaucitron.user.piwikProId+'.js'+qPString);
+        tarteaucitron.addScript('https://'+tarteaucitron.user.piwikProContainer+'.containers.piwik.pro/'+tarteaucitron.user.piwikProId+'.js'+qPString);
 
         ! function(a, n, i) {
            a[n] = a[n] || {};
