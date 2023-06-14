@@ -31,8 +31,8 @@ tarteaucitron.lang = {
     "source": "Vai al sito ufficiale",
     "credit": "Gestione dei cookies da tarteaucitron.js",
 
-    "toggleInfoBox": "Show/hide informations about cookie storage",
-    "title": "Cookies management panel",
+    "toggleInfoBox": "Mostra/nascondi informazioni sulla memorizzazione dei cookie",
+    "title": "Pannello di gestione dei cookies",
     "cookieDetail": "Cookie detail for",
     "ourSite": "on our site",
     "modalWindow": "(finestra modale)",
@@ -79,6 +79,6 @@ tarteaucitron.lang = {
         "details": "Servizi per visualizzare contenuti web."
     },
     
-    "mandatoryTitle": "Mandatory cookies",
-    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
+    "mandatoryTitle": "Cookies obbligatori",
+    "mandatoryText": "Questo sito utilizza cookies necessari per il suo corretto funzionamento che non possono essere disattivati."
 };
