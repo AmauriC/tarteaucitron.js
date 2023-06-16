@@ -24,7 +24,7 @@ var tarteaucitron = {
     "services": {},
     "added": [],
     "idprocessed": [],
-    "state": [],
+    "state": {},
     "launch": [],
     "parameters": {},
     "isAjax": false,
