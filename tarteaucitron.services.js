@@ -5838,7 +5838,7 @@ tarteaucitron.services.webtvnu = {
 // studizz
 tarteaucitron.services.studizz = {
     "key": "studizz",
-    "type": "other",
+    "type": "support",
     "name": "Studizz Chatbot",
     "uri": "https://group.studizz.fr/",
     "needConsent": true,
