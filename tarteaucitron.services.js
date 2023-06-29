@@ -1723,7 +1723,7 @@ tarteaucitron.services.compteur = {
 // contentsquare
 tarteaucitron.services.contentsquare = {
     "key": "contentsquare",
-    "type": "api",
+    "type": "analytic",
     "name": "ContentSquare",
     "uri": "https://docs.contentsquare.com/uxa-en/#collected-data",
     "needConsent": true,
