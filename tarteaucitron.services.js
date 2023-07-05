@@ -672,7 +672,7 @@ tarteaucitron.services.snapchat = {
         window.snaptr('track', 'PAGE_VIEW');
 
         tarteaucitron.addScript('https://sc-static.net/scevent.min.js');
-	    
+
 	if (typeof tarteaucitron.user.snapchatMore === 'function') {
             tarteaucitron.user.snapchatMore();
         }
@@ -1907,7 +1907,7 @@ tarteaucitron.services.criteoonetag = {
         "use strict";
         if (tarteaucitron.user.criteoonetagAccount === undefined) return;
 
-        window.criteo_q = window.criteo_q || []; 
+        window.criteo_q = window.criteo_q || [];
         window.criteo_q.push({
             event: "setAccount",
             account: tarteaucitron.user.criteoonetagAccount
@@ -5848,7 +5848,7 @@ tarteaucitron.services.affilae = {
         if (tarteaucitron.user.affilae === undefined) {
            return;
         }
-        
+
         window._ae = { "pid": tarteaucitron.user.affilae };
 
         tarteaucitron.addScript('https://static.affilae.com/ae-v3.5.js');
@@ -6207,5 +6207,31 @@ tarteaucitron.services.klaviyo = {
             return;
         }
         tarteaucitron.addScript('//static.klaviyo.com/onsite/js/klaviyo.js?company_id=' + tarteaucitron.user.klaviyoCompanyId);
+    }
+};
+
+// Twitch
+tarteaucitron.services.twitch = {
+    "key": "twitch",
+    "type": "video",
+    "name": "Twitch",
+    "needConsent": true,
+    "cookies": ["UID", "KP_UIDz-ssn", "api_token", "server_session_id", "experiment_overrides", "unique_id_durable", "unique_id", "referrer_url"],
+    "uri": "https://www.twitch.tv/p/en/legal/privacy-notice",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['twitch_player'], function (x) {
+            var id = x.getAttribute('videoID'),
+                parent = x.getAttribute('parent'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height');
+            var embedURL = "https://player.twitch.tv/?video=" + id + "&parent=" + parent;
+            return "<iframe width=\"" + width + "\" height=\"" + height + "\" src=\"" + embedURL + "\" scrolling=\"no\" frameborder=\"0\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "twitch";
+        tarteaucitron.fallback(["twitch_player"], tarteaucitron.engage(id));
     }
 };
