@@ -2083,7 +2083,13 @@ var tarteaucitron = {
         return elem.getAttribute('height') || elem.clientHeight;
     },
     "getElemAttr": function (elem, attr) {
-        return elem.getAttribute('data-' + attr) || elem.getAttribute(attr);
+        var attribute = elem.getAttribute('data-' + attr) || elem.getAttribute(attr);
+
+        if (typeof attribute === 'string') {
+            return tarteaucitron.fixSelfXSS(attribute);
+        }
+
+        return "";
     },
     "addClickEventToId": function (elemId, func) {
         tarteaucitron.addClickEventToElement(document.getElementById(elemId), func);
