@@ -810,7 +810,11 @@ var tarteaucitron = {
             html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + service.name + '</span>';
             html += '       <span class="tacCurrentStatus" id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>';
             html += '       <span class="tarteaucitronReadmoreSeparator"> - </span>';
-            html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
+            html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies">';
+            if (tarteaucitron.lang['more-' + service.key] !== undefined) {
+                html += tarteaucitron.lang['more-' + service.key];
+            }
+            html += '</span><br/>';
             if (tarteaucitron.parameters.moreInfoLink == true) {
 
                 var link = 'https://tarteaucitron.io/service/' + service.key + '/';
@@ -1174,7 +1178,11 @@ var tarteaucitron = {
 
             if (status === true) {
                 if (document.getElementById('tacCL' + key) !== null) {
-                    document.getElementById('tacCL' + key).innerHTML = '...';
+                    if (tarteaucitron.lang['more-' + key] !== undefined && tarteaucitron.lang['more-' + key] !== '' ) {
+                        document.getElementById('tacCL' + key).innerHTML = tarteaucitron.lang['more-' + key];
+                    } else {
+                        document.getElementById('tacCL' + key).innerHTML = '...';
+                    }
                 }
                 setTimeout(function () {
                     tarteaucitron.cookie.checkCount(key);
@@ -1702,7 +1710,11 @@ var tarteaucitron = {
             }
 
             if (document.getElementById('tacCL' + key) !== null) {
-                document.getElementById('tacCL' + key).innerHTML = html;
+                if (tarteaucitron.lang['more-' + key] !== undefined && tarteaucitron.lang['more-' + key] !== '' ) {
+                    document.getElementById('tacCL' + key).innerHTML = tarteaucitron.lang['more-' + key] + '<br>' + html;
+                } else {
+                    document.getElementById('tacCL' + key).innerHTML = html;
+                }
             }
         },
         "crossIndexOf": function (arr, match) {

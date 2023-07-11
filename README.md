@@ -130,6 +130,13 @@ tarteaucitronCustomText = {
 };
 ```
 
+It is also possible to add custom text describing each service:
+```js
+tarteaucitronCustomText = {
+  'more-twitter': 'We use this to display a tweet button'
+};
+```
+
 # Thanks to the sponsors 😊
 
 | ![Amaury Cleuziou](https://avatars.githubusercontent.com/u/26336203?v=4&s=60) | ![Peak Crypto](https://tarteaucitron.io/img/logo_peakcrypto.png)  |   |
