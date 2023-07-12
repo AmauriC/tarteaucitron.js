@@ -209,6 +209,7 @@ var tarteaucitron = {
                 "bodyPosition": "bottom",
                 "removeCredit": false,
                 "showAlertSmall": false,
+                "showDetailsOnClick": true,
                 "showIcon": true,
                 "iconPosition": "BottomRight",
                 "cookieslist": false,
@@ -383,9 +384,14 @@ var tarteaucitron = {
                 for (i = 0; i < cat.length; i += 1) {
                     html += '         <li id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
                     html += '            <div class="tarteaucitronTitle" role="heading" aria-level="2">';
-                    html += '               <button type="button" class="catToggleBtn" aria-expanded="false" data-cat="tarteaucitronDetails' + cat[i] + '"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang[cat[i]].title + '</button>';
+                    if(tarteaucitron.parameters.showDetailsOnClick)
+                    {
+                        html += '               <button type="button" class="catToggleBtn" aria-expanded="false" data-cat="tarteaucitronDetails' + cat[i] + '"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang[cat[i]].title + '</button>';
+                    }else{
+                        html += '               <span class="asCatToggleBtn" data-cat="tarteaucitronInlineDetails' + cat[i] + '">' + tarteaucitron.lang[cat[i]].title + '</span>';
+                    }
                     html += '            </div>';
-                    html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails tarteaucitronInfoBox">';
+                    html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails '+ (tarteaucitron.parameters.showDetailsOnClick ? 'tarteaucitronInfoBox' : 'tarteaucitronDetailsInline')+'">';
                     html += '               ' + tarteaucitron.lang[cat[i]].details;
                     html += '            </div>';
                     html += '         <ul id="tarteaucitronServices_' + cat[i] + '"></ul></li>';
@@ -752,6 +758,7 @@ var tarteaucitron = {
                     for (i = 0; i < toggleBtns.length; i++) {
                         toggleBtns[i].dataset.index = i;
                         tarteaucitron.addClickEventToElement(toggleBtns[i], function () {
+                            if(!tarteaucitron.parameters.showDetailsOnClick) return false;
                             tarteaucitron.userInterface.toggle('tarteaucitronDetails' + cat[this.dataset.index], 'tarteaucitronInfoBox');
                             if (document.getElementById('tarteaucitronDetails' + cat[this.dataset.index]).style.display === 'block') {
                                 this.setAttribute('aria-expanded', 'true');
