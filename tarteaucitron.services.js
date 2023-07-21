@@ -6216,7 +6216,7 @@ tarteaucitron.services.twitch = {
     "type": "video",
     "name": "Twitch",
     "needConsent": true,
-    "cookies": ["UID", "KP_UIDz-ssn", "api_token", "server_session_id", "experiment_overrides", "unique_id_durable", "unique_id", "referrer_url"],
+    "cookies": [],
     "uri": "https://www.twitch.tv/p/en/legal/privacy-notice",
     "js": function () {
         "use strict";
