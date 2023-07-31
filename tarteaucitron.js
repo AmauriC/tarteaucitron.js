@@ -362,7 +362,7 @@ var tarteaucitron = {
                     if(tarteaucitron.parameters.showDetailsOnClick){
                         html += '   <button type="button" tabindex="-1"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang.mandatoryTitle + '</button>';
                     }else{
-                        html += '   <span>' + tarteaucitron.lang.mandatoryTitle + '</span>';
+                        html += '   <span class="asCatToggleBtn">' + tarteaucitron.lang.mandatoryTitle + '</span>';
                     }
                    html += '</div>';
                    html += '<ul id="tarteaucitronServices_mandatory">';
