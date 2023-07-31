@@ -359,7 +359,11 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.mandatory == true) {
                    html += '<li id="tarteaucitronServicesTitle_mandatory">';
                    html += '<div class="tarteaucitronTitle">';
-                   html += '   <button type="button" tabindex="-1"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang.mandatoryTitle + '</button>';
+                    if(tarteaucitron.parameters.showDetailsOnClick){
+                        html += '   <button type="button" tabindex="-1"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang.mandatoryTitle + '</button>';
+                    }else{
+                        html += '   <span>' + tarteaucitron.lang.mandatoryTitle + '</span>';
+                    }
                    html += '</div>';
                    html += '<ul id="tarteaucitronServices_mandatory">';
                    html += '<li class="tarteaucitronLine">';
