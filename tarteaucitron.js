@@ -286,7 +286,7 @@ var tarteaucitron = {
 
                 // disable the expand option if services grouped by category
                 if (tarteaucitron.parameters.groupServices == true) {
-                    tarteaucitron.parameters.showDetailsOnClick = false;
+                    tarteaucitron.parameters.showDetailsOnClick = true;
                 }
 
                 // css for the popup bar TODO: add it on the css file
