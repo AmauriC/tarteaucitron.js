@@ -3295,7 +3295,7 @@ tarteaucitron.services.jsapi = {
 tarteaucitron.services.twitterwidgetsapi = {
     "key": "twitterwidgetsapi",
     "type": "api",
-    "name": "Twitter Widgets API",
+    "name": "X (formerly Twitter) Widgets API",
     "uri": "https://support.twitter.com/articles/20170514",
     "needConsent": true,
     "cookies": [],
@@ -4047,7 +4047,7 @@ tarteaucitron.services.twenga = {
 tarteaucitron.services.twitter = {
     "key": "twitter",
     "type": "social",
-    "name": "Twitter",
+    "name": "X (formerly Twitter)",
     "uri": "https://support.twitter.com/articles/20170514",
     "needConsent": true,
     "cookies": [],
@@ -4067,7 +4067,7 @@ tarteaucitron.services.twitter = {
 tarteaucitron.services.twitterembed = {
     "key": "twitterembed",
     "type": "social",
-    "name": "Twitter (cards)",
+    "name": "X (formerly Twitter) cards",
     "uri": "https://support.twitter.com/articles/20170514",
     "needConsent": true,
     "cookies": [],
@@ -4126,7 +4126,7 @@ tarteaucitron.services.twitterembed = {
 tarteaucitron.services.twittertimeline = {
     "key": "twittertimeline",
     "type": "social",
-    "name": "Twitter (timelines)",
+    "name": "X (formerly Twitter) timelines",
     "uri": "https://support.twitter.com/articles/20170514",
     "needConsent": true,
     "cookies": [],
@@ -4146,7 +4146,7 @@ tarteaucitron.services.twittertimeline = {
 tarteaucitron.services.twitteruwt = {
     "key": "twitteruwt",
     "type": "analytic",
-    "name": "Twitter Universal Website Tag",
+    "name": "X (formerly Twitter) Universal Website Tag",
     "uri": "https://business.twitter.com/en/help/campaign-measurement-and-analytics/conversion-tracking-for-websites.html",
     "needConsent": true,
     "cookies": [],
