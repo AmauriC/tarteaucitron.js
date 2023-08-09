@@ -284,6 +284,11 @@ var tarteaucitron = {
                     document.getElementsByTagName('head')[0].appendChild(customThemeMiddle);
                 }
 
+                // disable the expand option if services grouped by category
+                if (tarteaucitron.parameters.groupServices == true) {
+                    tarteaucitron.parameters.showDetailsOnClick = false;
+                }
+
                 // css for the popup bar TODO: add it on the css file
                 if (tarteaucitron.orientation === 'popup') {
                     var customThemePopup = document.createElement('style'),
