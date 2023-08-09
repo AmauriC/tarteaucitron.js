@@ -37,6 +37,32 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// twitch
+tarteaucitron.services.twitch = {
+    "key": "twitch",
+    "type": "video",
+    "name": "Twitch",
+    "needConsent": true,
+    "cookies": [],
+    "uri": "https://www.twitch.tv/p/en/legal/privacy-notice",
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['twitch_player'], function (x) {
+            var id = x.getAttribute('videoID'),
+                parent = x.getAttribute('parent'),
+                width = x.getAttribute('width'),
+                height = x.getAttribute('height');
+            var embedURL = "https://player.twitch.tv/?video=" + id + "&parent=" + parent;
+            return "<iframe width=\"" + width + "\" height=\"" + height + "\" src=\"" + embedURL + "\" scrolling=\"no\" frameborder=\"0\"></iframe>";
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = "twitch";
+        tarteaucitron.fallback(["twitch_player"], tarteaucitron.engage(id));
+    }
+};
+
 // eskimi
 tarteaucitron.services.eskimi = {
     "key": "eskimi",
