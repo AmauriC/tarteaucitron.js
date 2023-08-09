@@ -3789,6 +3789,7 @@ tarteaucitron.services.soundcloud = {
     type: 'video',
     name: 'SoundCloud',
     needConsent: true,
+    uri: "https://soundcloud.com/pages/privacy",
     cookies: ['sc_anonymous_id', 'sclocale'],
     js: function () {
         "use strict";
