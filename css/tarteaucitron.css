@@ -74,7 +74,7 @@ button.tarteaucitron-toggle-group {
 }
 /* hide useless mandatory button */
 #tarteaucitronRoot #tarteaucitronServices #tarteaucitronServices_mandatory .tarteaucitronAsk {
-    display: none;
+    display: none!important;
 }
 
 /* remove icon from the banner */
@@ -93,6 +93,11 @@ button.tarteaucitron-toggle-group {
 #tarteaucitronRoot #tarteaucitron [aria-pressed="true"] {
     font-weight: initial;
     text-shadow: 0px 0px 1px;
+}
+
+/* fix padding if no cookies */
+#tarteaucitronRoot #tarteaucitronServices li#tarteaucitronNoServicesTitle {
+    padding: 20px;
 }
 /***************/
 
