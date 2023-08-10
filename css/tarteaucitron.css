@@ -34,6 +34,44 @@ button#tarteaucitronClosePanel {
     border-radius: 5px 5px 0 0;
     right: 15px!important;
 }
+button.tarteaucitron-toggle-group {
+    background: transparent!important;
+    padding: 10px 0 0;
+    cursor: pointer;
+}
+
+#tarteaucitronRoot .tarteaucitronIsDenied .tarteaucitronAllow .tarteaucitronCheck::before {
+    content: '\2610'!important
+}
+
+#tarteaucitronRoot .tarteaucitronIsAllowed .tarteaucitronAllow .tarteaucitronCheck::before {
+    content: '\2611'!important
+}
+
+#tarteaucitronRoot .tarteaucitronIsDenied .tarteaucitronDeny .tarteaucitronCross::before {
+    content: '\2611'!important
+}
+
+#tarteaucitronRoot .tarteaucitronIsAllowed .tarteaucitronDeny .tarteaucitronCross::before {
+    content: '\2610'!important
+}
+
+#tarteaucitronRoot .tarteaucitronAllow .tarteaucitronCheck::before {
+    content: '\2610'!important
+}
+
+#tarteaucitronRoot .tarteaucitronDeny .tarteaucitronCross::before {
+    content: '\2610'!important
+}
+
+#tarteaucitronRoot #tarteaucitronServices_mandatory .tarteaucitronCheck::before {
+    content: '\2611'!important
+}
+
+#tarteaucitronRoot .tarteaucitronCheck::before,
+#tarteaucitronRoot .tarteaucitronCross::before {
+    font-size: 20px;
+}
 /***************/
 
 
