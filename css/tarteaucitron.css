@@ -99,6 +99,15 @@ button.tarteaucitron-toggle-group {
 #tarteaucitronRoot #tarteaucitronServices li#tarteaucitronNoServicesTitle {
     padding: 20px;
 }
+
+/* hide info about cookies number */
+#tarteaucitronRoot .tarteaucitronStatusInfo {
+    display: none;
+}
+
+#tarteaucitronRoot .tarteaucitronName {
+    padding-top: 5px;
+}
 /***************/
 
 
