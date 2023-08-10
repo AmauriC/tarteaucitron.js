@@ -472,10 +472,10 @@ div#tarteaucitronServices {
 }
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronTitle + [id^="tarteaucitronDetails"] {
-    width: Calc(100% - 3rem);
+    width: Calc(100% - 40px);
     font-weight:500;
     margin:0;
-    padding:1.5rem;
+    padding:5px 20px 20px;
     background:rgba(51, 51, 51, 0.2);
     color:#333;
 }
