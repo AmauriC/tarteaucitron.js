@@ -25,6 +25,18 @@ div#tarteaucitronAlertBig:focus {outline: 0;}
 
 #tarteaucitronContentWrapper {display:unset;}
 
+/** 10082023 **/
+div#tarteaucitronServices {
+    border-radius: 20px 0 5px 5px;
+}
+
+button#tarteaucitronClosePanel {
+    border-radius: 5px 5px 0 0;
+    right: 15px!important;
+}
+/***************/
+
+
 /** 14042021 **/
 span.tarteaucitronReadmoreSeparator {
     display: inline!important;
@@ -177,7 +189,7 @@ div#tarteaucitronServices {
     margin-top: 21px!important;
 }
 
-#tarteaucitronServices::-webkit-scrollbar {
+/*#tarteaucitronServices::-webkit-scrollbar {
     width: 5px;
 }
 
@@ -188,7 +200,7 @@ div#tarteaucitronServices {
 #tarteaucitronServices::-webkit-scrollbar-thumb {
     background-color: #ddd;
     outline: 0px solid slategrey;
-}
+}*/
 
 div#tarteaucitronServices {
     box-shadow: 0 40px 60px #545454;
@@ -338,7 +350,7 @@ div#tarteaucitronServices {
 
 #tarteaucitronRoot .tarteaucitronH2 {
     display: inline-block;
-    margin: 12px 0 0 10px;
+    margin: 12px 0 0 15px;
     color: #fff;
 }
 
@@ -535,7 +547,7 @@ div#tarteaucitronServices {
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName {
     display: inline-block;
     float: left;
-    margin-left: 10px;
+    margin-left: 15px;
     text-align: left;
     width: 50%;
 }
