@@ -39,6 +39,7 @@ tarteaucitron.init({
     "orientation": "middle", /* Banner position (top - bottom - middle - popup) */
 
     "groupServices": false, /* Group services by category */
+    "showDetailsOnClick": true, /* Click to expand the description */
     "serviceDefaultState": "wait", /* Default state (true - wait - false) */
 
     "showAlertSmall": false, /* Show the small banner on bottom right */
