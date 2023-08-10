@@ -824,9 +824,11 @@ var tarteaucitron = {
             html += '<li id="' + service.key + 'Line" class="tarteaucitronLine">';
             html += '   <div class="tarteaucitronName">';
             html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + service.name + '</span>';
-            html += '       <span class="tacCurrentStatus" id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>';
-            html += '       <span class="tarteaucitronReadmoreSeparator"> - </span>';
-            html += '       <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span><br/>';
+            html += '       <div class="tarteaucitronStatusInfo">';
+            html += '          <span class="tacCurrentStatus" id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>';
+            html += '          <span class="tarteaucitronReadmoreSeparator"> - </span>';
+            html += '          <span id="tacCL' + service.key + '" class="tarteaucitronListCookies"></span>';
+            html += '       </div>';
             if (tarteaucitron.parameters.moreInfoLink == true) {
 
                 var link = 'https://tarteaucitron.io/service/' + service.key + '/';
@@ -836,13 +838,9 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.readmoreLink !== undefined && tarteaucitron.parameters.readmoreLink !== '') {
                     link = tarteaucitron.parameters.readmoreLink;
                 }
-                html += '       <a href="' + link + '" target="_blank" rel="noreferrer noopener nofollow" title="' + tarteaucitron.lang.more + ' : '+ tarteaucitron.lang.cookieDetail + ' ' + service.name + ' ' + tarteaucitron.lang.ourSite + ' ' + tarteaucitron.lang.newWindow +'" class="tarteaucitronReadmoreInfo">';
-                html += '           ' + tarteaucitron.lang.more;
-                html += '       </a>';
+                html += '       <a href="' + link + '" target="_blank" rel="noreferrer noopener nofollow" title="' + tarteaucitron.lang.more + ' : '+ tarteaucitron.lang.cookieDetail + ' ' + service.name + ' ' + tarteaucitron.lang.ourSite + ' ' + tarteaucitron.lang.newWindow +'" class="tarteaucitronReadmoreInfo">' + tarteaucitron.lang.more + '</a>';
                 html += '       <span class="tarteaucitronReadmoreSeparator"> - </span>';
-                html += '       <a href="' + service.uri + '" target="_blank" rel="noreferrer noopener" title="' + tarteaucitron.lang.source + ' ' + service.name + ' ' + tarteaucitron.lang.newWindow + '" class="tarteaucitronReadmoreOfficial">';
-                html += '           ' + tarteaucitron.lang.source;
-                html += '       </a>';
+                html += '       <a href="' + service.uri + '" target="_blank" rel="noreferrer noopener" title="' + tarteaucitron.lang.source + ' ' + service.name + ' ' + tarteaucitron.lang.newWindow + '" class="tarteaucitronReadmoreOfficial">' + tarteaucitron.lang.source + '</a>';
             }
 
             html += '   </div>';
