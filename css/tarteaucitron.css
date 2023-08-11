@@ -27,7 +27,7 @@ div#tarteaucitronAlertBig:focus {outline: 0;}
 
 /** 10082023 **/
 div#tarteaucitronServices {
-    border-radius: 20px 0 5px 5px;
+    border-radius: 8px;
 }
 
 button#tarteaucitronClosePanel {
