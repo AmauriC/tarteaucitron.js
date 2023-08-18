@@ -386,12 +386,12 @@ tarteaucitron.services.activecampaignvgo = {
     }
 };
 
-// sendinblue
+// Brevo (formerly sendinblue)
 tarteaucitron.services.sendinblue = {
     "key": "sendinblue",
     "type": "other",
-    "name": "sendinblue",
-    "uri": "https://fr.sendinblue.com/legal/cookies/",
+    "name": "Brevo (formerly sendinblue)",
+    "uri": "https://www.brevo.com/fr/legal/cookies/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
