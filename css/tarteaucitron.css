@@ -726,7 +726,7 @@ span#tarteaucitronDisclaimerAlert {
 #tarteaucitronAlertBig #tarteaucitronPrivacyUrlDialog,
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
-    font: 15px verdana;
+    /*font: 15px verdana;*/
     color: #fff;
 }
 
