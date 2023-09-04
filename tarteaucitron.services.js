@@ -3324,12 +3324,14 @@ tarteaucitron.services.recaptcha = {
         window.tacRecaptchaOnLoad = tarteaucitron.user.recaptchaOnLoad || function () { };
         tarteaucitron.fallback(['g-recaptcha'], '');
 
-        if (tarteaucitron.user.recaptchaapi === undefined) {
-            tarteaucitron.addScript('https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad');
-        } else {
-            tarteaucitron.addScript('https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad&render=' + tarteaucitron.user.recaptchaapi);
+        let url = 'https://www.google.com/recaptcha/api.js?onload=tacRecaptchaOnLoad';
+        if (tarteaucitron.user.recaptchaapi !== undefined) {
+            url += '&render=' + tarteaucitron.user.recaptchaapi;
         }
-
+        if (tarteaucitron.user.recaptcha_hl !== undefined) {
+            url += '&hl=' + tarteaucitron.user.recaptcha_hl;
+        }
+        tarteaucitron.addScript(url);
     },
     "fallback": function () {
         "use strict";
