@@ -783,6 +783,15 @@ var tarteaucitron = {
                         });
                     }
 
+                    // accessibility: on click on "Allow" in the site (not in TAC module), move focus to the loaded service's parent 
+                    var allowBtnsInSite = document.querySelectorAll(".tarteaucitronAllow:not(#tarteaucitronRoot .tarteaucitronAllow)");
+                    for (i = 0; i < allowBtnsInSite.length; i++) {
+                        tarteaucitron.addClickEventToElement(allowBtnsInSite[i], function () {
+                            this.closest('.tac_activate').parentNode.setAttribute("tabindex","-1");
+                            this.closest('.tac_activate').parentNode.focus();
+                        });
+                    }
+
                     var allowBtns = document.getElementsByClassName("tarteaucitronAllow");
                     for (i = 0; i < allowBtns.length; i++) {
                         tarteaucitron.addClickEventToElement(allowBtns[i], function () {
