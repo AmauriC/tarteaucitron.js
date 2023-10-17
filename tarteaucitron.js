@@ -308,6 +308,7 @@ var tarteaucitron = {
                     html = '',
                     index,
                     orientation = 'Top',
+                    modalAttrs = '',
                     cat = ['ads', 'analytic', 'api', 'comment', 'social', 'support', 'video', 'other'],
                     i;
 
@@ -419,10 +420,14 @@ var tarteaucitron = {
                     orientation = 'Bottom';
                 }
 
+                if (tarteaucitron.parameters.orientation === 'middle' || tarteaucitron.parameters.orientation === 'popup') {
+                    modalAttrs = ' role="dialog" aria-modal="true" aria-labelledby="tac_title"';
+                }
+
                 if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
-                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '"' + modalAttrs + '>';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
-                    html += '   <span id="tarteaucitronDisclaimerAlert">';
+                    html += '   <span id="tarteaucitronDisclaimerAlert" role="paragraph">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
                     html += '   </span>';
                     //html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
@@ -440,9 +445,9 @@ var tarteaucitron = {
                     //html += '</div>';
                     html += '</div>';
                 } else {
-                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '">';
+                    html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '"' + modalAttrs + '>';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
-                    html += '   <span id="tarteaucitronDisclaimerAlert">';
+                    html += '   <span id="tarteaucitronDisclaimerAlert" role="paragraph">';
 
                     if (tarteaucitron.parameters.highPrivacy) {
                         html += '       ' + tarteaucitron.lang.alertBigPrivacy;
@@ -778,6 +783,15 @@ var tarteaucitron = {
                         });
                     }
 
+                    // accessibility: on click on "Allow" in the site (not in TAC module), move focus to the loaded service's parent 
+                    var allowBtnsInSite = document.querySelectorAll(".tarteaucitronAllow:not(#tarteaucitronRoot .tarteaucitronAllow)");
+                    for (i = 0; i < allowBtnsInSite.length; i++) {
+                        tarteaucitron.addClickEventToElement(allowBtnsInSite[i], function () {
+                            this.closest('.tac_activate').parentNode.setAttribute("tabindex","-1");
+                            this.closest('.tac_activate').parentNode.focus();
+                        });
+                    }
+
                     var allowBtns = document.getElementsByClassName("tarteaucitronAllow");
                     for (i = 0; i < allowBtns.length; i++) {
                         tarteaucitron.addClickEventToElement(allowBtns[i], function () {
@@ -984,6 +998,10 @@ var tarteaucitron = {
 
                     if (property == "display" && value == "block" && id == "tarteaucitronBack") {
                         document.getElementById(id).style["opacity"] = "0.7";
+                    }
+
+                    if (property == "display" && value == "block" && id == "tarteaucitronAlertBig" && (tarteaucitron.parameters.orientation == "middle"|| tarteaucitron.parameters.orientation == "popup")) {
+                        tarteaucitron.userInterface.focusTrap('tarteaucitronAlertBig');
                     }
                 }
             }
@@ -1258,7 +1276,7 @@ var tarteaucitron = {
             if (document.getElementsByTagName('body')[0].classList !== undefined) {
                 document.getElementsByTagName('body')[0].classList.add('tarteaucitron-modal-open');
             }
-            tarteaucitron.userInterface.focusTrap();
+            tarteaucitron.userInterface.focusTrap('tarteaucitron');
             tarteaucitron.userInterface.jsSizing('main');
 
             //ie compatibility
@@ -1327,7 +1345,7 @@ var tarteaucitron = {
 
             if (typeof(window.dispatchEvent) === 'function') {window.dispatchEvent(tacClosePanelEvent);}
         },
-        "focusTrap": function() {
+        "focusTrap": function(parentElement) {
             "use strict";
 
             var focusableEls,
@@ -1335,7 +1353,7 @@ var tarteaucitron = {
                 lastFocusableEl,
                 filtered;
 
-            focusableEls = document.getElementById('tarteaucitron').querySelectorAll('a[href], button');
+            focusableEls = document.getElementById(parentElement).querySelectorAll('a[href], button');
             filtered = [];
 
             // get only visible items
@@ -1349,7 +1367,7 @@ var tarteaucitron = {
             lastFocusableEl = filtered[filtered.length - 1];
 
             //loop focus inside tarteaucitron
-            document.getElementById('tarteaucitron').addEventListener("keydown", function (evt) {
+            document.getElementById(parentElement).addEventListener("keydown", function (evt) {
 
                 if ( evt.key === 'Tab' || evt.keyCode === 9 ) {
 
