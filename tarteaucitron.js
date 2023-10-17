@@ -1908,7 +1908,9 @@ var tarteaucitron = {
             }
         } else {
             script = document.createElement('script');
-            script.id = (id !== undefined) ? id : '';
+            if (id !== undefined) {
+                script.id = id;
+            }
             script.async = true;
             script.src = url;
 
