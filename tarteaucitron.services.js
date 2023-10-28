@@ -991,7 +991,7 @@ tarteaucitron.services.plezi = {
             return;
         }
 
-        tarteaucitron.addScript('https://app.plezi.co/scripts/ossleads_analytics.js?tenant=' + tarteaucitron.user.pleziTenant + '&tw=' + tarteaucitron.user.pleziTw);
+        tarteaucitron.addScript('https://brain.plezi.co/api/v1/analytics?tenant=' + tarteaucitron.user.pleziTenant + '&tw=' + tarteaucitron.user.pleziTw);
     }
 };
 
