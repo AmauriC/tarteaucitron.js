@@ -37,6 +37,25 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// freshsalescrm
+tarteaucitron.services.freshsalescrm = {
+  "key": "freshsalescrm",
+  "type": "analytic",
+  "name": "FreshSales (CRM)",
+  "uri": "https://www.freshworks.com/gdpr/",
+  "needConsent": true,
+  "cookies": [],
+  "js": function () {
+    "use strict";
+    
+    if (tarteaucitron.user.freshsalescrmId === undefined) {
+     return;
+    }
+    
+    tarteaucitron.addScript('https://eu.fw-cdn.com/' + tarteaucitron.user.freshsalescrmId + '.js');
+  }
+};
+
 // equativ
 tarteaucitron.services.equativ = {
     "key": "equativ",
