@@ -30,6 +30,7 @@ tarteaucitron.lang = {
     "more": "Dozvědět se více",
     "source": "Zobrazit oficiální stránku",
     "credit": "Správce cookies od tarteaucitron.js",
+    "noServices": "Tento web nepoužívá žádné soubory cookie vyžadující váš souhlas.",
 
     "toggleInfoBox": "Zobrazit/skrýt informace o ukládání souborů cookie",
     "title": "Panel pro správu cookies",

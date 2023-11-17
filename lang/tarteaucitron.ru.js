@@ -30,6 +30,7 @@ tarteaucitron.lang = {
     "more": "Подробнее",
     "source": "Посетите официальный сайт",
     "credit": "Кукис манаджер tarteaucitron.js",
+    "noServices": "Этот веб-сайт не использует файлы cookie, требующие вашего согласия.",
 
     "toggleInfoBox": "Show/hide informations about cookie storage",
     "title": "Панель управления cookies",

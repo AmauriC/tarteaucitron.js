@@ -28,6 +28,7 @@ tarteaucitron.lang = {
     "more": "了解更多",
     "source": "查看官网",
     "credit": "通过tarteaucitron.js管理cookie",
+    "noServices": "本网站不使用任何需要您同意的cookie。",
 
     "toggleInfoBox": "显示/隐藏cookie存储信息。",
     "title": "Cookie管理面板",

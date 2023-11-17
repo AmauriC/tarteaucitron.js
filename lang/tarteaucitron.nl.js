@@ -30,6 +30,7 @@ tarteaucitron.lang = {
     "more": "Lees meer",
     "source": "Bekijk de officiële website",
     "credit": "Cookie manager mogelijk gemaakt door tarteaucitron.js",
+    "noServices": "Deze website maakt geen gebruik van cookies waarvoor uw toestemming nodig is.",
     
     "fallback": "is uitgeschakeld.",
     "allowed": "toegestaan",

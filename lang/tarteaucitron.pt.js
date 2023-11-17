@@ -29,6 +29,7 @@ tarteaucitron.lang = {
     "more": "Ler mais",
     "source": "Ver o site oficial",
     "credit": "Gerenciador de cookies por tarteaucitron.js",
+    "noServices": "Este site não utiliza nenhum cookie que exija o seu consentimento.",
 
     "toggleInfoBox": "Mostrar/ocultar informações sobre armazenamento de cookies",
     "title": "Painel de Gerenciamento de Cookies",
