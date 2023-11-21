@@ -1404,7 +1404,7 @@ var tarteaucitron = {
             }
             //end ie compatibility
 
-            if (document.getElementById('tarteaucitronAlertBig') !== null) {
+            if (document.getElementById('tarteaucitronAlertBig') !== null && tarteaucitron.parameters.orientation === 'middle') {
                 document.getElementById('tarteaucitronAlertBig').focus();
             }
 
