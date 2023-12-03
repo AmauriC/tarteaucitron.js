@@ -1,1 +1,2 @@
+/* min ready */
 tarteaucitronNoAdBlocker = true;

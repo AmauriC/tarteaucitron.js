@@ -1,4 +1,5 @@
 /*global tarteaucitron */
+/* min ready */
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Hola! Aquest lloc web és transparent i et dóna l'opció d'activar els serveis de tercers",

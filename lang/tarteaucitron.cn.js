@@ -1,4 +1,5 @@
 /*global tarteaucitron */
+/* min ready */
 tarteaucitron.lang = {
     "adblock": "您好！这是一个透明的网站，您可以选择激活不同的第三方服务。",
     "adblock_call": "感谢您停用广告拦截功能并开始个性化设置。",

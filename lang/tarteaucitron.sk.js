@@ -1,4 +1,5 @@
 /*global tarteaucitron */
+/* min ready */
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Ahoj! Táto stránka je transparentná a umožňuje vám vybrať služby tretích strán, ktoré chcete povoliť.",

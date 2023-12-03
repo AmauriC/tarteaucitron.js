@@ -1,4 +1,5 @@
 /*global tarteaucitron */
+/* min ready */
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
     "adblock": "Xin chào! Trang web này minh bạch và cho phép bạn chọn dịch vụ bên thứ 3 mà bạn muốn cho phép.",
