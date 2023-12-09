@@ -1661,6 +1661,8 @@ var tarteaucitron = {
 
             d.setTime(expireTime);
             document.cookie = value + '; expires=' + d.toGMTString() + '; path=/' + domain + secure + '; samesite=lax';
+
+            tarteaucitron.sendEvent('tac.consent_updated');
         },
         "read": function () {
             "use strict";
