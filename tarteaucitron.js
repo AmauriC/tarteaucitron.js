@@ -789,7 +789,7 @@ var tarteaucitron = {
                     var allowBtnsInSite = document.querySelectorAll(".tarteaucitronAllow:not(#tarteaucitronRoot .tarteaucitronAllow)");
                     for (i = 0; i < allowBtnsInSite.length; i++) {
                         tarteaucitron.addClickEventToElement(allowBtnsInSite[i], function () {
-                            if(this.closest('.tac_activate').parentNode !== null) {
+                            if(this.closest('.tac_activate') !== null && this.closest('.tac_activate').parentNode !== null) {
                                 this.closest('.tac_activate').parentNode.setAttribute("tabindex", "-1");
                                 this.closest('.tac_activate').parentNode.focus();
                             }
