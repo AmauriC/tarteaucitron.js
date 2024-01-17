@@ -692,6 +692,13 @@ div#tarteaucitronServices {
 span#tarteaucitronDisclaimerAlert {
     padding: 0 10px;
     display: inline-block;
+    overflow: scroll;
+    max-height: 50vh;
+}
+@media only screen and (max-width: 768px) {
+    #tarteaucitronRoot span#tarteaucitronDisclaimerAlert {
+        font-size: 16px;
+    }
 }
 #tarteaucitron .tarteaucitronBorder, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronCookiesListMain, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList, #tarteaucitronAlertSmall #tarteaucitronCookiesListContainer #tarteaucitronCookiesList .tarteaucitronHidden, #tarteaucitron #tarteaucitronServices .tarteaucitronMainLine {
     border-color: #333!important;
