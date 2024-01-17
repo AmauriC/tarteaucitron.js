@@ -5131,7 +5131,7 @@ tarteaucitron.services.hotjar = {
     "name": "Hotjar",
     "uri": "https://help.hotjar.com/hc/en-us/categories/115001323967-About-Hotjar",
     "needConsent": true,
-    "cookies": ["hjClosedSurveyInvites", "_hjDonePolls", "_hjMinimizedPolls", "_hjDoneTestersWidgets", "_hjMinimizedTestersWidgets", "_hjDoneSurveys", "_hjIncludedInSample", "_hjShownFeedbackMessage", "_hjAbsoluteSessionInProgress", "_hjIncludeInPageviewSample", "_hjid"],
+    "cookies": ["hjClosedSurveyInvites", "_hjDonePolls", "_hjMinimizedPolls", "_hjShownFeedbackMessage", "_hjAbsoluteSessionInProgress", "_hjid"],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.hotjarId === undefined || tarteaucitron.user.HotjarSv === undefined) {
