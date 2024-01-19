@@ -692,7 +692,7 @@ div#tarteaucitronServices {
 span#tarteaucitronDisclaimerAlert {
     padding: 0 10px;
     display: inline-block;
-    overflow: scroll;
+    overflow-y: auto;
     max-height: 50vh;
 }
 @media only screen and (max-width: 768px) {
