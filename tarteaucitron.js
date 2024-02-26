@@ -928,6 +928,7 @@ var tarteaucitron = {
             if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) {
                 if(true === state && typeof service.js === 'function') {
                     service.js();
+                    tarteaucitron.sendEvent(key + '_loaded');
                 } else if (typeof service.fallback === 'function') {
                     service.fallback();
                 }
@@ -941,7 +942,7 @@ var tarteaucitron = {
         }
 
         tarteaucitron.cookie.checkCount(service.key);
-        tarteaucitron.sendEvent(service.key + '_added')
+        tarteaucitron.sendEvent(service.key + '_added');
     },
     "sendEvent" : function(event_key) {
         if(event_key !== undefined) {
@@ -987,7 +988,7 @@ var tarteaucitron = {
         if (status === true) {
             tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
         } else if (status === false) {
-            tarteaucitron.userInterface.respond(document.getElementById(id + 'Disallowed'), false);
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Denied'), false);
         }
     },
     "userInterface": {
