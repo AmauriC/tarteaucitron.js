@@ -227,6 +227,7 @@ var tarteaucitron = {
                 "closePopup": false,
                 "groupServices": false,
                 "serviceDefaultState": 'wait',
+                "googleConsentMode": false
             },
             params = tarteaucitron.parameters;
 
@@ -256,6 +257,128 @@ var tarteaucitron = {
         tarteaucitron.highPrivacy = tarteaucitron.parameters.highPrivacy;
         tarteaucitron.handleBrowserDNTRequest = tarteaucitron.parameters.handleBrowserDNTRequest;
         tarteaucitron.customCloserId = tarteaucitron.parameters.customCloserId;
+
+        // google consent mode
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+
+            // set the dataLayer and a function to update
+            window.dataLayer = window.dataLayer || [];
+            window.tac_gtag = function tac_gtag() {
+                dataLayer.push(arguments);
+            };
+
+            // default consent to denied
+            window.tac_gtag('consent', 'default', {
+                ad_storage: 'denied',
+                analytics_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 510
+            });
+
+            // if google ads, add a service for personalized ads
+            document.addEventListener('googleads_added', function() {
+
+                // skip if already added
+                if (tarteaucitron.added["gcmads"] === true) {
+                    return;
+                }
+
+                // simple service to control gcm with event
+                tarteaucitron.services.gcmads = {
+                    "key": "gcmads",
+                    "type": "ads",
+                    "name": "Google Ads (personalized ads)",
+                    "uri": "https://support.google.com/analytics/answer/9976101",
+                    "needConsent": true,
+                    "cookies": [],
+                    "js": function() {},
+                    "fallback": function() {}
+                };
+                tarteaucitron.job.push('gcmads');
+
+                // fix the event handler on the buttons
+                var i,
+                    allowBtns = document.getElementsByClassName("tarteaucitronAllow"),
+                    denyBtns = document.getElementsByClassName("tarteaucitronDeny");
+                for (i = 0; i < allowBtns.length; i++) {
+                    tarteaucitron.addClickEventToElement(allowBtns[i], function() {
+                        tarteaucitron.userInterface.respond(this, true);
+                    });
+                }
+                for (i = 0; i < denyBtns.length; i++) {
+                    tarteaucitron.addClickEventToElement(denyBtns[i], function() {
+                        tarteaucitron.userInterface.respond(this, false);
+                    });
+                }
+            });
+
+            // when personalized ads are accepted, accept googleads
+            document.addEventListener('gcmads_allowed', function() {
+                tarteaucitron.setConsent('googleads', true);
+            });
+
+            // personalized ads loaded/allowed, set gcm to granted
+            document.addEventListener('gcmads_loaded', function() {
+                window.tac_gtag('consent', 'update', {
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted'
+                });
+            });
+            document.addEventListener('gcmads_allowed', function() {
+                window.tac_gtag('consent', 'update', {
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted'
+                });
+            });
+
+            // personalized ads disallowed, set gcm to denied
+            document.addEventListener('gcmads_disallowed', function() {
+                window.tac_gtag('consent', 'update', {
+                    ad_user_data: 'denied',
+                    ad_personalization: 'denied'
+                });
+            });
+
+            // google ads loaded/allowed, set gcm to granted
+            document.addEventListener('googleads_loaded', function() {
+                window.tac_gtag('consent', 'update', {
+                    ad_storage: 'granted'
+                });
+            });
+            document.addEventListener('googleads_allowed', function() {
+                window.tac_gtag('consent', 'update', {
+                    ad_storage: 'granted'
+                });
+            });
+
+            // google ads disallowed, disable personalized ads and update gcm
+            document.addEventListener('googleads_disallowed', function() {
+                tarteaucitron.setConsent('gcmads', false);
+                window.tac_gtag('consent', 'update', {
+                    ad_storage: 'denied'
+                });
+            });
+
+            // ga4 loaded/allowed, set gcm to granted
+            document.addEventListener('gtag_loaded', function() {
+                window.tac_gtag('consent', 'update', {
+                    analytics_storage: 'granted'
+                });
+            });
+            document.addEventListener('gtag_allowed', function() {
+                window.tac_gtag('consent', 'update', {
+                    analytics_storage: 'granted'
+                });
+            });
+
+            // ga4 disallowed, update gcm
+            document.addEventListener('gtag_disallowed', function() {
+                window.tac_gtag('consent', 'update', {
+                    analytics_storage: 'denied'
+                });
+            });
+        }
 
         // Step 1: load css
         if ( !tarteaucitron.parameters.useExternalCss ) {
