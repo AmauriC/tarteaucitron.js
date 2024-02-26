@@ -983,6 +983,13 @@ var tarteaucitron = {
 
         return out;
     },
+    "setConsent": function (id, status) {
+        if (status === true) {
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Allowed'), true);
+        } else if (status === false) {
+            tarteaucitron.userInterface.respond(document.getElementById(id + 'Disallowed'), false);
+        }
+    },
     "userInterface": {
         "css": function (id, property, value) {
             "use strict";
