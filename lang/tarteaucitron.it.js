@@ -82,5 +82,8 @@ tarteaucitron.lang = {
     },
     
     "mandatoryTitle": "Cookies obbligatori",
-    "mandatoryText": "Questo sito utilizza cookies necessari per il suo corretto funzionamento che non possono essere disattivati."
+    "mandatoryText": "Questo sito utilizza cookies necessari per il suo corretto funzionamento che non possono essere disattivati.",
+
+    "save": "Salva",
+    "ourpartners": "I nostri partner"
 };

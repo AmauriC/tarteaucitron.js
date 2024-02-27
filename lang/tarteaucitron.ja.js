@@ -2,85 +2,88 @@
 /* min ready */
 tarteaucitron.lang = {
     "middleBarHead": "☝ 🍪",
-    "adblock": "Hello! This site is transparent and lets you chose the 3rd party services you want to allow.",
-    "adblock_call": "Please disable your adblocker to start customizing.",
-    "reload": "Refresh the page",
-    
-    "alertBigScroll": "By continuing to scroll,",
-    "alertBigClick": "If you continue to browse this website,",
-    "alertBig": "you are allowing all third-party services",
+    "adblock": "こんにちは！このサイトは透明で、許可するサードパーティーサービスを選択できます。",
+    "adblock_call": "カスタマイズを開始するには、広告ブロッカーを無効にしてください。",
+    "reload": "ページをリフレッシュ",
+
+    "alertBigScroll": "スクロールを続けることで、",
+    "alertBigClick": "このウェブサイトを引き続き閲覧する場合、",
+    "alertBig": "すべてのサードパーティーサービスを許可しています",
     
     "alertBigPrivacy": "当サイトはクッキーを利用しております。お客様自身でクッキー利用の設定および管理ができます。",
-    "alertSmall": "Manage services",
+    "alertSmall": "サービスを管理",
     "personalize": "カスタマイズする",
     "acceptAll": "全てに同意する",
-    "close": "Close",
+    "close": "閉じる",
 
     "privacyUrl": "プライバシーポリシー",
-    
-    "all": "Preference for all services",
 
-    "info": "Protecting your privacy",
+    "all": "すべてのサービスの設定",
+
+    "info": "プライバシーの保護",
     "disclaimer": "これらの第三者によるサービスを許可することで、サイトの動作に必要なクッキーや他のトラッキング・テクノロジーの使用に同意するものとみなします。",
     "allow": "許可",
     "deny": "拒否",
-    "noCookie": "This service does not use cookie.",
-    "useCookie": "This service can install",
+    "noCookie": "このサービスはクッキーを使用しません。",
+    "useCookie": "このサービスはクッキーをインストールできます。",
     "useCookieCurrent": "このサービスは２つのクッキーを利用します",
-    "useNoCookie": "This service has not installed any cookie.",
+    "useNoCookie": "このサービスはクッキーをインストールしていません。",
     "more": "もっと読む",
     "source": "公式サイトで閲覧する",
-    "credit": "Cookies manager by tarteaucitron.js",
-    "noServices": "This website does not use any cookie requiring your consent.",
+    "credit": "tarteaucitron.js によるクッキー マネージャー",
+    "noServices": "このウェブサイトはあなたの同意が必要なクッキーを使用していません。",
 
-    "toggleInfoBox": "Show/hide informations about cookie storage",
+    "toggleInfoBox": "クッキーの保存に関する情報の表示/非表示",
     "title": "クッキー利用の管理について",
-    "cookieDetail": "Cookie detail for",
-    "ourSite": "on our site",
+    "cookieDetail": "クッキーの詳細",
+    "ourSite": "当サイト上",
     "modalWindow": "(モーダルウィンドウ)",
     "newWindow": "(新しい窓)",
     "allowAll": "すべてのクッキーを許可する",
     "denyAll": "すべてのクッキーを拒否する",
 
-    "icon": "Cookies",
-    
-    "fallback": "is disabled.",
+    "icon": "クッキー",
+
+    "fallback": "が無効になっています。",
     "allowed": "許可",
     "disallowed": "許可されていません",
 
     "ads": {
-        "title": "Advertising network",
-        "details": "Ad networks can generate revenue by selling advertising space on the site."
+        "title": "広告ネットワーク",
+        "details": "広告ネットワークは、サイト上の広告スペースを販売することで収益を生むことができます。"
     },
     "analytic": {
-        "title": "Audience measurement",
-        "details": "The audience measurement services used to generate useful statistics attendance to improve the site."
+        "title": "視聴者数の測定",
+        "details": "サイトの改善のために有益な統計を生成するために使用される視聴者数の測定サービス。"
     },
     "social": {
-        "title": "Social networks",
-        "details": "Social networks can improve the usability of the site and help to promote it via the shares."
+        "title": "ソーシャルネットワーク",
+        "details": "ソーシャルネットワークはサイトの使いやすさを向上させ、共有を通じてプロモーションに役立ちます。"
     },
     "video": {
-        "title": "Videos",
-        "details": "Video sharing services help to add rich media on the site and increase its visibility."
+        "title": "動画",
+        "details": "動画共有サービスはサイトに豊富なメディアを追加し、その可視性を向上させるのに役立ちます。"
     },
     "comment": {
-        "title": "Comments",
-        "details": "Comments managers facilitate the filing of comments and fight against spam."
+        "title": "コメント",
+        "details": "コメントマネージャーはコメントの提出を容易にし、スパムとの戦いをサポートします。"
     },
     "support": {
-        "title": "Support",
-        "details": "Support services allow you to get in touch with the site team and help to improve it."
+        "title": "サポート",
+        "details": "サポートサービスを使用して、サイトのチームと連絡を取り、サイトの改善に寄与できます。"
     },
     "api": {
         "title": "APIs",
-        "details": "APIs are used to load scripts: geolocation, search engines, translations, ..."
+        "details": "APIはスクリプトを読み込むために使用されます：地理位置、検索エンジン、翻訳など。"
     },
     "other": {
-        "title": "Other",
-        "details": "Services to display web content."
+        "title": "その他",
+        "details": "ウェブコンテンツの表示に使用されるサービス。"
     },
-    
-    "mandatoryTitle": "Mandatory cookies",
-    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
+
+    "mandatoryTitle": "必須クッキー",
+    "mandatoryText": "このサイトは、その正常な動作に必要なクッキーを使用しており、これらは無効にできません。",
+
+    "save": "保存",
+    "ourpartners": "当社のパートナー"
 };

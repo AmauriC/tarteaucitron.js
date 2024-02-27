@@ -82,5 +82,8 @@ tarteaucitron.lang = {
     },
     
     "mandatoryTitle": "Privalomi slapukai",
-    "mandatoryText": "Ši svetainė naudoja slapukus, reikalingus tinkamam jos veikimui, kurių negalima išjungti."
+    "mandatoryText": "Ši svetainė naudoja slapukus, reikalingus tinkamam jos veikimui, kurių negalima išjungti.",
+
+    "save": "Išsaugoti",
+    "ourpartners": "Mūsų partneriai"
 };

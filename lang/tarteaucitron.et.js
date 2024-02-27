@@ -82,5 +82,8 @@ tarteaucitron.lang = {
     },
     
     "mandatoryTitle": "Kohustuslikud küpsised",
-    "mandatoryText": "See lehekülg kasutab nõuetekohaseks toimimiseks vajalikke küpsiseid, mida ei saa deaktiveerida."
+    "mandatoryText": "See lehekülg kasutab nõuetekohaseks toimimiseks vajalikke küpsiseid, mida ei saa deaktiveerida.",
+
+    "save": "Salvesta",
+    "ourpartners": "Meie partnerid"
 };

@@ -80,7 +80,10 @@ tarteaucitron.lang = {
         "title": "Alte",
         "details": "Servicii pentru afișarea conținutului web."
     },
-    
-    "mandatoryTitle": "Mandatory cookies",
-    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
+
+    "mandatoryTitle": "Cookie-uri obligatorii",
+    "mandatoryText": "Acest site utilizează cookie-uri necesare pentru buna funcționare, care nu pot fi dezactivate.",
+
+    "save": "Salvare",
+    "ourpartners": "Partenerii noștri"
 };

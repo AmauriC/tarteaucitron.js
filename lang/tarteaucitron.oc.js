@@ -83,5 +83,8 @@ tarteaucitron.lang = {
     },
     
     "mandatoryTitle": "Cookies necessaris",
-    "mandatoryText": "Aqueste site utiliza de cookies necessaris pel seu pròpri foncionament que pòdon pas èsser desactivats."
+    "mandatoryText": "Aqueste site utiliza de cookies necessaris pel seu pròpri foncionament que pòdon pas èsser desactivats.",
+
+    "save": "Enregistrar",
+    "ourpartners": "Nòstres partenaris"
 };

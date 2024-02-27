@@ -85,5 +85,8 @@ tarteaucitron.lang = {
     },
     
     "mandatoryTitle": "Tarpeelliset evästeet",
-    "mandatoryText": "Tämä sivusto käyttää evästeitä, jotka ovat välttämättömiä sen asianmukaisen toiminnan kannalta. Niitä ei voi poistaa käytöstä."
+    "mandatoryText": "Tämä sivusto käyttää evästeitä, jotka ovat välttämättömiä sen asianmukaisen toiminnan kannalta. Niitä ei voi poistaa käytöstä.",
+
+    "save": "Tallenna",
+    "ourpartners": "Kumppanimme"
 };

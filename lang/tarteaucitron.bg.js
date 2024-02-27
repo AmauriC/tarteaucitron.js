@@ -42,7 +42,7 @@ tarteaucitron.lang = {
     "allowAll": "Разреши всички",
     "denyAll": "Забрани всички",
 
-    "icon": "Cookies",
+    "icon": "Бисквитки",
     
     "fallback": "е изключен.",
     "allowed": "Позволен",
@@ -50,37 +50,40 @@ tarteaucitron.lang = {
 
     "ads": {
         "title": "Рекламодатели",
-        "details": "Ad networks can generate revenue by selling advertising space on the site."
+        "details": "Мрежите за реклами могат да генерират приходи, като продават рекламно пространство на сайта."
     },
     "analytic": {
         "title": "Аналитични",
-        "details": "The audience measurement services used to generate useful statistics attendance to improve the site."
+        "details": "Услугите за измерване на аудиторията се използват за генериране на полезна статистика за посещаемостта с цел подобряване на сайта."
     },
     "social": {
         "title": "Социални",
-        "details": "Social networks can improve the usability of the site and help to promote it via the shares."
+        "details": "Социалните мрежи могат да подобрят употребата на сайта и да помогнат за неговото популяризиране чрез споделяне."
     },
     "video": {
         "title": "Видео платформи",
-        "details": "Video sharing services help to add rich media on the site and increase its visibility."
+        "details": "Услугите за споделяне на видео помагат за добавянето на богат медиен съдържание на сайта и увеличаването на видимостта му."
     },
     "comment": {
         "title": "Коментари",
-        "details": "Comments managers facilitate the filing of comments and fight against spam."
+        "details": "Управителите на коментари улесняват подаването на коментари и борбата срещу спама."
     },
     "support": {
         "title": "Поддръжка",
-        "details": "Support services allow you to get in touch with the site team and help to improve it."
+        "details": "Услугите за поддръжка ви позволяват да се свържете с екипа на сайта и да помогнете за неговото подобряване."
     },
     "api": {
         "title": "Функционални",
-        "details": "APIs are used to load scripts: geolocation, search engines, translations, ..."
+        "details": "API се използват за зареждане на скриптове: геолокация, търсачки, преводи, ..."
     },
     "other": {
         "title": "Други",
-        "details": "Services to display web content."
+        "details": "Услуги за показване на уеб съдържание."
     },
-    
-    "mandatoryTitle": "Mandatory cookies",
-    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
+
+    "mandatoryTitle": "Задължителни бисквитки",
+    "mandatoryText": "Този сайт използва бисквитки, необходими за неговото правилно функциониране, които не могат да бъдат деактивирани.",
+
+    "save": "Запазване",
+    "ourpartners": "Нашите партньори"
 };

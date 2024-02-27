@@ -82,5 +82,8 @@ tarteaucitron.lang = {
     },
 
     "mandatoryTitle": "Obligatoresch Cookien",
-    "mandatoryText": "Dëse Site benotzt Cookien déi néideg sinn fir säi richtege Fonctionnement. Si kënnen net ausgeschalt ginn."
+    "mandatoryText": "Dëse Site benotzt Cookien déi néideg sinn fir säi richtege Fonctionnement. Si kënnen net ausgeschalt ginn.",
+
+    "save": "Späicheren",
+    "ourpartners": "Eis Partner"
 };

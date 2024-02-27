@@ -78,7 +78,10 @@ tarteaucitron.lang = {
         "title": "其他",
         "details": "旨在显示网页内容的服务。"
     },
-    
-    "mandatoryTitle": "Mandatory cookies",
-    "mandatoryText": "This site uses cookies necessary for its proper functioning which cannot be deactivated."
+
+    "mandatoryTitle": "强制性Cookie",
+    "mandatoryText": "该网站使用必要的Cookie以保证其正常运行，这些Cookie无法停用。",
+
+    "save": "保存",
+    "ourpartners": "我们的合作伙伴"
 };

@@ -82,5 +82,8 @@ tarteaucitron.lang = {
     },
     
     "mandatoryTitle": "Kötelező sütik",
-    "mandatoryText": "A webhely tartalmának megjelenítéséhez és a felhasználói bejelentkezéshez sütiket használunk amiket nem lehet kikapcsolni."
+    "mandatoryText": "A webhely tartalmának megjelenítéséhez és a felhasználói bejelentkezéshez sütiket használunk amiket nem lehet kikapcsolni.",
+
+    "save": "Mentés",
+    "ourpartners": "Partnereink"
 };
