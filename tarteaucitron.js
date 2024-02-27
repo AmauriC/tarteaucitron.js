@@ -909,7 +909,7 @@ var tarteaucitron = {
                     }
 
                     // accessibility: on click on "Allow" in the site (not in TAC module), move focus to the loaded service's parent 
-                    var allowBtnsInSite = document.querySelectorAll(".tarteaucitronAllow:not(#tarteaucitronRoot .tarteaucitronAllow)");
+                    var allowBtnsInSite = document.querySelectorAll(".tac_activate .tarteaucitronAllow");
                     for (i = 0; i < allowBtnsInSite.length; i++) {
                         tarteaucitron.addClickEventToElement(allowBtnsInSite[i], function () {
                             if(this.closest('.tac_activate') !== null && this.closest('.tac_activate').parentNode !== null) {
