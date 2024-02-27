@@ -838,7 +838,7 @@ tarteaucitron.services.snapchat = {
     "js": function () {
         "use strict";
 
-        if (tarteaucitron.user.snapchatId === undefined || tarteaucitron.user.snapchatEmail === undefined) {
+        if (tarteaucitron.user.snapchatId === undefined) {
             return;
         }
 
@@ -846,9 +846,14 @@ tarteaucitron.services.snapchat = {
             a.handleRequest ? a.handleRequest.apply(a, arguments) : a.queue.push(arguments)
         };
         a.queue = [];
-        window.snaptr('init', tarteaucitron.user.snapchatId, {
-            'user_email': tarteaucitron.user.snapchatEmail
-        });
+
+        if (tarteaucitron.user.snapchatEmail === undefined) {
+            window.snaptr('init', tarteaucitron.user.snapchatId);
+        } else {
+            window.snaptr('init', tarteaucitron.user.snapchatId, {
+                'user_email': tarteaucitron.user.snapchatEmail
+            });
+        }
         window.snaptr('track', 'PAGE_VIEW');
 
         tarteaucitron.addScript('https://sc-static.net/scevent.min.js');
