@@ -14,7 +14,8 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronExpireInDay = (tarteaucitronExpireInDay === undefined || typeof tarteaucitronExpireInDay !== "boolean") ? true : tarteaucitronExpireInDay,
     timeExpire = 31536000000,
     tarteaucitronProLoadServices,
-    tarteaucitronNoAdBlocker = false;
+    tarteaucitronNoAdBlocker = false,
+    tarteaucitronIsLoaded = false;
 
 
 
@@ -196,6 +197,11 @@ var tarteaucitron = {
     },
     "load": function () {
         "use strict";
+
+        if (tarteaucitronIsLoaded === true) {
+            return;
+        }
+
         var cdn = tarteaucitron.cdn,
             language = tarteaucitron.getLanguage(),
             useMinifiedJS = ((cdn.indexOf('cdn.jsdelivr.net') >= 0) || (path.indexOf('.min.') >= 0) || (tarteaucitronUseMin !== '')),
@@ -230,6 +236,9 @@ var tarteaucitron = {
                 "googleConsentMode": false
             },
             params = tarteaucitron.parameters;
+
+        // flag the tac load
+        tarteaucitronIsLoaded = true;
 
         // Don't show the middle bar if we are on the privacy policy or more page
         if (((tarteaucitron.parameters.readmoreLink !== undefined && window.location.href == tarteaucitron.parameters.readmoreLink) || window.location.href == tarteaucitron.parameters.privacyUrl) && tarteaucitron.parameters.orientation == "middle") {
