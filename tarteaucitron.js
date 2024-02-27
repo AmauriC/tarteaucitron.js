@@ -2248,10 +2248,10 @@ var tarteaucitron = {
         return source;
     },
     "getElemWidth": function(elem) {
-        return elem.getAttribute('width') || elem.clientWidth;
+        return tarteaucitron.getElemAttr(elem, 'width') || elem.clientWidth;
     },
     "getElemHeight": function(elem) {
-        return elem.getAttribute('height') || elem.clientHeight;
+        return tarteaucitron.getElemAttr(elem, 'height') || elem.clientHeight;
     },
     "getElemAttr": function (elem, attr) {
         var attribute = elem.getAttribute('data-' + attr) || elem.getAttribute(attr);
