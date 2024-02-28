@@ -233,7 +233,8 @@ var tarteaucitron = {
                 "closePopup": false,
                 "groupServices": false,
                 "serviceDefaultState": 'wait',
-                "googleConsentMode": false
+                "googleConsentMode": false,
+                "partnersList": false
             },
             params = tarteaucitron.parameters;
 
@@ -799,7 +800,6 @@ var tarteaucitron = {
                     }, 100);
                 }
 
-
                 if(tarteaucitron.parameters.groupServices === true) {
                     var tac_group_style = document.createElement('style');
                     tac_group_style.innerHTML = '.tarteaucitronTitle{display:none}';
@@ -848,6 +848,21 @@ var tarteaucitron = {
                         }
                     });
                 }
+
+                // add info about the services on the main banner
+                if (tarteaucitron.parameters.partnersList === true && (tarteaucitron.parameters.orientation === "middle" || tarteaucitron.parameters.orientation === "popup")) {
+                    var liPartners = "";
+                    var tarteaucitronPartnersCat = [];
+                    tarteaucitron.job.forEach(function(id) {
+                        if (tarteaucitronPartnersCat[tarteaucitron.services[id].type] === undefined) {
+                            tarteaucitronPartnersCat[tarteaucitron.services[id].type] = true;
+                            liPartners += "<li>" + tarteaucitron.lang[tarteaucitron.services[id].type].title + "</li>";
+                        }
+                    });
+                    var tacPartnersInfoParent = document.getElementById('tarteaucitronDisclaimerAlert');
+                    tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' (' + tarteaucitron.job.length + ')</b> <ul>' + liPartners + '</ul></div>');
+                }
+
                 tarteaucitron.userInterface.color("", true);
 
                 // add a little timeout to be sure everything is accessible
