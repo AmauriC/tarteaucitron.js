@@ -923,11 +923,13 @@ var tarteaucitron = {
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronSaveButton", function () {
                         tarteaucitron.job.forEach(function(id) {
+                            var timeoutSaveButton = 0;
                             if (tarteaucitron.state[id] !== true) {
+                                timeoutSaveButton = 500;
                                 tarteaucitron.setConsent(id, false);
                             }
-                            setTimeout(tarteaucitron.userInterface.closePanel, 500);
                         });
+                        setTimeout(tarteaucitron.userInterface.closePanel, timeoutSaveButton);
                     });
                     var toggleBtns = document.getElementsByClassName("catToggleBtn"), i;
                     for (i = 0; i < toggleBtns.length; i++) {
