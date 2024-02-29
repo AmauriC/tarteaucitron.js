@@ -863,6 +863,10 @@ var tarteaucitron = {
                     tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' (' + tarteaucitron.job.length + ')</b> <ul>' + liPartners + '</ul></div>');
                 }
 
+                // add a save button
+                var tacSaveButtonParent = document.getElementById('tarteaucitronServices');
+                tacSaveButtonParent.insertAdjacentHTML('beforeend', '<div id="tarteaucitronSave"><button class="tarteaucitronAllow" id="tarteaucitronSaveButton">' + tarteaucitron.lang.save + '</button></div>');
+
                 tarteaucitron.userInterface.color("", true);
 
                 // add a little timeout to be sure everything is accessible
@@ -916,6 +920,14 @@ var tarteaucitron = {
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronCTAButton", function () {
                         location.reload();
+                    });
+                    tarteaucitron.addClickEventToId("tarteaucitronSaveButton", function () {
+                        tarteaucitron.job.forEach(function(id) {
+                            if (tarteaucitron.state[id] !== true) {
+                                tarteaucitron.setConsent(id, false);
+                            }
+                            setTimeout(tarteaucitron.userInterface.closePanel, 500);
+                        });
                     });
                     var toggleBtns = document.getElementsByClassName("catToggleBtn"), i;
                     for (i = 0; i < toggleBtns.length; i++) {
