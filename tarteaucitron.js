@@ -860,12 +860,16 @@ var tarteaucitron = {
                         }
                     });
                     var tacPartnersInfoParent = document.getElementById('tarteaucitronDisclaimerAlert');
-                    tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' (' + tarteaucitron.job.length + ')</b> <ul>' + liPartners + '</ul></div>');
+                    if (tacPartnersInfoParent !== null) {
+                        tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' (' + tarteaucitron.job.length + ')</b> <ul>' + liPartners + '</ul></div>');
+                    }
                 }
 
                 // add a save button
                 var tacSaveButtonParent = document.getElementById('tarteaucitronServices');
-                tacSaveButtonParent.insertAdjacentHTML('beforeend', '<div id="tarteaucitronSave"><button class="tarteaucitronAllow" id="tarteaucitronSaveButton">' + tarteaucitron.lang.save + '</button></div>');
+                if (tacSaveButtonParent !== null) {
+                    tacSaveButtonParent.insertAdjacentHTML('beforeend', '<div id="tarteaucitronSave"><button class="tarteaucitronAllow" id="tarteaucitronSaveButton">' + tarteaucitron.lang.save + '</button></div>');
+                }
 
                 tarteaucitron.userInterface.color("", true);
 
