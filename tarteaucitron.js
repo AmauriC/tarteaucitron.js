@@ -922,8 +922,8 @@ var tarteaucitron = {
                         location.reload();
                     });
                     tarteaucitron.addClickEventToId("tarteaucitronSaveButton", function () {
+                        var timeoutSaveButton = 0;
                         tarteaucitron.job.forEach(function(id) {
-                            var timeoutSaveButton = 0;
                             if (tarteaucitron.state[id] !== true) {
                                 timeoutSaveButton = 500;
                                 tarteaucitron.setConsent(id, false);
