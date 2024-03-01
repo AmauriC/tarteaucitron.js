@@ -851,25 +851,29 @@ var tarteaucitron = {
 
                 // add info about the services on the main banner
                 if (tarteaucitron.parameters.partnersList === true && (tarteaucitron.parameters.orientation === "middle" || tarteaucitron.parameters.orientation === "popup")) {
-                    var liPartners = "";
-                    var tarteaucitronPartnersCat = [];
-                    tarteaucitron.job.forEach(function(id) {
-                        if (tarteaucitronPartnersCat[tarteaucitron.services[id].type] === undefined) {
-                            tarteaucitronPartnersCat[tarteaucitron.services[id].type] = true;
-                            liPartners += "<li>" + tarteaucitron.lang[tarteaucitron.services[id].type].title + "</li>";
+                    setTimeout(function() {
+                        var liPartners = "";
+                        var tarteaucitronPartnersCat = [];
+                        tarteaucitron.job.forEach(function (id) {
+                            if (tarteaucitronPartnersCat[tarteaucitron.services[id].type] === undefined) {
+                                tarteaucitronPartnersCat[tarteaucitron.services[id].type] = true;
+                                liPartners += "<li>" + tarteaucitron.lang[tarteaucitron.services[id].type].title + "</li>";
+                            }
+                        });
+                        var tacPartnersInfoParent = document.getElementById('tarteaucitronDisclaimerAlert');
+                        if (tacPartnersInfoParent !== null) {
+                            tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' (' + tarteaucitron.job.length + ')</b> <ul>' + liPartners + '</ul></div>');
                         }
-                    });
-                    var tacPartnersInfoParent = document.getElementById('tarteaucitronDisclaimerAlert');
-                    if (tacPartnersInfoParent !== null) {
-                        tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' (' + tarteaucitron.job.length + ')</b> <ul>' + liPartners + '</ul></div>');
-                    }
+                    }, 100);
                 }
 
                 // add a save button
-                var tacSaveButtonParent = document.getElementById('tarteaucitronServices');
-                if (tacSaveButtonParent !== null) {
-                    tacSaveButtonParent.insertAdjacentHTML('beforeend', '<div id="tarteaucitronSave"><button class="tarteaucitronAllow" id="tarteaucitronSaveButton">' + tarteaucitron.lang.save + '</button></div>');
-                }
+                setTimeout(function() {
+                    var tacSaveButtonParent = document.getElementById('tarteaucitronServices');
+                    if (tacSaveButtonParent !== null) {
+                        tacSaveButtonParent.insertAdjacentHTML('beforeend', '<div id="tarteaucitronSave"><button class="tarteaucitronAllow" id="tarteaucitronSaveButton">' + tarteaucitron.lang.save + '</button></div>');
+                    }
+                }, 100);
 
                 tarteaucitron.userInterface.color("", true);
 
