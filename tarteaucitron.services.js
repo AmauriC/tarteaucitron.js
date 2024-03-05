@@ -3013,6 +3013,11 @@ tarteaucitron.services.googleads = {
                 tarteaucitron.user.googleadsMore();
             }
         });
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            this.js();
+        }
     }
 };
 
@@ -3055,6 +3060,11 @@ tarteaucitron.services.gtag = {
                 tarteaucitron.user.gtagMore();
             }
         });
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            this.js();
+        }
     }
 };
 

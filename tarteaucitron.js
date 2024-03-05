@@ -283,7 +283,7 @@ var tarteaucitron = {
                 analytics_storage: 'denied',
                 ad_user_data: 'denied',
                 ad_personalization: 'denied',
-                wait_for_update: 510
+                wait_for_update: 800
             });
 
             // if google ads, add a service for personalized ads
@@ -387,6 +387,11 @@ var tarteaucitron = {
                 window.tac_gtag('consent', 'update', {
                     analytics_storage: 'denied'
                 });
+            });
+
+            // allow gtag/googleads by default if consent mode is on
+            window.addEventListener('tac.root_available', function() {
+                tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/js/);
             });
         }
 
