@@ -391,7 +391,7 @@ var tarteaucitron = {
 
             // allow gtag/googleads by default if consent mode is on
             window.addEventListener('tac.root_available', function() {
-                if (tarteaucitron_block !== undefined) {
+                if (typeof tarteaucitron_block !== 'undefined') {
                     tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/js/);
                     tarteaucitron_block.unblock(/www\.googleadservices\.com\/pagead\/conversion/);
                     tarteaucitron_block.unblock(/AW-/);
