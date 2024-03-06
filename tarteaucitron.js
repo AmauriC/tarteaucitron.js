@@ -233,7 +233,7 @@ var tarteaucitron = {
                 "closePopup": false,
                 "groupServices": false,
                 "serviceDefaultState": 'wait',
-                "googleConsentMode": false,
+                "googleConsentMode": true,
                 "partnersList": false
             },
             params = tarteaucitron.parameters;
