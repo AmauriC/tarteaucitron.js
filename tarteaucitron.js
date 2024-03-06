@@ -391,11 +391,13 @@ var tarteaucitron = {
 
             // allow gtag/googleads by default if consent mode is on
             window.addEventListener('tac.root_available', function() {
-                tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/js/);
-                tarteaucitron_block.unblock(/www\.googleadservices\.com\/pagead\/conversion/);
-                tarteaucitron_block.unblock(/AW-/);
-                tarteaucitron_block.unblock(/google-analytics\.com\/analytics\.js/);
-                tarteaucitron_block.unblock(/google-analytics\.com\/ga\.js/);
+                if (tarteaucitron_block !== undefined) {
+                    tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/js/);
+                    tarteaucitron_block.unblock(/www\.googleadservices\.com\/pagead\/conversion/);
+                    tarteaucitron_block.unblock(/AW-/);
+                    tarteaucitron_block.unblock(/google-analytics\.com\/analytics\.js/);
+                    tarteaucitron_block.unblock(/google-analytics\.com\/ga\.js/);
+                }
             });
         }
 
