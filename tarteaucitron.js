@@ -455,7 +455,7 @@ var tarteaucitron = {
                     index,
                     orientation = 'Top',
                     modalAttrs = '',
-                    cat = ['ads', 'analytic', 'api', 'comment', 'social', 'support', 'video', 'other'],
+                    cat = ['ads', 'analytic', 'api', 'comment', 'social', 'support', 'video', 'other', 'google'],
                     i;
 
                 cat = cat.sort(function (a, b) {
