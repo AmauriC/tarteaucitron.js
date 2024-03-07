@@ -84,6 +84,11 @@ tarteaucitron.lang = {
         "details": "Web içeriğini görüntüleme hizmetleri."
     },
 
+    "google": {
+        "title": "Google hizmetleri için özel onay",
+        "details": "Google, verilerinizi izleyici ölçümü, reklam performansı veya size kişiselleştirilmiş reklamlar sunmak için kullanabilir."
+    },
+
     "mandatoryTitle": "Zorunlu Çerezler",
     "mandatoryText": "Bu site, düzgün çalışması için gerekli olan ve devre dışı bırakılamayan çerezleri kullanır.",
 

@@ -81,6 +81,11 @@ tarteaucitron.lang = {
         "details": "Servicii pentru afișarea conținutului web."
     },
 
+    "google": {
+        "title": "Consentiment specific pentru serviciile Google",
+        "details": "Google poate utiliza datele dvs. pentru măsurarea audienței, performanța publicitară sau pentru a vă oferi anunțuri personalizate."
+    },
+
     "mandatoryTitle": "Cookie-uri obligatorii",
     "mandatoryText": "Acest site utilizează cookie-uri necesare pentru buna funcționare, care nu pot fi dezactivate.",
 

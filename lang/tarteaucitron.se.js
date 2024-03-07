@@ -82,6 +82,11 @@ tarteaucitron.lang = {
         "details": "Tjänster för att visa webbinnehåll."
     },
 
+    "google": {
+        "title": "Specifikt samtycke för Googles tjänster",
+        "details": "Google kan använda dina data för publikmätning, reklamprestanda eller för att erbjuda dig personligt anpassade annonser."
+    },
+
     "mandatoryTitle": "Dutkámus čáhci",
     "mandatoryText": "Dát ođđa veahkehuhtii lea geavahuvvon dutkámus čáhciid buoremus boahtteárvvuin, guhte ii leat deaktiverejuvvon.",
 

@@ -38,6 +38,176 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// gcmanalyticsstorage
+tarteaucitron.services.gcmanalyticsstorage = {
+    "key": "gcmanalyticsstorage",
+    "type": "google",
+    "name": "Analytics",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                analytics_storage: 'granted'
+            });
+        }
+    },
+    "fallback": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                analytics_storage: 'denied'
+            });
+        }
+    }
+};
+
+// gcmadstorage
+tarteaucitron.services.gcmadstorage = {
+    "key": "gcmadstorage",
+    "type": "google",
+    "name": "Advertising",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                ad_storage: 'granted'
+            });
+        }
+    },
+    "fallback": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                ad_storage: 'denied'
+            });
+        }
+    }
+};
+
+// gcmadsuserdata
+tarteaucitron.services.gcmadsuserdata = {
+    "key": "gcmadsuserdata",
+    "type": "google",
+    "name": "Personalized Advertising",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                ad_user_data: 'granted',
+                ad_personalization: 'granted'
+            });
+        }
+    },
+    "fallback": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                ad_user_data: 'denied',
+                ad_personalization: 'denied'
+            });
+        }
+    }
+};
+
+// gcmpersonalization
+tarteaucitron.services.gcmpersonalization = {
+    "key": "gcmpersonalization",
+    "type": "google",
+    "name": "Storage",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                personalization_storage: 'granted'
+            });
+        }
+    },
+    "fallback": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                personalization_storage: 'denied'
+            });
+        }
+    }
+};
+
+// gcmfunctionality
+tarteaucitron.services.gcmfunctionality = {
+    "key": "gcmfunctionality",
+    "type": "google",
+    "name": "Functionality",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                functionality_storage: 'granted'
+            });
+        }
+    },
+    "fallback": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                functionality_storage: 'denied'
+            });
+        }
+    }
+};
+
+// gcmsecurity
+tarteaucitron.services.gcmsecurity = {
+    "key": "gcmsecurity",
+    "type": "google",
+    "name": "Security",
+    "uri": "https://policies.google.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                security_storage: 'granted'
+            });
+        }
+    },
+    "fallback": function () {
+        "use strict";
+
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            window.tac_gtag('consent', 'update', {
+                security_storage: 'denied'
+            });
+        }
+    }
+};
+
 // piximedia
 tarteaucitron.services.piximedia = {
     "key": "piximedia",

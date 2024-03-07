@@ -80,6 +80,11 @@ tarteaucitron.lang = {
         "title": "Más",
         "details": "Szolgáltatások webtartalom megjelenítésére."
     },
+
+    "google": {
+        "title": "Speciális hozzájárulás a Google szolgáltatásaihoz",
+        "details": "A Google használhatja az adatait közönségmérésre, reklámhatékonyságra, vagy személyre szabott hirdetések megjelenítésére."
+    },
     
     "mandatoryTitle": "Kötelező sütik",
     "mandatoryText": "A webhely tartalmának megjelenítéséhez és a felhasználói bejelentkezéshez sütiket használunk amiket nem lehet kikapcsolni.",

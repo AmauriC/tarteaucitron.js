@@ -81,6 +81,11 @@ tarteaucitron.lang = {
         "details": "Služby na zobrazovanie webového obsahu."
     },
 
+    "google": {
+        "title": "Špecifický súhlas so službami Google",
+        "details": "Google môže použiť vaše údaje na meranie publika, reklamnú efektivitu alebo na vám ponúkanie personalizovaných reklám."
+    },
+
     "mandatoryTitle": "Povinné súbory cookie",
     "mandatoryText": "Táto stránka používa súbory cookie, ktoré sú nevyhnutné pre jej správne fungovanie a nemôžu byť deaktivované.",
 

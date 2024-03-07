@@ -79,6 +79,11 @@ tarteaucitron.lang = {
         "details": "旨在显示网页内容的服务。"
     },
 
+    "google": {
+        "title": "Google 服务的特定同意",
+        "details": "Google 可能使用您的数据进行受众测量、广告效果评估，或向您提供个性化广告。"
+    },
+
     "mandatoryTitle": "强制性Cookie",
     "mandatoryText": "本站使用必要的Cookie以确保其正常运行，这些Cookie无法停用。",
 

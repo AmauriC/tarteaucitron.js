@@ -80,6 +80,11 @@ tarteaucitron.lang = {
         "title": "Andere",
         "details": "Dienste zum Anzeigen von Web-Inhalten."
     },
+
+    "google": {
+        "title": "Spezifische Zustimmung zu Google-Diensten",
+        "details": "Google kann Ihre Daten zur Messung der Zielgröße, Werbeleistung oder zur Bereitstellung personalisierter Anzeigen verwenden."
+    },
     
     "mandatoryTitle": "Notwendige Cookies",
     "mandatoryText": "Diese Seite nutzt Cookies, um die Bedienung der Website zu ermöglichen, diese können nicht deaktiviert werden",
