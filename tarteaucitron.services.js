@@ -128,7 +128,7 @@ tarteaucitron.services.gcmadsuserdata = {
 tarteaucitron.services.gcmpersonalization = {
     "key": "gcmpersonalization",
     "type": "google",
-    "name": "Storage",
+    "name": "Personalization",
     "uri": "https://policies.google.com/privacy",
     "needConsent": true,
     "cookies": [],
