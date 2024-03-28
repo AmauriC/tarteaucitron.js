@@ -1148,11 +1148,15 @@ span.tarteaucitronTitle.tarteaucitronH3 {
 
 #tarteaucitronCloseCross {
     position:absolute;
-    color: #FFFF;
+    color: #FFF;
     font-size:1.8rem;
     cursor: pointer;
     top: 10px;
     right: 26px
+}
+
+#tarteaucitronCloseCross span {
+    color: inherit;
 }
 
 .tarteaucitron-spacer-20 {

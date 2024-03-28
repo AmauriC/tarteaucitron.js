@@ -15,6 +15,7 @@ tarteaucitron.lang = {
     "acceptAll": "OK, đồng ý",
     "personalize": "Cá nhân",
     "close": "Đóng",
+    "closeBanner": "Ẩn biểu ngữ cookie",
 
     "privacyUrl": "Chính sách bảo mật",
 
