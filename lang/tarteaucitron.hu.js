@@ -15,6 +15,7 @@ tarteaucitron.lang = {
     "personalize": "Beállítások",
     "acceptAll": "OK, elfogadom",
     "close": "Bezár",
+    "closeBanner": "Cookie-szalag elrejtése",
 
     "privacyUrl": "Adatvédelmi irányelvek",
     

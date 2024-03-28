@@ -15,6 +15,7 @@ tarteaucitron.lang = {
     "personalize": "カスタマイズする",
     "acceptAll": "全てに同意する",
     "close": "閉じる",
+    "closeBanner": "クッキー バナーを非表示にする",
 
     "privacyUrl": "プライバシーポリシー",
 

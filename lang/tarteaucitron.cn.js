@@ -14,6 +14,7 @@ tarteaucitron.lang = {
     "acceptAll": "好的，全部接受",
     "personalize": "个性化",
     "close": "关闭",
+    "closeBanner": "隐藏 cookie 横幅",
 
     "privacyUrl": "保密政策",
 
