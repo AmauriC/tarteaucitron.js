@@ -4153,7 +4153,7 @@ tarteaucitron.services.slideshare = {
                 id = tarteaucitron.getElemAttr(x, "data-id"),
                 width = tarteaucitron.getElemAttr(x, "width"),
                 height = tarteaucitron.getElemAttr(x, "height"),
-                url = '//www.slideshare.net/slideshow/embed_code/' + id;
+                url = '//www.slideshare.net/slideshow/embed_code/key/' + id;
 
             return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency allowfullscreen></iframe>';
         });
