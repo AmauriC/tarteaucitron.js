@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "evet, her şeyi kabul edin",
     "personalize": "kişiselleştirmek",
     "close": "kapat",
+    "closeBanner": "Çerez banner'ını gizle",
 
     "privacyUrl": "Gizlilik Politikası",
 

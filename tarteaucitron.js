@@ -802,11 +802,11 @@ var tarteaucitron = {
                 if(tarteaucitron.parameters.closePopup === true){
                     setTimeout(function() {
                         var closeElement = document.getElementById('tarteaucitronAlertBig'),
-                            closeSpan = document.createElement('span');
+                            closeButton = document.createElement('button');
                         if (closeElement) {
-                            closeSpan.textContent = 'X';
-                            closeSpan.setAttribute('id', "tarteaucitronCloseCross");
-                            closeElement.insertBefore(closeSpan, closeElement.firstElementChild);
+                            closeButton.innerHTML = '<span aria-hidden="true">X</span><span class="tac_visually-hidden">' + tarteaucitron.lang.closeBanner + '</span>';
+                            closeButton.setAttribute('id', 'tarteaucitronCloseCross');
+                            closeElement.insertAdjacentElement('beforeend', closeButton);
                         }
                     }, 100);
                 }

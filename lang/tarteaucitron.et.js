@@ -15,6 +15,7 @@ tarteaucitron.lang = {
     "personalize": "Isikupärasta",
     "acceptAll": "OK, nõustu kõigiga",
     "close": "Sulge",
+    "closeBanner": "Peida küpsiste bänner",
 
     "privacyUrl": "Privaatsuspoliitika",
     
