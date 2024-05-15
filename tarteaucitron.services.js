@@ -6559,26 +6559,43 @@ tarteaucitron.services.weborama = {
 
 // tiktok
 tarteaucitron.services.tiktok = {
-    "key": "tiktok",
-    "type": "analytic",
-    "name": "Tiktok",
-    "uri": "https://www.tiktok.com/legal/tiktok-website-cookies-policy",
-    "needConsent": true,
-    "cookies": [],
-    "js": function () {
+    key: "tiktok",
+    type: "analytic",
+    name: "Tiktok",
+    uri: "https://www.tiktok.com/legal/tiktok-website-cookies-policy",
+    needConsent: true,
+    cookies: [],
+    js: function () {
         "use strict";
+        !function (w, d, t) {
+            w.TiktokAnalyticsObject = t;
+            var ttq = w[t] = w[t] || [];
+            ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"], ttq.setAndDefer = function (t, e) {
+                t[e] = function () {
+                    t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                }
+            };
+            for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+            ttq.instance = function (t) {
+                for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+                return e
+            }, ttq.load = function (e, n) {
+                var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
+                ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {};
+                var o = document.createElement("script");
+                o.type = "text/javascript", o.async = !0, o.src = i + "?sdkid=" + e + "&lib=" + t;
+                var a = document.getElementsByTagName("script")[0];
+                a.parentNode.insertBefore(o, a)
+            };
+            ttq.load(tarteaucitron.user.tiktokId);
+            ttq.page();
+        }(window, document, 'ttq');
 
-        if (tarteaucitron.user.tiktokId === undefined) {
-            return;
-        }
-
-        tarteaucitron.addScript('https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=' + tarteaucitron.user.tiktokId);
-
-        if (typeof tarteaucitron.user.tiktokMore === 'function') {
+        if (typeof tarteaucitron.user.tiktokMore === "function") {
             tarteaucitron.user.tiktokMore();
         }
-    }
-};
+    },
+}
 
 // Klaviyo
 tarteaucitron.services.klaviyo = {
