@@ -181,6 +181,7 @@ html body #tarteaucitronRoot button#tarteaucitronSaveButton {
 html body #tarteaucitronRoot div#tarteaucitronSave {
     text-align: right;
     padding: 20px;
+    background: #333;
 }
 /******************/
 
