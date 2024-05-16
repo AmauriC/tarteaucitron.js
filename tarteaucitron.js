@@ -234,7 +234,8 @@ var tarteaucitron = {
                 "groupServices": false,
                 "serviceDefaultState": 'wait',
                 "googleConsentMode": true,
-                "partnersList": false
+                "partnersList": false,
+                "alwaysNeedConsent": false
             },
             params = tarteaucitron.parameters;
 
@@ -1000,8 +1001,13 @@ var tarteaucitron = {
         "use strict";
         var html = '',
             s = tarteaucitron.services,
-            service = s[serviceId],
-            cookie = tarteaucitron.cookie.read(),
+            service = s[serviceId];
+
+        if (tarteaucitron.parameters.alwaysNeedConsent === true) {
+            service.needConsent = true;
+        }
+
+        var cookie = tarteaucitron.cookie.read(),
             hostname = document.location.hostname,
             hostRef = document.referrer.split('/')[2],
             isNavigating = (hostRef === hostname && window.location.href !== tarteaucitron.parameters.privacyUrl),

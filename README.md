@@ -54,7 +54,8 @@ tarteaucitron.init({
     "DenyAllCta" : true, /* Show the deny all button */
     "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
     "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
-
+    "alwaysNeedConsent": false, /* Ask the consent for "Privacy by design" services */
+    
     "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
 
     "removeCredit": false, /* Remove credit link */
