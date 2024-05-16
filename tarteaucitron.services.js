@@ -5345,8 +5345,15 @@ tarteaucitron.services.matomocloud = {
         window._paq.push(["setConsentGiven"]);
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
-        window._paq.push(["trackPageView"]);
         window._paq.push(["enableLinkTracking"]);
+
+        if (tarteaucitron.user.matomoDontTrackPageView !== true) {
+            window._paq.push(["trackPageView"]);
+        }
+
+        if (tarteaucitron.user.matomoFullTracking === true) {
+            window._paq.push(["trackAllContentImpressions"]);
+        }
 
         if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
             tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
