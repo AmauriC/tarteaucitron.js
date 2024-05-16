@@ -6559,14 +6559,19 @@ tarteaucitron.services.weborama = {
 
 // tiktok
 tarteaucitron.services.tiktok = {
-    key: "tiktok",
-    type: "analytic",
-    name: "Tiktok",
-    uri: "https://www.tiktok.com/legal/tiktok-website-cookies-policy",
-    needConsent: true,
-    cookies: [],
-    js: function () {
+    "key": "tiktok",
+    "type": "analytic",
+    "name": "Tiktok",
+    "uri": "https://www.tiktok.com/legal/tiktok-website-cookies-policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.tiktokId === undefined) {
+            return;
+        }
+
         !function (w, d, t) {
             w.TiktokAnalyticsObject = t;
             var ttq = w[t] = w[t] || [];
@@ -6594,8 +6599,8 @@ tarteaucitron.services.tiktok = {
         if (typeof tarteaucitron.user.tiktokMore === "function") {
             tarteaucitron.user.tiktokMore();
         }
-    },
-}
+    }
+};
 
 // Klaviyo
 tarteaucitron.services.klaviyo = {
