@@ -1756,7 +1756,7 @@ var tarteaucitron = {
                     closeButtonHeight = document.getElementById('tarteaucitronClosePanel').offsetHeight;
 
                     // apply
-                    servicesHeight = (mainHeight - closeButtonHeight + 2);
+                    servicesHeight = (mainHeight - closeButtonHeight + 4);
                     tarteaucitron.userInterface.css('tarteaucitronServices', 'height', servicesHeight + 'px');
                     tarteaucitron.userInterface.css('tarteaucitronServices', 'overflow-x', 'auto');
                 }
