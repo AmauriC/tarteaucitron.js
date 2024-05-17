@@ -257,7 +257,9 @@ tarteaucitron.services.screeb = {
 
         tarteaucitron.addScript('https://t.screeb.app/tag.js', '$screeb');
 
-        window.$screeb('init', tarteaucitron.user.screebId);
+        if (tarteaucitron.user.screebDontInit !== true) {
+            window.$screeb('init', tarteaucitron.user.screebId);
+        }
     }
 };
 
