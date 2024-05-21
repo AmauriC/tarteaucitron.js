@@ -38,6 +38,44 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// seamlessaccess
+tarteaucitron.services.seamlessaccess = {
+    "key": "seamlessaccess",
+    "type": "api",
+    "name": "Seamlessaccess",
+    "uri": "https://seamlessaccess.org/about/trust/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        if (tarteaucitron.user.seamlessaccessInitiator === undefined) {
+            return;
+        }
+        var uniqIds = [];
+        tarteaucitron.fallback(['seamlessaccess_button'], function(x) {
+            var uniqId = x.getAttribute('id');
+            if (uniqId === undefined) {
+                uniqId = '_' + Math.random().toString(36).substr(2, 9);
+                x.setAttribute('id', uniqId);
+            }
+            uniqIds.push(uniqId);
+            x.innerHTML = '';
+        }, true);
+        tarteaucitron.addScript('//service.seamlessaccess.org/thiss.js', 'seamlessaccessjs', function() {
+            for (var i = 0; i < uniqIds.length; i += 1) {
+                thiss.DiscoveryComponent.render({
+                    loginInitiatorURL: tarteaucitron.user.seamlessaccessInitiator,
+                }, '#' + uniqIds[i]);
+            }
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'seamlessaccess';
+        tarteaucitron.fallback(['seamlessaccess_button'], tarteaucitron.engage(id));
+    }
+};
+
 // reddit
 tarteaucitron.services.reddit = {
     "key": "reddit",
