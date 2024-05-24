@@ -140,9 +140,9 @@ tarteaucitronCustomText = {
 
 # Thanks to the sponsors 😊
 
-| ![Amaury Cleuziou](https://avatars.githubusercontent.com/u/26336203?v=4&s=60) | ![Peak Crypto](https://tarteaucitron.io/img/logo_peakcrypto.png)  |   |
+| ![Amaury Cleuziou](https://avatars.githubusercontent.com/u/26336203?v=4&s=60) |  |   |
 |---|---|---|
-|  [Amaury Cleuziou](https://github.com/MoryCorp) - first sponsor 🎉 | [Peak Crypto](https://www.peakcrypto.com/) |  |
+|  [Amaury Cleuziou](https://github.com/MoryCorp) - first sponsor 🎉 |  |  |
 | |   |   |
 
 
