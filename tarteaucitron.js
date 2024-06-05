@@ -1114,7 +1114,7 @@ var tarteaucitron = {
             if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) {
                 if(true === state && typeof service.js === 'function') {
                     service.js();
-                    tarteaucitron.sendEvent(key + '_loaded');
+                    tarteaucitron.sendEvent(service.key + '_loaded');
                 } else if (typeof service.fallback === 'function') {
                     service.fallback();
                 }
