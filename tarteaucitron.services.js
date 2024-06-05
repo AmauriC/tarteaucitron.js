@@ -5330,6 +5330,11 @@ tarteaucitron.services.multiplegtag = {
                 });
             });
         }
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            this.js();
+        }
     }
 };
 
