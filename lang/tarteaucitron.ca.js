@@ -90,6 +90,6 @@ tarteaucitron.lang = {
     "mandatoryTitle": "Galetes obligatòries",
     "mandatoryText": "Aquest lloc utilitza galetes necessàries per al seu correcte funcionament que no es poden desactivar (cookies tècniques).",
 
-    "save": "Desarregar",
+    "save": "Desar",
     "ourpartners": "Els nostres socis"
 };
