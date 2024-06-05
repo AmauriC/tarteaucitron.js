@@ -2362,7 +2362,7 @@ tarteaucitron.services.clarity = {
     "name": "Clarity",
     "uri": "https://clarity.microsoft.com/",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['_clck', '_clsk', 'CLID', 'ANONCHK', 'MR', 'MUID', 'SM'],
     "js": function () {
         "use strict";
 
