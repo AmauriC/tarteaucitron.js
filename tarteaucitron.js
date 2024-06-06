@@ -2053,8 +2053,10 @@ var tarteaucitron = {
         }
 
         // get the html lang
-        if (availableLanguages.indexOf(document.documentElement.getAttribute("lang").substr(0, 2)) !== -1) {
-          return document.documentElement.getAttribute("lang").substr(0, 2);
+        if (document.documentElement.getAttribute("lang") !== undefined && document.documentElement.getAttribute("lang") !== null) {
+            if (availableLanguages.indexOf(document.documentElement.getAttribute("lang").substr(0, 2)) !== -1) {
+                return document.documentElement.getAttribute("lang").substr(0, 2);
+            }
         }
 
         if (!navigator) { return defaultLanguage; }
