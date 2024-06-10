@@ -499,11 +499,11 @@ tarteaucitron.services.freshsalescrm = {
   "cookies": [],
   "js": function () {
     "use strict";
-    
+
     if (tarteaucitron.user.freshsalescrmId === undefined) {
      return;
     }
-    
+
     tarteaucitron.addScript('https://eu.fw-cdn.com/' + tarteaucitron.user.freshsalescrmId + '.js');
   }
 };
@@ -5497,6 +5497,14 @@ tarteaucitron.services.matomocloud = {
         window._paq.push(["setConsentGiven"]);
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
+        /*
+         * If a fallback SiteID is configured for CookieLess tracking, add it as an additional tracker
+         * when cookie have been accepted.
+         */
+        if (tarteaucitron.user.matomoFallbackId !== undefined) {
+            window._paq.push(['addTracker', tarteaucitron.user.matomoHost + "matomo.php", tarteaucitron.user.matomoFallbackId]);
+        }
+
         window._paq.push(["enableLinkTracking"]);
 
         if (tarteaucitron.user.matomoDontTrackPageView !== true) {
@@ -5505,6 +5513,17 @@ tarteaucitron.services.matomocloud = {
 
         if (tarteaucitron.user.matomoFullTracking === true) {
             window._paq.push(["trackAllContentImpressions"]);
+        }
+        /*
+         * https://developer.matomo.org/guides/tracking-javascript-guide#tracking-one-domain-and-its-subdomains-in-the-same-website
+         */
+        if (tarteaucitron.user.matomoCustomCookieDomain !== undefined) {
+            // Share the tracking cookie across example.com, www.example.com, subdomain.example.com, ...
+            window._paq.push(["setCookieDomain", tarteaucitron.user.matomoCustomCookieDomain]);
+        }
+        if (tarteaucitron.user.matomoWebsiteDomains !== undefined && Array.isArray(tarteaucitron.user.matomoWebsiteDomains)) {
+            // Tell Matomo the website domain so that clicks on these domains are not tracked as 'Outlinks'
+            window._paq.push(["setDomains", tarteaucitron.user.matomoWebsiteDomains]);
         }
 
         if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
@@ -5540,13 +5559,42 @@ tarteaucitron.services.matomocloud = {
         if (tarteaucitron.user.matomoId === undefined) {
             return;
         }
+        /*
+         * Allow website to use a different SiteID for cookieless tracking
+         */
+        if (tarteaucitron.user.matomoFallbackId === undefined) {
+            tarteaucitron.user.matomoFallbackId = tarteaucitron.user.matomoId;
+        }
 
         window._paq = window._paq || [];
-        window._paq.push(["requireConsent"]);
-        window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
+
+        /*
+         * Allow website to switch to cookie-less tracking if user has not given consent.
+         * Make sure you configured your Matomo site to be GDPR-compliant in cookieless mode.
+         */
+        if (tarteaucitron.user.matomoCookieLessFallback === true) {
+            // Do not use cookies but track requests
+            window._paq.push(["requireCookieConsent"]);
+        } else {
+            // Do not track anything
+            window._paq.push(["requireConsent"]);
+        }
+        window._paq.push(["setSiteId", tarteaucitron.user.matomoFallbackId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
         window._paq.push(["trackPageView"]);
         window._paq.push(["enableLinkTracking"]);
+
+        /*
+         * https://developer.matomo.org/guides/tracking-javascript-guide#tracking-one-domain-and-its-subdomains-in-the-same-website
+         */
+        if (tarteaucitron.user.matomoCustomCookieDomain !== undefined) {
+            // Share the tracking cookie across example.com, www.example.com, subdomain.example.com, ...
+            window._paq.push(["setCookieDomain", tarteaucitron.user.matomoCustomCookieDomain]);
+        }
+        if (tarteaucitron.user.matomoWebsiteDomains !== undefined && Array.isArray(tarteaucitron.user.matomoWebsiteDomains)) {
+            // Tell Matomo the website domain so that clicks on these domains are not tracked as 'Outlinks'
+            window._paq.push(["setDomains", tarteaucitron.user.matomoWebsiteDomains]);
+        }
 
         if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
             tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
