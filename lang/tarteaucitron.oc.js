@@ -3,11 +3,11 @@
 tarteaucitron.lang = {
 
     "middleBarHead": "☝ 🍪",
-    "adblock": "Bonjorn! Aqueste site jòga la transparéncia e vos dòna la possibilitat de causir los servicis tèrces a activar.",
+    "adblock": "Bonjorn ! Aqueste site jòga la transparéncia e vos dòna la possibilitat de causir los servicis tèrces a activar.",
     "adblock_call": "Mercés de desactivar vòstre adblocker per començar la personalizacion.",
     "reload": "Recargar la pagina",
     
-    "alertBigScroll": "En contunhant de desfilar,",
+    "alertBigScroll": "En contunhant de defilar,",
     "alertBigClick": "En seguissent vòstra navigacion,",
     "alertBig": "acceptatz l'utilizacion de servicis tèrces que pòdon installar de cookies",
     
@@ -16,7 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "OK, tot acceptar",
     "personalize": "Personalizar",
     "close": "Tampar",
-    "closeBanner": "Mascar lo bendèth deus cookies",
+    "closeBanner": "Rescondre la bandièra de cookies",
 
     "privacyUrl": "Politica de confidencialitat",
 
@@ -52,7 +52,7 @@ tarteaucitron.lang = {
 
     "ads": {
         "title": "Regias publicitàrias",
-        "details": "Las regias publicitàrias permeton de gerir de revenguts en comercialisant los espacis publicitaris del site."
+        "details": "Las regias publicitàrias permeton de gerir de revenguts en comercializant los espacis publicitaris del site."
     },
     "analytic": {
         "title": "Mesura d'audiéncia",
@@ -71,7 +71,7 @@ tarteaucitron.lang = {
         "details": "Los gestionaris de comentaris facilitan lo depaus de vòstres comentaris e lutan contra los messatges indesirables."
     },
     "support": {
-        "title": "Assiténcia",
+        "title": "Assisténcia",
         "details": "Los servicis d'assisténcia vos permeton de dintrar en contacte amb l'equipa del site e d'ajudar a son melhorament."
     },
     "api": {
@@ -84,8 +84,8 @@ tarteaucitron.lang = {
     },
 
     "google": {
-        "title": "Consentiment específic pels servèis de Google",
-        "details": "Google pòt utilizar vòstres donadas per la mesura de l'audiéncia, lo rendiment publicitari o per vos proposar de publicitats personalizats."
+        "title": "Consentiment especific pels servicis de Google",
+        "details": "Google pòt utilizar vòstras donadas per la mesura de l'audiéncia, lo rendiment publicitari o per vos prepausar de publicitats personalizadas."
     },
     
     "mandatoryTitle": "Cookies necessaris",
