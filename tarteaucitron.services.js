@@ -3449,8 +3449,8 @@ tarteaucitron.services.firebase = {
             return;
         }
 
-        tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js', '', function () {
-            tarteaucitron.addScript('https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js', '', function () {
+        tarteaucitron.addScript('https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js', '', function () {
+            tarteaucitron.addScript('https://www.gstatic.com/firebasejs/10.10.0/firebase-analytics.js', '', function () {
 
                 var firebaseConfig = {
                     apiKey: tarteaucitron.user.firebaseApiKey,
