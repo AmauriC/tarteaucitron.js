@@ -390,6 +390,25 @@ var tarteaucitron = {
                 });
             });
 
+            // multiple ga4 loaded/allowed, set gcm to granted
+            document.addEventListener('multiplegtag_loaded', function() {
+                window.tac_gtag('consent', 'update', {
+                    analytics_storage: 'granted'
+                });
+            });
+            document.addEventListener('multiplegtag_allowed', function() {
+                window.tac_gtag('consent', 'update', {
+                    analytics_storage: 'granted'
+                });
+            });
+
+            // multiple ga4 disallowed, update gcm
+            document.addEventListener('multiplegtag_disallowed', function() {
+                window.tac_gtag('consent', 'update', {
+                    analytics_storage: 'denied'
+                });
+            });
+
             // allow gtag/googleads by default if consent mode is on
             window.addEventListener('tac.root_available', function() {
                 if (typeof tarteaucitron_block !== 'undefined') {
