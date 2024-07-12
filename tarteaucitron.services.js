@@ -3893,7 +3893,7 @@ tarteaucitron.services.linkedin = {
     "key": "linkedin",
     "type": "social",
     "name": "Linkedin",
-    "uri": "https://www.linkedin.com/legal/cookie_policy",
+    "uri": "https://www.linkedin.com/legal/cookie-policy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -5194,7 +5194,7 @@ tarteaucitron.services.linkedininsighttag = {
     "key": "linkedininsighttag",
     "type": "ads",
     "name": "Linkedin Insight",
-    "uri": "https://www.linkedin.com/legal/cookie_policy",
+    "uri": "https://www.linkedin.com/legal/cookie-policy",
     "needConsent": true,
     "cookies": ['li_fat_id'],
     "js": function () {
