@@ -2285,6 +2285,38 @@ tarteaucitron.services.calameo = {
     }
 };
 
+// calameolibrary
+tarteaucitron.services.calameolibrary = {
+    "key": "calameolibrary",
+    "type": "video",
+    "name": "Calameo Library",
+    "uri": "https://fr.calameo.com/privacy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['calameolibrary-canvas'], function (x) {
+            var frame_title = tarteaucitron.getElemAttr(x, "title") || 'Calameo iframe',
+                id = tarteaucitron.getElemAttr(x, "data-id"),
+                width = tarteaucitron.getElemAttr(x, "width"),
+                height = tarteaucitron.getElemAttr(x, "height"),
+                url = '//v.calameo.com/library/?type=subscription&id=' + id,
+                allowfullscreen = tarteaucitron.getElemAttr(x, "allowfullscreen");
+
+            return '<iframe title="' + frame_title + '" src="' + url + '" width="' + width + '" height="' + height + '" scrolling="no" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'calameolibrary';
+        tarteaucitron.fallback(['calameolibrary-canvas'], function (elem) {
+            elem.style.width = elem.getAttribute('width') + 'px';
+            elem.style.height = elem.getAttribute('height') + 'px';
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // clicky
 tarteaucitron.services.clicky = {
     "key": "clicky",
