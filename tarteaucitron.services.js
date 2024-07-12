@@ -38,6 +38,30 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// markerio
+tarteaucitron.services.markerio = {
+    "key": "markerio",
+    "type": "support",
+    "name": "Marker.io",
+    "uri": "https://marker.io/cookie-policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.markerioProjectId === undefined) {
+            return;
+        }
+
+        window.markerConfig = {
+            project: tarteaucitron.user.markerioProjectId,
+            source: 'snippet'
+        };
+
+        !function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);
+    }
+};
+
 // tolkaigenii
 tarteaucitron.services.tolkaigenii = {
     "key": "tolkaigenii",
