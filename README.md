@@ -140,10 +140,10 @@ tarteaucitronCustomText = {
 
 # Thanks to the sponsors 😊
 
-| ![Amaury Cleuziou](https://avatars.githubusercontent.com/u/26336203?v=4&s=60) |  |   |
-|---|---|---|
-|  [Amaury Cleuziou](https://github.com/MoryCorp) - first sponsor 🎉 |  |  |
-| |   |   |
+| ![Amaury Cleuziou](https://avatars.githubusercontent.com/u/26336203?v=4&s=60) | ![Route4me](https://tarteaucitron.io/images/route4me-min.png) |   |
+|---|---------------------------------------------------------------|---|
+|  [Amaury Cleuziou](https://github.com/MoryCorp) - first sponsor 🎉 | [Route Optimizer and Route Planner Software](https://route4me.com)                              |  |
+| |                                                               |   |
 
 
 # 600M on the pro version
