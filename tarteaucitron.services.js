@@ -53,7 +53,7 @@ tarteaucitron.services.skaze = {
             return;
         }
 
-        var skaze = skaze || {};
+        window.skaze = window.skaze || {};
         tarteaucitron.addScript('https://events.sk.ht/' + tarteaucitron.user.skazeIdentifier + '/lib.js', '', function() {
             skaze.cmd = skaze.cmd || [];
             skaze.cmd.push(function() {
