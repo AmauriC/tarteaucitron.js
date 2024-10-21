@@ -1133,12 +1133,18 @@ var tarteaucitron = {
             if (typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) {
                 if(true === state && typeof service.js === 'function') {
                     service.js();
-                    tarteaucitron.sendEvent(service.key + '_loaded');
                 } else if (typeof service.fallback === 'function') {
                     service.fallback();
                 }
             }
 
+            if (true === state) {
+                tarteaucitron.sendEvent(service.key + '_loaded');
+            }
+
+            if (true === state || false === state) {
+                tarteaucitron.state[service.key] = state;
+            }
             tarteaucitron.userInterface.color(service.key, state);
 
             if( 'wait' === state ) {
