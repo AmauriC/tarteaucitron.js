@@ -571,11 +571,11 @@ tarteaucitron.services.freshsalescrm = {
   "cookies": [],
   "js": function () {
     "use strict";
-    
+
     if (tarteaucitron.user.freshsalescrmId === undefined) {
      return;
     }
-    
+
     tarteaucitron.addScript('https://eu.fw-cdn.com/' + tarteaucitron.user.freshsalescrmId + '.js');
   }
 };
@@ -2472,7 +2472,9 @@ tarteaucitron.services.clarity = {
 
         window["clarity"] = window["clarity"] || function () { (window["clarity"].q = window["clarity"].q || []).push(arguments) };
 
-        tarteaucitron.addScript('https://www.clarity.ms/tag/' + tarteaucitron.user.clarity);
+        tarteaucitron.addScript('https://www.clarity.ms/tag/' + tarteaucitron.user.clarity, '', function() {
+            window["clarity"]("consent");
+        });
     }
 };
 
