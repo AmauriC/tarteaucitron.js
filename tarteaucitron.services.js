@@ -2473,6 +2473,11 @@ tarteaucitron.services.clarity = {
         window["clarity"] = window["clarity"] || function () { (window["clarity"].q = window["clarity"].q || []).push(arguments) };
 
         tarteaucitron.addScript('https://www.clarity.ms/tag/' + tarteaucitron.user.clarity);
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.bingConsentMode === true) {
+            this.js();
+        }
     }
 };
 
@@ -5745,6 +5750,11 @@ tarteaucitron.services.bingads = {
                 tarteaucitron.user.bingadsMore();
             }
         });
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.bingConsentMode === true) {
+            this.js();
+        }
     }
 };
 

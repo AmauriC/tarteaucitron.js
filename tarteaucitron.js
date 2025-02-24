@@ -234,6 +234,7 @@ var tarteaucitron = {
                 "groupServices": false,
                 "serviceDefaultState": 'wait',
                 "googleConsentMode": true,
+                "bingConsentMode": true,
                 "partnersList": false,
                 "alwaysNeedConsent": false
             },
@@ -268,6 +269,30 @@ var tarteaucitron = {
         tarteaucitron.highPrivacy = tarteaucitron.parameters.highPrivacy;
         tarteaucitron.handleBrowserDNTRequest = tarteaucitron.parameters.handleBrowserDNTRequest;
         tarteaucitron.customCloserId = tarteaucitron.parameters.customCloserId;
+        
+        // bing consent mode
+        if (tarteaucitron.parameters.bingConsentMode === true) {
+            window.uetq = window.uetq || [];
+            window.uetq.push('consent', 'default', {'ad_storage': 'denied'});
+            document.addEventListener('clarity_loaded', function () {
+                window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
+            });
+            document.addEventListener('clarity_allowed', function () {
+                window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
+            });
+            document.addEventListener('clarity_disallowed', function () {
+                window.uetq.push('consent', 'update', {'ad_storage': 'denied'});
+            });
+            document.addEventListener('bingads_loaded', function () {
+                window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
+            });
+            document.addEventListener('bingads_allowed', function () {
+                window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
+            });
+            document.addEventListener('bingads_disallowed', function () {
+                window.uetq.push('consent', 'update', {'ad_storage': 'denied'});
+            });
+        }
 
         // google consent mode
         if (tarteaucitron.parameters.googleConsentMode === true) {
