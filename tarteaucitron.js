@@ -274,6 +274,7 @@ var tarteaucitron = {
         if (tarteaucitron.parameters.bingConsentMode === true) {
             window.uetq = window.uetq || [];
             window.uetq.push('consent', 'default', {'ad_storage': 'denied'});
+            
             document.addEventListener('clarity_loaded', function () {
                 window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
             });
@@ -291,6 +292,13 @@ var tarteaucitron = {
             });
             document.addEventListener('bingads_disallowed', function () {
                 window.uetq.push('consent', 'update', {'ad_storage': 'denied'});
+            });
+
+            window.addEventListener('tac.root_available', function() {
+                if (typeof tarteaucitron_block !== 'undefined') {
+                    tarteaucitron_block.unblock(/clarity\.ms/);
+                    tarteaucitron_block.unblock(/bat\.bing\.com/);
+                }
             });
         }
 
