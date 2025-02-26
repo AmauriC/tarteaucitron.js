@@ -79,7 +79,7 @@ tarteaucitron.init({
 ```
 
 # Add a service
-[Visit tarteaucitron.io](https://tarteaucitron.io/en/free-installation-open-source/)
+[Installation guide](https://tarteaucitron.io/en/free-installation-open-source/)
 
 # Customization
 
