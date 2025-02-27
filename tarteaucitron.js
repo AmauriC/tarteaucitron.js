@@ -269,6 +269,15 @@ var tarteaucitron = {
         tarteaucitron.highPrivacy = tarteaucitron.parameters.highPrivacy;
         tarteaucitron.handleBrowserDNTRequest = tarteaucitron.parameters.handleBrowserDNTRequest;
         tarteaucitron.customCloserId = tarteaucitron.parameters.customCloserId;
+
+        // update dataLayer when consent is updated
+        document.addEventListener('tac.consent_updated', function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'tac_consent_update',
+                tacAuthorizedVendors: tarteaucitron.job.filter(job => tarteaucitron.state[job] === true)
+            });
+        });
         
         // bing consent mode
         if (tarteaucitron.parameters.bingConsentMode === true) {
