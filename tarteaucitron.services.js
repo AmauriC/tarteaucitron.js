@@ -5970,21 +5970,21 @@ tarteaucitron.services.faciliti = {
     "key": "faciliti",
     "type": "other",
     "name": "Facil'ITI",
-    "uri": "https://ws.facil-iti.com/mentions-legales.html",
+    "uri": "https://www.facil-iti.com/legal-terms/",
     "needConsent": true,
-    "cookies": ['FACIL_ITI_LS'],
+    "cookies": ['FACIL_ITI'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.facilitiID === undefined) {
             return;
         }
 
-        (function (w, d, s, f) {
-            w[f] = w[f] || { conf: function () { (w[f].data = w[f].data || []).push(arguments); } };
-            var l = d.createElement(s), e = d.getElementsByTagName(s)[0];
-            l.async = 1; l.src = 'https://ws.facil-iti.com/tag/faciliti-tag.min.js'; e.parentNode.insertBefore(l, e);
-        }(window, document, 'script', 'FACIL_ITI'));
-        FACIL_ITI.conf('userId', tarteaucitron.user.facilitiID);
+        (function () {
+            var fs = document.createElement("script");
+            fs.setAttribute("src", "https://cdn.facil-iti.app/tags/faciliti-tag.min.js");
+            fs.dataset.applicationIdentifier = tarteaucitron.user.facilitiID;
+            document.head.appendChild(fs);
+        }());
     }
 };
 
