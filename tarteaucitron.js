@@ -2284,28 +2284,19 @@ var tarteaucitron = {
     },
     "fallback": function (matchClass, content, noInner) {
         "use strict";
-        var elems = document.getElementsByTagName('*'),
-            i,
-            index = 0;
-
-        for (i in elems) {
-            if (elems[i] !== undefined) {
-                for (index = 0; index < matchClass.length; index += 1) {
-                    if ((' ' + elems[i].className + ' ')
-                            .indexOf(' ' + matchClass[index] + ' ') > -1) {
-                        if (typeof content === 'function') {
-                            if (noInner === true) {
-                                content(elems[i]);
-                            } else {
-                                elems[i].innerHTML = content(elems[i]);
-                            }
-                        } else {
-                            elems[i].innerHTML = content;
-                        }
-                    }
+        const selector = matchClass.map(cls => `.${cls}`).join(', ');
+        const elems = document.querySelectorAll(selector);
+        elems.forEach((elem) => {
+            if (typeof content === 'function') {
+                if (noInner === true) {
+                    content(elem);
+                } else {
+                    elem.innerHTML = content(elem);
                 }
+            } else {
+                elem.innerHTML = content;
             }
-        }
+        });
     },
     "engage": function (id) {
         "use strict";
