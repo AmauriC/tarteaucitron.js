@@ -1056,6 +1056,15 @@ var tarteaucitron = {
             s = tarteaucitron.services,
             service = s[serviceId];
 
+        if (typeof service === "undefined") {
+
+            var serviceToRemoveIndex = tarteaucitron.job.indexOf(serviceId);
+            if (serviceToRemoveIndex !== -1) {
+                tarteaucitron.job.splice(serviceToRemoveIndex, 1);
+            }
+            return;
+        }
+
         if (tarteaucitron.parameters.alwaysNeedConsent === true) {
             service.needConsent = true;
         }
