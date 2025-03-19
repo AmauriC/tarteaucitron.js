@@ -886,7 +886,7 @@ var tarteaucitron = {
                             html += '   <div class="tarteaucitronName">';
                             html += '       <span class="tarteaucitronH3" role="heading" aria-level="2">'+tarteaucitron.lang[cat].title+'</span>';
                             html += '       <span>'+tarteaucitron.lang[cat].details+'</span>';
-                            html += '   <button type="button" aria-expanded="false" class="tarteaucitron-toggle-group" id="tarteaucitron-toggle-group-'+cat+'">'+tarteaucitron.lang.alertSmall+' ('+document.getElementById("tarteaucitronServices_"+cat).childElementCount+')</button>';
+                            html += '   <button type="button" aria-expanded="false" class="tarteaucitron-toggle-group" id="tarteaucitron-toggle-group-'+cat+'">'+tarteaucitron.lang.alertSmall+' <span id="tarteaucitronCounter-'+cat+'"></span></button>';
                             html += '   </div>';
                             html += '   <div class="tarteaucitronAsk" id="tarteaucitron-group-'+cat+'">';
                             html += '       <button type="button" aria-label="' + tarteaucitron.lang.allow + ' ' + tarteaucitron.lang[cat].title + '" class="tarteaucitronAllow" id="tarteaucitron-accept-group-'+cat+'">';
@@ -925,17 +925,9 @@ var tarteaucitron = {
                 // add info about the services on the main banner
                 if (tarteaucitron.parameters.partnersList === true && (tarteaucitron.parameters.orientation === "middle" || tarteaucitron.parameters.orientation === "popup")) {
                     setTimeout(function() {
-                        var liPartners = "";
-                        var tarteaucitronPartnersCat = [];
-                        tarteaucitron.job.forEach(function (id) {
-                            if (tarteaucitronPartnersCat[tarteaucitron.services[id].type] === undefined) {
-                                tarteaucitronPartnersCat[tarteaucitron.services[id].type] = true;
-                                liPartners += "<li>" + tarteaucitron.lang[tarteaucitron.services[id].type].title + "</li>";
-                            }
-                        });
                         var tacPartnersInfoParent = document.getElementById('tarteaucitronDisclaimerAlert');
                         if (tacPartnersInfoParent !== null) {
-                            tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' (' + tarteaucitron.job.length + ')</b> <ul>' + liPartners + '</ul></div>');
+                            tacPartnersInfoParent.insertAdjacentHTML('beforeend', '<div class="tarteaucitronPartnersList"><b>' + tarteaucitron.lang.ourpartners + ' <span id="tarteaucitronCounter-all"></span></b> <ul id="tarteaucitronCounter-list"></ul></div>');
                         }
                     }, 100);
                 }
@@ -1527,8 +1519,34 @@ var tarteaucitron = {
                 }
                 groupdenied = 0;
                 groupallowed = 0;
+
+                if (document.getElementById('tarteaucitronCounter-'+cat)) {
+                    document.getElementById('tarteaucitronCounter-'+cat).innerHTML = '('+document.getElementById("tarteaucitronServices_"+cat).childElementCount+')';
+                }
             });
 
+            if (document.getElementById('tarteaucitronCounter-all')) {
+                document.getElementById('tarteaucitronCounter-all').innerHTML = '('+tarteaucitron.job.length+')';
+            }
+            if (document.getElementById('tarteaucitronCounter-list')) {
+
+                var liPartners = "";
+                var tarteaucitronPartnersCat = [];
+                var titles = [];
+
+                tarteaucitron.job.forEach(function (id) {
+                    if (tarteaucitronPartnersCat[tarteaucitron.services[id].type] === undefined) {
+                        tarteaucitronPartnersCat[tarteaucitron.services[id].type] = true;
+                        titles.push(tarteaucitron.lang[tarteaucitron.services[id].type].title);
+                    }
+                });
+                titles.sort();
+                titles.forEach(function (title) {
+                    liPartners += "<li>" + title + "</li>";
+                });
+
+                document.getElementById('tarteaucitronCounter-list').innerHTML = liPartners;
+            }
         },
         "openPanel": function () {
             "use strict";
