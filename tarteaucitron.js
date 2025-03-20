@@ -18,7 +18,6 @@ var scripts = document.getElementsByTagName('script'),
     tarteaucitronIsLoaded = false;
 
 
-
 var tarteaucitron = {
     "version": 1.19,
     "cdn": cdn,
