@@ -3,8 +3,6 @@
 [![npm](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs) [![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors) [![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub)](https://github.com/sponsors/AmauriC) 
 
 
-![alt text](https://tarteaucitron.io/tarteaucitron.png "tarteaucitron.io")
-
 👋 Hey, I'm Amauri, a french dev that build a GDPR friendly cookie manager.
 
 tarteaucitron was initially a simple script for my personal blog (in 2013), a few months later, the Github repository is opened and tarteaucitron is now reliable and recognized.
@@ -73,6 +71,7 @@ tarteaucitron.init({
     // "customCloserId": "", /* Optional a11y: Custom element ID used to open the panel */
 
     "googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
+    "bingConsentMode": true, /* Enable Bing Consent Mode for Clarity and Bing Ads */
     
     "partnersList": false /* Details the number of partners on the popup and middle banner */
 });
@@ -80,7 +79,7 @@ tarteaucitron.init({
 ```
 
 # Add a service
-[Visit tarteaucitron.io](https://tarteaucitron.io/en/install/)
+[Installation guide](https://tarteaucitron.io/en/free-installation-open-source/)
 
 # Customization
 
@@ -146,14 +145,3 @@ tarteaucitronCustomText = {
 | |                                                               |   |
 
 
-# 600M on the pro version
-
-Every month, hundreds of millions of cookies 🍪 are placed after the user's consent or simply refused.
-
-[![jsdelivr](https://tarteaucitron.io/jsdelivr.png)](https://www.jsdelivr.com/package/gh/AmauriC/tarteaucitron.js)
-
-# Used by all type of website 
-
-Tarteaucitron has been around for years and is now used by thousands of companies, government sites, web agencies, ... 🦾
-
-[![Builtwith](https://tarteaucitron.io/builtwith.png)](https://trends.builtwith.com/widgets/tarteaucitron.js)
