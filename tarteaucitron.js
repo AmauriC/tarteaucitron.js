@@ -235,6 +235,7 @@ var tarteaucitron = {
                 "serviceDefaultState": 'wait',
                 "googleConsentMode": true,
                 "bingConsentMode": true,
+                "dataLayer": false,
                 "partnersList": false,
                 "alwaysNeedConsent": false
             },
@@ -271,13 +272,15 @@ var tarteaucitron = {
         tarteaucitron.customCloserId = tarteaucitron.parameters.customCloserId;
 
         // update dataLayer when consent is updated
-        document.addEventListener('tac.consent_updated', function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                event: 'tac_consent_update',
-                tacAuthorizedVendors: tarteaucitron.job.filter(job => tarteaucitron.state[job] === true)
+        if (tarteaucitron.parameters.dataLayer === true) {
+            document.addEventListener('tac.consent_updated', function () {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: 'tac_consent_update',
+                    tacAuthorizedVendors: tarteaucitron.job.filter(job => tarteaucitron.state[job] === true)
+                });
             });
-        });
+        }
         
         // bing consent mode
         if (tarteaucitron.parameters.bingConsentMode === true) {
