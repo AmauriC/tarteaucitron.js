@@ -540,9 +540,9 @@ var tarteaucitron = {
                 }
                 html += '<div id="tarteaucitron" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" tabindex="-1">';
                 if (tarteaucitron.reloadThePage) {
-                    html += '   <button type="button" id="tarteaucitronClosePanel" aria-label="' + tarteaucitron.lang.close + ' (' + tarteaucitron.lang.reload + ')" title="' + tarteaucitron.lang.close + ' (' + tarteaucitron.lang.reload + ')">';
+                    html += '   <button type="button" id="tarteaucitronClosePanel" aria-describedby="dialogTitle" aria-label="' + tarteaucitron.lang.close + ' (' + tarteaucitron.lang.reload + ')" title="' + tarteaucitron.lang.close + ' (' + tarteaucitron.lang.reload + ')">';
                 } else {
-                    html += '   <button type="button" id="tarteaucitronClosePanel">';
+                    html += '   <button type="button" id="tarteaucitronClosePanel" aria-describedby="dialogTitle" >';
                 }
                 html += '       ' + tarteaucitron.lang.close;
                 html += '   </button>';
