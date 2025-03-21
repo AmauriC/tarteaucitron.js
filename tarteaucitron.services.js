@@ -38,6 +38,28 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// goldenbees
+tarteaucitron.services.goldenbees = {
+    "key": "goldenbees",
+    "type": "ads",
+    "name": "Golden Bees",
+    "uri": "https://www.goldenbees.fr/politique-confidentialite",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.goldenbeesId === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://cdn.goldenbees.fr/proxy?url=http%3A%2F%2Fstatic.goldenbees.fr%2Fcdn%2Fjs%2Fgtag%2Fgoldentag-min.js&attachment=0', '', function() {
+            window.gbTag = GbTagBuilder.build(tarteaucitron.user.goldenbeesId);
+            window.gbTag.fire();
+        });
+    }
+};
+
 // weply
 tarteaucitron.services.weply = {
     "key": "weply",
