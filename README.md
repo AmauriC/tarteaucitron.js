@@ -72,6 +72,9 @@ tarteaucitron.init({
 
     "googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
     "bingConsentMode": true, /* Enable Bing Consent Mode for Clarity and Bing Ads */
+
+    "dataLayer": false, /* Send an event to dataLayer with the services status */
+    "serverSide": false, /* Server side only, tags are not loaded client side */
     
     "partnersList": false /* Details the number of partners on the popup and middle banner */
 });
