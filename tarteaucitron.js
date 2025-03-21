@@ -273,6 +273,15 @@ var tarteaucitron = {
 
         // update dataLayer when consent is updated
         if (tarteaucitron.parameters.dataLayer === true) {
+            window.addEventListener('tac.root_available', function() {
+                setTimeout(function() {
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: 'tac_consent_update',
+                        tacAuthorizedVendors: tarteaucitron.job.filter(job => tarteaucitron.state[job] === true)
+                    });
+                }, 200);
+            });
             document.addEventListener('tac.consent_updated', function () {
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
