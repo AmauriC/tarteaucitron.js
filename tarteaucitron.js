@@ -2431,7 +2431,7 @@ var tarteaucitron = {
         return tarteaucitron.getElemAttr(elem, 'height') || elem.clientHeight;
     },
     "getElemAttr": function (elem, attr) {
-        var attribute = elem.getAttribute('data-' + attr) || elem.getAttribute(attr);
+        var attribute = elem.getAttribute('data-' + attr) || elem.getAttribute(attr) || elem.getAttribute(attr.startsWith('data-') ? attr.slice(5) : attr);
 
         if (typeof attribute === 'string') {
             return tarteaucitron.fixSelfXSS(attribute);

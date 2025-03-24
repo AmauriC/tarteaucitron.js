@@ -185,7 +185,7 @@ tarteaucitron.services.seamlessaccess = {
         }
         var uniqIds = [];
         tarteaucitron.fallback(['seamlessaccess_button'], function(x) {
-            var uniqId = x.getAttribute('id');
+            var uniqId = tarteaucitron.getElemAttr(x, 'id');
             if (uniqId === undefined) {
                 uniqId = '_' + Math.random().toString(36).substr(2, 9);
                 x.setAttribute('id', uniqId);
@@ -1269,8 +1269,8 @@ tarteaucitron.services.trustpilot = {
         "use strict";
         var id = 'trustpilot';
         tarteaucitron.fallback(['trustpilot-widget'], function (elem) {
-            elem.style.width = elem.getAttribute('data-style-width');
-            elem.style.height = elem.getAttribute('data-style-height');
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'data-style-width');
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'data-style-height');
             return tarteaucitron.engage(id);
         });
     }
@@ -1382,8 +1382,8 @@ tarteaucitron.services.videas = {
         "use strict";
         var id = 'videas';
         tarteaucitron.fallback(['tac_videas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1761,14 +1761,14 @@ tarteaucitron.services.xandrsegment = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = '//ib.adnxs.com/seg?t=2&';
-            uri += 'add=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentAdd') + '&';
-            uri += 'add_code=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentAddCode') + '&';
-            uri += 'remove=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRemove') + '&';
-            uri += 'remove_code=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRemoveCode') + '&';
-            uri += 'member=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentMember') + '&';
-            uri += 'redir=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentRedir') + '&';
-            uri += 'value=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentValue') + '&';
-            uri += 'other=' + document.getElementById(uniqIds[i]).getAttribute('xandrsegmentOther');
+            uri += 'add=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentAdd') + '&';
+            uri += 'add_code=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentAddCode') + '&';
+            uri += 'remove=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentRemove') + '&';
+            uri += 'remove_code=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentRemoveCode') + '&';
+            uri += 'member=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentMember') + '&';
+            uri += 'redir=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentRedir') + '&';
+            uri += 'value=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentValue') + '&';
+            uri += 'other=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrsegmentOther');
 
             document.getElementById(uniqIds[i]).innerHTML = '<img src=\'' + uri + '\' width=\'1\' height=\'1\' />';
         }
@@ -1803,12 +1803,12 @@ tarteaucitron.services.xandrconversion = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = '//ib.adnxs.com/px?t=2&';
-            uri += 'id=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionId') + '&';
-            uri += 'seg=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionSeg') + '&';
-            uri += 'order_id=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionOrderId') + '&';
-            uri += 'value=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionValue') + '&';
-            uri += 'redir=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionRedir') + '&';
-            uri += 'other=' + document.getElementById(uniqIds[i]).getAttribute('xandrconversionOther');
+            uri += 'id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrconversionId') + '&';
+            uri += 'seg=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrconversionSeg') + '&';
+            uri += 'order_id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrconversionOrderId') + '&';
+            uri += 'value=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrconversionValue') + '&';
+            uri += 'redir=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrconversionRedir') + '&';
+            uri += 'other=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'xandrconversionOther');
 
             document.getElementById(uniqIds[i]).innerHTML = '<img src=\'' + uri + '\' width=\'1\' height=\'1\' />';
         }
@@ -1844,8 +1844,8 @@ tarteaucitron.services.helloasso = {
         "use strict";
         var id = 'helloasso';
         tarteaucitron.fallback(['tac_helloasso'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1875,8 +1875,8 @@ tarteaucitron.services.podcloud = {
         "use strict";
         var id = 'podcloud';
         tarteaucitron.fallback(['tac_podcloud'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -1908,8 +1908,8 @@ tarteaucitron.services.facebookpost = {
         "use strict";
         var id = 'facebookpost';
         tarteaucitron.fallback(['tac_facebookpost'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2106,19 +2106,19 @@ tarteaucitron.services.aduptech_ads = {
             for (var i = 0; i < elements.length; i++) {
                 var element = elements[i];
 
-                if (!element.getAttribute("id")) {
+                if (!tarteaucitron.getElemAttr(element, "id")) {
                     element.setAttribute("id", IDENTIFIER + Math.random().toString(36).substr(2, 9));
                 }
 
-                window.uAd.embed(element.getAttribute("id"), {
-                    placementKey: element.getAttribute("placementKey"),
-                    responsive: Boolean(element.getAttribute("responsive")),
-                    lazy: Boolean(element.getAttribute("lazy")),
-                    adtest: Boolean(element.getAttribute("test")),
-                    query: element.getAttribute("query") || "",
-                    minCpc: element.getAttribute("minCpc") || "",
-                    pageUrl: element.getAttribute("pageUrl") || "",
-                    skip: element.getAttribute("skip") || ""
+                window.uAd.embed(tarteaucitron.getElemAttr(element, "id"), {
+                    placementKey: tarteaucitron.getElemAttr(element, "placementKey"),
+                    responsive: Boolean(tarteaucitron.getElemAttr(element, "responsive")),
+                    lazy: Boolean(tarteaucitron.getElemAttr(element, "lazy")),
+                    adtest: Boolean(tarteaucitron.getElemAttr(element, "test")),
+                    query: tarteaucitron.getElemAttr(element, "query") || "",
+                    minCpc: tarteaucitron.getElemAttr(element, "minCpc") || "",
+                    pageUrl: tarteaucitron.getElemAttr(element, "pageUrl") || "",
+                    skip: tarteaucitron.getElemAttr(element, "skip") || ""
                 });
             }
         });
@@ -2154,36 +2154,36 @@ tarteaucitron.services.aduptech_conversion = {
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
 
-            if (!element.getAttribute("advertiserId") || !element.getAttribute("conversionCode")) {
+            if (!tarteaucitron.getElemAttr(element, "advertiserId") || !tarteaucitron.getElemAttr(element, "conversionCode")) {
                 continue;
             }
 
             var url = CONVERSION_PIXEL_BASE_URL +
-                "/" + encodeURIComponent(element.getAttribute("advertiserId")) +
-                "?t=" + encodeURIComponent(element.getAttribute("conversionCode"));
+                "/" + encodeURIComponent(tarteaucitron.getElemAttr(element, "advertiserId")) +
+                "?t=" + encodeURIComponent(tarteaucitron.getElemAttr(element, "conversionCode"));
 
-            if (element.getAttribute("price")) {
-                url += "&price=" + encodeURIComponent(element.getAttribute("price"));
+            if (tarteaucitron.getElemAttr(element, "price")) {
+                url += "&price=" + encodeURIComponent(tarteaucitron.getElemAttr(element, "price"));
             }
 
-            if (element.getAttribute("quantity")) {
-                url += "&quantity=" + encodeURIComponent(element.getAttribute("quantity"));
+            if (tarteaucitron.getElemAttr(element, "quantity")) {
+                url += "&quantity=" + encodeURIComponent(tarteaucitron.getElemAttr(element, "quantity"));
             }
 
-            if (element.getAttribute("total")) {
-                url += "&total=" + encodeURIComponent(element.getAttribute("total"));
+            if (tarteaucitron.getElemAttr(element, "total")) {
+                url += "&total=" + encodeURIComponent(tarteaucitron.getElemAttr(element, "total"));
             }
 
-            if (element.getAttribute("orderId")) {
-                url += "&order_id=" + encodeURIComponent(element.getAttribute("orderId"));
+            if (tarteaucitron.getElemAttr(element, "orderId")) {
+                url += "&order_id=" + encodeURIComponent(tarteaucitron.getElemAttr(element, "orderId"));
             }
 
-            if (element.getAttribute("itemNumber")) {
-                url += "&item_number=" + encodeURIComponent(element.getAttribute("itemNumber"));
+            if (tarteaucitron.getElemAttr(element, "itemNumber")) {
+                url += "&item_number=" + encodeURIComponent(tarteaucitron.getElemAttr(element, "itemNumber"));
             }
 
-            if (element.getAttribute("description")) {
-                url += "&description=" + encodeURIComponent(element.getAttribute("description"));
+            if (tarteaucitron.getElemAttr(element, "description")) {
+                url += "&description=" + encodeURIComponent(tarteaucitron.getElemAttr(element, "description"));
             }
 
             (new Image()).src = url;
@@ -2218,49 +2218,49 @@ tarteaucitron.services.aduptech_retargeting = {
 
                 api.init();
 
-                api.setAccount(element.getAttribute("account"));
+                api.setAccount(tarteaucitron.getElemAttr(element, "account"));
 
-                if (element.getAttribute("email")) {
-                    api.setEmail(element.getAttribute("email"));
-                } else if (element.getAttribute("hashedEmail")) {
-                    api.setHashedEmail(element.getAttribute("hashedEmail"));
+                if (tarteaucitron.getElemAttr(element, "email")) {
+                    api.setEmail(tarteaucitron.getElemAttr(element, "email"));
+                } else if (tarteaucitron.getElemAttr(element, "hashedEmail")) {
+                    api.setHashedEmail(tarteaucitron.getElemAttr(element, "hashedEmail"));
                 }
 
-                if (element.getAttribute("product")) {
+                if (tarteaucitron.getElemAttr(element, "product")) {
                     try {
-                        api.setProduct(JSON.parse(element.getAttribute("product")));
+                        api.setProduct(JSON.parse(tarteaucitron.getElemAttr(element, "product")));
                     } catch (e) {
-                        api.setProduct(element.getAttribute("product"));
+                        api.setProduct(tarteaucitron.getElemAttr(element, "product"));
                     }
                 }
 
-                if (element.getAttribute("transaction")) {
+                if (tarteaucitron.getElemAttr(element, "transaction")) {
                     try {
-                        api.setTransaction(JSON.parse(element.getAttribute("transaction")));
+                        api.setTransaction(JSON.parse(tarteaucitron.getElemAttr(element, "transaction")));
                     } catch (e) {
-                        api.setTransaction(element.getAttribute("transaction"));
+                        api.setTransaction(tarteaucitron.getElemAttr(element, "transaction"));
                     }
                 }
 
-                if (element.getAttribute("demarkUser")) {
+                if (tarteaucitron.getElemAttr(element, "demarkUser")) {
                     api.setDemarkUser();
-                } else if (element.getAttribute("demarkProducts")) {
+                } else if (tarteaucitron.getElemAttr(element, "demarkProducts")) {
                     api.setDemarkProducts();
                 }
 
-                if (element.getAttribute("conversionCode")) {
-                    api.setConversionCode(element.getAttribute("conversionCode"));
+                if (tarteaucitron.getElemAttr(element, "conversionCode")) {
+                    api.setConversionCode(tarteaucitron.getElemAttr(element, "conversionCode"));
                 }
 
-                if (element.getAttribute("device")) {
-                    var setter = "set" + element.getAttribute("device").charAt(0).toUpperCase() + element.getAttribute("device").slice(1);
+                if (tarteaucitron.getElemAttr(element, "device")) {
+                    var setter = "set" + tarteaucitron.getElemAttr(element, "device").charAt(0).toUpperCase() + tarteaucitron.getElemAttr(element, "device").slice(1);
                     if (typeof api[setter] === 'function') {
                         api[setter]();
                     }
                 }
 
-                if (element.getAttribute("track")) {
-                    var tracker = "track" + element.getAttribute("track").charAt(0).toUpperCase() + element.getAttribute("track").slice(1);
+                if (tarteaucitron.getElemAttr(element, "track")) {
+                    var tracker = "track" + tarteaucitron.getElemAttr(element, "track").charAt(0).toUpperCase() + tarteaucitron.getElemAttr(element, "track").slice(1);
                     if (typeof api[tracker] === "function") {
                         api[tracker]();
                     } else {
@@ -2348,8 +2348,8 @@ tarteaucitron.services.calameo = {
         "use strict";
         var id = 'calameo';
         tarteaucitron.fallback(['calameo-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2380,8 +2380,8 @@ tarteaucitron.services.calameolibrary = {
         "use strict";
         var id = 'calameolibrary';
         tarteaucitron.fallback(['calameolibrary-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2433,9 +2433,9 @@ tarteaucitron.services.clicmanager = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = '//ads.clicmanager.fr/exe.php?';
-            uri += 'c=' + document.getElementById(uniqIds[i]).getAttribute('c') + '&';
-            uri += 's=' + document.getElementById(uniqIds[i]).getAttribute('s') + '&';
-            uri += 't=' + document.getElementById(uniqIds[i]).getAttribute('t');
+            uri += 'c=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'c') + '&';
+            uri += 's=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 's') + '&';
+            uri += 't=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 't');
 
             tarteaucitron.makeAsync.init(uri, uniqIds[i]);
         }
@@ -2547,7 +2547,7 @@ tarteaucitron.services.criteo = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = '//cas.criteo.com/delivery/ajs.php?';
-            uri += 'zoneid=' + document.getElementById(uniqIds[i]).getAttribute('zoneid');
+            uri += 'zoneid=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'zoneid');
             uri += '&nodis=1&cb=' + Math.floor(Math.random() * 99999999999);
             uri += '&loc=' + encodeURI(window.location);
             uri += (document.MAX_used !== ',') ? '&exclude=' + document.MAX_used : '';
@@ -2624,8 +2624,8 @@ tarteaucitron.services.artetv = {
         "use strict";
         var id = 'artetv';
         tarteaucitron.fallback(['artetv_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2680,8 +2680,8 @@ tarteaucitron.services.dailymotion = {
         "use strict";
         var id = 'dailymotion';
         tarteaucitron.fallback(['dailymotion_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2718,8 +2718,8 @@ tarteaucitron.services.datingaffiliation = {
         "use strict";
         var id = 'datingaffiliation';
         tarteaucitron.fallback(['datingaffiliation-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -2747,26 +2747,26 @@ tarteaucitron.services.datingaffiliationpopup = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = 'http://www.promotools.biz/da/popunder/script.php?';
-            uri += 'comfrom=' + document.getElementById(uniqIds[i]).getAttribute('comfrom') + '&';
-            uri += 'promo=' + document.getElementById(uniqIds[i]).getAttribute('promo') + '&';
-            uri += 'product_id=' + document.getElementById(uniqIds[i]).getAttribute('productid') + '&';
-            uri += 'submitconfig=' + document.getElementById(uniqIds[i]).getAttribute('submitconfig') + '&';
-            uri += 'ur=' + document.getElementById(uniqIds[i]).getAttribute('ur') + '&';
-            uri += 'brand=' + document.getElementById(uniqIds[i]).getAttribute('brand') + '&';
-            uri += 'lang=' + document.getElementById(uniqIds[i]).getAttribute('lang') + '&';
-            uri += 'cf0=' + document.getElementById(uniqIds[i]).getAttribute('cf0') + '&';
-            uri += 'cf2=' + document.getElementById(uniqIds[i]).getAttribute('cf2') + '&';
-            uri += 'subid1=' + document.getElementById(uniqIds[i]).getAttribute('subid1') + '&';
-            uri += 'cfsa2=' + document.getElementById(uniqIds[i]).getAttribute('cfsa2') + '&';
-            uri += 'subid2=' + document.getElementById(uniqIds[i]).getAttribute('subid2') + '&';
-            uri += 'nicheId=' + document.getElementById(uniqIds[i]).getAttribute('nicheid') + '&';
-            uri += 'degreId=' + document.getElementById(uniqIds[i]).getAttribute('degreid') + '&';
-            uri += 'bt=' + document.getElementById(uniqIds[i]).getAttribute('bt') + '&';
-            uri += 'vis=' + document.getElementById(uniqIds[i]).getAttribute('vis') + '&';
-            uri += 'hid=' + document.getElementById(uniqIds[i]).getAttribute('hid') + '&';
-            uri += 'snd=' + document.getElementById(uniqIds[i]).getAttribute('snd') + '&';
-            uri += 'aabd=' + document.getElementById(uniqIds[i]).getAttribute('aabd') + '&';
-            uri += 'aabs=' + document.getElementById(uniqIds[i]).getAttribute('aabs');
+            uri += 'comfrom=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'comfrom') + '&';
+            uri += 'promo=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'promo') + '&';
+            uri += 'product_id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'productid') + '&';
+            uri += 'submitconfig=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'submitconfig') + '&';
+            uri += 'ur=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'ur') + '&';
+            uri += 'brand=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'brand') + '&';
+            uri += 'lang=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'lang') + '&';
+            uri += 'cf0=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'cf0') + '&';
+            uri += 'cf2=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'cf2') + '&';
+            uri += 'subid1=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'subid1') + '&';
+            uri += 'cfsa2=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'cfsa2') + '&';
+            uri += 'subid2=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'subid2') + '&';
+            uri += 'nicheId=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'nicheid') + '&';
+            uri += 'degreId=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'degreid') + '&';
+            uri += 'bt=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'bt') + '&';
+            uri += 'vis=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'vis') + '&';
+            uri += 'hid=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'hid') + '&';
+            uri += 'snd=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'snd') + '&';
+            uri += 'aabd=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'aabd') + '&';
+            uri += 'aabs=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'aabs');
 
             tarteaucitron.makeAsync.init(uri, uniqIds[i]);
         }
@@ -2837,8 +2837,8 @@ tarteaucitron.services.deezer = {
         "use strict";
         var id = 'deezer';
         tarteaucitron.fallback(['deezer_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -3602,8 +3602,8 @@ tarteaucitron.services.genially = {
         "use strict";
         var id = 'genially';
         tarteaucitron.fallback(['tac_genially'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -3646,11 +3646,11 @@ tarteaucitron.services.googlemaps = {
             var i;
             for (i = 0; i < uniqIds.length; i += 1) {
                 mapOptions = {
-                    zoom: parseInt(document.getElementById(uniqIds[i]).getAttribute('zoom'), 10),
-                    center: new google.maps.LatLng(parseFloat(document.getElementById(uniqIds[i]).getAttribute('latitude'), 10), parseFloat(document.getElementById(uniqIds[i]).getAttribute('longitude'), 10))
+                    zoom: parseInt(tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'zoom'), 10),
+                    center: new google.maps.LatLng(parseFloat(tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'latitude'), 10), parseFloat(tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'longitude'), 10))
                 };
                 map = new google.maps.Map(document.getElementById(uniqIds[i]), mapOptions);
-                new google.maps.Marker({ position: { lat: parseFloat(document.getElementById(uniqIds[i]).getAttribute('latitude'), 10), lng: parseFloat(document.getElementById(uniqIds[i]).getAttribute('longitude'), 10) }, map: map });
+                new google.maps.Marker({ position: { lat: parseFloat(tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'latitude'), 10), lng: parseFloat(tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'longitude'), 10) }, map: map });
             }
         };
     },
@@ -3686,8 +3686,8 @@ tarteaucitron.services.googlemapssearch = {
         "use strict";
         var id = 'googlemapssearch';
         tarteaucitron.fallback(['googlemapssearch'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -3927,8 +3927,8 @@ tarteaucitron.services.instagram = {
         "use strict";
         var id = 'instagram';
         tarteaucitron.fallback(['instagram_post'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -4136,10 +4136,10 @@ tarteaucitron.services.prelinker = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = 'http://promo.easy-dating.org/banner/index?';
-            uri += 'site_id=' + document.getElementById(uniqIds[i]).getAttribute('siteId') + '&';
-            uri += 'banner_id=' + document.getElementById(uniqIds[i]).getAttribute('bannerId') + '&';
-            uri += 'default_language=' + document.getElementById(uniqIds[i]).getAttribute('defaultLanguage') + '&';
-            uri += 'tr4ck=' + document.getElementById(uniqIds[i]).getAttribute('trackrt');
+            uri += 'site_id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'siteId') + '&';
+            uri += 'banner_id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'bannerId') + '&';
+            uri += 'default_language=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'defaultLanguage') + '&';
+            uri += 'tr4ck=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'trackrt');
 
             tarteaucitron.makeAsync.init(uri, uniqIds[i]);
         }
@@ -4175,8 +4175,8 @@ tarteaucitron.services.prezi = {
         "use strict";
         var id = 'prezi';
         tarteaucitron.fallback(['prezi-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -4204,8 +4204,8 @@ tarteaucitron.services.pubdirecte = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = '//www.pubdirecte.com/script/banniere.php?';
-            uri += 'id=' + document.getElementById(uniqIds[i]).getAttribute('pid') + '&';
-            uri += 'ref=' + document.getElementById(uniqIds[i]).getAttribute('ref');
+            uri += 'id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'pid') + '&';
+            uri += 'ref=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'ref');
 
             tarteaucitron.makeAsync.init(uri, uniqIds[i]);
         }
@@ -4385,13 +4385,13 @@ tarteaucitron.services.shareasale = {
 
         for (i = 0; i < uniqIds.length; i += 1) {
             uri = 'https://shareasale.com/sale.cfm?';
-            uri += 'amount=' + document.getElementById(uniqIds[i]).getAttribute('amount') + '&';
-            uri += 'tracking=' + document.getElementById(uniqIds[i]).getAttribute('tracking') + '&';
-            uri += 'transtype=' + document.getElementById(uniqIds[i]).getAttribute('transtype') + '&';
-            uri += 'persale=' + document.getElementById(uniqIds[i]).getAttribute('persale') + '&';
-            uri += 'perlead=' + document.getElementById(uniqIds[i]).getAttribute('perlead') + '&';
-            uri += 'perhit=' + document.getElementById(uniqIds[i]).getAttribute('perhit') + '&';
-            uri += 'merchantID=' + document.getElementById(uniqIds[i]).getAttribute('merchantID');
+            uri += 'amount=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'amount') + '&';
+            uri += 'tracking=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'tracking') + '&';
+            uri += 'transtype=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'transtype') + '&';
+            uri += 'persale=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'persale') + '&';
+            uri += 'perlead=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'perlead') + '&';
+            uri += 'perhit=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'perhit') + '&';
+            uri += 'merchantID=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'merchantID');
 
             document.getElementById(uniqIds[i]).innerHTML = '<img src=\'' + uri + '\' width=\'1\' height=\'1\' />';
         }
@@ -4461,8 +4461,8 @@ tarteaucitron.services.slideshare = {
         "use strict";
         var id = 'slideshare';
         tarteaucitron.fallback(['slideshare-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -4523,7 +4523,7 @@ tarteaucitron.services.soundcloud = {
     fallback: function () {
         "use strict";
         tarteaucitron.fallback(['soundcloud_player'], function (elem) {
-            elem.style.height = elem.getAttribute('data-height') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'data-height') + 'px';
             return tarteaucitron.engage('soundcloud');
         });
     }
@@ -4569,8 +4569,8 @@ tarteaucitron.services.spotify = {
         "use strict";
         var id = 'spotify';
         tarteaucitron.fallback(['spotify_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -4638,8 +4638,8 @@ tarteaucitron.services.timelinejs = {
         "use strict";
         var id = 'timelinejs';
         tarteaucitron.fallback(['timelinejs-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -4756,16 +4756,16 @@ tarteaucitron.services.twitterembed = {
             for (i = 0; i < uniqIds.length; i += 1) {
                 e = document.getElementById(uniqIds[i]);
                 twttr.widgets.createTweet(
-                    e.getAttribute('tweetid'),
+                    tarteaucitron.getElemAttr(e, 'tweetid'),
                     e,
                     {
-                        theme: e.getAttribute('theme'),
-                        cards: e.getAttribute('cards'),
-                        conversation: e.getAttribute('conversation'),
+                        theme: tarteaucitron.getElemAttr(e, 'theme'),
+                        cards: tarteaucitron.getElemAttr(e, 'cards'),
+                        conversation: tarteaucitron.getElemAttr(e, 'conversation'),
                         lang: tarteaucitron.getLanguage(),
                         dnt: true,
-                        width: e.getAttribute('data-width'),
-                        align: e.getAttribute('data-align')
+                        width: tarteaucitron.getElemAttr(e, 'data-width'),
+                        align: tarteaucitron.getElemAttr(e, 'data-align')
                     }
                 );
             }
@@ -4775,7 +4775,7 @@ tarteaucitron.services.twitterembed = {
         "use strict";
         var id = 'twitterembed';
         tarteaucitron.fallback(['twitterembed-canvas'], function (elem) {
-            elem.style.width = elem.getAttribute('data-width') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'data-width') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -4906,8 +4906,8 @@ tarteaucitron.services.vimeo = {
         "use strict";
         var id = 'vimeo';
         tarteaucitron.fallback(['vimeo_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -5415,8 +5415,8 @@ tarteaucitron.services.issuu = {
         "use strict";
         var id = 'issuu';
         tarteaucitron.fallback(['issuu_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -5847,8 +5847,8 @@ tarteaucitron.services.matterport = {
         "use strict";
         var id = 'matterport';
         tarteaucitron.fallback(['matterport'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -6110,7 +6110,7 @@ tarteaucitron.services.ausha = {
     fallback: function () {
         "use strict";
         tarteaucitron.fallback(['ausha_player'], function (elem) {
-            elem.style.height = elem.getAttribute('data-height') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'data-height') + 'px';
             return tarteaucitron.engage('ausha');
         });
     }
@@ -6182,8 +6182,8 @@ tarteaucitron.services.bandcamp = {
     fallback: function () {
         "use strict";
         tarteaucitron.fallback(['bandcamp_player'], function (elem) {
-            elem.style.width = elem.getAttribute('width');
-            elem.style.height = elem.getAttribute('height');
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width');
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height');
             return tarteaucitron.engage('bandcamp');
         });
     }
@@ -6211,8 +6211,8 @@ tarteaucitron.services.discord = {
         "use strict";
         var id = 'discord';
         tarteaucitron.fallback(['discord_widget'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -6240,8 +6240,8 @@ tarteaucitron.services.maps_noapi = {
         "use strict";
         var id = 'maps_noapi';
         tarteaucitron.fallback(['googlemaps_embed'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -6659,8 +6659,8 @@ tarteaucitron.services.meteofrance = {
         "use strict";
         var id = 'meteofrance';
         tarteaucitron.fallback(['tac_meteofrance'], function (elem) {
-            elem.style.width = elem.getAttribute('width') + 'px';
-            elem.style.height = elem.getAttribute('height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -6754,8 +6754,8 @@ tarteaucitron.services.archive = {
         "use strict";
         var id = 'archive';
         tarteaucitron.fallback(['archive_player'], function (elem) {
-            elem.style.width = elem.getAttribute('data-width') + 'px';
-            elem.style.height = elem.getAttribute('data-height') + 'px';
+            elem.style.width = tarteaucitron.getElemAttr(elem, 'data-width') + 'px';
+            elem.style.height = tarteaucitron.getElemAttr(elem, 'data-height') + 'px';
             return tarteaucitron.engage(id);
         });
     }
@@ -6786,7 +6786,7 @@ tarteaucitron.services.gallica = {
         "use strict";
         var id = 'gallica';
         tarteaucitron.fallback(['gallica_player'], function (elem) {
-            elem.style = elem.getAttribute('data-style');
+            elem.style = tarteaucitron.getElemAttr(elem,'data-style');
             return tarteaucitron.engage(id);
         });
     }
