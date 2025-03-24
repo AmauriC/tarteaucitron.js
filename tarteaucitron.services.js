@@ -2411,7 +2411,7 @@ tarteaucitron.services.clicmanager = {
     "key": "clicmanager",
     "type": "ads",
     "name": "Clicmanager",
-    "uri": "http://www.clicmanager.fr/infos_legales.php",
+    "uri": "https://www.clicmanager.fr/infos_legales.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -2524,7 +2524,7 @@ tarteaucitron.services.criteo = {
     "key": "criteo",
     "type": "ads",
     "name": "Criteo",
-    "uri": "http://www.criteo.com/privacy/",
+    "uri": "https://www.criteo.com/privacy/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -2687,7 +2687,7 @@ tarteaucitron.services.datingaffiliation = {
     "key": "datingaffiliation",
     "type": "ads",
     "name": "Dating Affiliation",
-    "uri": "http://www.dating-affiliation.com/conditions-generales.php",
+    "uri": "https://www.dating-affiliation.com/conditions-generales.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -2704,7 +2704,7 @@ tarteaucitron.services.datingaffiliation = {
                 cfsa2 = tarteaucitron.getElemAttr(x, "data-cfsa2"),
                 width = tarteaucitron.getElemAttr(x, "width"),
                 height = tarteaucitron.getElemAttr(x, "height"),
-                url = 'http://www.tools-affil2.com/rotaban/ban.php?' + comfrom;
+                url = 'https://www.tools-affil2.com/rotaban/ban.php?' + comfrom;
 
             return '<iframe title="' + frame_title + '" src="' + url + '&r=' + r + '&p=' + p + '&cf0=' + cf0 + '&langue=' + langue + '&forward_affiliate=' + forward_affiliate + '&cf2=' + cf2 + '&cfsa2=' + cfsa2 + '" width="' + width + '" height="' + height + '"></iframe>';
         });
@@ -2725,7 +2725,7 @@ tarteaucitron.services.datingaffiliationpopup = {
     "key": "datingaffiliationpopup",
     "type": "ads",
     "name": "Dating Affiliation (Pop Up)",
-    "uri": "http://www.dating-affiliation.com/conditions-generales.php",
+    "uri": "https://www.dating-affiliation.com/conditions-generales.php",
     "needConsent": true,
     "cookies": ['__utma', '__utmb', '__utmc', '__utmt_Tools', '__utmv', '__utmz', '_ga', '_gat', '_gat_UA-65072040-17', '__da-pu-xflirt-ID-pc-o169'],
     "js": function () {
@@ -2741,7 +2741,7 @@ tarteaucitron.services.datingaffiliationpopup = {
         });
 
         for (i = 0; i < uniqIds.length; i += 1) {
-            uri = 'http://www.promotools.biz/da/popunder/script.php?';
+            uri = 'https://www.promotools.biz/da/popunder/script.php?';
             uri += 'comfrom=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'comfrom') + '&';
             uri += 'promo=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'promo') + '&';
             uri += 'product_id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'productid') + '&';
@@ -2897,7 +2897,7 @@ tarteaucitron.services.ekomi = {
     "key": "ekomi",
     "type": "social",
     "name": "eKomi",
-    "uri": "http://www.ekomi-us.com/us/privacy/",
+    "uri": "https://www.ekomi-us.com/us/privacy/",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -3125,7 +3125,7 @@ tarteaucitron.services.getplus = {
     "key": "getplus",
     "type": "analytic",
     "name": "Get+",
-    "uri": "http://www.getplus.fr/Conditions-generales-de-vente_a226.html",
+    "uri": "https://www.getplus.fr/Conditions-generales-de-vente_a226.html",
     "needConsent": true,
     "cookies": ['_first_pageview', '_jsuid', 'no_trackyy_' + tarteaucitron.user.getplusId, '_eventqueue'],
     "js": function () {
@@ -4114,7 +4114,7 @@ tarteaucitron.services.prelinker = {
     "key": "prelinker",
     "type": "ads",
     "name": "Prelinker",
-    "uri": "http://www.prelinker.com/index/index/cgu/",
+    "uri": "https://www.prelinker.com/index/index/cgu/",
     "needConsent": true,
     "cookies": ['_sp_id.32f5', '_sp_ses.32f5'],
     "js": function () {
@@ -4130,7 +4130,7 @@ tarteaucitron.services.prelinker = {
         });
 
         for (i = 0; i < uniqIds.length; i += 1) {
-            uri = 'http://promo.easy-dating.org/banner/index?';
+            uri = 'https://promo.easy-dating.org/banner/index?';
             uri += 'site_id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'siteId') + '&';
             uri += 'banner_id=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'bannerId') + '&';
             uri += 'default_language=' + tarteaucitron.getElemAttr(document.getElementById(uniqIds[i]), 'defaultLanguage') + '&';
@@ -4182,7 +4182,7 @@ tarteaucitron.services.pubdirecte = {
     "key": "pubdirecte",
     "type": "ads",
     "name": "Pubdirecte",
-    "uri": "http://pubdirecte.com/contact.php",
+    "uri": "https://pubdirecte.com/contact.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -4403,7 +4403,7 @@ tarteaucitron.services.sharethis = {
     "key": "sharethis",
     "type": "social",
     "name": "ShareThis",
-    "uri": "http://www.sharethis.com/legal/privacy/",
+    "uri": "https://www.sharethis.com/legal/privacy/",
     "needConsent": true,
     "cookies": ['__unam'],
     "js": function () {
@@ -4607,7 +4607,7 @@ tarteaucitron.services.timelinejs = {
     "key": "timelinejs",
     "type": "api",
     "name": "Timeline JS",
-    "uri": "http://timeline.knightlab.com/#help",
+    "uri": "https://timeline.knightlab.com/#help",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -4683,7 +4683,7 @@ tarteaucitron.services.twenga = {
     "key": "twenga",
     "type": "ads",
     "name": "Twenga",
-    "uri": "http://www.twenga.com/privacy.php",
+    "uri": "https://www.twenga.com/privacy.php",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -4913,7 +4913,7 @@ tarteaucitron.services.visualrevenue = {
     "key": "visualrevenue",
     "type": "analytic",
     "name": "VisualRevenue",
-    "uri": "http://www.outbrain.com/legal/privacy-713/",
+    "uri": "https://www.outbrain.com/legal/privacy-713/",
     "needConsent": true,
     "cookies": ['__vrf', '__vrm', '__vrl', '__vry', '__vru', '__vrid', '__vrz'],
     "js": function () {
@@ -4925,7 +4925,7 @@ tarteaucitron.services.visualrevenue = {
         window._vrq.push(['id', tarteaucitron.user.visualrevenueId]);
         window._vrq.push(['automate', true]);
         window._vrq.push(['track', function () { }]);
-        tarteaucitron.addScript('http://a.visualrevenue.com/vrs.js');
+        tarteaucitron.addScript('https://a.visualrevenue.com/vrs.js');
     }
 };
 
@@ -4962,7 +4962,7 @@ tarteaucitron.services.vshop = {
     "key": "vshop",
     "type": "ads",
     "name": "vShop",
-    "uri": "http://vshop.fr/privacy-policy",
+    "uri": "https://vshop.fr/privacy-policy",
     "needConsent": true,
     "cookies": [],
     "js": function () {
@@ -4982,7 +4982,7 @@ tarteaucitron.services.wysistat = {
     "key": "wysistat",
     "type": "analytic",
     "name": "Wysistat",
-    "uri": "http://wysistat.net/contact/",
+    "uri": "https://wysistat.net/contact/",
     "needConsent": true,
     "cookies": ['Wysistat'],
     "js": function () {
@@ -5022,7 +5022,7 @@ tarteaucitron.services.xiti = {
         }
         Xt_h = new Date();
         Xt_i = '<img style="display:none" border="0" alt="" ';
-        Xt_i += 'src="http://logv3.xiti.com/hit.xiti?' + Xt_param;
+        Xt_i += 'src="https://logv3.xiti.com/hit.xiti?' + Xt_param;
         Xt_i += '&hl=' + Xt_h.getHours() + 'x' + Xt_h.getMinutes() + 'x' + Xt_h.getSeconds();
         if (parseFloat(navigator.appVersion) >= 4) {
             Xt_s = screen;
@@ -6116,7 +6116,7 @@ tarteaucitron.services.visiblee = {
     key: "visiblee",
     type: "analytic",
     name: "Visiblee",
-    uri: "http://confidentiality.visiblee.io/fr/confidentialite",
+    uri: "https://confidentiality.visiblee.io/fr/confidentialite",
     needConsent: true,
     cookies: ["visitor_v2", tarteaucitron.user.visibleedomain, "check", "campaign_ref_" + tarteaucitron.user.visibleedomain, "reload_" + tarteaucitron.user.visibleedomain],
     js: function () {
