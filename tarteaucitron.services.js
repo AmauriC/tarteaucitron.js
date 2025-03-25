@@ -5644,8 +5644,16 @@ tarteaucitron.services.matomocloud = {
         }
 
         window._paq = window._paq || [];
-        window._paq.push(["requireConsent"]);
-        window._paq.push(["setConsentGiven"]);
+
+        if (tarteaucitron.user.matomoFullTracking === true) {
+            window._paq.push(["requireCookieConsent"]);
+            window._paq.push(["setCookieConsentGiven"]);
+            window._paq.push(["trackAllContentImpressions"]);
+        } else {
+            window._paq.push(["requireConsent"]);
+            window._paq.push(["setConsentGiven"]);
+        }
+
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
         window._paq.push(["enableLinkTracking"]);
@@ -5654,14 +5662,14 @@ tarteaucitron.services.matomocloud = {
             window._paq.push(["trackPageView"]);
         }
 
-        if (tarteaucitron.user.matomoFullTracking === true) {
-            window._paq.push(["trackAllContentImpressions"]);
-        }
-
         if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
             tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
         } else {
             tarteaucitron.addScript(tarteaucitron.user.matomoCustomJSPath, '', '', true, 'defer', true);
+        }
+
+        if (typeof tarteaucitron.user.matomocloudMore === 'function') {
+            tarteaucitron.user.matomocloudMore();
         }
 
         // waiting for Matomo to be ready to check first party cookies
@@ -5693,11 +5701,19 @@ tarteaucitron.services.matomocloud = {
         }
 
         window._paq = window._paq || [];
-        window._paq.push(["requireConsent"]);
+        if (tarteaucitron.user.matomoFullTracking === true) {
+            window._paq.push(["requireCookieConsent"]);
+        } else {
+            window._paq.push(["requireConsent"]);
+        }
         window._paq.push(["setSiteId", tarteaucitron.user.matomoId]);
         window._paq.push(["setTrackerUrl", tarteaucitron.user.matomoHost + "matomo.php"]);
         window._paq.push(["trackPageView"]);
         window._paq.push(["enableLinkTracking"]);
+
+        if (typeof tarteaucitron.user.matomocloudMore === 'function') {
+            tarteaucitron.user.matomocloudMore();
+        }
 
         if (tarteaucitron.user.matomoCustomJSPath === undefined || tarteaucitron.user.matomoCustomJSPath == '') {
             tarteaucitron.addScript('https://cdn.matomo.cloud/matomo.js', '', '', true, 'defer', true);
