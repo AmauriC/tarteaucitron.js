@@ -539,7 +539,7 @@ var tarteaucitron = {
                 });
 
                 // Step 3: prepare the html
-                html += '<div role="heading" aria-level="1" id="tac_title" class="tac_visually-hidden">' + tarteaucitron.lang.title + '</div>';
+                html += '<div role="heading" aria-level="2" id="tac_title" class="tac_visually-hidden">' + tarteaucitron.lang.title + '</div>';
                 html += '<div id="tarteaucitronPremium"></div>';
                 if (tarteaucitron.reloadThePage) {
                     html += '<button type="button" id="tarteaucitronBack" aria-label="' + tarteaucitron.lang.close + ' (' + tarteaucitron.lang.reload + ')" title="' + tarteaucitron.lang.close + ' (' + tarteaucitron.lang.reload + ')"></button>';
@@ -556,7 +556,7 @@ var tarteaucitron = {
                 html += '   </button>';
                 html += '   <div id="tarteaucitronServices">';
                 html += '      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset">';
-                html += '         <span class="tarteaucitronH1" role="heading" aria-level="1" id="dialogTitle">'+ tarteaucitron.lang.title + '</span>';
+                html += '         <span class="tarteaucitronH1" role="heading" aria-level="2" id="dialogTitle">'+ tarteaucitron.lang.title + '</span>';
                 html += '         <div id="tarteaucitronInfo">';
                 html += '         ' + tarteaucitron.lang.disclaimer;
                 if (tarteaucitron.parameters.privacyUrl !== "") {
@@ -567,7 +567,7 @@ var tarteaucitron = {
                 }
                 html += '         </div>';
                 html += '         <div class="tarteaucitronName">';
-                html += '            <span class="tarteaucitronH2" role="heading" aria-level="2">' + tarteaucitron.lang.all + '</span>';
+                html += '            <span class="tarteaucitronH2" role="heading" aria-level="3">' + tarteaucitron.lang.all + '</span>';
                 html += '         </div>';
                 html += '         <div class="tarteaucitronAsk" id="tarteaucitronScrollbarAdjust">';
                 html += '            <button type="button" id="tarteaucitronAllAllowed" class="tarteaucitronAllow">';
@@ -594,7 +594,7 @@ var tarteaucitron = {
                    html += '<ul id="tarteaucitronServices_mandatory">';
                    html += '<li class="tarteaucitronLine">';
                    html += '   <div class="tarteaucitronName">';
-                   html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + tarteaucitron.lang.mandatoryText + '</span>';
+                   html += '       <span class="tarteaucitronH3" role="heading" aria-level="4">' + tarteaucitron.lang.mandatoryText + '</span>';
                    html += '       <span class="tarteaucitronListCookies" aria-hidden="true"></span><br/>';
                    html += '   </div>';
                    if (tarteaucitron.parameters.mandatoryCta == true) {
@@ -613,7 +613,7 @@ var tarteaucitron = {
 
                 for (i = 0; i < cat.length; i += 1) {
                     html += '         <li id="tarteaucitronServicesTitle_' + cat[i] + '" class="tarteaucitronHidden">';
-                    html += '            <div class="tarteaucitronTitle" role="heading" aria-level="2">';
+                    html += '            <div class="tarteaucitronTitle" role="heading" aria-level="3">';
                     if(tarteaucitron.parameters.showDetailsOnClick)
                     {
                         html += '               <button type="button" class="catToggleBtn" aria-expanded="false" data-cat="tarteaucitronDetails' + cat[i] + '"><span class="tarteaucitronPlus" aria-hidden="true"></span> ' + tarteaucitron.lang[cat[i]].title + '</button>';
@@ -738,7 +738,7 @@ var tarteaucitron = {
                         html += '           ' + tarteaucitron.lang.close;
                         html += '       </button>';
                         html += '       <div class="tarteaucitronCookiesListMain" id="tarteaucitronCookiesTitle">';
-                        html += '            <span class="tarteaucitronH2" role="heading" aria-level="2" id="tarteaucitronCookiesNumberBis">0 cookie</span>';
+                        html += '            <span class="tarteaucitronH2" role="heading" aria-level="3" id="tarteaucitronCookiesNumberBis">0 cookie</span>';
                         html += '       </div>';
                         html += '       <div id="tarteaucitronCookiesList"></div>';
                         html += '    </div>';
@@ -850,7 +850,7 @@ var tarteaucitron = {
                             html += '       ' + tarteaucitron.lang.reload;
                             html += '   </button>';
                             html += '</div>';
-                            html += '<div role="heading" aria-level="1" id="tac_title" class="tac_visually-hidden">' + tarteaucitron.lang.title + '</div>';
+                            html += '<div role="heading" aria-level="2" id="tac_title" class="tac_visually-hidden">' + tarteaucitron.lang.title + '</div>';
                             html += '<div id="tarteaucitronPremium"></div>';
 
                             div.id = 'tarteaucitronRoot';
@@ -896,7 +896,7 @@ var tarteaucitron = {
                             var html = '';
                             html += '<li  class="tarteaucitronLine">';
                             html += '   <div class="tarteaucitronName">';
-                            html += '       <span class="tarteaucitronH3" role="heading" aria-level="2">'+tarteaucitron.lang[cat].title+'</span>';
+                            html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">'+tarteaucitron.lang[cat].title+'</span>';
                             html += '       <span>'+tarteaucitron.lang[cat].details+'</span>';
                             html += '   <button type="button" aria-expanded="false" class="tarteaucitron-toggle-group" id="tarteaucitron-toggle-group-'+cat+'">'+tarteaucitron.lang.alertSmall+' <span id="tarteaucitronCounter-'+cat+'"></span></button>';
                             html += '   </div>';
@@ -1101,7 +1101,7 @@ var tarteaucitron = {
 
             html += '<li id="' + service.key + 'Line" class="tarteaucitronLine">';
             html += '   <div class="tarteaucitronName">';
-            html += '       <span class="tarteaucitronH3" role="heading" aria-level="3">' + service.name + '</span>';
+            html += '       <span class="tarteaucitronH3" role="heading" aria-level="4">' + service.name + '</span>';
             html += '       <div class="tarteaucitronStatusInfo">';
             html += '          <span class="tacCurrentStatus" id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>';
             html += '          <span class="tarteaucitronReadmoreSeparator"> - </span>';
@@ -2093,14 +2093,14 @@ var tarteaucitron = {
                     if (tarteaucitron.cookie.owner[name] !== undefined && tarteaucitron.cookie.owner[name].join(' // ') !== savedname) {
                         savedname = tarteaucitron.cookie.owner[name].join(' // ');
                         html += '<div class="tarteaucitronHidden">';
-                        html += '     <span class="tarteaucitronTitle tarteaucitronH3" role="heading" aria-level="3">';
+                        html += '     <span class="tarteaucitronTitle tarteaucitronH3" role="heading" aria-level="4">';
                         html += '        ' + tarteaucitron.cookie.owner[name].join(' // ');
                         html += '    </span>';
                         html += '</div><ul class="cookie-list">';
                     } else if (tarteaucitron.cookie.owner[name] === undefined && host !== savedname) {
                         savedname = host;
                         html += '<div class="tarteaucitronHidden">';
-                        html += '     <span class="tarteaucitronTitle tarteaucitronH3" role="heading" aria-level="3">';
+                        html += '     <span class="tarteaucitronTitle tarteaucitronH3" role="heading" aria-level="4">';
                         html += '        ' + host;
                         html += '    </span>';
                         html += '</div><ul class="cookie-list">';
