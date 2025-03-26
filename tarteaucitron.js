@@ -2333,6 +2333,13 @@ var tarteaucitron = {
 
         for (var i = 0; i < elems.length; i++) {
             var elem = elems[i];
+
+            var width = tarteaucitron.getElemAttr(elem, 'width'),
+                height = tarteaucitron.getElemAttr(elem, 'height');
+
+            elem.style.width = width + 'px';
+            elem.style.height = height + 'px';
+
             if (typeof content === 'function') {
                 if (noInner === true) {
                     content(elem);
