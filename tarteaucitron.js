@@ -2438,7 +2438,18 @@ var tarteaucitron = {
         return tarteaucitron.getElemAttr(elem, 'height') || elem.clientHeight;
     },
     "getElemAttr": function (elem, attr) {
+
         var attribute = elem.getAttribute('data-' + attr) || elem.getAttribute(attr) || elem.getAttribute(attr.startsWith('data-') ? attr.slice(5) : attr);
+
+        // security: only allow real url on the url attr
+        if ((attr === 'url' || attr === 'data-url') && !/^https?:\/\/[^\s]+$/.test(elem.getAttribute(attr))) {
+            return "";
+        }
+
+        // security: disallow data-srcdoc attr to avoid xss
+        if (attr === 'srcdoc' || attr === 'data-srcdoc') {
+            attribute = elem.getAttribute('srcdoc');
+        }
 
         if (typeof attribute === 'string') {
             return tarteaucitron.fixSelfXSS(attribute);
