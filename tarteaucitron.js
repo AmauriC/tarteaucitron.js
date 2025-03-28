@@ -234,6 +234,7 @@ var tarteaucitron = {
                 "serviceDefaultState": 'wait',
                 "googleConsentMode": true,
                 "bingConsentMode": true,
+                "softConsentMode": false,
                 "dataLayer": false,
                 "serverSide": false,
                 "partnersList": false,
@@ -315,12 +316,14 @@ var tarteaucitron = {
                 window.uetq.push('consent', 'update', {'ad_storage': 'denied'});
             });
 
-            window.addEventListener('tac.root_available', function() {
-                if (typeof tarteaucitron_block !== 'undefined') {
-                    tarteaucitron_block.unblock(/clarity\.ms/);
-                    tarteaucitron_block.unblock(/bat\.bing\.com/);
-                }
-            });
+            if (tarteaucitron.parameters.softConsentMode === false) {
+                window.addEventListener('tac.root_available', function () {
+                    if (typeof tarteaucitron_block !== 'undefined') {
+                        tarteaucitron_block.unblock(/clarity\.ms/);
+                        tarteaucitron_block.unblock(/bat\.bing\.com/);
+                    }
+                });
+            }
         }
 
         // google consent mode
@@ -464,15 +467,17 @@ var tarteaucitron = {
             });
 
             // allow gtag/googleads by default if consent mode is on
-            window.addEventListener('tac.root_available', function() {
-                if (typeof tarteaucitron_block !== 'undefined') {
-                    tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/js/);
-                    tarteaucitron_block.unblock(/www\.googleadservices\.com\/pagead\/conversion/);
-                    tarteaucitron_block.unblock(/AW-/);
-                    tarteaucitron_block.unblock(/google-analytics\.com\/analytics\.js/);
-                    tarteaucitron_block.unblock(/google-analytics\.com\/ga\.js/);
-                }
-            });
+            if (tarteaucitron.parameters.softConsentMode === false) {
+                window.addEventListener('tac.root_available', function () {
+                    if (typeof tarteaucitron_block !== 'undefined') {
+                        tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/js/);
+                        tarteaucitron_block.unblock(/www\.googleadservices\.com\/pagead\/conversion/);
+                        tarteaucitron_block.unblock(/AW-/);
+                        tarteaucitron_block.unblock(/google-analytics\.com\/analytics\.js/);
+                        tarteaucitron_block.unblock(/google-analytics\.com\/ga\.js/);
+                    }
+                });
+            }
         }
 
         // Step 1: load css
