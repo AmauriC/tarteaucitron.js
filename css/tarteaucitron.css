@@ -781,7 +781,8 @@ span#tarteaucitronDisclaimerAlert {
 #tarteaucitronAlertBig #tarteaucitronPrivacyUrl,
 #tarteaucitronAlertBig #tarteaucitronPrivacyUrlDialog,
 #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert,
-#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong {
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert strong,
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert .tarteaucitronPartnersList * {
     /*font: 15px verdana;*/
     color: #fff;
 }
