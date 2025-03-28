@@ -2442,7 +2442,7 @@ var tarteaucitron = {
         var attribute = elem.getAttribute('data-' + attr) || elem.getAttribute(attr) || elem.getAttribute(attr.startsWith('data-') ? attr.slice(5) : attr);
 
         // security: only allow real url on the url attr
-        if ((attr === 'url' || attr === 'data-url') && !/^https?:\/\/[^\s]+$/.test(elem.getAttribute(attr))) {
+        if ((attr === 'url' || attr === 'data-url' || attr === 'data-src') && !/^https?:\/\/[^\s]+$/.test(elem.getAttribute(attr))) {
             return "";
         }
 
