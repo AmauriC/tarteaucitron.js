@@ -2337,8 +2337,12 @@ var tarteaucitron = {
             var width = tarteaucitron.getElemAttr(elem, 'width'),
                 height = tarteaucitron.getElemAttr(elem, 'height');
 
-            elem.style.width = width + 'px';
-            elem.style.height = height + 'px';
+            if (width !== "") {
+                elem.style.width = parseInt(width, 10) + 'px';
+            }
+            if (height !== "") {
+                elem.style.height = parseInt(height, 10) + 'px';
+            }
 
             if (typeof content === 'function') {
                 if (noInner === true) {
