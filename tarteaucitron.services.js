@@ -2528,6 +2528,10 @@ tarteaucitron.services.clarity = {
     "js": function () {
         "use strict";
 
+        if (tarteaucitron.user.clarity === undefined) {
+            return;
+        }
+
         window["clarity"] = window["clarity"] || function () { (window["clarity"].q = window["clarity"].q || []).push(arguments) };
 
         tarteaucitron.addScript('https://www.clarity.ms/tag/' + tarteaucitron.user.clarity, '', function() {
@@ -3389,6 +3393,11 @@ tarteaucitron.services.gajs = {
     })(),
     "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.gajsUa === undefined) {
+            return;
+        }
+
         window._gaq = window._gaq || [];
         window._gaq.push(['_setAccount', tarteaucitron.user.gajsUa]);
         if (timeExpire !== undefined) {
@@ -3432,6 +3441,11 @@ tarteaucitron.services.analytics = {
     })(),
     "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.analyticsUa === undefined) {
+            return;
+        }
+
         window.GoogleAnalyticsObject = 'ga';
         window.ga = window.ga || function () {
             window.ga.q = window.ga.q || [];
@@ -3483,6 +3497,11 @@ tarteaucitron.services.googleads = {
     })(),
     "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.googleadsId === undefined) {
+            return;
+        }
+
         window.dataLayer = window.dataLayer || [];
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.googleadsId, '', function () {
             window.gtag = function gtag() { dataLayer.push(arguments); }
@@ -3524,6 +3543,11 @@ tarteaucitron.services.gtag = {
     })(),
     "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.gtagUa === undefined) {
+            return;
+        }
+
         window.dataLayer = window.dataLayer || [];
         tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
             window.gtag = function gtag() { dataLayer.push(arguments); }
@@ -3902,6 +3926,11 @@ tarteaucitron.services.hubspot = {
     "cookies": ['hubspotutk', 'fr', '__hstc', '__hssrc', '__hssc', '__cfduid'],
     "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.hubspotId === undefined) {
+            return;
+        }
+
         tarteaucitron.addScript('//js.hs-scripts.com/' + tarteaucitron.user.hubspotId + '.js', 'hs-script-loader');
     }
 };
@@ -4278,6 +4307,11 @@ tarteaucitron.services.intercomChat = {
     ],
     "readmoreLink": "https://www.intercom.com/legal/privacy",
     "js": function () {
+
+        if (tarteaucitron.user.intercomKey === undefined) {
+            return;
+        }
+
         window.intercomSettings = {
             app_id: tarteaucitron.user.intercomKey,
         };
@@ -4837,6 +4871,10 @@ tarteaucitron.services.twitteruwt = {
     "js": function () {
         "use strict";
 
+        if (tarteaucitron.user.twitteruwtId === undefined) {
+            return;
+        }
+
         window.twq = function () {
             window.twq.exe ? window.twq.exe.apply(window.twq, arguments) : window.twq.queue.push(arguments);
         }
@@ -4964,6 +5002,10 @@ tarteaucitron.services.verizondottag = {
     "cookies": [],
     "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.verizondottagProjectId === undefined) {
+            return;
+        }
 
         window.dotq = window.dotq || [];
         window.dotq.push({
@@ -5360,6 +5402,11 @@ tarteaucitron.services.facebookpixel = {
     "cookies": ['datr', 'fr', 'reg_ext_ref', 'reg_fb_gate', 'reg_fb_ref', 'sb', 'wd', 'x-src', '_fbp'],
     "js": function () {
         "use strict";
+
+        if (tarteaucitron.user.facebookpixelId === undefined) {
+            return;
+        }
+
         var n;
         if (window.fbq) return;
         n = window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
@@ -5754,15 +5801,6 @@ tarteaucitron.services.matomotm = {
 
 
 // Hotjar
-/*
-   1. Set the following variable before the initialization :
-    tarteaucitron.user.hotjarId = YOUR_WEBSITE_ID;
-   tarteaucitron.user.HotjarSv = XXXX; // Can be found in your website tracking code as "hjvs=XXXX"
-    2. Push the service :
-    (tarteaucitron.job = tarteaucitron.job || []).push('hotjar');
-    3. HTML
-   You don't need to add any html code, if the service is autorized, the javascript is added. otherwise no.
- */
 tarteaucitron.services.hotjar = {
     "key": "hotjar",
     "type": "analytic",
@@ -5798,7 +5836,11 @@ tarteaucitron.services.bingads = {
     'cookies': ['_uetmsclkid', '_uetvid', '_uetsid'],
     'js': function () {
         'use strict';
-        //var u = tarteaucitron.user.bingadsTag || 'uetq';
+
+        if (tarteaucitron.user.bingadsID === undefined) {
+            return;
+        }
+
         window.uetq = window.uetq || [];
 
         tarteaucitron.addScript('https://bat.bing.com/bat.js', '', function () {
@@ -6076,8 +6118,10 @@ tarteaucitron.services.woopra = {
     'cookies': ['wooTracker', 'intercom-session-erbfalba', 'intercom-id-erbfalba'],
     'js': function () {
         'use strict';
-        //var w = tarteaucitron.user.woopraDomain;
-        //window[w] = window[w] || [];
+
+        if (tarteaucitron.user.woopraDomain === undefined) {
+            return;
+        }
 
         (function () {
             var t, i, e, n = window, o = document, a = arguments, s = "script", r = ["config", "track", "identify", "visit", "push", "call", "trackForm", "trackClick"], c = function () { var t, i = this; for (i._e = [], t = 0; r.length > t; t++)(function (t) { i[t] = function () { return i._e.push([t].concat(Array.prototype.slice.call(arguments, 0))), i } })(r[t]) }; for (n._w = n._w || {}, t = 0; a.length > t; t++)n._w[a[t]] = n[a[t]] = n[a[t]] || new c; i = o.createElement(s), i.async = 1, i.src = "//static.woopra.com/js/w.js", e = o.getElementsByTagName(s)[0], e.parentNode.insertBefore(i, e)
@@ -6765,6 +6809,10 @@ tarteaucitron.services.mtcaptcha = {
     "cookies": ['mtv1Pulse','mtv1ConfSum','mtv1Pong'],
 
     "js": function () {
+
+        if (tarteaucitron.user.mtcaptchaSitekey === undefined) {
+            return;
+        }
 
         window.mtcaptchaConfig = {
             "sitekey": tarteaucitron.user.mtcaptchaSitekey
