@@ -2,7 +2,7 @@
   "name": "tarteaucitronjs",
   "version": "1.19.0",
   "main": "tarteaucitron.js",
-  "description": "Comply to the European cookie law",
+  "description": "tarteaucitron.io - Get a compliant and accessible cookie banner",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
@@ -16,13 +16,12 @@
     "cookie",
     "law",
     "rgpd",
-    "gdpr",
-    "cookie"
+    "gdpr"
   ],
   "author": "amauri.io",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AmauriC/tarteaucitron.js/issues"
   },
-  "homepage": "https://github.com/AmauriC/tarteaucitron.js#readme"
+  "homepage": "https://tarteaucitron.io/"
 }
