@@ -1118,8 +1118,15 @@ tarteaucitron.services.calendly = {
     "cookies": [],
     "js": function () {
         "use strict";
-
+        tarteaucitron.fallback(['calendly-inline-widget'], '');
         tarteaucitron.addScript('https://assets.calendly.com/assets/external/widget.js');
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'calendly';
+        tarteaucitron.fallback(['calendly-inline-widget'], function (elem) {
+            return tarteaucitron.engage(id);
+        });
     }
 };
 
@@ -2639,7 +2646,7 @@ tarteaucitron.services.artetv = {
                 return "";
             }
 
-            var styleAttr = (width !== "" ? "width:" + parseInt(video_width, 10) + "px;" : "") + (height !== "" ? "height:" + parseInt(video_height, 10) + "px;" : "");
+            var styleAttr = (video_width !== "" ? "width:" + parseInt(video_width, 10) + "px;" : "") + (video_height !== "" ? "height:" + parseInt(video_height, 10) + "px;" : "");
 
             video_frame = '<iframe title="' + frame_title + '" style="' + styleAttr + 'transition-duration: 0; transition-property: no; margin: 0 auto; position: relative; display: block; background-color: #000000;" src="https://www.arte.tv/player/v5/index.php?json_url=' + video_json + '" ' + (video_allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
             return video_frame;
