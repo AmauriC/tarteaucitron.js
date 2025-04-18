@@ -5236,7 +5236,7 @@ tarteaucitron.services.youtube = {
     "name": "YouTube",
     "uri": "https://policies.google.com/privacy",
     "needConsent": true,
-    "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
+    "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF'],
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_player'], function (x) {
@@ -5306,7 +5306,7 @@ tarteaucitron.services.youtubeplaylist = {
     "name": "YouTube (playlist)",
     "uri": "https://policies.google.com/privacy",
     "needConsent": true,
-    "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF', 'GEUP'],
+    "cookies": ['VISITOR_INFO1_LIVE', 'YSC', 'PREF'],
     "js": function () {
         "use strict";
         tarteaucitron.fallback(['youtube_playlist_player'], function (x) {
