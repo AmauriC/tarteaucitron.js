@@ -3881,6 +3881,13 @@ tarteaucitron.services.googletagmanager = {
             event: 'gtm.js'
         });
         tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + tarteaucitron.user.googletagmanagerId);
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            if (tarteaucitron.parameters.softConsentMode === false) {
+                this.js();
+            }
+        }
     }
 };
 
@@ -3907,6 +3914,13 @@ tarteaucitron.services.multiplegoogletagmanager = {
             tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + id);
         });
 
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.googleConsentMode === true) {
+            if (tarteaucitron.parameters.softConsentMode === false) {
+                this.js();
+            }
+        }
     }
 };
 
