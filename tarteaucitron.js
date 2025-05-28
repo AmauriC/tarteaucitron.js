@@ -43,9 +43,13 @@ var tarteaucitron = {
         if (alreadyLaunch === 0) {
             alreadyLaunch = 1;
             if (window.addEventListener) {
-                window.addEventListener("load", function () {
+                if( document.readyState === "complete" ) {
                     tarteaucitron.initEvents.loadEvent(false);
-                }, false);
+                } else {
+                    window.addEventListener("load", function () {
+                        tarteaucitron.initEvents.loadEvent(false);
+                    }, false);
+                }
                 window.addEventListener("scroll", function () {
                     tarteaucitron.initEvents.scrollEvent();
                 }, false);
@@ -60,9 +64,13 @@ var tarteaucitron = {
                     tarteaucitron.initEvents.resizeEvent();
                 }, false);
             } else {
-                window.attachEvent("onload", function () {
+                if( document.readyState === "complete" ) {
                     tarteaucitron.initEvents.loadEvent(true);
-                });
+                } else {
+                    window.attachEvent("onload", function () {
+                        tarteaucitron.initEvents.loadEvent(true);
+                    });
+                }
                 window.attachEvent("onscroll", function () {
                     tarteaucitron.initEvents.scrollEvent();
                 });
