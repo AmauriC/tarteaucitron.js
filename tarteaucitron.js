@@ -1,8 +1,11 @@
 /*jslint browser: true, evil: true */
 /* min ready */
 
-var scripts = document.getElementsByTagName('script'),
-    tarteaucitronPath = (document.currentScript || scripts[scripts.length - 1]).src.split('?')[0],
+var tarteaucitronScriptsDiscover = document.getElementsByTagName('script'),
+    tarteaucitronCurrentScript = document.currentScript instanceof HTMLScriptElement
+        ? document.currentScript
+        : tarteaucitronScriptsDiscover[tarteaucitronScriptsDiscover.length - 1],
+    tarteaucitronPath = tarteaucitronCurrentScript.src.split('?')[0],
     tarteaucitronForceCDN = (tarteaucitronForceCDN === undefined) ? '' : tarteaucitronForceCDN,
     tarteaucitronUseMin = (tarteaucitronUseMin === undefined) ? '' : tarteaucitronUseMin,
     cdn = (tarteaucitronForceCDN === '') ? tarteaucitronPath.split('/').slice(0, -1).join('/') + '/' : tarteaucitronForceCDN,
