@@ -1384,7 +1384,11 @@ tarteaucitron.services.plausible = {
             return;
         }
 
-        tarteaucitron.addScript('https://plausible.io/js/script.js', '', '', '', 'data-domain', tarteaucitron.user.plausibleDomain);
+        if (tarteaucitron.user.plausibleEndpoint === undefined) {
+            tarteaucitron.user.plausibleEndpoint = 'plausible.io';
+        }
+
+        tarteaucitron.addScript('https://' + tarteaucitron.user.plausibleEndpoint + '/js/script.js', '', '', '', 'data-domain', tarteaucitron.user.plausibleDomain);
     }
 };
 
