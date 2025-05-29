@@ -3988,6 +3988,7 @@ tarteaucitron.services.instagram = {
         tarteaucitron.fallback(['instagram_post'], function (x) {
             var frame_title = tarteaucitron.getElemAttr(x, "title") || 'Instagram iframe',
                 post_id = tarteaucitron.getElemAttr(x, 'postId'),
+                page_id = tarteaucitron.getElemAttr(x, 'pageId'),
                 post_permalink = tarteaucitron.getElemAttr(x, 'data-instgrm-permalink'),
                 embed_width = tarteaucitron.getElemAttr(x, 'width'),
                 embed_height = tarteaucitron.getElemAttr(x, 'height'),
@@ -4000,7 +4001,8 @@ tarteaucitron.services.instagram = {
                 return '';
             }
 
-            if (post_id === "") {
+            var post_link = post_id !== "" ? 'p/' + post_id : (page_id !== "" ? page_id : "");
+            if (post_link === "") {
                 return "";
             }
 
@@ -4011,7 +4013,7 @@ tarteaucitron.services.instagram = {
                 styleAttr = 'height:' + tarteaucitron.getStyleSize(embed_height) + ';';
             }
 
-            post_frame = '<iframe title="' + frame_title + '" src="//www.instagram.com/p/' + post_id + '/embed" style="' + styleAttr + '"></iframe>';
+            post_frame = '<iframe title="' + frame_title + '" src="//www.instagram.com/' + post_link + '/embed" style="' + styleAttr + '"></iframe>';
 
             return post_frame;
         });
