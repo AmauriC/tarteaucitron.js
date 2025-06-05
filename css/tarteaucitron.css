@@ -708,9 +708,11 @@ div#tarteaucitronServices {
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsAllowed .tarteaucitronAllow,
 #tarteaucitron #tarteaucitronServices #tarteaucitronServices_mandatory .tarteaucitronLine button.tarteaucitronAllow {
     background-color: #1B870B;
+    opacity: 1;
 }
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine.tarteaucitronIsDenied .tarteaucitronDeny {
     background-color: #9C1A1A;
+    opacity: 1;
 }
 
 #tarteaucitron #tarteaucitronServices #tarteaucitronServices_mandatory .tarteaucitronLine button.tarteaucitronAllow{
