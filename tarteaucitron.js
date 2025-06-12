@@ -686,7 +686,7 @@ var tarteaucitron = {
                 } else {
                     html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '"' + modalAttrs + '>';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
-                    html += '   <p id="tarteaucitronDisclaimerAlert" role="paragraph">';
+                    html += '   <span id="tarteaucitronDisclaimerAlert" role="paragraph">';
 
                     if (tarteaucitron.parameters.highPrivacy) {
                         html += '       ' + tarteaucitron.lang.alertBigPrivacy;
@@ -694,7 +694,7 @@ var tarteaucitron = {
                         html += '       ' + tarteaucitron.lang.alertBigClick + ' ' + tarteaucitron.lang.alertBig;
                     }
 
-                    html += '   </p>';
+                    html += '   </span>';
                     //html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
                     html += '   <button aria-label="' + tarteaucitron.lang.icon + ' : ' + tarteaucitron.lang.acceptAll + '" type="button" class="tarteaucitronCTAButton tarteaucitronAllow" id="tarteaucitronPersonalize2" aria-describedby="tarteaucitronDisclaimerAlert" >';
                     html += '       <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.acceptAll;
