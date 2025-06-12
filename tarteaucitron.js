@@ -574,7 +574,10 @@ var tarteaucitron = {
                 html += '      <div class="tarteaucitronLine tarteaucitronMainLine" id="tarteaucitronMainLineOffset">';
                 html += '         <span class="tarteaucitronH1" role="heading" aria-level="2" id="dialogTitle">'+ tarteaucitron.lang.title + '</span>';
                 html += '         <div id="tarteaucitronInfo">';
-                html += '         <p>' + tarteaucitron.lang.disclaimer + '<p>';
+                if(!/^<\s*(p|ul)(\s|>)/i.test(tarteaucitron.lang.disclaimer)) {
+                    tarteaucitron.lang.disclaimer = '<p>'+tarteaucitron.lang.disclaimer+'</p>'
+                }
+                html += '         ' + tarteaucitron.lang.disclaimer;
                 if (tarteaucitron.parameters.privacyUrl !== "") {
                     html += '   <br/><br/>';
                     html += '   <button type="button" id="tarteaucitronPrivacyUrlDialog" role="link">';
@@ -663,9 +666,9 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
                     html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '"' + modalAttrs + '>';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
-                    html += '   <p id="tarteaucitronDisclaimerAlert" role="paragraph">';
+                    html += '   <span id="tarteaucitronDisclaimerAlert" role="paragraph">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
-                    html += '   </p>';
+                    html += '   </span>';
                     //html += '   <span class="tarteaucitronAlertBigBtnWrapper">';
                     html += '   <button type="button" id="tarteaucitronPersonalize" aria-label="' + tarteaucitron.lang.personalize + ' ' + tarteaucitron.lang.modalWindow + '" title="' + tarteaucitron.lang.personalize + ' ' + tarteaucitron.lang.modalWindow + '">';
                     html += '       ' + tarteaucitron.lang.personalize;
