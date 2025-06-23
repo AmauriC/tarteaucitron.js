@@ -140,12 +140,12 @@ tarteaucitronCustomText = {
   'engage-twitter': 'Follow us on Twitter!'
 };
 ```
-
+<!--
 # Thanks to the sponsors 😊
 
 | ![Amaury Cleuziou](https://avatars.githubusercontent.com/u/26336203?v=4&s=60) |                                                              |   |
 |---|--------------------------------------------------------------|---|
 |  [Amaury Cleuziou](https://github.com/MoryCorp) - first sponsor 🎉 |                                                              |  |
 | |                                                              |   |
-
+-->
 
