@@ -3668,7 +3668,7 @@ tarteaucitron.services.genially = {
 
             var styleAttr = (width !== "" ? "width:" + tarteaucitron.getStyleSize(width) + ";" : "") + (height !== "" ? "height:" + tarteaucitron.getStyleSize(height) + ";" : "");
 
-            return '<div style="position: relative; padding-bottom: 109.00%; padding-top: 0; height: 0;"><iframe style="position: absolute; top: 0; left: 0;' + styleAttr + '" title="' + frame_title + '" src="https://view.genial.ly/' + geniallyid + '" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe></div>';
+            return '<iframe style="' + styleAttr + '" title="' + frame_title + '" src="https://view.genial.ly/' + geniallyid + '" allowtransparency ' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
         });
     },
     "fallback": function () {
@@ -6717,14 +6717,16 @@ tarteaucitron.services.canalu = {
         tarteaucitron.fallback(['canalu_player'], function (x) {
             var frame_title = (tarteaucitron.getElemAttr(x,"title")) ? tarteaucitron.getElemAttr(x,"title") : 'Canal-u.tv iframe',
                 video_title = tarteaucitron.getElemAttr(x, "videoTitle"),
-                frame_url = 'https://www.canal-u.tv/embed/' + video_title;
+                frame_url = 'https://www.canal-u.tv/embed/' + video_title,
+                width = tarteaucitron.getElemAttr(x, 'width'),
+                height = tarteaucitron.getElemAttr(x, 'height');
 
-            return '<div style="position:relative;padding-bottom:56.25%;padding-top:10px;height:0;overflow:hidden;">' +
-                '<iframe title="' + frame_title + '" src="' + frame_url + '?width=100%&amp;height=100%" ' +
-                'style="position:absolute;top:0;left:0;width:100%;height: 100%;" ' +
+            var styleAttr = (width !== "" ? "width:" + tarteaucitron.getStyleSize(width) + ";" : "") + (height !== "" ? "height:" + tarteaucitron.getStyleSize(height) + ";" : "");
+
+            return '<iframe title="' + frame_title + '" src="' + frame_url + '?width=100%&amp;height=100%" ' +
+                'style="' + styleAttr + '" ' +
                 'allowfullscreen>' +
-                '</iframe>' +
-                '</div>';
+                '</iframe>';
         });
     },
     "fallback": function () {
