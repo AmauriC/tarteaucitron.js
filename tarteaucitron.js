@@ -1483,9 +1483,23 @@ var tarteaucitron = {
             }
             sum -= sumToRemove;
 
-            tarteaucitron.userInterface.css(c + 'DotGreen', 'width', ((100 / sum) * nbAllowed) + '%');
-            tarteaucitron.userInterface.css(c + 'DotYellow', 'width', ((100 / sum) * nbPending) + '%');
-            tarteaucitron.userInterface.css(c + 'DotRed', 'width', ((100 / sum) * nbDenied) + '%');
+            const percentages = {
+                DotGreen: (100 / sum) * nbAllowed,
+                DotYellow: (100 / sum) * nbPending,
+                DotRed: (100 / sum) * nbDenied
+            };
+
+            for (const [colorKey, value] of Object.entries(percentages)) {
+                tarteaucitron.userInterface.css(c + colorKey, 'width', value + '%');
+            }
+
+            if (tarteaucitron.parameters.showAlertSmall === true) {
+                const percentAllowed = percentages.DotGreen;
+                const label = tarteaucitron.lang.alertSmall + " - " + percentAllowed + "% " + tarteaucitron.lang.allowed + " " + tarteaucitron.lang.modalWindow;
+                const managerEl = document.getElementById(c + 'Manager');
+                managerEl.setAttribute('aria-label', label);
+                managerEl.setAttribute('title', label);
+            }
 
             if (nbDenied === 0 && nbPending === 0) {
                 tarteaucitron.userInterface.removeClass(c + 'AllDenied', c + 'IsSelected');
