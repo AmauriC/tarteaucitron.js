@@ -1156,7 +1156,12 @@ var tarteaucitron = {
             html += '       </div>';
             if (tarteaucitron.parameters.moreInfoLink == true) {
 
-                var link = 'https://tarteaucitron.io/service/' + service.key + '/';
+                var link;
+                if (tarteaucitron.getLanguage() === 'fr') {
+                    link = 'https://tarteaucitron.io/service/' + service.key + '/';
+                } else {
+                    link = 'https://tarteaucitron.io/en/service-details/' + service.key + '/';
+                }
                 if (service.readmoreLink !== undefined && service.readmoreLink !== '') {
                     link = service.readmoreLink;
                 }
