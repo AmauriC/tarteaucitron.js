@@ -1758,6 +1758,7 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css(c + 'Icon', 'display', 'none');
             tarteaucitron.userInterface.css(c + 'AlertBig',   'display', 'block');
             tarteaucitron.userInterface.addClass(c + 'Root',   'tarteaucitronBeforeVisible');
+            tarteaucitron.userInterface.css('tac_title', 'display', 'block');
 
             //ie compatibility
             var tacOpenAlertEvent;
@@ -1794,6 +1795,10 @@ var tarteaucitron = {
                 tacCloseAlertEvent.initEvent("tac.close_alert", true, true);
             }
             //end ie compatibility
+
+            if (tarteaucitron.parameters.showAlertSmall === false && tarteaucitron.parameters.showIcon === false) {
+                tarteaucitron.userInterface.css('tac_title', 'display', 'none');
+            }
 
             if (typeof(window.dispatchEvent) === 'function') {window.dispatchEvent(tacCloseAlertEvent);}
         },

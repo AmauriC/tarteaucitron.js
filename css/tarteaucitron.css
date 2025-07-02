@@ -5,6 +5,9 @@ div#tarteaucitronMainLineOffset,.tarteaucitronBorder {border:0!important;}
     font-weight:700;
 }
 
+/* A11Y titles */
+.tarteaucitron-modal-open #tac_title {display:none!important}
+
 .tac_visually-hidden {
     position: absolute;
     width: 1px;
