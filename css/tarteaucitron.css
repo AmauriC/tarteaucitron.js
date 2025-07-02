@@ -8,6 +8,11 @@ div#tarteaucitronMainLineOffset,.tarteaucitronBorder {border:0!important;}
 /* A11Y titles */
 .tarteaucitron-modal-open #tac_title {display:none!important}
 
+#tarteaucitronRoot #tarteaucitronInfo p {
+    all: unset;
+    display: inline;
+}
+
 .tac_visually-hidden {
     position: absolute;
     width: 1px;
@@ -716,9 +721,9 @@ div#tarteaucitronServices {
     background-color: #9C1A1A;
 }
 
-#tarteaucitron #tarteaucitronServices #tarteaucitronServices_mandatory .tarteaucitronLine button.tarteaucitronAllow{
+/*#tarteaucitron #tarteaucitronServices #tarteaucitronServices_mandatory .tarteaucitronLine button.tarteaucitronAllow{
     opacity: 0.4;
-}
+}*/
 
 #tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronName .tarteaucitronListCookies {
     color: #333;
@@ -1144,7 +1149,7 @@ div.amazon_product {
     width:120px;
 }
 
-.tarteaucitronIsAllowed .tarteaucitronDeny {
+/*.tarteaucitronIsAllowed .tarteaucitronDeny {
     opacity: 0.4!important;
 }.tarteaucitronIsDenied .tarteaucitronAllow {
      opacity: 0.4!important;
@@ -1158,7 +1163,7 @@ div.amazon_product {
 }
 #tarteaucitronServices_mandatory button.tarteaucitronAllow {
     opacity: 1;
-}
+}*/
 
 div#tarteaucitronInfo {
     display: block!important;

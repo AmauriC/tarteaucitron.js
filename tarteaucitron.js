@@ -555,6 +555,10 @@ var tarteaucitron = {
                     return 0;
                 });
 
+                if(!/^<\s*(p|ul)(\s|>)/i.test(tarteaucitron.lang.disclaimer)) {
+                    tarteaucitron.lang.disclaimer = '<p>'+tarteaucitron.lang.disclaimer+'</p>'
+                }
+
                 // Step 3: prepare the html
                 html += '<div role="heading" aria-level="2" id="tac_title" class="tac_visually-hidden">' + tarteaucitron.lang.title + '</div>';
                 html += '<div id="tarteaucitronPremium"></div>';
@@ -664,7 +668,7 @@ var tarteaucitron = {
                         html += '               <span class="asCatToggleBtn" data-cat="tarteaucitronInlineDetails' + cat[i] + '">' + tarteaucitron.lang[cat[i]].title + '</span>';
                     }
                     html += '            </div>';
-                    html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails '+ (tarteaucitron.parameters.showDetailsOnClick ? 'tarteaucitronInfoBox' : 'tarteaucitronDetailsInline')+'">';
+                    html += '            <div id="tarteaucitronDetails' + cat[i] + '" class="tarteaucitronDetails '+ (tarteaucitron.parameters.showDetailsOnClick ? 'tarteaucitronInfoBox' : 'tarteaucitronDetailsInline')+'" role="paragraph">';
                     html += '               ' + tarteaucitron.lang[cat[i]].details;
                     html += '            </div>';
                     html += '         <ul id="tarteaucitronServices_' + cat[i] + '"></ul></li>';
