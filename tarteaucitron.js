@@ -1104,6 +1104,8 @@ var tarteaucitron = {
                     if(tarteaucitron.events.load) {
                         tarteaucitron.events.load();
                     }
+
+                    tarteaucitron.userInterface.addClass("tarteaucitronRoot", "tarteaucitronSize-" + tarteaucitron.parameters.orientation);
                 }, 500);
 
             });

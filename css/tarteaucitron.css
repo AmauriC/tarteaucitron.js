@@ -13,6 +13,23 @@ div#tarteaucitronMainLineOffset,.tarteaucitronBorder {border:0!important;}
     display: inline;
 }
 
+html #tarteaucitronRoot #tarteaucitronPrivacyUrl {
+    padding: 5px 10px;
+    font-size: 16px!important;
+    line-height: 1.2;
+}
+
+@media screen and (max-width: 900px) {
+    #tarteaucitronRoot.tarteaucitronSize-popup button#tarteaucitronCloseAlert,
+    #tarteaucitronRoot.tarteaucitronSize-popup button#tarteaucitronPrivacyUrl,
+    #tarteaucitronRoot.tarteaucitronSize-popup button.tarteaucitronCTAButton,
+    #tarteaucitronRoot.tarteaucitronSize-middle button#tarteaucitronCloseAlert,
+    #tarteaucitronRoot.tarteaucitronSize-middle button#tarteaucitronPrivacyUrl,
+    #tarteaucitronRoot.tarteaucitronSize-middle button.tarteaucitronCTAButton {
+        width: 80%;
+    }
+}
+
 .tac_visually-hidden {
     position: absolute;
     width: 1px;
