@@ -41,7 +41,8 @@ tarteaucitron.init({
     "serviceDefaultState": "wait", /* Default state (true - wait - false) */
 
     "showAlertSmall": false, /* Show the small banner on bottom right */
-    "cookieslist": false, /* Show the cookie list */
+    "cookieslist": false, /* Show the cookie list in a mini banner */
+    "cookieslistEmbed": false, /* Show the cookie list on the control panel */
     
     "showIcon": true, /* Show cookie icon to manage cookies */
     // "iconSrc": "", /* Optional: URL or base64 encoded image */
