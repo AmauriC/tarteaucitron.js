@@ -1,7 +1,7 @@
 /*global tarteaucitron */
 /* min ready */
 tarteaucitron.lang = {
-    "middleBarHead": "☝ 🍪",
+    "middleBarHead": "☝️ 🍪",
     "adblock": "Olá! Em uma ação de transparência, este site permite que você escolha quais serviços de terceiros ativar.",
     "adblock_call": "Por favor, desative seu bloqueador de publicidades para poder personalizar.",
     "reload": "Atualizar esta página",

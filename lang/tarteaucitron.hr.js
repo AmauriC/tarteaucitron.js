@@ -1,7 +1,7 @@
 /*global tarteaucitron */
 /* min ready */
 tarteaucitron.lang = {
-    "middleBarHead": "☝ 🍪",
+    "middleBarHead": "☝️ 🍪",
     "adblock": "Pozdrav! Ova stranica je transparentna i omogućuje vam odabir usluga trećih strana koje želite omogućiti.",
     "adblock_call": "Molimo vas da onemogućite svoj adblocker kako biste započeli prilagodbu.",
     "reload": "Osvježite stranicu",

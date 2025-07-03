@@ -1,7 +1,7 @@
 /*global tarteaucitron */
 /* min ready */
 tarteaucitron.lang = {
-    "middleBarHead": "☝ 🍪",
+    "middleBarHead": "☝️ 🍪",
     "adblock": "안녕하세요? 이 사이트는 투명성을 지향하며 귀하가 제 3자 서비스의 활성화에 대한 선택을 할 수 있도록 합니다",
     "adblock_call": "맞춤 설정의 시작을 위해 광고차단 기능을 비활성화하세요",
     "reload": "페이지를 새로 고침하세요",

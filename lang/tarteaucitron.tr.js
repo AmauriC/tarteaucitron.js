@@ -2,7 +2,7 @@
 /* min ready */
 tarteaucitron.lang = {
 
-    "middleBarHead": "☝ 🍪",
+    "middleBarHead": "☝️ 🍪",
     "adblock": "Merhaba! Bu site şeffaflıkla oynar ve size etkinleştirilecek üçüncü taraf hizmetleri seçeneği sunar.",
     "adblock_call": "Kişiselleştirmeye başlamak için lütfen reklam engelleyicinizi devre dışı bırakın.",
     "reload": "Sayfayı yeniden yükle",

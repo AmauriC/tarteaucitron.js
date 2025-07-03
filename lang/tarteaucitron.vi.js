@@ -1,7 +1,7 @@
 /*global tarteaucitron */
 /* min ready */
 tarteaucitron.lang = {
-    "middleBarHead": "☝ 🍪",
+    "middleBarHead": "☝️ 🍪",
     "adblock": "Xin chào! Trang web này minh bạch và cho phép bạn chọn dịch vụ bên thứ 3 mà bạn muốn cho phép.",
     "adblock_call": "Vui lòng vô hiệu hóa trình chặn quảng cáo của bạn để bắt đầu tùy chỉnh.",
     "reload": "Làm mới trang",

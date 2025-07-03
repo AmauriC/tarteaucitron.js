@@ -1,7 +1,7 @@
 /*global tarteaucitron */
 /* min ready */
 tarteaucitron.lang = {
-    "middleBarHead": "☝ 🍪",
+    "middleBarHead": "☝️ 🍪",
     "adblock": "Gudde Moien! Dëse Site ass transparent a gëtt Iech d'Wiel wéi eng Drëtt-Partei Servicer dir aktivéiere wëllt.",
     "adblock_call": "Deaktivéiert w.e.g. Ären Adblocker fir d'Personaliséierung unzefänken.",
     "reload": "Säit nei lueden",
