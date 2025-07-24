@@ -35,6 +35,33 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// madmetrics
+tarteaucitron.services.madmetrics = {
+    "key": "madmetrics",
+    "type": "ads",
+    "name": "MadMetrics",
+    "uri": "https://www.keyade.com/fr/politique-de-confidentialite/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+
+        if (tarteaucitron.user.madmetricsHostname === undefined) {
+            return;
+        }
+
+        tarteaucitron.addScript('https://static.madmetrics.com/ktck_seo_acd_pv-min.js', '', function() {
+            var clientId = tarteaucitron.user.madmetricsClientId,
+                siteId = tarteaucitron.user.madmetricsSiteId,
+                directId = tarteaucitron.user.madmetricsDirectId,
+                referalId = tarteaucitron.user.madmetricsReferalId;
+            var _kTck = new KaTracker( clientId, siteId, directId, referalId );
+            _kTck.setBridge('https://' + tarteaucitron.user.madmetricsHostname + '/k_redirect_md.php');
+            _kTck.track();
+        });
+    }
+};
+
 // fillout
 tarteaucitron.services.fillout = {
     "key": "fillout",
