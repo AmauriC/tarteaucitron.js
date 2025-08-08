@@ -35,6 +35,96 @@ tarteaucitron.services.iframe = {
     }
 };
 
+tarteaucitron.services.altares = {
+    "key": "altares",
+    "type": "ads",
+    "name": "Altares",
+    "uri": "https://www.altares.com/fr/mentions-legales-cgu-altares/donnees-personnelles/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.amnet = {
+    "key": "amnet",
+    "type": "ads",
+    "name": "Amnet",
+    "uri": "https://www.amnetgroup.com/politique-confidentialite",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.azerion = {
+    "key": "azerion",
+    "type": "ads",
+    "name": "Azerion",
+    "uri": "https://www.azerion.com/website-privacy-notice/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.freewheel = {
+    "key": "freewheel",
+    "type": "ads",
+    "name": "Freewheel",
+    "uri": "https://www.freewheel.com/privacy-policy",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.qwarry = {
+    "key": "qwarry",
+    "type": "ads",
+    "name": "Qwarry",
+    "uri": "https://www.qwarry.com/politique-de-confidentialite",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.meta = {
+    "key": "meta",
+    "type": "ads",
+    "name": "Meta",
+    "uri": "https://www.meta.com/fr/legal/privacy-policy/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.miq = {
+    "key": "miq",
+    "type": "ads",
+    "name": "MiQ",
+    "uri": "https://www.wearemiq.com/policy/privacy-and-compliance",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.web366 = {
+    "key": "web366",
+    "type": "ads",
+    "name": "Web366",
+    "uri": "https://www.366.fr/politique-de-confidentialite-du-site/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
+tarteaucitron.services.while = {
+    "key": "while",
+    "type": "ads",
+    "name": "While",
+    "uri": "https://itswhile.notion.site/Politique-de-confidentialit-10c076b0d70380e68828e4355ee34a6a",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {}
+};
+
 // madmetrics
 tarteaucitron.services.madmetrics = {
     "key": "madmetrics",
