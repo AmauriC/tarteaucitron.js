@@ -4701,7 +4701,7 @@ tarteaucitron.services.spotify = {
                 spotify_id = tarteaucitron.getElemAttr(x, "spotifyID"),
                 spotify_width = tarteaucitron.getElemAttr(x, "width"),
                 spotify_height = tarteaucitron.getElemAttr(x, "height"),
-                styleAttr = "",
+                styleAttr = "border-radius:12px;",
                 spotify_frame;
 
             if (spotify_id === "") {
