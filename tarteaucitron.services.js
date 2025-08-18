@@ -4024,7 +4024,12 @@ tarteaucitron.services.hubspot = {
             return;
         }
 
-        tarteaucitron.addScript('//js.hs-scripts.com/' + tarteaucitron.user.hubspotId + '.js', 'hs-script-loader');
+        var tac_businessUnitId = "";
+        if (tarteaucitron.user.hubspotBusinessUnitId !== undefined && tarteaucitron.user.hubspotBusinessUnitId !== null && tarteaucitron.user.hubspotBusinessUnitId !== "") {
+            tac_businessUnitId = "?businessUnitId=" + tarteaucitron.user.hubspotBusinessUnitId;
+        }
+
+        tarteaucitron.addScript('//js.hs-scripts.com/' + tarteaucitron.user.hubspotId + '.js' + tac_businessUnitId, 'hs-script-loader');
     }
 };
 
