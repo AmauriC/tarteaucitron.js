@@ -2184,7 +2184,7 @@ var tarteaucitron = {
                     html += '<li class="tarteaucitronCookiesListMain">';
                     html += '    <div class="tarteaucitronCookiesListLeft"><button type="button" class="purgeBtn" data-cookie="' + tarteaucitron.fixSelfXSS(cookies[i].split('=', 1)) + '"><strong>&times;</strong></button> <strong>' + tarteaucitron.fixSelfXSS(name) + '</strong>';
                     html += '    </div>';
-                    html += '    <div class="tarteaucitronCookiesListRight">' + tarteaucitron.fixSelfXSS(decodeURIComponent(decodeURI(cookies[i].split('=').slice(1).join('=')))) + '</div>';
+                    html += '    <div class="tarteaucitronCookiesListRight">' + tarteaucitron.cookie.beautify(cookies[i].split('=').slice(1).join('=')) + '</div>';
                     html += '</li>';
                 }
                 html += '</ul>';
@@ -2224,6 +2224,13 @@ var tarteaucitron = {
             for (i = 0; i < tarteaucitron.job.length; i += 1) {
                 tarteaucitron.cookie.checkCount(tarteaucitron.job[i]);
             }
+        },
+        "beautify": function(v) {
+            let beautiful = v;
+            try {
+                beautiful = decodeURIComponent(decodeURI(v));
+            } catch {}
+            return tarteaucitron.fixSelfXSS(beautiful);
         }
     },
     "fixSelfXSS": function(html) {
