@@ -1263,3 +1263,21 @@ span.tarteaucitronTitle.tarteaucitronH3 {
 .tarteaucitron-display-none {
     display: none;
 }
+
+/* custom title for popup and middle banner */
+#tarteaucitronRoot.tarteaucitronSize-middle #tarteaucitronAlertBig::before, #tarteaucitronRoot.tarteaucitronSize-popup #tarteaucitronAlertBig::before {content: var(--tacTitleBanner);}
+
+/* middle banner */
+div#tarteaucitronRoot.tarteaucitronSize-middle.tarteaucitronBeforeVisible:before {content: '';position: fixed;width: 100%;height: 100%;background: white;top: 0;left: 0;z-index: 999;opacity: 0.5;}
+body #tarteaucitronRoot.tarteaucitronSize-middle div#tarteaucitronAlertBig {width: 60%;min-width: 285px;height: fit-content;margin: auto;top:0;left:0;bottom:0;right:0;box-shadow: 0 0 9000px #000;border-radius: 20px;padding: 35px 25px;}
+.tarteaucitronSize-middle span#tarteaucitronDisclaimerAlert {padding: 0 30px;}
+#tarteaucitronRoot.tarteaucitronSize-middle span#tarteaucitronDisclaimerAlert {margin: 10px 0 30px;display: block;text-align: center;font-size: 21px;}
+@media screen and (max-width: 900px) {.tarteaucitronSize-middle div#tarteaucitronAlertBig button {margin: 0 auto 10px!important;display: block!important;}}
+.tarteaucitronSize-middle div#tarteaucitronAlertBig:before {font-size: 35px;}
+
+/* popup banner */
+.tarteaucitronSize-popup div#tarteaucitronAlertBig:before {font-size: 22px;}
+body #tarteaucitronRoot.tarteaucitronSize-popup div#tarteaucitronAlertBig {bottom: 0;top: auto!important;left: 8px!important;right: auto!important;transform: initial!important;border-radius: 5px 5px 0 0!important;max-width: 250px!important;width: calc(100% - 16px)!important;min-width: 0!important;padding: 25px 0;}
+.tarteaucitronSize-popup span#tarteaucitronDisclaimerAlert {padding: 0 30px;font-size: 15px!important;}
+#tarteaucitronRoot.tarteaucitronSize-popup span#tarteaucitronDisclaimerAlert {margin: 10px 0 30px;display: block;text-align: center;font-size: 21px;}
+.tarteaucitronSize-popup div#tarteaucitronAlertBig button:not(#tarteaucitronCloseCross) {margin: 0 auto 10px!important;display: block!important;width: calc(100% - 60px);box-sizing: border-box;}
