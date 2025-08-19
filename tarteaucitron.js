@@ -309,24 +309,18 @@ var tarteaucitron = {
             window.uetq = window.uetq || [];
             window.uetq.push('consent', 'default', {'ad_storage': 'denied'});
 
-            document.addEventListener('clarity_loaded', function () {
+            document.addEventListener('clarity_consentModeOk', function () {
                 window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
-            });
-            document.addEventListener('clarity_allowed', function () {
-                window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
-            });
-            document.addEventListener('clarity_disallowed', function () {
+            }, { once: true });
+            document.addEventListener('clarity_consentModeKo', function () {
                 window.uetq.push('consent', 'update', {'ad_storage': 'denied'});
-            });
-            document.addEventListener('bingads_loaded', function () {
+            }, { once: true });
+            document.addEventListener('bingads_consentModeOk', function () {
                 window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
-            });
-            document.addEventListener('bingads_allowed', function () {
-                window.uetq.push('consent', 'update', {'ad_storage': 'granted'});
-            });
-            document.addEventListener('bingads_disallowed', function () {
+            }, { once: true });
+            document.addEventListener('bingads_consentModeKo', function () {
                 window.uetq.push('consent', 'update', {'ad_storage': 'denied'});
-            });
+            }, { once: true });
 
             if (tarteaucitron.parameters.softConsentMode === false) {
                 window.addEventListener('tac.root_available', function () {
@@ -399,84 +393,63 @@ var tarteaucitron = {
             });
 
             // personalized ads loaded/allowed, set gcm to granted
-            document.addEventListener('gcmads_loaded', function() {
+            document.addEventListener('gcmads_consentModeOk', function() {
                 window.tac_gtag('consent', 'update', {
                     ad_user_data: 'granted',
                     ad_personalization: 'granted'
                 });
-            });
-            document.addEventListener('gcmads_allowed', function() {
-                window.tac_gtag('consent', 'update', {
-                    ad_user_data: 'granted',
-                    ad_personalization: 'granted'
-                });
-            });
+            }, { once: true });
 
             // personalized ads disallowed, set gcm to denied
-            document.addEventListener('gcmads_disallowed', function() {
+            document.addEventListener('gcmads_consentModeKo', function() {
                 window.tac_gtag('consent', 'update', {
                     ad_user_data: 'denied',
                     ad_personalization: 'denied'
                 });
-            });
+            }, { once: true });
 
             // google ads loaded/allowed, set gcm to granted
-            document.addEventListener('googleads_loaded', function() {
+            document.addEventListener('googleads_consentModeOk', function() {
                 window.tac_gtag('consent', 'update', {
                     ad_storage: 'granted'
                 });
-            });
-            document.addEventListener('googleads_allowed', function() {
-                window.tac_gtag('consent', 'update', {
-                    ad_storage: 'granted'
-                });
-            });
+            }, { once: true });
 
             // google ads disallowed, disable personalized ads and update gcm
-            document.addEventListener('googleads_disallowed', function() {
+            document.addEventListener('googleads_consentModeKo', function() {
                 tarteaucitron.setConsent('gcmads', false);
                 window.tac_gtag('consent', 'update', {
                     ad_storage: 'denied'
                 });
-            });
+            }, { once: true });
 
             // ga4 loaded/allowed, set gcm to granted
-            document.addEventListener('gtag_loaded', function() {
+            document.addEventListener('gtag_consentModeOk', function() {
                 window.tac_gtag('consent', 'update', {
                     analytics_storage: 'granted'
                 });
-            });
-            document.addEventListener('gtag_allowed', function() {
-                window.tac_gtag('consent', 'update', {
-                    analytics_storage: 'granted'
-                });
-            });
+            }, { once: true });
 
             // ga4 disallowed, update gcm
-            document.addEventListener('gtag_disallowed', function() {
+            document.addEventListener('gtag_consentModeKo', function() {
                 window.tac_gtag('consent', 'update', {
                     analytics_storage: 'denied'
                 });
-            });
+            }, { once: true });
 
             // multiple ga4 loaded/allowed, set gcm to granted
-            document.addEventListener('multiplegtag_loaded', function() {
+            document.addEventListener('multiplegtag_consentModeOk', function() {
                 window.tac_gtag('consent', 'update', {
                     analytics_storage: 'granted'
                 });
-            });
-            document.addEventListener('multiplegtag_allowed', function() {
-                window.tac_gtag('consent', 'update', {
-                    analytics_storage: 'granted'
-                });
-            });
+            }, { once: true });
 
             // multiple ga4 disallowed, update gcm
-            document.addEventListener('multiplegtag_disallowed', function() {
+            document.addEventListener('multiplegtag_consentModeKo', function() {
                 window.tac_gtag('consent', 'update', {
                     analytics_storage: 'denied'
                 });
-            });
+            }, { once: true });
 
             // allow gtag/googleads by default if consent mode is on
             if (tarteaucitron.parameters.softConsentMode === false) {
@@ -1198,6 +1171,7 @@ var tarteaucitron = {
             }
             if (tarteaucitron.launch[service.key] !== true) {
                 tarteaucitron.launch[service.key] = true;
+                tarteaucitron.sendEvent(service.key + '_consentModeOk');
                 if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) { service.js(); }
                 tarteaucitron.sendEvent(service.key + '_loaded');
             }
@@ -1218,6 +1192,11 @@ var tarteaucitron = {
             tarteaucitron.userInterface.color(service.key, false);
         } else if (!isResponded) {
             tarteaucitron.cookie.create(service.key, state);
+
+            if (true === state) {
+                tarteaucitron.sendEvent(service.key + '_consentModeOk');
+            }
+
             if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) {
                 if(true === state && typeof service.js === 'function') {
                     service.js();
@@ -1349,6 +1328,13 @@ var tarteaucitron = {
                 service = s[tarteaucitron.job[index]];
                 key = service.key;
                 if (tarteaucitron.state[key] !== status) {
+
+                    if (status == true) {
+                        tarteaucitron.sendEvent(key + '_consentModeOk');
+                    } else {
+                        tarteaucitron.sendEvent(key + '_consentModeKo');
+                    }
+
                     if (status === false && tarteaucitron.launch[key] === true) {
                         tarteaucitron.reloadThePage = true;
                         if (tarteaucitron.checkIfExist('tarteaucitronClosePanel')) {
@@ -1358,7 +1344,6 @@ var tarteaucitron = {
                         }
                     }
                     if (tarteaucitron.launch[key] !== true && status === true) {
-
                         tarteaucitron.pro('!' + key + '=engage');
 
                         tarteaucitron.launch[key] = true;
@@ -1393,6 +1378,12 @@ var tarteaucitron = {
                 return;
             }
 
+            if (status == true) {
+                tarteaucitron.sendEvent(key + '_consentModeOk');
+            } else {
+                tarteaucitron.sendEvent(key + '_consentModeKo');
+            }
+
             if (status === false && tarteaucitron.launch[key] === true) {
                 tarteaucitron.reloadThePage = true;
                 if (tarteaucitron.checkIfExist('tarteaucitronClosePanel')) {
@@ -1405,10 +1396,10 @@ var tarteaucitron = {
             // if not already launched... launch the service
             if (status === true) {
                 if (tarteaucitron.launch[key] !== true) {
-
                     tarteaucitron.pro('!' + key + '=engage');
 
                     tarteaucitron.launch[key] = true;
+                    tarteaucitron.sendEvent(key + '_consentModeOk');
                     if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) { tarteaucitron.services[key].js(); }
                     tarteaucitron.sendEvent(key + '_loaded');
                 }
