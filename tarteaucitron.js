@@ -289,6 +289,7 @@ var tarteaucitron = {
             window.addEventListener('tac.root_available', function() {
                 setTimeout(function() {
                     window.dataLayer = window.dataLayer || [];
+                    tarteaucitron.job.filter(job => tarteaucitron.state[job] === true).length > 0 &&
                     window.dataLayer.push({
                         event: 'tac_consent_update',
                         tacAuthorizedVendors: tarteaucitron.job.filter(job => tarteaucitron.state[job] === true)
@@ -297,6 +298,7 @@ var tarteaucitron = {
             });
             document.addEventListener('tac.consent_updated', function () {
                 window.dataLayer = window.dataLayer || [];
+                tarteaucitron.job.filter(job => tarteaucitron.state[job] === true).length > 0 &&
                 window.dataLayer.push({
                     event: 'tac_consent_update',
                     tacAuthorizedVendors: tarteaucitron.job.filter(job => tarteaucitron.state[job] === true)
