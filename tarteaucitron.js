@@ -477,14 +477,14 @@ var tarteaucitron = {
         // Step 2: load language and services
         tarteaucitron.addInternalScript(pathToLang, '', function () {
 
-            document.documentElement.style.setProperty(
-                "--tacTitleBanner",
-                `"${tarteaucitron.lang.middleBarHead}"`
-            );
-
             if(tarteaucitronCustomText !== ''){
                 tarteaucitron.lang = tarteaucitron.AddOrUpdate(tarteaucitron.lang, tarteaucitronCustomText);
             }
+
+            document.documentElement.style.setProperty(
+                "--tacTitleBanner",
+                JSON.stringify(tarteaucitron.lang.middleBarHead)
+            );
 
             tarteaucitron.addInternalScript(pathToServices, '', function () {
 
