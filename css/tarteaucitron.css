@@ -7,6 +7,32 @@ div#tarteaucitronMainLineOffset,.tarteaucitronBorder {border:0!important;}
     font-weight:700;
 }
 
+/* Add blur behind the popup */
+html body.tarteaucitron-modal-open div#tarteaucitronRoot::before,
+html body .tarteaucitronSize-middle.tarteaucitronBeforeVisible::before {
+    content: " ";
+    background: rgba(255,255,255,.25)!important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 1!important;
+    position: fixed;
+    inset: 0;
+    z-index:10000;
+}
+html body.tarteaucitron-modal-open #tarteaucitronRoot #tarteaucitronAlertBig {
+    z-index:10
+}
+html body #tarteaucitronRoot #tarteaucitronAlertBig #tarteaucitronDisclaimerAlert .tarteaucitronPartnersList {
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+html body #tarteaucitronRoot.tarteaucitronSize-popup #tarteaucitronAlertBig {
+    border: 1px solid rgba(0,0,0,.08);
+    border-bottom:0;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
 /* A11Y titles */
 .tarteaucitron-modal-open #tac_title {display:none!important}
 
