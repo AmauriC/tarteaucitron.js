@@ -1680,8 +1680,11 @@ var tarteaucitron = {
             } else {
                 tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
             }
-            if (document.getElementsByTagName('html')[0].classList !== undefined) {
-                document.getElementsByTagName('html')[0].classList.remove('tarteaucitron-modal-open-noscroll');
+
+            if (!(tarteaucitron.parameters.orientation === 'middle' && document.getElementById('tarteaucitronAlertBig').style.display === 'block')) {
+                if (document.getElementsByTagName('html')[0].classList !== undefined) {
+                    document.getElementsByTagName('html')[0].classList.remove('tarteaucitron-modal-open-noscroll');
+                }
             }
             if (document.getElementsByTagName('body')[0].classList !== undefined) {
                 document.getElementsByTagName('body')[0].classList.remove('tarteaucitron-modal-open');
