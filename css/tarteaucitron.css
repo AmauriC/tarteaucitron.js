@@ -17,7 +17,7 @@ html body .tarteaucitronSize-middle.tarteaucitronBeforeVisible::before {
     opacity: 1!important;
     position: fixed;
     inset: 0;
-    z-index:10000;
+    z-index:100000;
 }
 html body.tarteaucitron-modal-open #tarteaucitronRoot #tarteaucitronAlertBig {
     z-index:10
@@ -26,6 +26,10 @@ html body #tarteaucitronRoot #tarteaucitronAlertBig #tarteaucitronDisclaimerAler
     max-width: 350px;
     margin-left: auto;
     margin-right: auto;
+}
+html body #tarteaucitronRoot.tarteaucitronSize-middle #tarteaucitronAlertBig {
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
 }
 html body #tarteaucitronRoot.tarteaucitronSize-popup #tarteaucitronAlertBig {
     border: 1px solid rgba(0,0,0,.08);
@@ -46,7 +50,7 @@ html body #tarteaucitronRoot.tarteaucitronSize-popup #tarteaucitronAlertBig {
     background-color: #fbd600;
     cursor: pointer;
     display: inline-block;
-    padding: 6px 10px;
+    padding: 8px 10px;
     text-align: center;
     text-decoration: none;
     width: auto;
@@ -56,9 +60,10 @@ html body #tarteaucitronRoot.tarteaucitronSize-popup #tarteaucitronAlertBig {
 }
 
 html #tarteaucitronRoot #tarteaucitronPrivacyUrl {
-    padding: 5px 10px;
+    padding: 8px 10px;
     font-size: 16px!important;
-    line-height: 1.2;
+    line-height: 1;
+    white-space: initial;
 }
 
 @media screen and (max-width: 900px) {
@@ -86,6 +91,7 @@ html #tarteaucitronRoot #tarteaucitronPrivacyUrl {
 
 div#tarteaucitronAlertBig:focus {outline: 0;}
 
+.tarteaucitron-modal-open-noscroll {overflow:hidden}
 .tarteaucitron-modal-open{
     overflow: hidden;
     height: 100%;
@@ -138,7 +144,7 @@ button.tarteaucitron-toggle-group {
 
 #tarteaucitronRoot .tarteaucitronCheck::before,
 #tarteaucitronRoot .tarteaucitronCross::before {
-    font-size: 20px;
+    font-size: inherit;
 }
 /* hide useless mandatory button */
 #tarteaucitronRoot #tarteaucitronServices #tarteaucitronServices_mandatory .tarteaucitronAsk {
@@ -756,7 +762,7 @@ div#tarteaucitronServices {
     color: #000;
     cursor: pointer;
     display: inline-block;
-    padding: 6px 10px;
+    padding: 8px 10px;
     text-align: center;
     text-decoration: none;
     width: auto;
@@ -831,6 +837,12 @@ span#tarteaucitronDisclaimerAlert {
     bottom: 0;
 }
 
+.tarteaucitronAlertBigTop,
+.tarteaucitronAlertBigBottom {
+    border: 1px solid rgba(0,0,0,.08);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
 #tarteaucitronRoot #tarteaucitronAlertBig {
     background: #ffffff;
     color: #000000;
@@ -877,8 +889,8 @@ span#tarteaucitronDisclaimerAlert {
     cursor: pointer;
     display: inline-block;
     font-size: 16px!important;
-    line-height: 1.2;
-    padding: 5px 10px;
+    line-height: 1;
+    padding: 8px 10px;
     text-decoration: none;
     margin-left: 7px;
 }
@@ -893,7 +905,11 @@ span#tarteaucitronDisclaimerAlert {
     font-size: 13px;
     margin-bottom: 3px;
     margin-left: 7px;
-    padding: 5px 10px;
+    padding: 8px 10px;
+}
+
+#tarteaucitron #tarteaucitronPrivacyUrlDialog {
+    border-radius: 4px;
 }
 
 #tarteaucitronPercentage {
@@ -1241,18 +1257,19 @@ div#tarteaucitronInfo {
     border-color: #555;
 }
 
-a.tarteaucitronSelfLink {
+#tarteaucitronRoot a.tarteaucitronSelfLink {
     position: absolute;
     left: 0;
     right: 0;
     bottom: -30px;
-    text-align: center!important;
+    text-align: center;
     display: block;
     height:30px;
 }
 #tarteaucitronRoot a.tarteaucitronSelfLink img {
     margin-left: auto;
     margin-right: auto;
+    width: 119px;
 }
 
 .tarteaucitronMainLine .tarteaucitronH2 {
@@ -1290,11 +1307,39 @@ span.tarteaucitronTitle.tarteaucitronH3 {
     display: none;
 }
 
+.tarteaucitronSize-middle #tarteaucitronPrivacyUrl {
+    display: block;
+    margin: 15px auto 0;
+}
+
+.tarteaucitronSize-bottom #tarteaucitronCloseCross,
+.tarteaucitronSize-top #tarteaucitronCloseCross{
+    position:initial;
+    margin: 0;
+    margin-left:20px;
+    padding: 0;
+    font-size:18px;
+}
+
+.tarteaucitronSize-bottom #tarteaucitronAlertBig #tarteaucitronCloseAlert,
+.tarteaucitronSize-top #tarteaucitronAlertBig #tarteaucitronCloseAlert {
+    margin-bottom:0;
+}
+
+.tarteaucitronSize-bottom #tarteaucitronAlertBig #tarteaucitronPrivacyUrl,
+.tarteaucitronSize-top #tarteaucitronAlertBig #tarteaucitronPrivacyUrl {
+    margin-left:7px;
+}
+
+#tarteaucitronRoot #tarteaucitronBack {
+    border-radius: 0;
+}
+
 /* custom title for popup and middle banner */
 #tarteaucitronRoot.tarteaucitronSize-middle #tarteaucitronAlertBig::before, #tarteaucitronRoot.tarteaucitronSize-popup #tarteaucitronAlertBig::before {content: var(--tacTitleBanner);}
 
 /* middle banner */
-div#tarteaucitronRoot.tarteaucitronSize-middle.tarteaucitronBeforeVisible:before {content: '';position: fixed;width: 100%;height: 100%;background: white;top: 0;left: 0;z-index: 999;opacity: 0.5;}
+div#tarteaucitronRoot.tarteaucitronSize-middle.tarteaucitronBeforeVisible:before {content: '';position: fixed;width: 100%;height: 100%;background: white;top: 0;left: 0;z-index: 100000;opacity: 0.5;}
 body #tarteaucitronRoot.tarteaucitronSize-middle div#tarteaucitronAlertBig {width: 60%;min-width: 285px;height: fit-content;margin: auto;top:0;left:0;bottom:0;right:0;box-shadow: 0 0 9000px #000;border-radius: 20px;padding: 35px 25px;}
 .tarteaucitronSize-middle span#tarteaucitronDisclaimerAlert {padding: 0 30px;}
 #tarteaucitronRoot.tarteaucitronSize-middle span#tarteaucitronDisclaimerAlert {margin: 10px 0 30px;display: block;text-align: center;font-size: 21px;}

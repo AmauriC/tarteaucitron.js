@@ -1621,6 +1621,9 @@ var tarteaucitron = {
             tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'display', 'none');
 
             document.getElementById('tarteaucitronClosePanel').focus();
+            if (document.getElementsByTagName('html')[0].classList !== undefined) {
+                document.getElementsByTagName('html')[0].classList.add('tarteaucitron-modal-open-noscroll');
+            }
             if (document.getElementsByTagName('body')[0].classList !== undefined) {
                 document.getElementsByTagName('body')[0].classList.add('tarteaucitron-modal-open');
             }
@@ -1676,6 +1679,9 @@ var tarteaucitron = {
                 window.location.reload();
             } else {
                 tarteaucitron.userInterface.css('tarteaucitronBack', 'display', 'none');
+            }
+            if (document.getElementsByTagName('html')[0].classList !== undefined) {
+                document.getElementsByTagName('html')[0].classList.remove('tarteaucitron-modal-open-noscroll');
             }
             if (document.getElementsByTagName('body')[0].classList !== undefined) {
                 document.getElementsByTagName('body')[0].classList.remove('tarteaucitron-modal-open');
@@ -1755,6 +1761,9 @@ var tarteaucitron = {
 
             if (document.getElementById('tarteaucitronAlertBig') !== null && tarteaucitron.parameters.orientation === 'middle') {
                 document.getElementById('tarteaucitronAlertBig').focus();
+                if (document.getElementsByTagName('html')[0].classList !== undefined) {
+                    document.getElementsByTagName('html')[0].classList.add('tarteaucitron-modal-open-noscroll');
+                }
             }
 
             if (typeof(window.dispatchEvent) === 'function') {window.dispatchEvent(tacOpenAlertEvent);}
@@ -1781,6 +1790,10 @@ var tarteaucitron = {
 
             if (tarteaucitron.parameters.showAlertSmall === false && tarteaucitron.parameters.showIcon === false) {
                 tarteaucitron.userInterface.css('tac_title', 'display', 'none');
+            }
+
+            if (document.getElementsByTagName('html')[0].classList !== undefined) {
+                document.getElementsByTagName('html')[0].classList.remove('tarteaucitron-modal-open-noscroll');
             }
 
             if (typeof(window.dispatchEvent) === 'function') {window.dispatchEvent(tacCloseAlertEvent);}
