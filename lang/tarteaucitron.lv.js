@@ -2,93 +2,93 @@
 /* min ready */
 tarteaucitron.lang = {
     "middleBarHead": "☝️ 🍪",
-    "adblock": "Szia! Ez a webhely átlátható, és lehetővé teszi a kívánt harmadik fél szolgáltatásainak kiválasztását",
-    "adblock_call": "A testreszabás megkezdéséhez állítsd le az adblockert, kérlek.",
-    "reload": "Oldal frissítése",
-    
-    "alertBigScroll": "A görgetés folytatásával,",
-    "alertBigClick": "Ha folytatod a böngészést ezen oldalon,",
-    "alertBig": "engedélyezed a harmadik fél összes szolgáltatását.",
-    
-    "alertBigPrivacy": "A webhely tartalmának megjelenítéséhez és a felhasználói élmény javításához cookie-kat használunk",
-    "alertSmall": "Szolgáltatások kezelése",
-    "personalize": "Beállítások",
-    "acceptAll": "OK, elfogadom",
-    "close": "Bezár",
+    "adblock": "Sveiks! Šī vietne ir pārskatāma un ļauj tev izvēlēties, kuri trešo pušu pakalpojumi tiek izmantoti.",
+    "adblock_call": "Lūdzu, izslēdz savu reklāmu bloķētāju, lai sāktu pielāgošanu.",
+    "reload": "Pārlādēt lapu",
+
+    "alertBigScroll": "Turpinot ritināšanu,",
+    "alertBigClick": "Turpinot pārlūkot šo lapu,",
+    "alertBig": "tu piekrīti visu trešo pušu pakalpojumu izmantošanai.",
+
+    "alertBigPrivacy": "Lai parādītu šīs vietnes saturu un uzlabotu lietotāja pieredzi, mēs izmantojam sīkfailus",
+    "alertSmall": "Pārvaldīt pakalpojumus",
+    "personalize": "Iestatījumi",
+    "acceptAll": "OK, piekrītu",
+    "close": "Aizvērt",
     "closeBanner": "Slēpt sīkfailu reklāmkarogu",
 
-    "privacyUrl": "Adatvédelmi irányelvek",
-    
-    "all": "Összes szolgáltatás előnyben részesítése",
+    "privacyUrl": "Privātuma politika",
 
-    "info": "Személyi adataid védelme",
-    "disclaimer": "A harmadik fél szolgáltatásainak engedélyezésével elfogadja a sütiket és a megfelelő működésükhöz szükséges nyomkövetési technológiák használatát.",
-    "allow": "Elfogadom",
-    "deny": "Elutasítom",
-    "noCookie": "Ez a szolgáltatás nem használ sütit.",
-    "useCookie": "Ez a szolgáltatás telepíthető",
-    "useCookieCurrent": "Ez a szolgáltatás telepített",
-    "useNoCookie": "Ez a szolgáltatás nem telepített sütiket",
-    "more": "Olvass többet",
-    "source": "Tekintsd meg a hivatalos weboldalt",
-    "credit": "Cookie-kezelő: tarteaucitron.js",
-    "noServices": "Ez a weboldal nem használ olyan sütiket, amelyekhez a beleegyezésed szükséges.",
+    "all": "Dod priekšroku visiem pakalpojumiem",
 
-    "toggleInfoBox": "Információk megjelenítése / elrejtése a süti-tárolással kapcsolatban",
-    "title": "Süti preferenciák",
-    "cookieDetail": "Süti adatok a következőhöz:",
-    "ourSite": "weboldalunkon",
-    "modalWindow": "(modal window)",
-    "newWindow": "(új ablak)",
-    "allowAll": "Elfogadom az öszeset",
-    "denyAll": "Elutasítom",
+    "info": "Tava personas datu aizsardzība",
+    "disclaimer": "Atļaujot trešo pušu pakalpojumus, tu piekrīti sīkfailu un izsekošanas tehnoloģiju izmantošanai, kas nepieciešamas to darbībai.",
+    "allow": "Piekrītu",
+    "deny": "Noraidu",
+    "noCookie": "Šis pakalpojums neizmanto sīkfailus.",
+    "useCookie": "Šis pakalpojums var instalēt sīkfailus.",
+    "useCookieCurrent": "Šis pakalpojums ir instalējis sīkfailus.",
+    "useNoCookie": "Šis pakalpojums nav instalējis sīkfailus.",
+    "more": "Uzzināt vairāk",
+    "source": "Apskatīt oficiālo vietni",
+    "credit": "Sīkfailu pārvaldnieks: tarteaucitron.js",
+    "noServices": "Šī vietne neizmanto sīkfailus, kuriem nepieciešama tava piekrišana.",
 
-    "icon": "Cookies",
-    
-    "fallback": "letiltott.",
+    "toggleInfoBox": "Rādīt / slēpt informāciju par sīkfailu glabāšanu",
+    "title": "Sīkfailu iestatījumi",
+    "cookieDetail": "Sīkfailu dati šim pakalpojumam:",
+    "ourSite": "mūsu vietnē",
+    "modalWindow": "(uznirstošais logs)",
+    "newWindow": "(jauns logs)",
+    "allowAll": "Piekrītu visiem",
+    "denyAll": "Noraidu visus",
+
+    "icon": "Sīkfaili",
+
+    "fallback": "atspējots.",
     "allowed": "atļauts",
     "disallowed": "nav atļauts",
 
     "ads": {
-        "title": "Reklámhálózat",
-        "details": "A hirdetési hálózatok bevételt teremthetnek azáltal, hogy értékesítik a webhelyen található hirdetési felületet"
+        "title": "Reklāmas tīkli",
+        "details": "Reklāmas tīkli var gūt ienākumus, pārdodot reklāmas vietas šajā tīmekļa vietnē"
     },
     "analytic": {
-        "title": "Közönségmérés",
-        "details": "A közönségmérési szolgáltatások hasznos statisztikai adatokat generáltak a webhely fejlesztése érdekében."
+        "title": "Apmeklējuma analīze",
+        "details": "Analītikas pakalpojumi palīdz veidot statistiku vietnes uzlabošanai."
     },
     "social": {
-        "title": "Közösségi hálózatok",
-        "details": "A közösségi hálózatok javíthatják a webhely használhatóságát, és elősegíthetik annak promoválását a megosztások révén."
+        "title": "Sociālie tīkli",
+        "details": "Sociālie tīkli var uzlabot vietnes lietojamību un veicināt tās popularitāti, ļaujot dalīties saturā."
     },
     "video": {
-        "title": "Videók",
-        "details": "A videomegosztó szolgáltatások hozzájárulnak hasznos multimédiához a webhelyen és növelik annak láthatóságát."
+        "title": "Video",
+        "details": "Video koplietošanas pakalpojumi sniedz multivides saturu un palielina vietnes redzamību."
     },
     "comment": {
-        "title": "Kommentek",
-        "details": "A megjegyzésfigyelők megkönnyítik a megjegyzések kitöltését és a spam elleni küzdelmet."
+        "title": "Komentāri",
+        "details": "Komentēšanas pakalpojumi atvieglo komentāru ievadi un palīdz cīnīties pret surogātpastu."
     },
     "support": {
-        "title": "Támogatás",
-        "details": "A támogatási szolgáltatások lehetővé teszik, hogy kapcsolatba lépjen a webhely csapatával, és segítsen annak fejlesztésében."
+        "title": "Atbalsts",
+        "details": "Atbalsta pakalpojumi ļauj sazināties ar vietnes komandu un palīdzēt tās uzlabošanā."
     },
     "api": {
-        "title": "APIk",
-        "details": "Az API-kat a szkriptek betöltésére használják: földrajzi helymeghatározás, keresőmotorok, fordítások..."
+        "title": "API",
+        "details": "API tiek izmantoti skriptu ielādei: ģeolokācija, meklētāji, tulkojumi..."
     },
     "other": {
-        "title": "Más",
-        "details": "Szolgáltatások webtartalom megjelenítésére."
+        "title": "Citi",
+        "details": "Pakalpojumi tīmekļa satura parādīšanai."
     },
 
     "google": {
-        "title": "Konkrēta piekrišana Google pakalpojumiem",
-        "details": "Google var izmantot jūsu datus auditorijas mērījumiem, reklāmas veiktspējas novērtēšanai vai personalizētu reklāmu piedāvāšanai."
+        "title": "Specifiska piekrišana Google pakalpojumiem",
+        "details": "Google var izmantot tavu informāciju auditorijas analīzei, reklāmu veiktspējas mērīšanai vai personalizētai reklāmai."
     },
-    
-    "mandatoryTitle": "Kötelező sütik",
-    "mandatoryText": "A webhely tartalmának megjelenítéséhez és a felhasználói bejelentkezéshez sütiket használunk amiket nem lehet kikapcsolni.",
+
+    "mandatoryTitle": "Obligātie sīkfaili",
+    "mandatoryText": "Lai parādītu vietnes saturu un nodrošinātu lietotāja pieteikšanos, mēs izmantojam sīkfailus, kurus nevar atspējot.",
 
     "save": "Saglabāt",
     "ourpartners": "Mūsu partneri"
