@@ -810,6 +810,13 @@ tarteaucitron.services.pianoanalytics = {
                 });
             }
         });
+    },
+    "fallback": function () {
+        if (tarteaucitron.parameters.pianoConsentMode === true) {
+            if (tarteaucitron.parameters.softConsentMode === false) {
+                this.js();
+            }
+        }
     }
 };
 
