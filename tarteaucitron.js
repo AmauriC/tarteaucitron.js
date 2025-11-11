@@ -311,8 +311,14 @@ var tarteaucitron = {
         if (tarteaucitron.parameters.pianoConsentMode === true) {
             window.pdl = window.pdl || {};
             window.pdl.requireConsent = "v2";
+            window.pdl.consent = {
+                products: ["PA"],
+                defaultPreset: {
+                    PA: "opt-out",
+                },
+            };
 
-            document.addEventListener("pianoanalytics_consentModeOK", () => {
+            document.addEventListener("pianoanalytics_consentModeOK",function () {
                 window.pdl.consent = {
                     products: ["PA"],
                     defaultPreset: {
@@ -323,8 +329,8 @@ var tarteaucitron = {
                 if (window.pa && window.pa.consent && typeof window.pa.consent.setMode === "function") {
                     window.pa.consent.setMode("opt-in");
                 }
-            });
-            document.addEventListener("pianoanalytics_consentModeKo", () => {
+            }, { once: true });
+            document.addEventListener("pianoanalytics_consentModeKo",function () {
                 window.pdl.consent = {
                     products: ["PA"],
                     defaultPreset: {
@@ -335,7 +341,7 @@ var tarteaucitron = {
                 if (window.pa && window.pa.consent && typeof window.pa.consent.setMode === "function") {
                     window.pa.consent.setMode("opt-out");
                 }
-            });
+            }, { once: true });
 
             if (tarteaucitron.parameters.softConsentMode === false) {
                 window.addEventListener('tac.root_available', function () {
