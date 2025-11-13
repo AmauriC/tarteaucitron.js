@@ -246,6 +246,7 @@ var tarteaucitron = {
                 "serviceDefaultState": 'wait',
                 "googleConsentMode": true,
                 "pianoConsentMode": true,
+                "pianoConsentModeEssential": false,
                 "bingConsentMode": true,
                 "softConsentMode": false,
                 "dataLayer": false,
@@ -311,14 +312,24 @@ var tarteaucitron = {
         if (tarteaucitron.parameters.pianoConsentMode === true) {
             window.pdl = window.pdl || {};
             window.pdl.requireConsent = "v2";
-            window.pdl.consent = {
-                products: ["PA"],
-                defaultPreset: {
-                    PA: "opt-out",
-                },
-            };
 
-            document.addEventListener("pianoanalytics_consentModeOK",function () {
+            if(tarteaucitron.parameters.pianoConsentModeEssential === true) {
+                window.pdl.consent = {
+                    products: ["PA"],
+                    defaultPreset: {
+                        PA: "essential",
+                    },
+                };
+            } else {
+                window.pdl.consent = {
+                    products: ["PA"],
+                    defaultPreset: {
+                        PA: "opt-out",
+                    },
+                };
+            }
+
+            document.addEventListener("pianoanalytics_consentModeOk",function () {
                 window.pdl.consent = {
                     products: ["PA"],
                     defaultPreset: {

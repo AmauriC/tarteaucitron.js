@@ -74,6 +74,7 @@ tarteaucitron.init({
     "googleConsentMode": true, /* Enable Google Consent Mode v2 for Google ads and GA4 */
     "bingConsentMode": true, /* Enable Bing Consent Mode for Clarity and Bing Ads */
     "pianoConsentMode": true, /* Enable Piano Analytics Consent Mode */
+    "pianoConsentModeEssential": false, /* Load in Essential mode instead of opt-out by default */
     "softConsentMode": false, /* Soft consent mode (consent is required to load the services) */
 
     "dataLayer": false, /* Send an event to dataLayer with the services status */
