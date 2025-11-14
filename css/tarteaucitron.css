@@ -1157,7 +1157,7 @@ span#tarteaucitronDisclaimerAlert {
 }
 #tarteaucitronServicesnoTitle_cookies .tarteaucitronCookiesListLeft, #tarteaucitronServicesnoTitle_cookies .tarteaucitronCookiesListRight {
     padding:10px 14px;
-    width: Calc(50% - 56px);
+    width: calc(50% - 56px);
     display:inline-block;
     word-break: break-all;
     vertical-align: top;
