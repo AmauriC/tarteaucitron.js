@@ -22,7 +22,7 @@ var tarteaucitronScriptsDiscover = document.getElementsByTagName('script'),
 
 
 var tarteaucitron = {
-    "version": "1.27.1",
+    "version": "1.28",
     "cdn": cdn,
     "user": {},
     "lang": {},
