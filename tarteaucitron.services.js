@@ -55,6 +55,7 @@ tarteaucitron.services.clickdimensions = {
             cdAnalytics.setAccountKey(tarteaucitron.user.clickdimensionsAccountKey);
             cdAnalytics.setDomain(tarteaucitron.user.clickdimensionsDomain);
             cdAnalytics.setScore(typeof(cdScore) == "undefined" ? 0 : (cdScore == 0 ? null : cdScore));
+            cdAnalytics.trackPage();
         });
     }
 };
