@@ -2405,28 +2405,6 @@ tarteaucitron.services.aduptech_retargeting = {
     }
 };
 
-// alexa
-tarteaucitron.services.alexa = {
-    "key": "alexa",
-    "type": "analytic",
-    "name": "Alexa",
-    "uri": "https://www.alexa.com/help/privacy",
-    "needConsent": true,
-    "cookies": ['__asc', '__auc'],
-    "js": function () {
-        "use strict";
-        if (tarteaucitron.user.alexaAccountID === undefined) {
-            return;
-        }
-        window._atrk_opts = {
-            atrk_acct: tarteaucitron.user.alexaAccountID,
-            domain: window.location.hostname.match(/[^\.]*\.[^.]*$/)[0],
-            dynamic: true
-        };
-        tarteaucitron.addScript('https://d31qbv1cthcecs.cloudfront.net/atrk.js');
-    }
-};
-
 // amazon
 tarteaucitron.services.amazon = {
     "key": "amazon",
@@ -5601,7 +5579,7 @@ tarteaucitron.services.issuu = {
             }
 
 
-            if (issuu_id.match(/\d+\/\d+/)) { issuu_embed = '#' + issuu_id; } else if (issuu_id.match(/d=(.*)&u=(.*)/)) { issuu_embed = '?' + issuu_id; }
+            if (issuu_id.match(/^\d+\/\d+$/)) { issuu_embed = '#' + issuu_id; } else { issuu_embed = '?' + issuu_id; }
 
 
             issuu_frame = '<iframe title="' + frame_title + '" style="' + styleAttr + '" src="//e.issuu.com/embed.html' + issuu_embed + '"></iframe>';
