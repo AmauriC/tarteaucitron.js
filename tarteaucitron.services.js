@@ -256,7 +256,14 @@ tarteaucitron.services.tolkaigenii = {
             return;
         }
 
-        tarteaucitron.addScript('https://genii-script.tolk.ai/lightchat.js', 'lightchat-bot', '', '', 'project-id', tarteaucitron.user.tolkaiGeniiProject);
+        var script;
+        script = document.createElement('script');
+        script.id = "lightchat-bot";
+        script.src = "https://genii-script.tolk.ai/lightchat.js";
+        script.async = true;
+        script.setAttribute("type", "module");
+        script.setAttribute("project-id", tarteaucitron.user.tolkaiGeniiProject);
+        document.getElementsByTagName('head')[0].appendChild(script);
     }
 };
 
