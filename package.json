@@ -1,6 +1,6 @@
 {
   "name": "tarteaucitronjs",
-  "version": "1.28.0",
+  "version": "1.29.0",
   "main": "tarteaucitron.js",
   "description": "tarteaucitron.io - Get a compliant and accessible cookie banner",
   "dependencies": {},
