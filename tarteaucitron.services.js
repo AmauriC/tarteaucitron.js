@@ -5927,6 +5927,10 @@ tarteaucitron.services.matomotm = {
             return;
         }
 
+        if (tarteaucitron.parameters.softConsentMode === true) {
+            return;
+        }
+
         var _mtm = window._mtm = window._mtm || [];
         _mtm.push(['disableCookies']);
         _mtm.push(['disableBrowserFeatureDetection']);
