@@ -2290,31 +2290,41 @@ var tarteaucitron = {
     "getLanguage": function () {
         "use strict";
 
-        var availableLanguages = 'ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh',
-            defaultLanguage = 'en';
+        const availableLanguages = new Set('ar,bg,ca,cn,cs,da,de,et,el,en,es,fi,fr,hr,hu,it,ja,ko,lb,lt,lv,nl,no,oc,pl,pt,ro,ru,se,sk,sq,sv,tr,uk,vi,zh'.split(','));
+        let defaultLanguage = 'en';
 
         if (tarteaucitronForceLanguage !== '') {
-            if (availableLanguages.indexOf(tarteaucitronForceLanguage) !== -1) {
+            if (availableLanguages.has(tarteaucitronForceLanguage)) {
                 return tarteaucitronForceLanguage;
             }
         }
 
-        // get the html lang
-        if (document.documentElement.getAttribute("lang") !== undefined && document.documentElement.getAttribute("lang") !== null && document.documentElement.getAttribute("lang") !== "") {
-            if (availableLanguages.indexOf(document.documentElement.getAttribute("lang").substr(0, 2)) !== -1) {
-                return document.documentElement.getAttribute("lang").substr(0, 2);
+        const failbackLanguages = {};
+
+        availableLanguages.forEach(code => {
+            const base = code.split('-')[0];
+            if (!failbackLanguages[base]) {
+                failbackLanguages[base] = code;
             }
-        }
+        });
 
-        if (!navigator) { return defaultLanguage; }
+        const userLanguages =  [...new Set([navigator.languages, [document.documentElement.getAttribute("lang")], [navigator.language], [navigator.browserLanguage], [navigator.systemLanguage], [navigator.userLang]].flat(1).filter(Boolean))];
 
-        var lang = navigator.language || navigator.browserLanguage ||
-                navigator.systemLanguage || navigator.userLang || null,
-            userLanguage = lang ? lang.substr(0, 2) : null;
+            for (const lang of userLanguages) {
+                if (availableLanguages.has(lang)) {
+                    return lang;
+                }
 
-        if (availableLanguages.indexOf(userLanguage) !== -1) {
-            return userLanguage;
-        }
+                const shortLang = lang.split(/[-_]/)[0].toLowerCase();
+                
+                if (availableLanguages.has(shortLang)) {
+                    return shortLang;
+                }
+    
+                if (failbackLanguages[shortLang]) {
+                    return failbackLanguages[shortLang];
+                }
+            };
 
         return defaultLanguage;
     },
