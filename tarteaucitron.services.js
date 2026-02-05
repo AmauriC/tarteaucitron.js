@@ -5909,7 +5909,7 @@ tarteaucitron.services.matomotm = {
     "name": "Matomo Tag Manager",
     "uri": "https://matomo.org/privacy/",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['_pk.id', '_pk.sess'],
     "js": function () {
         "use strict";
         if (tarteaucitron.user.matomotmUrl === undefined) {
