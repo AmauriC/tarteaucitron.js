@@ -2501,7 +2501,7 @@ var tarteaucitron = {
 
         html += '<div class="tac_activate tac_activate_' + id + '">';
         html += '   <div class="tac_float">';
-        html += '      ' + engage;
+        html += '      <span role="paragraph">' + engage + '</span>';
         html += '      <button aria-label="' + tarteaucitron.lang.allow + ' ' + tarteaucitron.services[id].name + '" type="button" class="tarteaucitronAllow" id="Eng' + r + 'ed' + id + '">';
         html += '          <span class="tarteaucitronCheck" aria-hidden="true"></span> ' + tarteaucitron.lang.allow;
         html += '       </button>';
