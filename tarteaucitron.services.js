@@ -70,11 +70,11 @@ tarteaucitron.services.clickdimensions = {
         }
 
         tarteaucitron.addScript('https://analytics-eu.clickdimensions.com/ts.js', '', function() {
-            var cdAnalytics = new clickdimensions.Analytics('analytics-eu.clickdimensions.com');
-            cdAnalytics.setAccountKey(tarteaucitron.user.clickdimensionsAccountKey);
-            cdAnalytics.setDomain(tarteaucitron.user.clickdimensionsDomain);
-            cdAnalytics.setScore(typeof(cdScore) == "undefined" ? 0 : (cdScore == 0 ? null : cdScore));
-            cdAnalytics.trackPage();
+            window.cdAnalytics = new clickdimensions.Analytics('analytics-eu.clickdimensions.com');
+            window.cdAnalytics.setAccountKey(tarteaucitron.user.clickdimensionsAccountKey);
+            window.cdAnalytics.setDomain(tarteaucitron.user.clickdimensionsDomain);
+            window.cdAnalytics.setScore(typeof(cdScore) == "undefined" ? 0 : (cdScore == 0 ? null : cdScore));
+            window.cdAnalytics.trackPage();
         });
     }
 };
