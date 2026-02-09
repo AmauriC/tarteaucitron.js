@@ -5951,11 +5951,6 @@ tarteaucitron.services.matomotm = {
         }
 
         var _mtm = window._mtm = window._mtm || [];
-        _mtm.push(['disableCookies']);
-        _mtm.push(['disableBrowserFeatureDetection']);
-        _mtm.push(['setAnonymizeIp', true]);
-        _mtm.push(['disablePerformanceTracking']);
-        _mtm.push(['disableHeartBeatTimer']);
         _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
 
         tarteaucitron.addScript(tarteaucitron.user.matomotmUrl);
