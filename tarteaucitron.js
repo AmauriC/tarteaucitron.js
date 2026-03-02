@@ -554,7 +554,7 @@ var tarteaucitron = {
 
                 // disable the expand option if services grouped by category
                 if (tarteaucitron.parameters.groupServices == true) {
-                    tarteaucitron.parameters.showDetailsOnClick = true;
+                    tarteaucitron.parameters.showDetailsOnClick = false;
                 }
                 
                 var body = document.body,
