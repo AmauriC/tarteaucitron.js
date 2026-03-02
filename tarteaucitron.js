@@ -890,9 +890,9 @@ var tarteaucitron = {
 
                             if (tarteaucitron.job.indexOf(id) === -1) {
                                 Array.prototype.push.call(this, id);
+                                tarteaucitron.launch[id] = false;
+                                tarteaucitron.addService(id);
                             }
-                            tarteaucitron.launch[id] = false;
-                            tarteaucitron.addService(id);
                         };
 
                         if (document.location.hash === tarteaucitron.hashtag && tarteaucitron.hashtag !== '') {
