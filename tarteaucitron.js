@@ -2535,18 +2535,31 @@ var tarteaucitron = {
         if (tarteaucitron.uuid !== '' && tarteaucitron.uuid !== undefined && tarteaucitron.proTemp !== '' && tarteaucitronStatsEnabled) {
             var div = document.getElementById('tarteaucitronPremium'),
                 timestamp = new Date().getTime(),
-                url = 'https://tarteaucitron.io/log/?';
+                url = 'https://logs.tarteaucitron.io/collect';
 
             if (div === null) {
                 return;
             }
 
-            url += 'account=' + tarteaucitron.uuid + '&';
-            url += 'domain=' + tarteaucitron.domain + '&';
-            url += 'status=' + encodeURIComponent(tarteaucitron.proTemp) + '&';
-            url += '_time=' + timestamp;
+            var beaconSent = false;
+            if (navigator.sendBeacon) {
+                var data = {
+                    'uuid': tarteaucitron.uuid,
+                    'domain': tarteaucitron.domain,
+                    'status': tarteaucitron.proTemp
+                };
+                var params = new URLSearchParams(data);
+                beaconSent = navigator.sendBeacon(url, params);
+            }
 
-            div.innerHTML = '<img src="' + url + '" class="tarteaucitron-display-none" alt="" />';
+            if (!beaconSent) {
+                url += '?uuid=' + tarteaucitron.uuid + '&';
+                url += 'domain=' + tarteaucitron.domain + '&';
+                url += 'status=' + encodeURIComponent(tarteaucitron.proTemp) + '&';
+                url += '_time=' + timestamp;
+
+                div.innerHTML = '<img src="' + url + '" class="tarteaucitron-display-none" alt="" />';
+            }
 
             tarteaucitron.proTemp = '';
         }
