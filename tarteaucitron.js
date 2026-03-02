@@ -598,7 +598,7 @@ var tarteaucitron = {
                 html += '         <div id="tarteaucitronInfo">';
                 html += '         ' + tarteaucitron.lang.disclaimer;
                 if (tarteaucitron.parameters.privacyUrl !== "") {
-                    html += '   <br/><br/>';
+                    html += '   <br aria-hidden="true" /><br aria-hidden="true" />';
                     html += '   <button type="button" id="tarteaucitronPrivacyUrlDialog" role="link">';
                     html += '       ' + tarteaucitron.lang.privacyUrl;
                     html += '   </button>';
