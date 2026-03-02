@@ -554,7 +554,7 @@ var tarteaucitron = {
 
                 // disable the expand option if services grouped by category
                 if (tarteaucitron.parameters.groupServices == true) {
-                    tarteaucitron.parameters.showDetailsOnClick = false;
+                    tarteaucitron.parameters.showDetailsOnClick = true;
                 }
                 
                 var body = document.body,
@@ -1938,127 +1938,76 @@ var tarteaucitron = {
                 });
             }
         },
+        "taclayoutPending": false,
         "jsSizing": function (type) {
             "use strict";
-            var scrollbarMarginRight = 10,
-                scrollbarWidthParent,
-                scrollbarWidthChild,
-                servicesHeight,
-                e = window,
-                a = 'inner',
-                windowInnerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
-                mainTop,
-                mainHeight,
-                closeButtonHeight,
-                headerHeight,
-                cookiesListHeight,
-                cookiesCloseHeight,
-                cookiesTitleHeight,
-                paddingBox,
-                alertSmallHeight,
-                cookiesNumberHeight;
+
+            if (tarteaucitron.taclayoutPending) return;
+            tarteaucitron.taclayoutPending = true;
 
             if (type === 'box') {
-                if (document.getElementById('tarteaucitronAlertSmall') !== null && document.getElementById('tarteaucitronCookiesNumber') !== null) {
-
-                    // reset
-                    tarteaucitron.userInterface.css('tarteaucitronCookiesNumber', 'padding', '0px 10px');
-
-                    // calculate
-                    alertSmallHeight = document.getElementById('tarteaucitronAlertSmall').offsetHeight;
-                    cookiesNumberHeight = document.getElementById('tarteaucitronCookiesNumber').offsetHeight;
-                    paddingBox = (alertSmallHeight - cookiesNumberHeight) / 2;
-
-                    // apply
-                    tarteaucitron.userInterface.css('tarteaucitronCookiesNumber', 'padding', paddingBox + 'px 10px');
-                }
+                var elCookiesNumber = document.getElementById('tarteaucitronCookiesNumber');
+                if (elCookiesNumber) tarteaucitron.userInterface.css('tarteaucitronCookiesNumber', 'padding', '0px 10px');
             } else if (type === 'main') {
+                var elServices = document.getElementById('tarteaucitronServices');
+                if (elServices) tarteaucitron.userInterface.css('tarteaucitronServices', 'height', 'auto');
+            } else if (type === 'cookie') {
+                var elCookiesList = document.getElementById('tarteaucitronCookiesList');
+                if (elCookiesList) tarteaucitron.userInterface.css('tarteaucitronCookiesList', 'height', 'auto');
+            }
 
-                // get the real window width for media query
-                if (window.innerWidth === undefined) {
-                    a = 'client';
-                    e = document.documentElement || document.body;
-                }
+            window.requestAnimationFrame(function() {
+                tarteaucitron.taclayoutPending = false;
 
-                // height of the services list container
-                if (document.getElementById('tarteaucitron') !== null && document.getElementById('tarteaucitronClosePanel') !== null && document.getElementById('tarteaucitronMainLineOffset') !== null) {
+                var winH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                var winW = window.innerWidth || document.documentElement.clientWidth;
 
-                    // reset
-                    tarteaucitron.userInterface.css('tarteaucitronServices', 'height', 'auto');
-
-                    // calculate
-                    mainHeight = document.getElementById('tarteaucitron').offsetHeight;
-                    closeButtonHeight = document.getElementById('tarteaucitronClosePanel').offsetHeight;
-
-                    // apply
-                    servicesHeight = (mainHeight - closeButtonHeight + 4);
-                    tarteaucitron.userInterface.css('tarteaucitronServices', 'height', servicesHeight + 'px');
-                    tarteaucitron.userInterface.css('tarteaucitronServices', 'overflow-x', 'auto');
-                }
-
-                // align the main allow/deny button depending on scrollbar width
-                if (document.getElementById('tarteaucitronServices') !== null && document.getElementById('tarteaucitronScrollbarChild') !== null) {
-
-                    // media query
-                    if (e[a + 'Width'] <= 479) {
-                        //tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginLeft', '11px');
-                    } else if (e[a + 'Width'] <= 767) {
-                        scrollbarMarginRight = 12;
+                if (type === 'box') {
+                    var elAlertSmall = document.getElementById('tarteaucitronAlertSmall');
+                    var elCookiesNumber = document.getElementById('tarteaucitronCookiesNumber');
+                    if (elAlertSmall && elCookiesNumber) {
+                        var paddingBox = (elAlertSmall.offsetHeight - elCookiesNumber.offsetHeight) / 2;
+                        tarteaucitron.userInterface.css('tarteaucitronCookiesNumber', 'padding', paddingBox + 'px 10px');
                     }
-
-                    scrollbarWidthParent = document.getElementById('tarteaucitronServices').offsetWidth;
-                    scrollbarWidthChild = document.getElementById('tarteaucitronScrollbarChild').offsetWidth;
-                    //tarteaucitron.userInterface.css('tarteaucitronScrollbarAdjust', 'marginRight', ((scrollbarWidthParent - scrollbarWidthChild) + scrollbarMarginRight) + 'px');
                 }
 
-                // center the main panel
-                if (document.getElementById('tarteaucitron') !== null) {
+                else if (type === 'main') {
+                    var elMain = document.getElementById('tarteaucitron');
+                    var elClose = document.getElementById('tarteaucitronClosePanel');
+                    var elServices = document.getElementById('tarteaucitronServices');
 
-                    // media query
-                    if (e[a + 'Width'] <= 767) {
-                        mainTop = 0;
-                    } else {
-                        mainTop = ((windowInnerHeight - document.getElementById('tarteaucitron').offsetHeight) / 2) - 21;
+                    if (elMain && elClose && elServices) {
+                        var hMain = elMain.offsetHeight;
+                        var hClose = elClose.offsetHeight;
+
+                        tarteaucitron.userInterface.css('tarteaucitronServices', 'height', (hMain - hClose + 4) + 'px');
+                        tarteaucitron.userInterface.css('tarteaucitronServices', 'overflow-x', 'auto');
+
+                        var mTop = (winW <= 767) ? 0 : ((winH - hMain) / 2) - 21;
+                        var elOffset = document.getElementById('tarteaucitronMainLineOffset');
+                        if (hMain < (winH / 2) && elOffset) {
+                            mTop -= elOffset.offsetHeight;
+                        }
+                        tarteaucitron.userInterface.css('tarteaucitron', 'top', Math.max(0, mTop) + 'px');
                     }
+                }
 
-                    if (document.getElementById('tarteaucitronMainLineOffset') !== null) {
-                        if (document.getElementById('tarteaucitron').offsetHeight < (windowInnerHeight / 2)) {
-                            mainTop -= document.getElementById('tarteaucitronMainLineOffset').offsetHeight;
+                else if (type === 'cookie') {
+                    var elAlertSmall = document.getElementById('tarteaucitronAlertSmall');
+                    var elCont = document.getElementById('tarteaucitronCookiesListContainer');
+                    if (elAlertSmall && elCont) {
+                        tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'bottom', elAlertSmall.offsetHeight + 'px');
+
+                        var elCloseC = document.getElementById('tarteaucitronClosePanelCookie');
+                        var elTitleC = document.getElementById('tarteaucitronCookiesTitle');
+                        var elListC = document.getElementById('tarteaucitronCookiesList');
+                        if (elCloseC && elTitleC && elListC) {
+                            var hList = elCont.offsetHeight - elCloseC.offsetHeight - elTitleC.offsetHeight - 2;
+                            tarteaucitron.userInterface.css('tarteaucitronCookiesList', 'height', hList + 'px');
                         }
                     }
-
-                    // correct
-                    if (mainTop < 0) {
-                        mainTop = 0;
-                    }
-
-                    // apply
-                    tarteaucitron.userInterface.css('tarteaucitron', 'top', mainTop + 'px');
                 }
-
-
-            } else if (type === 'cookie') {
-
-                // put cookies list at bottom
-                if (document.getElementById('tarteaucitronAlertSmall') !== null) {
-                    tarteaucitron.userInterface.css('tarteaucitronCookiesListContainer', 'bottom', (document.getElementById('tarteaucitronAlertSmall').offsetHeight) + 'px');
-                }
-
-                // height of cookies list
-                if (document.getElementById('tarteaucitronCookiesListContainer') !== null) {
-
-                    // reset
-                    tarteaucitron.userInterface.css('tarteaucitronCookiesList', 'height', 'auto');
-
-                    // calculate
-                    cookiesListHeight = document.getElementById('tarteaucitronCookiesListContainer').offsetHeight;
-                    cookiesCloseHeight = document.getElementById('tarteaucitronClosePanelCookie').offsetHeight;
-                    cookiesTitleHeight = document.getElementById('tarteaucitronCookiesTitle').offsetHeight;
-
-                    // apply
-                    tarteaucitron.userInterface.css('tarteaucitronCookiesList', 'height', (cookiesListHeight - cookiesCloseHeight - cookiesTitleHeight - 2) + 'px');
-                }
-            }
+            });
         }
     },
     "cookie": {
