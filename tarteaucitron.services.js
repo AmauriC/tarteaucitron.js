@@ -140,8 +140,9 @@ tarteaucitron.services.madmetrics = {
             var clientId = tarteaucitron.user.madmetricsClientId,
                 siteId = tarteaucitron.user.madmetricsSiteId,
                 directId = tarteaucitron.user.madmetricsDirectId,
-                referalId = tarteaucitron.user.madmetricsReferalId;
-            var _kTck = new KaTracker( clientId, siteId, directId, referalId );
+                referalId = tarteaucitron.user.madmetricsReferalId,
+                llmId = tarteaucitron.user.madmetricsLlmId;
+            var _kTck = new KaTracker( clientId, siteId, directId, referalId, llmId );
             _kTck.setBridge('https://' + tarteaucitron.user.madmetricsHostname + '/k_redirect_md.php');
             _kTck.track();
         });
