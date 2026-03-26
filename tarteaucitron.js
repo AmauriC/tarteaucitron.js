@@ -2604,5 +2604,19 @@ var tarteaucitron = {
                 tarteaucitron.userInterface.respond(this, false);
             });
         }
+    },
+    "dynamicJobPush": function(id) {
+        if (tarteaucitron.added[id] !== true) {
+            tarteaucitron.job.push(id);
+        } else {
+            if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + id + "_") < 0) && tarteaucitron.parameters.serverSide !== true) {
+                if(tarteaucitron.state[id] === true && typeof tarteaucitron.services[id].js === 'function') {
+                    tarteaucitron.services[id].js();
+                } else if (typeof tarteaucitron.services[id].fallback === 'function') {
+                    tarteaucitron.services[id].fallback();
+                }
+            }
+        }
+        tarteaucitron.triggerJobsAfterAjaxCall();
     }
 };
