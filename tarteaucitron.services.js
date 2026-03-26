@@ -5997,6 +5997,18 @@ tarteaucitron.services.matomotm = {
         _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
 
         tarteaucitron.addScript(tarteaucitron.user.matomotmUrl);
+
+        var theCookies = document.cookie.split(';');
+        for (var i = 1; i <= theCookies.length; i++) {
+            var cookie = theCookies[i - 1].split('=');
+            var cookieName = cookie[0].trim();
+
+            // if cookie starts like a matomo one, register it
+            if (cookieName.indexOf('_pk_') === 0) {
+                tarteaucitron.services.matomotm.cookies.push(cookieName);
+            }
+        }
+        tarteaucitron.cookie.purge(tarteaucitron.services.matomotm.cookies);
     }
 };
 
