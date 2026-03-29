@@ -1238,21 +1238,21 @@ var tarteaucitron = {
             if (tarteaucitron.launch[service.key] !== true) {
                 tarteaucitron.launch[service.key] = true;
                 tarteaucitron.sendEvent(service.key + '_consentModeOk');
-                if (typeof tarteaucitronMagic === 'undefined' && tarteaucitron.parameters.serverSide !== true) { service.js(); }
+                if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) { service.js(); }
                 tarteaucitron.sendEvent(service.key + '_loaded');
             }
             tarteaucitron.state[service.key] = true;
             tarteaucitron.userInterface.color(service.key, true);
         } else if (isDenied) {
             if (typeof service.fallback === 'function') {
-                if (typeof tarteaucitronMagic === 'undefined' && tarteaucitron.parameters.serverSide !== true) { service.fallback(); }
+                if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) { service.fallback(); }
             }
             tarteaucitron.state[service.key] = false;
             tarteaucitron.userInterface.color(service.key, false);
         } else if (!isResponded && isDNTRequested && tarteaucitron.handleBrowserDNTRequest) {
             tarteaucitron.cookie.create(service.key, 'false');
             if (typeof service.fallback === 'function') {
-                if (typeof tarteaucitronMagic === 'undefined' && tarteaucitron.parameters.serverSide !== true) { service.fallback(); }
+                if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) { service.fallback(); }
             }
             tarteaucitron.state[service.key] = false;
             tarteaucitron.userInterface.color(service.key, false);
@@ -1263,7 +1263,7 @@ var tarteaucitron = {
                 tarteaucitron.sendEvent(service.key + '_consentModeOk');
             }
 
-            if (typeof tarteaucitronMagic === 'undefined' && tarteaucitron.parameters.serverSide !== true) {
+            if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + service.key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) {
                 if(true === state && typeof service.js === 'function') {
                     service.js();
                 } else if (typeof service.fallback === 'function') {
@@ -1413,7 +1413,7 @@ var tarteaucitron = {
                         tarteaucitron.pro('!' + key + '=engage');
 
                         tarteaucitron.launch[key] = true;
-                        if (typeof tarteaucitronMagic === 'undefined' && tarteaucitron.parameters.serverSide !== true) { tarteaucitron.services[key].js(); }
+                        if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) { tarteaucitron.services[key].js(); }
                         tarteaucitron.sendEvent(key + '_loaded');
                     }
                     var itemStatusElem = document.getElementById('tacCurrentStatus'+key);
@@ -1466,7 +1466,7 @@ var tarteaucitron = {
 
                     tarteaucitron.launch[key] = true;
                     tarteaucitron.sendEvent(key + '_consentModeOk');
-                    if (typeof tarteaucitronMagic === 'undefined' && tarteaucitron.parameters.serverSide !== true) { tarteaucitron.services[key].js(); }
+                    if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) && tarteaucitron.parameters.serverSide !== true) { tarteaucitron.services[key].js(); }
                     tarteaucitron.sendEvent(key + '_loaded');
                 }
             }
@@ -2609,7 +2609,7 @@ var tarteaucitron = {
         if (tarteaucitron.added[id] !== true) {
             tarteaucitron.job.push(id);
         } else {
-            if (typeof tarteaucitronMagic === 'undefined' && tarteaucitron.parameters.serverSide !== true) {
+            if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + id + "_") < 0) && tarteaucitron.parameters.serverSide !== true) {
                 if(tarteaucitron.state[id] === true && typeof tarteaucitron.services[id].js === 'function') {
                     tarteaucitron.services[id].js();
                 } else if (typeof tarteaucitron.services[id].fallback === 'function') {
