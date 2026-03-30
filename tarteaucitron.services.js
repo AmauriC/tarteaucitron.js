@@ -5954,6 +5954,10 @@ tarteaucitron.services.matomotm = {
         var _mtm = window._mtm = window._mtm || [];
         _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
 
+        var _paq = window._paq = window._paq || [];
+        _paq.push(['forgetCookieConsentGiven']);
+        _paq.push(['deleteCookies']);
+
         tarteaucitron.addScript(tarteaucitron.user.matomotmUrl);
 
         var theCookies = document.cookie.split(';');
