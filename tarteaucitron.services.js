@@ -1,4 +1,4 @@
-/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google, Typekit, FB, ferankReady, IN, stButtons, twttr, PCWidget*/
+/*global tarteaucitron, ga, Shareaholic, stLight, clicky, top, google, Typekit, FB, IN, stButtons, twttr, PCWidget*/
 /*jslint regexp: true, nomen: true*/
 /* min ready */
 
@@ -3185,24 +3185,6 @@ tarteaucitron.services.facebookcomment = {
     }
 };
 
-// ferank
-tarteaucitron.services.ferank = {
-    "key": "ferank",
-    "type": "analytic",
-    "name": "FERank",
-    "uri": "https://www.ferank.fr/respect-vie-privee/#mesureaudience",
-    "needConsent": false,
-    "cookies": [],
-    "js": function () {
-        "use strict";
-        tarteaucitron.addScript('//static.ferank.fr/pixel.js', '', function () {
-            if (typeof tarteaucitron.user.ferankMore === 'function') {
-                tarteaucitron.user.ferankMore();
-            }
-        });
-    }
-};
-
 // pingdom
 tarteaucitron.services.pingdom = {
     "key": "pingdom",
@@ -3275,30 +3257,6 @@ tarteaucitron.services.stonly = {
         tarteaucitron.addScript('https://js.stripe.com/v3/');
     }
 };*/
-
-// ferank pub
-tarteaucitron.services.ferankpub = {
-    "key": "ferankpub",
-    "type": "ads",
-    "name": "FERank (pub)",
-    "uri": "https://www.ferank.fr/respect-vie-privee/#regiepublicitaire",
-    "needConsent": false,
-    "cookies": [],
-    "js": function () {
-        "use strict";
-        tarteaucitron.addScript('//static.ferank.fr/publicite.async.js');
-        if (tarteaucitron.isAjax === true) {
-            if (typeof ferankReady === 'function') {
-                ferankReady();
-            }
-        }
-    },
-    "fallback": function () {
-        "use strict";
-        var id = 'ferankpub';
-        tarteaucitron.fallback(['ferank-publicite'], tarteaucitron.engage(id));
-    }
-};
 
 // get+
 tarteaucitron.services.getplus = {
