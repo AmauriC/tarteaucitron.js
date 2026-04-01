@@ -3793,7 +3793,7 @@ tarteaucitron.services.googlemaps = {
             googleMapsLibraries = '&libraries=' + tarteaucitron.user.googlemapsLibraries;
         }
 
-        tarteaucitron.addScript('//maps.googleapis.com/maps/api/js?v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback=' + tarteaucitron.user.mapscallback + googleMapsLibraries);
+        tarteaucitron.addScript('https://maps.googleapis.com/maps/api/js?loading=async&v=3.exp&key=' + tarteaucitron.user.googlemapsKey + '&callback=' + tarteaucitron.user.mapscallback + googleMapsLibraries);
 
         window.tac_googlemaps_callback = function () {
             tarteaucitron.fallback(['googlemaps-canvas'], function (x) {
