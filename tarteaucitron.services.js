@@ -47,14 +47,12 @@ tarteaucitron.services.matomoheatmap = {
         "use strict";
 
         window._paq = window._paq || [];
-        _paq.push(['rememberCookieConsentGiven']);
         _paq.push(['HeatmapSessionRecording::enable']);
     },
     "fallback": function () {
         "use strict";
 
         window._paq = window._paq || [];
-        _paq.push(['forgetCookieConsentGiven']);
         _paq.push(['HeatmapSessionRecording::disable']);
     }
 };
@@ -5857,7 +5855,7 @@ tarteaucitron.services.matomocloud = {
     "key": "matomocloud",
     "type": "analytic",
     "name": "Matomo Cloud (privacy by design)",
-    "uri": "https://matomo.org/faq/general/faq_146/",
+    "uri": "https://matomo.org/guide/manage-matomo/privacy/",
     "needConsent": true,
     "cookies": ['_pk_ref', '_pk_cvar', '_pk_id', '_pk_ses', '_pk_hsr', 'mtm_consent', 'matomo_ignore', 'matomo_sessid'],
     "js": function () {
