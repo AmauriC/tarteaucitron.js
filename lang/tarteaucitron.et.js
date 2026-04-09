@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "OK, nõustu kõigiga",
     "close": "Sulge",
     "closeBanner": "Peida küpsiste bänner",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Privaatsuspoliitika",
     

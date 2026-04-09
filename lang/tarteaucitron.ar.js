@@ -17,6 +17,7 @@ tarteaucitron.lang = {
     "personalize": "تخصيص",
     "close": "اغلاق",
     "closeBanner": "إخفاء لافتة ملفات تعريف الارتباط",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "سياسة الخصوصية",
 

@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "personalize": "Personaliséieren",
     "close": "Zoumaachen",
     "closeBanner": "Verstoppen Cookien Banner",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Privatsphär Politik",
 

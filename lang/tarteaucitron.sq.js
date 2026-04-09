@@ -16,6 +16,7 @@
     "acceptAll": "OK, prano të gjitha",
     "close": "Mbyll",
     "closeBanner": "Fshih banerin e cookies",
+     "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Politika e privatësisë",
     

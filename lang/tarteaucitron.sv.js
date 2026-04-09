@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "OK, acceptera allt",
     "close": "Stänga",
     "closeBanner": "Dölj cookies banner",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Integritetspolicy",
 

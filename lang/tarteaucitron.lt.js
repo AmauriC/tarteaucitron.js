@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "Gerai, priimu visus",
     "close": "Uždaryti",
     "closeBanner": "Slėpti slapukų reklamjuostę",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Privatumo politika",
 
