@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "personalize": "Налаштувати",
     "close": "Закрити",
     "closeBanner": "Приховати банер cookie",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Політика конфіденційності",
 

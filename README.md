@@ -133,6 +133,7 @@ tarteaucitronCustomText = {
     'title': 'Support client',
   },
   'close': 'Enregistrer et fermer',
+  'bannerHeading': 'Nous respectons votre vie privée',
 };
 tarteaucitron.init(...);
 ```
@@ -143,6 +144,24 @@ tarteaucitronCustomText = {
   'engage-twitter': 'Follow us on Twitter!'
 };
 ```
+
+You can set additional descriptions for services. For example:
+```js
+tarteaucitronCustomText = {
+  'desc-googleanalytics': 'Google Analytics nous aide à comprendre comment les visiteurs utilisent notre site web.'
+};
+```
+Alternatively this can be set directly at the service object:
+```js
+tarteaucitron.services.mycustomservice = {
+    "key": "mycustomservice",
+    "type": "analytic",
+    "name": "Mes services",
+    "description": "Ce service fait quelque chose.",
+    // ...
+};
+```
+
 <!--
 # Thanks to the sponsors 😊
 

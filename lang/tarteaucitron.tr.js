@@ -17,6 +17,7 @@ tarteaucitron.lang = {
     "personalize": "kişiselleştirmek",
     "close": "kapat",
     "closeBanner": "Çerez banner'ını gizle",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Gizlilik Politikası",
 

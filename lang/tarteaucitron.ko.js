@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "모두 수락",
     "close": "닫기",
     "closeBanner": "쿠키 배너 숨기기",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "개인 정보 정책",
 

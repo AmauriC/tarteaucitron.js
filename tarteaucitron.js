@@ -252,7 +252,8 @@ var tarteaucitron = {
                 "dataLayer": false,
                 "serverSide": false,
                 "partnersList": false,
-                "alwaysNeedConsent": false
+                "alwaysNeedConsent": false,
+                "bannerHeading": "",  /* Optional heading text in the cookie banner (uses lang key "bannerHeading" if empty) */
             },
             params = tarteaucitron.parameters;
 
@@ -711,6 +712,11 @@ var tarteaucitron = {
                 if (tarteaucitron.parameters.highPrivacy && !tarteaucitron.parameters.AcceptAllCta) {
                     html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '"' + modalAttrs + '>';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
+                    // Optional translatable banner heading
+                    var headingText = tarteaucitron.parameters.bannerHeading || tarteaucitron.lang.bannerHeading || '';
+                    if (headingText !== '') {
+                        html += '   <span id="tarteaucitronBannerHeading" class="tarteaucitronBannerHeading" role="heading" aria-level="2">' + headingText + '</span>';
+                    }
                     html += '   <span id="tarteaucitronDisclaimerAlert" role="paragraph">';
                     html += '       ' + tarteaucitron.lang.alertBigPrivacy;
                     html += '   </span>';
@@ -731,6 +737,11 @@ var tarteaucitron = {
                 } else {
                     html += '<div tabindex="-1" id="tarteaucitronAlertBig" class="tarteaucitronAlertBig' + orientation + '"' + modalAttrs + '>';
                     //html += '<div class="tarteaucitronAlertBigWrapper">';
+                    // Optional translatable banner heading
+                    var headingText = tarteaucitron.parameters.bannerHeading || tarteaucitron.lang.bannerHeading || '';
+                    if (headingText !== '') {
+                        html += '   <span id="tarteaucitronBannerHeading" class="tarteaucitronBannerHeading" role="heading" aria-level="2">' + headingText + '</span>';
+                    }
                     html += '   <span id="tarteaucitronDisclaimerAlert" role="paragraph">';
 
                     if (tarteaucitron.parameters.highPrivacy) {
@@ -1169,6 +1180,11 @@ var tarteaucitron = {
             html += '<li id="' + service.key + 'Line" class="tarteaucitronLine">';
             html += '   <div class="tarteaucitronName">';
             html += '       <span class="tarteaucitronH3" role="heading" aria-level="4">' + service.name + '</span>';
+            // Optional translatable service description
+            var serviceDesc = tarteaucitron.lang['desc-' + service.key] || service.description || '';
+            if (serviceDesc !== '') {
+                html += '       <span class="tarteaucitronServiceDescription">' + serviceDesc + '</span>';
+            }
             html += '       <div class="tarteaucitronStatusInfo">';
             html += '          <span class="tacCurrentStatus" id="tacCurrentStatus' + service.key + '">'+currentStatus+'</span>';
             html += '          <span class="tarteaucitronReadmoreSeparator"> - </span>';

@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "personalize": "Personoi",
     "close": "Sulje",
     "closeBanner": "Piilota evästebanneri",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Tietosuoja",
 

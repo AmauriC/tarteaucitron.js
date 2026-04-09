@@ -16,6 +16,7 @@ tarteaucitron.lang = {
 	"acceptAll"       : "OK, aksepter alt",
 	"close"           : "Steng",
     "closeBanner"     : "Skjul informasjonskapselbanner",
+	"bannerHeading": "",  // empty = no header shown
 
 	"privacyUrl" : "Personvernregler",
 

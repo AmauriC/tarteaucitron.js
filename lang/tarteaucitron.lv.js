@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "Pieņemt visu",
     "close": "Aizvērt",
     "closeBanner": "Aizvert sīkdatņu joslu",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Privātuma politika",
 

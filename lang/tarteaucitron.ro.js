@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "OK, acceptați-le pe toate",
     "close": "Închide",
     "closeBanner": "Ascunde bannerul cookie-urilor",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Politica de confidentialitate",
     

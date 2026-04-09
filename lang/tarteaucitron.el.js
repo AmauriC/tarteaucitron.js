@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "OK, αποδοχή όλων",
     "close": "Κλείσιμο",
     "closeBanner": "Απόκρυψη banner cookies",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Πολιτική απορρήτου",
     

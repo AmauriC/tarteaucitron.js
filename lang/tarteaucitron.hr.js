@@ -16,6 +16,7 @@ tarteaucitron.lang = {
     "acceptAll": "U redu, prihvati sve",
     "close": "Zatvori",
     "closeBanner": "Sakrij banner kolačića",
+    "bannerHeading": "",  // empty = no header shown
 
     "privacyUrl": "Pravila privatnosti",
 
