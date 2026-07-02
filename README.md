@@ -41,6 +41,7 @@ tarteaucitron.init({
     "serviceDefaultState": "wait", /* Default state (true - wait - false) */
 
     "showAlertSmall": false, /* Show the small banner on bottom right */
+    "showTitleBanner": false, /* Also show the title (middleBarHead) on the top/bottom banners */
     "cookieslist": false, /* Show the cookie list in a mini banner */
     "cookieslistEmbed": false, /* Show the cookie list on the control panel */
     

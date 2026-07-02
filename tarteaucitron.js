@@ -227,6 +227,7 @@ var tarteaucitron = {
                 "bodyPosition": "bottom",
                 "removeCredit": false,
                 "showAlertSmall": false,
+                "showTitleBanner": false,
                 "showDetailsOnClick": true,
                 "showIcon": true,
                 "iconPosition": "BottomRight",
@@ -839,6 +840,11 @@ var tarteaucitron = {
                         }
 
                         tarteaucitron.userInterface.addClass("tarteaucitronRoot", "tarteaucitronSize-" + tarteaucitron.parameters.orientation);
+
+                        // optionally show the title banner (middleBarHead) on the top/bottom bars too
+                        if (tarteaucitron.parameters.showTitleBanner === true) {
+                            tarteaucitron.userInterface.addClass("tarteaucitronRoot", "tarteaucitronTitleBanner");
+                        }
 
                         div.setAttribute('data-nosnippet', 'true');
                         div.setAttribute('lang', language);
