@@ -3664,8 +3664,13 @@ tarteaucitron.services.googleads = {
             return;
         }
 
+        var customDomain = "www.googletagmanager.com";
+        if (tarteaucitron.user.googleadsCustomDomain !== undefined && tarteaucitron.user.googleadsCustomDomain !== "") {
+            customDomain = tarteaucitron.user.googleadsCustomDomain;
+        }
+
         window.dataLayer = window.dataLayer || [];
-        tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.googleadsId, '', function () {
+        tarteaucitron.addScript('https://' + customDomain + '/gtag/js?id=' + tarteaucitron.user.googleadsId, '', function () {
             window.gtag = function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
             var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
@@ -3710,8 +3715,13 @@ tarteaucitron.services.gtag = {
             return;
         }
 
+        var customDomain = "www.googletagmanager.com";
+        if (tarteaucitron.user.gtagCustomDomain !== undefined && tarteaucitron.user.gtagCustomDomain !== "") {
+            customDomain = tarteaucitron.user.gtagCustomDomain;
+        }
+
         window.dataLayer = window.dataLayer || [];
-        tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
+        tarteaucitron.addScript('https://' + customDomain + '/gtag/js?id=' + tarteaucitron.user.gtagUa, '', function () {
             window.gtag = function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
             var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
@@ -4016,7 +4026,13 @@ tarteaucitron.services.googletagmanager = {
             'gtm.start': new Date().getTime(),
             event: 'gtm.js'
         });
-        tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + tarteaucitron.user.googletagmanagerId);
+
+        var customDomain = "www.googletagmanager.com";
+        if (tarteaucitron.user.googletagmanagerCustomDomain !== undefined && tarteaucitron.user.googletagmanagerCustomDomain !== "") {
+            customDomain = tarteaucitron.user.googletagmanagerCustomDomain;
+        }
+
+        tarteaucitron.addScript('https://' + customDomain + '/gtm.js?id=' + tarteaucitron.user.googletagmanagerId);
     },
     "fallback": function () {
         if (tarteaucitron.parameters.googleConsentMode === true) {
@@ -4046,8 +4062,13 @@ tarteaucitron.services.multiplegoogletagmanager = {
             event: 'gtm.js'
         });
 
+        var customDomain = "www.googletagmanager.com";
+        if (tarteaucitron.user.multiplegoogletagmanagerCustomDomain !== undefined && tarteaucitron.user.multiplegoogletagmanagerCustomDomain !== "") {
+            customDomain = tarteaucitron.user.multiplegoogletagmanagerCustomDomain;
+        }
+
         tarteaucitron.user.multiplegoogletagmanagerId.forEach(function (id) {
-            tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + id);
+            tarteaucitron.addScript('https://' + customDomain + '/gtm.js?id=' + id);
         });
 
     },
@@ -5714,9 +5735,14 @@ tarteaucitron.services.multiplegtag = {
         "use strict";
         window.dataLayer = window.dataLayer || [];
 
+        var customDomain = "www.googletagmanager.com";
+        if (tarteaucitron.user.multiplegtagCustomDomain !== undefined && tarteaucitron.user.multiplegtagCustomDomain !== "") {
+            customDomain = tarteaucitron.user.multiplegtagCustomDomain;
+        }
+
         if (tarteaucitron.user.multiplegtagUa !== undefined) {
             tarteaucitron.user.multiplegtagUa.forEach(function (ua) {
-                tarteaucitron.addScript('https://www.googletagmanager.com/gtag/js?id=' + ua, '', function () {
+                tarteaucitron.addScript('https://' + customDomain + '/gtag/js?id=' + ua, '', function () {
                     window.gtag = function gtag() { dataLayer.push(arguments); }
                     gtag('js', new Date());
                     var additional_config_info = (timeExpire !== undefined) ? {'anonymize_ip': true, 'cookie_expires': timeExpire / 1000} : {'anonymize_ip': true};
