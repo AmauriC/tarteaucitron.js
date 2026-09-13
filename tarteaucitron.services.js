@@ -19,6 +19,10 @@ tarteaucitron.services.iframe = {
                 allowfullscreen = tarteaucitron.getElemAttr(x,"allowfullscreen"),
                 url = tarteaucitron.getElemAttr(x,"url");
 
+            if (!/^(https?:)?\/\//i.test(url)) {
+                url = 'about:blank';
+            }
+
             var styleAttr = (width !== "" ? "width:" + tarteaucitron.getStyleSize(width) + ";" : "") + (height !== "" ? "height:" + tarteaucitron.getStyleSize(height) + ";" : "");
 
             return '<iframe title="' + frame_title + '" src="' + url + '" style="' + styleAttr + '" allowtransparency' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
