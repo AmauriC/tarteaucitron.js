@@ -1,25 +1,66 @@
+# tarteaucitron.js — Open-source cookie consent manager
 
-[![](https://data.jsdelivr.com/v1/package/npm/tarteaucitronjs/badge)](https://www.jsdelivr.com/package/npm/tarteaucitronjs)
-[![npm](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs) [![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors) [![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub)](https://github.com/sponsors/AmauriC) 
+[![jsDelivr downloads](https://data.jsdelivr.com/v1/package/npm/tarteaucitronjs/badge)](https://www.jsdelivr.com/package/npm/tarteaucitronjs)
+[![npm version](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs)
+[![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors)
+[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub)](https://github.com/sponsors/AmauriC)
 
+**Add a cookie consent banner to your website and let visitors control third-party services.**
 
-👋 Hey, I'm Amauri, a french dev that build a GDPR friendly cookie manager.
+tarteaucitron.js is a free, open-source JavaScript consent manager created and maintained by [Amauri Champeaux](https://amauri.io/en/), an independent developer based in France.
 
-tarteaucitron was initially a simple script for my personal blog (in 2013), a few months later, the Github repository is opened and tarteaucitron is now reliable and recognized.
+It provides the consent interface and service controls for your consent management platform (CMP) setup, helping you implement GDPR / RGPD consent requirements on your website.
 
-The european cookie law regulates the management of cookies and you should ask your visitors their consent before exposing them to third party services.
+Use it to manage consent for analytics, advertising, embedded videos, social widgets and other supported third-party services.
 
-Clearly this script will:
-- Disable all services by default,
-- Display a banner on the first page view and a small one on other pages,
-- Display a panel to allow or deny each services one by one,
-- Store the consent in a cookie for 365 days.
+[Installation guide](https://tarteaucitron.io/en/free-installation-open-source/) · [Website and Pro service](https://tarteaucitron.io/) · [Support the project](https://github.com/sponsors/AmauriC)
 
-Bonus:
-- Load service when user click on Allow (without reload of the page),
-- Incorporate a fallback system (display a link instead of social button and a static banner instead of advertising).
+## Features
 
+- **Cookie consent banner:** offer visitors clear choices to accept, reject or customize their consent.
+- **Service-level preferences:** let visitors manage individual services from a dedicated panel.
+- **Consent-based loading:** keep configured services requiring consent blocked until permission is granted, with explicit consent enabled.
+- **Content placeholders:** display a fallback for supported embedded content while consent is pending or refused.
+- **Loading without a page refresh:** load supported services when visitors accept them.
+- **Customizable interface:** configure the banner layout, texts, colors and consent options.
+- **Accessibility options:** adjust the panel's position in the document and provide a way to reopen consent preferences.
+- **Consent Mode integrations:** support Google Consent Mode v2, Bing Consent Mode and Piano Analytics Consent Mode.
 
+## Open source or Pro?
+
+### tarteaucitron.js — manual integration
+
+Use this library to host and configure your consent manager yourself.
+
+Initialize tarteaucitron.js, add the services used on your website and adapt their integration so that tarteaucitron can manage their loading.
+
+**Initializing the banner alone does not automatically block scripts already loaded elsewhere on your website.**
+
+[Follow the open-source installation guide](https://tarteaucitron.io/en/free-installation-open-source/).
+
+### tarteaucitron.io Pro — managed service
+
+Choose the Pro service for automatic detection of supported services, an online configuration dashboard and consent statistics.
+
+The open-source library remains free. The Pro service is a separate paid offering.
+
+[Explore tarteaucitron.io Pro](https://tarteaucitron.io/).
+
+## Consent and configuration
+
+Your website's behavior depends on the services you integrate and the options you enable, including Consent Mode settings.
+
+Test your implementation before consent, after acceptance and after rejection. Check for third-party scripts loaded independently by your website, plugins or tag manager.
+
+tarteaucitron.js provides consent management tools; using it does not, by itself, guarantee that your entire website complies with the GDPR.
+
+## Maintainer and community
+
+Originally created for a personal blog, tarteaucitron.js is maintained by Amauri Champeaux with contributions from the community.
+
+Bug reports, integration improvements, translations and documentation contributions are welcome.
+
+[Meet the developer](https://amauri.io/en/amauri-champeaux/) · [Contributors](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors) · [Sponsor development](https://github.com/sponsors/AmauriC)
 
 # How to use
 
