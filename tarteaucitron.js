@@ -669,7 +669,7 @@ var tarteaucitron = {
                         '<li class="tarteaucitronLine" style="background:transparent">' +
                         '   <div class="tarteaucitronName">' +
                         '       <span class="tarteaucitronH3" role="heading" aria-level="3" id="tarteaucitronCookiesNumberBis">0 cookie</span>' +
-                        '      <button type="button" aria-expanded="false" class="tarteaucitron-toggle-group" id="tarteaucitron-toggle-group-cookies">' + tarteaucitron.lang.cookieDetail + '</button>' +
+                        '      <button type="button" aria-expanded="false" class="tarteaucitron-toggle-group" id="tarteaucitron-toggle-group-cookies">' + tarteaucitron.lang.cookieDetail + ' ' + window.location.hostname + '</button>' +
                         '    </div>' +
                         '</li>' +
                         '</ul>';

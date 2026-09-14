@@ -37,7 +37,7 @@ tarteaucitron.lang = {
 
     "toggleInfoBox": "Afficher/masquer les informations sur le stockage des cookies",
     "title": "Panneau de gestion des cookies",
-    "cookieDetail": "Détail des cookies",
+    "cookieDetail": "Détail des cookies de",
     "ourSite": "sur notre site",
     "modalWindow": "(fenêtre modale)",
     "newWindow": "(nouvelle fenêtre)",
