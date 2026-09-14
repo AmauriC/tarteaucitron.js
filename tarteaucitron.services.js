@@ -7149,7 +7149,7 @@ tarteaucitron.services.gallica = {
 // crisp
 tarteaucitron.services.crisp = {
     "key": "crisp",
-    "type": "other",
+    "type": "support",
     "name": "Crisp Chat",
     "uri": "https://help.crisp.chat/en/article/crisp-chatbox-cookie-ip-policy-1147xor/",
     "needConsent": false,
@@ -7165,6 +7165,16 @@ tarteaucitron.services.crisp = {
         window.CRISP_WEBSITE_ID = tarteaucitron.user.crispID;
 
         tarteaucitron.addScript('https://client.crisp.chat/l.js');
+
+        var theCookies = document.cookie.split(';');
+        for (var i = 1; i <= theCookies.length; i++) {
+            var cookie = theCookies[i - 1].split('=');
+            var cookieName = cookie[0].trim();
+
+            if (cookieName.indexOf('crisp-client') === 0) {
+                tarteaucitron.services.crisp.cookies.push(cookieName);
+            }
+        }
     }
 };
 
