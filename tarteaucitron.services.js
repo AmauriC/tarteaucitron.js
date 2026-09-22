@@ -35,6 +35,41 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// slido
+tarteaucitron.services.slido = {
+    "key": "slido",
+    "type": "support",
+    "name": "Slido Event",
+    "uri": "https://www.slido.com/",
+    "needConsent": true,
+    "cookies": [],
+    "js": function () {
+        "use strict";
+        tarteaucitron.fallback(['tac_slido'], function (x) {
+            var frame_title = (tarteaucitron.getElemAttr(x,"title")) ? tarteaucitron.getElemAttr(x,"title") : '',
+                width = tarteaucitron.getElemAttr(x,"width"),
+                height = tarteaucitron.getElemAttr(x,"height"),
+                allowfullscreen = tarteaucitron.getElemAttr(x,"allowfullscreen"),
+                slidoEvent = tarteaucitron.getElemAttr(x,"slidoEvent"),
+                style = tarteaucitron.getElemAttr(x,"style"),
+                url = "https://app.sli.do/event/" + slidoEvent;
+
+            var styleAttr = (width !== "" ? "width:" + tarteaucitron.getStyleSize(width) + ";" : "") + (height !== "" ? "height:" + tarteaucitron.getStyleSize(height) + ";" : "") + (style !== "" ? style : "");
+
+            return '<iframe title="' + frame_title + '" src="' + url + '" style="' + styleAttr + '" allowtransparency' + (allowfullscreen == '0' ? '' : ' webkitallowfullscreen mozallowfullscreen allowfullscreen') + '></iframe>';
+        });
+    },
+    "fallback": function () {
+        "use strict";
+        var id = 'slido';
+        tarteaucitron.fallback(['tac_slido'], function (elem) {
+            elem.style.width = tarteaucitron.getStyleSize(tarteaucitron.getElemAttr(elem, 'width'));
+            elem.style.height = tarteaucitron.getStyleSize(tarteaucitron.getElemAttr(elem, 'height'));
+            return tarteaucitron.engage(id);
+        });
+    }
+};
+
 // userway
 tarteaucitron.services.userway = {
     "key": "userway",
