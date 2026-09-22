@@ -117,6 +117,7 @@ tarteaucitron.init({
     "bingConsentMode": true, /* Enable Bing Consent Mode for Clarity and Bing Ads */
     "pianoConsentMode": true, /* Enable Piano Analytics Consent Mode */
     "pianoConsentModeEssential": false, /* Load in Essential mode instead of opt-out by default */
+    "piwikConsentMode": true, /* Enable Piwik Consent Mode */
     "softConsentMode": false, /* Soft consent mode (consent is required to load the services) */
 
     "dataLayer": false, /* Send an event to dataLayer with the services status */

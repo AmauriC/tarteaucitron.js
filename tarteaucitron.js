@@ -249,6 +249,7 @@ var tarteaucitron = {
                 "pianoConsentMode": true,
                 "pianoConsentModeEssential": false,
                 "bingConsentMode": true,
+                "piwikConsentMode": true,
                 "softConsentMode": false,
                 "dataLayer": false,
                 "serverSide": false,
@@ -527,6 +528,46 @@ var tarteaucitron = {
                         tarteaucitron_block.unblock(/AW-/);
                         tarteaucitron_block.unblock(/google-analytics\.com\/analytics\.js/);
                         tarteaucitron_block.unblock(/google-analytics\.com\/ga\.js/);
+                    }
+                });
+            }
+        }
+
+        // piwik consent mode
+        if (tarteaucitron.parameters.piwikConsentMode === true) {
+            document.addEventListener('piwikpro_consentModeOk', function () {
+                if (typeof ppms !== 'undefined' && typeof ppms?.cm?.api === 'function') {
+                    ppms.cm.api(
+                        "setComplianceSettings",
+                        {
+                            consents: {
+                                analytics: {
+                                    status: 1,
+                                },
+                            },
+                        },
+                        console.log,
+                        console.error
+                    );
+                }
+            }, { once: true });
+            document.addEventListener('piwikpro_consentModeKo', function () {
+                if (typeof ppms !== 'undefined' && typeof ppms?.cm?.api === 'function') {
+                    ppms.cm.api(
+                        "setInitialComplianceSettings",
+                        {
+                            consents: ["analytics"],
+                        },
+                        console.log,
+                        console.error
+                    );
+                }
+            }, { once: true });
+
+            if (tarteaucitron.parameters.softConsentMode === false) {
+                window.addEventListener('tac.root_available', function () {
+                    if (typeof tarteaucitron_block !== 'undefined') {
+                        tarteaucitron_block.unblock(/\.piwik\.pro/);
                     }
                 });
             }

@@ -1866,6 +1866,13 @@ tarteaucitron.services.piwikpro = {
                 }
             }(i[c])
         }(window, "ppms", ["tm", "cm"]);
+    },
+    "fallback": function() {
+        if (tarteaucitron.parameters.piwikConsentMode === true) {
+            if (tarteaucitron.parameters.softConsentMode === false) {
+                this.js();
+            }
+        }
     }
 };
 
