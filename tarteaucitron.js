@@ -1464,7 +1464,7 @@ var tarteaucitron = {
                         tarteaucitron.pro('!' + key + '=engage');
 
                         tarteaucitron.launch[key] = true;
-                        if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) && (tarteaucitron.parameters.serverSide !== true || (typeof tarteaucitronServerSideExclude !== 'undefined' && Array.isArray(tarteaucitronServerSideExclude) && tarteaucitronServerSideExclude.indexOf(service.key) !== -1))) { tarteaucitron.services[key].js(); }
+                        if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) && (tarteaucitron.parameters.serverSide !== true || (typeof tarteaucitronServerSideExclude !== 'undefined' && Array.isArray(tarteaucitronServerSideExclude) && tarteaucitronServerSideExclude.indexOf(key) !== -1))) { tarteaucitron.services[key].js(); }
                         tarteaucitron.sendEvent(key + '_loaded');
                     }
                     var itemStatusElem = document.getElementById('tacCurrentStatus'+key);
@@ -1517,7 +1517,7 @@ var tarteaucitron = {
 
                     tarteaucitron.launch[key] = true;
                     tarteaucitron.sendEvent(key + '_consentModeOk');
-                    if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) && (tarteaucitron.parameters.serverSide !== true || (typeof tarteaucitronServerSideExclude !== 'undefined' && Array.isArray(tarteaucitronServerSideExclude) && tarteaucitronServerSideExclude.indexOf(service.key) !== -1))) { tarteaucitron.services[key].js(); }
+                    if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + key + "_") < 0) && (tarteaucitron.parameters.serverSide !== true || (typeof tarteaucitronServerSideExclude !== 'undefined' && Array.isArray(tarteaucitronServerSideExclude) && tarteaucitronServerSideExclude.indexOf(key) !== -1))) { tarteaucitron.services[key].js(); }
                     tarteaucitron.sendEvent(key + '_loaded');
                 }
             }
@@ -2710,7 +2710,7 @@ var tarteaucitron = {
         if (tarteaucitron.added[id] !== true) {
             tarteaucitron.job.push(id);
         } else {
-            if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + id + "_") < 0) && (tarteaucitron.parameters.serverSide !== true || (typeof tarteaucitronServerSideExclude !== 'undefined' && Array.isArray(tarteaucitronServerSideExclude) && tarteaucitronServerSideExclude.indexOf(service.key) !== -1))) {
+            if ((typeof tarteaucitronMagic === 'undefined' || tarteaucitronMagic.indexOf("_" + id + "_") < 0) && (tarteaucitron.parameters.serverSide !== true || (typeof tarteaucitronServerSideExclude !== 'undefined' && Array.isArray(tarteaucitronServerSideExclude) && tarteaucitronServerSideExclude.indexOf(id) !== -1))) {
                 if(tarteaucitron.state[id] === true && typeof tarteaucitron.services[id].js === 'function') {
                     tarteaucitron.services[id].js();
                 } else if (typeof tarteaucitron.services[id].fallback === 'function') {
