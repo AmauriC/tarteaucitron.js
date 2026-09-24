@@ -3,7 +3,7 @@
 [![jsDelivr downloads](https://data.jsdelivr.com/v1/package/npm/tarteaucitronjs/badge)](https://www.jsdelivr.com/package/npm/tarteaucitronjs)
 [![npm version](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs)
 [![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors)
-[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub)](https://github.com/sponsors/AmauriC)
+[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4)](https://tarteaucitron.io/en/thanks-sponsors/)
 
 **Add a cookie consent banner to your website and let visitors control third-party services.**
 
@@ -13,7 +13,19 @@ It provides the consent interface and service controls for your consent manageme
 
 Use it to manage consent for analytics, advertising, embedded videos, social widgets and other supported third-party services.
 
-[Installation guide](https://tarteaucitron.io/en/free-installation-open-source/) · [Website and Pro service](https://tarteaucitron.io/) · [Support the project](https://github.com/sponsors/AmauriC)
+[Installation guide](https://tarteaucitron.io/en/free-installation-open-source/) · [Website and Pro service](https://tarteaucitron.io/) · [Support the project](https://tarteaucitron.io/en/thanks-sponsors/)
+
+<br>
+
+> [!TIP]
+> 🍋 **A little slice to keep the project going?**
+>
+> If tarteaucitron makes your life easier, help me keep it growing.
+>
+> **[Give a slice of lemon tart →](https://tarteaucitron.io/en/thanks-sponsors/)**  
+> From €5 · No subscription
+
+<br>
 
 ## Features
 
@@ -60,7 +72,7 @@ Originally created for a personal blog, tarteaucitron.js is maintained by Amauri
 
 Bug reports, integration improvements, translations and documentation contributions are welcome.
 
-[Meet the developer](https://amauri.io/en/amauri-champeaux/) · [Contributors](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors) · [Sponsor development](https://github.com/sponsors/AmauriC)
+[Meet the developer](https://amauri.io/en/amauri-champeaux/) · [Contributors](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors) · [Sponsors](https://tarteaucitron.io/en/thanks-sponsors/)
 
 # How to use
 
