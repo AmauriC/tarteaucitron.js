@@ -15,18 +15,6 @@ Use it to manage consent for analytics, advertising, embedded videos, social wid
 
 [Installation guide](https://tarteaucitron.io/en/free-installation-open-source/) · [Website and Pro service](https://tarteaucitron.io/) · [Support the project](https://tarteaucitron.io/en/thanks-sponsors/)
 
-<br>
-
-> [!TIP]
-> 🍋 **A little slice to keep the project going?**
->
-> If tarteaucitron makes your life easier, help me keep it growing.
->
-> **[Give a slice of lemon tart →](https://tarteaucitron.io/en/thanks-sponsors/)**  
-> From €5 · No subscription
-
-<br>
-
 ## Features
 
 - **Cookie consent banner:** offer visitors clear choices to accept, reject or customize their consent.
