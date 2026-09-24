@@ -7259,7 +7259,7 @@ tarteaucitron.services.crisp = {
     "name": "Crisp Chat",
     "uri": "https://help.crisp.chat/en/article/crisp-chatbox-cookie-ip-policy-1147xor/",
     "needConsent": true,
-    "cookies": ['crisp-client', '__cfduid'],
+    "cookies": ['crisp-client'],
     "js": function () {
         "use strict";
 
