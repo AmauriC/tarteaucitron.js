@@ -1,6 +1,6 @@
 {
   "name": "tarteaucitronjs",
-  "version": "1.35.0",
+  "version": "1.35.1",
   "main": "tarteaucitron.js",
   "description": "tarteaucitron.io - Get a compliant and accessible cookie banner",
   "dependencies": {},
@@ -13,10 +13,7 @@
     "url": "git+https://github.com/AmauriC/tarteaucitron.js.git"
   },
   "keywords": [
-    "cookie",
-    "law",
-    "rgpd",
-    "gdpr"
+    "cmp","consent-management","consent-mode-v2","cookie-banner","cookie-consent","gdpr","privacy","rgpd"
   ],
   "author": "amauri.io",
   "license": "MIT",
