@@ -42,7 +42,7 @@ tarteaucitron.services.openai = {
     "name": "OpenAI",
     "uri": "https://openai.com/policies/ad-policies/",
     "needConsent": true,
-    "cookies": [],
+    "cookies": ['__obref'],
     "js": function () {
         "use strict";
 
