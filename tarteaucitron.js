@@ -2166,7 +2166,7 @@ var tarteaucitron = {
                     }
                 }
 
-                rgxpCookie = new RegExp("^(.*;)?\\s*" + arr[i] + "\\s*=\\s*[^;]+(.*)?$");
+                rgxpCookie = new RegExp("(?:^|;\\s*)" + arr[i].replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "\\s*=");
 
                 if (document.cookie.match(rgxpCookie)) {
                     document.cookie = arr[i] + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/;';
