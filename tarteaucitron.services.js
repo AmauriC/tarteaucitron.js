@@ -5774,6 +5774,10 @@ tarteaucitron.services.facebookpixel = {
         n.version = '2.0';
         n.queue = [];
         tarteaucitron.addScript('https://connect.facebook.net/en_US/fbevents.js');
+        // Must be set before init, otherwise the pixel never loads the Conversions API Gateway plugin
+        if (typeof tarteaucitron.user.facebookpixelOpenBridge === 'string') {
+            fbq('set', 'openbridge', tarteaucitron.user.facebookpixelId, tarteaucitron.user.facebookpixelOpenBridge);
+        }
         fbq('init', tarteaucitron.user.facebookpixelId);
         fbq('track', 'PageView');
 
