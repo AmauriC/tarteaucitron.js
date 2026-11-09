@@ -1422,7 +1422,9 @@ var tarteaucitron = {
                     }
 
                     if (property == "display" && value == "block" && id == "tarteaucitronAlertBig" && (tarteaucitron.parameters.orientation == "middle"|| tarteaucitron.parameters.orientation == "popup")) {
-                        tarteaucitron.userInterface.focusTrap('tarteaucitronAlertBig');
+                        setTimeout(function() {
+                            tarteaucitron.userInterface.focusTrap('tarteaucitronAlertBig');
+                        }, 150);
                     }
                 }
             }
@@ -1756,7 +1758,9 @@ var tarteaucitron = {
             if (document.getElementsByTagName('body')[0].classList !== undefined) {
                 document.getElementsByTagName('body')[0].classList.add('tarteaucitron-modal-open');
             }
-            tarteaucitron.userInterface.focusTrap('tarteaucitron');
+            setTimeout(function() {
+                tarteaucitron.userInterface.focusTrap('tarteaucitron');
+            }, 150);
             tarteaucitron.userInterface.jsSizing('main');
 
             //ie compatibility
