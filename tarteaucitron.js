@@ -524,6 +524,7 @@ var tarteaucitron = {
                 window.addEventListener('tac.root_available', function () {
                     if (typeof tarteaucitron_block !== 'undefined') {
                         tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/js/);
+                        tarteaucitron_block.unblock(/www\.googletagmanager\.com\/gtag\/destination/);
                         tarteaucitron_block.unblock(/www\.googleadservices\.com\/pagead\/conversion/);
                         tarteaucitron_block.unblock(/AW-/);
                         tarteaucitron_block.unblock(/google-analytics\.com\/analytics\.js/);
