@@ -4322,10 +4322,10 @@ tarteaucitron.services.instagram = {
             }
 
             if (embed_width !== "") {
-                styleAttr = 'width:' + tarteaucitron.getStyleSize(embed_width) + ';';
+                styleAttr += 'width:' + tarteaucitron.getStyleSize(embed_width) + ';';
             }
             if (embed_height !== "") {
-                styleAttr = 'height:' + tarteaucitron.getStyleSize(embed_height) + ';';
+                styleAttr += 'height:' + tarteaucitron.getStyleSize(embed_height) + ';';
             }
 
             post_frame = '<iframe title="' + frame_title + '" src="//www.instagram.com/' + post_link + '/embed" style="' + styleAttr + '"></iframe>';
