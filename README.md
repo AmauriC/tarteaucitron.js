@@ -1,3 +1,6 @@
+<img width="1500" height="500" alt="tarteaucitronio" src="https://github.com/user-attachments/assets/f97925d4-3c9d-4ba9-af96-daa3365b691f" />
+
+
 # tarteaucitron.js — Open-source cookie consent manager
 
 [![jsDelivr downloads](https://data.jsdelivr.com/v1/package/npm/tarteaucitronjs/badge)](https://www.jsdelivr.com/package/npm/tarteaucitronjs)
