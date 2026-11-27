@@ -22,7 +22,7 @@ Use it to manage consent for analytics, advertising, embedded videos, social wid
 - **Consent-based loading:** keep configured services requiring consent blocked until permission is granted, with explicit consent enabled.
 - **Content placeholders:** display a fallback for supported embedded content while consent is pending or refused.
 - **Loading without a page refresh:** load supported services when visitors accept them.
-- **Customizable interface:** configure the banner layout, texts, colors and consent options.
+- **Customizable interface:** configure the banner layout, texts, colors and consent options, or fully customize its appearance using CSS.
 - **Accessibility options:** adjust the panel's position in the document and provide a way to reopen consent preferences.
 - **Consent Mode integrations:** support Google Consent Mode v2, Bing Consent Mode and Piano Analytics Consent Mode.
 
@@ -40,11 +40,44 @@ Initialize tarteaucitron.js, add the services used on your website and adapt the
 
 ### tarteaucitron.io Pro — managed service
 
-Choose the Pro service for automatic detection of supported services, an online configuration dashboard and consent statistics.
+Choose the Pro service for a simpler integration and additional features:
+
+- Automatic detection of supported third-party services.
+- Online configuration dashboard.
+- Consent statistics.
+- 50+ ready-to-use design themes.
+- Dedicated WordPress plugin.
+- Unlimited websites and unlimited traffic.
+- Hosted in France.
 
 The open-source library remains free. The Pro service is a separate paid offering.
 
-[Explore tarteaucitron.io Pro](https://tarteaucitron.io/).
+A 7-day free trial is available, with no credit card required and no automatic renewal.
+
+[Explore tarteaucitron.io Pro](https://tarteaucitron.io/en/).
+
+### Design themes — Pro
+
+Choose from 50+ ready-to-use themes directly from the tarteaucitron.io Pro dashboard, without editing CSS.
+
+Each theme customizes the entire consent interface: the cookie banner, consent panel, buttons, service descriptions, cookie list and permanent icon.
+
+The collection covers eight categories:
+
+- Accessibility and readability
+- Sports
+- Professions and industries
+- Nature and landscapes
+- Creative and playful
+- Minimal and elegant
+- Retro and technical
+- Events and seasonal designs
+
+All themes maintain equal visual prominence for accept and reject buttons.
+
+[Explore and try all themes in the interactive gallery](https://tarteaucitron.io/en/demonstration-tarteaucitron-templates/).
+
+These ready-to-use themes are exclusive to the Pro service. The open-source version retains its existing CSS customization options.
 
 ## Consent and configuration
 
